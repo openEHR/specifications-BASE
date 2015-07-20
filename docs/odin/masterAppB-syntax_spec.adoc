@@ -1,0 +1,241 @@
+[appendix]
+= Syntax Specification
+
+The grammar and lexical specification for the standard ODIN syntax is shown below in ANTLR4 form.
+ 
+[source, antlr-java]
+--------
+//
+// -------------------------- Parse Rules --------------------------
+//
+
+odin_text :
+      attr_vals 
+    | complex_object_block 
+    | error ;
+
+attr_vals :               // may be empty
+    | attr_val ( ';' )?
+    | attr_vals attr_val 
+    ;
+
+attr_val : V_ATTRIBUTE_IDENTIFIER '=' object_block ;
+
+object_block : 
+      ( type_identifier )? ( complex_object_block  | primitive_object_block )
+    | object_reference_block 
+    ;
+
+type_identifier : '(' V_TYPE_IDENTIFIER ')' ;
+
+complex_object_block : 
+      single_attr_object_block 
+    | container_attr_object_block 
+    ;
+
+single_attr_object_block : '<' attr_vals '>' ;
+
+container_attr_object_block : '<' keyed_objects '>' ;
+
+keyed_objects :           // may be empty
+    | keyed_object 
+    | keyed_objects keyed_object 
+    ;
+
+keyed_object : object_key '=' object_block ;
+
+object_key : '[' primitive_value ']' ;
+
+// ------ leaf types ------
+
+primitive_object_block : '<' primitive_object '>' ;
+
+primitive_object :
+      primitive_value 
+    | primitive_list_value 
+    | primitive_interval_value 
+    | term_code 
+    | term_code_list_value 
+    ;
+
+primitive_value :
+      string_value 
+    | integer_value 
+    | real_value 
+    | boolean_value 
+    | character_value 
+    | date_value 
+    | time_value 
+    | date_time_value 
+    | duration_value 
+    | uri_value 
+    ;
+
+primitive_list_value : 
+      string_list_value 
+    | integer_list_value 
+    | real_list_value 
+    | boolean_list_value 
+    | character_list_value 
+    | date_list_value 
+    | time_list_value 
+    | date_time_list_value 
+    | duration_list_value 
+    ;
+
+primitive_interval_value :
+      integer_interval_value
+    | real_interval_value
+    | date_interval_value
+    | time_interval_value
+    | date_time_interval_value
+    | duration_interval_value
+    ;
+
+string_value : V_STRING ;
+string_list_value : string_value ( ( ',' string_value )+ | '...' ) ;
+
+integer_value : ( '+' | '-' )? V_INTEGER ;
+integer_list_value : integer_value ( ( ',' integer_value )+ | '...' ) ;
+integer_interval_value :
+      '|' '>'? integer_value '..' '<'? integer_value '|'
+    | '|' RELOP? integer_value '|'
+    ;
+
+real_value : ( '+' | '-' )? V_REAL ;
+real_list_value : real_value ( ( ',' real_value )+ | '...' ) ;
+real_interval_value :
+      '|' '>'? real_value '..' '<'? real_value '|'
+    | '|' RELOP? real_value '|'
+    ;
+
+boolean_value : SYM_TRUE | SYM_FALSE ;
+boolean_list_value : boolean_value ( ( ',' boolean_value )+ | '...' ) ;
+
+character_value : V_CHARACTER ;
+character_list_value : character_value ( ( ',' character_value )+ | '...' ) ;
+
+date_value : iso8601_date ;
+date_list_value : date_value ( ( ',' date_value )+ | '...' ) ;
+date_interval_value :
+      '|' '>'? date_value '..' '<'? date_value '|'
+    | '|' RELOP? date_value '|'
+    ;
+
+time_value : iso8601_time ;
+time_list_value : time_value ( ( ',' time_value )+ | '...' ) ;
+time_interval_value :
+      '|' '>'? time_value '..' '<'? time_value '|'
+    | '|' RELOP? time_value '|'
+    ;
+
+date_time_value : iso8601_date_time ;
+date_time_list_value : date_time_value ( ( ',' date_time_value )+ | '...' ) ;
+date_time_interval_value :
+      '|' '>'? date_time_value '..' '<'? date_time_value '|'
+    | '|' RELOP? date_time_value '|'
+    ;
+
+duration_value : V_ISO8601_DURATION ;
+duration_list_value : duration_value ( ( ',' duration_value )+ | '...' ) ;
+duration_interval_value :
+      '|' '>'? duration_value '..' '<'? duration_value '|'
+    | '|' RELOP? duration_value '|'
+    ;
+
+term_code : V_QUALIFIED_TERM_CODE_REF ;
+term_code_list_value : term_code ( ( ',' term_code )+ | '...' ) ;
+
+uri_value : V_URI ;
+
+object_reference_block : '<' ( absolute_path | absolute_path_list ) '>' ;
+
+absolute_path_list  : absolute_path ( ( ',' absolute_path )+ | '...' ) ;
+absolute_path       : '/' ( relative_path )? ;
+relative_path       : path_segment ( '/' path_segment )+ ;
+path_segment        : V_ATTRIBUTE_IDENTIFIER ( '[' V_STRING ']' )? ;
+  
+//
+// -------------------------- Lexical entities --------------------------
+//
+
+fragment ALPHANUM : [a-zA-Z0-9] ;
+fragment NAMECHAR : [a-zA-Z0-9._-] ;
+fragment NAMECHAR_PAREN : [a-zA-Z0-9._()-] ;
+
+fragment UTF8CHAR : 
+    | '\u00C0'..'\u00D6'
+    | '\u00D8'..'\u00F6'
+    | '\u00F8'..'\u02FF'
+    | '\u0300'..'\u036F'
+    | '\u0370'..'\u037D'
+    | '\u037F'..'\u1FFF'
+    | '\u200C'..'\u200D'
+    | '\u203F'..'\u2040'
+    | '\u2070'..'\u218F'
+    | '\u2C00'..'\u2FEF'
+    | '\u3001'..'\uD7FF'
+    | '\uF900'..'\uFDCF'
+    | '\uFDF0'..'\uFFFD'
+    ;
+
+// ---------- whitespace & comments ----------
+
+WS : 
+      [ \t\r]+      // skip
+    | '\n'+         // increment line count
+    | '--'.*        // Ignore comments
+    | '--'.*'\n'    // (increment line count)
+    ;
+
+// ---------- symbols ----------
+
+SYM_TRUE : [Tt][Rr][Uu][Ee] ;
+SYM_FALSE : [Ff][Aa][Ll][Ss][Ee] ;
+
+RELOP : '>' | '<' | '<=' | '>=' ;
+
+// ---------- value terminals ----------
+
+V_URI : [a-z]+ ':' ( '//' | '/' | ~[/ ]+ )? ~[ \t\n]+? ; // just a simple recogniser, the full thing isn't required
+
+V_QUALIFIED_TERM_CODE_REF : '[' NAMECHAR_PAREN+ '::' NAMECHAR+ ']' ;  // e.g. [ICD10AM(1998)::F23]
+
+iso8601_date        =     YEAR '-' MONTH ( '-' DAY )? ;
+iso8601_time        =     HOUR ':' MINUTE ( ':' SECOND ( ',' INTEGER )?)? ( timezone )? ; 
+iso8601_date_time   =     YEAR '-' MONTH '-' DAY 'T' HOUR (':' MINUTE (':' SECOND ( ',' [0-9]+ )?)?)? ( timezone )? ;
+timezone            =     'Z' | ('+'|'-') HOUR_MIN ;   // hour offset, e.g. `+0930`, or else literal `Z` indicating +0000.
+
+fragment MONTH      =     ( [0][0-9] | [1][0-2] ) ;    // month in year
+fragment DAY        =     ( [012][0-9] | [3][0-2] ) ;  // day in month
+fragment HOUR       =     ( [01]?[0-9] | [2][0-3] ) ;  // hour in 24 hour clock
+fragment MINUTE     =     [0-5][0-9] ;                 // minutes
+fragment SECOND     =     [0-5][0-9] ;                 // seconds
+
+// ---------- ISO8601 DURATION PnYnMnWnDTnnHnnMnn.nnnS --------
+// here we allow a deviation from the standard to allow weeks to be
+// mixed in with the rest since this commonly occurs in medicine
+V_ISO8601_DURATION : 'P'([0-9]+[yY])?([0-9]+[mM])?([0-9]+[wW])?([0-9]+[dD])?('T'([0-9]+[hH])?([0-9]+[mM])?([0-9]+(\.[0-9]+)?[sS])?)? ;
+
+V_INTEGER :   [0-9]+ E_SUFFIX? ;
+V_REAL :      [0-9]+'.'[0-9]+ E_SUFFIX? ;
+fragment E_SUFFIX : [eE][+-]?[0-9]+ ;
+
+V_STRING : '"' V_STRING_CHAR*? '"' ;
+fragment V_STRING_CHAR : UTF8CHAR | '\\'['nrt\"] | ~["] ;
+
+V_CHARACTER : '\'' V_CHAR '\'' ;
+fragment V_CHAR : UTF8CHAR | '\\['nrt\]' | ~[\n'] ;
+
+// ---------- Information model identifiers --------
+
+V_TYPE_IDENTIFIER : V_TYPE_NAME ( '<' V_TYPE_IDENTIFIER ( ',' V_TYPE_IDENTIFIER )* '>' )? ;
+fragment V_TYPE_NAME : [A-Z][a-zA-Z0-9_]* ;
+
+V_ATTRIBUTE_IDENTIFIER : [_a-z][a-zA-Z0-9_]* ;
+
+// ---------- embedded syntax blocks --------------
+
+CADL_BLOCK : '{' ( CADL_BLOCK | ~[{}]*? ) '}' ;
+ 
+--------
