@@ -42,7 +42,7 @@ into parts of the healthcare system where there are many staff, and/or where the
 established relationship. The advent of e-prescribing and e-pharmacy will bring even larger numbers
 of health and allied health workers into the e-Health matrix, making the problem of individual identification
 of who should see the patient’s data infeasible. Further, there is a large and growing category
-of “very mobile” people (the military, entertainers, NGO workers, international business and tourism
+of "very mobile" people (the military, entertainers, NGO workers, international business and tourism
 professionals, athletes....) who cannot predict even in which country they may require care. As a consequence,
 the need for some access control to be specified in terms of categories or role types appears
 inescapable.
@@ -50,8 +50,8 @@ inescapable.
 === The Problem of Roles
 
 One of the difficult challenges to implementing access control to health information is that of defining
-“roles”, i.e. the status of users of the record at the time when right of access is being determined. In
-principle, roles ought to be knowable in advance. For example, the labels “nurse”, “GP” and “psychiatrist”
+"roles", i.e. the status of users of the record at the time when right of access is being determined. In
+principle, roles ought to be knowable in advance. For example, the labels "nurse", "GP" and "psychiatrist"
 can be relatively easily assigned to individuals. However, the kinds of labels that are of more
 importance are those that differentiate among (for example) personal carers (e.g. primary GP), other
 care delivery staff (e.g. nurses, aged carers) and support staff (e.g. pathologists, radiographers). In a
@@ -60,7 +60,7 @@ probably less important than his or her relationship to the current care process
 
 It will not always be clear which individuals fall into any of these categories at any time, or how such
 terms are even defined in different sites and jurisdictions. Realistically, the evaluation of a role category
-such as “care deliverer” into particular identities such as those of nurses on the ward on a particular
+such as "care deliverer" into particular identities such as those of nurses on the ward on a particular
 day must be done in each care delivery environment, not in the EHR. Access decisions for
 information in the EHR therefore will have some dependence on provider site knowledge of which
 staff are actively involved in the care process of a given patient.
@@ -88,7 +88,7 @@ of EHRs.
 
 Any model of how security and privacy are supported in the health record must be based on some
 notion of assumed threats. Without going into great detail, security threats assumed by openEHR
-include the following (here “inappropriate” means anything that is not or would not be consented to
+include the following (here "inappropriate" means anything that is not or would not be consented to
 by the patient):
 
 * human error in patient identification, leading to incorrect association of health data of one patient with another. Mis-identification of patients can cause personal data for one patient to go into the record of another patient (leading to privacy violations and possibly clinical errors), or into a new record rather than the existing one for the same patient (leading to two or more clinically incomplete records);
@@ -145,11 +145,11 @@ openEHR; see next point).
     Anonymity::: the content of the health record is separate from identifying demographic information. This can be configured such that theft of the EHR provides no direct clue to the identity of the owning patient (indirect clues are of course harder to control). Stealing an identified EHR involves theft of data from two servers, or even theft of two physical computers, depending on deployment configuration.
 
 Access Control::
-    Access list::: the overriding principle of access control must be “relevance” both in terms of user identity (who is delivering care to the patient) and time (during the current episode of care, and for some reasonable, limited time afterward). An access control list can be defined for the EHR, indicating both identified individuals and categories, the latter of which might be role types, or particular staff groups.
+    Access list::: the overriding principle of access control must be "relevance" both in terms of user identity (who is delivering care to the patient) and time (during the current episode of care, and for some reasonable, limited time afterward). An access control list can be defined for the EHR, indicating both identified individuals and categories, the latter of which might be role types, or particular staff groups.
     Access control of access settings::: a gate-keeper controls access to the EHR access control
 settings. The gate-keeper is established at the time of EHR creation as being one of the identities known in the EHR, usually the patient for mentally competent adults, otherwise a parent, legal guardian, advocate or other responsible person. The gate-keeper determines who can make changes to the access control list. All changes to the list are audit-trailed as for normal data (achieved due to normal versioning).
     Privacy::: patients can mark Compositions in the EHR as having one of a number of levels of privacy. The definition of the privacy levels is not hard-wired in the openEHR models but rather is defined by standards or agreements within jurisdictions of use.
-    Usability::: The general mentality of access control setting is one of “sensible defaults” that work for most of the information in the EHR, most of the time. The defaults for the EHR can be set by the patient, defining access control behaviour for the majority of access decisions. Exceptions to the default policy are then added. This approach minimises the need to think about the security of every item in the EHR individually.
+    Usability::: The general mentality of access control setting is one of "sensible defaults" that work for most of the information in the EHR, most of the time. The defaults for the EHR can be set by the patient, defining access control behaviour for the majority of access decisions. Exceptions to the default policy are then added. This approach minimises the need to think about the security of every item in the EHR individually.
     
 Other security policy principles that should be implemented in even a minimal EHR deployment but are not directly specified by openEHR include the following.
 
@@ -261,5 +261,5 @@ to date are still developmental.
 The openEHR architecture is therefore designed to accommodate alternative models of access control,
 each defined by a subtype of the class `ACCESS_CONTROL_SETTING` (Security IM). This
 approach means that a simplistic access control model can be defined and implemented initially, with
-more sophisticated models being used later. The “scheme” in use at any given time is always indicated
+more sophisticated models being used later. The "scheme" in use at any given time is always indicated
 in the EHR Access object.

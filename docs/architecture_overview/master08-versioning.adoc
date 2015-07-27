@@ -3,7 +3,7 @@
 == Overview
 
 Version control is an integral part of the openEHR architecture. An openEHR repository for EHR or
-demographic information is managed as a change-controlled collection of “version containers” (modelled
+demographic information is managed as a change-controlled collection of "version containers" (modelled
 by the `VERSIONED_OBJECT<T>` class in the `common.change_control` package), each containing
 the versions of a top-level content structure (such as a Composition or Party) as it changes
 over time. A version-controlled top-level content structure is visualised below.
@@ -14,9 +14,9 @@ image::diagrams/version_control_structures.png[version_control_structures,align=
 
 Versioning of single top-level structures is a necessary, but not sufficient requirement for a repository
 that must provide coherence, traceability, indelibility, rollback, and support for forensic examination
-of past states of the data. Features supporting “change control” are also required. Under a disciplined
+of past states of the data. Features supporting "change control" are also required. Under a disciplined
 change control scheme, changes are not made arbitrarily to single top-level structures, but to the
-repository itself. Changes take the form of change-sets, called “Contributions”, that consist of new or
+repository itself. Changes take the form of change-sets, called "Contributions", that consist of new or
 changed versions of the controlled items in the repository. The key feature of a change-set is that it
 acts like a transaction, and takes the repository from one consistent state to another, whereas arbitrary
 combinations of changes to single controlled items could easily be inconsistent, and even dangerously
@@ -29,9 +29,9 @@ sections provide more details
 
 == The Configuration Management Paradigm
 
-The “configuration management” (CM) paradigm is well-known in software engineering, and has its
+The "configuration management" (CM) paradigm is well-known in software engineering, and has its
 own IEEE standard <<IEEE_828>>. CM is about managed control of changes to a repository of items (formally
-called “configuration items” or CIs), and is relevant to any logical repository of distinct information
+called "configuration items" or CIs), and is relevant to any logical repository of distinct information
 items which changes in time. In health information systems, at least two types of information require
 such management: electronic health records, and demographic information. In most analyses in the
 past, the need for change management has been expressed in terms of specific requirements for audit
@@ -78,7 +78,7 @@ The goal of configuration management is to ensure the following:
 
 Properly managing changes to the repository requires two mechanisms. The first, version control, is
 used to manage versions of each CI, and of the directory structure if there is one. The second is the
-concept of the “change-set”, known as a contribution in openEHR. This is the set of changes to individual
+concept of the "change-set", known as a contribution in openEHR. This is the set of changes to individual
 CIs (and other top-level structures in the EHR) made by a user as part of some logical change.
 For example, in a document repository, the logical change might be an update to a document that consists
 of multiple files (CIs). There is one Contribution, consisting of changes to the document file CIs,
@@ -139,19 +139,19 @@ The actual type of links between the controlled repository and the other entitie
 cases it might be association, in others aggregation; cardinalities might also vary. The figure above therefore provides a guide to the definition of actual controlled repositories, such as an EHR, rather than a
 formal specification for them.
 
-== The “Virtual Version Tree”
+== The "Virtual Version Tree"
 
-An underlying design concept of the versioning model defined in openEHR is known as a “virtual
-version tree”. The idea is simple in the abstract. Information is committed to a repository (such as an
-EHR) in lumps, each lump being the “data” of one Version. Each Version has its place within a version
-tree, which in turn is maintained inside a Versioned object (or “version container”). The virtual
+An underlying design concept of the versioning model defined in openEHR is known as a "virtual version tree". 
+The idea is simple in the abstract. Information is committed to a repository (such as an
+EHR) in lumps, each lump being the "data" of one Version. Each Version has its place within a version
+tree, which in turn is maintained inside a Versioned object (or "version container"). The virtual
 version tree concept means that any given Versioned object may have numerous copies in various
 systems, and that the creation of versions in each is done in such a way that all versions so created are
-in fact compatible with the “virtual” version tree resulting from the superimposition of the version
+in fact compatible with the "virtual" version tree resulting from the superimposition of the version
 trees of all copies. This is achieved using simple rules for version identification and is done to facilitate
 data sharing. Two very common scenarios are served by the virtual version tree concept:
 
-* longitudinal data that stands as a proxy for the state or situation of the patient such as “Medications” or “Problem list” (persistent Compositions in openEHR) is created and maintained in one or more care delivery organisations, and shared across a larger number of organisations;
+* longitudinal data that stands as a proxy for the state or situation of the patient such as "Medications" or "Problem list" (persistent Compositions in openEHR) is created and maintained in one or more care delivery organisations, and shared across a larger number of organisations;
 * some EHRs in an EHR server in one location are mirrored into one or more other EHR servers (e.g. at care providers where the relevant patients are also treated); the mirroring process requires asynchronous synchronisation between servers to work seamlessly, regardless of the location, time, or author of any data created.
 
 The versioning scheme used in openEHR guarantees that no matter where data are created or copied,

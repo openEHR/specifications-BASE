@@ -3,7 +3,7 @@
 == Overview
 
 Getting data in and out of the EHR is one of the most basic requirements openEHR aims to satisfy. In
-“greenfield” (new build) situations, and for data being created by GUI applications via the openEHR
+"greenfield" (new build) situations, and for data being created by GUI applications via the openEHR
 EHR APIs, there is no issue, since native openEHR structures and semantics are being used. In almost
 all other situations, existing data sources and sinks have to be accounted for. In general, external or
 ‘legacy’ data (here the term is used for convenience, and does not imply anything about the age or
@@ -29,27 +29,27 @@ document for example might correspond to a number of clinical archetypes. Struct
 correspond, with legacy data (particularly messages) usually having flatter structures than those
 defined in target archetypes. Terminology use is extremely variable in existing systems and messages,
 and also has to be dealt with. Data types will also not correspond directly, so that for example, a mapping
-between an incoming string “110/80 mmHg” and the target openEHR form of two
+between an incoming string "110/80 mmHg" and the target openEHR form of two
 `DV_QUANTITY` objects each with their own value and units has to be made.
 
 == Integration Archetypes
 
 The foundation of a key approach to the integration problem is the use of two kinds of archetypes. So
-far in this document “archetypes” has meant “designed” archetypes, generally clinical, demographic
+far in this document "archetypes" has meant "designed" archetypes, generally clinical, demographic
 or administrative. The common factors for all such archetypes are:
 
 * they are based on the main part of the reference model, particularly the Entry subtypes `OBSERVATION`, `EVALUATION`, `INSTRUCTION` and `ACTION`;
 * they are consciously designed from scratch by groups of domain specialists, and integrated into the existing library of openEHR archteypes;
-* there is one archetype per identifiable health “concept”, such as an observation type, person type etc.
+* there is one archetype per identifiable health "concept", such as an observation type, person type etc.
 
-A second category of archetypes is “integration” archetypes. These are characterised as follows:
+A second category of archetypes is "integration" archetypes. These are characterised as follows:
 
 * they are based on the same high-level types (`COMPOSITION`, `SECTION` etc), but use the Entry subtype `GENERIC_ENTRY` (see EHR Information Model);
 * they are designed to mimic the structure of legacy or existing data or messages; the design effort therefore is completely different, and is more likely to be done by IT or other technical staff who are familiar with the structures of the incoming data;
 * there is one integration archetype per message type or identifiable source data that makes sense as a transaction to the EHR.
 
-In the data integration environment, “designed” archetypes always define the target structures, coding
-and other semantics of data, while “integration” archetypes provide the means mapping of external
+In the data integration environment, "designed" archetypes always define the target structures, coding
+and other semantics of data, while "integration" archetypes provide the means mapping of external
 data into the openEHR environment.
 
 == Data Conversion Architecture
