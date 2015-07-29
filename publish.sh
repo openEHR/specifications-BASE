@@ -20,11 +20,17 @@ pdf_theme=openehr_full_pdf-theme.yml
 master_doc_name=master.adoc
 resources_git_repo_name=spec-publish-asciidoc
 use_local_resources=false
+use_remote_resources=false
 uml_export_dir=../UML
 remote_css_loc=http://www.openehr.org/releases/BASE/dev/resources/css
 
 # directory of specifications-BASE it clone, relative to a document in another repo
-base_dir=../../../specifications-BASE
+if [ $(basename $PWD) = "spec-publish-asciidoc" ]; then
+	base_dir=../../
+else
+	base_dir=../../../specifications-BASE
+fi
+echo "setting base_dir to $base_dir"
 
 #
 # ============== functions =============
@@ -116,6 +122,8 @@ if [[ "$use_remote_resources" = true ]]; then
 else
 	stylesdir=${resources_dir}/css
 fi
+echo "setting resources_dir to $resources_dir"
+echo "setting stylesdir to $stylesdir"
 
 # ---------- do the publishing ----------
 topdir=${PWD}
