@@ -2,7 +2,9 @@
 
 All ODIN data eventually devolve to instances of the primitive types `String` , `Integer` , `Real` , `Double` , `String` , `Character` , various date/time types, lists or intervals of these types, and a few special types. ODIN does not use type or attribute names for instances of primitive types, only manifest values, making it possible to assume as little as possible about type names and structures of the primitive types. In all the following examples, the manifest data values are assumed to appear immediately inside a leaf pair of angle brackets, i.e.
 
+----
 some_attribute = <manifest value>
+----
 
 == Primitive Types
 
@@ -52,7 +54,7 @@ Integers are represented simply as numbers, e.g.:
     29e6
 ----
 
-Commas or periods for breaking long numbers are not allowed, since they confuse the use of commas used to denote list items (see link:ODIN.htm#50528259_93610[See Lists of Built-in Types] below).
+Commas or periods for breaking long numbers are not allowed, since they confuse the use of commas used to denote list items (See <<Lists of Built-in Types>> below).
 
 === Real Data
 
@@ -64,7 +66,7 @@ Real numbers are assumed whenever a decimal is detected in a number, e.g.:
     6.023e23
 ----
 
-Commas or periods for breaking long numbers are not allowed. Only periods may be used to separate the decimal part of a number; unfortunately, the European use of the comma for this purpose conflicts with the use of the comma to distinguish list items (see link:ODIN.htm#50528259_93610[See Lists of Built-in Types] below).
+Commas or periods for breaking long numbers are not allowed. Only periods may be used to separate the decimal part of a number; unfortunately, the European use of the comma for this purpose conflicts with the use of the comma to distinguish list items (See <<Lists of Built-in Types>> below).
 
 === Boolean Data
 
@@ -180,7 +182,7 @@ Examples of this syntax include:
 
 === URIs
 
-URI can be expressed as ODIN data in the usual way found on the web, and follow the standard syntax from <<rfc3986>>. Examples of URIs in ODIN:
+URI can be expressed as ODIN data in the usual way found on the web, and follow the standard syntax from <<rfc_3986>>. Examples of URIs in ODIN:
 
 ----
     http://openEHR.org/home
