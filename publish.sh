@@ -22,7 +22,7 @@ resources_git_repo_name=spec-publish-asciidoc
 use_local_resources=false
 use_remote_resources=false
 uml_export_dir=../UML
-remote_css_loc=http://www.openehr.org/releases/BASE/dev/resources/css
+remote_css_loc=http://www.openehr.org/releases/BASE/latest/resources/css
 
 # directory of specifications-BASE it clone, relative to a document in another repo
 if [ $(basename $PWD) = "spec-publish-asciidoc" ]; then
