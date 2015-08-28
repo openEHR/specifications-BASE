@@ -5,7 +5,6 @@
 #
 USAGE="${0} [-hlrpt] : generate publishing outputs; HTML by default 
   -h : output this help										
-  -l : use CSS files from this local repository
   -r : use remote CSS file location from website
   -p : generate PDF as well								
   -t : generate debug trace of asciidoctor-pdf back-end.
@@ -18,8 +17,10 @@ year=`date +%G`
 stylesheet=openehr.css
 pdf_theme=openehr_full_pdf-theme.yml
 master_doc_name=master.adoc
-resources_git_repo_name=spec-publish-asciidoc
-use_local_resources=false
+
+# use resources from spec-publish-asciidoc Git repo
+resources_dir=../../../spec-publish-asciidoc/resources ## relative to doc dirs 2 level down
+
 use_remote_resources=false
 uml_export_dir=../UML
 remote_css_loc=http://www.openehr.org/releases/BASE/latest/resources/css
@@ -91,9 +92,6 @@ while getopts "hlprt" o; do
         r)
             use_remote_resources=true
             ;;
-        l)
-            use_local_resources=true
-            ;;
         p)
             gen_pdf=true
             ;;
@@ -110,12 +108,6 @@ while getopts "hlprt" o; do
 done
 shift $((OPTIND-1))
 
-# determine whether to use local resources files (this Git repo) or the ones in
-# spec-asciidoc-publish, or remote ones
-if [[ "$(basename $(pwd))" != "$resources_git_repo_name" && "$use_local_resources" != true ]]; then
-	resources_git_cd=../$resources_git_repo_name/
-fi
-resources_dir=../../${resources_git_cd}resources ## relative to doc dirs 2 level down
 if [[ "$use_remote_resources" = true ]]; then
 	echo "using remote CSS location"
 	stylesdir=$remote_css_loc
