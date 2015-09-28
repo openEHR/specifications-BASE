@@ -3074,9 +3074,17 @@ node within a container.</p>
 <div class="sect4">
 <h5 id="_name_based_predicate"><a class="anchor" href="#_name_based_predicate"></a>Name-based Predicate</h5>
 <div class="paragraph">
-<p>In order to create a guaranteed unique data path, predicates can also include the name value (also
+<p>In order to create a guaranteed unique data path, predicates can also include the <code><em>name</em></code> value (also
 inherited from <code>LOCATABLE</code>) as well as the <code><em>archetype_node_id</em></code> value. The standard Xpath form of this
 expression is exemplified by the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/data/events[@archetype_node_id = 'at0001' and name/value='standing']</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with the openEHR equivalent being:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3084,8 +3092,8 @@ expression is exemplified by the following:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Since the combination of an archetype node identifier and a name value is very common in archetyped
-databases, a shortcut is also available for the name/value expression, which is to simply
+<p>Since the combination of an archetype node identifier and a <code><em>name</em></code> value is very common in archetyped
+databases, a shortcut is also available for the <code><em>name/value</em></code> expression, which is to simply
 include the value after a comma as follows:</p>
 </div>
 <div class="listingblock">
@@ -3172,7 +3180,7 @@ the required attributes down the hierarchy.</p>
 <p>Archetype paths are not guaranteed to uniquely identify items in data, due to the fact that one archetype
 node may correspond to multiple instances in the data. However it is often necessary to be able
 to construct a unique path to an item in real data. This can be done by using attributes other than
-archetype_node_id in path predicates. Consider as an example the following <code>OBSERVATION</code> archetype:</p>
+<code><em>archetype_node_id</em></code> in path predicates. Consider as an example the following <code>OBSERVATION</code> archetype:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3291,7 +3299,7 @@ blood pressures has been recorded using this archetype:</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-in the above example, name values are shown as if they were all <code>DV_TEXTs</code>, whereas in reality
+in the above example, <code><em>name</em></code> values are shown as if they were all <code>DV_TEXTs</code>, whereas in reality
 in openEHR they more likely to be <code>DV_CODED_TEXT</code> instances; either is allowed by the archetype.
 This has been done to reduce the size of the example, and makes no difference to the paths shown
 below.
@@ -3302,8 +3310,8 @@ below.
 <div class="paragraph">
 <p>The archetype path mentioned above matches both systolic pressures in the recording. In many querying
 situations, this may be exactly what is desired. However, to uniquely match each of the systolic
-pressure nodes, paths need to be created that are based not only on the archetype_node_id but also on
-another attribute. In the case above, the name attribute provides uniqueness. Guaranteed unique paths
+pressure nodes, paths need to be created that are based not only on the <code><em>archetype_node_id</em></code> but also on
+another attribute. In the case above, the <code><em>name</em></code> attribute provides uniqueness. Guaranteed unique paths
 to the systolic and diastolic pressures of each event (sitting and standing measurements) are available
 using the following expressions (identical in Xpath):</p>
 </div>
@@ -3338,17 +3346,17 @@ using the following expressions (identical in Xpath):</p>
 </div>
 <div class="paragraph">
 <p>As a general rule, one or more other attribute values in the runtime data will uniquely identify any
-node in openEHR data. To make construction of unique paths easier, the value of the name attribute
-(inherited from the <code>LOCATABLE</code> class), is required to be unique with respect to the name values of sibling
+node in openEHR data. To make construction of unique paths easier, the value of the <code><em>name</em></code> attribute
+(inherited from the <code>LOCATABLE</code> class), is required to be unique with respect to the <code><em>name</em></code> values of sibling
 nodes. This has two consequences as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>a guaranteed unique path can always be constructed to any data item in openEHR data using a combination of archetype_node_id and name values (as shown in the example paths above);</p>
+<p>a guaranteed unique path can always be constructed to any data item in openEHR data using a combination of <code><em>archetype_node_id</em></code> and <code><em>name</em></code> values (as shown in the example paths above);</p>
 </li>
 <li>
-<p>the name value may be systematically defined to be a copy of one or more other attribute values. For example, in an <code>EVENT</code> object, name could clearly be a string copy of the time attribute.</p>
+<p>the <code><em>name</em></code> value may be systematically defined to be a copy of one or more other attribute values. For example, in an <code>EVENT</code> object, <code><em>name</em></code> could clearly be a string copy of the time attribute.</p>
 </li>
 </ul>
 </div>
@@ -4391,6 +4399,9 @@ and also provides an expression of each of the abstract models in the ITS formal
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
+<p><a id="CIMI"></a>[CIMI] Clinical Information Modelling Initiative (CIMI) Project. See <a href="http://opencimi.org" class="bare">http://opencimi.org</a>.</p>
+</li>
+<li>
 <p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
 </li>
 <li>
@@ -4566,7 +4577,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-12 05:28:47 AEST
+Last updated 2015-08-11 20:28:47 BST
 </div>
 </div>
 </body>

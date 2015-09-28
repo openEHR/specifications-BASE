@@ -92,16 +92,22 @@ can correspond to more than one item in runtime data, due to the repeated use of
 node within a container.
 
 ==== Name-based Predicate
-In order to create a guaranteed unique data path, predicates can also include the name value (also
+In order to create a guaranteed unique data path, predicates can also include the `_name_` value (also
 inherited from `LOCATABLE`) as well as the `_archetype_node_id_` value. The standard Xpath form of this
 expression is exemplified by the following:
+
+----
+/data/events[@archetype_node_id = 'at0001' and name/value='standing']
+----
+
+with the openEHR equivalent being:
 
 ----
 /data/events[at0001 and name/value='standing']
 ----
 
-Since the combination of an archetype node identifier and a name value is very common in archetyped
-databases, a shortcut is also available for the name/value expression, which is to simply
+Since the combination of an archetype node identifier and a `_name_` value is very common in archetyped
+databases, a shortcut is also available for the `_name/value_` expression, which is to simply
 include the value after a comma as follows:
 
 ----
@@ -173,7 +179,7 @@ the required attributes down the hierarchy.
 Archetype paths are not guaranteed to uniquely identify items in data, due to the fact that one archetype
 node may correspond to multiple instances in the data. However it is often necessary to be able
 to construct a unique path to an item in real data. This can be done by using attributes other than
-archetype_node_id in path predicates. Consider as an example the following `OBSERVATION` archetype:
+`_archetype_node_id_` in path predicates. Consider as an example the following `OBSERVATION` archetype:
 
 [source, cadl]
 --------
@@ -281,15 +287,15 @@ blood pressures has been recorded using this archetype:
 >
 --------
 
-NOTE: in the above example, name values are shown as if they were all `DV_TEXTs`, whereas in reality
+NOTE: in the above example, `_name_` values are shown as if they were all `DV_TEXTs`, whereas in reality
 in openEHR they more likely to be `DV_CODED_TEXT` instances; either is allowed by the archetype.
 This has been done to reduce the size of the example, and makes no difference to the paths shown
 below.
 
 The archetype path mentioned above matches both systolic pressures in the recording. In many querying
 situations, this may be exactly what is desired. However, to uniquely match each of the systolic
-pressure nodes, paths need to be created that are based not only on the archetype_node_id but also on
-another attribute. In the case above, the name attribute provides uniqueness. Guaranteed unique paths
+pressure nodes, paths need to be created that are based not only on the `_archetype_node_id_` but also on
+another attribute. In the case above, the `_name_` attribute provides uniqueness. Guaranteed unique paths
 to the systolic and diastolic pressures of each event (sitting and standing measurements) are available
 using the following expressions (identical in Xpath):
 
@@ -318,12 +324,12 @@ Each of these paths has an Xpath equivalent of the following form:
 ----
 
 As a general rule, one or more other attribute values in the runtime data will uniquely identify any
-node in openEHR data. To make construction of unique paths easier, the value of the name attribute
-(inherited from the `LOCATABLE` class), is required to be unique with respect to the name values of sibling
+node in openEHR data. To make construction of unique paths easier, the value of the `_name_` attribute
+(inherited from the `LOCATABLE` class), is required to be unique with respect to the `_name_` values of sibling
 nodes. This has two consequences as follows:
 
-* a guaranteed unique path can always be constructed to any data item in openEHR data using a combination of archetype_node_id and name values (as shown in the example paths above);
-* the name value may be systematically defined to be a copy of one or more other attribute values. For example, in an `EVENT` object, name could clearly be a string copy of the time attribute.
+* a guaranteed unique path can always be constructed to any data item in openEHR data using a combination of `_archetype_node_id_` and `_name_` values (as shown in the example paths above);
+* the `_name_` value may be systematically defined to be a copy of one or more other attribute values. For example, in an `EVENT` object, `_name_` could clearly be a string copy of the time attribute.
 
 == EHR URIs
 
