@@ -2,26 +2,14 @@
 //  General purpose patterns used in all openEHR parser and lexer tools
 //
 
-grammar base_patterns;
-
-//
-//  ============== Parse rules ==============
-//
-
-type_id : TYPE_NAME ( '<' type_id ( ',' type_id )* '>' )? ;
-
-//
-//  ============== Lexical rules ==============
-//
+lexer grammar base_patterns;
 
 // ---------- whitespace & comments ----------
 
-WS : 
-      [ \t\r]+      // skip
-    | '\n'+         // increment line count
-    | '--'.*        // Ignore comments
-    | '--'.*'\n'    // (increment line count)
-    ;
+WS :        [ \t\r]+      -> skip ;
+LINE :      '\n'          -> skip ;    // increment line count
+HLINE :     '--------------------*' ;  // special comment line used as a horizontal separator
+CMT_LINE :  '--'.*?'\n'   -> skip ;    // (increment line count)
 
 // ---------- ISO8601 Date/Time values ----------
 
@@ -30,10 +18,12 @@ ISO8601_TIME      :     HOUR ':' MINUTE ( ':' SECOND ( ',' INTEGER )?)? ( TIMEZO
 ISO8601_DATE_TIME :     YEAR '-' MONTH '-' DAY 'T' HOUR (':' MINUTE (':' SECOND ( ',' [0-9]+ )?)?)? ( TIMEZONE )? ;
 
 fragment TIMEZONE   :     'Z' | ('+'|'-') HOUR_MIN ;   // hour offset, e.g. `+0930`, or else literal `Z` indicating +0000.
+fragment YEAR       :     [1-9][0-9]* ;
 fragment MONTH      :     ( [0][0-9] | [1][0-2] ) ;    // month in year
 fragment DAY        :     ( [012][0-9] | [3][0-2] ) ;  // day in month
 fragment HOUR       :     ( [01]?[0-9] | [2][0-3] ) ;  // hour in 24 hour clock
 fragment MINUTE     :     [0-5][0-9] ;                 // minutes
+fragment HOUR_MIN   :     ( [01]?[0-9] | [2][0-3] ) [0-5][0-9] ;  // hour / minutes quad digit pattern
 fragment SECOND     :     [0-5][0-9] ;                 // seconds
 
 // ISO8601 DURATION PnYnMnWnDTnnHnnMnn.nnnS 
@@ -43,33 +33,40 @@ ISO8601_DURATION : 'P'(DIGIT+[yY])?(DIGIT+[mM])?(DIGIT+[wW])?(DIGIT+[dD])?('T'(D
 
 // -------- other values --------
 
-ARCHETYPE_ID  : (DOMAIN_NAME '::')? IDENTIFIER '-' IDENTIFIER '-' IDENTIFIER '.' NAME '.v' VERSION_ID ;
+ARCHETYPE_ID_ROOT  : (DOMAIN_NAME '::')? PROPER_ID '-' PROPER_ID '-' PROPER_ID '.' PROPER_ID ;
 
-DOMAIN_NAME   : NAME ('.' NAME)+ ;
-IDENTIFIER    : ALPHA_CHAR ID_CHAR* ;
+ARCHETYPE_ID  : ARCHETYPE_ID_ROOT '.v' VERSION_ID ;
+ARCHETYPE_REF : ARCHETYPE_ID_ROOT '.v' INTEGER DOT_SEGMENT* ;
+
+DOMAIN_NAME   : PROPER_ID ('.' PROPER_ID)+ ;
+
 TYPE_NAME     : ALPHA_UPPER ID_CHAR* ;
-ATTRIBUTE_ID  : '_'? ALPHA_LOWER ID_CHAR* ;
-NAME          : ALPHA_CHAR NAME_CHAR+ ;
-VALUE         : ( NAME_CHAR | ^[ \r\n\t] )* ;
+ATTRIBUTE_ID  : PROPER_ID | UNDERSCORE_ID ;
+PROPER_ID     : ALPHA_CHAR ID_CHAR* ;
+UNDERSCORE_ID : '_' PROPER_ID ;
 
-DOTTED_NUMERIC: DIGIT+ DOT_SEGMENT+ ;
-VERSION_ID    : DIGIT+ ( DOT_SEGMENT ( DOT_SEGMENT ( ('-rc'|'-alpha') DOT_SEGMENT? )? )? )? ;
+GUID          : HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ ;
+
+VERSION_ID    : DOTTED_NUMERIC ( ('-rc' | '-alpha') DOT_SEGMENT? )? ;
+DOTTED_NUMERIC: DIGIT+ DOT_SEGMENT DOT_SEGMENT+ ;   // at least 3 sections - used for Oids and version ids
 fragment DOT_SEGMENT : '.' DIGIT+ ;
 
 // -------- primitive types --------
 
 URI : [a-z]+ ':' ( '//' | '/' | ~[/ ]+ )? ~[ \t\n]+? ; // just a simple recogniser, the full thing isn't required
-QUALIFIED_TERM_CODE_REF : '[' NAMECHAR_PAREN+ '::' NAME_CHAR+ ']' ;  // e.g. [ICD10AM(1998)::F23]
+QUALIFIED_TERM_CODE_REF : '[' NAME_CHAR_PAREN+ '::' NAME_CHAR+ ']' ;  // e.g. [ICD10AM(1998)::F23]
 
 INTEGER :   DIGIT+ E_SUFFIX? ;
 REAL :      DIGIT+'.'DIGIT+ E_SUFFIX? ;
 fragment E_SUFFIX : [eE][+-]?DIGIT+ ;
 
-STRING : '"' STRING_CHAR*? '"' ;
-fragment STRING_CHAR : UTF8CHAR | '\\'['nrt\"] | ~["] ;
+STRING : '"' STRING_CHAR+? '"' ;
+fragment STRING_CHAR : ~["\\\r\n] | ESCAPE_SEQ | UTF8CHAR ; // ;
 
 CHARACTER : '\'' CHAR '\'' ;
-fragment CHAR : UTF8CHAR | '\\['nrt\]' | ~[\n'] ;
+fragment CHAR : ~['\\\r\n] | ESCAPE_SEQ | UTF8CHAR  ;
+
+fragment ESCAPE_SEQ: '\\' ['"?abfnrtv\\] ;
 
 SYM_TRUE : [Tt][Rr][Uu][Ee] ;
 SYM_FALSE : [Ff][Aa][Ll][Ss][Ee] ;
@@ -80,24 +77,11 @@ fragment ALPHA_CHAR    : [a-zA-Z] ;
 fragment ALPHA_UPPER   : [A-Z] ;
 fragment ALPHA_LOWER   : [a-z] ;
 fragment DIGIT         : [0-9] ;
+fragment HEX_DIGIT     : [0-9a-fA-F] ;
 fragment ALPHANUM_CHAR : ALPHA_CHAR | DIGIT ;
 fragment ID_CHAR       : ALPHANUM_CHAR | '_' ;
 fragment NAME_CHAR     : ID_CHAR | '-' ;
-fragment NAME_CHAR_PAREN: NAME_CHAR | [()] ;
+fragment NAME_CHAR_PAREN : NAME_CHAR | [()] ;
 
-fragment UTF8CHAR : 
-    | '\u00C0'..'\u00D6'
-    | '\u00D8'..'\u00F6'
-    | '\u00F8'..'\u02FF'
-    | '\u0300'..'\u036F'
-    | '\u0370'..'\u037D'
-    | '\u037F'..'\u1FFF'
-    | '\u200C'..'\u200D'
-    | '\u203F'..'\u2040'
-    | '\u2070'..'\u218F'
-    | '\u2C00'..'\u2FEF'
-    | '\u3001'..'\uD7FF'
-    | '\uF900'..'\uFDCF'
-    | '\uFDF0'..'\uFFFD'
-    ;
+fragment UTF8CHAR : '\\u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT ;
 

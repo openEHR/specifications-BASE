@@ -14,42 +14,31 @@ import odin_values;
 //
 
 odin_text :
-      attr_vals 
-    | complex_object_block 
+      attr_vals
+    | object_value_block
 	;
 
-attr_vals : attr_val ';'? ( attr_val ';'? )* ;
+attr_vals : ( attr_val ';'? )+ ;
 
-attr_val : V_ATTRIBUTE_ID '=' object_block ;
+attr_val : ATTRIBUTE_ID '=' object_block ;
 
-object_block : 
-      ( '(' type_id ')' )? ( complex_object_block | primitive_object_block )
-    | object_reference_block 
+object_block :
+      object_value_block
+    | object_reference_block
     ;
 
-complex_object_block : 
-      single_attr_object_block 
-    | container_attr_object_block 
-    ;
+object_value_block : ( '(' type_id ')' )? '<' ( attr_vals? | keyed_object* | primitive_object ) '>' ;
 
-single_attr_object_block : '<' attr_vals? '>' ;
+keyed_object : '[' primitive_value ']' '=' object_block ; // TODO: probably should limit to String and Integer?
 
-container_attr_object_block : '<' keyed_object* '>' ;
-
-keyed_object : object_key '=' object_block ;
-
-object_key : '[' primitive_value ']' ;	// probably should limit to String and Integer
+type_id       : TYPE_NAME ( '<' type_id ( ',' type_id )* '>' )? ;
 
 // ------ leaf types ------
-
-primitive_object_block : '<' primitive_object '>' ;
 
 primitive_object :
       primitive_value 
     | primitive_list_value 
     | primitive_interval_value 
-    | term_code 
-    | term_code_list_value 
     ;
 
 primitive_value :
@@ -58,7 +47,8 @@ primitive_value :
     | real_value 
     | boolean_value 
     | character_value 
-    | date_value 
+    | term_code_value
+    | date_value
     | time_value 
     | date_time_value 
     | duration_value 
@@ -71,7 +61,8 @@ primitive_list_value :
     | real_list_value 
     | boolean_list_value 
     | character_list_value 
-    | date_list_value 
+    | term_code_list_value
+    | date_list_value
     | time_list_value 
     | date_time_list_value 
     | duration_list_value 
@@ -86,19 +77,9 @@ primitive_interval_value :
     | duration_interval_value
     ;
 
-object_reference_block : '<' ( absolute_path | absolute_path_list ) '>' ;
+object_reference_block : '<' odin_path_list '>' ;
 
-absolute_path_list  : absolute_path ( ( ',' absolute_path )+ | '...' ) ;
-
-absolute_path       : '/' ( relative_path )? ;
-relative_path       : path_segment ( '/' path_segment )+ ;
-path_segment        : V_ATTRIBUTE_ID ( '[' ( V_STRING | V_INTEGER ) ']' )? ; 
-
-//
-// -------------------------- Lexical entities --------------------------
-//
-
-// ---------- embedded syntax blocks --------------
-
-CADL_BLOCK : '{' ( CADL_BLOCK | ~[{}]*? ) '}' ;
- 
+odin_path_list     : odin_path ( ( ',' odin_path )+ | SYM_LIST_CONTINUE )? ;
+odin_path          : '/' | odin_path_segment+ ;
+odin_path_segment  : '/' odin_path_element ;
+odin_path_element  : ATTRIBUTE_ID ( '[' ( STRING | INTEGER ) ']' )? ;
