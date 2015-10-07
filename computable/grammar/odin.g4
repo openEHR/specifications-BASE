@@ -20,7 +20,7 @@ odin_text :
 
 attr_vals : ( attr_val ';'? )+ ;
 
-attr_val : ATTRIBUTE_ID '=' object_block ;
+attr_val : attribute_id '=' object_block ;
 
 object_block :
       object_value_block
@@ -30,8 +30,6 @@ object_block :
 object_value_block : ( '(' type_id ')' )? '<' ( attr_vals? | keyed_object* | primitive_object ) '>' ;
 
 keyed_object : '[' primitive_value ']' '=' object_block ; // TODO: probably should limit to String and Integer?
-
-type_id       : TYPE_NAME ( '<' type_id ( ',' type_id )* '>' )? ;
 
 // ------ leaf types ------
 
@@ -82,4 +80,4 @@ object_reference_block : '<' odin_path_list '>' ;
 odin_path_list     : odin_path ( ( ',' odin_path )+ | SYM_LIST_CONTINUE )? ;
 odin_path          : '/' | odin_path_segment+ ;
 odin_path_segment  : '/' odin_path_element ;
-odin_path_element  : ATTRIBUTE_ID ( '[' ( STRING | INTEGER ) ']' )? ;
+odin_path_element  : attribute_id ( '[' ( STRING | INTEGER ) ']' )? ;

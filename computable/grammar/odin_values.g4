@@ -5,6 +5,9 @@
 grammar odin_values;
 import base_patterns;
 
+type_id      : ALPHA_UC_ID ( '<' type_id ( ',' type_id )* '>' )? ;
+attribute_id : ALPHA_LC_ID ;
+
 string_value : STRING ;
 string_list_value : string_value ( ( ',' string_value )+ | ',' SYM_LIST_CONTINUE ) ;
 

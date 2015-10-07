@@ -15,7 +15,11 @@ CMT_LINE :  '--'.*?'\n'   -> skip ;    // (increment line count)
 
 ISO8601_DATE      :     YEAR '-' MONTH ( '-' DAY )? ;
 ISO8601_TIME      :     HOUR ':' MINUTE ( ':' SECOND ( ',' INTEGER )?)? ( TIMEZONE )? ; 
-ISO8601_DATE_TIME :     YEAR '-' MONTH '-' DAY 'T' HOUR (':' MINUTE (':' SECOND ( ',' [0-9]+ )?)?)? ( TIMEZONE )? ;
+ISO8601_DATE_TIME :     YEAR '-' MONTH '-' DAY 'T' HOUR (':' MINUTE (':' SECOND ( ',' DIGIT+ )?)?)? ( TIMEZONE )? ;
+
+// ISO8601 DURATION PnYnMnWnDTnnHnnMnn.nnnS 
+// here we allow a deviation from the standard to allow weeks to be // mixed in with the rest since this commonly occurs in medicine
+ISO8601_DURATION : 'P'(DIGIT+[yY])?(DIGIT+[mM])?(DIGIT+[wW])?(DIGIT+[dD])?('T'(DIGIT+[hH])?(DIGIT+[mM])?(DIGIT+('.'DIGIT+)?[sS])?)? ;
 
 fragment TIMEZONE   :     'Z' | ('+'|'-') HOUR_MIN ;   // hour offset, e.g. `+0930`, or else literal `Z` indicating +0000.
 fragment YEAR       :     [1-9][0-9]* ;
@@ -26,24 +30,19 @@ fragment MINUTE     :     [0-5][0-9] ;                 // minutes
 fragment HOUR_MIN   :     ( [01]?[0-9] | [2][0-3] ) [0-5][0-9] ;  // hour / minutes quad digit pattern
 fragment SECOND     :     [0-5][0-9] ;                 // seconds
 
-// ISO8601 DURATION PnYnMnWnDTnnHnnMnn.nnnS 
-// here we allow a deviation from the standard to allow weeks to be
-// mixed in with the rest since this commonly occurs in medicine
-ISO8601_DURATION : 'P'(DIGIT+[yY])?(DIGIT+[mM])?(DIGIT+[wW])?(DIGIT+[dD])?('T'(DIGIT+[hH])?(DIGIT+[mM])?(DIGIT+('.'DIGIT+)?[sS])?)? ;
-
 // -------- other values --------
 
-ARCHETYPE_ID_ROOT  : (DOMAIN_NAME '::')? PROPER_ID '-' PROPER_ID '-' PROPER_ID '.' PROPER_ID ;
+ARCHETYPE_HRID: ARCHETYPE_HRID_ROOT '.v' VERSION_ID ;
+ARCHETYPE_REF : ARCHETYPE_HRID_ROOT '.v' INTEGER DOT_SEGMENT* ;
 
-ARCHETYPE_ID  : ARCHETYPE_ID_ROOT '.v' VERSION_ID ;
-ARCHETYPE_REF : ARCHETYPE_ID_ROOT '.v' INTEGER DOT_SEGMENT* ;
+fragment ARCHETYPE_HRID_ROOT  : (DOMAIN_NAME '::')? PROPER_ID '-' PROPER_ID '-' PROPER_ID '.' PROPER_ID ;
 
 DOMAIN_NAME   : PROPER_ID ('.' PROPER_ID)+ ;
 
-TYPE_NAME     : ALPHA_UPPER ID_CHAR* ;
-ATTRIBUTE_ID  : PROPER_ID | UNDERSCORE_ID ;
-PROPER_ID     : ALPHA_CHAR ID_CHAR* ;
-UNDERSCORE_ID : '_' PROPER_ID ;
+ALPHA_UC_ID   : ALPHA_UPPER ID_CHAR* ;          // Must have an upper case alpha first character
+ALPHA_LC_ID   : ALPHA_LOWER ID_CHAR* ;
+UNDERSCORE_ID : '_' ( ALPHA_UC_ID | ALPHA_LC_ID ) ;
+PROPER_ID     : ALPHA_UC_ID | ALPHA_LC_ID ;
 
 GUID          : HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ ;
 
@@ -84,4 +83,3 @@ fragment NAME_CHAR     : ID_CHAR | '-' ;
 fragment NAME_CHAR_PAREN : NAME_CHAR | [()] ;
 
 fragment UTF8CHAR : '\\u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT ;
-
