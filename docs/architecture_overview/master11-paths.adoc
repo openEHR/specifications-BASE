@@ -294,9 +294,9 @@ below.
 
 The archetype path mentioned above matches both systolic pressures in the recording. In many querying
 situations, this may be exactly what is desired. However, to uniquely match each of the systolic
-pressure nodes, paths need to be created that are based not only on the `_archetype_node_id_` but also on
-another attribute. In the case above, the `_name_` attribute provides uniqueness. Guaranteed unique paths
-to the systolic and diastolic pressures of each event (sitting and standing measurements) are available
+pressure nodes, paths would need to be created that are based not only on the `_archetype_node_id_` but also on
+another attribute. In the case above, the `_name_` attribute may be used to provide uniqueness. Guaranteed unique paths
+to the systolic and diastolic pressures of each event (sitting and standing measurements) can be constructed
 using the following expressions (identical in Xpath):
 
 ----
@@ -323,13 +323,13 @@ Each of these paths has an Xpath equivalent of the following form:
 /value/magnitude
 ----
 
-As a general rule, one or more other attribute values in the runtime data will uniquely identify any
-node in openEHR data. To make construction of unique paths easier, the value of the `_name_` attribute
-(inherited from the `LOCATABLE` class), is required to be unique with respect to the `_name_` values of sibling
-nodes. This has two consequences as follows:
+To achieve unique paths based on the `_name_` attribute (inherited from the `LOCATABLE`
+class), rather than the item position (i.e. Xpath style `[N]` predicates), a the system has to specifically
+ensure uniqueness of `_name_` of sibling nodes, e.g. by systematically being set to a copy of one or more other 
+attribute values. For example, in an `EVENT` object, `_name_` could clearly be a string copy of the time attribute. 
 
-* a guaranteed unique path can always be constructed to any data item in openEHR data using a combination of `_archetype_node_id_` and `_name_` values (as shown in the example paths above);
-* the `_name_` value may be systematically defined to be a copy of one or more other attribute values. For example, in an `EVENT` object, `_name_` could clearly be a string copy of the time attribute.
+In general, uniqueness of property values of sibling nodes is not required, and the only guaranteed unique
+paths are those based on positional predicates.
 
 == EHR URIs
 

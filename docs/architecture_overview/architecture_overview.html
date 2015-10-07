@@ -3310,9 +3310,9 @@ below.
 <div class="paragraph">
 <p>The archetype path mentioned above matches both systolic pressures in the recording. In many querying
 situations, this may be exactly what is desired. However, to uniquely match each of the systolic
-pressure nodes, paths need to be created that are based not only on the <code><em>archetype_node_id</em></code> but also on
-another attribute. In the case above, the <code><em>name</em></code> attribute provides uniqueness. Guaranteed unique paths
-to the systolic and diastolic pressures of each event (sitting and standing measurements) are available
+pressure nodes, paths would need to be created that are based not only on the <code><em>archetype_node_id</em></code> but also on
+another attribute. In the case above, the <code><em>name</em></code> attribute may be used to provide uniqueness. Guaranteed unique paths
+to the systolic and diastolic pressures of each event (sitting and standing measurements) can be constructed
 using the following expressions (identical in Xpath):</p>
 </div>
 <div class="listingblock">
@@ -3345,20 +3345,14 @@ using the following expressions (identical in Xpath):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As a general rule, one or more other attribute values in the runtime data will uniquely identify any
-node in openEHR data. To make construction of unique paths easier, the value of the <code><em>name</em></code> attribute
-(inherited from the <code>LOCATABLE</code> class), is required to be unique with respect to the <code><em>name</em></code> values of sibling
-nodes. This has two consequences as follows:</p>
+<p>To achieve unique paths based on the <code><em>name</em></code> attribute (inherited from the <code>LOCATABLE</code>
+class), rather than the item position (i.e. Xpath style <code>[N]</code> predicates), a the system has to specifically
+ensure uniqueness of <code><em>name</em></code> of sibling nodes, e.g. by systematically being set to a copy of one or more other
+attribute values. For example, in an <code>EVENT</code> object, <code><em>name</em></code> could clearly be a string copy of the time attribute.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>a guaranteed unique path can always be constructed to any data item in openEHR data using a combination of <code><em>archetype_node_id</em></code> and <code><em>name</em></code> values (as shown in the example paths above);</p>
-</li>
-<li>
-<p>the <code><em>name</em></code> value may be systematically defined to be a copy of one or more other attribute values. For example, in an <code>EVENT</code> object, <code><em>name</em></code> could clearly be a string copy of the time attribute.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>In general, uniqueness of property values of sibling nodes is not required, and the only guaranteed unique
+paths are those based on positional predicates.</p>
 </div>
 </div>
 </div>
