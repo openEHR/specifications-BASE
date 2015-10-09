@@ -48,25 +48,30 @@ definitions like WSDL, IDL and .Net.
 The following sub-sections provide a brief overview of the RM packages.
 
 ==== Support Information Model
+
 This package describes the most basic concepts, required by all other packages, and is comprised of
 the `definitions`, `identification`, `terminology` and `measurement` packages. The semantics defined in
 these packages allow all other models to use identifiers and to have access to knowledge services like
-terminology and other reference data. The support package includes the special package
-`assumed_types`, describing what basic types are assumed by openEHR in external type systems;
-this package is a guide for integrating openEHR models proper into the type systems of implementation
-technologies.
+terminology and other reference data. 
+
+The special package `assumed_types`, describing what basic types are assumed by openEHR in external type systems is
+included in the `support` package, although it may move depending on the use of UML and other modelling tools.
+The package provides a guide for integrating openEHR models proper into the type systems of implementation
+technologies, e.g. mappings such as `String`.`_is_empty_` and a routine `empty()` in a programming library.
 
 ==== Data Types Information Model
+
 A set of clearly defined data types underlies all other models, and provides a number of general and
 clinically specific types required for all kinds of health information. The following categories of data
 types are defined in the data types reference model.
 
 [horizontal]
-Text:: plain text, coded text, paragraphs.
-Quantities:: any ordered type including ordinal values (used for representing symbolic ordered values such as pass:["+", "++", "+++"]), measured quantities with values and units, and so on.
-Date/times:: date, time, date-time types, and partial date/time types.
-Encapsulated data:: multimedia, parsable content.
 Basic types:: boolean, state variable.
+Text:: plain text, coded text, paragraphs.
+Quantities:: any ordered type including ordinal values (used for representing symbolic ordered values such as pass:["+", "++", "+++"]), measured quantities with values and units, and so on; includes Date/times - date, time, date-time types, and partial date/time types.
+Encapsulated data:: multimedia, parsable content.
+TIME_specification:: types for specifying times in teh future, mainly used in medication orders, e.g. '3 times a day before meals'.
+Uri:: Unique Resource Identifiers.
 
 ==== Data Structures Information Model
 In most openEHR information models, generic data structures are used for expressing content whose
@@ -80,23 +85,20 @@ Tree:: tree-shaped data, which may be conceptually a list of lists, or other dee
 History:: time-series structures, where each time-point can be an entire data structure of any complexity, described by one of the above structure types. Point and interval samples are supported.
 
 ==== Common Information Model
-Several concepts recur in higher level packages. The classes `LOCATABLE` and `ARCHETYPED` provide
-the link between information and archetype models. The classes `ATTESTATION` and `PARTICIPATION`
-are generic domain concepts that appear in various reference models. The change_control
-package defines a formal model of change management and versioning which applies to any service
-that needs to be able to supply previous states of its information, in particular the demographic and
-EHR services. The key semantics of versioning in openEHR are described in the <<Versioning>> section.
+
+Several concepts that recur in higher level packages are defined in the `common` package. For example, the classes `LOCATABLE` and `ARCHETYPED` provide the link between information and archetype models. The classes `ATTESTATION` and `PARTICIPATION` are generic domain concepts that provide a standard way of documenting involvement of clinical professionals and other agents with the EHR, including signing. 
+
+The change_control package defines a formal model of change management and versioning which applies to any service that needs to be able to supply previous states of its information, in particular the demographic and EHR services. The key semantics of versioning in openEHR are described in the <<Versioning>> section.
 
 ==== Security Information Model
-The Security Information Model defines the semantics of access control and privacy setting for information
-in the EHR.
+
+The Security Information Model defines the semantics of access control and privacy setting for information in the EHR.
 
 ==== EHR Information Model
-The EHR IM defines the containment and context semantics of the concepts `EHR`, `COMPOSITION`,
-`SECTION`, and `ENTRY`. These classes are the major coarse-grained components of the EHR, and correspond
-directly to the classes of the same names in CEN EN13606:2005 and fairly closely to the "levels"
-of the same names in the HL7 Clinical Document Architecture (CDA) release 2.0.
-EHR Extract Information Model
+
+The EHR IM includes the `ehr` and `composition` packages, and defines the containment and context semantics of the key concepts `EHR`, `COMPOSITION`, `SECTION`, and `ENTRY`. These classes are the major coarse-grained components of the EHR, and correspond directly to the classes of the same names in CEN EN13606:2005 and fairly closely to the "levels" of the same names in the HL7 Clinical Document Architecture (CDA) release 2.0.
+
+==== EHR Extract Information Model
 
 The EHR Extract IM defines how an EHR extract is built from `COMPOSITIONs`, demographic, and
 access control information from the EHR. A number of Extract variations are supported, including
@@ -104,21 +106,19 @@ access control information from the EHR. A number of Extract variations are supp
 synchronisation Extract.
 
 ==== Integration Information Model
+
 The Integration model defines the class `GENERIC_ENTRY`, a subtype of `ENTRY` used to represent freeform
 legacy or external data as a tree. This Entry type has its own archetypes, known as "integration
 archetypes", which can be used in concert with clinical archetypes as the basis for a tool-based data
 integration system. See <<Integrating openEHR with other Systems>> for more details.
 
 ==== Demographics Information Model
+
 The demographic model defines generic concepts of `PARTY`, `ROLE` and related details such as contact
 addresses. The archetype model defines the semantics of constraint on `PARTYs`, allowing archetypes
 for any type of person, organisation, role and role relationship to be described. This approach provides
 a flexible way of including the arbitrary demographic attributes allowed in the OMG HDTF
 PIDS standard <<Corbamed_PIDS>>.
-
-==== Workflow Information Model (future)
-Workflow is the dynamic side of clinical care, and consists of models to describe the semantics of
-processes, such as recalls, as well as any care process resulting from execution of guidelines.
 
 == Archetype Model (AM)
 
