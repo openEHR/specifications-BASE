@@ -73,9 +73,9 @@
 <li><a href="#_common_information_model">Common Information Model</a></li>
 <li><a href="#_security_information_model">Security Information Model</a></li>
 <li><a href="#_ehr_information_model">EHR Information Model</a></li>
+<li><a href="#_ehr_extract_information_model">EHR Extract Information Model</a></li>
 <li><a href="#_integration_information_model">Integration Information Model</a></li>
 <li><a href="#_demographics_information_model">Demographics Information Model</a></li>
-<li><a href="#_workflow_information_model_future">Workflow Information Model (future)</a></li>
 </ul>
 </li>
 </ul>
@@ -372,15 +372,37 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-27">SPECRM-27</a>. Relax unique name rule in <code>LOCATABLE</code>: change text at end of section 11.2.4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-25">SPECRM-25</a>. Corrections to Architecture Overview specification: text in section 9.2.2 about <code>LOCATABLE_REF</code> referred to wrong specification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-28">SPECRM-28</a>. Corrections to EHR and Common IM documentation.<br>
+ <a href="https://openehr.atlassian.net/browse/SPECPR-2">SPECPR-2</a>. Changes to Architecture Overview section 5.2.1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R Erens</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-249</strong>. Paths and locators minor errors in Architecture Overview and Common IM. Typos corrected in sections 9.2.2 and 11.3.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Ma,<br>
  T Beale<br>
  R Chen</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>13 Nov 2008</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 Nov 2008</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1147,10 +1169,13 @@ definitions like WSDL, IDL and .Net.</p>
 <p>This package describes the most basic concepts, required by all other packages, and is comprised of
 the <code>definitions</code>, <code>identification</code>, <code>terminology</code> and <code>measurement</code> packages. The semantics defined in
 these packages allow all other models to use identifiers and to have access to knowledge services like
-terminology and other reference data. The support package includes the special package
-<code>assumed_types</code>, describing what basic types are assumed by openEHR in external type systems;
-this package is a guide for integrating openEHR models proper into the type systems of implementation
-technologies.</p>
+terminology and other reference data.</p>
+</div>
+<div class="paragraph">
+<p>The special package <code>assumed_types</code>, describing what basic types are assumed by openEHR in external type systems is
+included in the <code>support</code> package, although it may move depending on the use of UML and other modelling tools.
+The package provides a guide for integrating openEHR models proper into the type systems of implementation
+technologies, e.g. mappings such as <code>String</code>.<code><em>is_empty</em></code> and a routine <code>empty()</code> in a programming library.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1164,6 +1189,14 @@ types are defined in the data types reference model.</p>
 <table>
 <tr>
 <td class="hdlist1">
+Basic types
+</td>
+<td class="hdlist2">
+<p>boolean, state variable.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
 Text
 </td>
 <td class="hdlist2">
@@ -1175,15 +1208,7 @@ Text
 Quantities
 </td>
 <td class="hdlist2">
-<p>any ordered type including ordinal values (used for representing symbolic ordered values such as "+", "++", "+++"), measured quantities with values and units, and so on.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Date/times
-</td>
-<td class="hdlist2">
-<p>date, time, date-time types, and partial date/time types.</p>
+<p>any ordered type including ordinal values (used for representing symbolic ordered values such as "+", "++", "+++"), measured quantities with values and units, and so on; includes Date/times - date, time, date-time types, and partial date/time types.</p>
 </td>
 </tr>
 <tr>
@@ -1196,10 +1221,18 @@ Encapsulated data
 </tr>
 <tr>
 <td class="hdlist1">
-Basic types
+TIME_specification
 </td>
 <td class="hdlist2">
-<p>boolean, state variable.</p>
+<p>types for specifying times in teh future, mainly used in medication orders, e.g. '3 times a day before meals'.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Uri
+</td>
+<td class="hdlist2">
+<p>Unique Resource Identifiers.</p>
 </td>
 </tr>
 </table>
@@ -1259,30 +1292,26 @@ History
 <div class="sect4">
 <h5 id="_common_information_model"><a class="anchor" href="#_common_information_model"></a>Common Information Model</h5>
 <div class="paragraph">
-<p>Several concepts recur in higher level packages. The classes <code>LOCATABLE</code> and <code>ARCHETYPED</code> provide
-the link between information and archetype models. The classes <code>ATTESTATION</code> and <code>PARTICIPATION</code>
-are generic domain concepts that appear in various reference models. The change_control
-package defines a formal model of change management and versioning which applies to any service
-that needs to be able to supply previous states of its information, in particular the demographic and
-EHR services. The key semantics of versioning in openEHR are described in the <a href="#_versioning">Versioning</a> section.</p>
+<p>Several concepts that recur in higher level packages are defined in the <code>common</code> package. For example, the classes <code>LOCATABLE</code> and <code>ARCHETYPED</code> provide the link between information and archetype models. The classes <code>ATTESTATION</code> and <code>PARTICIPATION</code> are generic domain concepts that provide a standard way of documenting involvement of clinical professionals and other agents with the EHR, including signing.</p>
+</div>
+<div class="paragraph">
+<p>The change_control package defines a formal model of change management and versioning which applies to any service that needs to be able to supply previous states of its information, in particular the demographic and EHR services. The key semantics of versioning in openEHR are described in the <a href="#_versioning">Versioning</a> section.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_security_information_model"><a class="anchor" href="#_security_information_model"></a>Security Information Model</h5>
 <div class="paragraph">
-<p>The Security Information Model defines the semantics of access control and privacy setting for information
-in the EHR.</p>
+<p>The Security Information Model defines the semantics of access control and privacy setting for information in the EHR.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_ehr_information_model"><a class="anchor" href="#_ehr_information_model"></a>EHR Information Model</h5>
 <div class="paragraph">
-<p>The EHR IM defines the containment and context semantics of the concepts <code>EHR</code>, <code>COMPOSITION</code>,
-<code>SECTION</code>, and <code>ENTRY</code>. These classes are the major coarse-grained components of the EHR, and correspond
-directly to the classes of the same names in CEN EN13606:2005 and fairly closely to the "levels"
-of the same names in the HL7 Clinical Document Architecture (CDA) release 2.0.
-EHR Extract Information Model</p>
+<p>The EHR IM includes the <code>ehr</code> and <code>composition</code> packages, and defines the containment and context semantics of the key concepts <code>EHR</code>, <code>COMPOSITION</code>, <code>SECTION</code>, and <code>ENTRY</code>. These classes are the major coarse-grained components of the EHR, and correspond directly to the classes of the same names in CEN EN13606:2005 and fairly closely to the "levels" of the same names in the HL7 Clinical Document Architecture (CDA) release 2.0.</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="_ehr_extract_information_model"><a class="anchor" href="#_ehr_extract_information_model"></a>EHR Extract Information Model</h5>
 <div class="paragraph">
 <p>The EHR Extract IM defines how an EHR extract is built from <code>COMPOSITIONs</code>, demographic, and
 access control information from the EHR. A number of Extract variations are supported, including
@@ -1307,13 +1336,6 @@ addresses. The archetype model defines the semantics of constraint on <code>PART
 for any type of person, organisation, role and role relationship to be described. This approach provides
 a flexible way of including the arbitrary demographic attributes allowed in the OMG HDTF
 PIDS standard <a href="#Corbamed_PIDS">[Corbamed_PIDS]</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_workflow_information_model_future"><a class="anchor" href="#_workflow_information_model_future"></a>Workflow Information Model (future)</h5>
-<div class="paragraph">
-<p>Workflow is the dynamic side of clinical care, and consists of models to describe the semantics of
-processes, such as recalls, as well as any care process resulting from execution of guidelines.</p>
 </div>
 </div>
 </div>
@@ -2526,7 +2548,7 @@ identification scheme is described in detail in the <code>change_control</code> 
 identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight
 abbreviations to shorten paths in the most common cases. Paths are described in detail below.
 To refer to an interior data node from outside a top-level structure, a combination of a Version locator
-and a path is required. This is formalised in the <code>LOCATABLE_REF</code> class in the identification
+and a path is required. This is formalised in the <code>LOCATABLE_REF</code> class in the <code>identification</code>
 package section of the Support IM. A Universal Resource Identifier (URI) form can also be used,
 defined by the data type <code>DV_EHR_URI</code> (<a href="#openehr_rm_data_types">[openehr_rm_data_types]</a>). This type provides a single string expression
 in the scheme-space "ehr:" which can be used to refer to an interior data node from anywhere (it can
