@@ -9,7 +9,7 @@ Within any kind of ODIN object instance (i.e. implied, anonymous or identified),
 object = attribute_name '=' '<' value '>' ;
 --------
 
-Each attribute name is the name of an attribute in an implied or actual object or relational model. Each "value" is either a literal value of a primitive type (see link:ODIN.htm#50528259_84525[See Primitive Types]) or a further nesting of attribute names and values, terminating in leaf nodes of primitive type values. Where sibling attribute nodes occur, the attribute identifiers must be unique, just as in a standard object or relational model.
+Each attribute name is the name of an attribute in an implied or actual object or relational model. Each "value" is either a literal value of a primitive type (see section <<See Primitive Types>>) or a further nesting of attribute names and values, terminating in leaf nodes of primitive type values. Where sibling attribute nodes occur, the attribute identifiers must be unique, just as in a standard object or relational model.
 
 The following shows a typical structure.
 
@@ -30,7 +30,7 @@ attr_1 = <
 attr_8 = <...>
 --------
 
-In the above structure, each "<>" encloses an instance of some type. The hierarchical structure corresponds to the part-of relationship between objects, otherwise known as composition and _aggregation_ relationships in object-oriented formalisms such as UML (the difference between the two is usually described as being "sub-objects related by aggregation can have independent lifetimes, whereas sub-objects related by composition have co-termimal lifetimes and are always destroyed with the parent"; ODIN does not differentiate between the two, since it is the business of a model, not the data, to express such semantics). Associations between instances in ODIN are also representable by references, and are described in link:ODIN.htm#50528259_95026[See Associations and Shared Objects].
+In the above structure, each "<>" encloses an instance of some type. The hierarchical structure corresponds to the part-of relationship between objects, otherwise known as composition and _aggregation_ relationships in object-oriented formalisms such as UML (the difference between the two is usually described as being "sub-objects related by aggregation can have independent lifetimes, whereas sub-objects related by composition have co-termimal lifetimes and are always destroyed with the parent"; ODIN does not differentiate between the two, since it is the business of a model, not the data, to express such semantics). Associations between instances in ODIN are also representable by references, and are described in the section <<Associations and Shared Objects>>.
 
 Validity rules for object-structuring of ODIN are as follows:
 
@@ -54,7 +54,7 @@ For any ODIN structure, a set of paths can be extracted that correspond to the t
     /attr_8
 --------
 
-The path syntax used with ODIN maps trivially to W3C Xpath and Xquery paths, and is described in link:ODIN.htm#50528259_67808[See Path Syntax].
+The path syntax used with ODIN maps trivially to W3C Xpath and Xquery paths, and is described in section <<Path Syntax>>.
 
 == Void Objects
 
@@ -172,7 +172,7 @@ end
 
 Other class specifications corresponding to the same data are possible, but will all be isomorphic to the above.
 
-How key values relate to a particular object structure depends on the object model being used during the ODIN parsing process. It is possible to write a parser which makes reasonable inferences from an information model whose instances are represented as ODIN text; it is also possible to include explicit typing information in the ODIN itself (see link:ODIN.htm#50528259_78490[See Adding Type Information] below).
+How key values relate to a particular object structure depends on the object model being used during the ODIN parsing process. It is possible to write a parser which makes reasonable inferences from an information model whose instances are represented as ODIN text; it is also possible to include explicit typing information in the ODIN itself (see section <<See Adding Type Information>> below).
 
 The validity rule for objects within a container attribute is as follows:
 
