@@ -639,7 +639,7 @@ attributes'.</p>
 <div class="sect2">
 <h3 id="_information_model_identifiers"><a class="anchor" href="#_information_model_identifiers"></a>3.6. Information Model Identifiers</h3>
 <div class="paragraph">
-<p>Two types of identifiers from information models are used in ODIN: type names and attribute names. A type name is any identifier with an initial upper case letter, followed by any combination of letters, digits and underscores. A generic type name (including nested forms) additionally may include commas and angle brackets, and must be syntactically correct as per the UML. An attribute name is any identifier with an initial lower case letter, followed by any combination of letters, digits and underscores. Any convention that obeys this rule is allowed.</p>
+<p>Two types of identifiers from information models are used in ODIN: type names and attribute names. A <strong>type name</strong> is any identifier with an initial upper case letter, followed by any combination of letters, digits and underscores. A <strong>generic type name</strong> (including nested forms) additionally may include commas and angle brackets, and must be syntactically correct as per the UML. An <strong>attribute name</strong> is any identifier with an initial lower case letter, followed by any combination of letters, digits and underscores. Any convention that obeys this rule is allowed.</p>
 </div>
 <div class="paragraph">
 <p>At least two well-known conventions that are ubiquitous in information models obey the above rule. One of these is the following convention:</p>
@@ -1161,7 +1161,7 @@ class SUBJECT
 <div class="sect3">
 <h4 id="_within_an_object"><a class="anchor" href="#_within_an_object"></a>6.1.1. Within An Object</h4>
 <div class="paragraph">
-<p>Consider that in the example above, 'hotel' objects may be shared objects, referred to by assocation. This can be expressed as follows.</p>
+<p>Consider that in the example above, 'hotel' objects may be shared objects, referred to by association. This can be expressed as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1191,7 +1191,7 @@ class SUBJECT
 </div>
 </div>
 <div class="paragraph">
-<p>Associations are expressed via the use of fully qualified paths as the data for a attribute. In this example, there are references from a list of destinations, and from a booking list, to the same hotel object. If type information is included, it should go in the declarations of the relevant objects; type declarations can also be used before path references, which might be useful if the association type is an ancestor type (i.e. more general type) of the type of the actual object being referred to.</p>
+<p>Associations are expressed via the use of fully qualified paths as the data for an attribute. In this example, there are references from a list of destinations, and from a booking list, to the same hotel object. If type information is included, it should go in the declarations of the relevant objects; type declarations can also be used before path references, which might be useful if the association type is an ancestor type (i.e. more general type) of the type of the actual object being referred to.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1297,7 +1297,7 @@ class SUBJECT
 </div>
 </div>
 <div class="paragraph">
-<p>String data can be used to contain almost any other kind of data, which is intended to be parsed as some other formalism. Characters outside the low ASCII (0-127) range must be UTF-8 encoded, with a small number of backslash-quoted ASCII characters allowed, as described in <a href="ODIN.htm#50528259_41305">See File Encoding</a>.</p>
+<p>String data can be used to contain almost any other kind of data, which is intended to be parsed as some other formalism. Characters outside the low ASCII (0-127) range must be UTF-8 encoded, with a small number of backslash-quoted ASCII characters allowed, as described in section <a href="#_file_encoding">File Encoding</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1793,13 +1793,14 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="xml"><span class="tok-nt">&lt;destinations</span> <span class="tok-na">id=</span><span class="tok-s">&quot;seville&quot;</span> <span class="tok-na">adl:type=</span><span class="tok-s">&quot;TOURIST_DESTINATION&quot;</span><span class="tok-nt">&gt;</span>
-<span class="tok-nt">&lt;profile</span> <span class="tok-na">adl:type=</span><span class="tok-s">&quot;DESTINATION_PROFILE&quot;</span><span class="tok-nt">&gt;</span>
-    ...
-<span class="tok-nt">&lt;/profile&gt;</span>
-<span class="tok-nt">&lt;hotels</span> <span class="tok-na">id=</span><span class="tok-s">&quot;gran sevilla&quot;</span> <span class="tok-na">adl:type=</span><span class="tok-s">&quot;HISTORIC_HOTEL&quot;</span><span class="tok-nt">&gt;</span>
-    ...
-<span class="tok-nt">&lt;/hotels&gt;</span></code></pre>
+<pre class="pygments highlight"><code data-lang="xml"><span class="tok-nt">&lt;destinations</span> <span class="tok-na">id=</span><span class="tok-s">&quot;seville&quot;</span> <span class="tok-na">rm:type=</span><span class="tok-s">&quot;TOURIST_DESTINATION&quot;</span><span class="tok-nt">&gt;</span>
+	<span class="tok-nt">&lt;profile</span> <span class="tok-na">rm:type=</span><span class="tok-s">&quot;DESTINATION_PROFILE&quot;</span><span class="tok-nt">&gt;</span>
+		...
+	<span class="tok-nt">&lt;/profile&gt;</span>
+	<span class="tok-nt">&lt;hotels</span> <span class="tok-na">id=</span><span class="tok-s">&quot;gran sevilla&quot;</span> <span class="tok-na">rm:type=</span><span class="tok-s">&quot;HISTORIC_HOTEL&quot;</span><span class="tok-nt">&gt;</span>
+		...
+	<span class="tok-nt">&lt;/hotels&gt;</span>
+<span class="tok-nt">&lt;/destinations&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -2208,7 +2209,7 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 <p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
 </li>
 <li>
-<p><a id="Hein"></a>[Hein] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
 </li>
 <li>
 <p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
@@ -2508,7 +2509,13 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 <p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/Identification.html" class="bare">http://www.openehr.org/releases/AM/latest/Identification.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
+<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong> (deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_sys"></a>[openehr_am_sys] The openEHR Foundation. <strong>The Archetype System.</strong> (deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_oap"></a>[openehr_am_oap] The openEHR Foundation. <strong>The openEHR Archetype Profile.</strong> <a href="http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf</a> .</p>
 </li>
 <li>
 <p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
