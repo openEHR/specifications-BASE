@@ -388,7 +388,7 @@
  E Sundvall,<br>
  B Lah,<br>
  S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Dec 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Dec 2015</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3405,7 +3405,7 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 <div class="sect3">
 <h4 id="_ehr_reference_uris"><a class="anchor" href="#_ehr_reference_uris"></a>11.3.1. EHR Reference URIs</h4>
 <div class="paragraph">
-<p>To create a reference to a node in an EHR in the form of a URI (uniform resource identifier), three elements are needed: the path within a top-level structure, a reference to a top-level structure within an EHR, and a reference to an EHR. These can be combined to form a URI in an 'ehr' scheme-space which conforms to the following model:</p>
+<p>To create a reference to a node in an EHR in the form of a URI (uniform resource identifier), three elements are needed: the path within a top-level structure, a reference to a top-level structure within an EHR, a reference to an EHR, and an optional reference to an EHR system (i.e. repository). These can be combined to form a URI in an 'ehr' scheme-space which conforms to the following model:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3447,7 +3447,7 @@ ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 <div class="sect4">
 <h5 id="_top_level_structure_locator"><a class="anchor" href="#_top_level_structure_locator"></a>Top-level Structure Locator</h5>
 <div class="paragraph">
-<p>There are two logical ways to identify a top-level structure in an openEHR EHR. The first is via the combination of the identifier of the required top-level object (i.e. <code>VERSIONED_OBJECT.<em>uid</em></code>). When a URI uses the object identifier, the latest trunk version is always assumed. This leads to URIs like the following:</p>
+<p>There are two logical ways to identify a top-level structure in an openEHR EHR. The first is via the identifier of the required top-level object (i.e. <code>VERSIONED_OBJECT.<em>uid</em></code>). When a URI uses the object identifier, the latest trunk version is always assumed. This leads to URIs like the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3455,14 +3455,12 @@ ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 </div>
 </div>
 <div class="paragraph">
-<p>The second way to identify a top-level structure is by using an exact Version identifier, i.e. the standard openEHR Version identifier, which takes the form
-<code>versioned_object_uid::creating_system_id::version_tree_id</code>. This leads to URIs like the following:</p>
+<p>The second way to identify a top-level structure is by using an exact Version identifier, which takes the form
+<code>object_id::creating_system_id::version_tree_id</code>. This leads to URIs like the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="uri">ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B::rmh.nhs.net::2
-
-ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B::F7C5C7B7-75DB-4b39-9A1E-C0BA9BFDBDEC::2</code></pre>
+<pre class="pygments highlight"><code data-lang="uri">ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B::rmh.nhs.net::2</code></pre>
 </div>
 </div>
 <div class="paragraph">
