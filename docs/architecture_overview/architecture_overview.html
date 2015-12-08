@@ -3420,10 +3420,10 @@ ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 </div>
 </div>
 <div class="paragraph">
-<p>The possible values for <code>top_level_structure_locator</code> are a subset of the attribute names on the class <code>EHR</code>, visible in the <code>ehr</code> package, namely <code><em>compositions</em></code>, <code><em>ehr_status</em></code>, <code><em>ehr_access</em></code>, and <code><em>directory</em></code>.</p>
+<p>The possible values for <code>top_level_structure_locator</code> are a subset of the attribute names on the class <code>EHR</code>, <a href="http://www.openehr.org/releases/RM/latest/ehr.html#_ehr_package">visible in the ehr package</a>, namely <code>_compositions_</code>, <code><em>ehr_status</em></code>, <code><em>ehr_access</em></code>, and <code><em>directory</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>In this way, any object in any openEHR EHR is addressable via a URI. Within ehr-space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type <code>DV_EHR_URI</code> is designed to carry URIs of this form, enabling URIs to be constructed for use within <code>LINKs</code> and elsewhere in the openEHR EHR.</p>
+<p>In this way, any object in any openEHR EHR is addressable via a URI. Within <code>ehr</code> space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type <code>DV_EHR_URI</code> is designed to carry URIs of this form, enabling URIs to be constructed for use within <code>LINKs</code> and elsewhere in the openEHR EHR.</p>
 </div>
 <div class="paragraph">
 <p>An <code>ehr:</code> URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with <code>ehr:</code> URIs are likely to be used, as well as more traditional <code>http://</code> style references. The subsections below describe how URIs of both kinds can be constructed.</p>

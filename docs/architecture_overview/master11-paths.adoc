@@ -322,9 +322,9 @@ ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
                                       // a sub-item of a specific COMPOSITION, FOLDER etc
 ----
 
-The possible values for `top_level_structure_locator` are a subset of the attribute names on the class `EHR`, visible in the `ehr` package, namely `_compositions_`, `_ehr_status_`, `_ehr_access_`, and `_directory_`.
+The possible values for `top_level_structure_locator` are a subset of the attribute names on the class `EHR`, http://www.openehr.org/releases/RM/{release}/ehr.html#\_ehr_package[visible in the ehr package], namely `_compositions_`, `_ehr_status_`, `_ehr_access_`, and `_directory_`.
 
-In this way, any object in any openEHR EHR is addressable via a URI. Within ehr-space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
+In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr` space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
 
 An `ehr:` URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with `ehr:` URIs are likely to be used, as well as more traditional `http://` style references. The subsections below describe how URIs of both kinds can be constructed.
 
