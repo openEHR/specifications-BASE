@@ -301,7 +301,7 @@ A dedicated type `DV_EHR_URI` is defined within the RM `data_types` package to c
 
 The following guiding principles have been used to inform the design of EHR URIs.
 
-* It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <<rfc_3896>> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the `ehr` scheme corresponds to EHR content.
+* It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <<rfc_3986>> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the `ehr` scheme corresponds to EHR content.
 * URIs described here refer to information items within `VERSION._data_`, i.e. to objects such as `COMPOSITION` or `FOLDER`;
 * Versions are identified within URIs either via the relevant `VERSIONED_OBJECT._uid_` (i.e. a GUID)  or the `VERSION._uid_` (a 3-part `OBJECT_VERSION_ID`).
 
@@ -321,6 +321,8 @@ ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
 ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure 
                                       // a sub-item of a specific COMPOSITION, FOLDER etc
 ----
+
+The possible values for `top_level_structure_locator` are a subset of the attribute names on the class `EHR`, visible in the `ehr` package, namely `_compositions_`, `_ehr_status_`, `_ehr_access_`, and `_directory_`.
 
 In this way, any object in any openEHR EHR is addressable via a URI. Within ehr-space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
 
@@ -349,6 +351,7 @@ There are two logical ways to identify a top-level structure in an openEHR EHR. 
 [source, uri]
 ----
 ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B
+ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/directory/207fbb0f-cc90-41ce-ab64-22bddbcd1e2c
 ----
 
 The second way to identify a top-level structure is by using an exact Version identifier, which takes the form `object_id::creating_system_id::version_tree_id`. This leads to URIs like the following:
@@ -375,5 +378,6 @@ URIs can also be constructed relative to the current EHR, in which case they do 
 
 [source, uri]
 ----
-ehr:compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data/events[at0006, 'any event']/data/items[at0004]
+ehr:/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data/events[at0006, 'any event']/data/items[at0004]
+ehr:/directory/207fbb0f-cc90-41ce-ab64-22bddbcd1e2c
 ----
