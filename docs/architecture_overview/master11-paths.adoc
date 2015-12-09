@@ -310,23 +310,29 @@ The following guiding principles have been used to inform the design of EHR URIs
 
 To create a reference to a node in an EHR in the form of a URI (uniform resource identifier), three elements are needed: the path within a top-level structure, a reference to a top-level structure within an EHR, a reference to an EHR, and an optional reference to an EHR system (i.e. repository). These can be combined to form a URI in an 'ehr' scheme-space which conforms to the following model:
 
-[source, uri]
+[source, antlr-java]
 ----
-ehr://system_id/ehr_id/top_level_structure_locator/path_inside_top_level_structure
+ehr_uri	: 'ehr:' ( '//' system_id )? ( '/' ehr_id )? top_level_structure_locator path_inside_top_level_structure? ;
 
-// ----------- variations -----------
-ehr://system_id/ehr_id                // refer to an EHR within a specific EHR system/service
-ehr:/ehr_id	                      // refer to an EHR within the 'current' (i.e. local) EHR system
-ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
-ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure 
-                                      // a sub-item of a specific COMPOSITION, FOLDER etc
+system_id : internet_id ;
+ehr_id : GUID ;
+
+top_level_structure_locator : '/' ehr_attribute_name '/' version_locator ;
+ehr_attribute_name : 'compositions' | 'directory' | 'ehr_status' | 'ehr_access' ;
+version_locator : GUID | object_id ;
+
+path_inside_top_level_structure : ( '/' attribute_name ('[' predicate_expression ']')? )+ ;
 ----
 
-The possible values for `top_level_structure_locator` are a subset of the attribute names on the class `EHR`, http://www.openehr.org/releases/RM/{release}/ehr.html#\_ehr_package[visible in the ehr package], namely `_compositions_`, `_ehr_status_`, `_ehr_access_`, and `_directory_`.
+:ehr_ref: http://www.openehr.org/releases/RM/{release}/ehr.html#_ehr_package
+The possible values for `ehr_attribute_name` come from attribute names of the class `EHR`, visible in the {ehr_ref}[ehr package], namely `_compositions_`, `_directory_` etc.
 
 In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr` space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
 
 An `ehr:` URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with `ehr:` URIs are likely to be used, as well as more traditional `http://` style references. The subsections below describe how URIs of both kinds can be constructed.
+
+[.deprecated]
+Note that in previous releases, EHR URIs of the form `ehr:GUID` where possible. These should be tolerated in newer systems, and converted to the form `ehr:/GUID`, where the GUID is an EHR id.
 
 ==== EHR Location
 
@@ -351,7 +357,7 @@ There are two logical ways to identify a top-level structure in an openEHR EHR. 
 [source, uri]
 ----
 ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B
-ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/directory/207fbb0f-cc90-41ce-ab64-22bddbcd1e2c
+ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/directory
 ----
 
 The second way to identify a top-level structure is by using an exact Version identifier, which takes the form `object_id::creating_system_id::version_tree_id`. This leads to URIs like the following:
