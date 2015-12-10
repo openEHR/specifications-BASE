@@ -3409,29 +3409,24 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="antlr-java"><span class="tok-nl">ehr_uri</span><span class="tok-w">	</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;ehr:&#39;</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;//&#39;</span><span class="tok-w"> </span><span class="tok-nv">system_id</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-nv">ehr_id</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-nv">top_level_structure_locator</span><span class="tok-w"> </span><span class="tok-nv">path_inside_top_level_structure</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<pre class="pygments highlight"><code data-lang="uri">ehr://system_id/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 
-<span class="tok-nl">system_id</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">internet_id</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">ehr_id</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">GUID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">top_level_structure_locator</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-nv">ehr_attribute_name</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-nv">version_locator</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">ehr_attribute_name</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;compositions&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;directory&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;ehr_status&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;ehr_access&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">version_locator</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">GUID</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">object_id</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">path_inside_top_level_structure</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-nv">attribute_name</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-s">&#39;[&#39;</span><span class="tok-w"> </span><span class="tok-nv">predicate_expression</span><span class="tok-w"> </span><span class="tok-s">&#39;]&#39;</span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-o">)+</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+// ----------- variations -----------
+ehr://system_id/ehr_id                // refer to an EHR within a specific EHR system/service
+ehr:/ehr_id	                      // refer to an EHR within the &#39;current&#39; (i.e. local) EHR system
+ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
+ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
+                                      // a sub-item of a specific COMPOSITION, FOLDER etc</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The possible values for <code>ehr_attribute_name</code> come from attribute names of the class <code>EHR</code>, visible in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#_ehr_package">ehr package</a>, namely <code><em>compositions</em></code>, <code><em>directory</em></code> etc.</p>
+<p>The possible values for <code>top_level_structure_locator</code> come from attribute names of the class <code>EHR</code>, visible in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#_ehr_package">ehr package</a>, namely <code><em>compositions</em></code>, <code><em>directory</em></code> etc.</p>
 </div>
 <div class="paragraph">
 <p>In this way, any object in any openEHR EHR is addressable via a URI. Within <code>ehr</code> space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type <code>DV_EHR_URI</code> is designed to carry URIs of this form, enabling URIs to be constructed for use within <code>LINKs</code> and elsewhere in the openEHR EHR.</p>
 </div>
 <div class="paragraph">
 <p>An <code>ehr:</code> URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with <code>ehr:</code> URIs are likely to be used, as well as more traditional <code>http://</code> style references. The subsections below describe how URIs of both kinds can be constructed.</p>
-</div>
-<div class="paragraph deprecated">
-<p>Note that in previous releases, EHR URIs of the form <code>ehr:GUID</code> where possible. These should be tolerated in newer systems, and converted to the form <code>ehr:/GUID</code>, where the GUID is an EHR id.</p>
 </div>
 <div class="sect4">
 <h5 id="_ehr_location"><a class="anchor" href="#_ehr_location"></a>EHR Location</h5>
@@ -3494,7 +3489,7 @@ ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/directory</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="uri">ehr:/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data/events[at0006, &#39;any event&#39;]/data/items[at0004]
-ehr:/directory/207fbb0f-cc90-41ce-ab64-22bddbcd1e2c</code></pre>
+ehr:/directory</code></pre>
 </div>
 </div>
 </div>
