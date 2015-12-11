@@ -321,7 +321,7 @@ ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
 ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure 
                                       // a sub-item of a specific COMPOSITION, FOLDER etc
 ----
-:ehr_ref: http://www.openehr.org/releases/RM/{release}/ehr.html#_ehr_package
+:ehr_ref: http://www.openehr.org/releases/RM/{rm_release}/ehr.html#_ehr_package
 The possible values for `top_level_structure_locator` come from attribute names of the class `EHR`, visible in the {ehr_ref}[ehr package], namely `_compositions_`, `_directory_` etc.
 
 In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr` space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
