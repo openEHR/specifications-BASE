@@ -1,0 +1,65 @@
+=== Interval Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*Interval*
+
+h|*Description*
+2+a|Interval of ordered items.
+
+h|*Inherit*
+2+|Any
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*lower*: `T`
+a|lower bound.
+
+h|*0..1*
+|*upper*: `T`
+a|Upper bound.
+
+h|*1..1*
+|*lower_unbounded*: `boolean`
+a|lower boundary open (i.e. = -infinity)
+
+h|*1..1*
+|*upper_unbounded*: `boolean`
+a|upper boundary open (i.e. = +infinity)
+
+h|*1..1*
+|*lower_included*: `boolean`
+a|lower boundary value included in range if not lower_unbounded.
+
+h|*1..1*
+|*upper_included*: `boolean`
+a|upper boundary value included in range if not upper_unbounded.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*has* (e): `boolean`
+a|True if (lower_unbounded or
+((lower_included and v >= lower) or
+v > lower)) and
+(upper_unbounded or
+((upper_included and v <= upper or v
+< upper)))
+
+h|*Invariant*
+2+a|*_Lower_included_valid_*: lower_unbounded implies not lower_included
+
+h|
+2+a|*_Upper_included_valid_*: upper_unbounded implies not upper_included
+
+h|
+2+a|*_Limits_consistent_*: (not upper_unbounded and not lower_unbounded) implies lower <= upper
+
+h|
+2+a|*_Limits_comparable_*: (not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)
+|===

@@ -1,0 +1,69 @@
+=== AUTHORED_RESOURCE Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*_AUTHORED_RESOURCE (abstract)_*
+
+h|*Description*
+2+a|Abstract idea of an online resource created by a human author.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*original_language*: `TERMINOLOGY_CODE`
+a|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.
+
+h|*0..1*
+|*is_controlled*: `Boolean`
+a|True if this resource is under any kind of change control (even file copying), in which case revision history is created.
+
+h|*0..1*
+|*description*: `RESOURCE_DESCRIPTION`
+a|Description and lifecycle information of the resource.
+
+h|*0..1*
+|*uid*: `UUID`
+a|Unique identifier of the family of archetypes having the same interface identifier (same major version).
+
+h|*0..1*
+|*annotations*: `RESOURCE_ANNOTATIONS`
+a|Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.
+
+h|*0..1*
+|*translations*: `Hash<TRANSLATION_DETAILS, String>`
+a|List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*current_revision*: `String` +
+*_Post_*: Result = revision_history.most_recent_version
+a|Most recent revision in revision_history if is_controlled else  (uncontrolled) .
+
+h|
+|*languages_available*: `List<String>`
+a|Total list of languages available in this resource, derived from original_language and translations.
+
+h|*Invariant*
+2+a|*_Original_language_valid_*: code_set (Code_set_id_languages).has_code (original_language.as_string)
+
+h|
+2+a|*_Current_revision_valid_*: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)
+
+h|
+2+a|*_Translations_valid_*: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))
+
+h|
+2+a|*_Description_valid_*: translations /= Void implies (description.details.for_all (d &#124;
+translations.has_key (d.language.code_string)))
+
+h|
+2+a|*_Languages_available_valid_*: languages_available.has (original_language)
+
+h|
+2+a|*_Revision_history_valid_*: is_controlled xor revision_history = Void
+|===

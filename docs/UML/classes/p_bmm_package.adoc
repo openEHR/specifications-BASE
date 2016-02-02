@@ -1,0 +1,40 @@
+=== P_BMM_PACKAGE Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*P_BMM_PACKAGE*
+
+h|*Description*
+2+a|Persisted form of a package as a tree structure whose nodes can contain more packages and/or classes.
+
+h|*Inherit*
+2+|P_BMM_PACKAGE_CONTAINER
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*name*: `String`
+a|Name of the package from schema; this name may be qualified if it is a top-level package within the schema, or unqualified. Persistent attribute.
+
+h|*0..1*
+|*classes*: `List<String>`
+a|List of classes in this package. Persistent attribute.
+
+h|*0..1*
+|*bmm_package_definition*: `BMM_PACKAGE`
+a|BMM_PACKAGE created by create_bmm_package_definition.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*merge* (other: `P_BMM_PACKAGE`): `List<>`
+a|Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
+
+h|
+|*create_bmm_package_definition*: `List<>`
+a|Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.
+|===

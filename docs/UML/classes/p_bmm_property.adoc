@@ -1,0 +1,49 @@
+=== P_BMM_PROPERTY Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*_P_BMM_PROPERTY (abstract)_*
+
+h|*Description*
+2+a|Persistent form of BMM_PROPERTY.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*name*: `String`
+a|Name of this property within its class. Persisted attribute.
+
+h|*0..1*
+|*is_mandatory*: `Boolean`
+a|True if this property is mandatory in its class. Persisted attribute.
+
+h|*0..1*
+|*is_computed*: `Boolean`
+a|True if this property is computed rather than stored in objects of this class. Persisted Attribute.
+
+h|*0..1*
+|*is_im_infrastructure*: `Boolean`
+a|True if this property is info model 'infrastructure' rather than 'data'. Persisted attribute.
+
+h|*0..1*
+|*is_im_runtime*: `Boolean`
+a|True if this property is info model 'runtime' settable property. Persisted attribute.
+
+h|*0..1*
+|*type_def*: `P_BMM_TYPE`
+a|Type definition of this property, if not a simple String type reference. Persisted attribute.
+
+h|*0..1*
+|*bmm_property_definition*: `BMM_PROPERTY`
+a|BMM_PROPERTY created by create_bmm_property_definition.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*create_bmm_property_definition* (a_bmm_schema: `BMM_SCHEMA`, a_class_def: `BMM_CLASS`): `List<>`
+a|
+|===

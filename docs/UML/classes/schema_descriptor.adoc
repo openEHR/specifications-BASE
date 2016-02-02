@@ -1,0 +1,77 @@
+=== SCHEMA_DESCRIPTOR Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*SCHEMA_DESCRIPTOR*
+
+h|*Description*
+2+a|Descriptor for a BMM schema. Contains a meta-data table of attributes obtained from a mini-ODIN parse of the  schema file.
+
+h|*Inherit*
+2+|BMM_DEFINITIONS
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*p_schema*: `P_BMM_SCHEMA`
+a|Persistent form of model.
+
+h|*0..1*
+|*schema*: `BMM_SCHEMA`
+a|Computable form of model.
+
+h|*1..1*
+|*schema_id*: `String`
+a|Schema id, formed from:
+
+* meta_data(Metadata_model_publisher) '-' meta_data(metadata_schema_name) '-' meta_data(Metadata_model_release)
+
+e.g. openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606-1_2008.
+
+h|*1..1*
+|*meta_data*: `Hash<String, String>`
+a|Table of {key, value} pairs of schema meta-data, keys as follows:
+
+* "bmm_version",
+* "model_publisher",
+* "schema_name",
+* "model_release",
+* "schema_revision",
+* "schema_lifecycle_state",
+* "schema_description",
+* "schema_path"
+
+h|*0..1*
+|*includes*: `List<String>`
+a|Schema_ids of schemas included by this schema.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*is_top_level: Boolean*: `List<>`
+a|True if this is a top-level schema, i.e. not included by some other schema.
+
+h|
+|*is_bmm_compatible*: `boolean`
+a|True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
+
+h|
+|*load*: `List<>`
+a|Load schema into in-memory form.
+
+h|
+|*validate*: `List<>`
+a|Validate entire schema.
+
+h|
+|*validate_includes* (all_schemas_list: `List<String>`): `List<>`
+a|Validate includes list for this schema, to see if each mentioned schema exists in read schemas.
+
+h|
+|*create_schema*: `List<>`
+a|Create `schema'.
+|===

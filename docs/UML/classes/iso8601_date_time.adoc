@@ -1,0 +1,153 @@
+=== ISO8601_DATE_TIME Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*ISO8601_DATE_TIME*
+
+h|*Description*
+2+a|Represents an absolute point in time, specified to the second.
+
+Note that this class includes 2 deviations from ISO 8601:2004:
+
+* for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard;
+* the time 24:00:00 is not allowed, since it would mean the date was really on the next day.
+
+h|*Inherit*
+2+|ISO8601_TYPE
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*year*: `Integer`
+a|Year.
+
+h|
+|*month*: `Integer` +
+*_Pre_*: not month_unknown
+a|Month in year.
+
+h|
+|*day*: `Integer` +
+*_Pre_*: not day_unknown
+a|Day in month.
+
+h|
+|*month_unknown*: `Boolean`
+a|Indicates whether month in year is unknown.
+
+h|
+|*day_unknown*: `Boolean`
+a|Indicates whether day in month is unknown.
+
+h|
+|*hour*: `Integer` +
+*_Pre_*: not hour_unknown
+a|Hour in day.
+
+h|
+|*minute*: `Integer` +
+*_Pre_*: not minute_unknown
+a|Minute in hour.
+
+h|
+|*second*: `Integer` +
+*_Pre_*: not second_unknown
+a|Second in minute.
+
+h|
+|*fractional_second*: `Real`
+a|Fractional seconds.
+
+h|
+|*has_fractional_second*: `Boolean`
+a|True if the fractional_second part is signficant (i.e. even if = 0.0).
+
+h|
+|*minute_unknown*: `Boolean`
+a|Indicates whether minute in hour is known.
+
+h|
+|*second_unknown*: `Boolean`
+a|Indicates whether minute in hour is known.
+
+h|
+|*is_decimal_sign_comma*: `Boolean`
+a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
+
+h|
+|*timezone*: `ISO8601_TIMEZONE`
+a|Timezone; may be Void.
+
+h|
+|*as_string*: `String`
+a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
+
+h|
+|*valid_iso8601_date_time* (s: `String`): `Boolean`
+a|String is a valid ISO 8601 date-time, i.e. takes the form:
+
+* YYYYMMDDThhmmss[,sss][Z &#124; hh[mm]]
+
+or the extended form:
+
+* YYYY-MM-DDThh:mm:ss[,sss][Z &#124; hh[mm]]
+
+or one of the partial forms:
+
+* YYYYMMDDThhmm
+* YYYYMMDDThh
+
+or the equivalent extended forms:
+
+* YYYY-MM-DDThh:mm
+* YYYY-MM-DDThh
+
+(meanings as in DV_DATE, DV_TIME) and the values in each field are valid.
+
+h|(effected)
+|*is_extended*: `Boolean`
+a|True if this date/time uses ‘-’, ‘:’ separators.
+
+h|(effected)
+|*is_partial*: `Boolean`
+a|True if this date time is partial, i.e. if seconds or more is missing.
+
+h|*Invariant*
+2+a|*_Year_valid_*: valid_year (year)
+
+h|
+2+a|*_Month_valid_*: valid_month (month)
+
+h|
+2+a|*_Day_valid_*: valid_day(year, month, day)
+
+h|
+2+a|*_Hour_valid_*: valid_hour (hour, minute, second)
+
+h|
+2+a|*_Minute_valid_*: not minute_unknown implies valid_minute(minute)
+
+h|
+2+a|*_Second_valid_*: not second_unknown implies valid_second (second)
+
+h|
+2+a|*_Fractional_second_valid_*: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))
+
+h|
+2+a|*_Partial_validity_year_*: not month_unknown
+
+h|
+2+a|*_Partial_validity_month_*: not month_unknown
+
+h|
+2+a|*_Partial_validity_day_*: not day_unknown
+
+h|
+2+a|*_Partial_validity_hour_*: not hour_unknown
+
+h|
+2+a|*_Partial_validity_minute_*: minute_unknown implies second_unknown
+|===

@@ -1,0 +1,34 @@
+=== TRANSLATION_DETAILS Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TRANSLATION_DETAILS*
+
+h|*Description*
+2+a|Class providing details of a natural language translation.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*language*: `TERMINOLOGY_CODE`
+a|Language of the translation.
+
+h|*1..1*
+|*author*: `Hash<String, String>`
+a|Translator name and other demographic details.
+
+h|*0..1*
+|*accreditaton*: `String`
+a|Accreditation of translator, usually a national translator's registration or association membership id.
+
+h|*0..1*
+|*other_details*: `Hash<String, String>`
+a|Any other meta-data.
+
+h|*0..1*
+|*version_last_translated*: `String`
+a|Version of this resource last time it was translated into the language represented by this TRANSLATION_DETAILS object.
+|===

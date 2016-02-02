@@ -1,0 +1,30 @@
+=== TERMINOLOGY_CODE Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TERMINOLOGY_CODE*
+
+h|*Description*
+2+a|Logically primitive type representing a reference to a terminology concept, in the form of a terminology identifier, optional version, and a code or code string from the terminology.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*terminology_id*: `String`
+a|The archetype environment namespace identifier used to identify a terminology. Typically a value like "snomed_ct" that is mapped elsewhere to the full URI identifying the terminology.
+
+h|*0..1*
+|*terminology_version*: `String`
+a|Optional string value representing terminology version, typically a date or dotted numeric.
+
+h|*1..1*
+|*code_string*: `String`
+a|A terminology code or post-coordinated code expression, if supported by the terminology.
+
+h|*0..1*
+|*uri*: `Uri`
+a|The URI equivalent of the other three attributes.
+|===

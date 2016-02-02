@@ -1,0 +1,3400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="description" content="Basic Meta-Model (BMM) specification">
+<meta name="keywords" content="reflection, meta-model, UML">
+<title>Basic Meta-Model (BMM)</title>
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_basic_meta_model_bmm">Basic Meta-Model (BMM)</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a>
+<ul class="sectlevel2">
+<li><a href="#_trademarks">Trademarks</a></li>
+</ul>
+</li>
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_status">1.2. Status</a></li>
+</ul>
+</li>
+<li><a href="#_overview">2. Overview</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction">2.1. Introduction</a></li>
+<li><a href="#_requirements">2.2. Requirements</a></li>
+<li><a href="#_current_state_of_the_art">2.3. Current State of the Art</a></li>
+<li><a href="#_design">2.4. Design</a></li>
+<li><a href="#_bmm_in_use">2.5. BMM in Use</a></li>
+</ul>
+</li>
+<li><a href="#_rm_access_package">3. RM Access Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">3.1. Overview</a></li>
+<li><a href="#_class_definitions">3.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_reference_model_access_class">3.2.1. REFERENCE_MODEL_ACCESS Class</a></li>
+<li><a href="#_schema_descriptor_class">3.2.2. SCHEMA_DESCRIPTOR Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_core_package">4. Core Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_3">4.1. Overview</a></li>
+<li><a href="#_class_definitions_2">4.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_bmm_definitions_class">4.2.1. BMM_DEFINITIONS Class</a></li>
+<li><a href="#_bmm_schema_core_class">4.2.2. BMM_SCHEMA_CORE Class</a></li>
+<li><a href="#_bmm_schema_class">4.2.3. BMM_SCHEMA Class</a></li>
+<li><a href="#_bmm_package_container_class">4.2.4. BMM_PACKAGE_CONTAINER Class</a></li>
+<li><a href="#_bmm_package_class">4.2.5. BMM_PACKAGE Class</a></li>
+<li><a href="#_bmm_classifier_class">4.2.6. BMM_CLASSIFIER Class</a></li>
+<li><a href="#_bmm_type_class">4.2.7. BMM_TYPE Class</a></li>
+<li><a href="#_bmm_class_class">4.2.8. BMM_CLASS Class</a></li>
+<li><a href="#_bmm_property_class">4.2.9. BMM_PROPERTY Class</a></li>
+<li><a href="#_bmm_container_property_class">4.2.10. BMM_CONTAINER_PROPERTY Class</a></li>
+<li><a href="#_bmm_simple_type_class">4.2.11. BMM_SIMPLE_TYPE Class</a></li>
+<li><a href="#_bmm_simple_type_open_class">4.2.12. BMM_SIMPLE_TYPE_OPEN Class</a></li>
+<li><a href="#_bmm_container_type_class">4.2.13. BMM_CONTAINER_TYPE Class</a></li>
+<li><a href="#_bmm_generic_type_class">4.2.14. BMM_GENERIC_TYPE Class</a></li>
+<li><a href="#_bmm_generic_parameter_class">4.2.15. BMM_GENERIC_PARAMETER Class</a></li>
+<li><a href="#_bmm_generic_class_class">4.2.16. BMM_GENERIC_CLASS Class</a></li>
+<li><a href="#_bmm_enumeration_class">4.2.17. BMM_ENUMERATION Class</a></li>
+<li><a href="#_bmm_enumeration_string_class">4.2.18. BMM_ENUMERATION_STRING Class</a></li>
+<li><a href="#_bmm_enumeration_integer_class">4.2.19. BMM_ENUMERATION_INTEGER Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_persistence_package">5. Persistence Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_4">5.1. Overview</a></li>
+<li><a href="#_class_definitions_3">5.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_p_bmm_package_container_class">5.2.1. P_BMM_PACKAGE_CONTAINER Class</a></li>
+<li><a href="#_p_bmm_schema_class">5.2.2. P_BMM_SCHEMA Class</a></li>
+<li><a href="#_p_bmm_schema_state_enumeration">5.2.3. P_BMM_SCHEMA_STATE Enumeration</a></li>
+<li><a href="#_bmm_include_spec_class">5.2.4. BMM_INCLUDE_SPEC Class</a></li>
+<li><a href="#_p_bmm_package_container_class_2">5.2.5. P_BMM_PACKAGE_CONTAINER Class</a></li>
+<li><a href="#_p_bmm_package_class">5.2.6. P_BMM_PACKAGE Class</a></li>
+<li><a href="#_p_bmm_classifier_class">5.2.7. P_BMM_CLASSIFIER Class</a></li>
+<li><a href="#_p_bmm_type_class">5.2.8. P_BMM_TYPE Class</a></li>
+<li><a href="#_p_bmm_class_class">5.2.9. P_BMM_CLASS Class</a></li>
+<li><a href="#_p_bmm_generic_parameter_class">5.2.10. P_BMM_GENERIC_PARAMETER Class</a></li>
+<li><a href="#_p_bmm_property_class">5.2.11. P_BMM_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_simple_type_class">5.2.12. P_BMM_SIMPLE_TYPE Class</a></li>
+<li><a href="#_p_bmm_simple_type_open_class">5.2.13. P_BMM_SIMPLE_TYPE_OPEN Class</a></li>
+<li><a href="#_p_bmm_generic_type_class">5.2.14. P_BMM_GENERIC_TYPE Class</a></li>
+<li><a href="#_p_bmm_container_type_class">5.2.15. P_BMM_CONTAINER_TYPE Class</a></li>
+<li><a href="#_p_bmm_single_property_class">5.2.16. P_BMM_SINGLE_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_single_property_open_class">5.2.17. P_BMM_SINGLE_PROPERTY_OPEN Class</a></li>
+<li><a href="#_p_bmm_generic_property_class">5.2.18. P_BMM_GENERIC_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_container_property_class">5.2.19. P_BMM_CONTAINER_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_enumeration_class">5.2.20. P_BMM_ENUMERATION Class</a></li>
+<li><a href="#_p_bmm_enumeration_string_class">5.2.21. P_BMM_ENUMERATION_STRING Class</a></li>
+<li><a href="#_p_bmm_enumeration_integer_class">5.2.22. P_BMM_ENUMERATION_INTEGER Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_bmm_syntax">6. BMM Syntax</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_5">6.1. Overview</a></li>
+<li><a href="#_header_items">6.2. Header Items</a></li>
+<li><a href="#_inclusions">6.3. Inclusions</a></li>
+<li><a href="#_archetyping_related">6.4. Archetyping related</a></li>
+<li><a href="#_package_definition">6.5. Package Definition</a></li>
+<li><a href="#_primitive_types">6.6. Primitive Types</a></li>
+<li><a href="#_class_definitions_4">6.7. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_basic_class_properties">6.7.1. Basic Class properties</a></li>
+<li><a href="#_optionality">6.7.2. Optionality</a></li>
+<li><a href="#_container_properties">6.7.3. Container Properties</a></li>
+<li><a href="#_generic_classes">6.7.4. Generic Classes</a></li>
+<li><a href="#_generic_properties">6.7.5. Generic Properties</a></li>
+<li><a href="#_enumerated_classes">6.7.6. Enumerated Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_resources">Resources</a>
+<ul class="sectlevel3">
+<li><a href="#_general">General</a></li>
+<li><a href="#_e_health_standards">e-Health Standards</a></li>
+<li><a href="#_e_health_projects">e-Health Projects</a></li>
+<li><a href="#_general_standards">General Standards</a></li>
+<li><a href="#_tools">Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_basic_meta_model_bmm" class="sect0">Basic Meta-Model (BMM)</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="http://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: DEVELOPMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: reflection, meta-model, UML</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2016 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="http://www.openehr.org/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
+ Web: <a href="http://www.openehr.org/" class="bare">http://www.openehr.org/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record">Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial writing based on ADL Workbench implementation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Feb 2016</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_trademarks">Trademarks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>'openEHR' is a registered trademark of the openEHR Foundation</p>
+</li>
+<li>
+<p>'Java' is a registered trademark of Oracle Corporation</p>
+</li>
+<li>
+<p>'OMG' and 'UML' are registered trademarks of the Object Management Group</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preface"><a class="anchor" href="#_preface"></a>1. Preface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the Basic Meta-Model (BMM), a model of object models. It may be considered as an approximate replacement for the UML XMI. It is human-readable and writable, and supports generic types (open and closed), container types, and multiple inheritance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status"><a class="anchor" href="#_status"></a>1.2. Status</h3>
+<div class="paragraph">
+<p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="http://www.openehr.org/releases/BASE/latest/bmm.html" class="bare">http://www.openehr.org/releases/BASE/latest/bmm.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+<div class="paragraph">
+<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/browse/SPECPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel">specifications issue tracker</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction"><a class="anchor" href="#_introduction"></a>2.1. Introduction</h3>
+<div class="paragraph">
+<p>One of the key needs in any open computing environment is a computable representation of its own models, for a number of purposes, including reasoning about them, performing validation and consistency checking, building software and generating documentation. This is particularly true of openEHR, where a further need is to be able to validate archetypes and templates with respect to the reference model, and also to validate runtime instance data against operational templates and the reference model.</p>
+</div>
+<div class="paragraph">
+<p>A number of computable representations of the openEHR published models have been available in the past. Unfortunately the standards and tools available for model representation in ICT in general remain problematic.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requirements"><a class="anchor" href="#_requirements"></a>2.2. Requirements</h3>
+<div class="paragraph">
+<p>The key requirements for human- and machine-readable models are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a primary computable expression of the reference model as published in the specification documents</p>
+<div class="ulist">
+<ul>
+<li>
+<p>functionally, the formalism and tooling need to support static class models, including generic classes, multiple inheritance, class invariants, pre-conditions and post-conditions (i.e. 'design by contract' or DbC elements)</p>
+</li>
+<li>
+<p>ideally this expression would be defined either</p>
+<div class="ulist">
+<ul>
+<li>
+<p>within a UML tool, and exported in a usable form; or</p>
+</li>
+<li>
+<p>within some other editor that makes it easy to maintain.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>this expression should be the basis for published documentation of the specifications;</p>
+</li>
+<li>
+<p>this expression should also support machine validation / compilation to ensure the model is valid.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>one or more data serialisation forms, derived from the primary expression</p>
+<div class="ulist">
+<ul>
+<li>
+<p>at least XML needs to be supported, but other formats such as JSON and the openEHR dADL may also be supported.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_current_state_of_the_art"><a class="anchor" href="#_current_state_of_the_art"></a>2.3. Current State of the Art</h3>
+<div class="paragraph">
+<p>One would think that the ICT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. UML 2.x and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. It will probably eventually come to pass, but a number of obstacles remain to date:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the UML 2.x specifications are exceedingly complex (see OMG site for specifications; UML 2.1.2 'superstructure' = 738pp; UML 2.1.2 'infrastructure' = 224pp);</p>
+</li>
+<li>
+<p>the XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability;</p>
+</li>
+<li>
+<p>the Design By Contract (DbC) concept is supported via the use of OCL 2.0 constraints in class models, although there are semantic holes, e.g. proper semantics through inheritance;</p>
+</li>
+<li>
+<p>for some, XML-schema represents a way of expressing object models, but in fact is not semantically suitable for this purpose. It can be and is used (including in openEHR) as a derivative serialisation representation, but from the point of view of specification, it is deficient in having non-object-oriented inheritance semantics, no generic classes, no representation of non-data members, and only marginal support for design by contract.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Experience with various UML tools (up till 2015) highlighted the following problems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>poor support for OCL and design by contract in most tools;</p>
+</li>
+<li>
+<p>variable support for generic (i.e. template) classes; even those tools that properly implement the UML 2.5 specification are still very hard to use for defining generic classes because of problems in the specification that remain unaddressed;</p>
+</li>
+<li>
+<p>variable support for XSD generation across tools, where the results are wildly wrong in some tools;</p>
+</li>
+<li>
+<p>in some tools, it is impossible to define an abstract formal model. The only option is to select a programming language profile such as Java or C# and thus get locked into the limitations of those languages (messy type systems, weak inheritance semantics, language-specific notion of types such as <code>Array&lt;T&gt;</code>, <code>List&lt;T&gt;</code>, etc.).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_design"><a class="anchor" href="#_design"></a>2.4. Design</h3>
+<div class="paragraph">
+<p>The Basic Meta-Model provides a model of object models, data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes). This specification defineds the object model of BMM, i.e. the structure that would be materialised from parsing an actual BMM file. BMM files are typically expressed in ODIN, but may also be expressed in JSON, XML or any other suitable serialisation format.</p>
+</div>
+<div class="paragraph">
+<p>The BMM consists of three packages as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rm_access</code>: the interface to most features including schema load/reload, generally used by an application as a reflection library;</p>
+</li>
+<li>
+<p><code>core</code>: the core BMM classes used for in-memory representation of an object model;</p>
+</li>
+<li>
+<p><code>persistence</code>: a simplified version of the core classes, used for persistence and human authoring.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>They are illustrated below.</p>
+</div>
+<div id="package_overview" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BMM-packages.svg" alt="BMM packages">
+</div>
+<div class="title">Figure 1. Package Overview</div>
+</div>
+<div class="paragraph">
+<p>The normal use of BMM is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create a BMM schema in the form of one or more files, using the <code>P_BMM_</code> form of the model expressed in ODIN. This is easy to understand by using the <a href="../BMM-example/example.bmm">example schema</a> and/or copying other examples;</p>
+</li>
+<li>
+<p>locate these files in a suitable place for use with a tool such as the <a href="http://www.openehr.org/downloads/ADLworkbench/home">openEHR ADL Workbench</a> and {linkehr}[LinkEHR].</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bmm_in_use"><a class="anchor" href="#_bmm_in_use"></a>2.5. BMM in Use</h3>
+<div class="paragraph">
+<p>BMM schemas as used in the openEHR ADL Workbench (AWB) provide an illustration of their use and visualisation. The following screenshot shows the BMM schema configuration dialog in the AWB, including some meta-data, validation status etc, and also nesting structure.</p>
+</div>
+<div id="awb_schemas_config" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_schemas_config.png" alt="awb schemas config" width="60%">
+</div>
+<div class="title">Figure 2. BMM schema configuration</div>
+</div>
+<div class="paragraph">
+<p>The screenshot below shows a number of BMMs loaded into the AWB, including some of the packages and classes.</p>
+</div>
+<div id="awb_loaded_bmm_schemas" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_loaded_bmm_schemas.png" alt="awb loaded bmm schemas" width="50%">
+</div>
+<div class="title">Figure 3. BMM schemas loaded</div>
+</div>
+<div class="paragraph">
+<p>The following shows a single class, properties view. The structure of the class as properties, types, multiplicities, inheritance etc are all provided by the in-memory BMM classes.</p>
+</div>
+<div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_properties.png" alt="awb class properties" width="60%">
+</div>
+<div class="title">Figure 4. BMM class - properties view</div>
+</div>
+<div class="paragraph">
+<p>The next screenshot shows the ancestors view of the same class.</p>
+</div>
+<div id="awb_class_ancestors" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_ancestors.png" alt="awb class ancestors" width="45%">
+</div>
+<div class="title">Figure 5. BMM class - ancestors view</div>
+</div>
+<div class="paragraph">
+<p>The next screenshot shows the descendants view of one of the ancestors classes.</p>
+</div>
+<div id="awb_class_descendants" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_descendants.png" alt="awb class descendants" width="50%">
+</div>
+<div class="title">Figure 6. BMM class - descendants view</div>
+</div>
+<div class="paragraph">
+<p>The following shows a class in a 'closure' view, which is a computed reachability graph, including recursive references.</p>
+</div>
+<div id="awb_class_closure" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_closure.png" alt="awb class closure" width="60%">
+</div>
+<div class="title">Figure 7. BMM class - closure view</div>
+</div>
+<div class="paragraph">
+<p>One of the main uses of the BMM in the ADL Workbench and other similar tools is to provide a computable form of the information model ('reference model' in openEHR) for use with archetypes. The following shows an archetype for which each node has its RM class shown (in colour), and additionally, the inclusion of non-archetyped attributes from the classes of the archetype nodes.</p>
+</div>
+<div id="archetype_rm" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/archetype_rm.png" alt="archetype rm">
+</div>
+<div class="title">Figure 8. ADL archetype with BMM class properties</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rm_access_package"><a class="anchor" href="#_rm_access_package"></a>3. RM Access Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
+<div class="paragraph">
+<p>The <code>rm_access</code> package provides an interface for the application to load and access BMM schemas, and is shown below.</p>
+</div>
+<div id="rm_access_package" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BMM-rm_access.svg" alt="BMM rm access">
+</div>
+<div class="title">Figure 9. RM Access Package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>3.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_reference_model_access_class"><a class="anchor" href="#_reference_model_access_class"></a>3.2.1. REFERENCE_MODEL_ACCESS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>REFERENCE_MODEL_ACCESS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Access to service interface to BMM object model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_DEFINITIONS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_directories</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of directories where all the schemas loaded here are found.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_schemas</strong>: <code>Hash&lt;SCHEMA_DESCRIPTOR, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>All schemas found and loaded from `schema_directory'. Keyed by schema_id, i.e.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>model_publisher '<em>' schema_name '</em>' model_release</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>e.g. openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606-1_2008. This is the same key as BMM_SCHEMA.schema_id. Does not include schemas that failed to parse (i.e. SCHEMA_ACCESS.passed = False)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_top_level_schemas</strong>: <code>Hash&lt;BMM_SCHEMA, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Top-level (root) schemas in use. Table is keyed by logical schema_name, i.e. model_publisher '_' model_name, e.g. "openehr_rm". Schemas containing different variants of same model (i.e. model_publisher + model_name) are considered duplicates.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>initialise_with_load_list</strong> (a_schema_dirs: <code>List&lt;String&gt;</code>, a_schema_load_list: <code>List&lt;String&gt;</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Initialise with a specific schema load list, usually a sub-set of schemas that will be found in the directory `an_absolute_dir'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>initialise_all</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reload_schemas</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_schema_descriptor_class"><a class="anchor" href="#_schema_descriptor_class"></a>3.2.2. SCHEMA_DESCRIPTOR Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>SCHEMA_DESCRIPTOR</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Descriptor for a BMM schema. Contains a meta-data table of attributes obtained from a mini-ODIN parse of the  schema file.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_DEFINITIONS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>p_schema</strong>: <code>P_BMM_SCHEMA</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Persistent form of model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema</strong>: <code>BMM_SCHEMA</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Computable form of model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Schema id, formed from:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>meta_data(Metadata_model_publisher) '-' meta_data(metadata_schema_name) '-' meta_data(Metadata_model_release)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>e.g. openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606-1_2008.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>meta_data</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Table of {key, value} pairs of schema meta-data, keys as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"bmm_version",</p>
+</li>
+<li>
+<p>"model_publisher",</p>
+</li>
+<li>
+<p>"schema_name",</p>
+</li>
+<li>
+<p>"model_release",</p>
+</li>
+<li>
+<p>"schema_revision",</p>
+</li>
+<li>
+<p>"schema_lifecycle_state",</p>
+</li>
+<li>
+<p>"schema_description",</p>
+</li>
+<li>
+<p>"schema_path"</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Schema_ids of schemas included by this schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_top_level: Boolean</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this is a top-level schema, i.e. not included by some other schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>load</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Load schema into in-memory form.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Validate entire schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_includes</strong> (all_schemas_list: <code>List&lt;String&gt;</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Validate includes list for this schema, to see if each mentioned schema exists in read schemas.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_schema</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Create `schema'.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_core_package"><a class="anchor" href="#_core_package"></a>4. Core Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
+<div class="paragraph">
+<p>The <code>core</code> package, shown below, defines the main BMM model.</p>
+</div>
+<div id="core_package" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BMM-core.svg" alt="BMM core">
+</div>
+<div class="title">Figure 10. RM Core Package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>4.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_bmm_definitions_class"><a class="anchor" href="#_bmm_definitions_class"></a>4.2.1. BMM_DEFINITIONS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_DEFINITIONS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bmm_internal_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Schema_name_delimiter</strong>: <code>String&#160;=&#160;"::"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Package_name_delimiter</strong>: <code>String&#160;=&#160;"."</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_schema_core_class"><a class="anchor" href="#_bmm_schema_core_class"></a>4.2.2. BMM_SCHEMA_CORE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_SCHEMA_CORE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Core properties of BMM_SCHEMA.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_publisher</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Publisher of model expressed in the schema. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_release</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" . Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of model expressed in schema; a 'schema' usually contains all of the packages of one 'model' of a publisher. A publisher with more than one model can have multiple schemas. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_revision</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Revision of schema. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_lifecycle_state</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_author</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Primary author of schema. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_description</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Description of schema. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Contributing authors of schema. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_parent_class</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of a parent class used within the schema to provide archetype capability, enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_data_value_parent_class</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of a parent class of logical 'data types' used within the schema to provide archetype capability, enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_rm_closure_packages</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of top-level package paths that provide the RM 'model' part in achetype identifiers, e.g. the path "org.openehr.ehr" gives "EHR" in "openEHR-EHR". Within this namespace,  archetypes can be based on any class reachable from classes defined directly in these packages.</p>
+</div>
+<div class="paragraph">
+<p>Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_visualise_descendants_of</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>If archetype_parent_class is not set, designate a class whose descendants should be made visible in tree and grid renderings of the archetype definition. For openEHR and CEN this class is normally the same as the archetype_parent_class, i.e. LOCATABLE and RECORD_COMPONENT respectively. It is typically set for CEN, because archetype_parent_class may not be stated, due to demographic types not inheriting from it.</p>
+</div>
+<div class="paragraph">
+<p>The effect of this attribute in visualisation is to generate the most natural tree or grid-based view of an archetype definition, from the semantic viewpoint.</p>
+</div>
+<div class="paragraph">
+<p>Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Derived name of schema, based on model publisher, model name, model release.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_schema_class"><a class="anchor" href="#_bmm_schema_class"></a>4.2.3. BMM_SCHEMA Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_SCHEMA</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Model of a BMM schema (along with what is inherited from BMM_SCHEMA_CORE).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_SCHEMA_CORE, BMM_PACKAGE_CONTAINER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>All classes in this schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of keys in `class_definitions' of items marked as primitive types, as defined in input schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of keys in `class_definitions' of items that are enumeration types, as defined in input schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition</strong> (a_name: <code>String</code>): <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Retrieve the class definition corresponding to `a_type_name' (which may contain a generic part).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_definition</strong> (a_name: <code>String</code>): <code>BMM_ENUMERATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Retrieve the enumeration definition corresponding to `a_type_name'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong>: <code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Retrieve the property definition for `a_prop_name' in flattened class corresponding to `a_type_name'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ms_conformant_property_type</strong> (a_bmm_type_name: <code>String</code>, a_bmm_property_name: <code>String</code>, a_ms_property_name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if `a_ms_property_type' is a valid 'MS' dynamic type for `a_property' in BMM type `a_bmm_type_name'. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like List&lt;&gt;, Set&lt;&gt; etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong>: <code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Retrieve the property definition for `a_property_path' in flattened class corresponding to `a_type_name'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestor_classes</strong> (a_class: <code>String</code>): <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return all ancestor types of `a_class_name' up to root class (usually 'ANY', 'Object' or something similar). Does  not include current class. Returns empty list if none.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (a_desc_type, an_anc_type): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Check conformance of `a_desc_type' to `an_anc_type'; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their apporpriate constrainer types, or Any during the conformance testing process.</p>
+</div>
+<div class="paragraph">
+<p>Conformance is found if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[base class test] types are non-generic, and either type names are identical, or else `a_desc_type' has `an_anc_type' in its ancestors</p>
+</li>
+<li>
+<p>both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes `type_name_conforms_to' test</p>
+</li>
+<li>
+<p>descendant type is generic and ancestor type is not, and they pass base classes test</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_package_container_class"><a class="anchor" href="#_bmm_package_container_class"></a>4.2.4. BMM_PACKAGE_CONTAINER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PACKAGE_CONTAINER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstraction of a BMM model component that contains packages and classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code>List&lt;BMM_PACKAGE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong>: <code>BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dp_recursive_packages</strong> (action): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_package_class"><a class="anchor" href="#_bmm_package_class"></a>4.2.5. BMM_PACKAGE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PACKAGE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstraction of a package as a tree structure whose nodes can contain other packages and classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_PACKAGE_CONTAINER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>classes</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_classifier_class"><a class="anchor" href="#_bmm_classifier_class"></a>4.2.6. BMM_CLASSIFIER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_CLASSIFIER (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract idea of specifying a type either by definition or by reference.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_category</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_conformance_type_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_type_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_type_class"><a class="anchor" href="#_bmm_type_class"></a>4.2.7. BMM_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_TYPE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract idea of specifying a type in some context. This is not the same as 'defining' a class. A type specification is essentially a reference of some kind, that defines the type of an attribute, or function result or argument. It may include generic parameters that might or might not be bound. See subtypes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASSIFIER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_substitutions</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_substitutions</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_display_type_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_class_class"><a class="anchor" href="#_bmm_class_class"></a>4.2.8. BMM_CLASS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_CLASS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a class in an object model. A class is type that may be open or closed in terms of other types mentioned within.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASSIFIER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ancestors</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package</strong>: <code>BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>properties</strong>: <code>List&lt;BMM_PROPERTY&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source_schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>immediate_descendants</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestors</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_descendants</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers_non_primitive</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>supplier_closure</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_property_class"><a class="anchor" href="#_bmm_property_class"></a>4.2.9. BMM_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PROPERTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Model of a property definition within a class definition of an object model. Generic parameter takes care of variants.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of this property in the model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this propert is mandatory in its class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property is computed rather than stored in objects of this class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>existence</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_container_property_class"><a class="anchor" href="#_bmm_container_property_class"></a>4.2.10. BMM_CONTAINER_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_CONTAINER_PROPERTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Subtype of BMM_PROPERTY that represents a container type based on one of the inbuilt types List &lt;&gt;, Set &lt;&gt;, Array &lt;&gt;.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_PROPERTY</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cardinality</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>BMM_CONTAINER_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_simple_type_class"><a class="anchor" href="#_bmm_simple_type_class"></a>4.2.11. BMM_SIMPLE_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_SIMPLE_TYPE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type reference to a single type i.e. not generic or container type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_simple_type_open_class"><a class="anchor" href="#_bmm_simple_type_open_class"></a>4.2.12. BMM_SIMPLE_TYPE_OPEN Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_SIMPLE_TYPE_OPEN</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Open type reference to a single type parameter, i.e. typically 'T', 'V', 'K' etc. The parameter must be in the type declaration of the owning BMM_class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>BMM_GENERIC_PARAMETER</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_container_type_class"><a class="anchor" href="#_bmm_container_type_class"></a>4.2.13. BMM_CONTAINER_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_CONTAINER_TYPE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type reference that specifies containers with one generic parameter.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>container_class</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_type</strong>: <code>BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_generic_type_class"><a class="anchor" href="#_bmm_generic_type_class"></a>4.2.14. BMM_GENERIC_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_GENERIC_TYPE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type reference based on a generic class, e.g. 'HashTable &lt;List &lt;Packet&gt;, String&gt;'</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>List&lt;BMM_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code>BMM_GENERIC_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_generic_parameter_class"><a class="anchor" href="#_bmm_generic_parameter_class"></a>4.2.15. BMM_GENERIC_PARAMETER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_GENERIC_PARAMETER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a generic parameter in a class definition of a generic type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASSIFIER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of the parameter, e.g. 'T' etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conforms_to_type</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional conformance constraint that must be another valid class name.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>inheritance_precursor</strong>: <code>BMM_GENERIC_PARAMETER</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>If set, is the corresponding generic parameter definition in an ancestor class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_conforms_to_type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Get any ultimate type conformance constraint on this generic parameter due to inheritance.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_conforms_to_type</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generate ultimate conformance type, which is either from `conforms_to_type' or if not set, 'Any'.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_generic_class_class"><a class="anchor" href="#_bmm_generic_class_class"></a>4.2.16. BMM_GENERIC_CLASS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_GENERIC_CLASS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a generic class in an object model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>List&lt;BMM_GENERIC_PARAMETER&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Add suppliers from generic parameters.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_enumeration_class"><a class="anchor" href="#_bmm_enumeration_class"></a>4.2.17. BMM_ENUMERATION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_ENUMERATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of an enumeration type. In the BMM system, an 'enumeration' type is understood as an underlying basic type and a set of named constants of that type. It is designed so that the default type is Integer, and the default constants are numbered 0, 1, &#8230;&#8203; Optional model elements can be specified to override the values and / or the type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASS</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_enumeration_string_class"><a class="anchor" href="#_bmm_enumeration_string_class"></a>4.2.18. BMM_ENUMERATION_STRING Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_ENUMERATION_STRING</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>String-based enumeration type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_ENUMERATION</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_enumeration_integer_class"><a class="anchor" href="#_bmm_enumeration_integer_class"></a>4.2.19. BMM_ENUMERATION_INTEGER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_ENUMERATION_INTEGER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Integer-based enumeration type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_ENUMERATION</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_persistence_package"><a class="anchor" href="#_persistence_package"></a>5. Persistence Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
+<div class="paragraph">
+<p>The <code>persistence</code> package, shown below, defines a simplified form of the main BMM model suitable for persisting and human authoring. The <a href="https://github.com/openEHR/reference-models/tree/master/models/openEHR/Release-1.0.2/BMM">openEHR BMM schemas</a> are authored in the <code>P_BMM</code> form of the BMM, using the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>.</p>
+</div>
+<div id="persistence_package" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BMM-persistence.svg" alt="BMM persistence">
+</div>
+<div class="title">Figure 11. RM Core Package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>5.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_p_bmm_package_container_class"><a class="anchor" href="#_p_bmm_package_container_class"></a>5.2.1. P_BMM_PACKAGE_CONTAINER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_PACKAGE_CONTAINER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persisted form of a model component that contains packages.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code>Hash&lt;P_BMM_PACKAGE, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_schema_class"><a class="anchor" href="#_p_bmm_schema_class"></a>5.2.2. P_BMM_SCHEMA Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_SCHEMA</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persisted form of BMM_SCHEMA.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PACKAGE_CONTAINER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Version of BMM model, enabling schema evolution reasoning. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code>List&lt;P_BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Primitive type definitions. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code>List&lt;P_BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Class definitions. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code>Hash&lt;BMM_INCLUDE_SPEC, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Inclusion list, in the form of a hash of individual include specifications, each of which at least specifies the id of another schema, and may specify a namespace via which types from the included schemas are known in this schema.
+Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code>BMM_SCHEMA</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generated by create_bmm_schema from persisted elements.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>state</strong>: <code>P_BMM_SCHEMA_STATE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_created</strong>: <code>List&lt;&gt;</code><br>
+<strong><em>Pre_state</em></strong>: state = P_BMM_PACKAGE_STATE.State_created</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Do some basic validation post initial creation</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>check that package structure is regular:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>only top-level packages can have qualified names</p>
+</li>
+<li>
+<p>no top-level package name can be a direct parent or child of another (child package must be declared under the parent)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>check that all classes are mentioned in the package structure</p>
+</li>
+<li>
+<p>check that all models refer to valid packages</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>load_finalise</strong>: <code>List&lt;&gt;</code><br>
+<strong><em>Pre_state</em></strong>: state = P_BMM_PACKAGE_STATE.State_validated_created</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Finalisation work:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>convert packages to canonical form, i.e. full hierarchy with no packages with names like aa.bb.cc</p>
+</li>
+<li>
+<p>set up include processing list</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (other): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Merge in class and package definitions from `other', except where the current schema already has a definition for the given type or package.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Main validation prior to generation of BMM_SCHEMA; access to `all_schemas' allows errors to be allocated to correct schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_schema</strong>: <code>List&lt;&gt;</code><br>
+<strong><em>Pre_state</em></strong>: state = P_BMM_PACKAGE_STATE.State_includes_processed</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_packages</strong>: <code>P_BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_schema_state_enumeration"><a class="anchor" href="#_p_bmm_schema_state_enumeration"></a>5.2.3. P_BMM_SCHEMA_STATE Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_SCHEMA_STATE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">State_created</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">State_validated_created</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">State_includes_pending</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">State_includes_processed</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_include_spec_class"><a class="anchor" href="#_bmm_include_spec_class"></a>5.2.4. BMM_INCLUDE_SPEC Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_INCLUDE_SPEC</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namesapce</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_package_container_class_2"><a class="anchor" href="#_p_bmm_package_container_class_2"></a>5.2.5. P_BMM_PACKAGE_CONTAINER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_PACKAGE_CONTAINER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persisted form of a model component that contains packages.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code>Hash&lt;P_BMM_PACKAGE, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_package_class"><a class="anchor" href="#_p_bmm_package_class"></a>5.2.6. P_BMM_PACKAGE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_PACKAGE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persisted form of a package as a tree structure whose nodes can contain more packages and/or classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PACKAGE_CONTAINER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of the package from schema; this name may be qualified if it is a top-level package within the schema, or unqualified. Persistent attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>classes</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of classes in this package. Persistent attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_package_definition</strong>: <code>BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>BMM_PACKAGE created by create_bmm_package_definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (other: <code>P_BMM_PACKAGE</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_package_definition</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_classifier_class"><a class="anchor" href="#_p_bmm_classifier_class"></a>5.2.7. P_BMM_CLASSIFIER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>P_BMM_CLASSIFIER (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Ancestor class of P_BMM_ class and type classes.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_type_class"><a class="anchor" href="#_p_bmm_type_class"></a>5.2.8. P_BMM_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>P_BMM_TYPE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persistent form of BMM_TYPE.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_CLASSIFIER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_type</strong>: <code>BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_type</strong> (a_schema: <code>BMM_SCHEMA</code>, a_class_def: <code>BMM_CLASS</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_class_class"><a class="anchor" href="#_p_bmm_class_class"></a>5.2.9. P_BMM_CLASS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_CLASS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of persistent form of BMM_CLASS for serialisation to ODIN, JSON, XML etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_CLASSIFIER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Unique id generated for later comparison during merging, in order to detect if two classes are the same. Assigned in post-load processing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of the class. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ancestors</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of immediate inheritance parents. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>properties</strong>: <code>List&lt;P_BMM_PROPERTY&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of attributes defined in this class. Persistent attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this is an abstract type. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_override</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this class definition overrides one found in an included schema.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameter_defs</strong>: <code>List&lt;P_BMM_GENERIC_PARAMETER&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of generic parameter definitions. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source_schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to original source schema defining this class. Set during BMM_SCHEMA materialise. Useful for GUI tools to enable user to edit the schema file containing a given class (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_generic</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this class is a generic class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_class_definition</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>populate_bmm_class_definition</strong> (a_bmm_schema: <code>BMM_SCHEMA</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_generic_parameter_class"><a class="anchor" href="#_p_bmm_generic_parameter_class"></a>5.2.10. P_BMM_GENERIC_PARAMETER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_GENERIC_PARAMETER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persistent form of BMM_GENERIC_PARAMETER.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_CLASSIFIER</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of the parameter, e.g. 'T' etc. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conforms_to_type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional conformance constraint - the name of a type to which a concrete substitution of this generic parameter must conform.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_generic_parameter</strong>: <code>BMM_GENERIC_PARAMETER</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>BMM_GENERIC_PARAMETER created by create_bmm_generic_parameter</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_generic_parameter_definition</strong> (a_bmm_schema: <code>BMM_SCHEMA</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_property_class"><a class="anchor" href="#_p_bmm_property_class"></a>5.2.11. P_BMM_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>P_BMM_PROPERTY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Persistent form of BMM_PROPERTY.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of this property within its class. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property is mandatory in its class. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property is computed rather than stored in objects of this class. Persisted Attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_im_infrastructure</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property is info model 'infrastructure' rather than 'data'. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_im_runtime</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property is info model 'runtime' settable property. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Type definition of this property, if not a simple String type reference. Persisted attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_property_definition</strong>: <code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>BMM_PROPERTY created by create_bmm_property_definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_property_definition</strong> (a_bmm_schema: <code>BMM_SCHEMA</code>, a_class_def: <code>BMM_CLASS</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_simple_type_class"><a class="anchor" href="#_p_bmm_simple_type_class"></a>5.2.12. P_BMM_SIMPLE_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_SIMPLE_TYPE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_simple_type_open_class"><a class="anchor" href="#_p_bmm_simple_type_open_class"></a>5.2.13. P_BMM_SIMPLE_TYPE_OPEN Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_SIMPLE_TYPE_OPEN</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_generic_type_class"><a class="anchor" href="#_p_bmm_generic_type_class"></a>5.2.14. P_BMM_GENERIC_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_GENERIC_TYPE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameter_defs</strong>: <code>List&lt;P_BMM_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameter_refs</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_container_type_class"><a class="anchor" href="#_p_bmm_container_type_class"></a>5.2.15. P_BMM_CONTAINER_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_CONTAINER_TYPE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>container_type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_ref</strong>: <code>P_BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_single_property_class"><a class="anchor" href="#_p_bmm_single_property_class"></a>5.2.16. P_BMM_SINGLE_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_SINGLE_PROPERTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>If the type is a simple type, then this attribute will hold the type name. If the type is a container or generic, then type_ref will hold the type definition. The resulting type is generated in type_def.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_ref</strong>: <code>P_BMM_SIMPLE_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_property_definition</strong>: <code>BMM_PROPERTY&lt;BMM_SIMPLE_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>BMM_PROPERTY created by create_bmm_property_definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_SIMPLE_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_single_property_open_class"><a class="anchor" href="#_p_bmm_single_property_open_class"></a>5.2.17. P_BMM_SINGLE_PROPERTY_OPEN Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_SINGLE_PROPERTY_OPEN</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_SIMPLE_TYPE_OPEN</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_SIMPLE_TYPE_OPEN</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_generic_property_class"><a class="anchor" href="#_p_bmm_generic_property_class"></a>5.2.18. P_BMM_GENERIC_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_GENERIC_PROPERTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_GENERIC_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Type definition of this property, if not a simple String type reference. Persistent attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_property_definition</strong>: <code>BMM_PROPERTY&lt;BMM_GENERIC_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>BMM_PROPERTY created by create_bmm_property_definition.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_container_property_class"><a class="anchor" href="#_p_bmm_container_property_class"></a>5.2.19. P_BMM_CONTAINER_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_CONTAINER_PROPERTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cardinality</strong>: <code>Interval&lt;Integer&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Cardinality of this property in its class. Persistent attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_CONTAINER_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Type definition of this property, if not a simple String type reference. Persistent attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_property_definition</strong>: <code>BMM_CONTAINER_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>BMM_PROPERTY created by create_bmm_property_definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_property_definition</strong> (a_bmm_schema: <code>BMM_SCHEMA</code>, a_class_def: <code>BMM_CLASS</code>): <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_enumeration_class"><a class="anchor" href="#_p_bmm_enumeration_class"></a>5.2.20. P_BMM_ENUMERATION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_ENUMERATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_CLASS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_names</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_values</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_enumeration_string_class"><a class="anchor" href="#_p_bmm_enumeration_string_class"></a>5.2.21. P_BMM_ENUMERATION_STRING Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_ENUMERATION_STRING</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_p_bmm_enumeration_integer_class"><a class="anchor" href="#_p_bmm_enumeration_integer_class"></a>5.2.22. P_BMM_ENUMERATION_INTEGER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>P_BMM_ENUMERATION_INTEGER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bmm_syntax"><a class="anchor" href="#_bmm_syntax"></a>6. BMM Syntax</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_header_items"><a class="anchor" href="#_header_items"></a>6.2. Header Items</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- BMM version on which these schemas are based.</span>
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-nc">bmm_version</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;2.1&quot;</span><span class="tok-p">&gt;</span>
+
+
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- schema identification</span>
+<span class="tok-c">-- (schema_id computed as &lt;rm_publisher&gt;_&lt;schema_name&gt;_&lt;rm_release&gt;)</span>
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-nc">rm_publisher</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;openehr&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">schema_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;adltest&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">rm_release</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;1.0.2&quot;</span><span class="tok-p">&gt;</span>
+
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- schema documentation</span>
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-nc">schema_revision</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;1.0.36&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">schema_lifecycle_state</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;stable&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">schema_description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;openEHR schema to support test archetypes&quot;</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inclusions"><a class="anchor" href="#_inclusions"></a>6.3. Inclusions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- inclusions</span>
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-nc">includes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+	<span class="tok-p">[</span><span class="tok-s">&quot;1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+		<span class="tok-nc">id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;openehr_basic_types_1.0.2&quot;</span><span class="tok-p">&gt;</span>
+	<span class="tok-p">&gt;</span>
+<span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_archetyping_related"><a class="anchor" href="#_archetyping_related"></a>6.4. Archetyping related</h3>
+<div class="paragraph">
+<p>Three archetyping related attributes can be set below, but would not usually all in the same schema. Only the archetype_rm_closure_packages variable is needed in at least one schema, usually the top-most one.</p>
+</div>
+<div class="paragraph">
+<p><code>archetype_parent_class</code> defines a base class from the Reference Model that provides archetyping capability in RM data structures. It is optional, and there need be no such class in the RM. In the openEHR and 13606 RMs, this class exists, (<code>LOCATABLE</code>, and <code>RECORD_COMPONENT</code> respectively). Defining it here has the effect in tools that the class tree under which archetypes are arranged contains only RM classes inheriting from this class, e.g. LOCATABLE classes in the case of openEHR. If nothing is set here, all classes in the RM are assumed as candidates for archetypes. This attribute, if defined, must be defined in the same schema that defines the referenced class.</p>
+</div>
+<div class="paragraph">
+<p><code>archetype_data_value_parent_class</code> defines a base class from the Reference Model whose descendants are considered to be 'logical data types' (i.e. of some higher level than the built-in primitive types String, Integer etc). This attribute is optional, even if the RM does have such a class, and is only used to help tooling provide more intelligent display, e.g. in statistical reports.</p>
+</div>
+<div class="paragraph">
+<p>This attribute, if defined, must be defined in the same schema that defines the referenced class.</p>
+</div>
+<div class="paragraph">
+<p>If <code>archetype_parent_class</code> is not set, designate a class whose descendants should be made visible in tree and grid renderings of the archetype definition. For openEHR and CEN this class is normally the same as the archetype_parent_class, i.e. <code>LOCATABLE</code> and <code>RECORD_COMPONENT</code> respectively. It is typically set for CEN, because <code>archetype_parent_class</code> may not be stated, due to demographic types not inheriting from it. The effect of this attribute in visualisation is to generate the most natural tree or grid-based view of an archetype definition, from the semantic viewpoint.</p>
+</div>
+<div class="paragraph">
+<p><code>archetype_rm_closure_packages</code> defines the package or packages that are considered the archetyping namespace used in archetype multi-axial ids. For example, in openEHR, an archetype is identified by an id of the form <code>openEHR-EHR-OBSERVATION.some_obs.vN</code>. The 'EHR' in the above is an 'RM package closure', i.e. the name of an RM package whose class closure by reachability provides the set of classes that may be archetyped in the 'EHR' namespace. The reason for this is somewhat subtle: consider that if you want archetypes based on classes defined directly within a package P, and you also define these archetypes that re-use other archetypes based on more basic types like openEHR&#8217;s <code>CLUSTER</code> or similar (typically not defined in the head package), then you will inevitably have archetypes based on <code>CLUSTER</code> only for use with EHR archetypes e.g. archetypes based on <code>OBSERVATION</code>. However, you may well create archetypes based on <code>CLUSTER</code> only for use with e.g. top-level archetypes from the demographic package. The archetype_rm_closure_packages setting is used to define the root id namespaces for archetypes, allowing low-level archetypes to be designated for use with one or other high-level archetype. E.g. <code>openEHR-EHR-CLUSTER.bp_position.v1</code> would be used only with <code>openEHR-EHR-OBSERVATION.bp_measurement.vX</code>, or similar, and most likely not with any <code>openEHR-DEMOGRAPHIC-XXXX.yyyy.vN</code> archetype. Note that in openEHR, there is nothing to prevent such cross-namespace reuse - it is just a design guideline. This attribute, must be defined in the same schema that defines the referenced package(s).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- archetyping</span>
+<span class="tok-c">-- override archetype parent class from included schema</span>
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-nc">archetype_parent_class</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;CLASS_NAME&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">archetype_data_value_parent_class</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;CLASS_NAME&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">archetype_visualise_descendants_of</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;CLASS_NAME&quot;</span><span class="tok-p">&gt;</span>
+<span class="tok-nc">archetype_rm_closure_packages</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_package_definition"><a class="anchor" href="#_package_definition"></a>6.5. Package Definition</h3>
+<div class="paragraph">
+<p>The packages definition should be self-explanatory: just name the classes and packages in a recursive fashion.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+only top-level package ids can be paths (i.e. contain the '.' character)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+only classes defined in the same schema can be referenced in the package section in that schema.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+make sure that the ODIN 'keys' are the same as the 'name' attributes in each block.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- packages</span>
+<span class="tok-c">------------------------------------------------------</span>
+<span class="tok-nc">packages</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+	<span class="tok-p">[</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">&gt;</span>
+		<span class="tok-nc">classes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;WHOLE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;SOME_TYPE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;BOOK&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CHAPTER&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;ENTRY&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CAR&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CAR_BODY&quot;</span><span class="tok-p">&gt;</span>
+	<span class="tok-p">&gt;</span>
+<span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>6.6. Primitive Types</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- primitive types</span>
+<span class="tok-c">------------------------------------------------------</span>
+
+<span class="tok-nc">primitive_types</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+	<span class="tok-p">[</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">&gt;</span>
+		<span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+	<span class="tok-p">&gt;</span>
+	<span class="tok-p">[</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">&gt;</span>
+		<span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+		<span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+	<span class="tok-p">&gt;</span>
+<span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>6.7. Class Definitions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
+<span class="tok-c">-- classes</span>
+<span class="tok-c">------------------------------------------------------</span>
+
+<span class="tok-nc">class_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+	<span class="tok-p">[</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">&gt;</span>
+		<span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+		<span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+	<span class="tok-p">&gt;</span>
+
+    <span class="tok-c">-- etc</span>
+
+<span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_basic_class_properties"><a class="anchor" href="#_basic_class_properties"></a>6.7.1. Basic Class properties</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_optionality"><a class="anchor" href="#_optionality"></a>6.7.2. Optionality</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_container_properties"><a class="anchor" href="#_container_properties"></a>6.7.3. Container Properties</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>6.7.4. Generic Classes</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_generic_properties"><a class="anchor" href="#_generic_properties"></a>6.7.5. Generic Properties</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_enumerated_classes"><a class="anchor" href="#_enumerated_classes"></a>6.7.6. Enumerated Classes</h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
+<div class="sect3">
+<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999. See <a href="http://www.omg.org/spec/PIDS/" class="bare">http://www.omg.org/spec/PIDS/</a> .</p>
+</li>
+<li>
+<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999. <a href="http://www.omg.org/spec/LQS/" class="bare">http://www.omg.org/spec/LQS/</a> .</p>
+</li>
+<li>
+<p><a id="HL7v3_ballot2"></a>[HL7v3_ballot2] JL7 International. <strong>HL7 version 3 2nd Ballot specification</strong>. Available at <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
+<p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
+</li>
+<li>
+<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
+</li>
+<li>
+<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+</li>
+<li>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_31_32"></a>[EHCR_supA_31_32] Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993.</p>
+</li>
+<li>
+<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_AUS"></a>[GeHR_AUS] Heard S, Beale T. <strong>The Good Electronic Health Record (GeHR) (Australia).</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
+</li>
+<li>
+<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
+</li>
+<li>
+<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages. See <a href="http://discovery.ucl.ac.uk/66235/" class="bare">http://discovery.ucl.ac.uk/66235/</a> .</p>
+</li>
+<li>
+<p><a id="synex"></a>[synex] University College London. <strong>SynEx project</strong>. <a href="http://www.chime.ucl.ac.uk/HealthI/SynEx/" class="bare">http://www.chime.ucl.ac.uk/HealthI/SynEx/</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
+</li>
+<li>
+<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+</li>
+<li>
+<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
+</li>
+<li>
+<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
+</li>
+<li>
+<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
+</li>
+<li>
+<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
+</li>
+<li>
+<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
+</li>
+<li>
+<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tools"><a class="anchor" href="#_tools"></a>Tools</h4>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-02-01 23:54:48 GMT
+</div>
+</div>
+</body>
+</html>

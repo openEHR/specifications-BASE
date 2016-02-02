@@ -1,0 +1,40 @@
+=== BMM_GENERIC_PARAMETER Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*BMM_GENERIC_PARAMETER*
+
+h|*Description*
+2+a|Definition of a generic parameter in a class definition of a generic type.
+
+h|*Inherit*
+2+|BMM_CLASSIFIER
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*name*: `String`
+a|Name of the parameter, e.g. 'T' etc.
+
+h|*0..1*
+|*conforms_to_type*: `BMM_CLASS`
+a|Optional conformance constraint that must be another valid class name.
+
+h|*0..1*
+|*inheritance_precursor*: `BMM_GENERIC_PARAMETER`
+a|If set, is the corresponding generic parameter definition in an ancestor class.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*flattened_conforms_to_type*: `String`
+a|Get any ultimate type conformance constraint on this generic parameter due to inheritance.
+
+h|
+|*effective_conforms_to_type*: `BMM_CLASS`
+a|Generate ultimate conformance type, which is either from `conforms_to_type' or if not set, 'Any'.
+|===

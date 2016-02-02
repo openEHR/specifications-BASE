@@ -1,0 +1,75 @@
+=== BMM_SCHEMA_CORE Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*BMM_SCHEMA_CORE*
+
+h|*Description*
+2+a|Core properties of BMM_SCHEMA.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*rm_publisher*: `String`
+a|Publisher of model expressed in the schema. Persisted attribute.
+
+h|*1..1*
+|*rm_release*: `String`
+a|Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" . Persisted attribute.
+
+h|*1..1*
+|*schema_name*: `String`
+a|Name of model expressed in schema; a 'schema' usually contains all of the packages of one 'model' of a publisher. A publisher with more than one model can have multiple schemas. Persisted attribute.
+
+h|*1..1*
+|*schema_revision*: `String`
+a|Revision of schema. Persisted attribute.
+
+h|*1..1*
+|*schema_lifecycle_state*: `String`
+a|Persisted attribute.
+
+h|*1..1*
+|*schema_author*: `String`
+a|Primary author of schema. Persisted attribute.
+
+h|*1..1*
+|*schema_description*: `String`
+a|Description of schema. Persisted attribute.
+
+h|*0..1*
+|*schema_contributors*: `List<String>`
+a|Contributing authors of schema. Persisted attribute.
+
+h|*0..1*
+|*archetype_parent_class*: `String`
+a|Name of a parent class used within the schema to provide archetype capability, enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
+
+h|*0..1*
+|*archetype_data_value_parent_class*: `String`
+a|Name of a parent class of logical 'data types' used within the schema to provide archetype capability, enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
+
+h|*0..1*
+|*archetype_rm_closure_packages*: `List<String>`
+a|List of top-level package paths that provide the RM 'model' part in achetype identifiers, e.g. the path "org.openehr.ehr" gives "EHR" in "openEHR-EHR". Within this namespace,  archetypes can be based on any class reachable from classes defined directly in these packages.
+
+Persisted attribute.
+
+h|*0..1*
+|*archetype_visualise_descendants_of*: `String`
+a|If archetype_parent_class is not set, designate a class whose descendants should be made visible in tree and grid renderings of the archetype definition. For openEHR and CEN this class is normally the same as the archetype_parent_class, i.e. LOCATABLE and RECORD_COMPONENT respectively. It is typically set for CEN, because archetype_parent_class may not be stated, due to demographic types not inheriting from it.
+
+The effect of this attribute in visualisation is to generate the most natural tree or grid-based view of an archetype definition, from the semantic viewpoint.
+
+Persisted attribute.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*schema_id*: `String`
+a|Derived name of schema, based on model publisher, model name, model release.
+|===

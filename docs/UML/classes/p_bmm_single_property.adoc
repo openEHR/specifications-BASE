@@ -1,0 +1,37 @@
+=== P_BMM_SINGLE_PROPERTY Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*P_BMM_SINGLE_PROPERTY*
+
+h|*Description*
+2+a|
+
+h|*Inherit*
+2+|P_BMM_PROPERTY
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*type*: `String`
+a|If the type is a simple type, then this attribute will hold the type name. If the type is a container or generic, then type_ref will hold the type definition. The resulting type is generated in type_def.
+
+h|*0..1*
+|*type_ref*: `P_BMM_SIMPLE_TYPE`
+a|
+
+h|*0..1 +
+(redefined)*
+|*bmm_property_definition*: `BMM_PROPERTY<BMM_SIMPLE_TYPE>`
+a|BMM_PROPERTY created by create_bmm_property_definition.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*type_def*: `P_BMM_SIMPLE_TYPE`
+a|
+|===
