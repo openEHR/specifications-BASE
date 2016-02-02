@@ -96,6 +96,10 @@ packages = <
 
 == Primitive Types
 
+Definitions for primitive types in a BMM schema are just normal class definitions within a `primitive_types` block. Types that are included here are usually types corresonding to primitives in target programming languages, XML schema or other downstream technologies. These types can be be detected as primitive types by tools, but otherwise are processed in the same way as types defined in the main `class_definitions` group.
+
+NOTE: unlike UML, all container types such as `List<T>`, `Hash<V,K>` etc are exlicit in a BMM schema, and consequently, such types are normally defined (including with generic parameters) in a BMM schema.
+
 [source, odin]
 --------
 ------------------------------------------------------
@@ -116,6 +120,10 @@ primitive_types = <
 --------
 
 == Class Definitions
+
+The main group of class definitions in a schema occurs within the `class_defintions` block. Each definition is a keyed ODIN object block correspnding to a serialised `P_BMM_CLASS` object, where the key is the class name. Since `name` is also BMM meta-model attribute, the class
+
+The subsections below exlain the various features of a class definition.
 
 [source, odin]
 --------

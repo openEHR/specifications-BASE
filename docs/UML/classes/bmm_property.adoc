@@ -8,6 +8,9 @@ h|*Class*
 h|*Description*
 2+a|Model of a property definition within a class definition of an object model. Generic parameter takes care of variants.
 
+h|*Inherit*
+2+|BMM_MODEL_ELEMENT
+
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
@@ -27,13 +30,21 @@ a|True if this property is computed rather than stored in objects of this class.
 h|*1..1*
 |*type*: `T`
 a|
+
+h|*0..1*
+|*is_im_runtime*: `Boolean`
+a|True if this property is info model 'runtime' property.
+
+h|*0..1*
+|*is_im_infrastructure*: `Boolean`
+a|
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*existence*: 
-a|
+|*existence*: `MULTIPLICITY_INTERVAL`
+a|Interval form of 0..1, 1..1 etc, generated from is_mandatory.
 
 h|
 |*display_name*: `String`

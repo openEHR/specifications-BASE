@@ -20,8 +20,8 @@ h|*1..1*
 a|
 
 h|*0..1*
-|*ancestors*: `List<BMM_CLASS>`
-a|
+|*ancestors*: `List<Hash<BMM_CLASS, String>>`
+a|List of immediate inheritance parents.
 
 h|*1..1*
 |*package*: `BMM_PACKAGE`
@@ -29,7 +29,7 @@ a|
 
 h|*0..1*
 |*properties*: `List<BMM_PROPERTY>`
-a|
+a|List of attributes defined in this class.
 
 h|*1..1*
 |*source_schema_id*: `String`
@@ -37,7 +37,19 @@ a|
 
 h|*0..1*
 |*immediate_descendants*: `List<String>`
-a|
+a|List of immediate inheritance descendants.
+
+h|*1..1*
+|*is_abstract*: `Boolean`
+a|True if this class is abstract in its model.
+
+h|*1..1*
+|*is_primitive_type*: `Boolean`
+a|True if this class is designated a primitive type within the overall type system of the schema.
+
+h|*1..1*
+|*is_override*: `Boolean`
+a|True if this definition overrides a class of the same name in an included schema.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -48,17 +60,34 @@ a|
 
 h|
 |*all_descendants*: `List<String>`
-a|
+a|Compute all descendants by following immediate_descendants.
 
 h|
 |*suppliers*: `List<String>`
-a|
+a|List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway). This list includes primitive types.
 
 h|
 |*suppliers_non_primitive*: `List<String>`
-a|
+a|Same as `suppliers' minus primitive types, as defined in input schema.
 
 h|
 |*supplier_closure*: `List<String>`
-a|
+a|List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway).  This list includes primitive types.
+
+h|
+|*package_path*: `String`
+a|Fully qualified package name, of form: 'package.package'.
+
+h|
+|*class_path*: `String`
+a|Fully qualified class name, of form: 'package.package.CLASS' with package path in lower-case and class in original case.
+
+h|
+|*flat_properties*: `List<Hash<BMM_PROPERTY<BMM_TYPE>, String>>`
+a|List of all properties due to current and ancestor classes, keyed by property name.
+
+h|(effected)
+|*base_class*: `BMM_CLASS` +
+*_Post_*: Result = Current
+a|Main design class for this type, from which properties etc can be extracted.
 |===

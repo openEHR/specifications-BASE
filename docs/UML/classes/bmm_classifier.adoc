@@ -8,19 +8,30 @@ h|*Class*
 h|*Description*
 2+a|Abstract idea of specifying a type either by definition or by reference.
 
+h|*Inherit*
+2+|BMM_MODEL_ELEMENT
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
 |*type_category*: `String`
-a|
+a|Generate a type category of main target type from Type_category_xx values.
 
 h|
 |*as_conformance_type_string*: `String`
-a|
+a|Name of the this type in form allowing other type to be RT-conformance tested against it; 'RT' conformance means 'relation-target' conformance, which abstracts away container types like List<>, Set<> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.
 
 h|
 |*as_type_string*: `String`
-a|
+a|Formal string form of the type as per UML.
+
+h|
+|*base_class*: `BMM_CLASS`
+a|Main design class for this type, from which properties etc can be extracted.
+
+h|
+|*flattened_type_list*: `List<String>`
+a|Completely flattened list of type names, flattening out all generic parameters.
 |===
