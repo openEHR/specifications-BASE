@@ -119,12 +119,14 @@
 <li><a href="#_primitive_types">6.6. Primitive Types</a></li>
 <li><a href="#_class_definitions_4">6.7. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_basic_class_properties">6.7.1. Basic Class properties</a></li>
-<li><a href="#_optionality">6.7.2. Optionality</a></li>
-<li><a href="#_container_properties">6.7.3. Container Properties</a></li>
-<li><a href="#_generic_classes">6.7.4. Generic Classes</a></li>
-<li><a href="#_generic_properties">6.7.5. Generic Properties</a></li>
-<li><a href="#_enumerated_classes">6.7.6. Enumerated Classes</a></li>
+<li><a href="#_simple_classes">6.7.1. Simple Classes</a>
+<ul class="sectlevel4">
+<li><a href="#_class_properties">Class properties</a></li>
+<li><a href="#_container_properties">Container Properties</a></li>
+</ul>
+</li>
+<li><a href="#_generic_classes">6.7.2. Generic Classes</a></li>
+<li><a href="#_enumerated_types">6.7.3. Enumerated Types</a></li>
 </ul>
 </li>
 </ul>
@@ -449,7 +451,7 @@
 <div class="title">Figure 3. BMM schemas loaded</div>
 </div>
 <div class="paragraph">
-<p>The following shows a single class, properties view. The structure of the class as properties, types, multiplicities, inheritance etc are all provided by the in-memory BMM classes.</p>
+<p>The following shows a single class in the inheritance-flattened properties view, otherwise known as the 'flat view' . The structure of the class as properties, types, multiplicities, inheritance etc are all provided by the in-memory BMM classes.</p>
 </div>
 <div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -476,7 +478,7 @@
 <div class="title">Figure 6. BMM class - descendants view</div>
 </div>
 <div class="paragraph">
-<p>The following shows a class in a 'closure' view, which is a computed reachability graph, including recursive references.</p>
+<p>The following shows a class in a 'closure' view, which is a computed reachability graph of a fully inheritance flattened class and all properties, including recursive references.</p>
 </div>
 <div id="awb_class_closure" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3142,10 +3144,15 @@ Persisted attribute.</p>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
-
+<div class="paragraph">
+<p>A BMM schema is normally written in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>, although other serialisations are possible. The ODIN form is described here. The structures are direct ODIN serialisaitons of the <code>P_BMM_XXX</code> classes in the <code>persistence</code> package.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_header_items"><a class="anchor" href="#_header_items"></a>6.2. Header Items</h3>
+<div class="paragraph">
+<p>The following shows the header items of a BMM schema, which correspond to the 'persistent' attributes of the class <code>P_BMM_SCHEMA</code>.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
@@ -3175,13 +3182,10 @@ Persisted attribute.</p>
 <h3 id="_inclusions"><a class="anchor" href="#_inclusions"></a>6.3. Inclusions</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
-<span class="tok-c">-- inclusions</span>
-<span class="tok-c">------------------------------------------------------</span>
-<span class="tok-nc">includes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-	<span class="tok-p">[</span><span class="tok-s">&quot;1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-		<span class="tok-nc">id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;openehr_basic_types_1.0.2&quot;</span><span class="tok-p">&gt;</span>
-	<span class="tok-p">&gt;</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">includes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+    <span class="tok-p">[</span><span class="tok-s">&quot;1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;openehr_basic_types_1.0.2&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
 <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
@@ -3262,14 +3266,11 @@ make sure that the ODIN 'keys' are the same as the 'name' attributes in each blo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
-<span class="tok-c">-- packages</span>
-<span class="tok-c">------------------------------------------------------</span>
-<span class="tok-nc">packages</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-	<span class="tok-p">[</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">&gt;</span>
-		<span class="tok-nc">classes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;WHOLE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;SOME_TYPE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;BOOK&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CHAPTER&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;ENTRY&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CAR&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CAR_BODY&quot;</span><span class="tok-p">&gt;</span>
-	<span class="tok-p">&gt;</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">packages</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+    <span class="tok-p">[</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;org.openehr.test_pkg&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">classes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;WHOLE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;SOME_TYPE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;BOOK&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CHAPTER&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;ENTRY&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CAR&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;CAR_BODY&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
 <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
@@ -3293,20 +3294,16 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
-<span class="tok-c">-- primitive types</span>
-<span class="tok-c">------------------------------------------------------</span>
-
-<span class="tok-nc">primitive_types</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-	<span class="tok-p">[</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">&gt;</span>
-		<span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
-	<span class="tok-p">&gt;</span>
-	<span class="tok-p">[</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">&gt;</span>
-		<span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
-		<span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
-	<span class="tok-p">&gt;</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">primitive_types</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+    <span class="tok-p">[</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
+    <span class="tok-p">[</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+    <span class="tok-p">&gt;</span>
 <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
@@ -3314,52 +3311,339 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 <div class="sect2">
 <h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>6.7. Class Definitions</h3>
 <div class="paragraph">
-<p>The main group of class definitions in a schema occurs within the <code>class_defintions</code> block. Each definition is a keyed ODIN object block correspnding to a serialised <code>P_BMM_CLASS</code> object, where the key is the class name. Since <code>name</code> is also BMM meta-model attribute, the class</p>
+<p>The main group of class definitions in a schema occurs within the <code><em>class_definitions</em></code> block. Each definition is a keyed ODIN object block correspnding to a serialised <code>P_BMM_CLASS</code> object, where the key is the class name. Since <code>name</code> is a BMM meta-model attribute, the class definition always contains its ODIN key.</p>
 </div>
 <div class="paragraph">
-<p>The subsections below exlain the various features of a class definition.</p>
+<p>The possible class-level meta-properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>name</em></code> - class name - any capitalisation can be used, usually one of CamelCase or so-called UPPER_SNAKE_CASE;</p>
+</li>
+<li>
+<p><code><em>ancestors</em></code> - states classes from which this class inherits, as an ODIN String list;</p>
+</li>
+<li>
+<p><code><em>is_abstract</em></code> - indicates that the class cannot be instantiated directly;</p>
+</li>
+<li>
+<p><code><em>properties</em></code> - ODIN block containing definitions consisting of <code>P_BMM_PROPERTY</code> descendants, keyed by property name.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_simple_classes"><a class="anchor" href="#_simple_classes"></a>6.7.1. Simple Classes</h4>
+<div class="paragraph">
+<p>Simple classes are those whose type is the same as the class, as opposed to generic classes and enumerated types (see below).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-c">------------------------------------------------------</span>
-<span class="tok-c">-- classes</span>
-<span class="tok-c">------------------------------------------------------</span>
-
-<span class="tok-nc">class_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-	<span class="tok-p">[</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-		<span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">&gt;</span>
-		<span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
-		<span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
-	<span class="tok-p">&gt;</span>
-
-    <span class="tok-c">-- etc</span>
-
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">class_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+    <span class="tok-p">[</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">is_abstract</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-c">-- properties here</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
+    <span class="tok-c">-- more classes here</span>
 <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_basic_class_properties"><a class="anchor" href="#_basic_class_properties"></a>6.7.1. Basic Class properties</h4>
-
+<div class="sect4">
+<h5 id="_class_properties"><a class="anchor" href="#_class_properties"></a>Class properties</h5>
+<div class="paragraph">
+<p>Class properties from the original model are expressed using ODIN object blocks keyed by property name. Since there are multiple possible descendants of <code>P_BMM_PROPERTY</code>, ODIN type markers must be used to indicate which subtypes is used in each case.</p>
+</div>
+<div class="paragraph">
+<p>The possible BMM meta-properties of all property types are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>name</em></code> - <code>String</code> name of the property in its owning class in the model - use camelCase or snake_case as appropriate;</p>
+</li>
+<li>
+<p><code><em>is_mandatory</em></code> - <code>Boolean</code> flag indicating whether the property is mandatory within its class.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following shows the class <code>ELEMENT</code> with two properties <code><em>null_flavour</em></code> and <code><em>value</em></code> of BMM meta-type <code>P_BMM_SINGLE_PROPERTY</code>, i.e. corresponding to a single-valued attribute from the original model.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;ELEMENT&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ELEMENT&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;null_flavour&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_SINGLE_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;null_flavour&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_CODED_TEXT&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">is_mandatory</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;value&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_SINGLE_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;value&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DATA_VALUE&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_container_properties"><a class="anchor" href="#_container_properties"></a>Container Properties</h5>
+<div class="paragraph">
+<p>The following is a <code>P_BMM_CONTAINER_PROPERTY</code> definition for the model property <code>items: List&lt;ITEM&gt;</code> in the <code>ELEMENT</code> class. The type is expressed in the <code><em>type_def</em></code> part which indicates the type of the container, which must be defined elsewhere in the schema, typically in the primitive types. The optional <code><em>cardinality</em></code> meta-property indicates cardinality of the container, and is expressed as a ODIN range. The default is <code>|0..*|</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;ELEMENT&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ELEMENT&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;items&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_CONTAINER_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;items&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-nc">container_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;List&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ITEM&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;</span>
+                <span class="tok-nc">cardinality</span> <span class="tok-o">=</span> <span class="tok-p">&lt;|&gt;=</span><span class="tok-mi">1</span><span class="tok-p">|&gt;</span>
+                <span class="tok-nc">is_mandatory</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_optionality"><a class="anchor" href="#_optionality"></a>6.7.2. Optionality</h4>
+<h4 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>6.7.2. Generic Classes</h4>
+<div class="paragraph">
+<p>Generic classes are those that have one or more substitutable generic type parameters. Such classes are therefore <em>type generators</em>, since actual types are formed by substitution of concrete types (typically simple classes) for the formal type parameters. The following example shows a generic class <code>Interval</code> with <code>generic_parameter_defs</code> of <code>T</code> which is constrained to conform to the type <code>Ordered</code>. This structure defineds the type <code>Interval&lt;T&#8594;Ordered&gt;</code>, with the same meaning as UML and programming languages supporting generic (templated) types.</p>
+</div>
+<div class="paragraph">
+<p>Generic classes will normally contain one or more properties whose formal type is the generic type parameter, i.e. the <code>T</code> in this example, as is the case below where the model properties <code><em>lower</em></code> and <code><em>upper</em></code> are both declared to be of type <code>T</code>. This declaration necessitates the use of the BMM meta-type <code>P_BMM_SINGLE_PROPERTY_OPEN</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;Interval&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Interval&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">generic_parameter_defs</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">conforms_to_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Ordered&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;lower&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_SINGLE_PROPERTY_OPEN</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;lower&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;upper&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_SINGLE_PROPERTY_OPEN</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;upper&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Given the presence of generic classes in a BMM schema, derived generic types can be used as the type of properties in other classes, for which the BMM meta-type <code>P_BMM_GENERIC_PROPERTY</code> is used. The folowing example shows first a generic class <code>DV_INTERVAL</code> defined in a similar way to <code>Interval</code> above, and then a class <code>SOME_TYPE</code> containing the property <code><em>qty_interval_attr</em></code> whose model type is <code>DV_INTERVAL&lt;DV_QUANTITY&gt;</code>. In the latter type declaration, the <code>DV_INTERVAL</code> is the <code><em>root_type</em></code> and <code>DV_INTERVAL</code> the <code><em>generic_parameter</em></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Interval&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;DATA_VALUE&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">generic_parameter_defs</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">conforms_to_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_ORDERED&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
 
+    <span class="tok-p">[</span><span class="tok-s">&quot;SOME_TYPE&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;SOME_TYPE&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;qty_interval_attr&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;qty_interval_attr_1&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-nc">generic_parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_QUANTITY&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type declarations can also be nested types, for example and container followed by a generic type. In the following the <code><em>careProvider</em></code> attribute is declared to be of model type <code>List&lt;ResourceReference&lt;Party&gt;&gt;</code>. Any level of type nesting is allowed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;Patient&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Patient&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;careProvider&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_CONTAINER_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;careProvider&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-nc">container_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;List&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                        <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;ResourceReference&quot;</span><span class="tok-p">&gt;</span>
+                        <span class="tok-nc">generic_parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Party&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;</span>
+                <span class="tok-nc">cardinality</span> <span class="tok-o">=</span> <span class="tok-p">&lt;|&gt;=</span><span class="tok-mi">0</span><span class="tok-p">|&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following property definition is based on the class <code>REFERENCE_RANGE</code>, and in this case, has a generic parameter type that is another generic type: <code>DV_INTERVAL&lt;DV_QUANTITY&gt;</code>. To express this, we use <code>generic_parameter_defs</code> instead of just <code><em>generic_parameters</em></code> to specify a type structure, rather than just a string type name. Note that <code>generic_parameter_defs</code> is a logical list in general, since there can always be more than one generic parameter, i.e. 'T', 'U' etc, even though it is most commonly just one. Accordingly, the usual ODIN keyed hash structure is used with each member being keyed by a generic parameter name, below <code>["T"]</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;REFERENCE_RANGE&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;REFERENCE_RANGE&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">generic_parameter_defs</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">conforms_to_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_ORDERED&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;range&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_SINGLE_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;range&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">is_mandatory</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-l">True</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
+
+    <span class="tok-p">[</span><span class="tok-s">&quot;RANGE_OF_INTERVAL_OF_QUANTITY&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;RANGE_OF_INTERVAL_OF_QUANTITY&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;range&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;range&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;REFERENCE_RANGE&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-nc">generic_parameter_defs</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                        <span class="tok-p">[</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                            <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
+                            <span class="tok-nc">generic_parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_QUANTITY&quot;</span><span class="tok-p">&gt;</span>
+                        <span class="tok-p">&gt;</span>
+                    <span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following example just does the same as the one above, but shows an (unrealistic) but legal case of multiple, mixed, nested generic parameters corresponding to the model property definition <code><em>range</em>: REFERENCE_RANGE&lt;DV_INTERVAL&lt;DV_QUANTITY&gt;, Integer, List&lt;DV_QUANTITY&gt;, List&lt;DV_INTERVAL&lt;DV_QUANTITY&gt;&gt;&gt;</code>. The rules for expressing types is clearly illustrated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>use 'type' for simple string type refs; use <code><em>type_def</em></code> for structure types;</p>
+</li>
+<li>
+<p>within <code>P_BMM_GENERIC_TYPE</code>, use <code><em>generic_parameters</em></code> for a list of string types;</p>
+</li>
+<li>
+<p>use <code><em>generic_parameter_defs</em></code> for a list of complex type references.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;CRAZY_TYPE&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;CRAZY_TYPE&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;range&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;range&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;REFERENCE_RANGE&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-nc">generic_parameter_defs</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                        <span class="tok-p">[</span><span class="tok-s">&quot;T&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                            <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
+                            <span class="tok-nc">generic_parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_QUANTITY&quot;</span><span class="tok-p">&gt;</span>
+                        <span class="tok-p">&gt;</span>
+                        <span class="tok-p">[</span><span class="tok-s">&quot;U&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_SIMPLE_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                            <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Integer&quot;</span><span class="tok-p">&gt;</span>
+                        <span class="tok-p">&gt;</span>
+                        <span class="tok-p">[</span><span class="tok-s">&quot;V&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_CONTAINER_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                            <span class="tok-nc">type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_QUANTITY&quot;</span><span class="tok-p">&gt;</span>
+                            <span class="tok-nc">container_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;List&quot;</span><span class="tok-p">&gt;</span>
+                        <span class="tok-p">&gt;</span>
+                        <span class="tok-p">[</span><span class="tok-s">&quot;W&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_CONTAINER_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                            <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_TYPE</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+                                <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
+                                <span class="tok-nc">generic_parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_QUANTITY&quot;</span><span class="tok-p">&gt;</span>
+                            <span class="tok-p">&gt;</span>
+                            <span class="tok-nc">container_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;List&quot;</span><span class="tok-p">&gt;</span>
+                        <span class="tok-p">&gt;</span>
+                    <span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_container_properties"><a class="anchor" href="#_container_properties"></a>6.7.3. Container Properties</h4>
-
+<h4 id="_enumerated_types"><a class="anchor" href="#_enumerated_types"></a>6.7.3. Enumerated Types</h4>
+<div class="paragraph">
+<p>In a BMM schema, enumerated types are treated as constrained forms of standard types with open ranges, currently only <code>Integer</code> and <code>String</code>. They are accordingly represented using class definitions of the meta-types <code>P_BMM_ENUMERATION_INTEGER</code> and <code>P_BMM_ENUMERATION_STRING</code> respectively. In either case, just names (<code><em>items_names</em></code> meta-property) or both names and values (<code><em>item_values</em></code> meta-property) can be specified.</p>
 </div>
-<div class="sect3">
-<h4 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>6.7.4. Generic Classes</h4>
-
+<div class="paragraph">
+<p>The following example shows two variants of am enumerated type based on the <code>Integer</code> primitive type.</p>
 </div>
-<div class="sect3">
-<h4 id="_generic_properties"><a class="anchor" href="#_generic_properties"></a>6.7.5. Generic Properties</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;PROPORTION_KIND&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_ENUMERATION_INTEGER</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;PROPORTION_KIND&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Integer&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">item_names</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;pk_ratio&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_unitary&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_percent&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_fraction&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_integer_fraction&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
 
+    <span class="tok-p">[</span><span class="tok-s">&quot;PROPORTION_KIND_2&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_ENUMERATION_INTEGER</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;PROPORTION_KIND_2&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Integer&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">item_names</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;pk_ratio&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_unitary&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_percent&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_fraction&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;pk_integer_fraction&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">item_values</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">1001</span><span class="tok-p">,</span> <span class="tok-mi">1002</span><span class="tok-p">,</span> <span class="tok-mi">1003</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
 </div>
-<div class="sect3">
-<h4 id="_enumerated_classes"><a class="anchor" href="#_enumerated_classes"></a>6.7.6. Enumerated Classes</h4>
+</div>
+<div class="paragraph">
+<p>The following example shows two similar examples based on <code>String</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="odin">    <span class="tok-p">[</span><span class="tok-s">&quot;MAGNITUDE_STATUS&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_ENUMERATION_STRING</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;MAGNITUDE_STATUS&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;String&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">item_names</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;le&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;ge&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;eq&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;approx_eq&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">item_values</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;&lt;=&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;&gt;=&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;=&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;~&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
 
+    <span class="tok-p">[</span><span class="tok-s">&quot;NAME_PART&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_ENUMERATION_STRING</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;NAME_PART&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;String&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
+        <span class="tok-nc">item_names</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;FIRST&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;MIDDLE&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;LAST&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
