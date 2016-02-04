@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*P_BMM_SINGLE_PROPERTY_OPEN*
 
 h|*Description*
-2+a|
+2+a|Persistent form of a BMM_SINGLE_PROPERTY_OPEN.
 
 h|*Inherit*
 2+|P_BMM_PROPERTY
@@ -16,18 +16,22 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
+|*type_ref*: `P_BMM_SIMPLE_TYPE_OPEN`
+a|Type definition of this property, if not a simple String type reference. Persistent attribute.
+
+h|*0..1*
 |*type*: `String`
-a|
+a|Type definition of this property, if a simple String type reference. Really we should use `type_def' to be regular in the schema, but that makes the schema more wordy and less clear. So we use this persisted String value, and compute the `type_def' on the fly. Persisted attribute.
 
 h|*0..1 +
 (redefined)*
-|*type_def*: `P_BMM_SIMPLE_TYPE_OPEN`
-a|
+|*bmm_property_definition*: `BMM_PROPERTY<BMM_SIMPLE_TYPE_OPEN>`
+a|BMM_PROPERTY created by create_bmm_property_definition.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
 |*type_def*: `P_BMM_SIMPLE_TYPE_OPEN`
-a|
+a|Generate `type_ref' from `type' and save.
 |===

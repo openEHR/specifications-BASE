@@ -44,9 +44,11 @@ The BMM consists of three packages as follows:
 
 * `rm_access`: the interface to most features including schema load/reload, generally used by an application as a reflection library;
 * `core`: the core BMM classes used for in-memory representation of an object model;
-* `persistence`: a simplified version of the core classes, used for persistence and human authoring.
+* `persistence`: a simplified version of the core classes prefixed with `P_BMM_`, used for persistence and human authoring, which allow file (i.e. schema) inclusion and re-use.
 
-They are illustrated below.
+NOTE: One of the key differences between the core BMM classes and the P_BMM classes is that the latter model a set of schema files, enabling file inclusion, whereas the former provide a model of a single object model in its in=memory form, regardless of the schema file structure.
+
+The packages are illustrated below.
 
 [.text-center]
 .Package Overview

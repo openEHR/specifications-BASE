@@ -17,15 +17,20 @@ h|*Attributes*
 
 h|*1..1*
 |*container_type*: `String`
-a|
+a|The type of the container. This converts to the root_type in BMM_GENERIC_TYPE. Persisted attribute.
 
 h|*1..1*
 |*type_def*: `P_BMM_TYPE`
-a|
+a|Type definition of `type', if not a simple String type reference. Persisted attribute.
 
 h|*0..1*
 |*type*: `String`
-a|
+a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE. Persisted attribute.
+
+h|*0..1 +
+(redefined)*
+|*bmm_type*: `BMM_CONTAINER_TYPE`
+a|Result of create_bmm_type() call.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

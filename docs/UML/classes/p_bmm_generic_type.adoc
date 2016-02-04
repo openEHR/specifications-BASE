@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*P_BMM_GENERIC_TYPE*
 
 h|*Description*
-2+a|
+2+a|Persistent form of BMM_GENERIC_TYPE.
 
 h|*Inherit*
 2+|P_BMM_TYPE
@@ -21,16 +21,21 @@ a|
 
 h|*1..1*
 |*generic_parameter_defs*: `List<P_BMM_TYPE>`
-a|
+a|Generic parameters of the root_type in this type specifier if non-simple types. The order must match the order of the owning class's formal generic parameter declarations. Persistent attribute.
 
 h|*0..1*
 |*generic_parameters*: `List<String>`
-a|
+a|Generic parameters of the root_type in this type specifier, if simple types. The order must match the order of the owning class's formal generic parameter declarations. Persistent attribute.
+
+h|*0..1 +
+(redefined)*
+|*bmm_type*: `BMM_GENERIC_TYPE`
+a|Result of create_bmm_type() call.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*generic_parameter_refs*: `List<>`
-a|
+|*generic_parameter_refs*: `List<P_BMM_TYPE>`
+a|Generic parameters of the root_type in this type specifier. The order must match the order of the owning class's formal generic parameter declarations
 |===

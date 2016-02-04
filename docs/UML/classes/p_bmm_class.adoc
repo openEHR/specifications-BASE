@@ -16,10 +16,6 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*uid*: `Integer`
-a|Unique id generated for later comparison during merging, in order to detect if two classes are the same. Assigned in post-load processing.
-
-h|*1..1*
 |*name*: `String`
 a|Name of the class. Persisted attribute.
 
@@ -46,19 +42,28 @@ a|List of generic parameter definitions. Persisted attribute.
 h|*1..1*
 |*source_schema_id*: `String`
 a|Reference to original source schema defining this class. Set during BMM_SCHEMA materialise. Useful for GUI tools to enable user to edit the schema file containing a given class (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
+
+h|*0..1*
+|*bmm_class_definition*: `BMM_CLASS`
+a|BMM_CLASS object build by create_bmm_class_definition and populate_bmm_class_definition.
+
+h|*1..1*
+|*uid*: `Integer`
+a|Unique id generated for later comparison during merging, in order to detect if two classes are the same. Assigned in post-load processing.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*is_generic*: `Boolean`
+|*is_generic*: `Boolean` +
+*_Post_*: Result := generic_parameter_defs /= Void
 a|True if this class is a generic class.
 
 h|
 |*create_bmm_class_definition*: `List<>`
-a|
+a|Create bmm_class_definition.
 
 h|
 |*populate_bmm_class_definition* (a_bmm_schema: `BMM_SCHEMA`): `List<>`
-a|
+a|Add remaining model elements from Current to `bmm_class_definition'.
 |===
