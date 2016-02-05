@@ -14,16 +14,20 @@ h|*Attributes*
 
 h|*0..1*
 |*packages*: `List<BMM_PACKAGE>`
-a|
+a|Child packages; keys all in upper case for guaranteed matching.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*package_at_path*: `BMM_PACKAGE`
-a|
+|*package_at_path* (a_path: `String`): `BMM_PACKAGE`
+a|Package at the path `a_path'.
 
 h|
-|*dp_recursive_packages* (action): `List<>`
-a|
+|*do_recursive_packages* (action): `List<>`
+a|Recursively execute `action', which is a procedure taking a BMM_PACKAGE argument, on all members of packages.
+
+h|
+|*has_package_path* (a_path: `String`): `Boolean`
+a|True if there is a package at the path `a_path'; paths are delimited with Package_name_delimiter.
 |===

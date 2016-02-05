@@ -19,8 +19,7 @@
 <li><a href="#_object_data_instance_notation_odin">Object Data Instance Notation (ODIN)</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
-<li><a href="#_acknowledgements">Acknowledgements</a></li>
-<li><a href="#_acknowledgements_2">Acknowledgements</a>
+<li><a href="#_acknowledgements">Acknowledgements</a>
 <ul class="sectlevel2">
 <li><a href="#_primary_author">Primary Author</a></li>
 <li><a href="#_supporters">Supporters</a></li>
@@ -90,8 +89,8 @@
 <li><a href="#_boolean_data">7.1.5. Boolean Data</a></li>
 <li><a href="#_dates_and_times">7.1.6. Dates and Times</a>
 <ul class="sectlevel4">
-<li><a href="#_complete_date_times">Complete Date/Times</a></li>
-<li><a href="#_partial_date_times">Partial Date/Times</a></li>
+<li><a href="#_complete_date_times">7.1.6.1. Complete Date/Times</a></li>
+<li><a href="#_partial_date_times">7.1.6.2. Partial Date/Times</a></li>
 </ul>
 </li>
 </ul>
@@ -119,10 +118,10 @@
 <ul class="sectlevel3">
 <li><a href="#_expression_of_odin_in_xml">A.1.1. Expression of ODIN in XML</a>
 <ul class="sectlevel4">
-<li><a href="#_single_attributes">Single Attributes</a></li>
-<li><a href="#_container_attributes">Container Attributes</a></li>
-<li><a href="#_nested_container_attributes">Nested Container Attributes</a></li>
-<li><a href="#_type_names">Type Names</a></li>
+<li><a href="#_single_attributes">A.1.1.1. Single Attributes</a></li>
+<li><a href="#_container_attributes">A.1.1.2. Container Attributes</a></li>
+<li><a href="#_nested_container_attributes">A.1.1.3. Nested Container Attributes</a></li>
+<li><a href="#_type_names">A.1.1.4. Type Names</a></li>
 </ul>
 </li>
 </ul>
@@ -145,7 +144,6 @@
 <li><a href="#_e_health_standards">e-Health Standards</a></li>
 <li><a href="#_e_health_projects">e-Health Projects</a></li>
 <li><a href="#_general_standards">General Standards</a></li>
-<li><a href="#_tools">Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -356,12 +354,6 @@
 </div>
 <div class="sect1">
 <h2 id="_acknowledgements">Acknowledgements</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_acknowledgements_2">Acknowledgements</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_primary_author">Primary Author</h3>
@@ -1373,7 +1365,7 @@ class SUBJECT
 <div class="sect3">
 <h4 id="_dates_and_times"><a class="anchor" href="#_dates_and_times"></a>7.1.6. Dates and Times</h4>
 <div class="sect4">
-<h5 id="_complete_date_times"><a class="anchor" href="#_complete_date_times"></a>Complete Date/Times</h5>
+<h5 id="_complete_date_times"><a class="anchor" href="#_complete_date_times"></a>7.1.6.1. Complete Date/Times</h5>
 <div class="paragraph">
 <p>In ODIN, full and partial dates, times and durations can be expressed. All full dates, times and durations are expressed using a subset of ISO8601. The Support IM provides a full explanation of the ISO8601 semantics supported in openEHR.</p>
 </div>
@@ -1415,7 +1407,7 @@ class SUBJECT
 </div>
 </div>
 <div class="sect4">
-<h5 id="_partial_date_times"><a class="anchor" href="#_partial_date_times"></a>Partial Date/Times</h5>
+<h5 id="_partial_date_times"><a class="anchor" href="#_partial_date_times"></a>7.1.6.2. Partial Date/Times</h5>
 <div class="paragraph">
 <p>Two ways of expressing partial (i.e. incomplete) date/times are supported in ODIN. The ISO 8601 incomplete formats are supported in extended form only (i.e. with '-' and ':' separators) for all patterns that are unambiguous on their own. Dates consisting of only the year, and times consisting of only the hour are not supported, since both of these syntactically look like integers. The supported ISO 8601 patterns are as follows:</p>
 </div>
@@ -1711,13 +1703,13 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 <p>The main elements of the mapping are as follows.</p>
 </div>
 <div class="sect4">
-<h5 id="_single_attributes"><a class="anchor" href="#_single_attributes"></a>Single Attributes</h5>
+<h5 id="_single_attributes"><a class="anchor" href="#_single_attributes"></a>A.1.1.1. Single Attributes</h5>
 <div class="paragraph">
 <p>Single attribute nodes map to tagged nodes of the same name.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_container_attributes"><a class="anchor" href="#_container_attributes"></a>Container Attributes</h5>
+<h5 id="_container_attributes"><a class="anchor" href="#_container_attributes"></a>A.1.1.2. Container Attributes</h5>
 <div class="paragraph">
 <p>Container attribute nodes map to a series of tagged nodes of the same name, each with the XML attribute 'id' set to the ODIN key. For example, the ODIN:</p>
 </div>
@@ -1751,7 +1743,7 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 </div>
 </div>
 <div class="sect4">
-<h5 id="_nested_container_attributes"><a class="anchor" href="#_nested_container_attributes"></a>Nested Container Attributes</h5>
+<h5 id="_nested_container_attributes"><a class="anchor" href="#_nested_container_attributes"></a>A.1.1.3. Nested Container Attributes</h5>
 <div class="paragraph">
 <p>Nested container attribute nodes map to a series of tagged nodes of the same name, each with the XML attribute 'id' set to the ODIN key. For example, consider an object structure defined by the signature <code>countries:Hash&lt;Hash&lt;Hotel,String&gt;,String&gt;</code> . An instance of this in ODIN looks as follows:</p>
 </div>
@@ -1798,7 +1790,7 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 </div>
 </div>
 <div class="sect4">
-<h5 id="_type_names"><a class="anchor" href="#_type_names"></a>Type Names</h5>
+<h5 id="_type_names"><a class="anchor" href="#_type_names"></a>A.1.1.4. Type Names</h5>
 <div class="paragraph">
 <p>Type names map to XML 'type' attributes e.g. the ODIN:</p>
 </div>
@@ -2456,17 +2448,13 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tools"><a class="anchor" href="#_tools"></a>Tools</h4>
-
-</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-04 18:09:07 CET
+Last updated 2016-02-05 12:01:47 GMT
 </div>
 </div>
 </body>
