@@ -56,7 +56,7 @@ a|
 
 h|
 |*as_string*: `String`
-a|ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
+a|ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
 
 h|
 |*valid_iso8601_time*: `Boolean`
@@ -77,7 +77,7 @@ or the extended form:
 * hh:mm
 
 with an additional optional timezone indicator of:
-* Z or hh[mm]
+* Z or ±hh[mm]
 
 Where:
 
@@ -86,7 +86,7 @@ Where:
 * ss is “00” - “60” (0-filled to two digits)
 * sss is any numeric string, representing an optional fractional second
 * Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
-* hh[mm], i.e. +hhmm, +hh, -hhmm, -hh indicating the timezone
+* ±hh[mm], i.e. +hhmm, +hh, -hhmm, -hh indicating the timezone
 
 h|(effected)
 |*is_partial*: `Boolean`

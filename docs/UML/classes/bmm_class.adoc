@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1*
 |*name*: `String`
-a|
+a|Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic.
 
 h|*0..1*
 |*ancestors*: `List<Hash<BMM_CLASS, String>>`
@@ -25,7 +25,7 @@ a|List of immediate inheritance parents.
 
 h|*1..1*
 |*package*: `BMM_PACKAGE`
-a|
+a|Package this class belongs to.
 
 h|*0..1*
 |*properties*: `List<BMM_PROPERTY>`
@@ -33,7 +33,7 @@ a|List of attributes defined in this class.
 
 h|*1..1*
 |*source_schema_id*: `String`
-a|
+a|Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.
 
 h|*0..1*
 |*immediate_descendants*: `List<String>`
@@ -56,7 +56,7 @@ h|*Functions*
 
 h|
 |*all_ancestors*: `List<String>`
-a|
+a|List of all inheritance parent class names, recursively.
 
 h|
 |*all_descendants*: `List<String>`
