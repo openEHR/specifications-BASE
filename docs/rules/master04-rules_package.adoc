@@ -1,0 +1,131 @@
+= The Rules Package
+
+== Overview
+
+The `rules` package defines the Rules Object Model (ROM), a model of 'rules' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Rules Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the `rules` package and further specialise some of its types specifically intended for extension.
+
+The main `rules` packages `core` and `extension` are illustrated below.
+
+[.text-center]
+.Rules Package
+image::{uml_export_dir}/diagrams/BASE-rules.svg[id=rules_package, align="center"]
+
+The `rules.types` package is shown below.
+
+[.text-center]
+.Rules.types Package
+image::{uml_export_dir}/diagrams/BASE-rules.types.svg[id=rules_types_package, align="center"]
+
+== Typing
+
+The type system of the Rules formalism is defined via the type `RULE_TYPE_DEF` and its descendants. All types have a `_type_name_` and a `_type_anchor_`, which is a variable of the coresponding primtive type from within the openEHR `base_types` package, i.e. `Integer`, `Real`, `String`, etc. The type anchor can be used for testing assignments within the implementation. A special type `TYPE_DEF_OBJECT` is included to enable a value reference (descendant of `EXPR_VALUE_REF`) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/rule_type_def.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_boolean.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_integer.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_real.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_date.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_date_time.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_time.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_duration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_string.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_uri.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_terminology_code.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_object_ref.adoc[leveloffset=+1]
+
+== Core Package
+
+A group of rules to be used together is formally defined as one or more `RULE_STATEMENTs` in a `RULE_SET`. There are three types of rules corresponding to the classes `ASSERTION`, `VARIABLE_DECLARATION` and `ASSIGNMENT`. Assertions consist of an expression tree structure that evaluates to a `Boolean` value. The root of the tree is a descendant of the class `EXPR_ITEM` that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named. 
+
+A `VARIABLE_DECLARATION` enables a named variable to be declared with a type, which must be one of the descendants of `RULE_DEF_TYPE`.
+
+The `ASSIGNMENT` class defines the usual operation of assigning a value (the `_source_` i.e. the notional right-hand side) to a variable, (the `_target_`, i.e. left-hand side). The source of an assignment can be any Expression or an `EXTERNAL_QUERY`, which are sub-types of `RULE_VALUE`.
+
+=== Expressions
+
+Expressions are fully described rule values that may be evaluated internally (as compared to external query for example) and are defined by the `EXPR_XXX` classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <<language-expressions, Expressions>> sub-section in the Language section.
+
+In this model, 'functions' are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats functions as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.
+
+Operator semantics are defined by the class `OPERATOR_DEF`, which includes the two attributes `_name_` and `_symbols_` which define the name of the operator and its allowable symbols respectively.
+
+[.tbd]
+TBD: could potentially separate 'text symbols' and 'math symbols' to enable rendering in different ways.
+
+The `OPERATOR_DEF_BUILTIN` class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the rule evaluator, e.g. a case statement or similar that uses the implementation language native operators. 
+
+=== Other Rule Elements
+
+==== External Query
+
+An `EXTERNAL_QUERY` is a type of rule node representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within rules.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/rule_set.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/rule_statement.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/assertion.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/variable_declaration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/assignment.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/rule_value.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/external_query.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/expr_item.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expr_operator.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expr_unary_operator.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expr_binary_operator.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/operator_def.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/operator_def_builtin.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/builtin_operators.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/expr_leaf.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expr_literal.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expr_variable_ref.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/expr_function.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/function_def.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/function_def_builtin.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/builtin_functions.adoc[leveloffset=+1]
+
+== Extension Package
+
+The Extension package contains classes that provide extension points to the Rules formalism. These are of three kinds:
+
+* value references;
+* externally defined operators;
+* externally defined functions.
+
+=== Value References
+
+Value references are defined by creating descandants of the `EXPR_VALUE_REF` class. These typically contain a reference to a data object, or an identifier that can be resolved to a value via a resolver.
+
+=== Operators and Functions
+
+Externally defined operators and functions are defined as the separate types `OPERATOR_DEF_EXTERNAL` and `FUNCTION_DEF_EXTERNAL` resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Rules language.
+
+[.tbd]
+TBD: this model in its current form treats functions and operators as separate, to allow some convenience in simple implementation of standard operators. But   Theoretically, operators are just 1-arg or 2-arg functions, and the extensions could be defined by treating them as functions. However operators also usually have a symbol form, whereas we are assuming a function's symbol is just its identifier. Also, functions can in general have variable numbers of arguments, and complex implementations. Do we want to implement operators that way?
+
+The `OPERATOR_DEF_EXTERNAL` class inherits the `_identifier_` and `_symbols_` features from `OPERATOR_DEF`, and adds an `_execution_agent_`, which is a function object that can compute the operator, given appropriate arguments. The extention part of the UML model above shows how tihs facility can be used to define two operators that would normally be implemented as built-ins, `and` and `exists`.
+
+[.tbd]
+TBD: this is shown as being done with a class per operator, but in fact it only requires instances of `OPERATOR_DEF_EXTERNAL` which have the appropriate identifiers, symbols and avaluation agent. Should we just define it this way?
+
+The approach to adding custom functions is the same as with operators.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/expr_value_ref.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/operator_def_external.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/op_def_example.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/op_def_and.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/op_def_exists.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/function_def_external.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/function_def_example.adoc[leveloffset=+1]
+

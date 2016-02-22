@@ -1,0 +1,20 @@
+=== BUILTIN_OPERATORS Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*BUILTIN_OPERATORS*
+
+h|*Description*
+2+a|Singleton accessor object for list of builtin operators.
+
+h|*Constants*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*op_table*: `Hash<List<String>,String>`
+a|List of built-in operators in the form of a keyed table of List<String>, where the latter represents one or more lexical symbols used for the operator, e.g. "+", and the key is the operator identifier, e.g. "plus".
+
+Implementations may choose to populate this table with all operators defined in the core specifications, or only partially, in which case operators not in the table are implemented using the closure/agent approach for externally defined operators.
+|===

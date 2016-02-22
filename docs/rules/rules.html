@@ -1,0 +1,3219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="description" content="openEHR Rules Language specification">
+<meta name="keywords" content="openehr, rules">
+<title>Rules Language and Model</title>
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_rules_language_and_model">Rules Language and Model</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a></li>
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_status">1.3. Status</a></li>
+<li><a href="#_conformance">1.4. Conformance</a></li>
+</ul>
+</li>
+<li><a href="#_overview">2. Overview</a>
+<ul class="sectlevel2">
+<li><a href="#_execution_model">2.1. Execution Model</a></li>
+<li><a href="#_design_background">2.2. Design Background</a></li>
+</ul>
+</li>
+<li><a href="#_the_rules_language">3. The Rules Language</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">3.1. Overview</a></li>
+<li><a href="#_typing">3.2. Typing</a></li>
+<li><a href="#_variable_declarations_references_and_assignments">3.3. Variable Declarations, References and Assignments</a></li>
+<li><a href="#_assertions">3.4. Assertions</a></li>
+<li><a href="#__a_id_language_expressions_a_expressions">3.5. <a id="language-expressions"></a>Expressions</a>
+<ul class="sectlevel3">
+<li><a href="#_operands_leaf_nodes">3.5.1. Operands (Leaf Nodes)</a>
+<ul class="sectlevel4">
+<li><a href="#_literal_values">3.5.1.1. Literal Values</a></li>
+<li><a href="#_value_references_and_object_references">3.5.1.2. Value References and Object References</a></li>
+<li><a href="#_functions">3.5.1.3. Functions</a></li>
+</ul>
+</li>
+<li><a href="#__a_id_language_operators_a_operators">3.5.2. <a id="language-operators"></a>Operators</a>
+<ul class="sectlevel4">
+<li><a href="#_logical_negation">3.5.2.1. Logical Negation</a></li>
+<li><a href="#_logical_quantifiers">3.5.2.2. Logical Quantifiers</a></li>
+<li><a href="#_precedence_and_parentheses">3.5.2.3. Precedence and Parentheses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_other_rule_elements">3.6. Other Rule Elements</a>
+<ul class="sectlevel3">
+<li><a href="#_external_queries">3.6.1. External Queries</a></li>
+</ul>
+</li>
+<li><a href="#__a_id_language_extensions_a_extensions">3.7. <a id="language-extensions"></a>Extensions</a>
+<ul class="sectlevel3">
+<li><a href="#_operators">3.7.1. Operators</a></li>
+<li><a href="#_functions_2">3.7.2. Functions</a></li>
+</ul>
+</li>
+<li><a href="#_natural_language_issues">3.8. Natural Language Issues</a></li>
+</ul>
+</li>
+<li><a href="#_the_rules_package">4. The Rules Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_3">4.1. Overview</a></li>
+<li><a href="#_typing_2">4.2. Typing</a>
+<ul class="sectlevel3">
+<li><a href="#_class_descriptions">4.2.1. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_rule_type_def_class">4.2.1.1. RULE_TYPE_DEF Class</a></li>
+<li><a href="#_type_def_boolean_class">4.2.1.2. TYPE_DEF_BOOLEAN Class</a></li>
+<li><a href="#_type_def_integer_class">4.2.1.3. TYPE_DEF_INTEGER Class</a></li>
+<li><a href="#_type_def_real_class">4.2.1.4. TYPE_DEF_REAL Class</a></li>
+<li><a href="#_type_def_date_class">4.2.1.5. TYPE_DEF_DATE Class</a></li>
+<li><a href="#_type_def_date_time_class">4.2.1.6. TYPE_DEF_DATE_TIME Class</a></li>
+<li><a href="#_type_def_time_class">4.2.1.7. TYPE_DEF_TIME Class</a></li>
+<li><a href="#_type_def_duration_class">4.2.1.8. TYPE_DEF_DURATION Class</a></li>
+<li><a href="#_type_def_string_class">4.2.1.9. TYPE_DEF_STRING Class</a></li>
+<li><a href="#_type_def_uri_class">4.2.1.10. TYPE_DEF_URI Class</a></li>
+<li><a href="#_type_def_terminology_code_class">4.2.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
+<li><a href="#_type_def_object_ref_class">4.2.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_core_package">4.3. Core Package</a>
+<ul class="sectlevel3">
+<li><a href="#_expressions">4.3.1. Expressions</a></li>
+<li><a href="#_other_rule_elements_2">4.3.2. Other Rule Elements</a>
+<ul class="sectlevel4">
+<li><a href="#_external_query">4.3.2.1. External Query</a></li>
+</ul>
+</li>
+<li><a href="#_class_descriptions_2">4.3.3. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_rule_set_class">4.3.3.1. RULE_SET Class</a></li>
+<li><a href="#_rule_statement_class">4.3.3.2. RULE_STATEMENT Class</a></li>
+<li><a href="#_assertion_class">4.3.3.3. ASSERTION Class</a></li>
+<li><a href="#_variable_declaration_class">4.3.3.4. VARIABLE_DECLARATION Class</a></li>
+<li><a href="#_assignment_class">4.3.3.5. ASSIGNMENT Class</a></li>
+<li><a href="#_rule_value_class">4.3.3.6. RULE_VALUE Class</a></li>
+<li><a href="#_external_query_class">4.3.3.7. EXTERNAL_QUERY Class</a></li>
+<li><a href="#_expr_item_class">4.3.3.8. EXPR_ITEM Class</a></li>
+<li><a href="#_expr_operator_class">4.3.3.9. EXPR_OPERATOR Class</a></li>
+<li><a href="#_expr_unary_operator_class">4.3.3.10. EXPR_UNARY_OPERATOR Class</a></li>
+<li><a href="#_expr_binary_operator_class">4.3.3.11. EXPR_BINARY_OPERATOR Class</a></li>
+<li><a href="#_operator_def_class">4.3.3.12. OPERATOR_DEF Class</a></li>
+<li><a href="#_operator_def_builtin_class">4.3.3.13. OPERATOR_DEF_BUILTIN Class</a></li>
+<li><a href="#_builtin_operators_class">4.3.3.14. BUILTIN_OPERATORS Class</a></li>
+<li><a href="#_expr_leaf_class">4.3.3.15. EXPR_LEAF Class</a></li>
+<li><a href="#_expr_literal_class">4.3.3.16. EXPR_LITERAL Class</a></li>
+<li><a href="#_expr_variable_ref_class">4.3.3.17. EXPR_VARIABLE_REF Class</a></li>
+<li><a href="#_expr_function_class">4.3.3.18. EXPR_FUNCTION Class</a></li>
+<li><a href="#_function_def_class">4.3.3.19. FUNCTION_DEF Class</a></li>
+<li><a href="#_function_def_builtin_class">4.3.3.20. FUNCTION_DEF_BUILTIN Class</a></li>
+<li><a href="#_builtin_functions_class">4.3.3.21. BUILTIN_FUNCTIONS Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_extension_package">4.4. Extension Package</a>
+<ul class="sectlevel3">
+<li><a href="#_value_references">4.4.1. Value References</a></li>
+<li><a href="#_operators_and_functions">4.4.2. Operators and Functions</a></li>
+<li><a href="#_class_descriptions_3">4.4.3. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_expr_value_ref_class">4.4.3.1. EXPR_VALUE_REF Class</a></li>
+<li><a href="#_operator_def_external_class">4.4.3.2. OPERATOR_DEF_EXTERNAL Class</a></li>
+<li><a href="#_op_def_example_class">4.4.3.3. OP_DEF_EXAMPLE Class</a></li>
+<li><a href="#_op_def_and_class">4.4.3.4. OP_DEF_AND Class</a></li>
+<li><a href="#_op_def_exists_class">4.4.3.5. OP_DEF_EXISTS Class</a></li>
+<li><a href="#_function_def_external_class">4.4.3.6. FUNCTION_DEF_EXTERNAL Class</a></li>
+<li><a href="#_function_def_example_class">4.4.3.7. FUNCTION_DEF_EXAMPLE Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_syntax_specification">Appendix A: Syntax Specification</a></li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_publications">Publications</a></li>
+<li><a href="#_resources">Resources</a>
+<ul class="sectlevel3">
+<li><a href="#_general">General</a></li>
+<li><a href="#_e_health_standards">e-Health Standards</a></li>
+<li><a href="#_e_health_projects">e-Health Projects</a></li>
+<li><a href="#_general_standards">General Standards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_rules_language_and_model" class="sect0">Rules Language and Model</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="http://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: DEVELOPMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: openehr, rules</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="60%">
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2016 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="http://www.openehr.org/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
+ Web: <a href="http://www.openehr.org/" class="bare">http://www.openehr.org/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record">Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser, Implementer</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Initial writing. Taken from AOM2 2.0.6.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+ openEHR SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Feb 2016</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements">Acknowledgements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The work reported in this paper has been funded in by the following organisations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>University College London - Centre for Health Informatics and Multi-professional Education (CHIME);</p>
+</li>
+<li>
+<p>Ocean Informatics;</p>
+</li>
+<li>
+<p>Distributed Systems Technology Centre (DSTC), under the Cooperative Research Centres Program through the Department of the Prime Minister and Cabinet of the Commonwealth Government of Australia.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preface"><a class="anchor" href="#_preface"></a>1. Preface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the openEHR Rules Language and Model, which provides the rudimentary structure for all form rule-based specifications in openEHR. It defines the semantics of first order predicate logic expressions, variable declarations and assignments.</p>
+</div>
+<div class="paragraph">
+<p>The intended audience includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standards bodies producing health informatics standards;</p>
+</li>
+<li>
+<p>Academic groups using openEHR;</p>
+</li>
+<li>
+<p>Solution vendors;</p>
+</li>
+<li>
+<p>Medical informaticians and clinicians interested in health information.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_documents"><a class="anchor" href="#_related_documents"></a>1.2. Related Documents</h3>
+<div class="paragraph">
+<p>Prerequisite documents for reading this document include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/architecture_overview.html">openEHR Architecture Overview</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Releated documents include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://www.openehr.org/releases/AM/latest/AOM2.html">Archetype Object Model 2 (AOM2)</a>.</p>
+</li>
+<li>
+<p>The <a href="http://www.openehr.org/releases/CDS/latest/GDL.html">Guideline Definition Language (GDL)</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
+<div class="paragraph">
+<p>The contents of this specification were separated out from the <a href="http://www.openehr.org/releases/AM/latest/AOM2.html">AOM2 specification</a> in order to provide a common model of rules structures for AOM, GDL and other specifications requiring it.</p>
+</div>
+<div class="paragraph">
+<p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/support.html" class="bare">http://www.openehr.org/releases/RM/latest/support.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+<div class="paragraph">
+<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/browse/SPECPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel">specifications issue tracker</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>1.4. Conformance</h3>
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR Reference Model specification is determined by a formal test of that artifact against the relevant openEHR Implementation Technology Specification(s) (ITSs), such as an IDL interface or an XML-schema. Since ITSs are formal, automated derivations from the Reference Model, ITS conformance indicates RM conformance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The openEHR Rules Language and Rules Object Model (ROM) define an extensible core formalism suitable for use in other rule-based formalisms and environments. The Rules Language is the abstract syntax counterpart to the Rules Object Model. The ROM should be considered the normative definition of the openEHR Rules formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the ROM.</p>
+</div>
+<div class="paragraph">
+<p>The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extentions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.</p>
+</div>
+<div class="paragraph">
+<p>Key features of the formalism include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>it supports variable declarations, assignments and expressions;</p>
+</li>
+<li>
+<p>expressions are typed, using a set of primitive types to which every expression node must evaluate;</p>
+</li>
+<li>
+<p>it supports all standard logical operators including universal and existential quantification, as well as user-defined operators;</p>
+</li>
+<li>
+<p>it supports standard arithmetic and relational comparison operators, enabling the use of numerics;</p>
+</li>
+<li>
+<p>parentheses for overridding operator precedence are supported;</p>
+</li>
+<li>
+<p>it supports functions, including built-ins like <code>current_date</code>, standard functions like <code>max()</code> as well as user-defined functions.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_execution_model"><a class="anchor" href="#_execution_model"></a>2.1. Execution Model</h3>
+<div class="paragraph">
+<p>The assumed execution model of the Rules formalism is that it defines rules in a <em>rule set</em> that are evaluated by a <em>rule evaluator</em> against one or more <em>data contexts</em> which determine the truth values of the rules. The data context provides the computable representation of those aspects of reality to which the rules refer. Thus, a rule that asserts that <code>heartrate &gt; 50</code> is making an assertion about values found in some data - i.e. <code>heartrate</code> is a path or other resolvable reference to a value in some data representing an actual heart rate.</p>
+</div>
+<div class="paragraph">
+<p>It is thus the job of <em>value references</em> in rule expressions to reference values in the data context. The data context is not concretely defined in this specification, and must be specified in full rule languages based on this core formalism, which can be done in two places: by defining concrete value references, and by implementing the 'external query' facility to access data from services in the environment. The formalism as defined here is thus <em>not complete on its own</em>.</p>
+</div>
+<div class="paragraph">
+<p>If the Rule set contains Assertions, they are treated as conditions that must evaluate to <code>True</code> to pass. If an assertion fails at execution time, an <em>assertion violation</em> is raised. If any assertion violations occur, the Rule set is said to have <em>failed</em>.</p>
+</div>
+<div class="paragraph">
+<p>No assumption is implied about whether the data context used is complete or faithful to reality. Consequently, the <em>rules universe</em> is technically speaking an 'open world' in the sense of the <a href="https://en.wikipedia.org/wiki/Open-world_assumption">open-world assumption</a>. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_design_background"><a class="anchor" href="#_design_background"></a>2.2. Design Background</h3>
+<div class="paragraph">
+<p>The openEHR Rules formalism is based on a limited first-order predicate logic language with extensions for numeric sub-expressions. It has similarities with OMG&#8217;s OCL (Object Constraint Language) syntax, and is also similar to the assertion syntax used in the <a href="#Object_Z">[Object_Z]</a> and <a href="#Eiffel">[Eiffel]</a> languages and tools for over a decade (see <a href="#Sowa">[Sowa]</a>, <a href="#Hein">[Hein]</a>, <a href="#Kilov_Ross">[Kilov_Ross]</a> for an explanation of predicate logic in information modelling). None of these languages has been used directly, for reasons including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OCL has a complex type system connected to the UML meta-model, and includes some undecidable procedural semantics;</p>
+</li>
+<li>
+<p>none have adequate variable referencing mechanisms, such as to paths and external queries;</p>
+</li>
+<li>
+<p>they are too powerful, and would introduce unnecessary complexity.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are also similarities with other languages developed in the health arena for expressing 'medical logic' (Arden <a href="#hl7_arden">[hl7_arden]</a>), guidelines (<a href="#GLIF">[GLIF]</a> and many others) and decision support (e.g. GELLO <a href="#hl7_gello">[hl7_gello]</a>). These languages were not used either, for reasons including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>none have an easily extensible value referencing mechanism;</p>
+</li>
+<li>
+<p>some are too procedural (Arden, GLIF);</p>
+</li>
+<li>
+<p>current versions of some of these languages have been made specific to the HL7v3 RIM, a particular model of health information designed for message representation (GLIF 3.x, GELLO).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Modern syntaxes that provide a more generic and minimal inspiration for the rules syntax described here include the <a href="https://www.w3.org/TR/xpath-31/">Xpath syntax</a>.</p>
+</div>
+<div class="paragraph">
+<p>The design approach used here was thus to create a small concrete syntax allowing for a core subset of first-order predicate logic, and a corresponding object model representing the parse-tree form of the language.</p>
+</div>
+<div class="paragraph">
+<p>The semantic requirements are for expressions including arithmetic, boolean, and relational operators, functions, quantifier operators, operator precedence, parentheses, constant values, and certain kinds of variables. However, there is no support in the core specification for procedural semantics or most of the other complexities of full-blown programming languages.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_rules_language"><a class="anchor" href="#_the_rules_language"></a>3. The Rules Language</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
+<div class="paragraph">
+<p>This section describes the openEHR Rules Language. In the various contexts where openEHR rules are used, the syntax provides a foundation for concrete rules syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The key features of the language are: variable declarations, assignments and expressions. Most of the semantics are in the expression part, which is based on first-order predicate logic with the addition of arithmetic and relational operators to enable the use of numeric elements. Expressions may contain constants, variable references, value references and functions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_typing"><a class="anchor" href="#_typing"></a>3.2. Typing</h3>
+<div class="paragraph">
+<p>The rules language is fully typed, with all types coming from a set of types consisting of primitive types plus an object reference type. The primitive types are shown below, along with typical literal values, which are expressed in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html#_primitive_types">ODIN syntax</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Literal value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>True</code>, <code>False</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10</code>, <code>-4</code>, <code>1024</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10.0</code>, <code>0.345</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Real value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2004-08-12</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601-format date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2004-08-12T12:00:59</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601-format date/time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>12:00:59</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601-format time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>P39W</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601-format duration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"this is a string"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://en.wikipedia.org/wiki/Everest" class="bare">http://en.wikipedia.org/wiki/Everest</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uri in RFC3986 format <a href="#uri_syntax">[uri_syntax]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Terminology_code</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[snomed_ct::2004950]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terminology code reference</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The special <code>Object_ref</code> type is reserved for creating references to arbitrary objects in the data context, to which some operations can be applied.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: do we need <code>Integer64</code> and <code>Real64</code>?</p>
+</div>
+<div class="paragraph">
+<p>Automatic type promotion from <code>Integer</code> to <code>Real</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variable_declarations_references_and_assignments"><a class="anchor" href="#_variable_declarations_references_and_assignments"></a>3.3. Variable Declarations, References and Assignments</h3>
+<div class="paragraph">
+<p>Variables may be declared within a rule set, consisting of a name of the form <code>$var</code> and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $date_of_birth: Date
+    $age_in_years: Integer
+
+    $weight, $height, $bmi: Real</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Variables are referenced within assignments and expressions using the same syntax, i.e. <code>$var</code>.</p>
+</div>
+<div class="paragraph">
+<p>Typically declarations are used with assignments in the same way as in general purpose programming in mainstream languages. A variable can be assigned a number of kinds of things that are useful in rule-sets, including constants, expressions and value-references. A declaration can be combined with an assignment. These are illustrated below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $Mph_to_kmh_factor: Real := 1.6                 -- literal assigmment to create a constant
+    $speed_kmh, $speed_mph: Real                    -- variable declarations
+
+    $speed_mph := /path/to/mph/data/value           -- (provided by an extension)
+    $speed_kmh := $speed_mph * $Mph_to_kmh_factor   -- an assertion containing variable references</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above, the path <code>/path/to/mph/data/value</code> is assumed to be provided by an extension to the language, for example that enables archetype or XML data to be accessed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assertions"><a class="anchor" href="#_assertions"></a>3.4. Assertions</h3>
+<div class="paragraph">
+<p>An assertion is a standalone expression, often with a tag, which enables the meaning of the expression to be understood in context. If a tag is supplied it is prepended with a colon. The following example states that the speed in kilometres of some node is related to the speed-in-miles by a factor of 1.6:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    speed_validity: $speed_kmh = $speed_mph * $Mph_to_kmh_factor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor <code>$Mph_to_kmh_factor</code>, which was earlier defined to be <code>1.6</code>. This is different from the last statement in the previous example, which <em>assigns</em> the result of a multiplcation to the variable <code>$speed_kph</code>.</p>
+</div>
+<div class="paragraph">
+<p>The above example could also have been achieved without variables, as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    speed_validity: /path/to/kmh/data/value = /path/to/mph/data/value * 1.6</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In both cases it represents an assertion that when evaluated may be violated, in which case the rules evaluator can generate an <em>assertion violation</em> which might be used to notify a user or do some other action.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_id_language_expressions_a_expressions"><a class="anchor" href="#__a_id_language_expressions_a_expressions"></a>3.5. <a id="language-expressions"></a>Expressions</h3>
+<div class="paragraph">
+<p>Expressions constitute the main part of the rules language, and consist of a familiar typed, tree-structured, operator-based syntax common to many programming languages and logics. The two element types are <em>operators</em> and <em>operands</em>, i.e. leaf nodes. Expressions may contain the following elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>value references</em>: i.e. references to data elements in the form of an archetype path;</p>
+</li>
+<li>
+<p><em>literals</em>: i.e. primitive values including the date/time types;</p>
+</li>
+<li>
+<p><em>operators</em>: arithmetic operators, relational operators, boolean operators, quantification operators;</p>
+</li>
+<li>
+<p><em>functions</em>: various built-in functions as well as user-defined functions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the Rules language, functions are treated as lead nodes in expressions, rather than expression nodes.</p>
+</div>
+<div class="sect3">
+<h4 id="_operands_leaf_nodes"><a class="anchor" href="#_operands_leaf_nodes"></a>3.5.1. Operands (Leaf Nodes)</h4>
+<div class="paragraph">
+<p>Operands in an assertion expression are typed and are of four kinds, as described in the following sub-sections.</p>
+</div>
+<div class="sect4">
+<h5 id="_literal_values"><a class="anchor" href="#_literal_values"></a>3.5.1.1. Literal Values</h5>
+<div class="paragraph">
+<p>Literal values are of any primitive type, and are expressed in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>. Examples are shown above under <a href="#_typing">Typing</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_value_references_and_object_references"><a class="anchor" href="#_value_references_and_object_references"></a>3.5.1.2. Value References and Object References</h5>
+<div class="paragraph">
+<p>Entities in the data context can be referred to in two ways. The concrete reference mechanism must be defined in an extension; here we assume it is some kind of path of the form <code>/path/to/data/item</code>. The first kind of reference is a <em>value_reference</em>, and is achieved by the use of the naked reference. The assumption is that the reference points to a data item of a primitive type, or one that can be interpreted or converted unambiguously to a primitive type by the rule evaluator. The 'type' of any value reference is thus always a primitive type. This enables referencing to normal leaf values in the data.</p>
+</div>
+<div class="paragraph">
+<p>The other form of reference is an <em>object reference</em>. This enables a reference to an arbitrary object within the data to be created, and is done using the form <code>@ref</code>, e.g. <code>@/path/to/data</code>. The type of this is <code>Object_ref</code> within the rules type system, and the instance represents a reference, not a value. Certain operators such as <code>exists</code> and <code>for_all</code> can be used with object references. An object reference may be created to any data entity in the data context, including primitive values.</p>
+</div>
+<div class="paragraph">
+<p>The following shows a value reference in the form of an archetype path followed by an object reference to the same location.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    /data[id2]/items[id3]/value[id35]/value     -- Date of initial onset; type = Date
+    @/data[id2]/items[id3]/value[id35]/value    -- Object ref to 'date of initial onset' item;
+                                                -- type = Object_ref</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An object reference can be assigned to a variable in the normal way. This variable must have the type <code>Object_ref</code>. It can then be used in the normal way in expressions and assignments with operators that apply to object references. The following illustrates.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $pregnancy_data: Object_ref := @/path/to/pregnancy/data</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_functions"><a class="anchor" href="#_functions"></a>3.5.1.3. Functions</h5>
+<div class="paragraph">
+<p>Functions are considered leaf entities in the Rules language, and can be of a built-in type or external (user-defined) type. All functions are considered to have a formal typed signature of the form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    &lt;Arg1-Type, Arg2-Type, ....&gt;: Result-type</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thus the integer addition function <code>add</code> would have the signature <code>&lt;Integer, Integer&gt;: Integer</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following functions are assumed to be built in (how particular implementations achieve this may vary).</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Textual Rendering</th>
+<th class="tableblock halign-left valign-top">Signature</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Degree 0 functions (no arguments)</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Current date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Current time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_date_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_date_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:Date_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Curent date time</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Degree N functions (N argument)</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sum (x, y, &#8230;&#8203;.)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Real, &#8230;&#8203;&gt;: Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equivalent to <code>x + y + &#8230;&#8203;.</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mean (x, y, &#8230;&#8203;)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Real, &#8230;&#8203;&gt;: Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The mean (average) value of x, y, &#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>max (x, y, &#8230;&#8203;)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Real, &#8230;&#8203;&gt;: Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum value among x, y, &#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>min (x, y, &#8230;&#8203;)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Real, &#8230;&#8203;&gt;: Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum value among x, y, &#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All of the above functions which take <code>Real</code> argument will take <code>Integer</code> arguments and automatically promote them to <code>Real</code> in the usual fashion.</p>
+</div>
+<div class="paragraph">
+<p>Externally defined functions are described below under <a href="#language-extensions">Extensions</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__a_id_language_operators_a_operators"><a class="anchor" href="#__a_id_language_operators_a_operators"></a>3.5.2. <a id="language-operators"></a>Operators</h4>
+<div class="paragraph">
+<p>Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Rules parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows rules to be expressed in a more compact and less language-independent way.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identifier</th>
+<th class="tableblock halign-left valign-top">Textual<br>
+                     Rendering</th>
+<th class="tableblock halign-left valign-top">Symbolic<br>
+                                         Rendering</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Arithmetic Operators - Numeric result; descending precendence order</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"exp"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">≥</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expontentiation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"times"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"divide"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Division</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"mod"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modulo (whole number) division</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"plus"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Addition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"minus"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subtraction</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Relational Operators - Boolean result; equal precedence</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"eq"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equality relation between numerics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"ne"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">!=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">≠</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inequality relation between numerics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"lt"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less than relation between numerics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"le"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">≤</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less than or equal relation between numerics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"gt"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Greater than relation between numerics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"ge"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">≥</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Greater than or equal relation between numerics</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Logical Operators - Boolean result; descending precendence order</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"not"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not, ~</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∼, ¬</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Negation, "not p"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"and"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">and</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∧</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logical conjunction, "p and q"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"or"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">or</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∨</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logical disjunction, "p or q"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"xor"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">⊻</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exclusive or, "only one of p or q"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"exists"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exists</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∃</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existential quantifier, "there exists &#8230;&#8203;"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"for_all"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">for_all &#8230;&#8203; in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∀ &#8230;&#8203; ∈</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Universal quantifier, "for all x in y P"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"implies"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">implies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">⇒</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Material implication, "p implies q", or "if p then q"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Operator semantics that require further explanation are described below.</p>
+</div>
+<div class="sect4">
+<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>3.5.2.1. Logical Negation</h5>
+<div class="paragraph">
+<p>All Boolean operators take Boolean operands and generate a Boolean result. The <code>not</code> operator can be applied as a prefix operator to all operators returning a Boolean result as well as a parenthesised Boolean expression.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_logical_quantifiers"><a class="anchor" href="#_logical_quantifiers"></a>3.5.2.2. Logical Quantifiers</h5>
+<div class="paragraph">
+<p>The two standard logical quantifier operators are supported, <code>exists</code>, <code>for_all</code>. Both operators are used with respect to value references within the execution data context. The <code>exists</code> operator applied to a value reference (such as a path in an information structure) state that the value is present in the data context; the negated form states that it does not exist. The following simple example illustrates.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $is_female implies exists @/path/to/data/about/pregnancies
+
+    $is_female ⇒ ∃ @/path/to/data/about/pregnancies     -- symbolic form</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same may be achieved using variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $pregnancy_data: Object_ref := @/path/to/data/about/pregnancies
+
+    $is_female implies exists $pregnancy_data
+
+    $is_female ⇒ ∃ $pregnancy_data     -- symbolic form</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly, the <code>for_all</code> operator is applied to value references representing sets and lists, such as referred to by a path to a multiply-valued attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $pregnancy_data: Object_ref := @/path/to/data/about/pregnancies
+
+    $no_premature_births := for_all $p in $pregnancy_data $p/term &gt; P36W
+
+    $no_premature_births := ∀ $p ∈ $pregnancy_data $p/term &gt; P36W     -- symbolic form</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.5.2.3. Precedence and Parentheses</h5>
+<div class="paragraph">
+<p>The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $at_risk := $weight &gt; 120 and ( $is_smoker or $is_hypertensive)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_rule_elements"><a class="anchor" href="#_other_rule_elements"></a>3.6. Other Rule Elements</h3>
+<div class="sect3">
+<h4 id="_external_queries"><a class="anchor" href="#_external_queries"></a>3.6.1. External Queries</h4>
+<div class="paragraph">
+<p>An expression referring to an externally defined query, possibly including arguments, may be defined using the variable declaration syntax. The general pattern is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $varname: Type
+    $varname := query (context, query_name, arg1, arg2, ...)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples include:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $date_of_birth: ISO8601_DATE
+    $has_diabetes, $is_female: Boolean
+
+    $date_of_birth := query ("ehr", "date_of_birth")
+    $has_diabetes := query ("ehr", "has_diagnosis", "[snomed_ct::1234567]")
+    $is_female := query ("ehr", "is_female")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Any number of arguments can be included.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__a_id_language_extensions_a_extensions"><a class="anchor" href="#__a_id_language_extensions_a_extensions"></a>3.7. <a id="language-extensions"></a>Extensions</h3>
+<div class="sect3">
+<h4 id="_operators"><a class="anchor" href="#_operators"></a>3.7.1. Operators</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_functions_2"><a class="anchor" href="#_functions_2"></a>3.7.2. Functions</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_natural_language_issues"><a class="anchor" href="#_natural_language_issues"></a>3.8. Natural Language Issues</h3>
+<div class="paragraph tbd">
+<p>TBD: whether we do anything about the language dependence of rule variables.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_rules_package"><a class="anchor" href="#_the_rules_package"></a>4. The Rules Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
+<div class="paragraph">
+<p>The <code>rules</code> package defines the Rules Object Model (ROM), a model of 'rules' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Rules Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>rules</code> package and further specialise some of its types specifically intended for extension.</p>
+</div>
+<div class="paragraph">
+<p>The main <code>rules</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
+</div>
+<div id="rules_package" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-rules.svg" alt="BASE rules">
+</div>
+<div class="title">Figure 1. Rules Package</div>
+</div>
+<div class="paragraph">
+<p>The <code>rules.types</code> package is shown below.</p>
+</div>
+<div id="rules_types_package" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-rules.types.svg" alt="BASE rules.types">
+</div>
+<div class="title">Figure 2. Rules.types Package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_typing_2"><a class="anchor" href="#_typing_2"></a>4.2. Typing</h3>
+<div class="paragraph">
+<p>The type system of the Rules formalism is defined via the type <code>RULE_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
+</div>
+<div class="sect3">
+<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.2.1. Class Descriptions</h4>
+<div class="sect4">
+<h5 id="_rule_type_def_class"><a class="anchor" href="#_rule_type_def_class"></a>4.2.1.1. RULE_TYPE_DEF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RULE_TYPE_DEF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Ancestor class for type definitions known in the openEHR Rules formalism.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Natural language type name of this type as used in abstract rules syntax variable declarations.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Attribute of the openEHR primitive type (or Any) corresponding to this type definition meta-type.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>4.2.1.2. TYPE_DEF_BOOLEAN Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_BOOLEAN</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Boolean.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Boolean"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>4.2.1.3. TYPE_DEF_INTEGER Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_INTEGER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Integer.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Integer"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>4.2.1.4. TYPE_DEF_REAL Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_REAL</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Real.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Real"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>4.2.1.5. TYPE_DEF_DATE Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_DATE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Date.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Date"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Date</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>4.2.1.6. TYPE_DEF_DATE_TIME Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_DATE_TIME</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Date_time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Date_time"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>4.2.1.7. TYPE_DEF_TIME Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_TIME</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Time"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Time</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>4.2.1.8. TYPE_DEF_DURATION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_DURATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Duration.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Duration"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>4.2.1.9. TYPE_DEF_STRING Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_STRING</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type String.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"String"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>4.2.1.10. TYPE_DEF_URI Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_URI</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Uri.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Uri"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>4.2.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_TERMINOLOGY_CODE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the primitive type Terminology_code.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Terminology_code"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>4.2.1.12. TYPE_DEF_OBJECT_REF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TYPE_DEF_OBJECT_REF</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Rules meta-type representing the type Object_ref, which is assumed to by the type of any non-primitive reference target within a rule.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String&#160;=&#160;"Object_ref"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>4.3. Core Package</h3>
+<div class="paragraph">
+<p>A group of rules to be used together is formally defined as one or more <code>RULE_STATEMENTs</code> in a <code>RULE_SET</code>. There are three types of rules corresponding to the classes <code>ASSERTION</code>, <code>VARIABLE_DECLARATION</code> and <code>ASSIGNMENT</code>. Assertions consist of an expression tree structure that evaluates to a <code>Boolean</code> value. The root of the tree is a descendant of the class <code>EXPR_ITEM</code> that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named.</p>
+</div>
+<div class="paragraph">
+<p>A <code>VARIABLE_DECLARATION</code> enables a named variable to be declared with a type, which must be one of the descendants of <code>RULE_DEF_TYPE</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>RULE_VALUE</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>4.3.1. Expressions</h4>
+<div class="paragraph">
+<p>Expressions are fully described rule values that may be evaluated internally (as compared to external query for example) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
+</div>
+<div class="paragraph">
+<p>In this model, 'functions' are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats functions as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.</p>
+</div>
+<div class="paragraph">
+<p>Operator semantics are defined by the class <code>OPERATOR_DEF</code>, which includes the two attributes <code><em>name</em></code> and <code><em>symbols</em></code> which define the name of the operator and its allowable symbols respectively.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: could potentially separate 'text symbols' and 'math symbols' to enable rendering in different ways.</p>
+</div>
+<div class="paragraph">
+<p>The <code>OPERATOR_DEF_BUILTIN</code> class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the rule evaluator, e.g. a case statement or similar that uses the implementation language native operators.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_other_rule_elements_2"><a class="anchor" href="#_other_rule_elements_2"></a>4.3.2. Other Rule Elements</h4>
+<div class="sect4">
+<h5 id="_external_query"><a class="anchor" href="#_external_query"></a>4.3.2.1. External Query</h5>
+<div class="paragraph">
+<p>An <code>EXTERNAL_QUERY</code> is a type of rule node representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within rules.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>4.3.3. Class Descriptions</h4>
+<div class="sect4">
+<h5 id="_rule_set_class"><a class="anchor" href="#_rule_set_class"></a>4.3.3.1. RULE_SET Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RULE_SET</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A container for a specific set of rules intended to be used together.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rules</strong>: <code>List&lt;RULE_STATEMENT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The member rules of this rule set.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional name of this rule set.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_result</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Execution result of the whole rule set. Determined by the and-ing of result values of Assertions in the rule set.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_rule_statement_class"><a class="anchor" href="#_rule_statement_class"></a>4.3.3.2. RULE_STATEMENT Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RULE_STATEMENT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract concept of any statement in a block of rule statements.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_assertion_class"><a class="anchor" href="#_assertion_class"></a>4.3.3.3. ASSERTION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ASSERTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Structural model of a typed first order predicate logic assertion, in the form of an expression tree, including optional variable definitions.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_STATEMENT</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tag</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Expression tag, used for differentiating multiple assertions.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>string_expression</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>String form of expression, in case an expression evaluator taking String expressions is used for evaluation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expression</strong>: <code>EXPR_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Root of expression tree.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_result</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Execution result of this assertion.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_variable_declaration_class"><a class="anchor" href="#_variable_declaration_class"></a>4.3.3.4. VARIABLE_DECLARATION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VARIABLE_DECLARATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a named variable that can be used in an expression.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_STATEMENT</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of the variable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>RULE_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_assignment_class"><a class="anchor" href="#_assignment_class"></a>4.3.3.5. ASSIGNMENT Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ASSIGNMENT</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract ancestor of types representing the assignment statement, which does not produce a value in the way that operators such as '=', 'and' etc do. An assignment associates a named variable with an expression.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_STATEMENT</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>VARIABLE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The target variable on the notional left-hand side of this assignment.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>RULE_VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Source right hand side) of the assignment.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_rule_value_class"><a class="anchor" href="#_rule_value_class"></a>4.3.3.6. RULE_VALUE Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RULE_VALUE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Any kind of rule element that can be evaluated. The type will either be supplied in descendant types or else will be inferred by an assignment statement linked to a typed variable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_external_query_class"><a class="anchor" href="#_external_query_class"></a>4.3.3.7. EXTERNAL_QUERY Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXTERNAL_QUERY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a variable whose value is derived from a query run on a data context in the operational environment. Typical uses of this kind of variable are to obtain values like the patient date of birth, sex, weight, and so on. It could also be used to obtain items from a knowledge context, such as a drug database.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_VALUE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>context</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional name of context. This allows a basic separation of query types to be done in more sophisticated environments. Possible values might be “patient”, “medications” and so on.
+Not yet standardised.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>query_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Identifier of query in the external context, e.g. “date_of_birth”.
+Not yet standardised.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>query_args</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional arguments to query.
+Not yet standardised.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_item_class"><a class="anchor" href="#_expr_item_class"></a>4.3.3.8. EXPR_ITEM Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_ITEM (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of all typed expression tree items.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_VALUE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>RULE_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The primitive type of this node, which must be determined by redefinitions in concrete classes.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_operator_class"><a class="anchor" href="#_expr_operator_class"></a>4.3.3.9. EXPR_OPERATOR Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_OPERATOR (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of operator types.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>precedence_overridden</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator_def</strong>: <code>OPERATOR_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Operator definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of operator_def.symbols.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_unary_operator_class"><a class="anchor" href="#_expr_unary_operator_class"></a>4.3.3.10. EXPR_UNARY_OPERATOR Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_UNARY_OPERATOR</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Unary operator expression node.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_OPERATOR</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code>EXPR_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Operand node.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_binary_operator_class"><a class="anchor" href="#_expr_binary_operator_class"></a>4.3.3.11. EXPR_BINARY_OPERATOR Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_BINARY_OPERATOR</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Binary operator expression node.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_OPERATOR</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code>EXPR_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Left operand node.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code>EXPR_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Right operand node.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>4.3.3.12. OPERATOR_DEF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>OPERATOR_DEF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract definition of an operator for use in the Rules evaluator.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Unique identifier of this operator within the rules system.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>One or more symbols used to express the operator in textual form. This may include any unicode character.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_operator_def_builtin_class"><a class="anchor" href="#_operator_def_builtin_class"></a>4.3.3.13. OPERATOR_DEF_BUILTIN Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OPERATOR_DEF_BUILTIN</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Builtin operator pseudo-type. An implementation will typically use the 'identifer' attribute to determine which piece of internal code to execute to evaluate the operator.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPERATOR_DEF, BUILTIN_OPERATORS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Valid_operator</em></strong>: op_table.has (name)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_builtin_operators_class"><a class="anchor" href="#_builtin_operators_class"></a>4.3.3.14. BUILTIN_OPERATORS Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BUILTIN_OPERATORS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Singleton accessor object for list of builtin operators.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>op_table</strong>: <code>Hash&lt;List&lt;String&gt;,String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of built-in operators in the form of a keyed table of List&lt;String&gt;, where the latter represents one or more lexical symbols used for the operator, e.g. "+", and the key is the operator identifier, e.g. "plus".</p>
+</div>
+<div class="paragraph">
+<p>Implementations may choose to populate this table with all operators defined in the core specifications, or only partially, in which case operators not in the table are implemented using the closure/agent approach for externally defined operators.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_leaf_class"><a class="anchor" href="#_expr_leaf_class"></a>4.3.3.15. EXPR_LEAF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_LEAF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Expression tree leaf item representing one of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a manifest constant of any primitive type;</p>
+</li>
+<li>
+<p>a path referring to a value in the archetype;</p>
+</li>
+<li>
+<p>a constraint;</p>
+</li>
+<li>
+<p>a variable reference.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The reference item from which the value of this node can be computed.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_literal_class"><a class="anchor" href="#_expr_literal_class"></a>4.3.3.16. EXPR_LITERAL Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_LITERAL</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Literal value expression tree leaf item. This can represent a literal value of any primitive type included in the PRIMITIVE_TYPE enumeration.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_LEAF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A statically set constant value of a primitive type.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_variable_ref_class"><a class="anchor" href="#_expr_variable_ref_class"></a>4.3.3.17. EXPR_VARIABLE_REF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_VARIABLE_REF</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Expression tree leaf item representing a reference to a declared variable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_LEAF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>VARIABLE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The variable referred to.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_function_class"><a class="anchor" href="#_expr_function_class"></a>4.3.3.18. EXPR_FUNCTION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_FUNCTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Node representing a function with 0 or more arguments.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_LEAF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>List&lt;EXPR_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Arguments of this function, which can be from 0 to any number. Functions with no arguments are typically used to represent real world varying values like 'current time' and so on.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function_def</strong>: <code>FUNCTION_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_function_def_class"><a class="anchor" href="#_function_def_class"></a>4.3.3.19. FUNCTION_DEF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>FUNCTION_DEF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Ancestor type for types that define a function for use in the Rules evaluator.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Unique identifier of this function within the Rules system.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_function_def_builtin_class"><a class="anchor" href="#_function_def_builtin_class"></a>4.3.3.20. FUNCTION_DEF_BUILTIN Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION_DEF_BUILTIN</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Builtin function pseudo-type. An implementation will typically use the 'identifer' attribute to determine which piece of internal code to execute to evaluate the function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">FUNCTION_DEF, BUILTIN_FUNCTIONS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Valid_function</em></strong>: func_table.has (name)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_builtin_functions_class"><a class="anchor" href="#_builtin_functions_class"></a>4.3.3.21. BUILTIN_FUNCTIONS Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BUILTIN_FUNCTIONS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Singleton accessor object for list of builtin functions.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>func_table</strong>: <code>Hash&lt;List&lt;String&gt;,String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of built-in functions in the form of a keyed table of List&lt;String&gt;, where the latter represents one or more lexical symbols used for the function, e.g. "max", and the key is the function identifier, e.g. "max".</p>
+</div>
+<div class="paragraph">
+<p>Implementations may choose to populate this table with all functions defined in the core specifications, or only partially, in which case functions not in the table are implemented using the closure/agent approach for externally defined functions.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_extension_package"><a class="anchor" href="#_extension_package"></a>4.4. Extension Package</h3>
+<div class="paragraph">
+<p>The Extension package contains classes that provide extension points to the Rules formalism. These are of three kinds:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>value references;</p>
+</li>
+<li>
+<p>externally defined operators;</p>
+</li>
+<li>
+<p>externally defined functions.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_value_references"><a class="anchor" href="#_value_references"></a>4.4.1. Value References</h4>
+<div class="paragraph">
+<p>Value references are defined by creating descandants of the <code>EXPR_VALUE_REF</code> class. These typically contain a reference to a data object, or an identifier that can be resolved to a value via a resolver.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_operators_and_functions"><a class="anchor" href="#_operators_and_functions"></a>4.4.2. Operators and Functions</h4>
+<div class="paragraph">
+<p>Externally defined operators and functions are defined as the separate types <code>OPERATOR_DEF_EXTERNAL</code> and <code>FUNCTION_DEF_EXTERNAL</code> resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Rules language.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: this model in its current form treats functions and operators as separate, to allow some convenience in simple implementation of standard operators. But   Theoretically, operators are just 1-arg or 2-arg functions, and the extensions could be defined by treating them as functions. However operators also usually have a symbol form, whereas we are assuming a function&#8217;s symbol is just its identifier. Also, functions can in general have variable numbers of arguments, and complex implementations. Do we want to implement operators that way?</p>
+</div>
+<div class="paragraph">
+<p>The <code>OPERATOR_DEF_EXTERNAL</code> class inherits the <code><em>identifier</em></code> and <code><em>symbols</em></code> features from <code>OPERATOR_DEF</code>, and adds an <code><em>execution_agent</em></code>, which is a function object that can compute the operator, given appropriate arguments. The extention part of the UML model above shows how tihs facility can be used to define two operators that would normally be implemented as built-ins, <code>and</code> and <code>exists</code>.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: this is shown as being done with a class per operator, but in fact it only requires instances of <code>OPERATOR_DEF_EXTERNAL</code> which have the appropriate identifiers, symbols and avaluation agent. Should we just define it this way?</p>
+</div>
+<div class="paragraph">
+<p>The approach to adding custom functions is the same as with operators.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>4.4.3. Class Descriptions</h4>
+<div class="sect4">
+<h5 id="_expr_value_ref_class"><a class="anchor" href="#_expr_value_ref_class"></a>4.4.3.1. EXPR_VALUE_REF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_VALUE_REF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent type of concrete types enabling access to values in a specific information structure. This type provides an extension point for specific syntaxes to connect a generic rule structure to a data source.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_LEAF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_operator_def_external_class"><a class="anchor" href="#_operator_def_external_class"></a>4.4.3.2. OPERATOR_DEF_EXTERNAL Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>OPERATOR_DEF_EXTERNAL (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Ancestor of concrete operator definition types. Adds an optional execution agent, typically implemented by closures / lambdas/ agents in languages supporting functional programming.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPERATOR_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;ARGS, RETURN&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_op_def_example_class"><a class="anchor" href="#_op_def_example_class"></a>4.4.3.3. OP_DEF_EXAMPLE Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OP_DEF_EXAMPLE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Example custom operator definition as a class, for an operator whose identifier is 'xxx' and for which the symbols "xxx" and "%" can be used, and with a two-argument numeric signature.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPERATOR_DEF_EXTERNAL</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;&#160;=&#160;"xxx", "%"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"xxx"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Numeric,Numeric&gt;,Numeric&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_op_def_and_class"><a class="anchor" href="#_op_def_and_class"></a>4.4.3.4. OP_DEF_AND Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OP_DEF_AND</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Illustrative class showing what the normally built-in logical 'and' operator looks like as an external definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPERATOR_DEF_EXTERNAL</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;&#160;=&#160;"and","∧"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"and"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Boolean,Boolean&gt;,Boolean&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_op_def_exists_class"><a class="anchor" href="#_op_def_exists_class"></a>4.4.3.5. OP_DEF_EXISTS Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OP_DEF_EXISTS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Illustrative class showing what the normally built-in logical 'exists' operator looks like as an external definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPERATOR_DEF_EXTERNAL</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;&#160;=&#160;"exists", "∃"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"exists"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Boolean&gt;,Boolean&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_function_def_external_class"><a class="anchor" href="#_function_def_external_class"></a>4.4.3.6. FUNCTION_DEF_EXTERNAL Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>FUNCTION_DEF_EXTERNAL (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Ancestor class of externally defined function types.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">FUNCTION_DEF</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;ARGS, RETURN&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_function_def_example_class"><a class="anchor" href="#_function_def_example_class"></a>4.4.3.7. FUNCTION_DEF_EXAMPLE Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION_DEF_EXAMPLE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Example of an externally defined function of signature:</p>
+</div>
+<div class="paragraph">
+<p>func (v: Numeric): Numeric</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">FUNCTION_DEF_EXTERNAL</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"funny"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Numeric&gt;,Numeric&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_syntax_specification"><a class="anchor" href="#_syntax_specification"></a>Appendix A: Syntax Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The grammar and lexical specification for the standard Rules syntax is shown below in ANTLR4 form.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+this is still the old ADL grammar - the Antlr4 file has to be upgraded.
+ 
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="antlr-java"><span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">//  description: Antlr4 grammar for openEHR Rules core syntax.</span><span class="tok-w"></span>
+<span class="tok-c">//  author:      Thomas Beale &lt;thomas.beale@openehr.org&gt;</span><span class="tok-w"></span>
+<span class="tok-c">//  support:     openEHR Specifications PR tracker &lt;https://openehr.atlassian.net/projects/SPECPR/issues&gt;</span><span class="tok-w"></span>
+<span class="tok-c">//  copyright:   Copyright (c) 2016 openEHR Foundation</span><span class="tok-w"></span>
+<span class="tok-c">//  license:     Apache 2.0 License &lt;http://www.apache.org/licenses/LICENSE-2.0.html&gt;</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">base_rules</span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">//  ============== Parser rules ==============</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-nl">assertion</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">identifier</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Expressions evaluating to boolean values</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-nl">boolean_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-nv">boolean_binop</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">boolean_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">boolean_literal</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_relop_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NOT</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">boolean_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_AND</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_XOR</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_OR</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_IMPLIES</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">boolean_literal</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_TRUE</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_FALSE</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Expressions evaluating to arithmetic values</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-nl">arithmetic_relop_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-nv">relational_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">arithmetic_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">integer_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">real_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">arithmetic_arith_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;^&#39;</span><span class="tok-err">&lt;</span><span class="tok-nv">assoc</span><span class="tok-o">=</span><span class="tok-nv">right</span><span class="tok-err">&gt;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">relational_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_EQ</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NE</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GT</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LT</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LE</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GE</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">arithmetic_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;*&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h3>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
+</li>
+<li>
+<p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_2002"></a>[Beale_2002] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> Eleventh OOPSLA Workshop on Behavioral Semantics: Serving the Customer (Seattle, Washington, USA, November 4, 2002). Edited by Kenneth Baclawski and Haim Kilov. Northeastern University, Boston, 2002, pp. 16-32. Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
+</li>
+<li>
+<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
+</li>
+<li>
+<p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
+</li>
+<li>
+<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
+</li>
+<li>
+<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
+</li>
+<li>
+<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
+</li>
+<li>
+<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
+</li>
+<li>
+<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
+</li>
+<li>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+</li>
+<li>
+<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
+</li>
+<li>
+<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
+</li>
+<li>
+<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H, Ross J. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
+<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
+</li>
+<li>
+<p><a id="Martin"></a>[Martin] Martin P. <strong>Translations between UML, OWL, KIF and the WebKB-2 languages (For-Taxonomy, Frame-CG, Formalized English)</strong>. May/June 2003. Available at <a href="http://www.webkb.org/doc/model/comparisons.html" class="bare">http://www.webkb.org/doc/model/comparisons.html</a> as at Aug 2004.</p>
+</li>
+<li>
+<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
+</li>
+<li>
+<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
+</li>
+<li>
+<p><a id="GLIF"></a>[GLIF] Lucila Ohno-Machado, John H. Gennari, Shawn N. Murphy, Nilesh L. Jain, Samson W. Tu, Diane E. Oliver, Edward Pattison-Gordon, Robert A. Greenes, Edward H. Shortliffe, and G. Octo Barnett.  <strong>The GuideLine Interchange Format - A Model for Representing Guidelines</strong>. J Am Med Inform Assoc. 1998 Jul-Aug; 5(4): 357–372.</p>
+</li>
+<li>
+<p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+</li>
+<li>
+<p><a id="Rector_1999"></a>[Rector_1999] Rector A L. <strong>Clinical terminology: why is it so hard?</strong> Methods Inf Med. 1999 Dec;38(4-5):239-52. Available at <a href="http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf" class="bare">http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+</li>
+<li>
+<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+</li>
+<li>
+<p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
+</li>
+<li>
+<p><a id="Van_de_Velde_Degoulet_2003"></a>[Van_de_Velde_Degoulet_2003] Van de Velde R, Degoulet P. <strong>Clinical Information Systems: A Component-Based Approach.</strong> 2003. Springer-Verlag New York.</p>
+</li>
+<li>
+<p><a id="Weed_1969"></a>[Weed_1969] Weed LL. <strong>Medical records, medical education and patient care. 6 ed.</strong> Chicago: Year Book Medical Publishers Inc. 1969.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
+<div class="sect3">
+<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999. See <a href="http://www.omg.org/spec/PIDS/" class="bare">http://www.omg.org/spec/PIDS/</a> .</p>
+</li>
+<li>
+<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999. <a href="http://www.omg.org/spec/LQS/" class="bare">http://www.omg.org/spec/LQS/</a> .</p>
+</li>
+<li>
+<p><a id="HL7v3_ballot2"></a>[HL7v3_ballot2] JL7 International. <strong>HL7 version 3 2nd Ballot specification</strong>. Available at <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
+<p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7 International. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
+</li>
+<li>
+<p><a id="hl7_arden"></a>[hl7_arden] HL7 International. <strong>HL7 Arden Syntax</strong>. See <a href="http://www.hl7.org/Special/committees/Arden/index.cfm" class="bare">http://www.hl7.org/Special/committees/Arden/index.cfm</a> .</p>
+</li>
+<li>
+<p><a id="hl7_gello"></a>[hl7_gello] HL7 International. <strong>GELLO Decision Support Language</strong>. <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5" class="bare">http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5</a> .</p>
+</li>
+<li>
+<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
+</li>
+<li>
+<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+</li>
+<li>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_31_32"></a>[EHCR_supA_31_32] Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993.</p>
+</li>
+<li>
+<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_AUS"></a>[GeHR_AUS] Heard S, Beale T. <strong>The Good Electronic Health Record (GeHR) (Australia).</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
+</li>
+<li>
+<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
+</li>
+<li>
+<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages. See <a href="http://discovery.ucl.ac.uk/66235/" class="bare">http://discovery.ucl.ac.uk/66235/</a> .</p>
+</li>
+<li>
+<p><a id="synex"></a>[synex] University College London. <strong>SynEx project</strong>. <a href="http://www.chime.ucl.ac.uk/HealthI/SynEx/" class="bare">http://www.chime.ucl.ac.uk/HealthI/SynEx/</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
+</li>
+<li>
+<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+</li>
+<li>
+<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
+</li>
+<li>
+<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
+</li>
+<li>
+<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
+</li>
+<li>
+<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
+</li>
+<li>
+<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
+</li>
+<li>
+<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-02-20 19:40:01 GMT
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+= Overview
+
+The openEHR Rules Language and Rules Object Model (ROM) define an extensible core formalism suitable for use in other rule-based formalisms and environments. The Rules Language is the abstract syntax counterpart to the Rules Object Model. The ROM should be considered the normative definition of the openEHR Rules formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the ROM.
+
+The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extentions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.
+
+Key features of the formalism include:
+
+* it supports variable declarations, assignments and expressions;
+* expressions are typed, using a set of primitive types to which every expression node must evaluate;
+* it supports all standard logical operators including universal and existential quantification, as well as user-defined operators;
+* it supports standard arithmetic and relational comparison operators, enabling the use of numerics;
+* parentheses for overridding operator precedence are supported;
+* it supports functions, including built-ins like `current_date`, standard functions like `max()` as well as user-defined functions.
+
+== Execution Model
+
+The assumed execution model of the Rules formalism is that it defines rules in a _rule set_ that are evaluated by a _rule evaluator_ against one or more _data contexts_ which determine the truth values of the rules. The data context provides the computable representation of those aspects of reality to which the rules refer. Thus, a rule that asserts that `heartrate > 50` is making an assertion about values found in some data - i.e. `heartrate` is a path or other resolvable reference to a value in some data representing an actual heart rate.
+
+It is thus the job of _value references_ in rule expressions to reference values in the data context. The data context is not concretely defined in this specification, and must be specified in full rule languages based on this core formalism, which can be done in two places: by defining concrete value references, and by implementing the 'external query' facility to access data from services in the environment. The formalism as defined here is thus _not complete on its own_.
+
+If the Rule set contains Assertions, they are treated as conditions that must evaluate to `True` to pass. If an assertion fails at execution time, an _assertion violation_ is raised. If any assertion violations occur, the Rule set is said to have _failed_.
+
+No assumption is implied about whether the data context used is complete or faithful to reality. Consequently, the _rules universe_ is technically speaking an 'open world' in the sense of the {wikipedia_open_world_assumption}[open-world assumption]. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.
+
+== Design Background
+
+The openEHR Rules formalism is based on a limited first-order predicate logic language with extensions for numeric sub-expressions. It has similarities with OMG's OCL (Object Constraint Language) syntax, and is also similar to the assertion syntax used in the <<Object_Z>> and <<Eiffel>> languages and tools for over a decade (see <<Sowa>>, <<Hein>>, <<Kilov_Ross>> for an explanation of predicate logic in information modelling). None of these languages has been used directly, for reasons including:
+
+* OCL has a complex type system connected to the UML meta-model, and includes some undecidable procedural semantics;
+* none have adequate variable referencing mechanisms, such as to paths and external queries;
+* they are too powerful, and would introduce unnecessary complexity.
+
+There are also similarities with other languages developed in the health arena for expressing 'medical logic' (Arden <<hl7_arden>>), guidelines (<<GLIF>> and many others) and decision support (e.g. GELLO <<hl7_gello>>). These languages were not used either, for reasons including:
+
+* none have an easily extensible value referencing mechanism;
+* some are too procedural (Arden, GLIF);
+* current versions of some of these languages have been made specific to the HL7v3 RIM, a particular model of health information designed for message representation (GLIF 3.x, GELLO).
+
+Modern syntaxes that provide a more generic and minimal inspiration for the rules syntax described here include the {xpath}[Xpath syntax].
+
+The design approach used here was thus to create a small concrete syntax allowing for a core subset of first-order predicate logic, and a corresponding object model representing the parse-tree form of the language.
+
+The semantic requirements are for expressions including arithmetic, boolean, and relational operators, functions, quantifier operators, operator precedence, parentheses, constant values, and certain kinds of variables. However, there is no support in the core specification for procedural semantics or most of the other complexities of full-blown programming languages.
