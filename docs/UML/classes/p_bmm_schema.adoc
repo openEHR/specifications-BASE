@@ -44,7 +44,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*validate_created*: `List<>` +
+|*validate_created* +
 *_Pre_state_*: state = P_BMM_PACKAGE_STATE.State_created
 a|Do some basic validation post initial creation
 
@@ -55,7 +55,7 @@ a|Do some basic validation post initial creation
 * check that all models refer to valid packages
 
 h|
-|*load_finalise*: `List<>` +
+|*load_finalise* +
 *_Pre_state_*: state = P_BMM_PACKAGE_STATE.State_validated_created
 a|Finalisation work:
 
@@ -63,15 +63,15 @@ a|Finalisation work:
 * set up include processing list
 
 h|
-|*merge* (other): `List<>`
+|*merge* (other)
 a|Merge in class and package definitions from `other', except where the current schema already has a definition for the given type or package.
 
 h|
-|*validate*: `List<>`
+|*validate*
 a|Main validation prior to generation of BMM_SCHEMA; access to `all_schemas' allows errors to be allocated to correct schema.
 
 h|
-|*create_bmm_schema*: `List<>` +
+|*create_bmm_schema* +
 *_Pre_state_*: state = P_BMM_PACKAGE_STATE.State_includes_processed
 a|Generate a BMM_SCHEMA object.
 
