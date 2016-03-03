@@ -48,7 +48,7 @@ a|True if (lower_unbounded or
 ((lower_included and v >= lower) or
 v > lower)) and
 (upper_unbounded or
-((upper_included and v <= upper or v
+((upper_included and v \<= upper or v
 < upper)))
 
 h|*Invariant*
@@ -58,7 +58,7 @@ h|
 2+a|*_Upper_included_valid_*: upper_unbounded implies not upper_included
 
 h|
-2+a|*_Limits_consistent_*: (not upper_unbounded and not lower_unbounded) implies lower <= upper
+2+a|*_Limits_consistent_*: (not upper_unbounded and not lower_unbounded) implies lower \<= upper
 
 h|
 2+a|*_Limits_comparable_*: (not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)

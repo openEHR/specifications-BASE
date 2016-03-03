@@ -74,13 +74,13 @@ a|
 
 h|
 |*valid_month* (m: `Integer`): `Boolean` +
-*_Post_*: Result = m >= 1 and m <= Months_in_year
+*_Post_*: Result = m >= 1 and m \<= Months_in_year
 a|
 
 h|
 |*valid_day* (y: `Integer`, m: `Integer`, d: `Integer`): `Boolean` +
-*_Post_*: Result = d >= 1 and d <= days_in_month (m, y)
-a|True if d >= 1 and d <= days_in_month (m, y)
+*_Post_*: Result = d >= 1 and d \<= days_in_month (m, y)
+a|True if d >= 1 and d \<= days_in_month (m, y)
 
 h|
 |*valid_hour* (h, m, s: `Integer`): `Boolean` +
