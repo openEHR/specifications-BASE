@@ -5,9 +5,9 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<meta name="description" content="openEHR Rules Language specification">
-<meta name="keywords" content="openehr, rules">
-<title>Rules Language and Model</title>
+<meta name="description" content="openEHR Expression Language specification">
+<meta name="keywords" content="openehr, expressions, rules">
+<title>Expression Language and Model</title>
 <link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
 <link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
 </head>
@@ -16,7 +16,7 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#_rules_language_and_model">Rules Language and Model</a>
+<li><a href="#_expression_language_and_model">Expression Language and Model</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
 <li><a href="#_acknowledgements">Acknowledgements</a>
@@ -38,7 +38,7 @@
 <li><a href="#_design_background">2.2. Design Background</a></li>
 </ul>
 </li>
-<li><a href="#_the_rules_language">3. The Rules Language</a>
+<li><a href="#_the_expression_language">3. The Expression Language</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_2">3.1. Overview</a></li>
 <li><a href="#_typing">3.2. Typing</a></li>
@@ -62,7 +62,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#_other_rule_elements">3.6. Other Rule Elements</a>
+<li><a href="#_other_statement_elements">3.6. Other Statement Elements</a>
 <ul class="sectlevel3">
 <li><a href="#_external_queries">3.6.1. External Queries</a></li>
 </ul>
@@ -76,14 +76,14 @@
 <li><a href="#_natural_language_issues">3.8. Natural Language Issues</a></li>
 </ul>
 </li>
-<li><a href="#_the_rules_package">4. The Rules Package</a>
+<li><a href="#_the_statement_package">4. The Statement Package</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_3">4.1. Overview</a></li>
 <li><a href="#_typing_2">4.2. Typing</a>
 <ul class="sectlevel3">
 <li><a href="#_class_descriptions">4.2.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_rule_type_def_class">4.2.1.1. RULE_TYPE_DEF Class</a></li>
+<li><a href="#_expr_type_def_class">4.2.1.1. EXPR_TYPE_DEF Class</a></li>
 <li><a href="#_type_def_boolean_class">4.2.1.2. TYPE_DEF_BOOLEAN Class</a></li>
 <li><a href="#_type_def_integer_class">4.2.1.3. TYPE_DEF_INTEGER Class</a></li>
 <li><a href="#_type_def_real_class">4.2.1.4. TYPE_DEF_REAL Class</a></li>
@@ -102,19 +102,19 @@
 <li><a href="#_core_package">4.3. Core Package</a>
 <ul class="sectlevel3">
 <li><a href="#_expressions">4.3.1. Expressions</a></li>
-<li><a href="#_other_rule_elements_2">4.3.2. Other Rule Elements</a>
+<li><a href="#_other_statement_elements_2">4.3.2. Other Statement Elements</a>
 <ul class="sectlevel4">
 <li><a href="#_external_query">4.3.2.1. External Query</a></li>
 </ul>
 </li>
 <li><a href="#_class_descriptions_2">4.3.3. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_rule_set_class">4.3.3.1. RULE_SET Class</a></li>
-<li><a href="#_rule_statement_class">4.3.3.2. RULE_STATEMENT Class</a></li>
+<li><a href="#_statement_set_class">4.3.3.1. STATEMENT_SET Class</a></li>
+<li><a href="#_statement_class">4.3.3.2. STATEMENT Class</a></li>
 <li><a href="#_assertion_class">4.3.3.3. ASSERTION Class</a></li>
 <li><a href="#_variable_declaration_class">4.3.3.4. VARIABLE_DECLARATION Class</a></li>
 <li><a href="#_assignment_class">4.3.3.5. ASSIGNMENT Class</a></li>
-<li><a href="#_rule_value_class">4.3.3.6. RULE_VALUE Class</a></li>
+<li><a href="#_expr_value_class">4.3.3.6. EXPR_VALUE Class</a></li>
 <li><a href="#_external_query_class">4.3.3.7. EXTERNAL_QUERY Class</a></li>
 <li><a href="#_expr_item_class">4.3.3.8. EXPR_ITEM Class</a></li>
 <li><a href="#_expr_operator_class">4.3.3.9. EXPR_OPERATOR Class</a></li>
@@ -182,7 +182,7 @@
 </div>
 </div>
 </div>
-<h1 id="_rules_language_and_model" class="sect0">Rules Language and Model</h1>
+<h1 id="_expression_language_and_model" class="sect0">Expression Language and Model</h1>
 <div class="openblock partintro">
 <div class="content">
 <table class="tableblock frame-all grid-all spread">
@@ -205,7 +205,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: openehr, rules</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: openehr, expressions, rules</p></td>
 </tr>
 </tbody>
 </table>
@@ -294,7 +294,7 @@
 <div class="sect2">
 <h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
 <div class="paragraph">
-<p>This document describes the openEHR Rules Language and Model, which provides the rudimentary structure for all form rule-based specifications in openEHR. It defines the semantics of first order predicate logic expressions, variable declarations and assignments.</p>
+<p>This document describes the openEHR Expression Language and Model, which provides the rudimentary structure for all forms of expression-based specifications in openEHR. It defines the semantics of first order predicate logic expressions, variable declarations and assignments.</p>
 </div>
 <div class="paragraph">
 <p>The intended audience includes:</p>
@@ -345,7 +345,7 @@
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>The contents of this specification were separated out from the <a href="http://www.openehr.org/releases/AM/latest/AOM2.html">AOM2 specification</a> in order to provide a common model of rules structures for AOM, GDL and other specifications requiring it.</p>
+<p>The contents of this specification were separated out from the <a href="http://www.openehr.org/releases/AM/latest/AOM2.html">AOM2 specification</a> in order to provide a common model of expressions and rules structures for AOM, GDL and other specifications requiring it.</p>
 </div>
 <div class="paragraph">
 <p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/support.html" class="bare">http://www.openehr.org/releases/RM/latest/support.html</a>.</p>
@@ -372,7 +372,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The openEHR Rules Language and Rules Object Model (ROM) define an extensible core formalism suitable for use in other rule-based formalisms and environments. The Rules Language is the abstract syntax counterpart to the Rules Object Model. The ROM should be considered the normative definition of the openEHR Rules formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the ROM.</p>
+<p>The openEHR Expression Language and Expression Object Model (EOM) define an extensible core formalism suitable for use in other expression- and rule-based formalisms and environments. The Expression Language is the abstract syntax counterpart to the Statement Object Model. The EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the EOM.</p>
 </div>
 <div class="paragraph">
 <p>The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extentions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.</p>
@@ -405,22 +405,22 @@
 <div class="sect2">
 <h3 id="_execution_model"><a class="anchor" href="#_execution_model"></a>2.1. Execution Model</h3>
 <div class="paragraph">
-<p>The assumed execution model of the Rules formalism is that it defines rules in a <em>rule set</em> that are evaluated by a <em>rule evaluator</em> against one or more <em>data contexts</em> which determine the truth values of the rules. The data context provides the computable representation of those aspects of reality to which the rules refer. Thus, a rule that asserts that <code>heartrate &gt; 50</code> is making an assertion about values found in some data - i.e. <code>heartrate</code> is a path or other resolvable reference to a value in some data representing an actual heart rate.</p>
+<p>The assumed execution model of the Expression formalism is that it defines statements in a <em>statement set</em> that are evaluated by a <em>statement evaluator</em> against one or more <em>data contexts</em> which determine the truth values of the statements. The data context provides the computable representation of those aspects of reality to which the statements refer. Thus, a statement that asserts that <code>heartrate &gt; 50</code> is making an assertion about values found in some data - i.e. <code>heartrate</code> is a path or other resolvable reference to a value in some data representing an actual heart rate.</p>
 </div>
 <div class="paragraph">
-<p>It is thus the job of <em>value references</em> in rule expressions to reference values in the data context. The data context is not concretely defined in this specification, and must be specified in full rule languages based on this core formalism, which can be done in two places: by defining concrete value references, and by implementing the 'external query' facility to access data from services in the environment. The formalism as defined here is thus <em>not complete on its own</em>.</p>
+<p>It is thus the job of <em>value references</em> in expressions to reference values in the data context. The data context is not concretely defined in this specification, and must be specified in full languages based on this core formalism, which can be done in two places: by defining concrete value references, and by implementing the 'external query' facility to access data from services in the environment. The formalism as defined here is thus <em>not complete on its own</em>.</p>
 </div>
 <div class="paragraph">
-<p>If the Rule set contains Assertions, they are treated as conditions that must evaluate to <code>True</code> to pass. If an assertion fails at execution time, an <em>assertion violation</em> is raised. If any assertion violations occur, the Rule set is said to have <em>failed</em>.</p>
+<p>If the Statement set contains Assertions, they are treated as conditions that must evaluate to <code>True</code> to pass. If an assertion fails at execution time, an <em>assertion violation</em> is raised. If any assertion violations occur, the Statement set is said to have <em>failed</em>.</p>
 </div>
 <div class="paragraph">
-<p>No assumption is implied about whether the data context used is complete or faithful to reality. Consequently, the <em>rules universe</em> is technically speaking an 'open world' in the sense of the <a href="https://en.wikipedia.org/wiki/Open-world_assumption">open-world assumption</a>. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.</p>
+<p>No assumption is implied about whether the data context used is complete or faithful to reality. Consequently, the <em>expression universe</em> is technically speaking an 'open world' in the sense of the <a href="https://en.wikipedia.org/wiki/Open-world_assumption">open-world assumption</a>. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_design_background"><a class="anchor" href="#_design_background"></a>2.2. Design Background</h3>
 <div class="paragraph">
-<p>The openEHR Rules formalism is based on a limited first-order predicate logic language with extensions for numeric sub-expressions. It has similarities with OMG&#8217;s OCL (Object Constraint Language) syntax, and is also similar to the assertion syntax used in the <a href="#Object_Z">[Object_Z]</a> and <a href="#Eiffel">[Eiffel]</a> languages and tools for over a decade (see <a href="#Sowa">[Sowa]</a>, <a href="#Hein">[Hein]</a>, <a href="#Kilov_Ross">[Kilov_Ross]</a> for an explanation of predicate logic in information modelling). None of these languages has been used directly, for reasons including:</p>
+<p>The openEHR Expression formalism is based on a limited first-order predicate logic language with extensions for numeric sub-expressions. It has similarities with OMG&#8217;s OCL (Object Constraint Language) syntax, and is also similar to the assertion syntax used in the <a href="#Object_Z">[Object_Z]</a> and <a href="#Eiffel">[Eiffel]</a> languages and tools for over a decade (see <a href="#Sowa">[Sowa]</a>, <a href="#Hein">[Hein]</a>, <a href="#Kilov_Ross">[Kilov_Ross]</a> for an explanation of predicate logic in information modelling). None of these languages has been used directly, for reasons including:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -452,7 +452,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Modern syntaxes that provide a more generic and minimal inspiration for the rules syntax described here include the <a href="https://www.w3.org/TR/xpath-31/">Xpath syntax</a>.</p>
+<p>Modern syntaxes that provide a more generic and minimal inspiration for the expression syntax described here include the <a href="https://www.w3.org/TR/xpath-31/">Xpath syntax</a>.</p>
 </div>
 <div class="paragraph">
 <p>The design approach used here was thus to create a small concrete syntax allowing for a core subset of first-order predicate logic, and a corresponding object model representing the parse-tree form of the language.</p>
@@ -464,18 +464,18 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_rules_language"><a class="anchor" href="#_the_rules_language"></a>3. The Rules Language</h2>
+<h2 id="_the_expression_language"><a class="anchor" href="#_the_expression_language"></a>3. The Expression Language</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>This section describes the openEHR Rules Language. In the various contexts where openEHR rules are used, the syntax provides a foundation for concrete rules syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The key features of the language are: variable declarations, assignments and expressions. Most of the semantics are in the expression part, which is based on first-order predicate logic with the addition of arithmetic and relational operators to enable the use of numeric elements. Expressions may contain constants, variable references, value references and functions.</p>
+<p>This section describes the openEHR Expression Language. In the various contexts where openEHR expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The key features of the language are: variable declarations, assignments and expressions. Most of the semantics are in the expression part, which is based on first-order predicate logic with the addition of arithmetic and relational operators to enable the use of numeric elements. Expressions may contain constants, variable references, value references and functions.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_typing"><a class="anchor" href="#_typing"></a>3.2. Typing</h3>
 <div class="paragraph">
-<p>The rules language is fully typed, with all types coming from a set of types consisting of primitive types plus an object reference type. The primitive types are shown below, along with typical literal values, which are expressed in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html#_primitive_types">ODIN syntax</a>.</p>
+<p>The Expression language is fully typed, with all types coming from a set of types consisting of primitive types plus an object reference type. The primitive types are shown below, along with typical literal values, which are expressed in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html#_primitive_types">ODIN syntax</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -556,7 +556,7 @@
 <div class="sect2">
 <h3 id="_variable_declarations_references_and_assignments"><a class="anchor" href="#_variable_declarations_references_and_assignments"></a>3.3. Variable Declarations, References and Assignments</h3>
 <div class="paragraph">
-<p>Variables may be declared within a rule set, consisting of a name of the form <code>$var</code> and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:</p>
+<p>Variables may be declared within a statement set, consisting of a name of the form <code>$var</code> and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -570,7 +570,7 @@
 <p>Variables are referenced within assignments and expressions using the same syntax, i.e. <code>$var</code>.</p>
 </div>
 <div class="paragraph">
-<p>Typically declarations are used with assignments in the same way as in general purpose programming in mainstream languages. A variable can be assigned a number of kinds of things that are useful in rule-sets, including constants, expressions and value-references. A declaration can be combined with an assignment. These are illustrated below.</p>
+<p>Typically declarations are used with assignments in the same way as in general purpose programming in mainstream languages. A variable can be assigned a number of kinds of things that are useful in statement sets, including constants, expressions and value-references. A declaration can be combined with an assignment. These are illustrated below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -596,7 +596,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor <code>$Mph_to_kmh_factor</code>, which was earlier defined to be <code>1.6</code>. This is different from the last statement in the previous example, which <em>assigns</em> the result of a multiplcation to the variable <code>$speed_kph</code>.</p>
+<p>Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor <code>$Mph_to_kmh_factor</code>, which was earlier defined to be <code>1.6</code>. This is different from the last statement in the previous example, which <em>assigns</em> the result of a multiplication to the variable <code>$speed_kph</code>.</p>
 </div>
 <div class="paragraph">
 <p>The above example could also have been achieved without variables, as follows:</p>
@@ -607,13 +607,16 @@
 </div>
 </div>
 <div class="paragraph">
-<p>In both cases it represents an assertion that when evaluated may be violated, in which case the rules evaluator can generate an <em>assertion violation</em> which might be used to notify a user or do some other action.</p>
+<p>In both cases it represents an assertion that when evaluated may be violated, in which case the statement evaluator can generate an <em>assertion violation</em> which might be used to notify a user or do some other action.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: alternative: could include the keyword <code>check</code> prior to assertion expression to make it clearer that the intention is to check that this condition holds; may also prevent confusion for readers used to languages where '=' is assignment.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="__a_id_language_expressions_a_expressions"><a class="anchor" href="#__a_id_language_expressions_a_expressions"></a>3.5. <a id="language-expressions"></a>Expressions</h3>
 <div class="paragraph">
-<p>Expressions constitute the main part of the rules language, and consist of a familiar typed, tree-structured, operator-based syntax common to many programming languages and logics. The two element types are <em>operators</em> and <em>operands</em>, i.e. leaf nodes. Expressions may contain the following elements:</p>
+<p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, tree-structured, operator-based syntax common to many programming languages and logics. The two element types are <em>operators</em> and <em>operands</em>, i.e. leaf nodes. Expressions may contain the following elements:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -632,7 +635,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>In the Rules language, functions are treated as lead nodes in expressions, rather than expression nodes.</p>
+<p>In the Expression language, functions are treated as lead nodes in expressions, rather than expression nodes.</p>
 </div>
 <div class="sect3">
 <h4 id="_operands_leaf_nodes"><a class="anchor" href="#_operands_leaf_nodes"></a>3.5.1. Operands (Leaf Nodes)</h4>
@@ -648,10 +651,10 @@
 <div class="sect4">
 <h5 id="_value_references_and_object_references"><a class="anchor" href="#_value_references_and_object_references"></a>3.5.1.2. Value References and Object References</h5>
 <div class="paragraph">
-<p>Entities in the data context can be referred to in two ways. The concrete reference mechanism must be defined in an extension; here we assume it is some kind of path of the form <code>/path/to/data/item</code>. The first kind of reference is a <em>value_reference</em>, and is achieved by the use of the naked reference. The assumption is that the reference points to a data item of a primitive type, or one that can be interpreted or converted unambiguously to a primitive type by the rule evaluator. The 'type' of any value reference is thus always a primitive type. This enables referencing to normal leaf values in the data.</p>
+<p>Entities in the data context can be referred to in two ways. The concrete reference mechanism must be defined in an extension; here we assume it is some kind of path of the form <code>/path/to/data/item</code>. The first kind of reference is a <em>value_reference</em>, and is achieved by the use of the naked reference. The assumption is that the reference points to a data item of a primitive type, or one that can be interpreted or converted unambiguously to a primitive type by the statement evaluator. The 'type' of any value reference is thus always a primitive type. This enables referencing to normal leaf values in the data.</p>
 </div>
 <div class="paragraph">
-<p>The other form of reference is an <em>object reference</em>. This enables a reference to an arbitrary object within the data to be created, and is done using the form <code>@ref</code>, e.g. <code>@/path/to/data</code>. The type of this is <code>Object_ref</code> within the rules type system, and the instance represents a reference, not a value. Certain operators such as <code>exists</code> and <code>for_all</code> can be used with object references. An object reference may be created to any data entity in the data context, including primitive values.</p>
+<p>The other form of reference is an <em>object reference</em>. This enables a reference to an arbitrary object within the data to be created, and is done using the form <code>@ref</code>, e.g. <code>@/path/to/data</code>. The type of this is <code>Object_ref</code> within the expression type system, and the instance represents a reference, not a value. Certain operators such as <code>exists</code> and <code>for_all</code> can be used with object references. An object reference may be created to any data entity in the data context, including primitive values.</p>
 </div>
 <div class="paragraph">
 <p>The following shows a value reference in the form of an archetype path followed by an object reference to the same location.</p>
@@ -659,6 +662,7 @@
 <div class="listingblock">
 <div class="content">
 <pre>    /data[id2]/items[id3]/value[id35]/value     -- Date of initial onset; type = Date
+
     @/data[id2]/items[id3]/value[id35]/value    -- Object ref to 'date of initial onset' item;
                                                 -- type = Object_ref</pre>
 </div>
@@ -675,7 +679,7 @@
 <div class="sect4">
 <h5 id="_functions"><a class="anchor" href="#_functions"></a>3.5.1.3. Functions</h5>
 <div class="paragraph">
-<p>Functions are considered leaf entities in the Rules language, and can be of a built-in type or external (user-defined) type. All functions are considered to have a formal typed signature of the form:</p>
+<p>Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. All functions are considered to have a formal typed signature of the form:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -765,7 +769,7 @@
 <div class="sect3">
 <h4 id="__a_id_language_operators_a_operators"><a class="anchor" href="#__a_id_language_operators_a_operators"></a>3.5.2. <a id="language-operators"></a>Operators</h4>
 <div class="paragraph">
-<p>Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Rules parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows rules to be expressed in a more compact and less language-independent way.</p>
+<p>Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Expression parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows expressions to be expressed in a more compact and less language-independent way.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -970,7 +974,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_other_rule_elements"><a class="anchor" href="#_other_rule_elements"></a>3.6. Other Rule Elements</h3>
+<h3 id="_other_statement_elements"><a class="anchor" href="#_other_statement_elements"></a>3.6. Other Statement Elements</h3>
 <div class="sect3">
 <h4 id="_external_queries"><a class="anchor" href="#_external_queries"></a>3.6.1. External Queries</h4>
 <div class="paragraph">
@@ -1014,47 +1018,47 @@
 <div class="sect2">
 <h3 id="_natural_language_issues"><a class="anchor" href="#_natural_language_issues"></a>3.8. Natural Language Issues</h3>
 <div class="paragraph tbd">
-<p>TBD: whether we do anything about the language dependence of rule variables.</p>
+<p>TBD: whether we do anything about the language dependence of expression variables.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_rules_package"><a class="anchor" href="#_the_rules_package"></a>4. The Rules Package</h2>
+<h2 id="_the_statement_package"><a class="anchor" href="#_the_statement_package"></a>4. The Statement Package</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>rules</code> package defines the Rules Object Model (ROM), a model of 'rules' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Rules Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>rules</code> package and further specialise some of its types specifically intended for extension.</p>
+<p>The <code>statement</code> package defines the Statement Object Model (SOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>statement</code> package and further specialise some of its types specifically intended for extension.</p>
 </div>
 <div class="paragraph">
-<p>The main <code>rules</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
+<p>The main <code>statement</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
 </div>
-<div id="rules_package" class="imageblock text-center" style="text-align: center">
+<div id="statement_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/BASE-rules.svg" alt="BASE rules">
+<img src="../UML/diagrams/BASE-statement.svg" alt="BASE statement">
 </div>
-<div class="title">Figure 1. Rules Package</div>
+<div class="title">Figure 1. Statement Package</div>
 </div>
 <div class="paragraph">
-<p>The <code>rules.types</code> package is shown below.</p>
+<p>The <code>statement.types</code> package is shown below.</p>
 </div>
-<div id="rules_types_package" class="imageblock text-center" style="text-align: center">
+<div id="statement_types_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/BASE-rules.types.svg" alt="BASE rules.types">
+<img src="../UML/diagrams/BASE-statement.types.svg" alt="BASE statement.types">
 </div>
-<div class="title">Figure 2. Rules.types Package</div>
+<div class="title">Figure 2. Statement.types Package</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_typing_2"><a class="anchor" href="#_typing_2"></a>4.2. Typing</h3>
 <div class="paragraph">
-<p>The type system of the Rules formalism is defined via the type <code>RULE_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
+<p>The type system of the Expression formalism is defined via the type <code>EXPR_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
 </div>
 <div class="sect3">
 <h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.2.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_rule_type_def_class"><a class="anchor" href="#_rule_type_def_class"></a>4.2.1.1. RULE_TYPE_DEF Class</h5>
+<h5 id="_expr_type_def_class"><a class="anchor" href="#_expr_type_def_class"></a>4.2.1.1. EXPR_TYPE_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1064,12 +1068,12 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RULE_TYPE_DEF (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_TYPE_DEF (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Ancestor class for type definitions known in the openEHR Rules formalism.</p>
+<p>Ancestor class for type definitions known in the openEHR Expression formalism.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1115,7 +1119,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1158,7 +1162,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1201,7 +1205,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1244,7 +1248,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1287,7 +1291,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1330,7 +1334,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1373,7 +1377,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1416,7 +1420,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1459,7 +1463,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1502,7 +1506,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1545,7 +1549,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_TYPE_DEF</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_TYPE_DEF</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1566,18 +1570,18 @@
 <div class="sect2">
 <h3 id="_core_package"><a class="anchor" href="#_core_package"></a>4.3. Core Package</h3>
 <div class="paragraph">
-<p>A group of rules to be used together is formally defined as one or more <code>RULE_STATEMENTs</code> in a <code>RULE_SET</code>. There are three types of rules corresponding to the classes <code>ASSERTION</code>, <code>VARIABLE_DECLARATION</code> and <code>ASSIGNMENT</code>. Assertions consist of an expression tree structure that evaluates to a <code>Boolean</code> value. The root of the tree is a descendant of the class <code>EXPR_ITEM</code> that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named.</p>
+<p>A group of statements to be used together is formally defined as one or more <code>STATEMENTs</code> in a <code>STATEMENT_SET</code>. There are three types of statements corresponding to the classes <code>ASSERTION</code>, <code>VARIABLE_DECLARATION</code> and <code>ASSIGNMENT</code>. Assertions consist of an expression tree structure that evaluates to a <code>Boolean</code> value. The root of the tree is a descendant of the class <code>EXPR_ITEM</code> that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named.</p>
 </div>
 <div class="paragraph">
-<p>A <code>VARIABLE_DECLARATION</code> enables a named variable to be declared with a type, which must be one of the descendants of <code>RULE_DEF_TYPE</code>.</p>
+<p>A <code>VARIABLE_DECLARATION</code> enables a named variable to be declared with a type, which must be one of the descendants of <code>EXPR_DEF_TYPE</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>RULE_VALUE</code>.</p>
+<p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>EXPR_VALUE</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="_expressions"><a class="anchor" href="#_expressions"></a>4.3.1. Expressions</h4>
 <div class="paragraph">
-<p>Expressions are fully described rule values that may be evaluated internally (as compared to external query for example) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
+<p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
 </div>
 <div class="paragraph">
 <p>In this model, 'functions' are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats functions as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.</p>
@@ -1589,22 +1593,22 @@
 <p>TBD: could potentially separate 'text symbols' and 'math symbols' to enable rendering in different ways.</p>
 </div>
 <div class="paragraph">
-<p>The <code>OPERATOR_DEF_BUILTIN</code> class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the rule evaluator, e.g. a case statement or similar that uses the implementation language native operators.</p>
+<p>The <code>OPERATOR_DEF_BUILTIN</code> class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the statement evaluator, e.g. a case statement or similar that uses the implementation language native operators.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_other_rule_elements_2"><a class="anchor" href="#_other_rule_elements_2"></a>4.3.2. Other Rule Elements</h4>
+<h4 id="_other_statement_elements_2"><a class="anchor" href="#_other_statement_elements_2"></a>4.3.2. Other Statement Elements</h4>
 <div class="sect4">
 <h5 id="_external_query"><a class="anchor" href="#_external_query"></a>4.3.2.1. External Query</h5>
 <div class="paragraph">
-<p>An <code>EXTERNAL_QUERY</code> is a type of rule node representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within rules.</p>
+<p>An <code>EXTERNAL_QUERY</code> is a type of expression representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within expressions.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>4.3.3. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_rule_set_class"><a class="anchor" href="#_rule_set_class"></a>4.3.3.1. RULE_SET Class</h5>
+<h5 id="_statement_set_class"><a class="anchor" href="#_statement_set_class"></a>4.3.3.1. STATEMENT_SET Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1614,12 +1618,12 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RULE_SET</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>STATEMENT_SET</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A container for a specific set of rules intended to be used together.</p>
+<p>A container for a specific set of statements intended to be used together.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1629,9 +1633,9 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rules</strong>: <code>List&lt;RULE_STATEMENT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>statement</strong>: <code>List&lt;STATEMENT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The member rules of this rule set.</p>
+<p>The member statements of this statement set.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1657,7 +1661,7 @@
 </table>
 </div>
 <div class="sect4">
-<h5 id="_rule_statement_class"><a class="anchor" href="#_rule_statement_class"></a>4.3.3.2. RULE_STATEMENT Class</h5>
+<h5 id="_statement_class"><a class="anchor" href="#_statement_class"></a>4.3.3.2. STATEMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1667,7 +1671,7 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RULE_STATEMENT (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>STATEMENT (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1699,7 +1703,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_STATEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">STATEMENT</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1758,7 +1762,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_STATEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">STATEMENT</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1774,7 +1778,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>RULE_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EXPR_TYPE_DEF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
 </div></div></td>
@@ -1803,7 +1807,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_STATEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">STATEMENT</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1819,7 +1823,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>RULE_VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>EXPR_VALUE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Source right hand side) of the assignment.</p>
 </div></div></td>
@@ -1828,7 +1832,7 @@
 </table>
 </div>
 <div class="sect4">
-<h5 id="_rule_value_class"><a class="anchor" href="#_rule_value_class"></a>4.3.3.6. RULE_VALUE Class</h5>
+<h5 id="_expr_value_class"><a class="anchor" href="#_expr_value_class"></a>4.3.3.6. EXPR_VALUE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1838,12 +1842,12 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RULE_VALUE (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_VALUE (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Any kind of rule element that can be evaluated. The type will either be supplied in descendant types or else will be inferred by an assignment statement linked to a typed variable.</p>
+<p>Any kind of statement element that can be evaluated. The type will either be supplied in descendant types or else will be inferred by an assignment statement linked to a typed variable.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1882,7 +1886,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_VALUE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_VALUE</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1937,7 +1941,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RULE_VALUE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_VALUE</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1946,7 +1950,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>RULE_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EXPR_TYPE_DEF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The primitive type of this node, which must be determined by redefinitions in concrete classes.</p>
 </div></div></td>
@@ -2487,7 +2491,7 @@ Not yet standardised.</p>
 <div class="sect2">
 <h3 id="_extension_package"><a class="anchor" href="#_extension_package"></a>4.4. Extension Package</h3>
 <div class="paragraph">
-<p>The Extension package contains classes that provide extension points to the Rules formalism. These are of three kinds:</p>
+<p>The Extension package contains classes that provide extension points to the Expression formalism. These are of three kinds:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2511,7 +2515,7 @@ Not yet standardised.</p>
 <div class="sect3">
 <h4 id="_operators_and_functions"><a class="anchor" href="#_operators_and_functions"></a>4.4.2. Operators and Functions</h4>
 <div class="paragraph">
-<p>Externally defined operators and functions are defined as the separate types <code>OPERATOR_DEF_EXTERNAL</code> and <code>FUNCTION_DEF_EXTERNAL</code> resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Rules language.</p>
+<p>Externally defined operators and functions are defined as the separate types <code>OPERATOR_DEF_EXTERNAL</code> and <code>FUNCTION_DEF_EXTERNAL</code> resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Expression language.</p>
 </div>
 <div class="paragraph tbd">
 <p>TBD: this model in its current form treats functions and operators as separate, to allow some convenience in simple implementation of standard operators. But   Theoretically, operators are just 1-arg or 2-arg functions, and the extensions could be defined by treating them as functions. However operators also usually have a symbol form, whereas we are assuming a function&#8217;s symbol is just its identifier. Also, functions can in general have variable numbers of arguments, and complex implementations. Do we want to implement operators that way?</p>
@@ -2824,7 +2828,7 @@ Not yet standardised.</p>
 <h2 id="_syntax_specification"><a class="anchor" href="#_syntax_specification"></a>Appendix A: Syntax Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The grammar and lexical specification for the standard Rules syntax is shown below in ANTLR4 form.</p>
+<p>The grammar and lexical specification for the standard Expression syntax is shown below in ANTLR4 form.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2849,7 +2853,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 <span class="tok-c">//  license:     Apache 2.0 License &lt;http://www.apache.org/licenses/LICENSE-2.0.html&gt;</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
-<span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">base_rules</span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">base_expressions</span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
 <span class="tok-c">//  ============== Parser rules ==============</span><span class="tok-w"></span>
@@ -3207,7 +3211,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-22 13:31:48 GMT
+Last updated 2016-04-07 13:45:23 BST
 </div>
 </div>
 </body>

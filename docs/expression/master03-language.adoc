@@ -1,12 +1,12 @@
-= The Rules Language
+= The Expression Language
 
 == Overview
 
-This section describes the openEHR Rules Language. In the various contexts where openEHR rules are used, the syntax provides a foundation for concrete rules syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The key features of the language are: variable declarations, assignments and expressions. Most of the semantics are in the expression part, which is based on first-order predicate logic with the addition of arithmetic and relational operators to enable the use of numeric elements. Expressions may contain constants, variable references, value references and functions.
+This section describes the openEHR Expression Language. In the various contexts where openEHR expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The key features of the language are: variable declarations, assignments and expressions. Most of the semantics are in the expression part, which is based on first-order predicate logic with the addition of arithmetic and relational operators to enable the use of numeric elements. Expressions may contain constants, variable references, value references and functions.
 
 == Typing
 
-The rules language is fully typed, with all types coming from a set of types consisting of primitive types plus an object reference type. The primitive types are shown below, along with typical literal values, which are expressed in the {openehr_odin}#_primitive_types[ODIN syntax].
+The Expression language is fully typed, with all types coming from a set of types consisting of primitive types plus an object reference type. The primitive types are shown below, along with typical literal values, which are expressed in the {openehr_odin}#_primitive_types[ODIN syntax].
 
 [cols="1,2, 3",options="header"]
 |=================================================================
@@ -33,7 +33,7 @@ Automatic type promotion from `Integer` to `Real` applies to all integer and rea
 
 == Variable Declarations, References and Assignments
 
-Variables may be declared within a rule set, consisting of a name of the form `$var` and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:
+Variables may be declared within a statement set, consisting of a name of the form `$var` and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:
 
 --------
     $date_of_birth: Date
@@ -44,7 +44,7 @@ Variables may be declared within a rule set, consisting of a name of the form `$
 
 Variables are referenced within assignments and expressions using the same syntax, i.e. `$var`. 
 
-Typically declarations are used with assignments in the same way as in general purpose programming in mainstream languages. A variable can be assigned a number of kinds of things that are useful in rule-sets, including constants, expressions and value-references. A declaration can be combined with an assignment. These are illustrated below.
+Typically declarations are used with assignments in the same way as in general purpose programming in mainstream languages. A variable can be assigned a number of kinds of things that are useful in statement sets, including constants, expressions and value-references. A declaration can be combined with an assignment. These are illustrated below.
 
 --------
     $Mph_to_kmh_factor: Real := 1.6                 -- literal assigmment to create a constant
@@ -64,7 +64,7 @@ An assertion is a standalone expression, often with a tag, which enables the mea
     speed_validity: $speed_kmh = $speed_mph * $Mph_to_kmh_factor
 --------
 
-Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor `$Mph_to_kmh_factor`, which was earlier defined to be `1.6`. This is different from the last statement in the previous example, which _assigns_ the result of a multiplcation to the variable `$speed_kph`.
+Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor `$Mph_to_kmh_factor`, which was earlier defined to be `1.6`. This is different from the last statement in the previous example, which _assigns_ the result of a multiplication to the variable `$speed_kph`.
 
 The above example could also have been achieved without variables, as follows:
 
@@ -72,18 +72,21 @@ The above example could also have been achieved without variables, as follows:
     speed_validity: /path/to/kmh/data/value = /path/to/mph/data/value * 1.6
 --------
 
-In both cases it represents an assertion that when evaluated may be violated, in which case the rules evaluator can generate an _assertion violation_ which might be used to notify a user or do some other action.
+In both cases it represents an assertion that when evaluated may be violated, in which case the statement evaluator can generate an _assertion violation_ which might be used to notify a user or do some other action.
+
+[.tbd]
+TBD: alternative: could include the keyword `check` prior to assertion expression to make it clearer that the intention is to check that this condition holds; may also prevent confusion for readers used to languages where '=' is assignment.
 
 == [[language-expressions]]Expressions
 
-Expressions constitute the main part of the rules language, and consist of a familiar typed, tree-structured, operator-based syntax common to many programming languages and logics. The two element types are _operators_ and _operands_, i.e. leaf nodes. Expressions may contain the following elements:
+Expressions constitute the main part of the Expressions language, and consist of a familiar typed, tree-structured, operator-based syntax common to many programming languages and logics. The two element types are _operators_ and _operands_, i.e. leaf nodes. Expressions may contain the following elements:
 
 * _value references_: i.e. references to data elements in the form of an archetype path;
 * _literals_: i.e. primitive values including the date/time types;
 * _operators_: arithmetic operators, relational operators, boolean operators, quantification operators;
 * _functions_: various built-in functions as well as user-defined functions.
 
-In the Rules language, functions are treated as lead nodes in expressions, rather than expression nodes.
+In the Expression language, functions are treated as lead nodes in expressions, rather than expression nodes.
 
 === Operands (Leaf Nodes)
 
@@ -95,14 +98,15 @@ Literal values are of any primitive type, and are expressed in the {openehr_odin
 
 ==== Value References and Object References
 
-Entities in the data context can be referred to in two ways. The concrete reference mechanism must be defined in an extension; here we assume it is some kind of path of the form `/path/to/data/item`. The first kind of reference is a _value_reference_, and is achieved by the use of the naked reference. The assumption is that the reference points to a data item of a primitive type, or one that can be interpreted or converted unambiguously to a primitive type by the rule evaluator. The 'type' of any value reference is thus always a primitive type. This enables referencing to normal leaf values in the data.
+Entities in the data context can be referred to in two ways. The concrete reference mechanism must be defined in an extension; here we assume it is some kind of path of the form `/path/to/data/item`. The first kind of reference is a _value_reference_, and is achieved by the use of the naked reference. The assumption is that the reference points to a data item of a primitive type, or one that can be interpreted or converted unambiguously to a primitive type by the statement evaluator. The 'type' of any value reference is thus always a primitive type. This enables referencing to normal leaf values in the data.
 
-The other form of reference is an _object reference_. This enables a reference to an arbitrary object within the data to be created, and is done using the form `@ref`, e.g. `@/path/to/data`. The type of this is `Object_ref` within the rules type system, and the instance represents a reference, not a value. Certain operators such as `exists` and `for_all` can be used with object references. An object reference may be created to any data entity in the data context, including primitive values.
+The other form of reference is an _object reference_. This enables a reference to an arbitrary object within the data to be created, and is done using the form `@ref`, e.g. `@/path/to/data`. The type of this is `Object_ref` within the expression type system, and the instance represents a reference, not a value. Certain operators such as `exists` and `for_all` can be used with object references. An object reference may be created to any data entity in the data context, including primitive values.
 
 The following shows a value reference in the form of an archetype path followed by an object reference to the same location.
 
 --------
     /data[id2]/items[id3]/value[id35]/value     -- Date of initial onset; type = Date
+    
     @/data[id2]/items[id3]/value[id35]/value    -- Object ref to 'date of initial onset' item; 
                                                 -- type = Object_ref
 --------
@@ -115,7 +119,7 @@ An object reference can be assigned to a variable in the normal way. This variab
 
 ==== Functions
 
-Functions are considered leaf entities in the Rules language, and can be of a built-in type or external (user-defined) type. All functions are considered to have a formal typed signature of the form:
+Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. All functions are considered to have a formal typed signature of the form:
 
 ----
     <Arg1-Type, Arg2-Type, ....>: Result-type
@@ -150,7 +154,7 @@ Externally defined functions are described below under <<language-extensions, Ex
 
 === [[language-operators]]Operators
 
-Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Rules parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows rules to be expressed in a more compact and less language-independent way.
+Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Expression parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows expressions to be expressed in a more compact and less language-independent way.
 
 [cols="1,1,1,3",options="header"]
 |=================================================================
@@ -230,7 +234,7 @@ The precendence of operators follows the order shown in the operator tables abov
     $at_risk := $weight > 120 and ( $is_smoker or $is_hypertensive)
 --------
 
-== Other Rule Elements
+== Other Statement Elements
 
 === External Queries
 
@@ -264,4 +268,4 @@ Any number of arguments can be included.
 == Natural Language Issues
 
 [.tbd]
-TBD: whether we do anything about the language dependence of rule variables.
+TBD: whether we do anything about the language dependence of expression variables.
