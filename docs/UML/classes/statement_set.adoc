@@ -1,0 +1,29 @@
+=== STATEMENT_SET Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*STATEMENT_SET*
+
+h|*Description*
+2+a|A container for a specific set of statements intended to be used together.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*statement*: `List<STATEMENT>`
+a|The member statements of this statement set.
+
+h|*0..1*
+|*name*: `String`
+a|Optional name of this rule set.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*execution_result*: `Boolean`
+a|Execution result of the whole rule set. Determined by the and-ing of result values of Assertions in the rule set.
+|===
