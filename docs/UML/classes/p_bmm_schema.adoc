@@ -9,7 +9,7 @@ h|*Description*
 2+a|Persisted form of BMM_SCHEMA.
 
 h|*Inherit*
-2+|P_BMM_PACKAGE_CONTAINER
+2+|P_BMM_PACKAGE_CONTAINER, BMM_SCHEMA_CORE
 
 h|*Attributes*
 ^h|*Signature*
@@ -28,7 +28,7 @@ h|*0..1*
 a|Class definitions. Persisted attribute.
 
 h|*0..1*
-|*includes*: `Hash<BMM_INCLUDE_SPEC,String>`
+|*includes*: `Hash<String,BMM_INCLUDE_SPEC>`
 a|Inclusion list, in the form of a hash of individual include specifications, each of which at least specifies the id of another schema, and may specify a namespace via which types from the included schemas are known in this schema.
 Persisted attribute.
 
