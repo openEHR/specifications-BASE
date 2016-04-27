@@ -158,7 +158,7 @@ Intervals of any ordered primitive type, i.e., Integer, Real, Date, Time, Date_t
 ----
     |N..M|        -- the two-sided range N >= x <= M;
     |>N..M|       -- the two-sided range N > x <= M;
-    |N..<M|       -- the two-sided range N >= x <M;
+    |N..<M|       -- the two-sided range N <= x <M;
     |>N..<M|      -- the two-sided range N > x <M;
     |<N|          -- the one-sided range x < N;
     |>N|          -- the one-sided range x > N;
@@ -174,10 +174,10 @@ Examples of this syntax include:
 ----
     |0..5|              -- integer interval
     |0.0..1000.0|       -- real interval
-    |0.0..<1000.0|      -- real interval 0.0 >= x < 1000.0
+    |0.0..<1000.0|      -- real interval 0.0 <= x < 1000.0
     |08:02..09:10|      -- interval of time
     |>=1939-02-01|      -- open-ended interval of dates
-    |5.0 +/-0.5|        -- 4.5 - 5.5
+    |5.0 +/-0.5|        -- 4.5 ± 5.5
     |>=0|               -- >= 0
 ----
 
