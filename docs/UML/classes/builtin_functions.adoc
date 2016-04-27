@@ -13,7 +13,7 @@ h|*Constants*
 ^h|*Meaning*
 
 h|*1..1*
-|*func_table*: `Hash<List<String>,String>`
+|*func_table*: `Hash<String, List<String>>`
 a|List of built-in functions in the form of a keyed table of List<String>, where the latter represents one or more lexical symbols used for the function, e.g. "max", and the key is the function identifier, e.g. "max".
 
 Implementations may choose to populate this table with all functions defined in the core specifications, or only partially, in which case functions not in the table are implemented using the closure/agent approach for externally defined functions.

@@ -39,14 +39,6 @@ h|
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|
-|*minute_unknown*: `Boolean`
-a|Indicates whether minute is unknown. If so, the time is of the form “hh”.
-
-h|
-|*second_unknown*: `Boolean`
-a|Indicates whether second is unknown. If so and month is known, the time is of the form “hh:mm” or “hhmm”.
-
-h|
 |*is_decimal_sign_comma*: `Boolean`
 a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
 
@@ -58,36 +50,6 @@ h|
 |*as_string*: `String`
 a|ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
 
-h|
-|*valid_iso8601_time*: `Boolean`
-a|String is a valid ISO 8601 date, i.e. takes the form:
-
-* hhmmss[,sss][Z &#124; hh[mm]]
-
-or the extended form:
-
-* hh:mm:ss[,sss][Z &#124; ±hh[mm]]
-
-or one of the partial forms:
-
-* hhmm or hh
-
-or the extended form:
-
-* hh:mm
-
-with an additional optional timezone indicator of:
-* Z or ±hh[mm]
-
-Where:
-
-* hh is “00” - “23” (0-filled to two digits)
-* mm is “00” - “59” (0-filled to two digits)
-* ss is “00” - “60” (0-filled to two digits)
-* sss is any numeric string, representing an optional fractional second
-* Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
-* ±hh[mm], i.e. +hhmm, +hh, -hhmm, -hh indicating the timezone
-
 h|(effected)
 |*is_partial*: `Boolean`
 a|True if this time is partial, i.e. if seconds or more is missing.
@@ -98,16 +60,4 @@ a|True if this time uses ‘:’ separators.
 
 h|*Invariant*
 2+a|*_Hour_valid_*: valid_hour(hour, minute, second)
-
-h|
-2+a|*_Minute_valid_*: not minute_unknown implies valid_minute (minute)
-
-h|
-2+a|*_Second_valid_*: not second_unknown implies valid_second (second)
-
-h|
-2+a|*_Fractional_second_valid_*: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))
-
-h|
-2+a|*_Partial_validity_*: minute_unknown implies second_unknown
 |===

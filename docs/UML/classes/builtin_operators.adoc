@@ -13,7 +13,7 @@ h|*Constants*
 ^h|*Meaning*
 
 h|*1..1*
-|*op_table*: `Hash<List<String>,String>`
+|*op_table*: `Hash<String, List<String>>`
 a|List of built-in operators in the form of a keyed table of List<String>, where the latter represents one or more lexical symbols used for the operator, e.g. "+", and the key is the operator identifier, e.g. "plus".
 
 Implementations may choose to populate this table with all operators defined in the core specifications, or only partially, in which case operators not in the table are implemented using the closure/agent approach for externally defined operators.

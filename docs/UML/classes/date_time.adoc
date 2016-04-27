@@ -35,14 +35,6 @@ h|
 a|Day in month.
 
 h|
-|*month_unknown*: `Boolean`
-a|Indicates whether month in year is unknown.
-
-h|
-|*day_unknown*: `Boolean`
-a|Indicates whether day in month is unknown.
-
-h|
 |*hour*: `Integer` +
 *_Pre_*: not hour_unknown
 a|Hour in day.
@@ -66,18 +58,6 @@ h|
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|
-|*minute_unknown*: `Boolean`
-a|Indicates whether minute in hour is known.
-
-h|
-|*second_unknown*: `Boolean`
-a|Indicates whether minute in hour is known.
-
-h|
-|*is_decimal_sign_comma*: `Boolean`
-a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
-
-h|
 |*timezone*: `Timezone`
 a|Timezone; may be Void.
 
@@ -85,37 +65,13 @@ h|
 |*as_string*: `String`
 a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
 
-h|
-|*valid_iso8601_date_time* (s: `String`): `Boolean`
-a|String is a valid ISO 8601 date-time, i.e. takes the form:
-
-* YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]
-
-or the extended form:
-
-* YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]
-
-or one of the partial forms:
-
-* YYYYMMDDThhmm
-* YYYYMMDDThh
-
-or the equivalent extended forms:
-
-* YYYY-MM-DDThh:mm
-* YYYY-MM-DDThh
-
-(meanings as in DV_DATE, DV_TIME) and the values in each field are valid.
-
-h|(effected)
-|*is_extended*: `Boolean`
-a|True if this date/time uses ‘-’, ‘:’ separators.
-
-h|(effected)
-|*is_partial*: `Boolean`
-a|True if this date time is partial, i.e. if seconds or more is missing.
-
 h|*Invariant*
+2+a|*_Day_valid_*: valid_day(year, month, day)
+
+h|
+2+a|*_Month_valid_*: valid_month (month)
+
+h|
 2+a|*_Year_valid_*: valid_year (year)
 
 h|
@@ -126,28 +82,4 @@ h|
 
 h|
 2+a|*_Hour_valid_*: valid_hour (hour, minute, second)
-
-h|
-2+a|*_Minute_valid_*: not minute_unknown implies valid_minute(minute)
-
-h|
-2+a|*_Second_valid_*: not second_unknown implies valid_second (second)
-
-h|
-2+a|*_Fractional_second_valid_*: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))
-
-h|
-2+a|*_Partial_validity_year_*: not month_unknown
-
-h|
-2+a|*_Partial_validity_month_*: not month_unknown
-
-h|
-2+a|*_Partial_validity_day_*: not day_unknown
-
-h|
-2+a|*_Partial_validity_hour_*: not hour_unknown
-
-h|
-2+a|*_Partial_validity_minute_*: minute_unknown implies second_unknown
 |===
