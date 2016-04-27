@@ -1,41 +1,22 @@
-= The Statement Package
+= The Expressions Package
 
 == Overview
 
-The `statement` package defines the Statement Object Model (SOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the `statement` package and further specialise some of its types specifically intended for extension.
+The `expressions` package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the `expressions` package and further specialise some of its types specifically intended for extension.
 
-The main `statement` packages `core` and `extension` are illustrated below.
+The package structure of the `expressions` package is shown below.
 
 [.text-center]
 .Statement Package
-image::{uml_export_dir}/diagrams/BASE-statement.svg[id=statement_package, align="center"]
-
-The `statement.types` package is shown below.
-
-[.text-center]
-.Statement.types Package
-image::{uml_export_dir}/diagrams/BASE-statement.types.svg[id=statement_types_package, align="center"]
-
-== Typing
-
-The type system of the Expression formalism is defined via the type `EXPR_TYPE_DEF` and its descendants. All types have a `_type_name_` and a `_type_anchor_`, which is a variable of the coresponding primtive type from within the openEHR `base_types` package, i.e. `Integer`, `Real`, `String`, etc. The type anchor can be used for testing assignments within the implementation. A special type `TYPE_DEF_OBJECT` is included to enable a value reference (descendant of `EXPR_VALUE_REF`) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.
-
-=== Class Descriptions
-
-include::{uml_export_dir}/classes/expr_type_def.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_boolean.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_integer.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_real.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_date.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_date_time.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_time.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_duration.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_string.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_uri.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_terminology_code.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_object_ref.adoc[leveloffset=+1]
+image::{uml_export_dir}/diagrams/BASE-expressions_packages.svg[id=expressions_packages, align="center"]
 
 == Core Package
+
+The main `expressions` packages `core` and `extension` are illustrated below.
+
+[.text-center]
+.Statement Package
+image::{uml_export_dir}/diagrams/BASE-expressions.svg[id=expressions_package, align="center"]
 
 A group of statements to be used together is formally defined as one or more `STATEMENTs` in a `STATEMENT_SET`. There are three types of statements corresponding to the classes `ASSERTION`, `VARIABLE_DECLARATION` and `ASSIGNMENT`. Assertions consist of an expression tree structure that evaluates to a `Boolean` value. The root of the tree is a descendant of the class `EXPR_ITEM` that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named. 
 
@@ -128,4 +109,29 @@ include::{uml_export_dir}/classes/op_def_exists.adoc[leveloffset=+1]
 
 include::{uml_export_dir}/classes/function_def_external.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/function_def_example.adoc[leveloffset=+1]
+
+== Typing
+
+The `expressions.types` package is shown below.
+
+[.text-center]
+.Statement.types Package
+image::{uml_export_dir}/diagrams/BASE-expressions.types.svg[id=expressions_types_package, align="center"]
+
+The type system of the Expression formalism is defined via the type `EXPR_TYPE_DEF` and its descendants. All types have a `_type_name_` and a `_type_anchor_`, which is a variable of the coresponding primtive type from within the openEHR `base_types` package, i.e. `Integer`, `Real`, `String`, etc. The type anchor can be used for testing assignments within the implementation. A special type `TYPE_DEF_OBJECT` is included to enable a value reference (descendant of `EXPR_VALUE_REF`) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/expr_type_def.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_boolean.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_integer.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_real.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_date.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_date_time.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_time.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_duration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_string.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_uri.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_terminology_code.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/type_def_object_ref.adoc[leveloffset=+1]
 
