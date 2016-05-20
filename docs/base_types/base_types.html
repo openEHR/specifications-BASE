@@ -1,0 +1,3854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="description" content="openEHR Base Types specification">
+<meta name="keywords" content="openehr, identifiers, types">
+<title>openEHR Base Types specification</title>
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_openehr_base_types_specification">openEHR Base Types specification</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a></li>
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_status">1.3. Status</a></li>
+</ul>
+</li>
+<li><a href="#_overview">2. Overview</a>
+<ul class="sectlevel2">
+<li><a href="#_the_any_class">2.1. The Any Class</a>
+<ul class="sectlevel3">
+<li><a href="#_any_class">2.1.1. Any Class</a></li>
+</ul>
+</li>
+<li><a href="#_leaf_types_overview">2.2. Leaf Types Overview</a></li>
+</ul>
+</li>
+<li><a href="#_assumed_types">3. Assumed Types</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">3.1. Overview</a></li>
+<li><a href="#_primitive_types">3.2. Primitive Types</a>
+<ul class="sectlevel3">
+<li><a href="#_numeric_class">3.2.1. Numeric Class</a></li>
+<li><a href="#_ordered_class">3.2.2. Ordered Class</a></li>
+<li><a href="#_ordered_numeric_class">3.2.3. Ordered_Numeric Class</a></li>
+<li><a href="#_boolean_class">3.2.4. Boolean Class</a></li>
+<li><a href="#_integer_class">3.2.5. Integer Class</a></li>
+<li><a href="#_integer64_class">3.2.6. Integer64 Class</a></li>
+<li><a href="#_real_class">3.2.7. Real Class</a></li>
+<li><a href="#_string_class">3.2.8. String Class</a>
+<ul class="sectlevel4">
+<li><a href="#_unicode">3.2.8.1. Unicode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_structure_types">3.3. Structure Types</a>
+<ul class="sectlevel3">
+<li><a href="#_aggregate_class">3.3.1. Aggregate Class</a></li>
+<li><a href="#_list_class">3.3.2. List Class</a></li>
+<li><a href="#_set_class">3.3.3. Set Class</a></li>
+<li><a href="#_array_class">3.3.4. Array Class</a></li>
+<li><a href="#_hash_class">3.3.5. Hash Class</a></li>
+<li><a href="#_interval_class">3.3.6. Interval Class</a></li>
+<li><a href="#_multiplicity_interval_class">3.3.7. MULTIPLICITY_INTERVAL Class</a></li>
+<li><a href="#_cardinality_class">3.3.8. CARDINALITY Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_time_types">4. Time Types</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_3">4.1. Overview</a></li>
+<li><a href="#_native_types">4.2. Native Types</a>
+<ul class="sectlevel3">
+<li><a href="#_time_definitions_class">4.2.1. Time_Definitions Class</a></li>
+<li><a href="#_temporal_class">4.2.2. Temporal Class</a></li>
+<li><a href="#_date_class">4.2.3. Date Class</a></li>
+<li><a href="#_time_class">4.2.4. Time Class</a></li>
+<li><a href="#_date_time_class">4.2.5. Date_time Class</a></li>
+<li><a href="#_duration_class">4.2.6. Duration Class</a></li>
+<li><a href="#_timezone_class">4.2.7. Timezone Class</a></li>
+</ul>
+</li>
+<li><a href="#_iso_8601_types">4.3. ISO 8601 Types</a>
+<ul class="sectlevel3">
+<li><a href="#_iso8601_type_class">4.3.1. ISO8601_TYPE Class</a></li>
+<li><a href="#_iso8601_date_class">4.3.2. ISO8601_DATE Class</a></li>
+<li><a href="#_iso8601_time_class">4.3.3. ISO8601_TIME Class</a></li>
+<li><a href="#_iso8601_date_time_class">4.3.4. ISO8601_DATE_TIME Class</a></li>
+<li><a href="#_iso8601_duration_class">4.3.5. ISO8601_DURATION Class</a></li>
+<li><a href="#_iso8601_timezone_class">4.3.6. ISO8601_TIMEZONE Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_terminology_types">5. Terminology Types</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_4">5.1. Overview</a>
+<ul class="sectlevel3">
+<li><a href="#_terminology_code_class">5.1.1. TERMINOLOGY_CODE Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_functional_meta_types">6. Functional Meta-types</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_5">6.1. Overview</a>
+<ul class="sectlevel3">
+<li><a href="#_routine_class">6.1.1. ROUTINE Class</a></li>
+<li><a href="#_function_class">6.1.2. FUNCTION Class</a></li>
+<li><a href="#_procedure_class">6.1.3. PROCEDURE Class</a></li>
+<li><a href="#_tuple_class">6.1.4. TUPLE Class</a></li>
+<li><a href="#_tuple1_class">6.1.5. TUPLE1 Class</a></li>
+<li><a href="#_tuple2_class">6.1.6. TUPLE2 Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_definitions_package">7. Definitions Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_6">7.1. Overview</a></li>
+<li><a href="#_class_definitions">7.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_basic_definitions_class">7.2.1. BASIC_DEFINITIONS Class</a></li>
+<li><a href="#_openehr_definitions_class">7.2.2. OPENEHR_DEFINITIONS Class</a></li>
+<li><a href="#_validity_kind_enumeration">7.2.3. VALIDITY_KIND Enumeration</a></li>
+<li><a href="#_version_status_enumeration">7.2.4. VERSION_STATUS Enumeration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_publications">Publications</a></li>
+<li><a href="#_resources">Resources</a>
+<ul class="sectlevel3">
+<li><a href="#_general">General</a></li>
+<li><a href="#_e_health_standards">e-Health Standards</a></li>
+<li><a href="#_e_health_projects">e-Health Projects</a></li>
+<li><a href="#_general_standards">General Standards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_openehr_base_types_specification" class="sect0">openEHR Base Types specification</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="http://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: openehr, identifiers, types</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="60%">
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2016 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="http://www.openehr.org/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
+ Web: <a href="http://www.openehr.org/" class="bare">http://www.openehr.org/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record">Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Writing. Taken from <a href="http://www.openehr.org/releases/RM/Release-1.0.3/support.html">openEHR RM Release 1.0.3 Support Model</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>20 May 2016</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The Amendment history relevant to the original content in this specification can be found <a href="http://www.openehr.org/releases/RM/Release-1.0.3/support.html#_amendment_record">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements">Acknowledgements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preface"><a class="anchor" href="#_preface"></a>1. Preface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the openEHR Base Types, whose semantics are used by all other openEHR specifications.</p>
+</div>
+<div class="paragraph">
+<p>The intended audience includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standards bodies producing health informatics standards;</p>
+</li>
+<li>
+<p>Research groups using openEHR, ISO 13606, archetypes and related technologies;</p>
+</li>
+<li>
+<p>The open source healthcare community;</p>
+</li>
+<li>
+<p>Solution vendors.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_documents"><a class="anchor" href="#_related_documents"></a>1.2. Related Documents</h3>
+<div class="paragraph">
+<p>Prerequisite documents for reading this document include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/architecture_overview.html">openEHR Architecture Overview</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
+<div class="paragraph">
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/support.html" class="bare">http://www.openehr.org/releases/RM/latest/support.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+<div class="paragraph">
+<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/browse/SPECPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel">specifications issue tracker</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The openEHR Base Types (<code>org.openehr.base_types</code> package) consists of generic foundational types used throughout the openEHR specifications, including assumed types defined outside of openEHR, e.g. by implementation formalisms. The package structure is illustrated below. Packages shown in light grey can be considered 'pseudo-packages', and are used to state types that are <em>assumed</em> to exist in implementation technologies, and as such are only minimally defined.</p>
+</div>
+<div id="base_types_packages" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types-packages.svg" alt="BASE base types packages">
+</div>
+<div class="title">Figure 1. org.openehr.base_types package structure</div>
+</div>
+<div class="paragraph">
+<p>The <code>primitive_types</code>, <code>structures</code> and <code>time</code> pseudo-packages state types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.</p>
+</div>
+<div class="paragraph">
+<p>The <code>terminology</code> and <code>identification</code> packages define basic time and terminology referencing types and semantics, sufficient to support the needs of other openEHR specifications.</p>
+</div>
+<div class="paragraph">
+<p>The <code>functional</code> pseudo-package states types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.</p>
+</div>
+<div class="paragraph">
+<p>The types defined in the pseudo-packages are important, because they provide names and minimal semantics used by all other openEHR specifications, and they also provide a mapping point into implementation technologies. For example, the type <code>String</code> is defined to mean the ordinary date concept found in all computing systems; the definition includes. Accordingly, within the openEHR specifications, the type name <code>String</code></p>
+</div>
+<div class="sect2">
+<h3 id="_the_any_class"><a class="anchor" href="#_the_any_class"></a>2.1. The Any Class</h3>
+<div class="paragraph">
+<p>Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type <code>Any</code>, which defines a bare minimum of operators, and stands for the real <code>Any</code> or <code>Object</code> type found in real technologies.</p>
+</div>
+<div class="sect3">
+<h4 id="_any_class"><a class="anchor" href="#_any_class"></a>2.1.1. Any Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Any (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract supertype. Usually maps to a type like “Any” or “Object” in an object system. Defined here to provide the value and reference equality semantics.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Value equality.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (a_type: <code>String</code>): <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Create new instance of a type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (an_object: <code>Any</code>): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_leaf_types_overview"><a class="anchor" href="#_leaf_types_overview"></a>2.2. Leaf Types Overview</h3>
+<div class="paragraph">
+<p>The sections below provide formal definitions of all the base types used in openEHR. The following diagram provides an aide memoire of the 'leaf' types among these,  potentially useful to developers.</p>
+</div>
+<div id="base_types_leaf_types" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types-leaf_types.svg" alt="BASE base types leaf types">
+</div>
+<div class="title">Figure 2. Leaf Types</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assumed_types"><a class="anchor" href="#_assumed_types"></a>3. Assumed Types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
+<div class="paragraph">
+<p>This section describes types assumed by all openEHR models. The intention in openEHR is twofold. Firstly, to ensure that openEHR software based on the models integrates is easy to implement in existing development technologies, and secondly, to make the minimum possible assumptions about types found in implementation formalisms, while making sufficient assumptions to enable openEHR models to be fully specified.</p>
+</div>
+<div class="paragraph">
+<p>The set of types chosen here is based on a common set derived from various published sources, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ISO 11404 (2003 revision) general purpose data types;</p>
+</li>
+<li>
+<p>ISO 8601 (2004) date/time specification;</p>
+</li>
+<li>
+<p>Major interoperability formalisms, including OMG IDL, W3C XML-schema;</p>
+</li>
+<li>
+<p>Major typed programming languages, including Java, C#, C++, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The ISO 11404 (2003) standard contains basic semantics of "general purpose data types" for information technology, and is used here as a normative basis for describing assumptions about types. The operations and properties described here are compatible with those used in ISO 11404, but not always the same, as 11404 does not use object-oriented functions. For example, the notional function <code>has (x:T)</code> (test for presence of a value in a set) defined on the type <code>Set&lt;T&gt;</code> below is not defined on the ISO 11404 <code>Set</code> type; instead, the function <code>IsIn (x:T; s:Set&lt;T&gt;)</code> is defined. However, in object-oriented formalisms, the function <code><em>IsIn</em></code> defined on a <code>Set</code> type would usually mean 'subset of'. In the interests of clarity for developers, an object-oriented style of functions and properties has been used here.</p>
+</div>
+<div class="paragraph">
+<p>Two groups of assumed types are identified: primitive types, which are those built in to a formalism&#8217;s type system, and library types, which are assumed to be available in a (class) library defined in the formalism. Thus, the type Boolean is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter that much - whether String is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience.</p>
+</div>
+<div class="paragraph">
+<p>The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains <em>only the assumptions required for the given type to be used in the openEHR Reference Model</em> - <strong>it is not by any means a complete interface definition</strong>. The name and semantics of any function used here for an assumed type <strong>might not be identical</strong> to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed <code>Set&lt;T&gt;</code> type defined below has an operation <code>has (item: T): Boolean</code> which is used throughout the openEHR specifications, Java has the method contains() on its <code>Set&lt;T&gt;</code> class. In a Java implementation, the <code>contains ()</code> method should then be used throughout the openEHR classes as expressed in Java, in place of the <code>has ()</code> method.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>3.2. Primitive Types</h3>
+<div class="paragraph">
+<p>The following types consititute the minimum set of primitive types assumed by openEHR of an implementation formalism.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 60%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type name<br>
+ in openEHR</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">ISO 11404<br>
+                                                                                              Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Octet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a type whose value is an 8-bit value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Octet</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Character</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a type whose value is a member of an 8-bit character-set (ISO: "repertoire").</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Character</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">logical True/False values; usually physically represented as an integer, but need not be</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit integers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit integers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer64</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit real numbers in any interoperable representation, including single-width IEEE floating point</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit real numbers, in any interoperable representation including double-precision IEEE floating point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">represents unicode-enabled strings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Character-String</code>/<code>Sequence</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The figure below illustrates the built-in primitive types. Simple inheritance relationships are shown which facilitate the type descriptions below. Actual inheritance from or subsitutability for an <code>Any</code> class is not assumed, and is shown only for convenience (e.g. to indicate that the '=' operator is available on any type). The type <code>Ordered_numeric</code> is on the other hand is used to indicate assumed substitutability of numeric types, and is intended to be mapped to an equivalent type in a real type system (e.g. in Java, <code>java.lang.Number</code>). Data-oriented implementation type systems such as XML-schema do not have such operations.</p>
+</div>
+<div id="base_primitive_types" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types.primitive_types.svg" alt="BASE base types.primitive types">
+</div>
+<div class="title">Figure 3. base_types.primitive_types package</div>
+</div>
+<div class="sect3">
+<h4 id="_numeric_class"><a class="anchor" href="#_numeric_class"></a>3.2.1. Numeric Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Numeric (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract notional parent class of numeric types, which are types which have various arithmetic and comparison operators defined.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix *</strong> (other: <code>Numeric</code>): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Product by `other'. Actual type of result depends on arithmetic balancing rules.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (other: <code>Numeric</code>): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Sum with `other' (commutative). Actual type of result depends on arithmetic balancing rules.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix -</strong> (other: <code>Numeric</code>): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Result of subtracting `other'. Actual type of result depends on arithmetic balancing rules.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_ordered_class"><a class="anchor" href="#_ordered_class"></a>3.2.2. Ordered Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Ordered (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract notional parent class of ordered, types i.e. types on which the ‘&lt;‘ operator is defined.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (other: <code>Ordered</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘&gt;’, ‘&gt;=’, ‘&lt;=’, ‘&lt;&gt;’. In real type systems, this operator might be defined on another class for comparability.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_ordered_numeric_class"><a class="anchor" href="#_ordered_numeric_class"></a>3.2.3. Ordered_Numeric Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Ordered_Numeric (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract notional parent class of ordered, numeric types, which are types with ‘&lt;‘ and arithmetic operators defined.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered, Numeric</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_boolean_class"><a class="anchor" href="#_boolean_class"></a>3.2.4. Boolean Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Boolean</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Class representing minimal interface of standard Boolean type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: Result = not (not self or not other)<br>
+<strong><em>Post_commutative</em></strong>: Result = (other and self)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Logical conjunction</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and_then</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: Result = not (not self or else not other)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Boolean semi-strict conjunction with other</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: Result = not (not self and not other)<br>
+<strong><em>Post_commutative</em></strong>: Result = (other or Current)<br>
+<strong><em>Post_consistent_with_semi_strict</em></strong>: Result implies (self or else other)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Boolean disjunction with other.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or_else</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: Result = not (not self and then not other)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Boolean semi-strict disjunction with `other'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix xor</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
+<strong><em>Post_definition</em></strong>: Result = self or other) and not (self and other</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Boolean exclusive or with `other'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix implies</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
+<strong><em>Post_definition</em></strong>: Result = (not self or else other)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Boolean implication of `other' (semi-strict)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Involutive_negation</em></strong>: is_equal (not (not self))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Non_contradiction</em></strong>: not (self and (not self))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Completeness</em></strong>: self or else (not self)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_integer_class"><a class="anchor" href="#_integer_class"></a>3.2.5. Integer Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Integer</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Class representing minimal interface of standard Integer type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_integer64_class"><a class="anchor" href="#_integer64_class"></a>3.2.6. Integer64 Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Integer64</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Class representing minimal interface of standard Integer64 type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_real_class"><a class="anchor" href="#_real_class"></a>3.2.7. Real Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Real</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type used to represent decimal numbers. Corresponds to a single-precision floating point value in most languages.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>floor</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return the greatest integer no greater than the value of this object.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_string_class"><a class="anchor" href="#_string_class"></a>3.2.8. String Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>String</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Strings of characters, as used to represent textual data in any natural or formal language.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (other: <code>String</code>): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Concatenation operator - causes ‘other’ to be appended to this string.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if string is empty, i.e. equal to "".</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integer</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if string can be parsed as an integer.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_integer</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return the integer corresponding to the integer value represented in this string.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_unicode"><a class="anchor" href="#_unicode"></a>3.2.8.1. Unicode</h5>
+<div class="paragraph">
+<p>It is assumed in the openEHR specifications that Unicode is supported by the type <code>String</code>. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_structure_types"><a class="anchor" href="#_structure_types"></a>3.3. Structure Types</h3>
+<div class="paragraph">
+<p>The types described in this section are basic data structures mostly assumed to be standardly available in implementation technologies. The types <code>Interval</code>, <code>MULTIPLICITY_INTERVAL</code> and <code>CARDINALITY</code> are not assumed, and are fully defined.</p>
+</div>
+<div class="paragraph">
+<p>The following types consititute the minimum set of primitive types assumed by openEHR of an implementation formalism.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 60%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type name<br>
+ in openEHR</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">ISO 11404<br>
+                                                                                     Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">physical container of items indexed by number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">container of items, implied order, non-unique membership</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sequence&lt;T&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">container of items, no order, unique membership</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;K:Ordered, V&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a table of values of any type V, keyed by values of any <code>Ordered</code> descendant K, typically <code>String</code> or <code>Integer</code>, but may be more complex types, e.g. a coded term type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Table</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intervals with open or closed upper and lower bounds.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Range&lt;T&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following UML diagram illustrates the <code>base_types.structures</code> package. As with the assumed primitive types, inheritance and abstract classes are used for convenience of the definitions below, but are not formally assumed in openEHR.</p>
+</div>
+<div id="base_structure_types" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types.structures.svg" alt="BASE base types.structures">
+</div>
+<div class="title">Figure 4. base_types.structures package</div>
+</div>
+<div class="paragraph">
+<p>The minimal assumed semantics of the assumed <code>structures</code> classes are defined below.</p>
+</div>
+<div class="sect3">
+<h4 id="_aggregate_class"><a class="anchor" href="#_aggregate_class"></a>3.3.1. Aggregate Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Aggregate (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract ancestor of container types whose items are addressable in some way.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (v: <code>T</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Test for membership of a value.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of items in container.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if container is empty.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_list_class"><a class="anchor" href="#_list_class"></a>3.3.2. List Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>List</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Ordered container that may contain duplicates.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>first</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return first element.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>last</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return last element.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>First_validity</em></strong>: not is_empty implies first /= Void</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Last_validity</em></strong>: not is_empty implies last /= Void</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_set_class"><a class="anchor" href="#_set_class"></a>3.3.3. Set Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Set</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Unordered container that may not contain duplicates.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_array_class"><a class="anchor" href="#_array_class"></a>3.3.4. Array Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Array</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Container whose storage is assumed to be contiguous.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_hash_class"><a class="anchor" href="#_hash_class"></a>3.3.5. Hash Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Hash</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type representing a keyed table of values. T is the value type, and U the type of the keys.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_key</strong> (a_key: <code>K</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Test for membership of a key.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> (a_key: <code>K</code>): <code>V</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return item for key  a_key'. Equivalent to ISO 11404 fetch operation.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The folliwing classes are not assumed to exist in libraries or programming languages in a standard way, and are fully defined here.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_interval_class"><a class="anchor" href="#_interval_class"></a>3.3.6. Interval Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Interval</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
+Interval of ordered items.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>lower bound.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Upper bound.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>lower boundary open (i.e. = -infinity)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>upper boundary open (i.e. = +infinity)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>lower boundary value included in range if not lower_unbounded.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>upper boundary value included in range if not upper_unbounded.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (e): <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if (lower_unbounded or
+lower_included and v &gt;= lower) or v &gt; lower and
+(upper_unbounded or
+upper_included and v &lt;= upper or v &lt; upper)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>intersects</strong> (other: <code>Interval</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (other: <code>Interval</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if current interval properly contains `other'? True if all points of `other' are inside the current interval.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if current object&#8217;s interval is semantically same as `other'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Lower_included_valid</em></strong>: lower_unbounded implies not lower_included</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Upper_included_valid</em></strong>: upper_unbounded implies not upper_included</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Limits_consistent</em></strong>: (not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Limits_comparable</em></strong>: (not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_multiplicity_interval_class"><a class="anchor" href="#_multiplicity_interval_class"></a>3.3.7. MULTIPLICITY_INTERVAL Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>MULTIPLICITY_INTERVAL</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Interval</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_range_marker</strong>: <code>String&#160;=&#160;".."</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Marker to use in string form of interval between limits.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_unbounded_marker</strong>: <code>char&#160;=&#160;'&#42;'</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Symbol to use to indicate upper limit unbounded.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this interval imposes no constraints, i.e. is set to 0..*</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this interval expresses optionality, i.e. 0..1.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this interval expresses mandation, i.e. 1..1.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this interval is set to 0..0.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_cardinality_class"><a class="anchor" href="#_cardinality_class"></a>3.3.8. CARDINALITY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>CARDINALITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Express constraints on the cardinality of container objects which are the values of multiply-valued attributes, including uniqueness and ordering, providing the means to state that a container acts like a logical list, set or bag. The cardinality cannot contradict the cardinality of the corresponding attribute within the relevant reference model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval</strong>: <code>MULTIPLICITY_INTERVAL</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The interval of this cardinality.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_ordered</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the members of the container attribute to which this cardinality refers are ordered.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_unique</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the members of the container attribute to which this cardinality refers are unique.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the semantics of this cardinality represent a bag, i.e. unordered, non-unique membership.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the semantics of this cardinality represent a list, i.e. ordered, non-unique membership.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the semantics of this cardinality represent a set, i.e. unordered, unique membership.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_time_types"><a class="anchor" href="#_time_types"></a>4. Time Types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
+<div class="paragraph">
+<p>Two sets of time types are defined in this specification: the <code>base_types.time</code> package and the <code>base_types.iso8601_time</code> package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in or standard library classes for <code>Date</code>, <code>Time</code>, etc. The second set are types based on the ISO 8601 time standard, which supports partial dates and times, and also complex durations, all of which are needed in the biomedical and clinical domains. The two packages are shown below.</p>
+</div>
+<div id="base_time_types" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types-time.svg" alt="BASE base types time">
+</div>
+<div class="title">Figure 5. base_types.time and base_types/iso8601_time packages</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_native_types"><a class="anchor" href="#_native_types"></a>4.2. Native Types</h3>
+<div class="paragraph">
+<p>The assumed native set of types is represented by the following classes, which define a basic interface (including timezone) to each type, and make no assumption about representation.</p>
+</div>
+<div class="sect3">
+<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>4.2.1. Time_Definitions Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Time_Definitions</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definitions for date/time classes. Note that the timezone limits are set by where the international dateline is. Thus, time in New Zealand is quoted using +12:00, not -12:00.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Seconds_in_minute</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Minutes_in_hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hours_in_day</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_month</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Used for conversions of durations containing months to days and / or seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_days_in_month</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_leap_year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_days_in_year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_year</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Used for conversions of durations containing years to days and / or seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_week</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Months_in_year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Min_timezone_hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Minimum hour value of a timezone (note that the -ve sign is supplied in the ISO8601_TIMEZONE class).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_timezone_hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_year</strong> (y: <code>Integer</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = y &gt;= 0</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_month</strong> (m: <code>Integer</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = m &gt;= 1 and m &lt;= Months_in_year</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_day</strong> (y: <code>Integer</code>, m: <code>Integer</code>, d: <code>Integer</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if d &gt;= 1 and d &lt;= days_in_month (m, y)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_hour</strong> (h, m, s: <code>Integer</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_minute</strong> (m: <code>Integer</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = m &gt;= 0 and m &lt; Minutes_in_hour</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if m &gt;= 0 and m &lt; Minutes_in_hour.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_second</strong> (s: <code>Integer</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = s &gt;= 0 and s &lt; Seconds_in_minute</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if s &gt;= 0 and s &lt; Seconds_in_minute .</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_fractional_second</strong> (fs: <code>Double</code>): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: Result = fs &gt;= 0.0 and fs &lt; 1.0 .</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if fs &gt;= 0.0 and fs &lt; 1.0 .</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_temporal_class"><a class="anchor" href="#_temporal_class"></a>4.2.2. Temporal Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Temporal (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract ancestor type of Date/Time types.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered, Time_Definitions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_date_class"><a class="anchor" href="#_date_class"></a>4.2.3. Date Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Date</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Year.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not month_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Month in year.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not day_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Day in month.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>Timezone</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Timezone; may be Void.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for date/time, in format <code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code> or in extended format <code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code> or a partial variant; see valid_iso8601_date_time() below.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_time_class"><a class="anchor" href="#_time_class"></a>4.2.4. Time Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Time</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Defines the interface of an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to fractional seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Hour in day, in 24-hour time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Minute in hour.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong>: <code>Real</code><br>
+<strong><em>Pre</em></strong>: not second_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Fractional seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>Timezone</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Hour_valid</em></strong>: valid_hour(hour, minute, second)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_date_time_class"><a class="anchor" href="#_date_time_class"></a>4.2.5. Date_time Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Date_time</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Defines the interface of an absolute point in time, specified to fractional seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Year.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not month_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Month in year.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not day_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Day in month.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not hour_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Hour in day.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not minute_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Minute in hour.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong>: <code>Integer</code><br>
+<strong><em>Pre</em></strong>: not second_unknown</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Second in minute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Fractional seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>Timezone</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Timezone; may be Void.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Day_valid</em></strong>: valid_day(year, month, day)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Month_valid</em></strong>: valid_month (month)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Month_valid</em></strong>: valid_month (month)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Day_valid</em></strong>: valid_day(year, month, day)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Hour_valid</em></strong>: valid_hour (hour, minute, second)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_duration_class"><a class="anchor" href="#_duration_class"></a>4.2.6. Duration Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Duration</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Defines the interface of a period of time corresponding to a difference between two timepoints.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of years of nominal 365-day length.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 24 hour days.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 60 minute hours.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 60 second minutes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>seconds</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_seconds</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Fractional seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>weeks</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 7 day weeks.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>to_seconds</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Total number of seconds equivalent (including fractional) of entire duration.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Years_valid</em></strong>: years &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Months_valid</em></strong>: months &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Weeks_valid</em></strong>: weeks &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Days_valid</em></strong>: days &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Hours_valid</em></strong>: hours &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Minutes_valid</em></strong>: minutes &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Seconds_valid</em></strong>: seconds &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Fractional_second_valid</em></strong>: fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_timezone_class"><a class="anchor" href="#_timezone_class"></a>4.2.7. Timezone Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Timezone</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents a timezone as used in ISO 8601.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Hour part of timezone - in the range 00 - 13.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Minute part of timezone. Generally 00 or 30.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sign</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Direction of timezone expresssed as +1 or -1.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Min_hour_valid</em></strong>: sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Max_hour_valid</em></strong>: sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute (minute)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Sign_valid</em></strong>: sign = 1 or sign = -1</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_iso_8601_types"><a class="anchor" href="#_iso_8601_types"></a>4.3. ISO 8601 Types</h3>
+<div class="paragraph">
+<p>The set of ISO 8601 based types define dates and times with a <code>String</code> representation (as per ISO 8601), and the ISO 8601 'partial' and 'extended' semantics. They are defined as descendents of the native types described above, and add the necessary elements required for ISO 8601.</p>
+</div>
+<div class="paragraph">
+<p>ISO 8601 semantics not used in these types include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"expanded" dates, which have year numbers of greater than 4 digits, and may be negative; in openEHR, only 4-digit year numbers are assumed;</p>
+</li>
+<li>
+<p>the <code>YYYY-WW-DD</code> method of expressing dates (since this is imprecise and difficult to compute with due to variable week starting dates, and not required in health);</p>
+</li>
+<li>
+<p>partial date/times with fractional minutes or hours, e.g. <code>hh,hhh</code> or <code>mm,mm</code>; in openEHR, only fractional seconds are supported;</p>
+</li>
+<li>
+<p>the interval syntax. Intervals of date/times are supported in openEHR, but their syntax form is defined by ADL, and is standardised across all comparable types, not just dates and times.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deviations from the published standard include the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>durations are supposed to take the form of <code>PnnW</code> or <code>PnnYnnMnnDTnnHnnMnnS</code>, but in openEHR, the W (week) designator can be used in combination with the other designators, since it is very common to state durations of pregnancy as some combination of weeks and days.</p>
+</li>
+<li>
+<p>partial variants of <code>ISO8601_DATE_TIME</code> can include missing hours, days and months, whereas ISO 8601:2004 (section 4.3.3 c) only allows missing seconds and minutes. The reasons for this deviation are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the same deviation is used in HL7v2 and HL7v3 TS (timestamp) type, i.e. there are data in existing clinical systems matching this specification;</p>
+</li>
+<li>
+<p>in a typed object model, this deviation is more sensible anyway; the ISO 8601 rule is most likely a limitation of the purely syntactic means of expression. In real systems where a timestamp/date-time is specified in a screen form, it makes sense to allow it to be as partial as possible, rather than artifically restricted to only missing seconds and minutes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>the time <code>24:00:00</code> (or <code>240000</code>) is not allowed anywhere, whereas in ISO8601:2004 it appears to be legal at least for times. This deviation is also appears to be used in HL7v2 and HL7v3 (where midnight is defined as the time <code>00:00:00</code>), and is preferable to the documented standard, since a date/time with time of <code>24:00:00</code> is really the next day, i.e. the date part is then incorrect.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="#ISO_8601">[ISO_8601]</a> and the official ISO standard for ISO 8601 details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.</p>
+</div>
+<div class="sect3">
+<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>4.3.1. ISO8601_TYPE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>ISO8601_TYPE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract ancestor type of ISO 8601 types, defining interface for 'extended' and 'partial' concepts from ISO 8601.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this date time is partial, i.e. if trailing end (right hand) value(s) is/are missing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this ISO8601 string is in the 'extended' form, i.e. uses ‘-’ and / or ‘:’ separators.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>4.3.2. ISO8601_DATE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_DATE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents an ISO 8601 date, including partial and extended forms.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE, Date</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_date</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>String is a valid ISO 8601 date, i.e. takes the complete form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYYMMDD or the extended form:</p>
+</li>
+<li>
+<p>YYYY-MM-DD or one of the partial forms:</p>
+</li>
+<li>
+<p>YYYYMM</p>
+</li>
+<li>
+<p>YYYY</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or the equivalent extended form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYY-MM</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYY is the string form of any positive number in the range “0000” - “9999” (zero-filled to four digits)</p>
+</li>
+<li>
+<p>MM is “01” - “12” (zero-filled to two digits)</p>
+</li>
+<li>
+<p>DD is “01” - “31” (zero-filled to two digits)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The combinations of YYYY, MM, DD numbers must be correct with respect to the Gregorian calendar.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this date is partial, i.e. if days or more is missing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this date uses ‘-’ separators.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Month_valid</em></strong>: not month_unknown implies valid_month (month)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Day_valid</em></strong>: not day_unknown implies valid_day (year, month, day)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity</em></strong>: month_unknown implies day_unknown</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>4.3.3. ISO8601_TIME Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_TIME</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents an ISO 8601 time, including partial and extended forms.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with ISO8601_DATE_TIME.
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE, Time</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether minute is unknown. If so, the time is of the form “hh”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether second is unknown. If so and month is known, the time is of the form “hh:mm” or “hhmm”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_time</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>String is a valid ISO 8601 date, i.e. takes the form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or the extended form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or one of the partial forms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hhmm or hh</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or the extended form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hh:mm</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>with an additional optional timezone indicator of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Z or ±hh[mm] or ±hh[:mm] (extended form)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hh is “00” - “23” (0-filled to two digits)</p>
+</li>
+<li>
+<p>mm is “00” - “59” (0-filled to two digits)</p>
+</li>
+<li>
+<p>ss is “00” - “60” (0-filled to two digits)</p>
+</li>
+<li>
+<p>[(,&#124;.)s+] is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second</p>
+</li>
+<li>
+<p>Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time is partial, i.e. if seconds or more is missing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time uses ‘-’, ‘:’ separators.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Hour_valid</em></strong>: valid_hour(hour, minute, second)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute (minute)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Second_valid</em></strong>: not second_unknown implies valid_second (second)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Fractional_second_valid</em></strong>: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity</em></strong>: minute_unknown implies second_unknown</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>4.3.4. ISO8601_DATE_TIME Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_DATE_TIME</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents an ISO 8601 date/time, including partial and extended forms.</p>
+</div>
+<div class="paragraph">
+<p>Note that this class includes 2 deviations from ISO 8601:2004:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard;</p>
+</li>
+<li>
+<p>the time 24:00:00 is not allowed, since it would mean the date was really on the next day.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE, Date_time</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether month in year is unknown.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether day in month is unknown.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether minute in hour is known.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether minute in hour is known.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_date_time</strong> (s: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>String is a valid ISO 8601 date-time, i.e. takes the form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or the extended form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or one of the partial forms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYYMMDDThhmm</p>
+</li>
+<li>
+<p>YYYYMMDDThh</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or the equivalent extended forms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YYYY-MM-DDThh:mm</p>
+</li>
+<li>
+<p>YYYY-MM-DDThh</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(meanings as in DV_DATE, DV_TIME) and the values in each field are valid.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for date/time, in format <code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code> or in extended format <code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code> or a partial variant; see valid_iso8601_date_time() below.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this date time is partial, i.e. if seconds or more is missing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this date/time uses ‘-’, ‘:’ separators.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Month_valid</em></strong>: valid_month (month)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Day_valid</em></strong>: valid_day(year, month, day)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Hour_valid</em></strong>: valid_hour (hour, minute, second)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute(minute)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Second_valid</em></strong>: not second_unknown implies valid_second (second)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Fractional_second_valid</em></strong>: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity_year</em></strong>: not month_unknown</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity_month</em></strong>: not month_unknown</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity_day</em></strong>: not day_unknown</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity_hour</em></strong>: not hour_unknown</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Partial_validity_minute</em></strong>: minute_unknown implies second_unknown</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>4.3.5. ISO8601_DURATION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_DURATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents an ISO 8601 duration.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE, Duration</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_duration</strong> (s: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>String is a valid ISO 8601 duration, i.e. takes the form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Where each nn represents a number of years, months, etc. nnW represents a number of 7-day weeks.</p>
+</div>
+<div class="paragraph">
+<p>Note: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for duration, in format</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Returns False.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Returns True.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Years_valid</em></strong>: years &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Months_valid</em></strong>: months &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Weeks_valid</em></strong>: weeks &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Days_valid</em></strong>: days &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Hours_valid</em></strong>: hours &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Minutes_valid</em></strong>: minutes &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Seconds_valid</em></strong>: seconds &gt;= 0</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Fractional_second_valid</em></strong>: fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>4.3.6. ISO8601_TIMEZONE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_TIMEZONE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents a timezone as used in ISO 8601.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE, Timezone</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates whether minute part known.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 timezone string, in format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Z &#124; ±hh[mm]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hh is “00” - “23” (0-filled to two digits)</p>
+</li>
+<li>
+<p>mm is “00” - “59” (0-filled to two digits)</p>
+</li>
+<li>
+<p>Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if timezone is UTC, i.e. +0000.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time zone is partial, i.e. if minutes is missing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this time-zone uses ‘:’ separators.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Min_hour_valid</em></strong>: sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Max_hour_valid</em></strong>: sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute (minute)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Sign_valid</em></strong>: sign = 1 or sign = -1</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_terminology_types"><a class="anchor" href="#_terminology_types"></a>5. Terminology Types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
+<div class="paragraph">
+<p>One type is provided among the <code>base_types</code> package to represent a reference to a 'terminology code', i.e. a code within a 'terminology'. This is sometimes called a 'concept code' among terminology builders.</p>
+</div>
+<div class="paragraph">
+<p>The assumption here is that the 'code' is a reference to a referenceable entity within a terminology or ontology, which may be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a single 'term', for which a definition and potentially relationships (at least the IS-A relationship);</p>
+</li>
+<li>
+<p>a 'value set' i.e. a set of single terms, possibly in a tree or other structure corresponding to relationships between the member terms;</p>
+</li>
+<li>
+<p>any other terminological entity referencable with a code.</p>
+</li>
+</ul>
+</div>
+<div id="base_types_terminology_types" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types.terminology.svg" alt="BASE base types.terminology">
+</div>
+<div class="title">Figure 6. base_types.terminology package</div>
+</div>
+<div class="paragraph">
+<p>The <code>TERMINOLOGY_CODE</code> class is defined below.</p>
+</div>
+<div class="sect3">
+<h4 id="_terminology_code_class"><a class="anchor" href="#_terminology_code_class"></a>5.1.1. TERMINOLOGY_CODE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TERMINOLOGY_CODE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Logically primitive type representing a reference to a terminology concept, in the form of a terminology identifier, optional version, and a code or code string from the terminology.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The archetype environment namespace identifier used to identify a terminology. Typically a value like "snomed_ct" that is mapped elsewhere to the full URI identifying the terminology.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional string value representing terminology version, typically a date or dotted numeric.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A terminology code or post-coordinated code expression, if supported by the terminology. The code may refer to a single term, a value set consisting of multiple terms, or some other entity representable within the terminology.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code>Uri</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The URI reference that may be used as a concrete key into a notional terminology service for queries that can obtain the term text, definition, and other associated elements.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_functional_meta_types"><a class="anchor" href="#_functional_meta_types"></a>6. Functional Meta-types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
+<div class="paragraph">
+<p>A small number of meta-types are defined that correspond to functional programming primitives, otherwise known as 'closures', 'lambda expressions' and so on. These concepts are supported in most modern programming languages now, and the types defined here are intended to provide a minimal formal basis to enable other openEHR specification to defined function-related elements. Since UML does not contain native functional elements, the semantics here are approximated using normal class facilities.</p>
+</div>
+<div class="paragraph">
+<p>The following illustrates the <code>base_types.functional</code> package.</p>
+</div>
+<div id="base_types_functional" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types.functional.svg" alt="BASE base types.functional">
+</div>
+<div class="title">Figure 7. base_types.functional package</div>
+</div>
+<div class="paragraph">
+<p>Two key abstractions are required, namely 'function as a type', and 'tuple', which enables arguments to be formalised. To provide a 'function' type, a 'routine' type is also required. For completeness, a 'procedure' type is also defined. The 'tuple' type is defined as a generic meta-type whose descendants may additionally define any number of generic parameter types, corresponding to a type list.</p>
+</div>
+<div class="paragraph">
+<p>The main classes are defined below.</p>
+</div>
+<div class="sect3">
+<h4 id="_routine_class"><a class="anchor" href="#_routine_class"></a>6.1.1. ROUTINE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ROUTINE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type representing a function with a return type and 0 or more arguments represented as a TUPLE.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_function_class"><a class="anchor" href="#_function_class"></a>6.1.2. FUNCTION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type representing a function with a return type and 0 or more arguments represented as a TUPLE.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ROUTINE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_procedure_class"><a class="anchor" href="#_procedure_class"></a>6.1.3. PROCEDURE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PROCEDURE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type representing a procedure with 0 or more arguments represented as a TUPLE.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ROUTINE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_tuple_class"><a class="anchor" href="#_tuple_class"></a>6.1.4. TUPLE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Parent type of all TUPLE types.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_tuple1_class"><a class="anchor" href="#_tuple1_class"></a>6.1.5. TUPLE1 Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE1</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TUPLE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_tuple2_class"><a class="anchor" href="#_tuple2_class"></a>6.1.6. TUPLE2 Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE2</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TUPLE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_definitions_package"><a class="anchor" href="#_definitions_package"></a>7. Definitions Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>7.1. Overview</h3>
+<div class="paragraph">
+<p>The <code>base_types.definitions</code> package shown below defines symbolic definitions used by the openEHR models.</p>
+</div>
+<div id="base_definition_types" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions">
+</div>
+<div class="title">Figure 8. base_types.definitions package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>7.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_basic_definitions_class"><a class="anchor" href="#_basic_definitions_class"></a>7.2.1. BASIC_DEFINITIONS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BASIC_DEFINITIONS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Defines globally used constant values.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR</strong>: <code>char&#160;=&#160;'\015'</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Carriage return character.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LF</strong>: <code>char&#160;=&#160;'\012'</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Line feed character.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Any_type</strong>: <code>String&#160;=&#160;"Any"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code>String&#160;=&#160;".&#42;"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Default_encoding</strong>: <code>String&#160;=&#160;"UTF-8"</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_openehr_definitions_class"><a class="anchor" href="#_openehr_definitions_class"></a>7.2.2. OPENEHR_DEFINITIONS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OPENEHR_DEFINITIONS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Inheritance class to provide access to constants defined in other packages.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BASIC_DEFINITIONS</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Local_terminology_id</strong>: <code>String&#160;=&#160;"local"</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_validity_kind_enumeration"><a class="anchor" href="#_validity_kind_enumeration"></a>7.2.3. VALIDITY_KIND Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VALIDITY_KIND</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>An enumeration of three values that may commonly occur in constraint models.</p>
+</div>
+<div class="paragraph">
+<p>Use as the type of any attribute within this model, which expresses constraint on some attribute in a class in a reference model. For example to indicate validity
+of Date/Time fields.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Constant to indicate mandatory presence of something.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Constant to indicate optional presence of something.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prohibited</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Constant to indicate disallowed presence of something.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_version_status_enumeration"><a class="anchor" href="#_version_status_enumeration"></a>7.2.4. VERSION_STATUS Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VERSION_STATUS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Status of a versioned artefact, as one of a number of possible values: uncontrolled, prerelease, release, build.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alpha</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Value representing a version which is ‘unstable’, i.e. contains an unknown size of change with respect to its base version. Rendered with the build number as a string in the form “N.M.P-alpha.B” e.g. “2.0.1-alpha.154”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Value representing a version which is ‘beta’, i.e. contains an unknown but reducing size of change with respect to its base version. Rendered with the build number as a string in the form “N.M.P-beta.B” e.g. “2.0.1-beta.154”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">release_candidate</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Value representing a version which is ‘release candidate’, i.e. contains only patch-level changes on the base version. Rendered as a string as “N.M.P-rc.B” e.g. “2.0.1-rc.27”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">released</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Value representing a version which is ‘released’, i.e. is the definitive base version. Rendered with the build number as a string in the form “N.M.P” e.g. “2.0.1”.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Value representing a version which is a build of the current base release. Rendered with the build number as a string in the form “N.M.P+B” e.g. “2.0.1+33”.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h3>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
+</li>
+<li>
+<p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_2002"></a>[Beale_2002] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> Eleventh OOPSLA Workshop on Behavioral Semantics: Serving the Customer (Seattle, Washington, USA, November 4, 2002). Edited by Kenneth Baclawski and Haim Kilov. Northeastern University, Boston, 2002, pp. 16-32. Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
+</li>
+<li>
+<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
+</li>
+<li>
+<p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
+</li>
+<li>
+<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
+</li>
+<li>
+<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
+</li>
+<li>
+<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
+</li>
+<li>
+<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
+</li>
+<li>
+<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
+</li>
+<li>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+</li>
+<li>
+<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
+</li>
+<li>
+<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
+</li>
+<li>
+<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H, Ross J. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
+<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
+</li>
+<li>
+<p><a id="Martin"></a>[Martin] Martin P. <strong>Translations between UML, OWL, KIF and the WebKB-2 languages (For-Taxonomy, Frame-CG, Formalized English)</strong>. May/June 2003. Available at <a href="http://www.webkb.org/doc/model/comparisons.html" class="bare">http://www.webkb.org/doc/model/comparisons.html</a> as at Aug 2004.</p>
+</li>
+<li>
+<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
+</li>
+<li>
+<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
+</li>
+<li>
+<p><a id="GLIF"></a>[GLIF] Lucila Ohno-Machado, John H. Gennari, Shawn N. Murphy, Nilesh L. Jain, Samson W. Tu, Diane E. Oliver, Edward Pattison-Gordon, Robert A. Greenes, Edward H. Shortliffe, and G. Octo Barnett.  <strong>The GuideLine Interchange Format - A Model for Representing Guidelines</strong>. J Am Med Inform Assoc. 1998 Jul-Aug; 5(4): 357–372.</p>
+</li>
+<li>
+<p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+</li>
+<li>
+<p><a id="Rector_1999"></a>[Rector_1999] Rector A L. <strong>Clinical terminology: why is it so hard?</strong> Methods Inf Med. 1999 Dec;38(4-5):239-52. Available at <a href="http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf" class="bare">http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+</li>
+<li>
+<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+</li>
+<li>
+<p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
+</li>
+<li>
+<p><a id="Van_de_Velde_Degoulet_2003"></a>[Van_de_Velde_Degoulet_2003] Van de Velde R, Degoulet P. <strong>Clinical Information Systems: A Component-Based Approach.</strong> 2003. Springer-Verlag New York.</p>
+</li>
+<li>
+<p><a id="Weed_1969"></a>[Weed_1969] Weed LL. <strong>Medical records, medical education and patient care. 6 ed.</strong> Chicago: Year Book Medical Publishers Inc. 1969.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
+<div class="sect3">
+<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999. See <a href="http://www.omg.org/spec/PIDS/" class="bare">http://www.omg.org/spec/PIDS/</a> .</p>
+</li>
+<li>
+<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999. <a href="http://www.omg.org/spec/LQS/" class="bare">http://www.omg.org/spec/LQS/</a> .</p>
+</li>
+<li>
+<p><a id="hl7_cda"></a>[hl7_cda] HL7 International. <strong>HL7 version Clinical Document Architecture (CDA)</strong>. Available at <a href="http://www.hl7.org.uk/version3group/cda.asp" class="bare">http://www.hl7.org.uk/version3group/cda.asp</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_ballot2"></a>[HL7v3_ballot2] HL7 International. <strong>HL7 version 3 2nd Ballot specification</strong>. Available at <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
+<p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7 International. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
+</li>
+<li>
+<p><a id="hl7_arden"></a>[hl7_arden] HL7 International. <strong>HL7 Arden Syntax</strong>. See <a href="http://www.hl7.org/Special/committees/Arden/index.cfm" class="bare">http://www.hl7.org/Special/committees/Arden/index.cfm</a> .</p>
+</li>
+<li>
+<p><a id="hl7_gello"></a>[hl7_gello] HL7 International. <strong>GELLO Decision Support Language</strong>. <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5" class="bare">http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5</a> .</p>
+</li>
+<li>
+<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
+</li>
+<li>
+<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+</li>
+<li>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_31_32"></a>[EHCR_supA_31_32] Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993.</p>
+</li>
+<li>
+<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_AUS"></a>[GeHR_AUS] Heard S, Beale T. <strong>The Good Electronic Health Record (GeHR) (Australia).</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
+</li>
+<li>
+<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
+</li>
+<li>
+<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages. See <a href="http://discovery.ucl.ac.uk/66235/" class="bare">http://discovery.ucl.ac.uk/66235/</a> .</p>
+</li>
+<li>
+<p><a id="synex"></a>[synex] University College London. <strong>SynEx project</strong>. <a href="http://www.chime.ucl.ac.uk/HealthI/SynEx/" class="bare">http://www.chime.ucl.ac.uk/HealthI/SynEx/</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
+</li>
+<li>
+<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+</li>
+<li>
+<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
+</li>
+<li>
+<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
+</li>
+<li>
+<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
+</li>
+<li>
+<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
+</li>
+<li>
+<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
+</li>
+<li>
+<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-05-20 15:09:31 BST
+</div>
+</div>
+</body>
+</html>

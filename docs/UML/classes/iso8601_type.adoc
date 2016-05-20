@@ -6,20 +6,27 @@ h|*Class*
 2+^h|*_ISO8601_TYPE (abstract)_*
 
 h|*Description*
-2+a|Abstract ancestor type of ISO8601 types.
+2+a|Abstract ancestor type of ISO 8601 types, defining interface for 'extended' and 'partial' concepts from ISO 8601.
 
 h|*Inherit*
-2+|Ordered, TIME_DEFINITIONS
+2+|Ordered
 
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*value*: `String`
+a|
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
 |*is_partial*: `Boolean`
-a|
+a|True if this date time is partial, i.e. if trailing end (right hand) value(s) is/are missing.
 
 h|
 |*is_extended*: `Boolean`
-a|
+a|True if this ISO8601 string is in the 'extended' form, i.e. uses ‘-’ and / or ‘:’ separators.
 |===

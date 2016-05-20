@@ -1,0 +1,19 @@
+= Terminology Types
+
+== Overview
+
+One type is provided among the `base_types` package to represent a reference to a 'terminology code', i.e. a code within a 'terminology'. This is sometimes called a 'concept code' among terminology builders.
+
+The assumption here is that the 'code' is a reference to a referenceable entity within a terminology or ontology, which may be:
+
+* a single 'term', for which a definition and potentially relationships (at least the IS-A relationship);
+* a 'value set' i.e. a set of single terms, possibly in a tree or other structure corresponding to relationships between the member terms;
+* any other terminological entity referencable with a code.
+
+[.text-center]
+.base_types.terminology package
+image::{uml_export_dir}/diagrams/BASE-base_types.terminology.svg[id=base_types_terminology_types, align="center"]
+
+The `TERMINOLOGY_CODE` class is defined below.
+
+include::{uml_export_dir}/classes/terminology_code.adoc[]

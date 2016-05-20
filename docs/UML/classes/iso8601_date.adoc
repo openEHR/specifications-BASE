@@ -6,27 +6,14 @@ h|*Class*
 2+^h|*ISO8601_DATE*
 
 h|*Description*
-2+a|Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day.
+2+a|Represents an ISO 8601 date, including partial and extended forms.
 
 h|*Inherit*
-2+|ISO8601_TYPE
+2+|ISO8601_TYPE, Date
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
-
-h|
-|*year*: `Integer`
-a|Year.
-
-h|
-|*month*: `Integer` +
-*_Pre_*: not month_unknown
-a|Month in year.
-
-h|
-|*day*: `Integer`
-a|Day in month.
 
 h|
 |*month_unknown*: `Boolean`
@@ -35,14 +22,6 @@ a|Indicates whether month in year is unknown. If so, the date is of the form “
 h|
 |*day_unknown*: `Boolean`
 a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.
-
-h|
-|*as_string*: `String`
-a|ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.
-
-h|
-|*is_expanded*: `Boolean`
-a|True if this date uses ‘-’ separators.
 
 h|
 |*valid_iso8601_date*: `Boolean`
@@ -67,7 +46,15 @@ The combinations of YYYY, MM, DD numbers must be correct with respect to the Gre
 
 h|(effected)
 |*is_partial*: `Boolean`
-a|True if this date is partial, i.e. if day or more is missing.
+a|True if this date is partial, i.e. if days or more is missing.
+
+h|(effected)
+|*is_extended*: `Boolean`
+a|True if this date uses ‘-’ separators.
+
+h|(effected)
+|*as_string*: `String`
+a|ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.
 
 h|*Invariant*
 2+a|*_Year_valid_*: valid_year (year)

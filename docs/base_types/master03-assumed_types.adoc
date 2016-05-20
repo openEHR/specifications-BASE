@@ -1,0 +1,109 @@
+= Assumed Types
+
+== Overview
+
+This section describes types assumed by all openEHR models. The intention in openEHR is twofold. Firstly, to ensure that openEHR software based on the models integrates is easy to implement in existing development technologies, and secondly, to make the minimum possible assumptions about types found in implementation formalisms, while making sufficient assumptions to enable openEHR models to be fully specified.
+
+The set of types chosen here is based on a common set derived from various published sources, including:
+
+* ISO 11404 (2003 revision) general purpose data types;
+* ISO 8601 (2004) date/time specification;
+* Major interoperability formalisms, including OMG IDL, W3C XML-schema;
+* Major typed programming languages, including Java, C#, C++, etc.
+
+The ISO 11404 (2003) standard contains basic semantics of "general purpose data types" for information technology, and is used here as a normative basis for describing assumptions about types. The operations and properties described here are compatible with those used in ISO 11404, but not always the same, as 11404 does not use object-oriented functions. For example, the notional function `has (x:T)` (test for presence of a value in a set) defined on the type `Set<T>` below is not defined on the ISO 11404 `Set` type; instead, the function `IsIn (x:T; s:Set<T>)` is defined. However, in object-oriented formalisms, the function `_IsIn_` defined on a `Set` type would usually mean 'subset of'. In the interests of clarity for developers, an object-oriented style of functions and properties has been used here.
+
+Two groups of assumed types are identified: primitive types, which are those built in to a formalism's type system, and library types, which are assumed to be available in a (class) library defined in the formalism. Thus, the type Boolean is always assumed to exist in a formalism, while the type `Array<T>` is assumed to be available in a library. For practical purposes, these two categories do not matter that much - whether String is really a library class (the usual case) or an inbuilt type doesn't make much difference to the programmer. They are shown separately here mainly as an explanatory convenience.
+
+The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains _only the assumptions required for the given type to be used in the openEHR Reference Model_ - *it is not by any means a complete interface definition*. The name and semantics of any function used here for an assumed type *might not be identical* to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed `Set<T>` type defined below has an operation `has (item: T): Boolean` which is used throughout the openEHR specifications, Java has the method contains() on its `Set<T>` class. In a Java implementation, the `contains ()` method should then be used throughout the openEHR classes as expressed in Java, in place of the `has ()` method.
+
+== Primitive Types
+
+The following types consititute the minimum set of primitive types assumed by openEHR of an implementation formalism.
+
+[cols="1,3,1", options="header"]
+|===
+|Type name +
+ in openEHR |Description                                                                     |ISO 11404 +
+                                                                                              Type
+
+|`Octet`    |a type whose value is an 8-bit value.                                           |`Octet`
+|`Character`|a type whose value is a member of an 8-bit character-set (ISO: "repertoire").   |`Character`
+|`Boolean`  |logical True/False values; usually physically represented as an integer, but need not be |`Boolean`
+|`Integer`  |32-bit integers                                                                 |`Integer`
+|`Integer64`|64-bit integers                                                                 |`Integer64`
+|`Real`     |32-bit real numbers in any interoperable representation, including single-width IEEE floating point |`Real`
+|`Double`   |64-bit real numbers, in any interoperable representation including double-precision IEEE floating point. |`Real`
+|`String`   |represents unicode-enabled strings                                              |`Character-String`/`Sequence`
+|===
+
+The figure below illustrates the built-in primitive types. Simple inheritance relationships are shown which facilitate the type descriptions below. Actual inheritance from or subsitutability for an `Any` class is not assumed, and is shown only for convenience (e.g. to indicate that the '=' operator is available on any type). The type `Ordered_numeric` is on the other hand is used to indicate assumed substitutability of numeric types, and is intended to be mapped to an equivalent type in a real type system (e.g. in Java, `java.lang.Number`). Data-oriented implementation type systems such as XML-schema do not have such operations.
+
+[.text-center]
+.base_types.primitive_types package
+image::{uml_export_dir}/diagrams/BASE-base_types.primitive_types.svg[id=base_primitive_types, align="center"]
+
+include::{uml_export_dir}/classes/numeric.adoc[]
+
+include::{uml_export_dir}/classes/ordered.adoc[]
+
+include::{uml_export_dir}/classes/ordered_numeric.adoc[]
+
+include::{uml_export_dir}/classes/boolean.adoc[]
+
+include::{uml_export_dir}/classes/integer.adoc[]
+
+include::{uml_export_dir}/classes/integer64.adoc[]
+
+include::{uml_export_dir}/classes/real.adoc[]
+
+include::{uml_export_dir}/classes/string.adoc[]
+
+==== Unicode
+
+It is assumed in the openEHR specifications that Unicode is supported by the type `String`. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.
+
+== Structure Types
+
+The types described in this section are basic data structures mostly assumed to be standardly available in implementation technologies. The types `Interval`, `MULTIPLICITY_INTERVAL` and `CARDINALITY` are not assumed, and are fully defined.
+
+The following types consititute the minimum set of primitive types assumed by openEHR of an implementation formalism.
+
+[cols="1,3,1", options="header"]
+|===
+|Type name +
+ in openEHR             |Description                                                |ISO 11404 +
+                                                                                     Type
+
+|`Array<T>`             |physical container of items indexed by number              |`Array<T>`
+|`List<T>`              |container of items, implied order, non-unique membership   |`Sequence<T>`
+|`Set<T>`               |container of items, no order, unique membership            |`Set<T>`
+|`Hash<K:Ordered, V>`   |a table of values of any type V, keyed by values of any `Ordered` descendant K, typically `String` or `Integer`, but may be more complex types, e.g. a coded term type. | `Table`
+|`Interval<T>`          |Intervals with open or closed upper and lower bounds.      |`Range<T>`
+|===
+
+The following UML diagram illustrates the `base_types.structures` package. As with the assumed primitive types, inheritance and abstract classes are used for convenience of the definitions below, but are not formally assumed in openEHR.
+
+[.text-center]
+.base_types.structures package
+image::{uml_export_dir}/diagrams/BASE-base_types.structures.svg[id=base_structure_types, align="center"]
+
+The minimal assumed semantics of the assumed `structures` classes are defined below.
+
+include::{uml_export_dir}/classes/aggregate.adoc[]
+
+include::{uml_export_dir}/classes/list.adoc[]
+
+include::{uml_export_dir}/classes/set.adoc[]
+
+include::{uml_export_dir}/classes/array.adoc[]
+
+include::{uml_export_dir}/classes/hash.adoc[]
+
+The folliwing classes are not assumed to exist in libraries or programming languages in a standard way, and are fully defined here.
+
+include::{uml_export_dir}/classes/interval.adoc[]
+
+include::{uml_export_dir}/classes/multiplicity_interval.adoc[]
+
+include::{uml_export_dir}/classes/cardinality.adoc[]

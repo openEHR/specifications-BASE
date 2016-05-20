@@ -1,0 +1,29 @@
+= Overview
+
+The openEHR Base Types (`org.openehr.base_types` package) consists of generic foundational types used throughout the openEHR specifications, including assumed types defined outside of openEHR, e.g. by implementation formalisms. The package structure is illustrated below. Packages shown in light grey can be considered 'pseudo-packages', and are used to state types that are _assumed_ to exist in implementation technologies, and as such are only minimally defined.
+
+[.text-center]
+.org.openehr.base_types package structure
+image::{uml_export_dir}/diagrams/BASE-base_types-packages.svg[id=base_types_packages, align="center"]
+
+The `primitive_types`, `structures` and `time` pseudo-packages state types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.
+
+The `terminology` and `identification` packages define basic time and terminology referencing types and semantics, sufficient to support the needs of other openEHR specifications.
+
+The `functional` pseudo-package states types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.
+
+The types defined in the pseudo-packages are important, because they provide names and minimal semantics used by all other openEHR specifications, and they also provide a mapping point into implementation technologies. For example, the type `String` is defined to mean the ordinary date concept found in all computing systems; the definition includes. Accordingly, within the openEHR specifications, the type name `String`
+
+== The Any Class
+
+Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type `Any`, which defines a bare minimum of operators, and stands for the real `Any` or `Object` type found in real technologies.
+
+include::{uml_export_dir}/classes/any.adoc[]
+
+== Leaf Types Overview
+
+The sections below provide formal definitions of all the base types used in openEHR. The following diagram provides an aide memoire of the 'leaf' types among these,  potentially useful to developers.
+
+[.text-center]
+.Leaf Types
+image::{uml_export_dir}/diagrams/BASE-base_types-leaf_types.svg[id=base_types_leaf_types, align="center"]

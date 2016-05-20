@@ -6,9 +6,7 @@ h|*Class*
 2+^h|*Time*
 
 h|*Description*
-2+a|Represents an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to the second.
-
-NOTE: A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with Date_time.
+2+a|Defines the interface of an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to fractional seconds.
 
 h|*Inherit*
 2+|Temporal
@@ -35,28 +33,8 @@ h|
 a|Fractional seconds.
 
 h|
-|*has_fractional_second*: `Boolean`
-a|True if the fractional_second part is signficant (i.e. even if = 0.0).
-
-h|
-|*is_decimal_sign_comma*: `Boolean`
-a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
-
-h|
 |*timezone*: `Timezone`
 a|
-
-h|
-|*as_string*: `String`
-a|ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
-
-h|(effected)
-|*is_partial*: `Boolean`
-a|True if this time is partial, i.e. if seconds or more is missing.
-
-h|(effected)
-|*is_extended*: `Boolean`
-a|True if this time uses ‘:’ separators.
 
 h|*Invariant*
 2+a|*_Hour_valid_*: valid_hour(hour, minute, second)

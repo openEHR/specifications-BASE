@@ -6,12 +6,7 @@ h|*Class*
 2+^h|*Date_time*
 
 h|*Description*
-2+a|Represents an absolute point in time, specified to the second.
-
-Note that this class includes 2 deviations from ISO 8601:2004:
-
-* for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard;
-* the time 24:00:00 is not allowed, since it would mean the date was really on the next day.
+2+a|Defines the interface of an absolute point in time, specified to fractional seconds.
 
 h|*Inherit*
 2+|Temporal
@@ -54,16 +49,8 @@ h|
 a|Fractional seconds.
 
 h|
-|*has_fractional_second*: `Boolean`
-a|True if the fractional_second part is signficant (i.e. even if = 0.0).
-
-h|
 |*timezone*: `Timezone`
 a|Timezone; may be Void.
-
-h|
-|*as_string*: `String`
-a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
 
 h|*Invariant*
 2+a|*_Day_valid_*: valid_day(year, month, day)

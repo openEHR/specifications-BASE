@@ -9,30 +9,14 @@ h|*Description*
 2+a|Represents a timezone as used in ISO 8601.
 
 h|*Inherit*
-2+|TIME_DEFINITIONS
+2+|ISO8601_TYPE, Timezone
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*hour*: `Integer`
-a|Hour part of timezone - in the range 00 - 13.
-
-h|
-|*minute*: `Integer`
-a|Minute part of timezone. Generally 00 or 30.
-
-h|
-|*is_gmt*: `Boolean`
-a|True if timezone is UTC, i.e. +0000.
-
-h|
-|*sign*: `Integer`
-a|Direction of timezone expresssed as +1 or -1.
-
-h|
-|*minute_unknown*: `Integer`
+|*minute_unknown*: `Boolean`
 a|Indicates whether minute part known.
 
 h|
@@ -41,15 +25,23 @@ a|ISO8601 timezone string, in format:
 
 * Z &#124; ±hh[mm]
 
-or in the extended form:
-
-* Z &#124; ±hh[:mm]
-
 where:
 
 * hh is “00” - “23” (0-filled to two digits)
 * mm is “00” - “59” (0-filled to two digits)
 * Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
+
+h|
+|*is_gmt*: `Boolean`
+a|True if timezone is UTC, i.e. +0000.
+
+h|(effected)
+|*is_partial*: `Boolean`
+a|True if this time zone is partial, i.e. if minutes is missing.
+
+h|(effected)
+|*is_extended*: `Boolean`
+a|True if this time-zone uses ‘:’ separators.
 
 h|*Invariant*
 2+a|*_Min_hour_valid_*: sign = -1 implies hour > 0 and hour \<= Min_timezone_hour

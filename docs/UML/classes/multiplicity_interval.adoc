@@ -8,4 +8,37 @@ h|*Class*
 h|*Description*
 2+a|
 
+h|*Inherit*
+2+|Interval
+
+h|*Constants*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*Multiplicity_range_marker*: `String{nbsp}={nbsp}".."`
+a|Marker to use in string form of interval between limits.
+
+h|*1..1*
+|*Multiplicity_unbounded_marker*: `char{nbsp}={nbsp}'&#42;'`
+a|Symbol to use to indicate upper limit unbounded.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*is_open*: `Boolean`
+a|True if this interval imposes no constraints, i.e. is set to 0..*
+
+h|
+|*is_optional*: `Boolean`
+a|True if this interval expresses optionality, i.e. 0..1.
+
+h|
+|*is_mandatory*: `Boolean`
+a|True if this interval expresses mandation, i.e. 1..1.
+
+h|
+|*is_prohibited*: `Boolean`
+a|True if this interval is set to 0..0.
 |===

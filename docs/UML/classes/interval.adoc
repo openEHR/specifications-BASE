@@ -6,7 +6,8 @@ h|*Class*
 2+^h|*Interval*
 
 h|*Description*
-2+a|Interval of ordered items.
+2+a|Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
+Interval of ordered items.
 
 h|*Inherit*
 2+|Any
@@ -50,6 +51,18 @@ v > lower)) and
 (upper_unbounded or
 ((upper_included and v \<= upper or v
 < upper)))
+
+h|
+|*intersects* (other: `Interval`): `Boolean`
+a|True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval.
+
+h|
+|*contains* (other: `Interval`): `Boolean`
+a|True if current interval properly contains `other'? True if all points of `other' are inside the current interval.
+
+h|(effected)
+|*is_equal* (other: `Any`): `Boolean`
+a|True if current object's interval is semantically same as `other'.
 
 h|*Invariant*
 2+a|*_Lower_included_valid_*: lower_unbounded implies not lower_included
