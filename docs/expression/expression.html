@@ -106,10 +106,11 @@
 <li><a href="#_expr_leaf_class">4.2.3.15. EXPR_LEAF Class</a></li>
 <li><a href="#_expr_literal_class">4.2.3.16. EXPR_LITERAL Class</a></li>
 <li><a href="#_expr_variable_ref_class">4.2.3.17. EXPR_VARIABLE_REF Class</a></li>
-<li><a href="#_expr_function_class">4.2.3.18. EXPR_FUNCTION Class</a></li>
-<li><a href="#_function_def_class">4.2.3.19. FUNCTION_DEF Class</a></li>
-<li><a href="#_function_def_builtin_class">4.2.3.20. FUNCTION_DEF_BUILTIN Class</a></li>
-<li><a href="#_builtin_functions_class">4.2.3.21. BUILTIN_FUNCTIONS Class</a></li>
+<li><a href="#_expr_value_ref_class">4.2.3.18. EXPR_VALUE_REF Class</a></li>
+<li><a href="#_expr_function_class">4.2.3.19. EXPR_FUNCTION Class</a></li>
+<li><a href="#_function_def_class">4.2.3.20. FUNCTION_DEF Class</a></li>
+<li><a href="#_function_def_builtin_class">4.2.3.21. FUNCTION_DEF_BUILTIN Class</a></li>
+<li><a href="#_builtin_functions_class">4.2.3.22. BUILTIN_FUNCTIONS Class</a></li>
 </ul>
 </li>
 </ul>
@@ -120,13 +121,12 @@
 <li><a href="#_operators_and_functions">4.3.2. Operators and Functions</a></li>
 <li><a href="#_class_descriptions_2">4.3.3. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_expr_value_ref_class">4.3.3.1. EXPR_VALUE_REF Class</a></li>
-<li><a href="#_operator_def_external_class">4.3.3.2. OPERATOR_DEF_EXTERNAL Class</a></li>
-<li><a href="#_op_def_example_class">4.3.3.3. OP_DEF_EXAMPLE Class</a></li>
-<li><a href="#_op_def_and_class">4.3.3.4. OP_DEF_AND Class</a></li>
-<li><a href="#_op_def_exists_class">4.3.3.5. OP_DEF_EXISTS Class</a></li>
-<li><a href="#_function_def_external_class">4.3.3.6. FUNCTION_DEF_EXTERNAL Class</a></li>
-<li><a href="#_function_def_example_class">4.3.3.7. FUNCTION_DEF_EXAMPLE Class</a></li>
+<li><a href="#_operator_def_external_class">4.3.3.1. OPERATOR_DEF_EXTERNAL Class</a></li>
+<li><a href="#_op_def_example_class">4.3.3.2. OP_DEF_EXAMPLE Class</a></li>
+<li><a href="#_op_def_and_class">4.3.3.3. OP_DEF_AND Class</a></li>
+<li><a href="#_op_def_exists_class">4.3.3.4. OP_DEF_EXISTS Class</a></li>
+<li><a href="#_function_def_external_class">4.3.3.5. FUNCTION_DEF_EXTERNAL Class</a></li>
+<li><a href="#_function_def_example_class">4.3.3.6. FUNCTION_DEF_EXAMPLE Class</a></li>
 </ul>
 </li>
 </ul>
@@ -261,13 +261,21 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.1</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Correct type of <code>OP_DEF_EXISTS.evaluation_agent_</code> to <code>FUNCTION&lt;&lt;Any&gt;, Boolean&gt;</code>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C Nanjo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 May 2016</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Initial writing. Taken from AOM2 2.0.6.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Feb 2016</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Feb 2016</p></td>
 </tr>
 </tbody>
 </table>
@@ -1824,7 +1832,33 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_function_class"><a class="anchor" href="#_expr_function_class"></a>4.2.3.18. EXPR_FUNCTION Class</h5>
+<h5 id="_expr_value_ref_class"><a class="anchor" href="#_expr_value_ref_class"></a>4.2.3.18. EXPR_VALUE_REF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_VALUE_REF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent type of concrete types enabling access to values in a specific information structure. This type provides an extension point for specific syntaxes to connect a generic rule structure to a data source.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_LEAF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_expr_function_class"><a class="anchor" href="#_expr_function_class"></a>4.2.3.19. EXPR_FUNCTION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1867,7 +1901,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_class"><a class="anchor" href="#_function_def_class"></a>4.2.3.19. FUNCTION_DEF Class</h5>
+<h5 id="_function_def_class"><a class="anchor" href="#_function_def_class"></a>4.2.3.20. FUNCTION_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1901,7 +1935,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_builtin_class"><a class="anchor" href="#_function_def_builtin_class"></a>4.2.3.20. FUNCTION_DEF_BUILTIN Class</h5>
+<h5 id="_function_def_builtin_class"><a class="anchor" href="#_function_def_builtin_class"></a>4.2.3.21. FUNCTION_DEF_BUILTIN Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1933,7 +1967,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_builtin_functions_class"><a class="anchor" href="#_builtin_functions_class"></a>4.2.3.21. BUILTIN_FUNCTIONS Class</h5>
+<h5 id="_builtin_functions_class"><a class="anchor" href="#_builtin_functions_class"></a>4.2.3.22. BUILTIN_FUNCTIONS Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2016,33 +2050,7 @@ Not yet standardised.</p>
 <div class="sect3">
 <h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>4.3.3. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_expr_value_ref_class"><a class="anchor" href="#_expr_value_ref_class"></a>4.3.3.1. EXPR_VALUE_REF Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_VALUE_REF (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent type of concrete types enabling access to values in a specific information structure. This type provides an extension point for specific syntaxes to connect a generic rule structure to a data source.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXPR_LEAF</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_operator_def_external_class"><a class="anchor" href="#_operator_def_external_class"></a>4.3.3.2. OPERATOR_DEF_EXTERNAL Class</h5>
+<h5 id="_operator_def_external_class"><a class="anchor" href="#_operator_def_external_class"></a>4.3.3.1. OPERATOR_DEF_EXTERNAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2078,7 +2086,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_op_def_example_class"><a class="anchor" href="#_op_def_example_class"></a>4.3.3.3. OP_DEF_EXAMPLE Class</h5>
+<h5 id="_op_def_example_class"><a class="anchor" href="#_op_def_example_class"></a>4.3.3.2. OP_DEF_EXAMPLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2126,7 +2134,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_op_def_and_class"><a class="anchor" href="#_op_def_and_class"></a>4.3.3.4. OP_DEF_AND Class</h5>
+<h5 id="_op_def_and_class"><a class="anchor" href="#_op_def_and_class"></a>4.3.3.3. OP_DEF_AND Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2174,7 +2182,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_op_def_exists_class"><a class="anchor" href="#_op_def_exists_class"></a>4.3.3.5. OP_DEF_EXISTS Class</h5>
+<h5 id="_op_def_exists_class"><a class="anchor" href="#_op_def_exists_class"></a>4.3.3.4. OP_DEF_EXISTS Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2215,14 +2223,14 @@ Not yet standardised.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Boolean&gt;,Boolean&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Any&gt;,Boolean&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_external_class"><a class="anchor" href="#_function_def_external_class"></a>4.3.3.6. FUNCTION_DEF_EXTERNAL Class</h5>
+<h5 id="_function_def_external_class"><a class="anchor" href="#_function_def_external_class"></a>4.3.3.5. FUNCTION_DEF_EXTERNAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2258,7 +2266,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_example_class"><a class="anchor" href="#_function_def_example_class"></a>4.3.3.7. FUNCTION_DEF_EXAMPLE Class</h5>
+<h5 id="_function_def_example_class"><a class="anchor" href="#_function_def_example_class"></a>4.3.3.6. FUNCTION_DEF_EXAMPLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
