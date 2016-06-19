@@ -38,15 +38,17 @@ Experience with various UML tools (up till 2015) highlighted the following probl
 
 == Design
 
-The Basic Meta-Model provides a model of object models, data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes). This specification defineds the object model of BMM, i.e. the structure that would be materialised from parsing an actual BMM file. BMM files are typically expressed in ODIN, but may also be expressed in JSON, XML or any other suitable serialisation format.
+The Basic Meta-Model provides a model of object models in the data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML. In the future an abstract syntax serialisation may be developed in the style of OMG IDL (Interface Definition Language) or similar.
 
-The BMM consists of three packages as follows:
+The BMM model packages are as follows:
 
 * `rm_access`: the interface to most features including schema load/reload, generally used by an application as a reflection library;
 * `core`: the core BMM classes used for in-memory representation of an object model;
 * `persistence`: a simplified version of the core classes prefixed with `P_BMM_`, used for persistence and human authoring, which allow file (i.e. schema) inclusion and re-use.
 
-NOTE: One of the key differences between the core BMM classes and the P_BMM classes is that the latter model a set of schema files, enabling file inclusion, whereas the former provide a model of a single object model in its in=memory form, regardless of the schema file structure.
+The `P_BMM_*` classes perform two functions. Firstly, they are a modified and simplified version of the `BMM_*` classes that enable for example symbolic referencing via class names, syntactical type names to be used etc, rather than the full explision of fine-grained objects that would result from a direct serialisation of `BMM_*` classes. This is what enables the BMM file format to be easily readable and editable by human users.
+
+The second is that BMM files work as schemas that support schema inclusion and therefore re-use, in a similar manner to the XML schema languages. Thus, a single logical BMM model can be expressed as a _number_ of `BMM` schema files which are actually `P_BMM` serialisations. A schema reading component has to perform the schema inclusions and ultimately `BMM_*` object instantiations to obtain the in-memory form of the model.
 
 The packages are illustrated below.
 
@@ -56,51 +58,16 @@ image::{uml_export_dir}/diagrams/BMM-packages.svg[id=package_overview, align="ce
 
 The normal use of BMM is as follows:
 
-* create a BMM schema in the form of one or more files, using the `P_BMM_` form of the model expressed in ODIN. This is easy to understand by using the link:../BMM-example/example.bmm[example schema] and/or copying other examples;
+* create a BMM schema in the form of one or more files, using the `P_BMM_` form of the model expressed in ODIN. This is easy to understand by using the link:../example/example.bmm[example schema] and/or copying other examples;
 * locate these files in a suitable place for use with a tool such as the {openehr_awb}[openEHR ADL Workbench] and {linkehr}[LinkEHR].
 
-== BMM in Use
+== A Note on Language
 
-BMM schemas as used in the openEHR ADL Workbench (AWB) provide an illustration of their use and visualisation. The following screenshot shows the BMM schema configuration dialog in the AWB, including some meta-data, validation status etc, and also nesting structure.
+The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we have used the following terms:
 
-[.text-center]
-.BMM schema configuration
-image::images/awb_schemas_config.png[id=awb_schemas_config, align="center", width="60%"]
-
-The screenshot below shows a number of BMMs loaded into the AWB, including some of the packages and classes.
-
-[.text-center]
-.BMM schemas loaded
-image::images/awb_loaded_bmm_schemas.png[id=awb_loaded_bmm_schemas, align="center", width="45%"]
-
-The following shows a single class in the inheritance-flattened properties view, otherwise known as the 'flat view' . The structure of the class as properties, types, multiplicities, inheritance etc are all provided by the in-memory BMM classes.
-
-[.text-center]
-.BMM class - properties view
-image::images/awb_class_properties.png[id=awb_class_properties, align="center", width="60%"]
-
-The next screenshot shows the ancestors view of the same class.
-
-[.text-center]
-.BMM class - ancestors view
-image::images/awb_class_ancestors.png[id=awb_class_ancestors, align="center", width="45%"]
-
-The next screenshot shows the descendants view of one of the ancestors classes.
-
-[.text-center]
-.BMM class - descendants view
-image::images/awb_class_descendants.png[id=awb_class_descendants, align="center", width="50%"]
-
-The following shows a class in a 'closure' view, which is a computed reachability graph of a fully inheritance flattened class and all properties, including recursive references.
-
-[.text-center]
-.BMM class - closure view
-image::images/awb_class_closure.png[id=awb_class_closure, align="center", width="60%"]
-
-One of the main uses of the BMM in the ADL Workbench and other similar tools is to provide a computable form of the information model ('reference model' in openEHR) for use with archetypes. The following shows an archetype for which each node has its RM class shown (in colour), and additionally, the inclusion of non-archetyped attributes from the classes of the archetype nodes.
-
-[.text-center]
-.ADL archetype with BMM class properties
-image::images/archetype_rm.png[id=archetype_rm, align="center"]
-
-
+feature (of a class):: any stored or computed element of a class;
+property:: a stored class feature; also known as 'attribute';
+routine:: a computed class feature;
+function:: a routine that computes and returns a value; typically causes no side-effects in the object;
+procedure:: a routine that performs a computation; typically has side-effects;
+generic (class or type):: a kind of class or type that has parameters of other types; known as 'template' type in some programming languages.

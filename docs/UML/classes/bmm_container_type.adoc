@@ -22,4 +22,15 @@ a|The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
 h|*1..1*
 |*base_type*: `BMM_TYPE`
 a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|(effected)
+|*type_name*: `String`
+a|Return full type name, e.g. 'List<ELEMENT>'.
+
+h|(effected)
+|*conformance_type_name*: `String`
+a|Return base_type.conformance_type_name; e.g. if this type is 'List<ELEMENT>', return 'ELEMENT'.
 |===

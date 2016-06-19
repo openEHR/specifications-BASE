@@ -37,97 +37,106 @@
 <li><a href="#_requirements">2.2. Requirements</a></li>
 <li><a href="#_current_state_of_the_art">2.3. Current State of the Art</a></li>
 <li><a href="#_design">2.4. Design</a></li>
-<li><a href="#_bmm_in_use">2.5. BMM in Use</a></li>
+<li><a href="#_a_note_on_language">2.5. A Note on Language</a></li>
 </ul>
 </li>
-<li><a href="#_rm_access_package">3. RM Access Package</a>
+<li><a href="#_bmm_in_use">3. BMM in Use</a></li>
+<li><a href="#_rm_access_package">4. RM Access Package</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_2">3.1. Overview</a></li>
-<li><a href="#_class_definitions">3.2. Class Definitions</a>
+<li><a href="#_overview_2">4.1. Overview</a></li>
+<li><a href="#_class_definitions">4.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_reference_model_access_class">3.2.1. REFERENCE_MODEL_ACCESS Class</a></li>
-<li><a href="#_schema_descriptor_class">3.2.2. SCHEMA_DESCRIPTOR Class</a></li>
+<li><a href="#_reference_model_access_class">4.2.1. REFERENCE_MODEL_ACCESS Class</a></li>
+<li><a href="#_schema_descriptor_class">4.2.2. SCHEMA_DESCRIPTOR Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_core_package">4. Core Package</a>
+<li><a href="#_core_package">5. Core Package</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_3">4.1. Overview</a></li>
-<li><a href="#_class_definitions_2">4.2. Class Definitions</a>
+<li><a href="#_overview_3">5.1. Overview</a></li>
+<li><a href="#_semantics">5.2. Semantics</a>
 <ul class="sectlevel3">
-<li><a href="#_bmm_definitions_class">4.2.1. BMM_DEFINITIONS Class</a></li>
-<li><a href="#_bmm_model_element_class">4.2.2. BMM_MODEL_ELEMENT Class</a></li>
-<li><a href="#_bmm_schema_core_class">4.2.3. BMM_SCHEMA_CORE Class</a></li>
-<li><a href="#_bmm_schema_class">4.2.4. BMM_SCHEMA Class</a></li>
-<li><a href="#_bmm_package_container_class">4.2.5. BMM_PACKAGE_CONTAINER Class</a></li>
-<li><a href="#_bmm_package_class">4.2.6. BMM_PACKAGE Class</a></li>
-<li><a href="#_bmm_classifier_class">4.2.7. BMM_CLASSIFIER Class</a></li>
-<li><a href="#_bmm_type_class">4.2.8. BMM_TYPE Class</a></li>
-<li><a href="#_bmm_class_class">4.2.9. BMM_CLASS Class</a></li>
-<li><a href="#_bmm_property_class">4.2.10. BMM_PROPERTY Class</a></li>
-<li><a href="#_bmm_container_property_class">4.2.11. BMM_CONTAINER_PROPERTY Class</a></li>
-<li><a href="#_bmm_simple_type_class">4.2.12. BMM_SIMPLE_TYPE Class</a></li>
-<li><a href="#_bmm_simple_type_open_class">4.2.13. BMM_SIMPLE_TYPE_OPEN Class</a></li>
-<li><a href="#_bmm_container_type_class">4.2.14. BMM_CONTAINER_TYPE Class</a></li>
-<li><a href="#_bmm_generic_type_class">4.2.15. BMM_GENERIC_TYPE Class</a></li>
-<li><a href="#_bmm_generic_parameter_class">4.2.16. BMM_GENERIC_PARAMETER Class</a></li>
-<li><a href="#_bmm_generic_class_class">4.2.17. BMM_GENERIC_CLASS Class</a></li>
-<li><a href="#_bmm_enumeration_class">4.2.18. BMM_ENUMERATION Class</a></li>
-<li><a href="#_bmm_enumeration_string_class">4.2.19. BMM_ENUMERATION_STRING Class</a></li>
-<li><a href="#_bmm_enumeration_integer_class">4.2.20. BMM_ENUMERATION_INTEGER Class</a></li>
+<li><a href="#_basics">5.2.1. Basics</a></li>
+<li><a href="#_classes_and_types">5.2.2. Classes and Types</a></li>
+<li><a href="#_inheritance">5.2.3. Inheritance</a></li>
+<li><a href="#_classes_and_properties">5.2.4. Classes and Properties</a></li>
+</ul>
+</li>
+<li><a href="#_class_definitions_2">5.3. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_bmm_definitions_class">5.3.1. BMM_DEFINITIONS Class</a></li>
+<li><a href="#_bmm_model_element_class">5.3.2. BMM_MODEL_ELEMENT Class</a></li>
+<li><a href="#_bmm_schema_core_class">5.3.3. BMM_SCHEMA_CORE Class</a></li>
+<li><a href="#_bmm_schema_class">5.3.4. BMM_SCHEMA Class</a></li>
+<li><a href="#_bmm_package_container_class">5.3.5. BMM_PACKAGE_CONTAINER Class</a></li>
+<li><a href="#_bmm_package_class">5.3.6. BMM_PACKAGE Class</a></li>
+<li><a href="#_bmm_classifier_class">5.3.7. BMM_CLASSIFIER Class</a></li>
+<li><a href="#_bmm_type_class">5.3.8. BMM_TYPE Class</a></li>
+<li><a href="#_bmm_class_class">5.3.9. BMM_CLASS Class</a></li>
+<li><a href="#_bmm_property_class">5.3.10. BMM_PROPERTY Class</a></li>
+<li><a href="#_bmm_container_property_class">5.3.11. BMM_CONTAINER_PROPERTY Class</a></li>
+<li><a href="#_bmm_simple_type_class">5.3.12. BMM_SIMPLE_TYPE Class</a></li>
+<li><a href="#_bmm_open_type_class">5.3.13. BMM_OPEN_TYPE Class</a></li>
+<li><a href="#_bmm_container_type_class">5.3.14. BMM_CONTAINER_TYPE Class</a></li>
+<li><a href="#_bmm_generic_type_class">5.3.15. BMM_GENERIC_TYPE Class</a></li>
+<li><a href="#_bmm_generic_parameter_class">5.3.16. BMM_GENERIC_PARAMETER Class</a></li>
+<li><a href="#_bmm_generic_class_class">5.3.17. BMM_GENERIC_CLASS Class</a></li>
+<li><a href="#_bmm_enumeration_class">5.3.18. BMM_ENUMERATION Class</a></li>
+<li><a href="#_bmm_enumeration_string_class">5.3.19. BMM_ENUMERATION_STRING Class</a></li>
+<li><a href="#_bmm_enumeration_integer_class">5.3.20. BMM_ENUMERATION_INTEGER Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_persistence_package">5. Persistence Package</a>
+<li><a href="#_persistence_package">6. Persistence Package</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_4">5.1. Overview</a></li>
-<li><a href="#_class_definitions_3">5.2. Class Definitions</a>
+<li><a href="#_overview_4">6.1. Overview</a></li>
+<li><a href="#_class_definitions_3">6.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_p_bmm_package_container_class">5.2.1. P_BMM_PACKAGE_CONTAINER Class</a></li>
-<li><a href="#_p_bmm_schema_class">5.2.2. P_BMM_SCHEMA Class</a></li>
-<li><a href="#_p_bmm_schema_state_enumeration">5.2.3. P_BMM_SCHEMA_STATE Enumeration</a></li>
-<li><a href="#_bmm_include_spec_class">5.2.4. BMM_INCLUDE_SPEC Class</a></li>
-<li><a href="#_p_bmm_package_class">5.2.5. P_BMM_PACKAGE Class</a></li>
-<li><a href="#_p_bmm_classifier_class">5.2.6. P_BMM_CLASSIFIER Class</a></li>
-<li><a href="#_p_bmm_type_class">5.2.7. P_BMM_TYPE Class</a></li>
-<li><a href="#_p_bmm_class_class">5.2.8. P_BMM_CLASS Class</a></li>
-<li><a href="#_p_bmm_generic_parameter_class">5.2.9. P_BMM_GENERIC_PARAMETER Class</a></li>
-<li><a href="#_p_bmm_property_class">5.2.10. P_BMM_PROPERTY Class</a></li>
-<li><a href="#_p_bmm_simple_type_class">5.2.11. P_BMM_SIMPLE_TYPE Class</a></li>
-<li><a href="#_p_bmm_simple_type_open_class">5.2.12. P_BMM_SIMPLE_TYPE_OPEN Class</a></li>
-<li><a href="#_p_bmm_generic_type_class">5.2.13. P_BMM_GENERIC_TYPE Class</a></li>
-<li><a href="#_p_bmm_container_type_class">5.2.14. P_BMM_CONTAINER_TYPE Class</a></li>
-<li><a href="#_p_bmm_single_property_class">5.2.15. P_BMM_SINGLE_PROPERTY Class</a></li>
-<li><a href="#_p_bmm_single_property_open_class">5.2.16. P_BMM_SINGLE_PROPERTY_OPEN Class</a></li>
-<li><a href="#_p_bmm_generic_property_class">5.2.17. P_BMM_GENERIC_PROPERTY Class</a></li>
-<li><a href="#_p_bmm_container_property_class">5.2.18. P_BMM_CONTAINER_PROPERTY Class</a></li>
-<li><a href="#_p_bmm_enumeration_class">5.2.19. P_BMM_ENUMERATION Class</a></li>
-<li><a href="#_p_bmm_enumeration_string_class">5.2.20. P_BMM_ENUMERATION_STRING Class</a></li>
-<li><a href="#_p_bmm_enumeration_integer_class">5.2.21. P_BMM_ENUMERATION_INTEGER Class</a></li>
+<li><a href="#_p_bmm_package_container_class">6.2.1. P_BMM_PACKAGE_CONTAINER Class</a></li>
+<li><a href="#_p_bmm_schema_class">6.2.2. P_BMM_SCHEMA Class</a></li>
+<li><a href="#_p_bmm_schema_state_enumeration">6.2.3. P_BMM_SCHEMA_STATE Enumeration</a></li>
+<li><a href="#_bmm_include_spec_class">6.2.4. BMM_INCLUDE_SPEC Class</a></li>
+<li><a href="#_p_bmm_package_class">6.2.5. P_BMM_PACKAGE Class</a></li>
+<li><a href="#_p_bmm_classifier_class">6.2.6. P_BMM_CLASSIFIER Class</a></li>
+<li><a href="#_p_bmm_type_class">6.2.7. P_BMM_TYPE Class</a></li>
+<li><a href="#_p_bmm_class_class">6.2.8. P_BMM_CLASS Class</a></li>
+<li><a href="#_p_bmm_generic_parameter_class">6.2.9. P_BMM_GENERIC_PARAMETER Class</a></li>
+<li><a href="#_p_bmm_property_class">6.2.10. P_BMM_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_simple_type_class">6.2.11. P_BMM_SIMPLE_TYPE Class</a></li>
+<li><a href="#_p_bmm_simple_type_open_class">6.2.12. P_BMM_SIMPLE_TYPE_OPEN Class</a></li>
+<li><a href="#_p_bmm_generic_type_class">6.2.13. P_BMM_GENERIC_TYPE Class</a></li>
+<li><a href="#_p_bmm_container_type_class">6.2.14. P_BMM_CONTAINER_TYPE Class</a></li>
+<li><a href="#_p_bmm_single_property_class">6.2.15. P_BMM_SINGLE_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_single_property_open_class">6.2.16. P_BMM_SINGLE_PROPERTY_OPEN Class</a></li>
+<li><a href="#_p_bmm_generic_property_class">6.2.17. P_BMM_GENERIC_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_container_property_class">6.2.18. P_BMM_CONTAINER_PROPERTY Class</a></li>
+<li><a href="#_p_bmm_enumeration_class">6.2.19. P_BMM_ENUMERATION Class</a></li>
+<li><a href="#_p_bmm_enumeration_string_class">6.2.20. P_BMM_ENUMERATION_STRING Class</a></li>
+<li><a href="#_p_bmm_enumeration_integer_class">6.2.21. P_BMM_ENUMERATION_INTEGER Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_bmm_syntax">6. BMM Syntax</a>
+<li><a href="#_bmm_syntax">7. BMM Syntax</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_5">6.1. Overview</a></li>
-<li><a href="#_header_items">6.2. Header Items</a></li>
-<li><a href="#_inclusions">6.3. Inclusions</a></li>
-<li><a href="#_archetyping_related">6.4. Archetyping related</a></li>
-<li><a href="#_package_definition">6.5. Package Definition</a></li>
-<li><a href="#_primitive_types">6.6. Primitive Types</a></li>
-<li><a href="#_class_definitions_4">6.7. Class Definitions</a>
+<li><a href="#_overview_5">7.1. Overview</a></li>
+<li><a href="#_header_items">7.2. Header Items</a></li>
+<li><a href="#_inclusions">7.3. Inclusions</a></li>
+<li><a href="#_archetyping_related">7.4. Archetyping related</a></li>
+<li><a href="#_package_definition">7.5. Package Definition</a></li>
+<li><a href="#_primitive_types">7.6. Primitive Types</a></li>
+<li><a href="#_class_definitions_4">7.7. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_simple_classes">6.7.1. Simple Classes</a>
+<li><a href="#_simple_classes">7.7.1. Simple Classes</a>
 <ul class="sectlevel4">
-<li><a href="#_class_properties">6.7.1.1. Class properties</a></li>
-<li><a href="#_container_properties">6.7.1.2. Container Properties</a></li>
+<li><a href="#_class_properties">7.7.1.1. Class properties</a></li>
+<li><a href="#_container_properties">7.7.1.2. Container Properties</a></li>
 </ul>
 </li>
-<li><a href="#_generic_classes">6.7.2. Generic Classes</a></li>
-<li><a href="#_enumerated_types">6.7.3. Enumerated Types</a></li>
+<li><a href="#_generic_classes">7.7.2. Generic Classes</a></li>
+<li><a href="#_enumerated_types">7.7.3. Enumerated Types</a></li>
 </ul>
 </li>
 </ul>
@@ -234,10 +243,18 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>BMM_CLASSIFIER.<em>as_type_string</em></code> to <code><em>type_name</em></code> and <code><em>as_conformance_type_string</em></code> to <code><em>conformance_type_name</em></code>.<br>
+ Move and rename <code>BMM_TYPE.<em>as_display_type_string</em></code> to <code>BMM_CLASSIFIER.<em>type_signature</em></code>. Add redefinitions in relevant descendant classes.<br>
+ Rename <code>BMM_SIMPLE_TYPE_OPEN</code> to <code>BMM_OPEN_TYPE</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>18 Jun 2016</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add missing inheritance from <code>P_BMM_SCHEMA</code> to <code>BMM_SCHEMA_CORE</code>.<br>
  Correct naming of <code><em>bmm_xxx_definition</em></code>, <code><em>create_bmm_xxx_definition</em></code> in <code>P_BMM_XXX</code> classes to <code><em>bmm_xxx</em></code>, <code><em>create_bmm_xxx</em></code> etc.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>18 Apr 2016</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Apr 2016</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
@@ -411,10 +428,10 @@
 <div class="sect2">
 <h3 id="_design"><a class="anchor" href="#_design"></a>2.4. Design</h3>
 <div class="paragraph">
-<p>The Basic Meta-Model provides a model of object models, data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes). This specification defineds the object model of BMM, i.e. the structure that would be materialised from parsing an actual BMM file. BMM files are typically expressed in ODIN, but may also be expressed in JSON, XML or any other suitable serialisation format.</p>
+<p>The Basic Meta-Model provides a model of object models in the data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML. In the future an abstract syntax serialisation may be developed in the style of OMG IDL (Interface Definition Language) or similar.</p>
 </div>
 <div class="paragraph">
-<p>The BMM consists of three packages as follows:</p>
+<p>The BMM model packages are as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -429,17 +446,11 @@
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-One of the key differences between the core BMM classes and the P_BMM classes is that the latter model a set of schema files, enabling file inclusion, whereas the former provide a model of a single object model in its in=memory form, regardless of the schema file structure.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>The <code>P_BMM_*</code> classes perform two functions. Firstly, they are a modified and simplified version of the <code>BMM_*</code> classes that enable for example symbolic referencing via class names, syntactical type names to be used etc, rather than the full explision of fine-grained objects that would result from a direct serialisation of <code>BMM_*</code> classes. This is what enables the BMM file format to be easily readable and editable by human users.</p>
+</div>
+<div class="paragraph">
+<p>The second is that BMM files work as schemas that support schema inclusion and therefore re-use, in a similar manner to the XML schema languages. Thus, a single logical BMM model can be expressed as a <em>number</em> of <code>BMM</code> schema files which are actually <code>P_BMM</code> serialisations. A schema reading component has to perform the schema inclusions and ultimately <code>BMM_*</code> object instantiations to obtain the in-memory form of the model.</p>
 </div>
 <div class="paragraph">
 <p>The packages are illustrated below.</p>
@@ -456,7 +467,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="ulist">
 <ul>
 <li>
-<p>create a BMM schema in the form of one or more files, using the <code>P_BMM_</code> form of the model expressed in ODIN. This is easy to understand by using the <a href="../BMM-example/example.bmm">example schema</a> and/or copying other examples;</p>
+<p>create a BMM schema in the form of one or more files, using the <code>P_BMM_</code> form of the model expressed in ODIN. This is easy to understand by using the <a href="../example/example.bmm">example schema</a> and/or copying other examples;</p>
 </li>
 <li>
 <p>locate these files in a suitable place for use with a tool such as the <a href="http://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench</a> and <a href="http://linkehr.com">LinkEHR</a>.</p>
@@ -465,9 +476,46 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bmm_in_use"><a class="anchor" href="#_bmm_in_use"></a>2.5. BMM in Use</h3>
+<h3 id="_a_note_on_language"><a class="anchor" href="#_a_note_on_language"></a>2.5. A Note on Language</h3>
 <div class="paragraph">
-<p>BMM schemas as used in the openEHR ADL Workbench (AWB) provide an illustration of their use and visualisation. The following screenshot shows the BMM schema configuration dialog in the AWB, including some meta-data, validation status etc, and also nesting structure.</p>
+<p>The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we have used the following terms:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">feature (of a class)</dt>
+<dd>
+<p>any stored or computed element of a class;</p>
+</dd>
+<dt class="hdlist1">property</dt>
+<dd>
+<p>a stored class feature; also known as 'attribute';</p>
+</dd>
+<dt class="hdlist1">routine</dt>
+<dd>
+<p>a computed class feature;</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a routine that computes and returns a value; typically causes no side-effects in the object;</p>
+</dd>
+<dt class="hdlist1">procedure</dt>
+<dd>
+<p>a routine that performs a computation; typically has side-effects;</p>
+</dd>
+<dt class="hdlist1">generic (class or type)</dt>
+<dd>
+<p>a kind of class or type that has parameters of other types; known as 'template' type in some programming languages.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bmm_in_use"><a class="anchor" href="#_bmm_in_use"></a>3. BMM in Use</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BMM schemas as used in the openEHR ADL Workbench (AWB) provide an illustration of their use and visualisation. The following screenshot shows the BMM schema configuration dialog in the AWB, including some meta-data, validation status etc, and also the schema nesting structure.</p>
 </div>
 <div id="awb_schemas_config" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -476,11 +524,11 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="title">Figure 2. BMM schema configuration</div>
 </div>
 <div class="paragraph">
-<p>The screenshot below shows a number of BMMs loaded into the AWB, including some of the packages and classes.</p>
+<p>The screenshot below shows a number of BMMs loaded into the AWB, including some of the packages and classes for the 'openehr_ehr_extract_1.1.0' model.</p>
 </div>
 <div id="awb_loaded_bmm_schemas" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="images/awb_loaded_bmm_schemas.png" alt="awb loaded bmm schemas" width="45%">
+<img src="images/awb_loaded_bmm_schemas.png" alt="awb loaded bmm schemas" width="40%">
 </div>
 <div class="title">Figure 3. BMM schemas loaded</div>
 </div>
@@ -489,27 +537,9 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </div>
 <div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="images/awb_class_properties.png" alt="awb class properties" width="60%">
+<img src="images/awb_class_properties.png" alt="awb class properties" width="40%">
 </div>
 <div class="title">Figure 4. BMM class - properties view</div>
-</div>
-<div class="paragraph">
-<p>The next screenshot shows the ancestors view of the same class.</p>
-</div>
-<div id="awb_class_ancestors" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="images/awb_class_ancestors.png" alt="awb class ancestors" width="45%">
-</div>
-<div class="title">Figure 5. BMM class - ancestors view</div>
-</div>
-<div class="paragraph">
-<p>The next screenshot shows the descendants view of one of the ancestors classes.</p>
-</div>
-<div id="awb_class_descendants" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="images/awb_class_descendants.png" alt="awb class descendants" width="50%">
-</div>
-<div class="title">Figure 6. BMM class - descendants view</div>
 </div>
 <div class="paragraph">
 <p>The following shows a class in a 'closure' view, which is a computed reachability graph of a fully inheritance flattened class and all properties, including recursive references.</p>
@@ -518,7 +548,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="content">
 <img src="images/awb_class_closure.png" alt="awb class closure" width="60%">
 </div>
-<div class="title">Figure 7. BMM class - closure view</div>
+<div class="title">Figure 5. BMM class - closure view</div>
 </div>
 <div class="paragraph">
 <p>One of the main uses of the BMM in the ADL Workbench and other similar tools is to provide a computable form of the information model ('reference model' in openEHR) for use with archetypes. The following shows an archetype for which each node has its RM class shown (in colour), and additionally, the inclusion of non-archetyped attributes from the classes of the archetype nodes.</p>
@@ -527,16 +557,15 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="content">
 <img src="images/archetype_rm.png" alt="archetype rm">
 </div>
-<div class="title">Figure 8. ADL archetype with BMM class properties</div>
-</div>
+<div class="title">Figure 6. ADL archetype with BMM class properties</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_rm_access_package"><a class="anchor" href="#_rm_access_package"></a>3. RM Access Package</h2>
+<h2 id="_rm_access_package"><a class="anchor" href="#_rm_access_package"></a>4. RM Access Package</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>4.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>rm_access</code> package provides an interface for the application to load and access BMM schemas, and is shown below.</p>
 </div>
@@ -544,13 +573,13 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="content">
 <img src="../UML/diagrams/BMM-rm_access.svg" alt="BMM rm access">
 </div>
-<div class="title">Figure 9. RM Access Package</div>
+<div class="title">Figure 7. RM Access Package</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>3.2. Class Definitions</h3>
+<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>4.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_reference_model_access_class"><a class="anchor" href="#_reference_model_access_class"></a>3.2.1. REFERENCE_MODEL_ACCESS Class</h4>
+<h4 id="_reference_model_access_class"><a class="anchor" href="#_reference_model_access_class"></a>4.2.1. REFERENCE_MODEL_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -634,7 +663,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_schema_descriptor_class"><a class="anchor" href="#_schema_descriptor_class"></a>3.2.2. SCHEMA_DESCRIPTOR Class</h4>
+<h4 id="_schema_descriptor_class"><a class="anchor" href="#_schema_descriptor_class"></a>4.2.2. SCHEMA_DESCRIPTOR Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -788,10 +817,10 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </div>
 </div>
 <div class="sect1">
-<h2 id="_core_package"><a class="anchor" href="#_core_package"></a>4. Core Package</h2>
+<h2 id="_core_package"><a class="anchor" href="#_core_package"></a>5. Core Package</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>5.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>core</code> package, shown below, defines the main BMM model.</p>
 </div>
@@ -799,13 +828,102 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="content">
 <img src="../UML/diagrams/BMM-core.svg" alt="BMM core">
 </div>
-<div class="title">Figure 10. RM Core Package</div>
+<div class="title">Figure 8. RM Core Package</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>4.2. Class Definitions</h3>
+<h3 id="_semantics"><a class="anchor" href="#_semantics"></a>5.2. Semantics</h3>
 <div class="sect3">
-<h4 id="_bmm_definitions_class"><a class="anchor" href="#_bmm_definitions_class"></a>4.2.1. BMM_DEFINITIONS Class</h4>
+<h4 id="_basics"><a class="anchor" href="#_basics"></a>5.2.1. Basics</h4>
+<div class="paragraph">
+<p>Three top-level classes define basic abstract semantics for all other entities in the BMM: <code>BMM_MODEL_ELEMENT</code>, <code>BMM_CLASSIFIER</code> and <code>BMM_TYPE</code>. The first of these introduces features common to all elements of any BMM, such as <code><em>documentation</em></code>. The class <code>BMM_CLASSIFIER</code> is the abstract parent of anything that functions as the type of a property (viz: classes, types and generic parameters), while its descendant <code>BMM_TYPE</code> defines the semantics of types of instances, described below.</p>
+</div>
+<div class="paragraph">
+<p>The <code>BMM_CLASSIFIER</code> class has a small number of important features that establish formally the meaning of various kinds of class names, type names etc, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>type_name</em>: the effective type of an entity; for simple classes, this will just be the class name (<code>BMM_CLASS.<em>name</em></code>); for generic and container classes it will be generic name such as <code>List&lt;T&gt;</code>, <code>Interval&lt;T&gt;</code> etc; for feature types it will be the declared type, i.e. a simple name, an open type name (e.g. <code>T</code>) or a generic type name (e.g. <code>Interval&lt;Time&gt;</code>);</p>
+</li>
+<li>
+<p><em>type_signature</em>: a form of the type name that can be used as a fully-defined type signature, which for generic classes includes generic constrainer types, giving a signature such as <code>Interval&lt;T:Ordered&gt;</code>;</p>
+</li>
+<li>
+<p><em>conformance_type_name</em>: a reduced form of the type useful in some circumstances that is either a simple class name, the <em>contained</em> type for a container type (e.g. <code>ELEMENT</code> from the type <code>List&lt;ELEMENT&gt;</code>), and the <em>root</em> type from a generic type (e.g. <code>Interval</code> from <code>Interval&lt;T&gt;</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, concrete classes such as <code>BMM_CLASS</code> and <code>BMM_PROPERTY</code> have a simple <code><em>name</em></code> property, corresponding to the literal names of these entities.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_classes_and_types"><a class="anchor" href="#_classes_and_types"></a>5.2.2. Classes and Types</h4>
+<div class="paragraph">
+<p>One of the foundational concepts in the BMM is a distinction between <em>class</em> and <em>type</em>, in common with the type systems of the modern forms of most object-oriented languages. Classes are definitional entities, while 'type' has two meanings: as the static (design time) type of a class feature (property or function result) and as the dynamic (run-time) type of the object referred to by or computed by that feature. At design time, the type of a property in a BMM model can be one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <code>BMM_SIMPLE_TYPE</code> - corresponds to a simple class;</p>
+</li>
+<li>
+<p>a <code>BMM_OPEN_TYPE</code> - corresponds to a generic parameter type from the class type definition, e.g. <code>T</code>, <code>U</code> etc;</p>
+</li>
+<li>
+<p>a <code>BMM_GENERIC_TYPE</code> - a type generated by the use of a generic type with filled type parameters, e.g. <code>Interval&lt;Time&gt;</code>;</p>
+</li>
+<li>
+<p>a <code>BMM_CONTAINER_TYPE</code> - a type generated by the use of a linear container type such as <code>List&lt;T&gt;</code>, <code>Hash&lt;T,U&gt;</code> with actual generic parameters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In object-oriented type theory, the last two are really the same thing, but the BMM treats them slightly differently for reasons of clarity: a <code>BMM_CONTAINER_TYPE</code> can be thought of as a 1:N counterpart to a <code>BMM_SIMPLE_TYPE</code>, whereas <code>BMM_GENERIC_TYPE</code> is typically used for objects considered to be singular, but whose types are a product of a special container and one or more parameter types.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inheritance"><a class="anchor" href="#_inheritance"></a>5.2.3. Inheritance</h4>
+<div class="paragraph">
+<p>The BMM supports single and multiple inheritance, although it does not distinguish between different types of inheritance relation as some programming languages do. The evaluation of inheritance relations defined in a BMM schema results in an acyclic graph such that ancestors and descendants can be visualised for any class. The following screen shot shows the ancestors view of a class <code>OBSERVATION</code>.</p>
+</div>
+<div id="awb_class_ancestors" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_ancestors.png" alt="awb class ancestors" width="40%">
+</div>
+<div class="title">Figure 9. BMM class - ancestors view</div>
+</div>
+<div class="paragraph">
+<p>The next screenshot shows the descendants view of one of the ancestorsclasses of the same class.</p>
+</div>
+<div id="awb_class_descendants" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_descendants.png" alt="awb class descendants" width="40%">
+</div>
+<div class="title">Figure 10. BMM class - descendants view</div>
+</div>
+<div class="paragraph">
+<p>Multiple inheritance is typically used in the definition of classes that have a Liskov substitution inheritance relation as well as an implementation inheritance relation. The following shows a class <code>DV_INTERVAL&lt;T&gt;</code> multiply inheriting from <code>Interval&lt;T&gt;</code> and <code>DATA_VALUE</code>.</p>
+</div>
+<div id="awb_class_descendants" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_multiple_inheritance.png" alt="awb multiple inheritance" width="40%">
+</div>
+<div class="title">Figure 11. BMM class - descendants view</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_classes_and_properties"><a class="anchor" href="#_classes_and_properties"></a>5.2.4. Classes and Properties</h4>
+<div class="paragraph">
+<p>Class properties are defined using the generic class <code>BMM_PROPERTY &lt;T: BMM_TYPE&gt;</code>. This approach provides a direct way of expressing the semantics of property meta-types as listed above. The properties of a class can be understood in two forms. In an original model definition, each class definition states the features it introduces with respect to its inheritance parents. We can think of this list of properties as a <em>differential</em> set. In constrast, the <em>effective</em> set of properties for a class is the result of evaluating these lists of properties down the inheritance hierarchy to obtain the <em>flat</em> set of properties. The features <em>properties</em> and <em>flat_properties</em> defined on <code>BMM_CLASS</code> provide access to these two lists for any class.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>5.3. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_bmm_definitions_class"><a class="anchor" href="#_bmm_definitions_class"></a>5.3.1. BMM_DEFINITIONS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -860,7 +978,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_model_element_class"><a class="anchor" href="#_bmm_model_element_class"></a>4.2.2. BMM_MODEL_ELEMENT Class</h4>
+<h4 id="_bmm_model_element_class"><a class="anchor" href="#_bmm_model_element_class"></a>5.3.2. BMM_MODEL_ELEMENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -898,7 +1016,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_schema_core_class"><a class="anchor" href="#_bmm_schema_core_class"></a>4.2.3. BMM_SCHEMA_CORE Class</h4>
+<h4 id="_bmm_schema_core_class"><a class="anchor" href="#_bmm_schema_core_class"></a>5.3.3. BMM_SCHEMA_CORE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1030,7 +1148,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_schema_class"><a class="anchor" href="#_bmm_schema_class"></a>4.2.4. BMM_SCHEMA Class</h4>
+<h4 id="_bmm_schema_class"><a class="anchor" href="#_bmm_schema_class"></a>5.3.4. BMM_SCHEMA Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1152,7 +1270,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_package_container_class"><a class="anchor" href="#_bmm_package_container_class"></a>4.2.5. BMM_PACKAGE_CONTAINER Class</h4>
+<h4 id="_bmm_package_container_class"><a class="anchor" href="#_bmm_package_container_class"></a>5.3.5. BMM_PACKAGE_CONTAINER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1216,7 +1334,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_package_class"><a class="anchor" href="#_bmm_package_class"></a>4.2.6. BMM_PACKAGE Class</h4>
+<h4 id="_bmm_package_class"><a class="anchor" href="#_bmm_package_class"></a>5.3.6. BMM_PACKAGE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1280,7 +1398,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_classifier_class"><a class="anchor" href="#_bmm_classifier_class"></a>4.2.7. BMM_CLASSIFIER Class</h4>
+<h4 id="_bmm_classifier_class"><a class="anchor" href="#_bmm_classifier_class"></a>5.3.7. BMM_CLASSIFIER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1316,14 +1434,14 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_conformance_type_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conformance_type_name</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Name of the this type in form allowing other type to be RT-conformance tested against it; 'RT' conformance means 'relation-target' conformance, which abstracts away container types like List&lt;&gt;, Set&lt;&gt; etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_type_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Formal string form of the type as per UML.</p>
 </div></div></td>
@@ -1342,11 +1460,18 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>Completely flattened list of type names, flattening out all generic parameters.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval&lt;T:Ordered&gt;</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_type_class"><a class="anchor" href="#_bmm_type_class"></a>4.2.8. BMM_TYPE Class</h4>
+<h4 id="_bmm_type_class"><a class="anchor" href="#_bmm_type_class"></a>5.3.8. BMM_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1387,18 +1512,11 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>List of type substitutions if any available for this type within the current BMM model.</p>
 </div></div></td>
 </tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_display_type_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Same as `as_type_string' except if a constrained generic, in the form "T: CONSTRAINER_TYPE".</p>
-</div></div></td>
-</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_class_class"><a class="anchor" href="#_bmm_class_class"></a>4.2.9. BMM_CLASS Class</h4>
+<h4 id="_bmm_class_class"><a class="anchor" href="#_bmm_class_class"></a>5.3.9. BMM_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1557,11 +1675,18 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>Main design class for this type, from which properties etc can be extracted.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Formal string form of the type as per UML.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_property_class"><a class="anchor" href="#_bmm_property_class"></a>4.2.10. BMM_PROPERTY Class</h4>
+<h4 id="_bmm_property_class"><a class="anchor" href="#_bmm_property_class"></a>5.3.10. BMM_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1653,7 +1778,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_container_property_class"><a class="anchor" href="#_bmm_container_property_class"></a>4.2.11. BMM_CONTAINER_PROPERTY Class</h4>
+<h4 id="_bmm_container_property_class"><a class="anchor" href="#_bmm_container_property_class"></a>5.3.11. BMM_CONTAINER_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1709,7 +1834,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_simple_type_class"><a class="anchor" href="#_bmm_simple_type_class"></a>4.2.12. BMM_SIMPLE_TYPE Class</h4>
+<h4 id="_bmm_simple_type_class"><a class="anchor" href="#_bmm_simple_type_class"></a>5.3.12. BMM_SIMPLE_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1743,11 +1868,23 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return base_class.type_name.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_simple_type_open_class"><a class="anchor" href="#_bmm_simple_type_open_class"></a>4.2.13. BMM_SIMPLE_TYPE_OPEN Class</h4>
+<h4 id="_bmm_open_type_class"><a class="anchor" href="#_bmm_open_type_class"></a>5.3.13. BMM_OPEN_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1757,7 +1894,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_SIMPLE_TYPE_OPEN</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_OPEN_TYPE</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1781,11 +1918,23 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>The generic constraint, which will be 'Any' if nothing set in original model.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conformance_type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return generic_constraint.conformance_type_name.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_container_type_class"><a class="anchor" href="#_bmm_container_type_class"></a>4.2.14. BMM_CONTAINER_TYPE Class</h4>
+<h4 id="_bmm_container_type_class"><a class="anchor" href="#_bmm_container_type_class"></a>5.3.14. BMM_CONTAINER_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1826,11 +1975,30 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return full type name, e.g. 'List&lt;ELEMENT&gt;'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conformance_type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return base_type.conformance_type_name; e.g. if this type is 'List&lt;ELEMENT&gt;', return 'ELEMENT'.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_generic_type_class"><a class="anchor" href="#_bmm_generic_type_class"></a>4.2.15. BMM_GENERIC_TYPE Class</h4>
+<h4 id="_bmm_generic_type_class"><a class="anchor" href="#_bmm_generic_type_class"></a>5.3.15. BMM_GENERIC_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1871,11 +2039,23 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>The base class of this type.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return the full name of the type including generic parameters, e.g. 'DV_INTERVAL&lt;T&gt;', 'TABLE&lt;List&lt;THING&gt;,String&gt;'.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_generic_parameter_class"><a class="anchor" href="#_bmm_generic_parameter_class"></a>4.2.16. BMM_GENERIC_PARAMETER Class</h4>
+<h4 id="_bmm_generic_parameter_class"><a class="anchor" href="#_bmm_generic_parameter_class"></a>5.3.16. BMM_GENERIC_PARAMETER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1942,11 +2122,25 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>Generate ultimate conformance type, which is either from `conforms_to_type' or if not set, 'Any'.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conformance_type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Result is name of conformance type, else 'Any'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Signature form of the open type, including constrainer type if there is one, e.g. 'T:Ordered'.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_generic_class_class"><a class="anchor" href="#_bmm_generic_class_class"></a>4.2.17. BMM_GENERIC_CLASS Class</h4>
+<h4 id="_bmm_generic_class_class"><a class="anchor" href="#_bmm_generic_class_class"></a>5.3.17. BMM_GENERIC_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1992,11 +2186,25 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <p>Add suppliers from generic parameters.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval&lt;T:Ordered&gt;</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Formal string form of the type as per UML.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_enumeration_class"><a class="anchor" href="#_bmm_enumeration_class"></a>4.2.18. BMM_ENUMERATION Class</h4>
+<h4 id="_bmm_enumeration_class"><a class="anchor" href="#_bmm_enumeration_class"></a>5.3.18. BMM_ENUMERATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2032,16 +2240,23 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_values</strong>: <code>List&lt;G&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_values</strong>: <code>List&lt;T&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Optional list of specific values. Must be 1:1 with `items_names' list.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of type any concrete BMM_ENUMERATION_* sub-type is based on, i.e. the name of type bound to 'T' in a declared use of this type.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_enumeration_string_class"><a class="anchor" href="#_bmm_enumeration_string_class"></a>4.2.19. BMM_ENUMERATION_STRING Class</h4>
+<h4 id="_bmm_enumeration_string_class"><a class="anchor" href="#_bmm_enumeration_string_class"></a>5.3.19. BMM_ENUMERATION_STRING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2063,11 +2278,24 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_ENUMERATION</p></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code>String&#160;=&#160;"STRING"</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of type any concrete BMM_ENUMERATION_* sub-type is based on.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_enumeration_integer_class"><a class="anchor" href="#_bmm_enumeration_integer_class"></a>4.2.20. BMM_ENUMERATION_INTEGER Class</h4>
+<h4 id="_bmm_enumeration_integer_class"><a class="anchor" href="#_bmm_enumeration_integer_class"></a>5.3.20. BMM_ENUMERATION_INTEGER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2089,6 +2317,19 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_ENUMERATION</p></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code>String&#160;=&#160;"INTEGER"</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of type any concrete BMM_ENUMERATION_* sub-type is based on.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2096,10 +2337,10 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </div>
 </div>
 <div class="sect1">
-<h2 id="_persistence_package"><a class="anchor" href="#_persistence_package"></a>5. Persistence Package</h2>
+<h2 id="_persistence_package"><a class="anchor" href="#_persistence_package"></a>6. Persistence Package</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
+<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>6.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>persistence</code> package, shown below, defines a simplified form of the main BMM model suitable for persisting and human authoring. The <a href="https://github.com/openEHR/reference-models/tree/master/models/openEHR/Release-1.0.2/BMM">openEHR BMM schemas</a> are authored in the <code>P_BMM</code> form of the BMM, using the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>.</p>
 </div>
@@ -2107,16 +2348,16 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 <div class="content">
 <img src="../UML/diagrams/BMM-persistence.svg" alt="BMM persistence">
 </div>
-<div class="title">Figure 11. RM Core Package</div>
+<div class="title">Figure 12. RM Core Package</div>
 </div>
 <div class="paragraph">
 <p>The general approach taken in this model is that attributes name <code><em>bmm_xxx</em></code> and of type <code>BMM_XXX</code> are derived from the persisted attributes of the <code>P_BMM_XXX</code> classes of this model. In other words, they are in-memory only references to reconstructed instances of <code>BMM_XXX</code> types.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>5.2. Class Definitions</h3>
+<h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>6.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_p_bmm_package_container_class"><a class="anchor" href="#_p_bmm_package_container_class"></a>5.2.1. P_BMM_PACKAGE_CONTAINER Class</h4>
+<h4 id="_p_bmm_package_container_class"><a class="anchor" href="#_p_bmm_package_container_class"></a>6.2.1. P_BMM_PACKAGE_CONTAINER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2154,7 +2395,7 @@ One of the key differences between the core BMM classes and the P_BMM classes is
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_schema_class"><a class="anchor" href="#_p_bmm_schema_class"></a>5.2.2. P_BMM_SCHEMA Class</h4>
+<h4 id="_p_bmm_schema_class"><a class="anchor" href="#_p_bmm_schema_class"></a>6.2.2. P_BMM_SCHEMA Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2311,7 +2552,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_schema_state_enumeration"><a class="anchor" href="#_p_bmm_schema_state_enumeration"></a>5.2.3. P_BMM_SCHEMA_STATE Enumeration</h4>
+<h4 id="_p_bmm_schema_state_enumeration"><a class="anchor" href="#_p_bmm_schema_state_enumeration"></a>6.2.3. P_BMM_SCHEMA_STATE Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2366,7 +2607,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_include_spec_class"><a class="anchor" href="#_bmm_include_spec_class"></a>5.2.4. BMM_INCLUDE_SPEC Class</h4>
+<h4 id="_bmm_include_spec_class"><a class="anchor" href="#_bmm_include_spec_class"></a>6.2.4. BMM_INCLUDE_SPEC Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2407,7 +2648,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_package_class"><a class="anchor" href="#_p_bmm_package_class"></a>5.2.5. P_BMM_PACKAGE Class</h4>
+<h4 id="_p_bmm_package_class"><a class="anchor" href="#_p_bmm_package_class"></a>6.2.5. P_BMM_PACKAGE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2478,7 +2719,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_classifier_class"><a class="anchor" href="#_p_bmm_classifier_class"></a>5.2.6. P_BMM_CLASSIFIER Class</h4>
+<h4 id="_p_bmm_classifier_class"><a class="anchor" href="#_p_bmm_classifier_class"></a>6.2.6. P_BMM_CLASSIFIER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2504,7 +2745,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_type_class"><a class="anchor" href="#_p_bmm_type_class"></a>5.2.7. P_BMM_TYPE Class</h4>
+<h4 id="_p_bmm_type_class"><a class="anchor" href="#_p_bmm_type_class"></a>6.2.7. P_BMM_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2561,7 +2802,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_class_class"><a class="anchor" href="#_p_bmm_class_class"></a>5.2.8. P_BMM_CLASS Class</h4>
+<h4 id="_p_bmm_class_class"><a class="anchor" href="#_p_bmm_class_class"></a>6.2.8. P_BMM_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2682,7 +2923,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_generic_parameter_class"><a class="anchor" href="#_p_bmm_generic_parameter_class"></a>5.2.9. P_BMM_GENERIC_PARAMETER Class</h4>
+<h4 id="_p_bmm_generic_parameter_class"><a class="anchor" href="#_p_bmm_generic_parameter_class"></a>6.2.9. P_BMM_GENERIC_PARAMETER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2746,7 +2987,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_property_class"><a class="anchor" href="#_p_bmm_property_class"></a>5.2.10. P_BMM_PROPERTY Class</h4>
+<h4 id="_p_bmm_property_class"><a class="anchor" href="#_p_bmm_property_class"></a>6.2.10. P_BMM_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2834,7 +3075,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_simple_type_class"><a class="anchor" href="#_p_bmm_simple_type_class"></a>5.2.11. P_BMM_SIMPLE_TYPE Class</h4>
+<h4 id="_p_bmm_simple_type_class"><a class="anchor" href="#_p_bmm_simple_type_class"></a>6.2.11. P_BMM_SIMPLE_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2880,7 +3121,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_simple_type_open_class"><a class="anchor" href="#_p_bmm_simple_type_open_class"></a>5.2.12. P_BMM_SIMPLE_TYPE_OPEN Class</h4>
+<h4 id="_p_bmm_simple_type_open_class"><a class="anchor" href="#_p_bmm_simple_type_open_class"></a>6.2.12. P_BMM_SIMPLE_TYPE_OPEN Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2917,7 +3158,7 @@ Persisted attribute.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_type</strong>: <code>BMM_SIMPLE_TYPE_OPEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_type</strong>: <code>BMM_OPEN_TYPE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Result of create_bmm_type() call.</p>
 </div></div></td>
@@ -2926,7 +3167,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_generic_type_class"><a class="anchor" href="#_p_bmm_generic_type_class"></a>5.2.13. P_BMM_GENERIC_TYPE Class</h4>
+<h4 id="_p_bmm_generic_type_class"><a class="anchor" href="#_p_bmm_generic_type_class"></a>6.2.13. P_BMM_GENERIC_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2998,7 +3239,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_container_type_class"><a class="anchor" href="#_p_bmm_container_type_class"></a>5.2.14. P_BMM_CONTAINER_TYPE Class</h4>
+<h4 id="_p_bmm_container_type_class"><a class="anchor" href="#_p_bmm_container_type_class"></a>6.2.14. P_BMM_CONTAINER_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3070,7 +3311,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_single_property_class"><a class="anchor" href="#_p_bmm_single_property_class"></a>5.2.15. P_BMM_SINGLE_PROPERTY Class</h4>
+<h4 id="_p_bmm_single_property_class"><a class="anchor" href="#_p_bmm_single_property_class"></a>6.2.15. P_BMM_SINGLE_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3135,7 +3376,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_single_property_open_class"><a class="anchor" href="#_p_bmm_single_property_open_class"></a>5.2.16. P_BMM_SINGLE_PROPERTY_OPEN Class</h4>
+<h4 id="_p_bmm_single_property_open_class"><a class="anchor" href="#_p_bmm_single_property_open_class"></a>6.2.16. P_BMM_SINGLE_PROPERTY_OPEN Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3200,7 +3441,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_generic_property_class"><a class="anchor" href="#_p_bmm_generic_property_class"></a>5.2.17. P_BMM_GENERIC_PROPERTY Class</h4>
+<h4 id="_p_bmm_generic_property_class"><a class="anchor" href="#_p_bmm_generic_property_class"></a>6.2.17. P_BMM_GENERIC_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3247,7 +3488,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_container_property_class"><a class="anchor" href="#_p_bmm_container_property_class"></a>5.2.18. P_BMM_CONTAINER_PROPERTY Class</h4>
+<h4 id="_p_bmm_container_property_class"><a class="anchor" href="#_p_bmm_container_property_class"></a>6.2.18. P_BMM_CONTAINER_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3313,7 +3554,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_enumeration_class"><a class="anchor" href="#_p_bmm_enumeration_class"></a>5.2.19. P_BMM_ENUMERATION Class</h4>
+<h4 id="_p_bmm_enumeration_class"><a class="anchor" href="#_p_bmm_enumeration_class"></a>6.2.19. P_BMM_ENUMERATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3362,7 +3603,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_enumeration_string_class"><a class="anchor" href="#_p_bmm_enumeration_string_class"></a>5.2.20. P_BMM_ENUMERATION_STRING Class</h4>
+<h4 id="_p_bmm_enumeration_string_class"><a class="anchor" href="#_p_bmm_enumeration_string_class"></a>6.2.20. P_BMM_ENUMERATION_STRING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3401,7 +3642,7 @@ Persisted attribute.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_p_bmm_enumeration_integer_class"><a class="anchor" href="#_p_bmm_enumeration_integer_class"></a>5.2.21. P_BMM_ENUMERATION_INTEGER Class</h4>
+<h4 id="_p_bmm_enumeration_integer_class"><a class="anchor" href="#_p_bmm_enumeration_integer_class"></a>6.2.21. P_BMM_ENUMERATION_INTEGER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3443,16 +3684,16 @@ Persisted attribute.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_bmm_syntax"><a class="anchor" href="#_bmm_syntax"></a>6. BMM Syntax</h2>
+<h2 id="_bmm_syntax"><a class="anchor" href="#_bmm_syntax"></a>7. BMM Syntax</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
+<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>7.1. Overview</h3>
 <div class="paragraph">
 <p>A BMM schema is normally written in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>, although other serialisations are possible. The ODIN form is described here. The structures are direct ODIN serialisations of the <code>P_BMM_XXX</code> classes in the <code>persistence</code> package.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_header_items"><a class="anchor" href="#_header_items"></a>6.2. Header Items</h3>
+<h3 id="_header_items"><a class="anchor" href="#_header_items"></a>7.2. Header Items</h3>
 <div class="paragraph">
 <p>The following shows the header items of a BMM schema, which correspond to the 'persistent' attributes of the class <code>P_BMM_SCHEMA</code>.</p>
 </div>
@@ -3482,7 +3723,7 @@ Persisted attribute.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_inclusions"><a class="anchor" href="#_inclusions"></a>6.3. Inclusions</h3>
+<h3 id="_inclusions"><a class="anchor" href="#_inclusions"></a>7.3. Inclusions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">includes</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
@@ -3494,7 +3735,7 @@ Persisted attribute.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_archetyping_related"><a class="anchor" href="#_archetyping_related"></a>6.4. Archetyping related</h3>
+<h3 id="_archetyping_related"><a class="anchor" href="#_archetyping_related"></a>7.4. Archetyping related</h3>
 <div class="paragraph">
 <p>Three archetyping related attributes can be set below, but would not usually all in the same schema. Only the archetype_rm_closure_packages variable is needed in at least one schema, usually the top-most one.</p>
 </div>
@@ -3527,7 +3768,7 @@ Persisted attribute.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_package_definition"><a class="anchor" href="#_package_definition"></a>6.5. Package Definition</h3>
+<h3 id="_package_definition"><a class="anchor" href="#_package_definition"></a>7.5. Package Definition</h3>
 <div class="paragraph">
 <p>The packages definition should be self-explanatory: just name the classes and packages in a recursive fashion.</p>
 </div>
@@ -3579,7 +3820,7 @@ make sure that the ODIN 'keys' are the same as the 'name' attributes in each blo
 </div>
 </div>
 <div class="sect2">
-<h3 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>6.6. Primitive Types</h3>
+<h3 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>7.6. Primitive Types</h3>
 <div class="paragraph">
 <p>Definitions for primitive types in a BMM schema are just normal class definitions within a <code>primitive_types</code> block. Types that are included here are usually types corresonding to primitives in target programming languages, XML schema or other downstream technologies. These types can be be detected as primitive types by tools, but otherwise are processed in the same way as types defined in the main <code>class_definitions</code> group.</p>
 </div>
@@ -3612,7 +3853,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>6.7. Class Definitions</h3>
+<h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>7.7. Class Definitions</h3>
 <div class="paragraph">
 <p>The main group of class definitions in a schema occurs within the <code><em>class_definitions</em></code> block. Each definition is a keyed ODIN object block correspnding to a serialised <code>P_BMM_CLASS</code> object, where the key is the class name. Since <code>name</code> is a BMM meta-model attribute, the class definition always contains its ODIN key.</p>
 </div>
@@ -3636,7 +3877,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_simple_classes"><a class="anchor" href="#_simple_classes"></a>6.7.1. Simple Classes</h4>
+<h4 id="_simple_classes"><a class="anchor" href="#_simple_classes"></a>7.7.1. Simple Classes</h4>
 <div class="paragraph">
 <p>Simple classes are those whose type is the same as the class, as opposed to generic classes and enumerated types (see below).</p>
 </div>
@@ -3656,7 +3897,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_properties"><a class="anchor" href="#_class_properties"></a>6.7.1.1. Class properties</h5>
+<h5 id="_class_properties"><a class="anchor" href="#_class_properties"></a>7.7.1.1. Class properties</h5>
 <div class="paragraph">
 <p>Class properties from the original model are expressed using ODIN object blocks keyed by property name. Since there are multiple possible descendants of <code>P_BMM_PROPERTY</code>, ODIN type markers must be used to indicate which subtypes is used in each case.</p>
 </div>
@@ -3697,7 +3938,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 </div>
 <div class="sect4">
-<h5 id="_container_properties"><a class="anchor" href="#_container_properties"></a>6.7.1.2. Container Properties</h5>
+<h5 id="_container_properties"><a class="anchor" href="#_container_properties"></a>7.7.1.2. Container Properties</h5>
 <div class="paragraph">
 <p>The following is a <code>P_BMM_CONTAINER_PROPERTY</code> definition for the model property <code>items: List&lt;ITEM&gt;</code> in the <code>ELEMENT</code> class. The type is expressed in the <code><em>type_def</em></code> part which indicates the type of the container, which must be defined elsewhere in the schema, typically in the primitive types. The optional <code><em>cardinality</em></code> meta-property indicates cardinality of the container, and is expressed as a ODIN range. The default is <code>|0..*|</code>.</p>
 </div>
@@ -3723,7 +3964,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 </div>
 <div class="sect3">
-<h4 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>6.7.2. Generic Classes</h4>
+<h4 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>7.7.2. Generic Classes</h4>
 <div class="paragraph">
 <p>Generic classes are those that have one or more substitutable generic type parameters. Such classes are therefore <em>type generators</em>, since actual types are formed by substitution of concrete types (typically simple classes) for the formal type parameters. The following example shows a generic class <code>Interval</code> with <code>generic_parameter_defs</code> of <code>T</code> which is constrained to conform to the type <code>Ordered</code>. This structure defineds the type <code>Interval&lt;T&#8594;Ordered&gt;</code>, with the same meaning as UML and programming languages supporting generic (templated) types.</p>
 </div>
@@ -3905,7 +4146,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enumerated_types"><a class="anchor" href="#_enumerated_types"></a>6.7.3. Enumerated Types</h4>
+<h4 id="_enumerated_types"><a class="anchor" href="#_enumerated_types"></a>7.7.3. Enumerated Types</h4>
 <div class="paragraph">
 <p>In a BMM schema, enumerated types are treated as constrained forms of standard types with open ranges, currently only <code>Integer</code> and <code>String</code>. They are accordingly represented using class definitions of the meta-types <code>P_BMM_ENUMERATION_INTEGER</code> and <code>P_BMM_ENUMERATION_STRING</code> respectively. In either case, just names (<code><em>items_names</em></code> meta-property) or both names and values (<code><em>item_values</em></code> meta-property) can be specified.</p>
 </div>
@@ -4137,7 +4378,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-05 12:01:12 GMT
+Last updated 2016-06-18 10:02:34 BST
 </div>
 </div>
 </body>
