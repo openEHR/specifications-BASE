@@ -16,16 +16,20 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
+|*type_name*: `String`
+a|Formal string form of the type as per UML.
+
+h|
 |*type_category*: `String`
 a|Generate a type category of main target type from Type_category_xx values.
 
 h|
-|*conformance_type_name*: `String`
-a|Name of the this type in form allowing other type to be RT-conformance tested against it; 'RT' conformance means 'relation-target' conformance, which abstracts away container types like List<>, Set<> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.
+|*type_signature*: `String`
+a|Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>
 
 h|
-|*type_name*: `String`
-a|Formal string form of the type as per UML.
+|*conformance_type_name*: `String`
+a|Name of the this type in form allowing other type to be RT-conformance tested against it; 'RT' conformance means 'relation-target' conformance, which abstracts away container types like List<>, Set<> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.
 
 h|
 |*base_class*: `BMM_CLASS`
@@ -34,8 +38,4 @@ a|Main design class for this type, from which properties etc can be extracted.
 h|
 |*flattened_type_list*: `List<String>`
 a|Completely flattened list of type names, flattening out all generic parameters.
-
-h|
-|*type_signature*: `String`
-a|Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>
 |===

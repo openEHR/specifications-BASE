@@ -38,17 +38,19 @@ Experience with various UML tools (up till 2015) highlighted the following probl
 
 == Design
 
-The Basic Meta-Model provides a model of object models in the data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML. In the future an abstract syntax serialisation may be developed in the style of OMG IDL (Interface Definition Language) or similar.
+The Basic Meta-Model provides a model of object models in the data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised schema form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML. In the future an abstract syntax serialisation may be developed in the style of OMG IDL (Interface Definition Language) or similar.
 
-The BMM model packages are as follows:
+The BMM packages are as follows:
 
 * `rm_access`: the interface to most features including schema load/reload, generally used by an application as a reflection library;
 * `core`: the core BMM classes used for in-memory representation of an object model;
 * `persistence`: a simplified version of the core classes prefixed with `P_BMM_`, used for persistence and human authoring, which allow file (i.e. schema) inclusion and re-use.
 
-The `P_BMM_*` classes perform two functions. Firstly, they are a modified and simplified version of the `BMM_*` classes that enable for example symbolic referencing via class names, syntactical type names to be used etc, rather than the full explision of fine-grained objects that would result from a direct serialisation of `BMM_*` classes. This is what enables the BMM file format to be easily readable and editable by human users.
+The `P_BMM_*` classes perform two functions. Firstly, they are a modified and simplified version of the `BMM_*` classes that enable for example symbolic referencing via class names, syntactical type names to be used etc, rather than the full explosion of fine-grained objects that would result from a direct serialisation of `BMM_*` classes. This is what enables the P_BMM file format to be easily readable and editable by human users.
 
-The second is that BMM files work as schemas that support schema inclusion and therefore re-use, in a similar manner to the XML schema languages. Thus, a single logical BMM model can be expressed as a _number_ of `BMM` schema files which are actually `P_BMM` serialisations. A schema reading component has to perform the schema inclusions and ultimately `BMM_*` object instantiations to obtain the in-memory form of the model.
+The second is that P_BMM files function as schemas that support schema inclusion and therefore re-use, in a similar manner to the XML schema languages. Thus, a single logical BMM model can be expressed as a _number_ of P_BMM schema files which are actually `P_BMM_*` object serialisations. A schema reading component has to resolve the schema inclusions and ultimately `BMM_*` object instantiations to obtain the in-memory form of the model.
+
+We thus talk of the `P_BMM_*` classes as a model of 'BMM schemas' and the `BMM_*` classes as a model of 'BMM models', where the latter is understood as the fully computable in-memory object structure with all name references resolved to object references.
 
 The packages are illustrated below.
 
@@ -58,7 +60,7 @@ image::{uml_export_dir}/diagrams/BMM-packages.svg[id=package_overview, align="ce
 
 The normal use of BMM is as follows:
 
-* create a BMM schema in the form of one or more files, using the `P_BMM_` form of the model expressed in ODIN. This is easy to understand by using the link:../example/example.bmm[example schema] and/or copying other examples;
+* create a P_BMM schema in the form of one or more files, using the `P_BMM_` form of the model expressed in ODIN. This is easy to understand by using the link:../example/example.bmm[example schema] and/or copying other examples;
 * locate these files in a suitable place for use with a tool such as the {openehr_awb}[openEHR ADL Workbench] and {linkehr}[LinkEHR].
 
 == A Note on Language

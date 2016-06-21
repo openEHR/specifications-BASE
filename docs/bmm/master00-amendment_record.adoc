@@ -4,12 +4,16 @@
 |===
 |Issue|Details|Raiser|Completed
 
-|[[latest_issue]]1.0.1
+|[[latest_issue]]2.2.0
 |Rename `BMM_CLASSIFIER._as_type_string_` to `_type_name_` and `_as_conformance_type_string_` to `_conformance_type_name_`. +
  Move and rename `BMM_TYPE._as_display_type_string_` to `BMM_CLASSIFIER._type_signature_`. Add redefinitions in relevant descendant classes. +
- Rename `BMM_SIMPLE_TYPE_OPEN` to `BMM_OPEN_TYPE`.
+ Rename `BMM_SIMPLE_TYPE_OPEN` to `BMM_OPEN_TYPE`. +
+ Add new class `BMM_TYPE_ELEMENT` in preparation for BMM 3 refactoring. +
+ Remove class `P_BMM_CLASSIFIER`. +
+ Add missed inheritance from `P_BMM_PROPERTY` to `P_BMM_MODEL_ELEMENT`. +
+ Rename `BMM_SCHEMA` to `BMM_MODEL`.
 |T Beale
-|[[latest_issue_date]]18 Jun 2016
+|[[latest_issue_date]]20 Jun 2016
 
 |
 |Add missing inheritance from `P_BMM_SCHEMA` to `BMM_SCHEMA_CORE`. +
@@ -17,7 +21,7 @@
 |T Beale
 |18 Apr 2016
 
-|1.0.0
+|2.1.0
 |Initial writing based on ADL Workbench implementation.
 |T Beale
 |08 Feb 2016

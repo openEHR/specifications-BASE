@@ -28,7 +28,7 @@ a|All schemas found and loaded from `schema_directory'. Keyed by schema_id, i.e.
 e.g. openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606-1_2008. This is the same key as BMM_SCHEMA.schema_id. Does not include schemas that failed to parse (i.e. SCHEMA_ACCESS.passed = False)
 
 h|*1..1*
-|*valid_top_level_schemas*: `Hash<BMM_SCHEMA, String>`
+|*valid_models*: `Hash<BMM_MODEL, String>`
 a|Top-level (root) schemas in use. Table is keyed by logical schema_name, i.e. model_publisher '_' model_name, e.g. "openehr_rm". Schemas containing different variants of same model (i.e. model_publisher + model_name) are considered duplicates.
 h|*Functions*
 ^h|*Signature*
