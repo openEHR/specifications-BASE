@@ -1,0 +1,39 @@
+=== IDate Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*_IDate (abstract)_*
+
+h|*Description*
+2+a|Interface of an absolute point in time, as measured on the Gregorian calendar, and specified only to the day.
+
+h|*Inherit*
+2+|Temporal
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*year*: `Integer`
+a|Year.
+
+h|
+|*month*: `Integer` +
+*_Pre_*: not month_unknown
+a|Month in year.
+
+h|
+|*day*: `Integer` +
+*_Pre_*: not day_unknown
+a|Day in month.
+
+h|
+|*timezone*: `ITimezone`
+a|Timezone; may be Void.
+
+h|
+|*as_string*: `String`
+a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
+|===

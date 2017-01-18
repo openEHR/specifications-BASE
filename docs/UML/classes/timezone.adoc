@@ -6,36 +6,9 @@ h|*Class*
 2+^h|*Timezone*
 
 h|*Description*
-2+a|Represents a timezone as used in ISO 8601.
+2+a|Assumed built-in primitive type representing a timezone.
 
 h|*Inherit*
-2+|Temporal
+2+|ITimezone
 
-h|*Functions*
-^h|*Signature*
-^h|*Meaning*
-
-h|
-|*hour*: `Integer`
-a|Hour part of timezone - in the range 00 - 13.
-
-h|
-|*minute*: `Integer`
-a|Minute part of timezone. Generally 00 or 30.
-
-h|
-|*sign*: `Integer`
-a|Direction of timezone expresssed as +1 or -1.
-
-h|*Invariant*
-2+a|*_Min_hour_valid_*: sign = -1 implies hour > 0 and hour \<= Min_timezone_hour
-
-h|
-2+a|*_Max_hour_valid_*: sign = 1 implies hour > 0 and hour \<= Max_timezone_hour
-
-h|
-2+a|*_Minute_valid_*: not minute_unknown implies valid_minute (minute)
-
-h|
-2+a|*_Sign_valid_*: sign = 1 or sign = -1
 |===

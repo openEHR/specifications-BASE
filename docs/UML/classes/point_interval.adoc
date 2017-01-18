@@ -1,0 +1,44 @@
+=== Point_interval Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*Point_interval*
+
+h|*Description*
+2+a|Type representing an Interval that happens to be a point value. Provides an efficient representation that is substitutable for Interval<T> where needed.
+
+h|*Inherit*
+2+|Interval
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*lower_unbounded*: `boolean`
+a|lower boundary open (i.e. = -infinity)
+
+h|*1..1 +
+(redefined)*
+|*upper_unbounded*: `boolean`
+a|upper boundary open (i.e. = +infinity)
+
+h|*1..1 +
+(redefined)*
+|*lower_included*: `boolean`
+a|lower boundary value included in range if not lower_unbounded.
+
+h|*1..1 +
+(redefined)*
+|*upper_included*: `boolean`
+a|upper boundary value included in range if not upper_unbounded.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|(effected)
+|*upper*: `T`
+a|
+|===

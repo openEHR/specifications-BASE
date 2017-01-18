@@ -29,7 +29,7 @@ h|*0..1*
 a|Other contributors to the resource, each listed in "name <email>"  form.
 
 h|*1..1*
-|*lifecycle_state*: `TERMINOLOGY_CODE`
+|*lifecycle_state*: `Terminology_code`
 a|Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.
 
 h|*1..1*
@@ -56,10 +56,12 @@ h|*0..1*
 |*ip_acknowledgements*: `Hash<String, String>`
 a|List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:
 
+----
 ip_acknowledgements = <
-["loinc"] = <"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use">
-["snomedct"] = <"Content from SNOMED CT® is copyright © 2007 IHTSDO <ihtsdo.org>">
+    ["loinc"] = <"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use">
+    ["snomedct"] = <"Content from SNOMED CT® is copyright © 2007 IHTSDO <ihtsdo.org>">
 >
+----
 
 h|*0..1*
 |*references*: `Hash<String, String>`
@@ -72,11 +74,14 @@ a|URI of package to which this resource belongs.
 h|*0..1*
 |*conversion_details*: `Hash<String, String>`
 a|Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:
+
+----
 conversion_details = <
-["source_model"] = <"CEM model xyz <http://location.in.clinicalelementmodels.com>">
-["tool"] = <"cem2adl v6.3.0">
-["time"] = <"2014-11-03T09:05:00">
+        ["source_model"] = <"CEM model xyz <http://location.in.clinicalelementmodels.com>">
+        ["tool"] = <"cem2adl v6.3.0">
+        ["time"] = <"2014-11-03T09:05:00">
 >
+----
 
 h|*0..1*
 |*other_details*: `Hash<String, String>`

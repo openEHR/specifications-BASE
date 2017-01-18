@@ -43,6 +43,8 @@ The figure below illustrates the built-in primitive types. Simple inheritance re
 .base_types.primitive_types package
 image::{uml_export_dir}/diagrams/BASE-base_types.primitive_types.svg[id=base_primitive_types, align="center"]
 
+=== Class Definitions
+
 include::{uml_export_dir}/classes/numeric.adoc[]
 
 include::{uml_export_dir}/classes/ordered.adoc[]
@@ -59,51 +61,6 @@ include::{uml_export_dir}/classes/real.adoc[]
 
 include::{uml_export_dir}/classes/string.adoc[]
 
-==== Unicode
+== Unicode
 
 It is assumed in the openEHR specifications that Unicode is supported by the type `String`. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.
-
-== Structure Types
-
-The types described in this section are basic data structures mostly assumed to be standardly available in implementation technologies. The types `Interval`, `MULTIPLICITY_INTERVAL` and `CARDINALITY` are not assumed, and are fully defined.
-
-The following types consititute the minimum set of primitive types assumed by openEHR of an implementation formalism.
-
-[cols="1,3,1", options="header"]
-|===
-|Type name +
- in openEHR             |Description                                                |ISO 11404 +
-                                                                                     Type
-
-|`Array<T>`             |physical container of items indexed by number              |`Array<T>`
-|`List<T>`              |container of items, implied order, non-unique membership   |`Sequence<T>`
-|`Set<T>`               |container of items, no order, unique membership            |`Set<T>`
-|`Hash<K:Ordered, V>`   |a table of values of any type V, keyed by values of any `Ordered` descendant K, typically `String` or `Integer`, but may be more complex types, e.g. a coded term type. | `Table`
-|`Interval<T>`          |Intervals with open or closed upper and lower bounds.      |`Range<T>`
-|===
-
-The following UML diagram illustrates the `base_types.structures` package. As with the assumed primitive types, inheritance and abstract classes are used for convenience of the definitions below, but are not formally assumed in openEHR.
-
-[.text-center]
-.base_types.structures package
-image::{uml_export_dir}/diagrams/BASE-base_types.structures.svg[id=base_structure_types, align="center"]
-
-The minimal assumed semantics of the assumed `structures` classes are defined below.
-
-include::{uml_export_dir}/classes/aggregate.adoc[]
-
-include::{uml_export_dir}/classes/list.adoc[]
-
-include::{uml_export_dir}/classes/set.adoc[]
-
-include::{uml_export_dir}/classes/array.adoc[]
-
-include::{uml_export_dir}/classes/hash.adoc[]
-
-The following classes are not assumed to exist in libraries or programming languages in a standard way, and are fully defined here.
-
-include::{uml_export_dir}/classes/interval.adoc[]
-
-include::{uml_export_dir}/classes/multiplicity_interval.adoc[]
-
-include::{uml_export_dir}/classes/cardinality.adoc[]

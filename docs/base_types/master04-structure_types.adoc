@@ -1,0 +1,58 @@
+= Structure Types
+
+== Overview
+
+The types described in this section are basic data structures mostly assumed to be standardly available in implementation technologies. The following types consititute the minimum set of structure types assumed by openEHR of an implementation environment.
+
+[cols="1,3,1", options="header"]
+|===
+|Type name +
+ in openEHR             |Description                                                |ISO 11404 +
+                                                                                     Type
+
+|`Array<T>`             |physical container of items indexed by number              |`Array<T>`
+|`List<T>`              |container of items, implied order, non-unique membership   |`Sequence<T>`
+|`Set<T>`               |container of items, no order, unique membership            |`Set<T>`
+|`Hash<K:Ordered, V>`   |a table of values of any type V, keyed by values of any `Ordered` descendant K, typically `String` or `Integer`, but may be more complex types, e.g. a coded term type. | `Table`
+|`Interval<T:Ordered>`  |Intervals of ordered primitive types, with open or closed upper and lower bounds.      |`Range<T>`
+|===
+
+The following UML diagram illustrates the `base_types.structures` package. As with the assumed primitive types, inheritance and abstract classes are used for convenience of the definitions in openEHR models, but are not assumed to exist in exactly the same way within implementation technologies. Hence, in an implementation, various workarounds or equivalences may be needed to obtain the defined semantics.
+
+[.text-center]
+.base_types.structures package
+image::{uml_export_dir}/diagrams/BASE-base_types.structures.svg[id=base_structure_types, align="center"]
+
+== Container Structures
+
+Container types are shown on the left side of the diagram above. The openEHR specifications assume the existence of the classes `Array`, `Set`, `List` and `Hash`, and assumes a few of their semantics, e.g. the `_has()_` function. However they are not fully defined in this specification, since that is the business of implementation technologies.
+
+=== Class Definitions
+
+include::{uml_export_dir}/classes/aggregate.adoc[]
+
+include::{uml_export_dir}/classes/list.adoc[]
+
+include::{uml_export_dir}/classes/set.adoc[]
+
+include::{uml_export_dir}/classes/array.adoc[]
+
+include::{uml_export_dir}/classes/hash.adoc[]
+
+== Intervals
+
+A second kind of structure, commonly needed in rich data is the interval. The definition of the `Interval<T>` class here is an intensional one, i.e. it states its members by implication from its limits, rather than enumerating them. To support the common need for defining times in models that could be either a fixed point in time or a time interval, the classes `Point_interval<T>` and `Proper_interval<T>` are provided. If `Interval<X>` is defined as the type of a feature in a class in an openEHR model, where `X` is some descendant of `Ordered`, then at runtime, either a `Point_interval` or `Proper_interval` may be attached.
+
+In addition to the generic interval types, the derived types `Multiplicity_interval` and `Cardinality` are provided, for use in models to represent multiplicity, optionality, and cardinality.
+
+=== Class Definitions
+
+include::{uml_export_dir}/classes/interval.adoc[]
+
+include::{uml_export_dir}/classes/point_interval.adoc[]
+
+include::{uml_export_dir}/classes/proper_interval.adoc[]
+
+include::{uml_export_dir}/classes/multiplicity_interval.adoc[]
+
+include::{uml_export_dir}/classes/cardinality.adoc[]

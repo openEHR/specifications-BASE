@@ -3,7 +3,7 @@
 [cols="^1,2,3"]
 |===
 h|*Class*
-2+^h|*Interval*
+2+^h|*_Interval (abstract)_*
 
 h|*Description*
 2+a|Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
@@ -19,10 +19,6 @@ h|*Attributes*
 h|*0..1*
 |*lower*: `T`
 a|lower bound.
-
-h|*0..1*
-|*upper*: `T`
-a|Upper bound.
 
 h|*1..1*
 |*lower_unbounded*: `boolean`
@@ -59,6 +55,10 @@ a|True if there is any overlap between intervals represented by Current and `oth
 h|
 |*contains* (other: `Interval`): `Boolean`
 a|True if current interval properly contains `other'? True if all points of `other' are inside the current interval.
+
+h|
+|*upper*: `T`
+a|
 
 h|(effected)
 |*is_equal* (other: `Any`): `Boolean`
