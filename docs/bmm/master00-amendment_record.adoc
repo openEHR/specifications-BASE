@@ -4,7 +4,17 @@
 |===
 |Issue|Details|Raiser|Completed
 
-|[[latest_issue]]2.2.0
+|[[latest_issue]]2.2.1
+|Rename `P_BMM_SIMPLE_TYPE_OPEN` to `P_BMM_OPEN_TYPE`; +
+ Remove `BMM_CLASSIFIER._conformance_type_name_`; +
+ Rename `P_BMM_GENERIC_PARAMETER._create_bmm_generic_parameter_definition_` to `_create_bmm_generic_parameter_`; +
+ Remove inheritance from `P_BMM_PACKAGE_CONTAINER` to `P_BMM_MODEL_ELEMENT`; +
+ Make `P_BMM_MODEL_ELEMENT` abstract.
+|C Nanjo, +
+ T Beale
+|[[latest_issue_date]]25 Jan 2017
+
+|2.2.0
 |Rename `BMM_CLASSIFIER._as_type_string_` to `_type_name_` and `_as_conformance_type_string_` to `_conformance_type_name_`. +
  Move and rename `BMM_TYPE._as_display_type_string_` to `BMM_CLASSIFIER._type_signature_`. Add redefinitions in relevant descendant classes. +
  Rename `BMM_SIMPLE_TYPE_OPEN` to `BMM_OPEN_TYPE`. +
@@ -13,7 +23,7 @@
  Add missed inheritance from `P_BMM_PROPERTY` to `P_BMM_MODEL_ELEMENT`. +
  Rename `BMM_SCHEMA` to `BMM_MODEL`.
 |T Beale
-|[[latest_issue_date]]20 Jun 2016
+|20 Jun 2016
 
 |
 |Add missing inheritance from `P_BMM_SCHEMA` to `BMM_SCHEMA_CORE`. +
