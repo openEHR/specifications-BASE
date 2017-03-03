@@ -249,10 +249,12 @@
  Remove <code>BMM_CLASSIFIER.<em>conformance_type_name</em></code>;<br>
  Rename <code>P_BMM_GENERIC_PARAMETER.<em>create_bmm_generic_parameter_definition</em></code> to <code><em>create_bmm_generic_parameter</em></code>;<br>
  Remove inheritance from <code>P_BMM_PACKAGE_CONTAINER</code> to <code>P_BMM_MODEL_ELEMENT</code>;<br>
- Make <code>P_BMM_MODEL_ELEMENT</code> abstract.</p></td>
+ Make <code>P_BMM_MODEL_ELEMENT</code> abstract;<br>
+ Correct <code>P_BMM_ENUMERATION.<em>items_names</em></code> cardinality to multiple;<br>
+ Constrain <code>BMM_GENERIC_PARAMETER.<em>name</em></code> and <code>P_BMM_GENERIC_PARAMETER.<em>name</em></code> to one character and upper case.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Nanjo,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>25 Jan 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Mar 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.2.0</p></td>
@@ -955,7 +957,7 @@
 <div class="sect3">
 <h4 id="_classes_and_properties"><a class="anchor" href="#_classes_and_properties"></a>5.2.4. Classes and Properties</h4>
 <div class="paragraph">
-<p>Class properties are defined using the generic class <code>BMM_PROPERTY &lt;T: BMM_TYPE&gt;</code>. This approach provides a direct way of expressing the semantics of property meta-types as listed above. The properties of a class can be understood in two forms. In an original model definition, each class definition states the features it introduces with respect to its inheritance parents. We can think of this list of properties as a <em>differential</em> set. In constrast, the <em>effective</em> set of properties for a class is the result of evaluating these lists of properties down the inheritance hierarchy to obtain the <em>flat</em> set of properties. The features <em>properties</em> and <em>flat_properties</em> defined on <code>BMM_CLASS</code> provide access to these two lists for any class.</p>
+<p>Class properties are defined using the generic class <code>BMM_PROPERTY &lt;T: BMM_TYPE&gt;</code>. This approach provides a direct way of expressing the semantics of property meta-types as listed above. The properties of a class can be understood in two forms. In an original model definition, each class definition states the features it introduces with respect to its inheritance parents. We can think of this list of properties as a <em>differential</em> set. In contrast, the <em>effective</em> set of properties for a class is the result of evaluating these lists of properties down the inheritance hierarchy to obtain the <em>flat</em> set of properties. The features <em>properties</em> and <em>flat_properties</em> defined on <code>BMM_CLASS</code> provide access to these two lists for any class.</p>
 </div>
 </div>
 </div>
@@ -2135,7 +2137,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name of the parameter, e.g. 'T' etc.</p>
+<p>Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2178,6 +2180,12 @@
 <p>Signature form of the open type, including constrainer type if there is one, e.g. 'T:Ordered'.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Inv_generic_name</em></strong>: name.count = 1 and name.is_upper</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2211,7 +2219,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>List&lt;BMM_GENERIC_PARAMETER&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>Hash&lt;String,BMM_GENERIC_PARAMETER&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.</p>
 </div></div></td>
@@ -2709,13 +2717,6 @@ Persisted attribute.</p>
 <p>Full identifier of the included schema, e.g. "openehr_primitive_types_1.0.2".</p>
 </div></div></td>
 </tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namesapce</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Namespace prepended to namespace in included schema, under which included types will be known in this schema.</p>
-</div></div></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -3000,7 +3001,7 @@ Persisted attribute.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name of the parameter, e.g. 'T' etc. Persisted attribute.</p>
+<p>Name of the parameter, e.g. 'T' etc. Persisted attribute. Name is limited to 1 character, upper case.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3027,6 +3028,12 @@ Persisted attribute.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_generic_parameter</strong> (a_bmm_schema: <code>BMM_MODEL</code>)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Create bmm_generic_parameter.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Inv_generic_name</em></strong>: name.count = 1 and name.is_upper</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3186,7 +3193,7 @@ Persisted attribute.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Persistent form of BMM_SIMPLE_TYPE_OPEN.</p>
+<p>Persistent form of BMM_OPEN_TYPE.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3632,8 +3639,8 @@ Persisted attribute.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_names</strong>: <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_names</strong>: <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -4066,7 +4073,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
         <span class="tok-nc">ancestors</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Any&quot;</span><span class="tok-p">,</span> <span class="tok-p">...&gt;</span>
         <span class="tok-nc">properties</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;qty_interval_attr&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nc">P_BMM_GENERIC_PROPERTY</span><span class="tok-p">)</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;qty_interval_attr_1&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;qty_interval_attr&quot;</span><span class="tok-p">&gt;</span>
                 <span class="tok-nc">type_def</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                     <span class="tok-nc">root_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_INTERVAL&quot;</span><span class="tok-p">&gt;</span>
                     <span class="tok-nc">generic_parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;DV_QUANTITY&quot;</span><span class="tok-p">&gt;</span>

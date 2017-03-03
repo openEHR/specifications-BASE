@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1*
 |*name*: `String`
-a|Name of the parameter, e.g. 'T' etc.
+a|Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.
 
 h|*0..1*
 |*conforms_to_type*: `BMM_CLASS`
@@ -41,4 +41,7 @@ a|Generate ultimate conformance type, which is either from `conforms_to_type' or
 h|(effected)
 |*type_signature*: `String`
 a|Signature form of the open type, including constrainer type if there is one, e.g. 'T:Ordered'.
+
+h|*Invariant*
+2+a|*_Inv_generic_name_*: name.count = 1 and name.is_upper
 |===
