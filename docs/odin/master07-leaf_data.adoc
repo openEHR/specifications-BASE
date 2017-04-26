@@ -81,30 +81,9 @@ Boolean values can be indicated by the following values (case-insensitive):
 
 ==== Complete Date/Times
 
-In ODIN, full and partial dates, times and durations can be expressed. All full dates, times and durations are expressed using a subset of ISO8601. The Support IM provides a full explanation of the ISO8601 semantics supported in openEHR.
+In ODIN, full and partial dates, times and durations can be expressed. All full dates, times and durations are expressed using a subset of ISO 8601. The Support IM provides a full explanation of the ISO 8601 semantics supported in openEHR.
 
 In ODIN, the use of ISO 8601 allows extended form only (i.e. ':' and '-' must be used). The ISO 8601 method of representing partial dates consisting of a single year number, and partial times consisting of hours only are not supported, since they are ambiguous. See below for partial forms.
-
-Patterns for complete dates and times in ODIN include the following:
-
-[source, antlr-java]
---------
-ISO8601_DATE      : YEAR '-' MONTH ( '-' DAY )? ;
-ISO8601_TIME      : HOUR ':' MINUTE ( ':' SECOND ( ',' INTEGER )?)? ( TIMEZONE )? ; 
-ISO8601_DATE_TIME : YEAR '-' MONTH '-' DAY 'T' HOUR (':' MINUTE (':' SECOND ( ',' DIGIT+ )?)?)? ( TIMEZONE )? ;
-// ISO8601 DURATION PnYnMnWnDTnnHnnMnn.nnnS 
-// here we allow a deviation from the standard to allow weeks to be mixed in with the rest since this commonly occurs in medicine
-ISO8601_DURATION  : 'P'(DIGIT+[yY])?(DIGIT+[mM])?(DIGIT+[wW])?(DIGIT+[dD])?('T'(DIGIT+[hH])?(DIGIT+[mM])?(DIGIT+('.'DIGIT+)?[sS])?)? ;
-
-fragment TIMEZONE :     'Z' | ('+'|'-') HOUR_MIN ;   // hour offset, e.g. `+0930`, or else literal `Z` indicating +0000.
-fragment YEAR     :     [1-9][0-9]* ;
-fragment MONTH    :     ( [0][0-9] | [1][0-2] ) ;    // month in year
-fragment DAY      :     ( [012][0-9] | [3][0-2] ) ;  // day in month
-fragment HOUR     :     ( [01]?[0-9] | [2][0-3] ) ;  // hour in 24 hour clock
-fragment MINUTE   :     [0-5][0-9] ;                 // minutes
-fragment HOUR_MIN :     ( [01]?[0-9] | [2][0-3] ) [0-5][0-9] ;  // hour / minutes quad digit pattern
-fragment SECOND   :     [0-5][0-9] ;                 // seconds
---------
 
 Durations are expressed using a string which starts with 'P', and is followed by a list of periods, each appended by a single letter designator: 'Y' for years, "M' for months, 'W' for weeks, 'D' for days, 'H' for hours, 'M' for minutes, and 'S' for seconds. The literal 'T' separates the YMWD part from the HMS part, ensuring that months and minutes can be distinguished. Examples of date/time data include:
 
@@ -127,28 +106,25 @@ Two ways of expressing partial (i.e. incomplete) date/times are supported in ODI
     yyyy-MM-ddThh      -- a date/time, no minutes or seconds
 ----
 
-To deal with the limitations of ISO 8601 partial patterns in a context-free parsing environment, a second form of pattern is supported in ODIN, based on ISO 8601. In this form, '?' characters are substituted for missing digits. Valid partial dates follow the patterns:
+To deal with the limitations of ISO 8601 partial patterns in a context-free parsing environment, a second form of pattern is supported in ODIN, based on ISO 8601. In this form, '?' characters are substituted for missing digits. Valid partial dates follow the patterns (corresponding to reduced accuracy forms described in ISO 8601-2004, section 4.1.4.3):
 
 ----
     yyyy-MM-??         -- date with unknown day in month
     yyyy-??-??         -- date with unknown month and day
 ----
 
-Valid partial times follow the patterns:
+Valid partial times follow the patterns (corresponding to reduced accuracy forms described in ISO 8601-2004, section 4.2.2.3):
 
 ----
     hh:mm:??           -- time with unknown seconds
     hh:??:??           -- time with unknown minutes and seconds
 ----
 
-Valid date/times follow the patterns:
+Valid date/times follow the patterns (corresponding to reduced accuracy forms described in ISO 8601-2004, section 4.3.3):
 
 ----
-    yyyy-MM-dd Thh:mm:??    -- date/time with unknown seconds
-    yyyy-MM-dd Thh:??:??    -- date/time with unknown minutes and seconds
-    yyyy-MM-ddT??:??:??     -- date/time with unknown time
-    yyyy-MM-??T??:??:??     -- date/time with unknown day and time
-    yyyy-??-??T??:??:??     -- date/time with unknown month, day and time
+    yyyy-MM-ddThh:mm:??     -- date/time with unknown seconds
+    yyyy-MM-ddThh:??:??     -- date/time with unknown minutes and seconds
 ----
 
 == Intervals of Ordered Primitive Types
@@ -164,10 +140,13 @@ Intervals of any ordered primitive type, i.e., Integer, Real, Date, Time, Date_t
     |>N|          -- the one-sided range x > N;
     |>=N|         -- the one-sided range x >= N;
     |<=N|         -- the one-sided range x <= N;
-    |N +/-M|      -- interval of N ± M.
+    |N +/-M|      -- interval of N ±M.
+    |N±M|         -- interval of N ±M.
 ----
 
 The allowable values for N and M include any value in the range of the relevant type.
+
+NOTE: for the plus/minus form (N ± M format), spaces are not significant either side of the '±' sign or the equivalent '+/' string.
 
 Examples of this syntax include:
 
@@ -177,7 +156,8 @@ Examples of this syntax include:
     |0.0..<1000.0|      -- real interval 0.0 <= x < 1000.0
     |08:02..09:10|      -- interval of time
     |>=1939-02-01|      -- open-ended interval of dates
-    |5.0 +/-0.5|        -- 4.5 ± 5.5
+    |5.0 ±0.5|          -- 4.5 ±5.5
+    |5.0 +/-0.5|        -- 4.5 ±5.5
     |>=0|               -- >= 0
 ----
 
