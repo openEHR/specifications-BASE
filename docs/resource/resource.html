@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="description" content="openEHR Resource Model specification">
+<meta name="keywords" content="openehr, resources">
+<title>Resource Model</title>
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_resource_model">Resource Model</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a>
+<ul class="sectlevel2">
+<li><a href="#_primary_author">Primary Author</a></li>
+<li><a href="#_contributors">Contributors</a></li>
+<li><a href="#_supporters">Supporters</a></li>
+</ul>
+</li>
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_status">1.3. Status</a></li>
+<li><a href="#_conformance">1.4. Conformance</a></li>
+</ul>
+</li>
+<li><a href="#_resource_package">2. Resource Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview">2.1. Overview</a>
+<ul class="sectlevel3">
+<li><a href="#_natural_languages_and_translation">2.1.1. Natural Languages and Translation</a></li>
+<li><a href="#_meta_data">2.1.2. Meta-data</a></li>
+<li><a href="#_revision_history">2.1.3. Revision History</a></li>
+</ul>
+</li>
+<li><a href="#_class_descriptions">2.2. Class Descriptions</a>
+<ul class="sectlevel3">
+<li><a href="#_authored_resource_class">2.2.1. AUTHORED_RESOURCE Class</a></li>
+<li><a href="#_translation_details_class">2.2.2. TRANSLATION_DETAILS Class</a></li>
+<li><a href="#_resource_description_class">2.2.3. RESOURCE_DESCRIPTION Class</a></li>
+<li><a href="#_resource_description_item_class">2.2.4. RESOURCE_DESCRIPTION_ITEM Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_resources">Resources</a>
+<ul class="sectlevel3">
+<li><a href="#_general">General</a></li>
+<li><a href="#_e_health_standards">e-Health Standards</a></li>
+<li><a href="#_e_health_projects">e-Health Projects</a></li>
+<li><a href="#_general_standards">General Standards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_resource_model" class="sect0">Resource Model</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="http://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: openehr, resources</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="60%">
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="http://www.openehr.org/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
+ Web: <a href="http://www.openehr.org/" class="bare">http://www.openehr.org/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record">Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-13">SPECBASE-13</a>: Separate out from openEHR Common IM 2.1.2 / RM Release 1.0.3.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Feb 2016</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-engineer <code>AUTHORED_RESOURCE</code> classes according to AOM2 requirements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+ S Garde,<br>
+ I McNicoll,<br>
+ H Leslie,<br>
+ S Ljosland-Bakke,<br>
+ D Bosca</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.1</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-209">SPECRM-209</a>: Minor changes to correctly define <code>AUTHORED_RESOURCE.<em>current_revision</em></code>. Add minimal definition for <code>List&lt;T&gt;</code> class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y S Lim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Apr 2007</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPEC-203">SPEC-203</a>: Release 1.0 explanatory text improvements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Patterson<br>
+ G Grieve</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;0.95</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPEC-118">SPEC-118</a>. Make package names lower-case.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;0.9</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPEC-95">SPEC-95</a>. Remove property attribute from <code>Quantity</code> package.  Add simple measurement interface.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DSTC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Mar 2004</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Formally validated using ISE Eiffel 5.4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Writing. Taken from Data types and Common Reference Models. Formally validated using ISE Eiffel 5.2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 Feb 2003</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements">Acknowledgements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_primary_author">Primary Author</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Thomas Beale, Ars Semantica; openEHR Foundation Management Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributors">Contributors</h3>
+<div class="paragraph">
+<p>This specification has benefited from formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Silje Ljosland Bakke, RN, National ICT health trust, Norway</p>
+</li>
+<li>
+<p>Diego Boscá, IBIME, Technical University Valencia, VeraTech for Health, Spain</p>
+</li>
+<li>
+<p>Sebastian Garde PhD, Ocean Health Systems, Germany</p>
+</li>
+<li>
+<p>Grahame Grieve, Health Intersections, Australia</p>
+</li>
+<li>
+<p>Heather Leslie MD, FRACGP, FACHI, Ocean Health Systems, Australia</p>
+</li>
+<li>
+<p>Ian McNicoll MD, FreshEHR UK</p>
+</li>
+<li>
+<p>Andrew Patterson PhD, LLM, Federation Health Software, Australia</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_supporters">Supporters</h3>
+<div class="paragraph">
+<p>The work reported in this paper has been funded in by the following organisations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>University College London - Centre for Health Informatics and Multi-professional Education (CHIME);</p>
+</li>
+<li>
+<p>Ocean Informatics.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preface"><a class="anchor" href="#_preface"></a>1. Preface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the openEHR Resource Model, a model of any 'authored resource', including identification, meta-data, annotations and translations.</p>
+</div>
+<div class="paragraph">
+<p>The intended audience includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standards bodies producing health informatics standards;</p>
+</li>
+<li>
+<p>Academic groups using openEHR;</p>
+</li>
+<li>
+<p>Solution vendors;</p>
+</li>
+<li>
+<p>Medical informaticians and clinicians interested in health information.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_documents"><a class="anchor" href="#_related_documents"></a>1.2. Related Documents</h3>
+<div class="paragraph">
+<p>Prerequisite documents for reading this document include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/architecture_overview.html">openEHR Architecture Overview</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
+<div class="paragraph">
+<p>The content of this specification were separated out from the <a href="http://www.openehr.org/releases/RM/latest/common.html">Common IM specification</a>, in order to allow re-use by any openEHR component.</p>
+</div>
+<div class="paragraph">
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="http://www.openehr.org/releases/BASE/latest/release.html" class="bare">http://www.openehr.org/releases/BASE/latest/release.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+<div class="paragraph">
+<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/browse/SPECPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel">specifications issue tracker</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>1.4. Conformance</h3>
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR Reference Model specification is determined by a formal test of that artifact against the relevant openEHR Implementation Technology Specification(s) (ITSs), such as an IDL interface or an XML-schema. Since ITSs are formal, automated derivations from the Reference Model, ITS conformance indicates RM conformance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resource_package"><a class="anchor" href="#_resource_package"></a>2. Resource Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview"><a class="anchor" href="#_overview"></a>2.1. Overview</h3>
+<div class="paragraph">
+<p>The openEHR BASE component <code>resource</code> package defines the structure and semantics of the general notion of an online resource which has been created by a human author, and consequently for which natural language is a factor. The package is illustrated below.</p>
+</div>
+<div id="resource_package" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-resource.svg" alt="BASE resource">
+</div>
+<div class="title">Figure 1. resource Package</div>
+</div>
+<div class="sect3">
+<h4 id="_natural_languages_and_translation"><a class="anchor" href="#_natural_languages_and_translation"></a>2.1.1. Natural Languages and Translation</h4>
+<div class="paragraph">
+<p>Authored resources contain natural language elements, and are therefore created in some original language, recorded in the <code><em>orginal_language</em></code> attribute of the <code>AUTHORED_RESOURCE</code> class. Information about translations is included in the translations attribute, which allows for one or more sets of translation details to be recorded. A resource is translated by doing the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>translating every language-dependent element to the new language;</p>
+</li>
+<li>
+<p>adding a new <code>TRANSLATION_DETAILS</code> instance to translations, containing details about the translator, organisation, quality assurance and so on.</p>
+</li>
+<li>
+<p>any further translations to language-specific elements in a instances of descendent type of <code>AUTHORED_RESOURCE</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The languages_available function provides a complete list of languages in the resource.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_meta_data"><a class="anchor" href="#_meta_data"></a>2.1.2. Meta-data</h4>
+<div class="paragraph">
+<p>What is normally considered the 'meta-data' of a resource, i.e. its author, date of creation, purpose, and other descriptive items, is described by the <code>RESOURCE_DESCRIPTION</code> and <code>RESOURCE_DESCRIPTION_ITEM</code> classes. The parts of this that are in natural language, and therefore may require translated versions, are represented in instances of the <code>RESOURCE_DESCRIPTION_ITEM</code> class. Thus, if a <code>RESOURCE_DESCRIPTION</code> has more than one <code>RESOURCE_DESCRIPTION_ITEM</code>, each of these should carry exactly the same information in a different natural language.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AUTHORED_RESOURCE</code>.<code><em>description</em></code> attribute is optional, allowing for resources with no meta-data at all, e.g. resources in a partial state of construction. The translations attribute may still be required, since there may be other parts of the resource object (specified by a class into which <code>AUTHORED_RESOURCE</code> is inherited) that are language-dependent.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_history"><a class="anchor" href="#_revision_history"></a>2.1.3. Revision History</h4>
+<div class="paragraph">
+<p>When the resource is considered to be in a state where changes to it should be controlled, the is_controlled attribute is set to True, and all subsequent changes should have an audit trail recorded. Usually controlled resources would be managed in a versioned repository (e.g. implemented by CVS, Subversion or similar systems), and audit information will be stored somewhere in the repository (e.g. in version control files). The revision_history attribute defined in the <code>AUTHORED_RESOURCE</code> class is intended to act as a documentary copy of the revision history as known inside the repository, for the benefit of users of the resource. Given that resources in different places may well be managed in different kinds of repositories, having a copy of the revision history in a standardised form within the resource enables it to be used interoperably by authoring and other tools.</p>
+</div>
+<div class="paragraph">
+<p>Every change to a resource committed to the relevant repository causes a new addition to the revision_history.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>2.2. Class Descriptions</h3>
+<div class="sect3">
+<h4 id="_authored_resource_class"><a class="anchor" href="#_authored_resource_class"></a>2.2.1. AUTHORED_RESOURCE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>AUTHORED_RESOURCE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract idea of an online resource created by a human author.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>Terminology_code</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_controlled</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this resource is under any kind of change control (even file copying), in which case revision history is created.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code>RESOURCE_DESCRIPTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Description and lifecycle information of the resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>UUID</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Unique identifier of the family of archetypes having the same interface identifier (same major version).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>annotations</strong>: <code>RESOURCE_ANNOTATIONS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code>Hash&lt;String,TRANSLATION_DETAILS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code><br>
+<strong><em>Post</em></strong>: Result = revision_history.most_recent_version</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Total list of languages available in this resource, derived from original_language and translations.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Original_language_valid</em></strong>: code_set (Code_set_id_languages).has_code (original_language.as_string)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Current_revision_valid</em></strong>: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Translations_valid</em></strong>: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Description_valid</em></strong>: translations /= Void implies (description.details.for_all (d &#124;
+translations.has_key (d.language.code_string)))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_translation_details_class"><a class="anchor" href="#_translation_details_class"></a>2.2.2. TRANSLATION_DETAILS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TRANSLATION_DETAILS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Class providing details of a natural language translation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>Terminology_code</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Language of the translation, coded using ISO 639-1 (2 character) language codes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Translator name and other demographic details.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accreditaton</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Accreditation of translator, usually a national translator&#8217;s registration or association membership id.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Any other meta-data.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_last_translated</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Version of this resource last time it was translated into the language represented by this TRANSLATION_DETAILS object.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_resource_description_class"><a class="anchor" href="#_resource_description_class"></a>2.2.3. RESOURCE_DESCRIPTION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE_DESCRIPTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Defines the descriptive meta-data of a resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_author</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Original author of this resource, with all relevant details, including organisation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_namespace</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Namespace of original author&#8217;s organisation, in reverse internet form, if applicable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_publisher</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Plain text name of organisation that originally published this artefact, if any.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Other contributors to the resource, each listed in "name &lt;email&gt;"  form.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>Terminology_code</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to owning resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_namespace</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Namespace in reverse internet id form, of current custodian organisation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_organisation</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Plain text name of current custodian organisation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional copyright statement for the resource as a knowledge resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>licence</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Licence of current artefact, in format "short licence name &lt;URL of licence&gt;", e.g. "Apache 2.0 License &lt;<a href="http://www.apache.org/licenses/LICENSE-2.0.html&gt;"" class="bare">http://www.apache.org/licenses/LICENSE-2.0.html&gt;"</a></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ip_acknowledgements</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ip_acknowledgements = &lt;
+    ["loinc"] = &lt;"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"&gt;
+    ["snomedct"] = &lt;"Content from SNOMED CT® is copyright © 2007 IHTSDO &lt;ihtsdo.org&gt;"&gt;
+&gt;</pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>references</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of references of material on which this artefact is based, as a keyed list of strings. The keys should be in a standard citation format.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>resource_package_uri</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>URI of package to which this resource belongs.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conversion_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>conversion_details = &lt;
+        ["source_model"] = &lt;"CEM model xyz &lt;http://location.in.clinicalelementmodels.com&gt;"&gt;
+        ["tool"] = &lt;"cem2adl v6.3.0"&gt;
+        ["time"] = &lt;"2014-11-03T09:05:00"&gt;
+&gt;</pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Additional non language-senstive resource meta-data, as a list of name/value pairs.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>Hash&lt;String,RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Details of all parts of resource description that are natural language-dependent, keyed by language code.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_resource_description_item_class"><a class="anchor" href="#_resource_description_item_class"></a>2.2.4. RESOURCE_DESCRIPTION_ITEM Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE_DESCRIPTION_ITEM</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Language-specific detail of resource description. When a resource is translated for use in another language environment, each RESOURCE_DESCRIPTION_ITEM needs to be copied and translated into the new language.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>Terminology_code</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The localised language in which the items in this description item are written. Coded using ISO 639-1 (2 character) language codes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Purpose of the resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>keywords</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Keywords which characterise this resource, used e.g. for indexing and searching.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>use</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Description of the uses of the resource, i.e. contexts in which it could be used.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>misuse</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Description of any misuses of the resource, i.e. contexts in which it should not be used.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_resource_uri</strong>: <code>List&lt;Hash&lt;String, String&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Additional language-senstive resource metadata, as a list of name/value pairs.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
+<div class="sect3">
+<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999. See <a href="http://www.omg.org/spec/PIDS/" class="bare">http://www.omg.org/spec/PIDS/</a> .</p>
+</li>
+<li>
+<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999. <a href="http://www.omg.org/spec/LQS/" class="bare">http://www.omg.org/spec/LQS/</a> .</p>
+</li>
+<li>
+<p><a id="hl7_cda"></a>[hl7_cda] HL7 International. <strong>HL7 version Clinical Document Architecture (CDA)</strong>. Available at <a href="http://www.hl7.org.uk/version3group/cda.asp" class="bare">http://www.hl7.org.uk/version3group/cda.asp</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_ballot2"></a>[HL7v3_ballot2] HL7 International. <strong>HL7 version 3 2nd Ballot specification</strong>. Available at <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
+<p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7 International. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
+</li>
+<li>
+<p><a id="hl7_arden"></a>[hl7_arden] HL7 International. <strong>HL7 Arden Syntax</strong>. See <a href="http://www.hl7.org/Special/committees/Arden/index.cfm" class="bare">http://www.hl7.org/Special/committees/Arden/index.cfm</a> .</p>
+</li>
+<li>
+<p><a id="hl7_gello"></a>[hl7_gello] HL7 International. <strong>GELLO Decision Support Language</strong>. <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5" class="bare">http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5</a> .</p>
+</li>
+<li>
+<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
+</li>
+<li>
+<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+</li>
+<li>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_31_32"></a>[EHCR_supA_31_32] Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993.</p>
+</li>
+<li>
+<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_AUS"></a>[GeHR_AUS] Heard S, Beale T. <strong>The Good Electronic Health Record (GeHR) (Australia).</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
+</li>
+<li>
+<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
+</li>
+<li>
+<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages. See <a href="http://discovery.ucl.ac.uk/66235/" class="bare">http://discovery.ucl.ac.uk/66235/</a> .</p>
+</li>
+<li>
+<p><a id="synex"></a>[synex] University College London. <strong>SynEx project</strong>. <a href="http://www.chime.ucl.ac.uk/HealthI/SynEx/" class="bare">http://www.chime.ucl.ac.uk/HealthI/SynEx/</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
+</li>
+<li>
+<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+</li>
+<li>
+<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
+</li>
+<li>
+<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
+</li>
+<li>
+<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
+</li>
+<li>
+<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
+</li>
+<li>
+<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
+</li>
+<li>
+<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-06-09 12:10:31 BST
+</div>
+</div>
+</body>
+</html>
