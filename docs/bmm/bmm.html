@@ -306,10 +306,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Patrick Langford, NeuronSong LLC</p>
+<p>Patrick Langford, NeuronSong LLC, Utah, USA</p>
 </li>
 <li>
-<p>Claude Nanjo MA African Studies., M Public Health, Cognitive Medical Systems Inc., California</p>
+<p>Claude Nanjo MA African Studies., M Public Health, Cognitive Medical Systems Inc., California, USA</p>
 </li>
 <li>
 <p>Harold Solbrig, Mayo Clinic, Rochester, USA</p>
@@ -655,8 +655,8 @@
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_schemas</strong>: <code>Hash&lt;SCHEMA_DESCRIPTOR, String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_schemas</strong>: <code>Hash&lt;String,SCHEMA_DESCRIPTOR&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>All schemas found and loaded from `schema_directory'. Keyed by schema_id, i.e.</p>
 </div>
@@ -672,8 +672,8 @@
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_models</strong>: <code>Hash&lt;BMM_MODEL, String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_models</strong>: <code>Hash&lt;String,BMM_MODEL&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Top-level (root) schemas in use. Table is keyed by logical schema_name, i.e. model_publisher '_' model_name, e.g. "openehr_rm". Schemas containing different variants of same model (i.e. model_publisher + model_name) are considered duplicates.</p>
 </div></div></td>
@@ -4435,7 +4435,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-25 09:21:19 GMT
+Last updated 2017-04-26 23:12:27 BST
 </div>
 </div>
 </body>
