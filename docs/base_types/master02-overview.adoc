@@ -1,29 +1,45 @@
 = Overview
 
-The openEHR Base Types (`org.openehr.base_types` package) consists of generic foundational types used throughout the openEHR specifications, including assumed types defined outside of openEHR, e.g. by implementation formalisms. The package structure is illustrated below. Packages shown in light grey can be considered 'pseudo-packages', and are used to state types that are _assumed_ to exist in implementation technologies, and as such are only minimally defined.
+The openEHR Base Types (`org.openehr.base_types` package) consists of foundational types used throughout the openEHR specifications, including types assumed to exist outside of the openEHR type system, e.g. by implementation formalisms. 
+
+The set of types chosen here is based on a common set derived from various published sources, including:
+
+* ISO 8601 (2004) date/time specification;
+* Major interoperability formalisms, including OMG IDL, W3C XML-schema;
+* Major typed programming languages, including Java, C#, C++, etc.
+
+The package structure is illustrated below. Packages shown in light grey can be considered 'pseudo-packages', and are used to state types that are _assumed_ to exist in implementation technologies, and as such are only minimally defined.
 
 [.text-center]
 .org.openehr.base_types package structure
 image::{uml_export_dir}/diagrams/BASE-base_types-packages.svg[id=base_types_packages, align="center"]
 
-The `primitive_types`, `structures` and `time` pseudo-packages state types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.
+The `primitive_types`, `structures` and `time` pseudo-packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.
 
 The `terminology` and `identification` packages define basic time and terminology referencing types and semantics, sufficient to support the needs of other openEHR specifications.
 
 The `functional` pseudo-package states types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.
 
-The types defined in the pseudo-packages are important, because they provide names and minimal semantics used by all other openEHR specifications, and they also provide a mapping point into implementation technologies. For example, the type `String` is defined to mean the ordinary date concept found in all computing systems; the definition includes. Accordingly, within the openEHR specifications, the type name `String`
+== Assumed Types
+
+The types defined in the pseudo-packages are _assumed_ to exist in the programming environment of an openEHR developer, i.e. in one or more programming and/or database languages. They are specified here because they provide names and minimal semantics used by all other openEHR specifications, and they also provide a mapping point into implementation technologies. 
+
+Two groups of assumed types are described in this specification: _primitive types_, which are those built in to a type system of the development language, and _library types_, which are assumed to be available in a (class) library defined in the formalism. Thus, the type `Boolean` is always assumed to exist in a formalism, while the type `Array<T>` is assumed to be available in a library. For practical purposes, these two categories do not matter too much - whether `String` is really a library class (the usual case) or an inbuilt type doesn't make much difference to the programmer. They are shown separately here mainly as an explanatory convenience.
+
+The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains _only the assumptions required for the given type to be used in the openEHR Reference Model_ - *it is not by any means a complete interface definition*. The name and semantics of any function used here for an assumed type *might not be identical* to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed `Set<T>` type defined below has an operation `has (item: T): Boolean` which is used throughout the openEHR specifications, Java has the method `contains()` on its `Set<T>` class. In a Java implementation, the `contains()` method should then be used throughout the openEHR classes as expressed in Java, in place of the `has ()` method.
 
 == The Any Class
 
 Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type `Any`, which defines a bare minimum of operators, and stands for the real `Any` or `Object` type found in real technologies.
 
-include::{uml_export_dir}/classes/any.adoc[]
+== Leaf Types
 
-== Leaf Types Overview
-
-The sections below provide formal definitions of all the base types used in openEHR. The following diagram provides an aide memoire of the 'leaf' types among these,  potentially useful to developers.
+The sections below provide formal definitions of all the base types used in openEHR. A subset of these can be understood as terminal or leaf types, that is, single-entity value types. The following diagram provides an aide memoire of the leaf types.
 
 [.text-center]
 .Leaf Types
 image::{uml_export_dir}/diagrams/BASE-base_types-leaf_types.svg[id=base_types_leaf_types, align="center"]
+
+== Class Definitions
+
+include::{uml_export_dir}/classes/any.adoc[]
