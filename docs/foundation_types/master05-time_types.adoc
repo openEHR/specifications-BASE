@@ -2,17 +2,17 @@
 
 == Overview
 
-Two packages of time types are defined in this specification: the `base_types.time` package and the `base_types.iso8601_time` package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in types or standard library classes. The second set are conrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a `String` physical representation, and also inherit from the `IDate` etc classes.
+Two packages of time types are defined in this specification: the `foundation_types.time` package and the `foundation_types.iso8601_time` package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in types or standard library classes. The second set are conrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a `String` physical representation, and also inherit from the `IDate` etc classes.
 
 The two packages are shown below.
 
 [.text-center]
-.base_types.time and base_types/iso8601_time packages
-image::{uml_export_dir}/diagrams/BASE-base_types.time.svg[id=base_time_types, align="center"]
+.foundation_types.time and base_types/iso8601_time packages
+image::{uml_export_dir}/diagrams/BASE-foundation_types.time.svg[id=foundation_types_time_types, align="center"]
 
 == Primitive Time Types (assumed)
 
-The classes in the `base_types.time` package are divided into interface classes `IDate` etc, and concrete primitive types `Date`, `Time` etc, which are assumed to have some 'native' data representation such as a long integer or similar. The separation is a clarifying device for this specification. It is not assumed that the classes `IDate` etc literally exist in a given implementation environment.
+The classes in the `foundation_types.time` package are divided into interface classes `IDate` etc, and concrete primitive types `Date`, `Time` etc, which are assumed to have some 'native' data representation such as a long integer or similar. The separation is a clarifying device for this specification. It is not assumed that the classes `IDate` etc literally exist in a given implementation environment.
 
 == ISO 8601 Types
 
@@ -41,7 +41,7 @@ A number of useful types may be generated from the Date/time classes and the Int
 
 [.text-center]
 .Useful time interval types
-image::{uml_export_dir}/diagrams/BASE-base_types.time-intervals.svg[id=base_time_intervals, align="center"]
+image::{uml_export_dir}/diagrams/BASE-foundation_types.time-intervals.svg[id=foundation_types_time_intervals, align="center"]
 
 == Class Definitions
 

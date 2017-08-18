@@ -4,11 +4,11 @@
 
 A small number of meta-types are defined that correspond to functional programming primitives, otherwise known as 'closures', 'lambda expressions' and so on. These concepts are supported in most modern programming languages now, and the types defined here are intended to provide a minimal formal basis to enable other openEHR specification to defined function-related elements. Since UML does not contain native functional elements, the semantics here are approximated using normal class facilities.
 
-The following illustrates the `base_types.functional` package.
+The following illustrates the `foundation_types.functional` package.
 
 [.text-center]
-.base_types.functional package
-image::{uml_export_dir}/diagrams/BASE-base_types.functional.svg[id=base_types_functional, align="center"]
+.foundation_types.functional package
+image::{uml_export_dir}/diagrams/BASE-foundation_types.functional.svg[id=foundation_types_functional, align="center"]
 
 Two key abstractions are required, namely 'function as a type', and 'tuple', which enables arguments to be formalised. To provide a 'function' type, a 'routine' type is also required. For completeness, a 'procedure' type is also defined. The 'tuple' type is defined as a generic meta-type whose descendants may additionally define any number of generic parameter types, corresponding to a type list.
 
