@@ -1,4 +1,4 @@
-= Primitive Types (assumed)
+= Primitive Types
 
 == Overview
 
@@ -25,6 +25,10 @@ The figure below illustrates these types. Simple inheritance relationships are s
 .foundation_types.primitive_types package
 image::{uml_export_dir}/diagrams/BASE-foundation_types.primitive_types.svg[id=foundation_types_primitive_types, align="center"]
 
+== Unicode
+
+It is assumed in the openEHR specifications that Unicode is supported by the type `String`. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.
+
 == Class Definitions
 
 include::{uml_export_dir}/classes/numeric.adoc[]
@@ -43,6 +47,7 @@ include::{uml_export_dir}/classes/real.adoc[]
 
 include::{uml_export_dir}/classes/string.adoc[]
 
-== Unicode
+include::{uml_export_dir}/classes/uri.adoc[]
 
-It is assumed in the openEHR specifications that Unicode is supported by the type `String`. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.
+include::{uml_export_dir}/classes/uid.adoc[]
+

@@ -19,7 +19,13 @@
 <li><a href="#_openehr_foundation_types_specification">openEHR Foundation Types specification</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
-<li><a href="#_acknowledgements">Acknowledgements</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a>
+<ul class="sectlevel2">
+<li><a href="#_primary_author">Primary Author</a></li>
+<li><a href="#_contributors">Contributors</a></li>
+<li><a href="#_trademarks">Trademarks</a></li>
+</ul>
+</li>
 <li><a href="#_preface">1. Preface</a>
 <ul class="sectlevel2">
 <li><a href="#_purpose">1.1. Purpose</a></li>
@@ -36,91 +42,89 @@
 </li>
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
-<li><a href="#_assumed_types">2.1. Assumed Types</a></li>
-<li><a href="#_the_any_class">2.2. The Any Class</a></li>
-<li><a href="#_leaf_types">2.3. Leaf Types</a></li>
-<li><a href="#_class_definitions">2.4. Class Definitions</a>
+<li><a href="#_the_any_class">2.1. The Any Class</a></li>
+<li><a href="#_leaf_types">2.2. Leaf Types</a></li>
+<li><a href="#_class_definitions">2.3. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_any_class">2.4.1. Any Class</a></li>
+<li><a href="#_any_class">2.3.1. Any Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_primitive_types_assumed">3. Primitive Types (assumed)</a>
+<li><a href="#_primitive_types">3. Primitive Types</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_2">3.1. Overview</a></li>
-<li><a href="#_class_definitions_2">3.2. Class Definitions</a>
+<li><a href="#_unicode">3.2. Unicode</a></li>
+<li><a href="#_class_definitions_2">3.3. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_numeric_class">3.2.1. Numeric Class</a></li>
-<li><a href="#_ordered_class">3.2.2. Ordered Class</a></li>
-<li><a href="#_ordered_numeric_class">3.2.3. Ordered_Numeric Class</a></li>
-<li><a href="#_boolean_class">3.2.4. Boolean Class</a></li>
-<li><a href="#_integer_class">3.2.5. Integer Class</a></li>
-<li><a href="#_integer64_class">3.2.6. Integer64 Class</a></li>
-<li><a href="#_real_class">3.2.7. Real Class</a></li>
-<li><a href="#_string_class">3.2.8. String Class</a></li>
+<li><a href="#_numeric_class">3.3.1. Numeric Class</a></li>
+<li><a href="#_ordered_class">3.3.2. Ordered Class</a></li>
+<li><a href="#_ordered_numeric_class">3.3.3. Ordered_Numeric Class</a></li>
+<li><a href="#_boolean_class">3.3.4. Boolean Class</a></li>
+<li><a href="#_integer_class">3.3.5. Integer Class</a></li>
+<li><a href="#_integer64_class">3.3.6. Integer64 Class</a></li>
+<li><a href="#_real_class">3.3.7. Real Class</a></li>
+<li><a href="#_string_class">3.3.8. String Class</a></li>
+<li><a href="#_uri_class">3.3.9. Uri Class</a></li>
+<li><a href="#_uid_class">3.3.10. UID Class</a></li>
 </ul>
 </li>
-<li><a href="#_unicode">3.3. Unicode</a></li>
 </ul>
 </li>
-<li><a href="#_structure_types_assumed">4. Structure Types (assumed)</a>
+<li><a href="#_structure_types">4. Structure Types</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_3">4.1. Overview</a></li>
-<li><a href="#_container_structures">4.2. Container Structures</a></li>
-<li><a href="#_intervals">4.3. Intervals</a></li>
-<li><a href="#_class_definitions_3">4.4. Class Definitions</a>
+<li><a href="#_class_definitions_3">4.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_aggregate_class">4.4.1. Aggregate Class</a></li>
-<li><a href="#_list_class">4.4.2. List Class</a></li>
-<li><a href="#_set_class">4.4.3. Set Class</a></li>
-<li><a href="#_array_class">4.4.4. Array Class</a></li>
-<li><a href="#_hash_class">4.4.5. Hash Class</a></li>
-<li><a href="#_interval_class">4.4.6. Interval Class</a></li>
-<li><a href="#_point_interval_class">4.4.7. Point_interval Class</a></li>
-<li><a href="#_proper_interval_class">4.4.8. Proper_interval Class</a></li>
-<li><a href="#_multiplicity_interval_class">4.4.9. Multiplicity_interval Class</a></li>
-<li><a href="#_cardinality_class">4.4.10. Cardinality Class</a></li>
+<li><a href="#_aggregate_class">4.2.1. Aggregate Class</a></li>
+<li><a href="#_list_class">4.2.2. List Class</a></li>
+<li><a href="#_set_class">4.2.3. Set Class</a></li>
+<li><a href="#_array_class">4.2.4. Array Class</a></li>
+<li><a href="#_hash_class">4.2.5. Hash Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_time_types">5. Time Types</a>
+<li><a href="#_interval">5. Interval</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_4">5.1. Overview</a></li>
-<li><a href="#_primitive_time_types_assumed">5.2. Primitive Time Types (assumed)</a></li>
-<li><a href="#_iso_8601_types">5.3. ISO 8601 Types</a></li>
-<li><a href="#_derived_interval_time_types">5.4. Derived Interval / Time Types</a></li>
-<li><a href="#_class_definitions_4">5.5. Class Definitions</a>
+<li><a href="#_class_definitions_4">5.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_time_definitions_class">5.5.1. Time_Definitions Class</a></li>
-<li><a href="#_temporal_class">5.5.2. Temporal Class</a></li>
-<li><a href="#_idate_class">5.5.3. IDate Class</a></li>
-<li><a href="#_itime_class">5.5.4. ITime Class</a></li>
-<li><a href="#_idate_time_class">5.5.5. IDate_time Class</a></li>
-<li><a href="#_iduration_class">5.5.6. IDuration Class</a></li>
-<li><a href="#_itimezone_class">5.5.7. ITimezone Class</a></li>
-<li><a href="#_date_class">5.5.8. Date Class</a></li>
-<li><a href="#_time_class">5.5.9. Time Class</a></li>
-<li><a href="#_date_time_class">5.5.10. Date_time Class</a></li>
-<li><a href="#_duration_class">5.5.11. Duration Class</a></li>
-<li><a href="#_timezone_class">5.5.12. Timezone Class</a></li>
-<li><a href="#_iso8601_type_class">5.5.13. Iso8601_type Class</a></li>
-<li><a href="#_iso8601_date_class">5.5.14. Iso8601_date Class</a></li>
-<li><a href="#_iso8601_time_class">5.5.15. Iso8601_time Class</a></li>
-<li><a href="#_iso8601_date_time_class">5.5.16. Iso8601_date_time Class</a></li>
-<li><a href="#_iso8601_duration_class">5.5.17. Iso8601_duration Class</a></li>
-<li><a href="#_iso8601_timezone_class">5.5.18. Iso8601_timezone Class</a></li>
+<li><a href="#_interval_class">5.2.1. Interval Class</a></li>
+<li><a href="#_point_interval_class">5.2.2. Point_interval Class</a></li>
+<li><a href="#_proper_interval_class">5.2.3. Proper_interval Class</a></li>
+<li><a href="#_multiplicity_interval_class">5.2.4. Multiplicity_interval Class</a></li>
+<li><a href="#_cardinality_class">5.2.5. Cardinality Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_terminology_types">6. Terminology Types</a>
+<li><a href="#_time_types">6. Time Types</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_5">6.1. Overview</a></li>
-<li><a href="#_class_definitions_5">6.2. Class Definitions</a>
+<li><a href="#_primitive_time_types">6.2. Primitive Time Types</a></li>
+<li><a href="#_iso_8601_types">6.3. ISO 8601 Types</a></li>
+<li><a href="#_derived_interval_time_types">6.4. Derived Interval / Time Types</a></li>
+<li><a href="#_class_definitions_5">6.5. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_terminology_code_class">6.2.1. Terminology_code Class</a></li>
+<li><a href="#_time_definitions_class">6.5.1. Time_Definitions Class</a></li>
+<li><a href="#_temporal_class">6.5.2. Temporal Class</a></li>
+<li><a href="#_idate_class">6.5.3. IDate Class</a></li>
+<li><a href="#_itime_class">6.5.4. ITime Class</a></li>
+<li><a href="#_idate_time_class">6.5.5. IDate_time Class</a></li>
+<li><a href="#_iduration_class">6.5.6. IDuration Class</a></li>
+<li><a href="#_itimezone_class">6.5.7. ITimezone Class</a></li>
+<li><a href="#_date_class">6.5.8. Date Class</a></li>
+<li><a href="#_time_class">6.5.9. Time Class</a></li>
+<li><a href="#_date_time_class">6.5.10. Date_time Class</a></li>
+<li><a href="#_duration_class">6.5.11. Duration Class</a></li>
+<li><a href="#_timezone_class">6.5.12. Timezone Class</a></li>
+<li><a href="#_iso8601_type_class">6.5.13. Iso8601_type Class</a></li>
+<li><a href="#_iso8601_date_class">6.5.14. Iso8601_date Class</a></li>
+<li><a href="#_iso8601_time_class">6.5.15. Iso8601_time Class</a></li>
+<li><a href="#_iso8601_date_time_class">6.5.16. Iso8601_date_time Class</a></li>
+<li><a href="#_iso8601_duration_class">6.5.17. Iso8601_duration Class</a></li>
+<li><a href="#_iso8601_timezone_class">6.5.18. Iso8601_timezone Class</a></li>
 </ul>
 </li>
 </ul>
@@ -136,19 +140,6 @@
 <li><a href="#_tuple_class">7.1.5. TUPLE Class</a></li>
 <li><a href="#_tuple1_class">7.1.6. TUPLE1 Class</a></li>
 <li><a href="#_tuple2_class">7.1.7. TUPLE2 Class</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_definitions_package">8. Definitions Package</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_7">8.1. Overview</a></li>
-<li><a href="#_class_definitions_7">8.2. Class Definitions</a>
-<ul class="sectlevel3">
-<li><a href="#_basic_definitions_class">8.2.1. BASIC_DEFINITIONS Class</a></li>
-<li><a href="#_openehr_definitions_class">8.2.2. OPENEHR_DEFINITIONS Class</a></li>
-<li><a href="#_validity_kind_enumeration">8.2.3. VALIDITY_KIND Enumeration</a></li>
-<li><a href="#_version_status_enumeration">8.2.4. VERSION_STATUS Enumeration</a></li>
 </ul>
 </li>
 </ul>
@@ -287,8 +278,31 @@
 <div class="sect1">
 <h2 id="_acknowledgements">Acknowledgements</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_primary_author">Primary Author</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Thomas Beale, Ars Semantica; openEHR Foundation Management Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributors">Contributors</h3>
 <div class="paragraph">
-<p>Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+<p>This specification has benefited from formal and informal input from the openEHR and wider health informatics community.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trademarks">Trademarks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>'openEHR' is a registered trademark of the openEHR Foundation</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -381,7 +395,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The openEHR Foundation Types (<code>org.openehr.foundation_types</code> package) consists of foundational types used throughout the openEHR specifications, including types assumed to exist outside of the openEHR type system, e.g. by implementation formalisms.</p>
+<p>The openEHR Foundation Types (<code>org.openehr.foundation_types</code> package) consists of generic foundational types assumed by and used throughout the openEHR specifications. The types described here are specified in order to establish the names and minimal semantics of typical standard classes, as used by all other openEHR specifications, and to provide a mapping point into implementation technologies.</p>
 </div>
 <div class="paragraph">
 <p>The set of types chosen here is based on a common set derived from various published sources, including:</p>
@@ -400,7 +414,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The package structure is illustrated below. Packages shown in light grey can be considered 'pseudo-packages', and are used to state types that are <em>assumed</em> to exist in implementation technologies, and as such are only minimally defined.</p>
+<p>The package structure is illustrated below.</p>
 </div>
 <div id="foundation_types_packages" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -409,34 +423,25 @@
 <div class="title">Figure 1. org.openehr.foundation_types package structure</div>
 </div>
 <div class="paragraph">
-<p>The <code>primitive_types</code>, <code>structures</code> and <code>time</code> pseudo-packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.</p>
-</div>
-<div class="paragraph">
-<p>The <code>terminology</code> and <code>identification</code> packages define basic time and terminology referencing types and semantics, sufficient to support the needs of other openEHR specifications.</p>
+<p>The <code>primitive_types</code>, <code>structures</code> and <code>time</code> packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.</p>
 </div>
 <div class="paragraph">
 <p>The <code>functional</code> pseudo-package states types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.</p>
 </div>
-<div class="sect2">
-<h3 id="_assumed_types"><a class="anchor" href="#_assumed_types"></a>2.1. Assumed Types</h3>
 <div class="paragraph">
-<p>The types defined in the pseudo-packages are <em>assumed</em> to exist in the programming environment of an openEHR developer, i.e. in one or more programming and/or database languages. They are specified here because they provide names and minimal semantics used by all other openEHR specifications, and they also provide a mapping point into implementation technologies.</p>
-</div>
-<div class="paragraph">
-<p>Two groups of assumed types are described in this specification: <em>primitive types</em>, which are those built in to a type system of the development language, and <em>library types</em>, which are assumed to be available in a (class) library defined in the formalism. Thus, the type <code>Boolean</code> is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter too much - whether <code>String</code> is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience.</p>
+<p>The types are described in this specification are typically of two kinds: <em>built-in types</em>, which are those built in to a type system of the development language, and <em>library types</em>, which are assumed to be available in a (class) library defined in the formalism. Thus, the type <code>Boolean</code> is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter too much - whether <code>String</code> is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience.</p>
 </div>
 <div class="paragraph">
 <p>The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains <em>only the assumptions required for the given type to be used in the openEHR Reference Model</em> - <strong>it is not by any means a complete interface definition</strong>. The name and semantics of any function used here for an assumed type <strong>might not be identical</strong> to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed <code>Set&lt;T&gt;</code> type defined below has an operation <code>has (item: T): Boolean</code> which is used throughout the openEHR specifications, Java has the method <code>contains()</code> on its <code>Set&lt;T&gt;</code> class. In a Java implementation, the <code>contains()</code> method should then be used throughout the openEHR classes as expressed in Java, in place of the <code>has ()</code> method.</p>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_the_any_class"><a class="anchor" href="#_the_any_class"></a>2.2. The Any Class</h3>
+<h3 id="_the_any_class"><a class="anchor" href="#_the_any_class"></a>2.1. The Any Class</h3>
 <div class="paragraph">
 <p>Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type <code>Any</code>, which defines a bare minimum of operators, and stands for the real <code>Any</code> or <code>Object</code> type found in real technologies.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_leaf_types"><a class="anchor" href="#_leaf_types"></a>2.3. Leaf Types</h3>
+<h3 id="_leaf_types"><a class="anchor" href="#_leaf_types"></a>2.2. Leaf Types</h3>
 <div class="paragraph">
 <p>The sections below provide formal definitions of all the base types used in openEHR. A subset of these can be understood as terminal or leaf types, that is, single-entity value types. The following diagram provides an aide memoire of the leaf types.</p>
 </div>
@@ -448,9 +453,9 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>2.4. Class Definitions</h3>
+<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>2.3. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_any_class"><a class="anchor" href="#_any_class"></a>2.4.1. Any Class</h4>
+<h4 id="_any_class"><a class="anchor" href="#_any_class"></a>2.3.1. Any Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -465,7 +470,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract supertype. Usually maps to a type like “Any” or “Object” in an object system. Defined here to provide the value and reference equality semantics.</p>
+<p>Abstract supertype. Usually maps to a type like Any or Object in an object-oriented technology. Defined here to provide value and reference equality semantics.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -483,7 +488,9 @@
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference equality.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -495,7 +502,9 @@
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (an_object: <code>Any</code>): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Type name of an object as a string. May include generic parameters, as in "Interval&lt;Time&gt;".</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -504,7 +513,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_primitive_types_assumed"><a class="anchor" href="#_primitive_types_assumed"></a>3. Primitive Types (assumed)</h2>
+<h2 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>3. Primitive Types</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
@@ -569,9 +578,15 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>3.2. Class Definitions</h3>
+<h3 id="_unicode"><a class="anchor" href="#_unicode"></a>3.2. Unicode</h3>
+<div class="paragraph">
+<p>It is assumed in the openEHR specifications that Unicode is supported by the type <code>String</code>. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>3.3. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_numeric_class"><a class="anchor" href="#_numeric_class"></a>3.2.1. Numeric Class</h4>
+<h4 id="_numeric_class"><a class="anchor" href="#_numeric_class"></a>3.3.1. Numeric Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -623,7 +638,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_ordered_class"><a class="anchor" href="#_ordered_class"></a>3.2.2. Ordered Class</h4>
+<h4 id="_ordered_class"><a class="anchor" href="#_ordered_class"></a>3.3.2. Ordered Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -661,7 +676,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_ordered_numeric_class"><a class="anchor" href="#_ordered_numeric_class"></a>3.2.3. Ordered_Numeric Class</h4>
+<h4 id="_ordered_numeric_class"><a class="anchor" href="#_ordered_numeric_class"></a>3.3.3. Ordered_Numeric Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -687,7 +702,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_boolean_class"><a class="anchor" href="#_boolean_class"></a>3.2.4. Boolean Class</h4>
+<h4 id="_boolean_class"><a class="anchor" href="#_boolean_class"></a>3.3.4. Boolean Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -787,7 +802,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_integer_class"><a class="anchor" href="#_integer_class"></a>3.2.5. Integer Class</h4>
+<h4 id="_integer_class"><a class="anchor" href="#_integer_class"></a>3.3.5. Integer Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -813,7 +828,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_integer64_class"><a class="anchor" href="#_integer64_class"></a>3.2.6. Integer64 Class</h4>
+<h4 id="_integer64_class"><a class="anchor" href="#_integer64_class"></a>3.3.6. Integer64 Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -839,7 +854,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_real_class"><a class="anchor" href="#_real_class"></a>3.2.7. Real Class</h4>
+<h4 id="_real_class"><a class="anchor" href="#_real_class"></a>3.3.7. Real Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -877,7 +892,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_string_class"><a class="anchor" href="#_string_class"></a>3.2.8. String Class</h4>
+<h4 id="_string_class"><a class="anchor" href="#_string_class"></a>3.3.8. String Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -935,22 +950,81 @@
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_uri_class"><a class="anchor" href="#_uri_class"></a>3.3.9. Uri Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Uri</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">String</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sect2">
-<h3 id="_unicode"><a class="anchor" href="#_unicode"></a>3.3. Unicode</h3>
-<div class="paragraph">
-<p>It is assumed in the openEHR specifications that Unicode is supported by the type <code>String</code>. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.</p>
+<div class="sect3">
+<h4 id="_uid_class"><a class="anchor" href="#_uid_class"></a>3.3.10. UID Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>UID (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of classes representing unique identifiers which identify information entities in a durable way. UIDs only ever identify one IE in time or space and are never re-used.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The value of the id.
+The value of the id.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Value_valid</em></strong>: not value.empty</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_structure_types_assumed"><a class="anchor" href="#_structure_types_assumed"></a>4. Structure Types (assumed)</h2>
+<h2 id="_structure_types"><a class="anchor" href="#_structure_types"></a>4. Structure Types</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
 <div class="paragraph">
-<p>The types described in this section are basic data structures mostly assumed to be standardly available in implementation technologies. The following types consititute the minimum set of structure types assumed by openEHR of an implementation environment.</p>
+<p>The types described in this section are basic data structures assumed to be standardly available in implementation technologies. The following types consititute the minimum set of structure types assumed by openEHR of an implementation environment.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -981,10 +1055,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;K:Ordered, V&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">a table of values of any type V, keyed by values of any <code>Ordered</code> descendant K, typically <code>String</code> or <code>Integer</code>, but may be more complex types, e.g. a coded term type.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;T:Ordered&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Intervals of ordered primitive types, with open or closed upper and lower bounds.</p></td>
-</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -998,24 +1068,9 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_container_structures"><a class="anchor" href="#_container_structures"></a>4.2. Container Structures</h3>
-<div class="paragraph">
-<p>Container types are shown on the left side of the diagram above. The openEHR specifications assume the existence of the classes <code>Array</code>, <code>Set</code>, <code>List</code> and <code>Hash</code>, and assumes a few of their semantics, e.g. the <code><em>has()</em></code> function. However they are not fully defined in this specification, since that is the business of implementation technologies.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_intervals"><a class="anchor" href="#_intervals"></a>4.3. Intervals</h3>
-<div class="paragraph">
-<p>A second kind of structure, commonly needed in rich data is the interval. The definition of the <code>Interval&lt;T&gt;</code> class here is an intensional one, i.e. it states its members by implication from its limits, rather than enumerating them. To support the common need for defining times in models that could be either a fixed point in time or a time interval, the classes <code>Point_interval&lt;T&gt;</code> and <code>Proper_interval&lt;T&gt;</code> are provided. If <code>Interval&lt;X&gt;</code> is defined as the type of a feature in a class in an openEHR model, where <code>X</code> is some descendant of <code>Ordered</code>, then at runtime, either a <code>Point_interval</code> or <code>Proper_interval</code> may be attached.</p>
-</div>
-<div class="paragraph">
-<p>In addition to the generic interval types, the derived types <code>Multiplicity_interval</code> and <code>Cardinality</code> are provided, for use in models to represent multiplicity, optionality, and cardinality.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>4.4. Class Definitions</h3>
+<h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>4.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_aggregate_class"><a class="anchor" href="#_aggregate_class"></a>4.4.1. Aggregate Class</h4>
+<h4 id="_aggregate_class"><a class="anchor" href="#_aggregate_class"></a>4.2.1. Aggregate Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1067,7 +1122,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_list_class"><a class="anchor" href="#_list_class"></a>4.4.2. List Class</h4>
+<h4 id="_list_class"><a class="anchor" href="#_list_class"></a>4.2.2. List Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1124,7 +1179,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_set_class"><a class="anchor" href="#_set_class"></a>4.4.3. Set Class</h4>
+<h4 id="_set_class"><a class="anchor" href="#_set_class"></a>4.2.3. Set Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1150,7 +1205,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_array_class"><a class="anchor" href="#_array_class"></a>4.4.4. Array Class</h4>
+<h4 id="_array_class"><a class="anchor" href="#_array_class"></a>4.2.4. Array Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1176,7 +1231,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_hash_class"><a class="anchor" href="#_hash_class"></a>4.4.5. Hash Class</h4>
+<h4 id="_hash_class"><a class="anchor" href="#_hash_class"></a>4.2.5. Hash Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1220,8 +1275,34 @@
 </tbody>
 </table>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interval"><a class="anchor" href="#_interval"></a>5. Interval</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
+<div class="paragraph">
+<p>Another kind of structure commonly needed in rich data is the interval. The definition of the <code>Interval&lt;T&gt;</code> class here is an intensional one, i.e. it states its members by implication from its limits, rather than enumerating them. To support the common need for defining times in models that could be either a fixed point in time or a time interval, the classes <code>Point_interval&lt;T&gt;</code> and <code>Proper_interval&lt;T&gt;</code> are provided. If <code>Interval&lt;X&gt;</code> is defined as the type of a feature in a class in an openEHR model, where <code>X</code> is some descendant of <code>Ordered</code>, then at runtime, either a <code>Point_interval</code> or <code>Proper_interval</code> may be attached.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the generic interval types, the derived types <code>Multiplicity_interval</code> and <code>Cardinality</code> are provided, for use in models to represent multiplicity, optionality, and cardinality.</p>
+</div>
+<div class="paragraph">
+<p>The following UML diagram illustrates the <code>foundation_types.interval</code> package.</p>
+</div>
+<div id="foundation_types_interval" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-foundation_types.interval.svg" alt="BASE foundation types.interval">
+</div>
+<div class="title">Figure 5. foundation_types.interval package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>5.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_interval_class"><a class="anchor" href="#_interval_class"></a>4.4.6. Interval Class</h4>
+<h4 id="_interval_class"><a class="anchor" href="#_interval_class"></a>5.2.1. Interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1353,7 +1434,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_interval_class"><a class="anchor" href="#_point_interval_class"></a>4.4.7. Point_interval Class</h4>
+<h4 id="_point_interval_class"><a class="anchor" href="#_point_interval_class"></a>5.2.2. Point_interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1426,7 +1507,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_proper_interval_class"><a class="anchor" href="#_proper_interval_class"></a>4.4.8. Proper_interval Class</h4>
+<h4 id="_proper_interval_class"><a class="anchor" href="#_proper_interval_class"></a>5.2.3. Proper_interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1464,7 +1545,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_multiplicity_interval_class"><a class="anchor" href="#_multiplicity_interval_class"></a>4.4.9. Multiplicity_interval Class</h4>
+<h4 id="_multiplicity_interval_class"><a class="anchor" href="#_multiplicity_interval_class"></a>5.2.4. Multiplicity_interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1542,7 +1623,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_cardinality_class"><a class="anchor" href="#_cardinality_class"></a>4.4.10. Cardinality Class</h4>
+<h4 id="_cardinality_class"><a class="anchor" href="#_cardinality_class"></a>5.2.5. Cardinality Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1619,10 +1700,10 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_time_types"><a class="anchor" href="#_time_types"></a>5. Time Types</h2>
+<h2 id="_time_types"><a class="anchor" href="#_time_types"></a>6. Time Types</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
+<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
 <p>Two packages of time types are defined in this specification: the <code>foundation_types.time</code> package and the <code>foundation_types.iso8601_time</code> package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in types or standard library classes. The second set are conrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a <code>String</code> physical representation, and also inherit from the <code>IDate</code> etc classes.</p>
 </div>
@@ -1633,17 +1714,17 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.time.svg" alt="BASE foundation types.time">
 </div>
-<div class="title">Figure 5. foundation_types.time and base_types/iso8601_time packages</div>
+<div class="title">Figure 6. foundation_types.time and iso8601_time packages</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_primitive_time_types_assumed"><a class="anchor" href="#_primitive_time_types_assumed"></a>5.2. Primitive Time Types (assumed)</h3>
+<h3 id="_primitive_time_types"><a class="anchor" href="#_primitive_time_types"></a>6.2. Primitive Time Types</h3>
 <div class="paragraph">
 <p>The classes in the <code>foundation_types.time</code> package are divided into interface classes <code>IDate</code> etc, and concrete primitive types <code>Date</code>, <code>Time</code> etc, which are assumed to have some 'native' data representation such as a long integer or similar. The separation is a clarifying device for this specification. It is not assumed that the classes <code>IDate</code> etc literally exist in a given implementation environment.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_iso_8601_types"><a class="anchor" href="#_iso_8601_types"></a>5.3. ISO 8601 Types</h3>
+<h3 id="_iso_8601_types"><a class="anchor" href="#_iso_8601_types"></a>6.3. ISO 8601 Types</h3>
 <div class="paragraph">
 <p>The set of ISO 8601 based types define dates and times with a <code>String</code> representation (as per ISO 8601), and the ISO 8601 'partial' and 'extended' semantics. They are defined as descendents of the native types described above, and add the necessary elements required for ISO 8601.</p>
 </div>
@@ -1697,7 +1778,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_derived_interval_time_types"><a class="anchor" href="#_derived_interval_time_types"></a>5.4. Derived Interval / Time Types</h3>
+<h3 id="_derived_interval_time_types"><a class="anchor" href="#_derived_interval_time_types"></a>6.4. Derived Interval / Time Types</h3>
 <div class="paragraph">
 <p>A number of useful types may be generated from the Date/time classes and the Interval classes. These are shown in blue on the following diagram.</p>
 </div>
@@ -1705,13 +1786,13 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.time-intervals.svg" alt="BASE foundation types.time intervals">
 </div>
-<div class="title">Figure 6. Useful time interval types</div>
+<div class="title">Figure 7. Useful time interval types</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>5.5. Class Definitions</h3>
+<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>6.5. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>5.5.1. Time_Definitions Class</h4>
+<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>6.5.1. Time_Definitions Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1866,7 +1947,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_temporal_class"><a class="anchor" href="#_temporal_class"></a>5.5.2. Temporal Class</h4>
+<h4 id="_temporal_class"><a class="anchor" href="#_temporal_class"></a>6.5.2. Temporal Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1892,7 +1973,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_idate_class"><a class="anchor" href="#_idate_class"></a>5.5.3. IDate Class</h4>
+<h4 id="_idate_class"><a class="anchor" href="#_idate_class"></a>6.5.3. IDate Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1960,7 +2041,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_itime_class"><a class="anchor" href="#_itime_class"></a>5.5.4. ITime Class</h4>
+<h4 id="_itime_class"><a class="anchor" href="#_itime_class"></a>6.5.4. ITime Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2033,7 +2114,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_idate_time_class"><a class="anchor" href="#_idate_time_class"></a>5.5.5. IDate_time Class</h4>
+<h4 id="_idate_time_class"><a class="anchor" href="#_idate_time_class"></a>6.5.5. IDate_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2161,7 +2242,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iduration_class"><a class="anchor" href="#_iduration_class"></a>5.5.6. IDuration Class</h4>
+<h4 id="_iduration_class"><a class="anchor" href="#_iduration_class"></a>6.5.6. IDuration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2303,7 +2384,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_itimezone_class"><a class="anchor" href="#_itimezone_class"></a>5.5.7. ITimezone Class</h4>
+<h4 id="_itimezone_class"><a class="anchor" href="#_itimezone_class"></a>6.5.7. ITimezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2379,7 +2460,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_date_class"><a class="anchor" href="#_date_class"></a>5.5.8. Date Class</h4>
+<h4 id="_date_class"><a class="anchor" href="#_date_class"></a>6.5.8. Date Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2417,7 +2498,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_time_class"><a class="anchor" href="#_time_class"></a>5.5.9. Time Class</h4>
+<h4 id="_time_class"><a class="anchor" href="#_time_class"></a>6.5.9. Time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2453,7 +2534,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_date_time_class"><a class="anchor" href="#_date_time_class"></a>5.5.10. Date_time Class</h4>
+<h4 id="_date_time_class"><a class="anchor" href="#_date_time_class"></a>6.5.10. Date_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2491,7 +2572,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_duration_class"><a class="anchor" href="#_duration_class"></a>5.5.11. Duration Class</h4>
+<h4 id="_duration_class"><a class="anchor" href="#_duration_class"></a>6.5.11. Duration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2527,7 +2608,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_timezone_class"><a class="anchor" href="#_timezone_class"></a>5.5.12. Timezone Class</h4>
+<h4 id="_timezone_class"><a class="anchor" href="#_timezone_class"></a>6.5.12. Timezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2553,7 +2634,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>5.5.13. Iso8601_type Class</h4>
+<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>6.5.13. Iso8601_type Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2608,7 +2689,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>5.5.14. Iso8601_date Class</h4>
+<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>6.5.14. Iso8601_date Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2750,7 +2831,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>5.5.15. Iso8601_time Class</h4>
+<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>6.5.15. Iso8601_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2948,7 +3029,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>5.5.16. Iso8601_date_time Class</h4>
+<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>6.5.16. Iso8601_date_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3180,7 +3261,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>5.5.17. Iso8601_duration Class</h4>
+<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>6.5.17. Iso8601_duration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3314,7 +3395,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>5.5.18. Iso8601_timezone Class</h4>
+<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>6.5.18. Iso8601_timezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3421,101 +3502,6 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Sign_valid</em></strong>: sign = 1 or sign = -1</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_terminology_types"><a class="anchor" href="#_terminology_types"></a>6. Terminology Types</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
-<div class="paragraph">
-<p>One type is provided among the <code>base_types</code> package to represent a reference to a 'terminology code', i.e. a code within a 'terminology'. This is sometimes called a 'concept code' among terminology builders.</p>
-</div>
-<div class="paragraph">
-<p>The assumption here is that the 'code' is a reference to a referenceable entity within a terminology or ontology, which may be:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>a single 'term', for which a definition and potentially relationships (at least the IS-A relationship);</p>
-</li>
-<li>
-<p>a 'value set' i.e. a set of single terms, possibly in a tree or other structure corresponding to relationships between the member terms;</p>
-</li>
-<li>
-<p>any other terminological entity referencable with a code.</p>
-</li>
-</ul>
-</div>
-<div id="base_types_terminology_types" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="../UML/diagrams/BASE-base_types.terminology.svg" alt="BASE base types.terminology">
-</div>
-<div class="title">Figure 7. base_types.terminology package</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>6.2. Class Definitions</h3>
-<div class="sect3">
-<h4 id="_terminology_code_class"><a class="anchor" href="#_terminology_code_class"></a>6.2.1. Terminology_code Class</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Terminology_code</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Logically primitive type representing a reference to a terminology concept, in the form of a terminology identifier, optional version, and a code or code string from the terminology.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The archetype environment namespace identifier used to identify a terminology. Typically a value like "snomed_ct" that is mapped elsewhere to the full URI identifying the terminology.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_version</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional string value representing terminology version, typically a date or dotted numeric.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>A terminology code or post-coordinated code expression, if supported by the terminology. The code may refer to a single term, a value set consisting of multiple terms, or some other entity representable within the terminology.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code>Uri</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The URI reference that may be used as a concrete key into a notional terminology service for queries that can obtain the term text, definition, and other associated elements.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3659,7 +3645,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A Tuple type used, among other things, for representing a single typed argument within a Routine signature.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -3683,239 +3671,13 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A Tuple type used, among other things, for representing two typed arguments within a Routine signature.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TUPLE</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_definitions_package"><a class="anchor" href="#_definitions_package"></a>8. Definitions Package</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_overview_7"><a class="anchor" href="#_overview_7"></a>8.1. Overview</h3>
-<div class="paragraph">
-<p>The <code>base_types.definitions</code> package shown below defines symbolic definitions used by the openEHR models.</p>
-</div>
-<div id="base_definition_types" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="../UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions">
-</div>
-<div class="title">Figure 9. base_types.definitions package</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_class_definitions_7"><a class="anchor" href="#_class_definitions_7"></a>8.2. Class Definitions</h3>
-<div class="sect3">
-<h4 id="_basic_definitions_class"><a class="anchor" href="#_basic_definitions_class"></a>8.2.1. BASIC_DEFINITIONS Class</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BASIC_DEFINITIONS</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Defines globally used constant values.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR</strong>: <code>char&#160;=&#160;'\015'</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Carriage return character.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LF</strong>: <code>char&#160;=&#160;'\012'</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Line feed character.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Any_type</strong>: <code>String&#160;=&#160;"Any"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code>String&#160;=&#160;".&#42;"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Default_encoding</strong>: <code>String&#160;=&#160;"UTF-8"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_openehr_definitions_class"><a class="anchor" href="#_openehr_definitions_class"></a>8.2.2. OPENEHR_DEFINITIONS Class</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OPENEHR_DEFINITIONS</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Inheritance class to provide access to constants defined in other packages.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BASIC_DEFINITIONS</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Local_terminology_id</strong>: <code>String&#160;=&#160;"local"</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_validity_kind_enumeration"><a class="anchor" href="#_validity_kind_enumeration"></a>8.2.3. VALIDITY_KIND Enumeration</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VALIDITY_KIND</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>An enumeration of three values that may commonly occur in constraint models.</p>
-</div>
-<div class="paragraph">
-<p>Use as the type of any attribute within this model, which expresses constraint on some attribute in a class in a reference model. For example to indicate validity
-of Date/Time fields.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Constant to indicate mandatory presence of something.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Constant to indicate optional presence of something.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">prohibited</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Constant to indicate disallowed presence of something.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_version_status_enumeration"><a class="anchor" href="#_version_status_enumeration"></a>8.2.4. VERSION_STATUS Enumeration</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VERSION_STATUS</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Status of a versioned artefact, as one of a number of possible values: uncontrolled, prerelease, release, build.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alpha</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value representing a version which is ‘unstable’, i.e. contains an unknown size of change with respect to its base version. Rendered with the build number as a string in the form “N.M.P-alpha.B” e.g. “2.0.1-alpha.154”.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value representing a version which is ‘beta’, i.e. contains an unknown but reducing size of change with respect to its base version. Rendered with the build number as a string in the form “N.M.P-beta.B” e.g. “2.0.1-beta.154”.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">release_candidate</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value representing a version which is ‘release candidate’, i.e. contains only patch-level changes on the base version. Rendered as a string as “N.M.P-rc.B” e.g. “2.0.1-rc.27”.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">released</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value representing a version which is ‘released’, i.e. is the definitive base version. Rendered with the build number as a string in the form “N.M.P” e.g. “2.0.1”.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">build</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value representing a version which is a build of the current base release. Rendered with the build number as a string in the form “N.M.P+B” e.g. “2.0.1+33”.</p>
-</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -4212,7 +3974,7 @@ of Date/Time fields.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-18 12:33:58 BST
+Last updated 2017-08-18 13:46:55 BST
 </div>
 </div>
 </body>
