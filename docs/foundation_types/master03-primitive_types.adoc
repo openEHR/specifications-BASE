@@ -7,15 +7,19 @@ This section describes primitive types assumed by all openEHR models. These are 
 [cols="1,4", options="header"]
 |===
 |Type name +
- in openEHR |Description
+ in openEHR |Description                                                        
 
 |`Octet`    |a type whose value is an 8-bit value.
-|`Character`|a type whose value is a member of an 8-bit character-set (ISO: "repertoire").
-|`Boolean`  |logical True/False values; usually physically represented as an integer, but need not be.
+|`Character`|a type whose value is a member of an 8-bit character-set
+             (ISO: "repertoire").
+|`Boolean`  |logical True/False values; usually physically represented as an 
+             integer, but need not be.
 |`Integer`  |32-bit integers.
-|`Integer64`|64-bit integers.
-|`Real`     |32-bit real numbers in any interoperable representation, including single-width IEEE floating point.
-|`Double`   |64-bit real numbers, in any interoperable representation including double-precision IEEE floating point.
+|`Integer64`|64-bit integers.                                                   
+|`Real`     |32-bit real numbers in any interoperable representation, including
+             single-width IEEE floating point.
+|`Double`   |64-bit real numbers, in any interoperable representation including
+            double-precision IEEE floating point.
 |`String`   |represents unicode-enabled strings.
 |===
 
@@ -31,13 +35,21 @@ It is assumed in the openEHR specifications that Unicode is supported by the typ
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/numeric.adoc[]
+include::{uml_export_dir}/classes/boolean.adoc[]
 
 include::{uml_export_dir}/classes/ordered.adoc[]
 
-include::{uml_export_dir}/classes/ordered_numeric.adoc[]
+include::{uml_export_dir}/classes/character.adoc[]
 
-include::{uml_export_dir}/classes/boolean.adoc[]
+include::{uml_export_dir}/classes/octet.adoc[]
+
+include::{uml_export_dir}/classes/string.adoc[]
+
+include::{uml_export_dir}/classes/uri.adoc[]
+
+include::{uml_export_dir}/classes/numeric.adoc[]
+
+include::{uml_export_dir}/classes/ordered_numeric.adoc[]
 
 include::{uml_export_dir}/classes/integer.adoc[]
 
@@ -45,9 +57,4 @@ include::{uml_export_dir}/classes/integer64.adoc[]
 
 include::{uml_export_dir}/classes/real.adoc[]
 
-include::{uml_export_dir}/classes/string.adoc[]
-
-include::{uml_export_dir}/classes/uri.adoc[]
-
-include::{uml_export_dir}/classes/uid.adoc[]
-
+include::{uml_export_dir}/classes/double.adoc[]
