@@ -12,7 +12,7 @@ of description of the real world. All models carry some kind of semantic content
 semantics are the same, or even of the same category. For example, some part of the {snomed_ct}[SNOMED CT]
 terminology describes types of bacterial infection, sites in the body, and symptoms. An information
 model might specify a logical type Quantity. A content model might define the model of information
-collected in an ante-natal examination by a physician. These types of "information" are qualitatively
+collected in an ante-natal examination by a physician. These types of 'information' are qualitatively
 different, and need to be developed and maintained separately within the overall model eco-system.
 The figure below illustrates these distinctions, and indicates what parts are built directly into software 
 and databases.
@@ -21,8 +21,8 @@ and databases.
 .The Ontological Landscape
 image::diagrams/ontological_landscape.png[id=ontological_landscape, align="center", width=80%]
 
-This figure shows a primary separation between "ontologies of information" i.e. models of information
-content, and "ontologies of reality" i.e. descriptions and classifications of real phenomena. These
+This figure shows a primary separation between 'ontologies of information' i.e. models of information
+content, and 'ontologies of reality' i.e. descriptions and classifications of real phenomena. These
 two categories have to be separated because the type of authors, the representation and the purposes
 are completely different. In health informatics, this separation already exists by and large, due to the
 development of terminologies and classifications.
@@ -31,7 +31,7 @@ A secondary ontological separation within the information side is shown between 
 and domain content models. The former category corresponds to semantics that are _invariant_ across
 the domain (e.g. basic data types like coded terms, data structures like lists, identifiers), while the latter
 corresponds to _variable_ domain level content descriptions - descriptions of information structures
-such as "microbiology result" rather than descriptions of actual phenomena in the real world (such as
+such as 'microbiology result' rather than descriptions of actual phenomena in the real world (such as
 infection by a microbe). This separation is not generally well understood, and historically, a great deal
 of domain-level semantics has been hard-wired into the software and databases, leading to relatively
 unmaintainable systems.
@@ -43,7 +43,7 @@ systems.
 
 === Two-level Modelling and Archetypes
 
-One of the key paradigms on which openEHR is based is known as "two-level" modelling, described
+One of the key paradigms on which openEHR is based is known as 'two-level' modelling, described
 in <<Beale_2000>>. Under the two-level approach, a stable reference information model constitutes the first level
 of modelling, while formal definitions of clinical content in the form of archetypes and templates constitute
 the second. Only the first level (the Reference Model) is implemented in software, significantly
@@ -56,7 +56,7 @@ since they are built to consume archetypes and templates as they are developed i
 Archetypes and templates also act as a well-defined semantic gateway to terminologies, classifications
 and computerised clinical guidelines. The alternative in the past has been to try to make systems
 function solely with a combination of hard-wired software and terminology. This approach is flawed,
-since terminologies don’t contain definitions of domain content (e.g. "microbiology result"), but
+since terminologies don’t contain definitions of domain content (e.g. 'microbiology result'), but
 rather facts about the real world (e.g. kinds of microbes and the effects of infection in humans).
 
 The use of archetyping in openEHR engenders new relationships between information and models, as
@@ -66,8 +66,8 @@ shown in the following figure.
 .Archetype Meta-architecture
 image::diagrams/archetype_meta_architecture.png[id=archetype_meta_architecture, align="center", width=80%]
 
-In this figure, "data" as we know it in normal information systems (shown on the bottom left) conforms
-in the usual way to an object model (top left). Systems engineered in the "classic" way (i.e. all
+In this figure, 'data' as we know it in normal information systems (shown on the bottom left) conforms
+in the usual way to an object model (top left). Systems engineered in the 'classic' way (i.e. all
 domain semantics are encoded somewhere in the software or database) are limited to this kind of
 architecture. With the use of two-level modelling, runtime data now conform semantically to archetypes
 as well as concretely to the reference model. All archetypes are expressed in a generic Archetype
@@ -78,7 +78,7 @@ The details of how archetypes and templates work in openEHR are described in the
 === Consequences for Software Engineering
 Two-level modelling significantly changes the dynamics of the systems development process. In the
 usual IT-intensive process, requirements are gathered via ad hoc discussions with users (typically via
-the well-known "use case" methodology), designs and models built from the requirements, implementation
+the well-known 'use case' methodology), designs and models built from the requirements, implementation
 proceeds from the design, followed by testing and deployment and ultimately the maintenance
 part of the lifecycle. This is usually characterised by ongoing high costs of implementation
 change and/or a widening gap between system capabilities and the requirements at any moment. The
@@ -108,8 +108,8 @@ semantics.
 
 A second key design paradigm used in openEHR is that of separation of responsibilities within the
 computing environment. Complex domains are only tractable if the functionality is first partitioned
-into broad areas of interest, i.e. into a "system of systems" [6]. This principle has been understood in
-computer science for a long time under the rubrics "low coupling", "encapsulation" and "componentisation",
+into broad areas of interest, i.e. into a 'system of systems' <<Maier_2000>>. This principle has been understood in
+computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation',
 and has resulted in highly successful frameworks and standards, including the OMG’s
 CORBA specifications and the explosion of object-oriented languages, libraries and frameworks.
 Each area of functionality forms a focal point for a set of models formally describing that area, which,
@@ -135,7 +135,7 @@ to integrate existing standards.
 The third computing paradigm used in openEHR is a natural consequence of the separation of responsibilities,
 namely the separation of viewpoints. When responsibilities are divided up among distinct
 components, it becomes necessary to define a) the information that each processes, and b) how they
-will communicate. These two aspects of models constitute the two central "viewpoints" of the ISO
+will communicate. These two aspects of models constitute the two central 'viewpoints' of the ISO
 RM/ODP model [4], marked in bold in the following:
 
 [horizontal]
@@ -150,11 +150,11 @@ Model - and a computational viewpoint - the openEHR Service Model. The Engineeri
 corresponds to the Implementation Technology Specification (ITS) models of openEHR (see <<Implementation Technology Specifications>>), while the Technological viewpoint corresponds to
 the technologies and components used in an actual deployment. An important aspect of the division
 into viewpoints is that there is generally not a 1:1 relationship between model specifications in each
-viewpoint. For example, there might be a concept of "health mandate" (a CEN ENV13940 Continuity
+viewpoint. For example, there might be a concept of 'health mandate' (an <<ISO_13940,ISO 13940>> Continuity
 of Care concept) in the enterprise viewpoint. In the information viewpoint, this might have become a
 model containing many classes. In the computational viewpoint, the information structures defined in
 the information viewpoint are likely to recur in multiple services, and there may or may not be a
-"health mandate" service. The granularity of services defined in the computational viewpoint corresponds
+'health mandate' service. The granularity of services defined in the computational viewpoint corresponds
 most strongly to divisions of function in an enterprise or region, while the granularity of components
 in the information view points corresponds to the granularity of mental concepts in the
 problem space, the latter almost always being more fine-grained.

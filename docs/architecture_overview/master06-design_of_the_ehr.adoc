@@ -23,8 +23,8 @@ security-related) would normally be deployed, as shown in figure <<health_inform
 
 As has been shown, the openEHR information models define information at varying levels of granularity.
 Fine-grained structures defined in the Support and Data types are used in the Data Structures
-and Common models; these are used in turn in the EHR, EHR Extract, Demographic and other "toplevel"
-models. These latter models define the "top-level structures" of openEHR, i.e. content structures
+and Common models; these are used in turn in the EHR, EHR Extract, Demographic and other 'top-level'
+models. These latter models define the 'top-level structures' of openEHR, i.e. content structures
 that can sensibly stand alone, and may be considered the equivalent of separate documents in a
 document-oriented system. In openEHR information systems, it is generally the top-level structures
 that are of direct interest to users. The major top-level structures include the following:
@@ -71,25 +71,23 @@ The 21 data types provide for all types of data needed for clinical and administ
 .Elements of an openEHR Composition
 image::diagrams/composition_structure.png[composition_structure,align="center",width="80%"]
 
-== Entries and "clinical statements"
+== Entries and Clinical Statements
 
 === Entry Subtypes
 
-All clinical information created in the openEHR EHR is ultimately expressed in "Entries". An Entry
-is logically a single ‘clinical statement’, and may be a single short narrative phrase, but may also contain
+All clinical information created in the openEHR EHR is ultimately expressed in 'Entries'. An Entry
+is logically a single 'clinical statement', and may be a single short narrative phrase, but may also contain
 a significant amount of data, e.g. an entire microbiology result, a psychiatric examination note, a
 complex medication order. In terms of actual content, the Entry classes are the most important in the
-openEHR EHR Information Model, since they define the semantics of all the ‘hard’ information in
+openEHR EHR Information Model, since they define the semantics of all the 'hard' information in
 the record. They are intended to be archetyped, and in fact, archetypes for Entries and sub-parts of
 Entries make up the vast majority of archetypes defined for the EHR.
 
-The openEHR `ENTRY` classes are shown below. There are five concrete subtypes:
-`ADMIN_ENTRY`, `OBSERVATION`, `EVALUATION`, `INSTRUCTION` and `ACTION`, of which the latter four
-are kinds of `CARE_ENTRY`.
+The openEHR `ENTRY` classes are shown below. There are five concrete subtypes: `ADMIN_ENTRY`, `OBSERVATION`, `EVALUATION`, `INSTRUCTION` and `ACTION`, of which the latter four are kinds of `CARE_ENTRY`.
 
 [.text-center]
 .The openEHR Entry model (in EHR IM)
-image::{uml_export_dir}/diagrams/RM-composition.entry-simple.svg[id=entry_model_simple, align="center",width="60%"]
+image::{rm_uml_export_dir}/diagrams/RM-composition.entry-simple.svg[id=entry_model_simple, align="center",width="60%"]
 
 The choice of these types is based on the clinical problem-solving process shown below.
 
@@ -98,37 +96,28 @@ The choice of these types is based on the clinical problem-solving process shown
 image::diagrams/clinical_investigator_process.png[clinical_investigator_process,align="center",width="80%"]
 
 This figure shows the cycle of information creation due to an iterative, problem solving process typical
-not just of clinical medicine but of science in general. The "system" as a whole is made up of two
-parts: the "patient system" and the "clinical investigator system". The latter consists of health carers,
+not just of clinical medicine but of science in general. The 'system' as a whole is made up of two
+parts: the 'patient system' and the 'clinical investigator system'. The latter consists of health carers,
 and may include the patient (at points in time when the patient performs observational or therapeutic
 activities), and is responsible for understanding the state of the patient system and delivering care to
 it. A problem is solved by making observations, forming opinions (hypotheses), and prescribing
 actions (instructions) for next steps, which may be further investigation, or may be interventions
 designed to resolve the problem, and finally, executing the instructions (actions).
 
-This process model is a synthesis of Lawrence Weed’s "problem-oriented" method of EHR recording,
-and later related efforts, including the model of Rector, Nowlan & Kay <<Rector_1994>>, and the "hypothetico-deductive" model of reasoning (see e.g. <<Elstein_1987>>). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older
-and more experienced) rely on pattern recognition and direct retrieval of plans used previously with
-similar patients or prototype models. The investigator process model used in openEHR is compatible
-with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific
-number or size of iterations to bring the process to a conclusion, nor even require all steps to be
-present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the
-openEHR Entry model does not impose a process model, it only provides the possible types of information
-that might occur.
+This process model is a synthesis of Lawrence Weed's 'problem-oriented' method of EHR recording, and later related efforts, including the model of Rector, Nowlan & Kay <<Rector_1994>>, and the 'hypothetico-deductive' model of reasoning (see e.g. <<Elstein_1987>>). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process model used in openEHR is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion, nor even require all steps to be present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the openEHR Entry model does not impose a process model, it only provides the possible types of information that might occur.
 
 ==== Ontology of Entry Types
-In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the
-subtypes of Entry described above. There are many subtypes of each of these types, of which some
-are shown in the figure below.
+
+In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the subtypes of Entry described above. There are many subtypes of each of these types, of which some are shown in the figure below.
 
 [.text-center]
 .Ontology of Recorded Information
 image::diagrams/CIR_ontology.png[CIR_ontology,align="center",width="80%"]
 
-The key top-level categories are ‘care information’ and ‘administrative information’. The former
+The key top-level categories are 'care information' and 'administrative information'. The former
 encompasses all statements that might be recorded at any point during the care process, and consists
-of the major sub-categories on which the Entry model is based, namely ‘observation’, ‘opinion’,
-‘instruction’, and ‘action’ (a kind of observation) which themselves correspond to the past, present
+of the major sub-categories on which the Entry model is based, namely 'observation', 'opinion',
+'instruction', and 'action' (a kind of observation) which themselves correspond to the past, present
 and future in time. The administrative information category covers information which is not generated
 by the care process proper, but relates to organising it, such as appointments and admissions.
 This information is not about care, but about the logistics of care delivery.
@@ -141,11 +130,12 @@ express the information of interest (say a risk assessment) in terms of a partic
 this case, Evaluation). In a system where Entries are thus modelled, there will be no danger of incorrectly
 identifying the various kinds of Entries, as long as the Entry subtype, time, and certainty/negation are taken into account. 
 Note that even if the ontology shown in the <<CIR_ontology>> figure is not correct (undoubtedly
-it isn’t), archetypes will be constructed to account for each improved idea of what such categories
+it isn't), archetypes will be constructed to account for each improved idea of what such categories
 should really be.
 
 ==== Clinical Statement Status and Negation
-A well-known problem in clinical information recording is the assignment of "status" to recorded
+
+A well-known problem in clinical information recording is the assignment of 'status' to recorded
 items. Kinds of status include variants like "actual value of P" (P stands for some phenomenon),
 "family history of P", "risk of P", "fear of P", as well as negation of any of these, i.e. "not/no P", "no
 history of P" etc. A proper analysis of these so called statuses shows that they are not "statuses" at all,
@@ -167,18 +157,18 @@ Section.
 
 A key part of the investigation process shown in figure <<clinical_investigator_process>>, and indeed healthcare in general, is
 intervention. Specifying and managing interventions (whether the simplest prescriptions or complex
-surgery and therapy) is a hard problem for information systems because it is in "future time" (meaning
+surgery and therapy) is a hard problem for information systems because it is in 'future time' (meaning
 that intervention activities have to be expressed using branching/looping time specifications, not
 the simple linear time of observations), unexpected events can change things (e.g. patient reaction to
 drugs), and the status of a given intervention can be hard to track, particularly in distributed systems.
-However, from the health professional’s point of view, almost nothing is more basic than wanting to
+However, from the health professional's point of view, almost nothing is more basic than wanting to
 find out: what medications is this patient on, since when, and what is the progress?
 The openEHR approach to these challenges is to use the Entry type `INSTRUCTION`, its subpart
 `ACTIVITY` to specify interventions in the future, and the Entry subtype `ACTION` to record what has
 actually happened. A number of important features are provided in this model, including:
 
 * a single, flexible way of modelling all interventions, whether they be single drug medication orders or complex hospital-based therapies;
-* a way of knowing the state of any intervention, in terms of the states in a standard state machine, shown below; this allows a patient’s EHR to be queried in a standard way so as to return "all active medications", "all suspended interventions" etc.;
+* a way of knowing the state of any intervention, in terms of the states in a standard state machine, shown below; this allows a patient's EHR to be queried in a standard way so as to return "all active medications", "all suspended interventions" etc.;
 * a way of mapping particular care process flow steps to the standard state machine states, enabling health professionals to define and view interventions in terms they understand;
 * support for automated workflow, without requiring it.
 
@@ -188,7 +178,7 @@ environment.
 
 [.text-center]
 .openEHR standard Instruction State Machine
-image::diagrams/instruction_state_machine.png[instruction_state_machine,align="center"]
+image::{rm_uml_export_dir}/diagrams/RM-InstructionStateMachine.svg[instruction_state_machine,align="center"]
 
 == Time in the EHR
 
@@ -220,7 +210,7 @@ Entries (i.e. Observations, etc), in a language attribute. This allows both Comp
 languages in the EHR, and Entries of different languages in the same Composition. Additionally,
 within Entries, text and coded text items may optionally have language recorded if it is different from
 the language of the enclosing Entry, or where these types are used within other non-Entry structures
-that don’t indicate language.
+that don't indicate language.
 
 The use of these features is mostly likely to occur due to translation, although in some cases a truly
 multi-lingual environment might exist within the clinical encounter context. In the former case, some
@@ -229,4 +219,4 @@ as to make the information available in the primary language of the EHR. The act
 any other interaction with the EHR) will cause changes to the record, in the form of new Versions.
 New translations can conveniently be recorded as branch versions, attached to the version of which
 they are a translation. This is not mandatory, but provides a convenient way to store translations so
-that they don’t appear to replace the original content.
+that they don't appear to replace the original content.

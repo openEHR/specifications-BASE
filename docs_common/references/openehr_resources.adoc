@@ -2,47 +2,64 @@
 // openEHR specification resources; note variable substitutions in some of these for release id
 //
 :openehr_18308: http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf
-:openehr_am: http://www.openehr.org/releases/AM/{am_release}/index.html
-:openehr_am_overview: http://www.openehr.org/releases/AM/{am_release}/Overview.html
-:openehr_am_adl14: http://www.openehr.org/releases/AM/{am_release}/ADL1.4.html
-:openehr_am_aom14: http://www.openehr.org/releases/AM/{am_release}/AOM1.4.html
-:openehr_am_adl2: http://www.openehr.org/releases/AM/{am_release}/ADL2.html
-:openehr_am_aom2: http://www.openehr.org/releases/AM/{am_release}/AOM2.html
-:openehr_am_opt2: http://www.openehr.org/releases/AM/{am_release}/OPT2.html
-:openehr_am_id: http://www.openehr.org/releases/AM/{am_release}/Identification.html
-:openehr_am_def_pri: http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf
-:openehr_am_arch_sys: http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf
-:openehr_am_oap: http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf 
+
+:openehr_am_releases: http://www.openehr.org/releases/AM/{am_release}
+:openehr_am: {openehr_am_releases}/docs/index
+:openehr_am_overview: {openehr_am_releases}/Overview.html
+:openehr_am_adl14: {openehr_am_releases}/ADL1.4.html
+:openehr_am_aom14: {openehr_am_releases}/AOM1.4.html
+:openehr_am_adl2: {openehr_am_releases}/ADL2.html
+:openehr_am_aom2: {openehr_am_releases}/AOM2.html
+:openehr_am_opt2: {openehr_am_releases}/OPT2.html
+:openehr_am_id: {openehr_am_releases}/Identification.html
+
 :openehr_cds_gdl: http://www.openehr.org/releases/CDS/{cds_release}/GDL.html
-:openehr_odin: http://www.openehr.org/releases/BASE/{base_release}/odin.html
-:openehr_base_types: http://www.openehr.org/releases/BASE/{base_release}/base_types.html
-:openehr_foundation_types: http://www.openehr.org/releases/BASE/{base_release}/foundation_types.html
-:openehr_base_bmm: http://www.openehr.org/releases/BASE/{base_release}/bmm.html
-:openehr_expression: http://www.openehr.org/releases/BASE/{base_release}/expression.html
-:openehr_resource: http://www.openehr.org/releases/BASE/{base_release}/resource.html
-:openehr_overview: http://www.openehr.org/releases/BASE/{base_release}/architecture_overview.html
-:openehr_query_aql: http://www.openehr.org/releases/QUERY/{query_release}/AQL.html
-:openehr_rm: http://www.openehr.org/releases/RM/{rm_release}/docs/index
-:openehr_rm_data_types: http://www.openehr.org/releases/RM/{rm_release}/data_types.html
-:openehr_rm_102_data_types: http://www.openehr.org/releases/1.0.2/architecture/rm/data_types_im.pdf
-:openehr_rm_data_structures: http://www.openehr.org/releases/RM/{rm_release}/data_structures.html
-:openehr_rm_common: http://www.openehr.org/releases/RM/{rm_release}/common.html
-:openehr_rm_102_common: http://www.openehr.org/releases/1.0.2/architecture/rm/common_im.pdf
-:openehr_rm_demographic: http://www.openehr.org/releases/RM/{rm_release}/demographic.html
-:openehr_rm_ehr: http://www.openehr.org/releases/RM/{rm_release}/ehr.html
-:openehr_task_planning: http://www.openehr.org/releases/RM/{rm_release}/task_planning.html
-:openehr_rm_ehr_extract: http://www.openehr.org/releases/RM/{rm_release}/ehr_extract.html
-:openehr_rm_integration: http://www.openehr.org/releases/RM/{rm_release}/integration.html
-:openehr_rm_support: http://www.openehr.org/releases/RM/{rm_release}/support.html
+
+:openehr_base_releases: http://www.openehr.org/releases/BASE/{base_release}
+:openehr_odin: {openehr_base_releases}/odin.html
+:openehr_base_types: {openehr_base_releases}/base_types.html
+:openehr_foundation_types: {openehr_base_releases}/foundation_types.html
+:openehr_base_bmm: {openehr_base_releases}/bmm.html
+:openehr_expression: {openehr_base_releases}/expression.html
+:openehr_resource: {openehr_base_releases}/resource.html
+:openehr_overview: {openehr_base_releases}/architecture_overview.html
+:openehr_query_aql: {query_release}/AQL.html
+
+:openehr_rm_releases: http://www.openehr.org/releases/RM/{rm_release}
+:openehr_rm: {openehr_rm_releases}/docs/index
+:openehr_rm_data_types: {openehr_rm_releases}/data_types.html
+:openehr_rm_data_structures: {openehr_rm_releases}/data_structures.html
+:openehr_rm_common: {openehr_rm_releases}/common.html
+:openehr_rm_demographic: {openehr_rm_releases}/demographic.html
+:openehr_rm_ehr: {openehr_rm_releases}/ehr.html
+:openehr_task_planning: {openehr_rm_releases}/task_planning.html
+:openehr_rm_ehr_extract: {openehr_rm_releases}/ehr_extract.html
+:openehr_rm_integration: {openehr_rm_releases}/integration.html
+:openehr_rm_support: {openehr_rm_releases}/support.html
 :openehr_rm_103_support: http://www.openehr.org/releases/RM/Release-1.0.3/support.html
-:openehr_rm_102_support: http://www.openehr.org/releases/1.0.2/architecture/rm/support_im.pdf
+
+:openehr_release_102: http://www.openehr.org/releases/1.0.2/architecture
+:openehr_rm_102_common: {openehr_release_102}/rm/common_im.pdf
+:openehr_rm_102_data_types: {openehr_release_102}/rm/data_types_im.pdf
+:openehr_rm_102_support: {openehr_release_102}/rm/support_im.pdf
+:openehr_am_def_pri: {openehr_release_102}/am/archetype_principles.pdf
+:openehr_am_arch_sys: {openehr_release_102}/am/archetype_system.pdf
+:openehr_am_oap: {openehr_release_102}/am/openehr_archetype_profile.pdf 
+
 :openehr_terminology: http://www.openehr.org/releases/TERM/{term_release}/SupportTerminology.html
 :openehr_terminology_resources: https://github.com/openEHR/terminology
-:openehr_ehr_rest_api: http://www2.openehr.org/releases/ITS/latest/ehr_restapi.html
+
+:openehr_rest_apis: https://openehr.github.io/specifications-ITS/
+:openehr_ehr_rest_api: {openehr_rest_apis}/ehr.html
+:openehr_query_rest_api: {openehr_rest_apis}/query.html
+:openehr_cds_rest_api: {openehr_rest_apis}/query.html
+:openehr_definitions_rest_api: {openehr_rest_apis}/definitions.html
 
 //
 // openEHR online resources
 //
+:openehr_specs_home: http://www.openehr.org/programs/specification/workingbaseline
+:openehr_specification_program: http://www.openehr.org/programs/specification
 :openehr_git: https://github.com/openEHR
 :openehr_awb: http://www.openehr.org/downloads/ADLworkbench
 :openehr_awb_profiles: {openehr_git}/adl-tools/tree/master/apps/resources/aom_profiles
@@ -55,6 +72,8 @@
 :openehr_oet_parser: {openehr_java_libs}/tree/master/oet-parser
 :openehr_its: {openehr_git}/specifications-ITS
 :openehr_its_rm_xsds: {openehr_its}/tree/master/RM/XML-schema
+:openehr_sec: http://www.openehr.org/programs/specification/editorialcommittee 
+:openehr_gehr: http://www.openehr.org/resources/related_projects#gehr
 
 //
 // e-Health online resources
@@ -74,6 +93,7 @@
 :who_icd: http://www.who.int/classifications/icd/en/
 :who_icpc: http://www.who.int/classifications/icd/adaptations/icpc2/en/
 :ucum: http://unitsofmeasure.org/ucum.html
+:nlm_umls_list: https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html#
 
 :xpath: https://www.w3.org/TR/xpath-31/
 :xquery: https://www.w3.org/XML/Query/
@@ -90,3 +110,4 @@
 :wikipedia_open_world_assumption: https://en.wikipedia.org/wiki/Open-world_assumption 
 :medscape_cannulation: http://emedicine.medscape.com/article/1998177-overview 
 :semver: http://semver.org
+:asciidoctor: http://asciidoctor.org

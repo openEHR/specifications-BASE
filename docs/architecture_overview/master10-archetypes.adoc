@@ -7,11 +7,11 @@ two levels. The lower level is that of the reference model, a stable object mode
 and data can be built. Concepts in the openEHR reference model are invariant, and include things like
 Composition, Section, Observation, and various data types such as Quantity and Coded text. The
 upper level consists of domain-level definitions in the form of archetypes and templates. Concepts
-defined at this level include things such as "blood pressure measurement", "SOAP headings", and
-"HbA1c Result".
+defined at this level include things such as 'blood pressure measurement', 'SOAP headings', and
+'HbA1c Result'.
 
 All information conforming to the openEHR Reference Model (RM) - i.e. the collection of Information
-Models (IMs) - is "archetypable", meaning that the creation and modification of the content, and
+Models (IMs) - is 'archetypable', meaning that the creation and modification of the content, and
 subsequent querying of data is controllable by archetypes. Archetypes are themselves separate from
 the data, and are stored in their own repository. The archetype repository at any particular location
 will usually include archetypes from well-known online archetype libraries. Archetypes are deployed
@@ -22,7 +22,7 @@ Archetypes are themselves instances of an archetype model, which defines a langu
 write archetypes; the syntax equivalent of the model is the Archetype Definition Language, ADL.
 These formalisms are specified in the openEHR Archetype Object Model (AOM) and ADL documents
 respectively. Each archetype is a set of constraints on the reference model, defining a subset of
-instances that are considered to conform to the subject of the archetype, e.g. "laboratory result". An
+instances that are considered to conform to the subject of the archetype, e.g. 'laboratory result'. An
 archetype can thus be thought of as being similar to a LEGO(R) instruction sheet (e.g. for a tractor) that
 defines the configuration of LEGO(R) bricks making up a tractor. Archetypes are flexible; one archetype
 includes many variations, in the same way that a LEGO(R) instruction might include a number of
@@ -32,10 +32,10 @@ In terms of scope, archetypes are general-purpose, re-usable, and composable. Fo
 validation purposes, they are usually used at runtime by templates.
 An openEHR Template is a specification that defines a tree of of one or more archetypes, each constraining
 instances of various reference model types, such as Composition, Section, Entry subtypes
-and so on. Thus, while there are likely to be archetypes for such things as "biochemistry results" (an
-Observation archetype) and "SOAP headings" (a Section archetype), templates are used to put archetypes
-together to form whole Compositions in the EHR, e.g. for "discharge summary", "antenatal
-exam" and so on. Templates usually correspond closely to screen forms, printed reports, and in general,
+and so on. Thus, while there are likely to be archetypes for such things as 'biochemistry results' (an
+Observation archetype) and 'SOAP headings' (a Section archetype), templates are used to put archetypes
+together to form whole Compositions in the EHR, e.g. for 'discharge summary', 'antenatal
+exam' and so on. Templates usually correspond closely to screen forms, printed reports, and in general,
 complete application-level lumps of information to be captured or sent; they may therefore be
 used to define message content. They are generally developed and used locally, while archetypes are
 usually widely used.
@@ -58,20 +58,12 @@ synthesis of SQL (SELECT/FROM/WHERE) and W3C XPaths, extracted from the archetyp
 
 In openEHR, archetypes are formalised by the Archetype Object Model (AOM). This is an object
 model of the semantics of archetypes. When an archetype is represented in memory (for example in
-an archetype-enabled EHR "kernel"), the archetype will exist as instances of the classes of this
+an archetype-enabled EHR 'kernel'), the archetype will exist as instances of the classes of this
 model. The AOM is thus the definitive statement of the semantics of archetypes.
 
-In serialised form, archetypes can be represented in various ways. The normative, abstract serialisation
-in openEHR is Archetype Definition Language (ADL). This is an abstract language based on
-Frame Logic queries with the addition of terminology. An ADL archetype
-is a guaranteed 100% lossless rendering of the semantics of any archetype, and is designed to be a
-syntactic analogue of the AOM. Nevertheless, other lossless and lossy serialisations are possible and
-some already exist. For practical purposes, XML-based serialisations are used in some situations. A
-serialisation purely expressed in dADL, the ADL object serialisation syntax will be available in the
-future. Various HTML, RTF and other formats are used for screen rendering and human review.
+In serialised form, archetypes can be represented in various ways. The normative, abstract serialisation in openEHR is Archetype Definition Language (ADL). This is an abstract language based on Frame Logic queries with the addition of terminology. An ADL archetype is a guaranteed 100% lossless rendering of the semantics of any archetype, and is designed to be a syntactic analogue of the AOM. Nevertheless, other lossless and lossy serialisations are possible and some already exist. For practical purposes, XML-based serialisations are used in some situations. A serialisation purely expressed in ODIN, the ADL object serialisation syntax is available for ADL2 archetypes. Various HTML, RTF and other formats are used for screen rendering and human review.
 
-openEHR Templates are represented as dADL documents whose object model conforms to the Template
-Object Model (TOM).
+openEHR ADL2 Templates are represented as ODIN documents whose object model conforms to the AOM.
 
 === Design-time Relationships between Archetypes
 
@@ -113,8 +105,8 @@ allowed at a slot will actually be used in a given circumstance.
 
 == Relationship of Archetypes and Templates to Data
 
-All nodes within the top-level information structures in the openEHR RM are "archetypable", with
-certain nodes within those structures being archetype "root points". Each top-level type is always
+All nodes within the top-level information structures in the openEHR RM are 'archetypable', with
+certain nodes within those structures being archetype 'root points'. Each top-level type is always
 guaranteed to be an archetype root point. Although it is theoretically possible to use a single archetype
 for an entire top-level structure, in most cases, particularly for `COMPOSITION` and `PARTY`, a hierarchical
 structure of multiple archetypes will be used, via the slot mechanism described above. This
@@ -139,7 +131,7 @@ attributes `_archetype_node_id_` and `_archetype_details_`. In the data, the for
 the archetype. If the node in the data is a root point, it carries the multipart identifier of the generating
 archetype, and `_archetype_details_` carries an `ARCHETYPED object`, containing information pertinent to
 archetype root points. If it is a non-root node, the `_archetype_node_id_` attribute carries the identifier
-(known as an "at", or "archetype term" code) of the archetype interior node that generated the data
+(known as an 'at', or 'archetype term' code) of the archetype interior node that generated the data
 node, and the `_archetype_details_` attribute is void.
 
 Sibling nodes in data can carry the same `_archetype_node_id_` in some cases, since archetypes provide a
@@ -148,16 +140,16 @@ single archetype node may be replicated in the data.
 
 In this way, each archetyped data composition in openEHR data has a generating archetype which
 defines the particular configuration of instances to create the desired composition. An archetype for
-"biochemistry results" is an `OBSERVATION` archetype, and constrains the particular arrangement of
-instances beneath an `OBSERVATION` object; a "problem/SOAP headings" archetype constrains `SECTION`
+'biochemistry results' is an `OBSERVATION` archetype, and constrains the particular arrangement of
+instances beneath an `OBSERVATION` object; a 'problem/SOAP headings' archetype constrains `SECTION`
 objects forming a SOAP headings structure. In general, an archetyped data composition is any
 composition of data starting at a root node and continuing to its leaf nodes, at which point lower-level
 compositions, if they exist, begin. Each of the archetyped areas and its subordinate archetyped areas
 in figure <<archetypes_and_data>> is an archetyped data composition.
 
-NOTE: care must be taken not to confuse the general term "composition" with the specific use of this word in
+NOTE: care must be taken not to confuse the general term 'composition' with the specific use of this word in
 openEHR and CEN EN 13606, defined by the `COMPOSITION` class; the specific use is always indicated by
-using the term "Composition".
+using the term 'Composition'.
 
 The result of the use of archetypes to create data in the EHR (and other systems) is that the structure
 of data in any top-level object conforms to the constraints defined in a composition of archetypes chosen
@@ -168,8 +160,8 @@ by a template, including all optionality, value, and terminology constraints.
 The use of openEHR archetypes and templates enables paths to be used ubiquitously in the openEHR
 architecture. Paths are extracted from Archetypes and templates, and are constructed from attribute
 names and archetype node identifiers, in an Xpath-compatible syntax, as shown in the following figure.
-These paths serve to identify any node in a template or archetype, such as the "diastolic blood pressure"
-`ELEMENT` node, deep within a "blood pressure measurement" archetype. Since archetype node
+These paths serve to identify any node in a template or archetype, such as the 'diastolic blood pressure'
+`ELEMENT` node, deep within a 'blood pressure measurement' archetype. Since archetype node
 identifiers are embedded into data at runtime, archetype paths can be used to extract data nodes conforming
 to particular parts of archetypes, providing a very powerful basis for querying. Paths can also
 be constructed into data, using more complex predicates (still in the Xpath style). Paths in openEHR
@@ -188,7 +180,7 @@ They perform two key functions. The first is to facilitate data validation at da
 time, i.e. to guarantee that data conform to not just the reference model, but also to the archetypes
 themselves. Data validation with archetypes is mediated by the use of openEHR Templates. The second
 function is as a design basis for queries. Since data are captured based on archetypes, all
-openEHR data are guaranteed to conform to the "semantic paths" that are created by the composition
+openEHR data are guaranteed to conform to the 'semantic paths' that are created by the composition
 of archetypes within a template. The paths (such as those shown in figure <<archetype_paths>> above) are incorporated within a familiar SQL-style syntax, to form queries that can be evaluated to retrieve items on a
 semantic basis.
 
@@ -245,7 +237,7 @@ image::diagrams/archetype_use.png[archetype_use,align="center", width=80%]
 
 === Validation during Data Capture
 
-Validation is the primary runtime function of archetypes - it is how "archetype-based" data are created
+Validation is the primary runtime function of archetypes - it is how 'archetype-based' data are created
 in the first place, and modified thereafter. Archetype-based validation can be used in a GUI
 application or in a data import service. Although the source of the data (keystrokes or received XML
 or other messages) is different, the logical process is the same: create archetype-based openEHR data
@@ -261,13 +253,13 @@ not be directly aware of this. Regardless, by the time data are created and vali
 archetypes, the template that does the job will be completely specified.
 
 The actual process of data creation and committal is illustrated below. The essence of the
-process is that a "kernel" component performs the task of data creation and validation by maintaining
-a "template space" and a "data space". The former contains the template and archetypes retrieved due
+process is that a 'kernel' component performs the task of data creation and validation by maintaining
+a 'template space' and a 'data space'. The former contains the template and archetypes retrieved due
 to a screen form being displayed; the latter contains the data structures (instances of the openEHR reference
 model) that are constructed due to user activity on the screen. When data are finally committed,
 they are guaranteed to conform to the template/archetype definitions, due to the checks that are
-made each time the user tries to change the data structure. The committed data contain a "semantic
-imprint" of the generating archetypes, in the form of archetype node identifiers on every node of the
+made each time the user tries to change the data structure. The committed data contain a 'semantic
+imprint' of the generating archetypes, in the form of archetype node identifiers on every node of the
 data. This simple inclusion in the data model ensures that all archetypes data are queryable by the use
 of archetype paths. In XML representations, the archetype node ids are represented as XML attributes
 (i.e. inside the tag), thus enabling XPaths to be conveniently navigated through the data based on

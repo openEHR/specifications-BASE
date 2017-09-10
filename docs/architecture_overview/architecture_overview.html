@@ -32,7 +32,7 @@
 </li>
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
-<li><a href="#_the_openehr_specification_project">2.1. The openEHR Specification Project</a></li>
+<li><a href="#_the_openehr_specification_program">2.1. The openEHR Specification Program</a></li>
 </ul>
 </li>
 <li><a href="#_aims_of_the_openehr_architecture">3. Aims of the openEHR Architecture</a>
@@ -60,35 +60,46 @@
 <li><a href="#_separation_of_viewpoints">4.3. Separation of Viewpoints</a></li>
 </ul>
 </li>
-<li><a href="#_openehr_package_structure">5. openEHR Package Structure</a>
+<li><a href="#_openehr_specification_structure">5. openEHR Specification Structure</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_3">5.1. Overview</a></li>
-<li><a href="#_reference_model_rm">5.2. Reference Model (RM)</a>
+<li><a href="#_consolidated_package_structure">5.2. Consolidated Package Structure</a></li>
+<li><a href="#_base_component_base">5.3. Base Component (BASE)</a>
 <ul class="sectlevel3">
-<li><a href="#_package_overview">5.2.1. Package Overview</a>
+<li><a href="#_foundation_types">5.3.1. Foundation Types</a></li>
+<li><a href="#_base_types">5.3.2. Base Types</a></li>
+<li><a href="#_resource_model">5.3.3. Resource Model</a></li>
+<li><a href="#_basic_meta_model_bmm">5.3.4. Basic Meta-Model (BMM)</a></li>
+<li><a href="#_object_data_instance_notation_odin">5.3.5. Object Data Instance Notation (ODIN)</a></li>
+</ul>
+</li>
+<li><a href="#_reference_model_component_rm">5.4. Reference Model Component (RM)</a>
+<ul class="sectlevel3">
+<li><a href="#_package_overview">5.4.1. Package Overview</a>
 <ul class="sectlevel4">
-<li><a href="#_support_information_model">5.2.1.1. Support Information Model</a></li>
-<li><a href="#_data_types_information_model">5.2.1.2. Data Types Information Model</a></li>
-<li><a href="#_data_structures_information_model">5.2.1.3. Data Structures Information Model</a></li>
-<li><a href="#_common_information_model">5.2.1.4. Common Information Model</a></li>
-<li><a href="#_security_information_model">5.2.1.5. Security Information Model</a></li>
-<li><a href="#_ehr_information_model">5.2.1.6. EHR Information Model</a></li>
-<li><a href="#_ehr_extract_information_model">5.2.1.7. EHR Extract Information Model</a></li>
-<li><a href="#_integration_information_model">5.2.1.8. Integration Information Model</a></li>
-<li><a href="#_demographics_information_model">5.2.1.9. Demographics Information Model</a></li>
+<li><a href="#_support_information_model">5.4.1.1. Support Information Model</a></li>
+<li><a href="#_data_types_information_model">5.4.1.2. Data Types Information Model</a></li>
+<li><a href="#_data_structures_information_model">5.4.1.3. Data Structures Information Model</a></li>
+<li><a href="#_common_information_model">5.4.1.4. Common Information Model</a></li>
+<li><a href="#_security_information_model">5.4.1.5. Security Information Model</a></li>
+<li><a href="#_ehr_information_model">5.4.1.6. EHR Information Model</a></li>
+<li><a href="#_ehr_extract_information_model">5.4.1.7. EHR Extract Information Model</a></li>
+<li><a href="#_integration_information_model">5.4.1.8. Integration Information Model</a></li>
+<li><a href="#_demographics_information_model">5.4.1.9. Demographics Information Model</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_archetype_model_am">5.3. Archetype Model (AM)</a></li>
-<li><a href="#_service_model_sm">5.4. Service Model (SM)</a>
+<li><a href="#_archetype_model_component_am">5.5. Archetype Model Component (AM)</a></li>
+<li><a href="#_service_model_sm">5.6. Service Model (SM)</a>
 <ul class="sectlevel3">
-<li><a href="#_virtual_ehr_api">5.4.1. Virtual EHR API</a></li>
-<li><a href="#_ehr_service_model">5.4.2. EHR Service Model</a></li>
-<li><a href="#_archetype_service_model">5.4.3. Archetype Service Model</a></li>
-<li><a href="#_terminology_interface_model">5.4.4. Terminology Interface Model</a></li>
+<li><a href="#_virtual_ehr_api">5.6.1. Virtual EHR API</a></li>
+<li><a href="#_ehr_service_model">5.6.2. EHR Service Model</a></li>
+<li><a href="#_archetype_service_model">5.6.3. Archetype Service Model</a></li>
+<li><a href="#_terminology_interface_model">5.6.4. Terminology Interface Model</a></li>
 </ul>
 </li>
+<li><a href="#_global_functional_view">5.7. Global Functional View</a></li>
 </ul>
 </li>
 <li><a href="#_design_of_the_openehr_ehr">6. Design of the openEHR EHR</a>
@@ -96,7 +107,7 @@
 <li><a href="#_the_ehr_system">6.1. The EHR System</a></li>
 <li><a href="#_top_level_information_structures">6.2. Top-level Information Structures</a></li>
 <li><a href="#_the_ehr">6.3. The EHR</a></li>
-<li><a href="#_entries_and_clinical_statements">6.4. Entries and "clinical statements"</a>
+<li><a href="#_entries_and_clinical_statements">6.4. Entries and Clinical Statements</a>
 <ul class="sectlevel3">
 <li><a href="#_entry_subtypes">6.4.1. Entry Subtypes</a>
 <ul class="sectlevel4">
@@ -157,7 +168,7 @@
 <li><a href="#_general_model_of_a_change_controlled_repository">8.3.1. General Model of a Change-controlled Repository</a></li>
 </ul>
 </li>
-<li><a href="#_the_virtual_version_tree">8.4. The "Virtual Version Tree"</a></li>
+<li><a href="#_the_virtual_version_tree">8.4. The Virtual Version Tree</a></li>
 </ul>
 </li>
 <li><a href="#_identification">9. Identification</a>
@@ -378,16 +389,30 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.1.0</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-15">SPECBASE-15</a>. Add Foundation Types specification to BASE;<br>
+ <a href="https://openehr.atlassian.net/browse/SPECBASE-7">SPECBASE-7</a>. Add Base Types specification to BASE.<br>
+ <a href="https://openehr.atlassian.net/browse/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.<br>
+ Section 2: Updated overview diagram and description to be based on 'components' as per current specifications program;<br>
+ Section 5: Updated package diagrams to exported diags from BASE, RM, AM, SM UML components;<br>
+ Section 7.4.1: small updates to statements to make them more current; fixed some references to ISO standards.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Sep 2017</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-33">SPECRM-33</a>. Clarify specification of DV_EHR_URI scheme. (solves <a href="https://openehr.atlassian.net/browse/SPECPR-48">SPECPR-48</a>, <a href="https://openehr.atlassian.net/browse/SPECPR-50">SPECPR-50</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
  E Sundvall,<br>
  B Lah,<br>
  S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Dec 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07 Dec 2015</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -593,20 +618,12 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document provides an overview of the openEHR architecture. It commences with a description
-of the specification project, followed by an overview of the reference model structure and packages.
-Key global semantics including security, archetyping, identification, version and paths are then
-described. The relationship to published standards is indicated, and finally, the approach to building
-Implementation Technology Specifications (ITSs) is outlined.</p>
+<p>This document provides an overview of the openEHR architecture. It commences with a description of the specification project, followed by an overview of the model structure and packages. Key global semantics including security, archetyping, identification, version and paths are then described. The relationship to published standards is indicated, and finally, the approach to building Implementation Technology Specifications (ITSs) is outlined.</p>
 </div>
 <div class="sect2">
-<h3 id="_the_openehr_specification_project"><a class="anchor" href="#_the_openehr_specification_project"></a>2.1. The openEHR Specification Project</h3>
+<h3 id="_the_openehr_specification_program"><a class="anchor" href="#_the_openehr_specification_program"></a>2.1. The openEHR Specification Program</h3>
 <div class="paragraph">
-<p>FIGURE 1 illustrates the openEHR Specification Project. This project is responsible for developing
-the specifications on which the openEHR Health Computing Platform is based. The relationships
-between the parts of the computing platform and the specifications are indicated on the diagram. The
-project deliverables include requirements, abstract specifications, implementation technology specifications
-(ITSs), computable expressions and conformance criteria.</p>
+<p>The openEHR Specification Program is responsible for developing the specifications of openEHR, from which the openEHR Health Computing Platform is implemented. The outputs of the program consist of a number of <em>components</em>, as shown in the diagram below, with each component consisting of one or more separate specifications. The components shown in blue on the left define the <em>openEHR platform architecture</em>, and are expressed in a combination of UML models and formal language specifications. They can be implmented using typical software engineering technologies. The formal artefacts (e.g. UML models, Antlr grammars etc) are published online for this purpose.</p>
 </div>
 <div id="specification_project" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -615,32 +632,25 @@ project deliverables include requirements, abstract specifications, implementati
 <div class="title">Figure 1. The openEHR Specification project</div>
 </div>
 <div class="paragraph">
-<p>The abstract specifications consist of the Reference Model (RM), the Service Model (SM) and Archetype
-Model (AM). The first two correspond to the ISO RM/ODP information and computational
-viewpoints respectively. The latter formalises the bridge between information models and knowledge
-resources.</p>
+<p>The remaining components define artefacts outside the openEHR platform architecture.</p>
 </div>
 <div class="paragraph">
-<p>The abstract specifications published by openEHR are defined using the UML notation and formal
-textual class specifications. These models constitute the primary references for all openEHR semantics.
-The presentation style of these abstract specifications is deliberately intended to be clear and
-semantically close to the ideas being communicated. Accordingly, the specifications do not follow
-idioms or limitations of particular programming languages, schema languages or other formalisms.</p>
+<p>On the lower right-hand side is the Terminology (TERM) component, which contains formal artefacts representing openEHR&#8217;s internal terminology, along with expressions of various IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format.</p>
 </div>
 <div class="paragraph">
-<p>The specifications are also available in a tool-oriented computable UML format in order to
-enable development of software and systems. The computable expressions for all practical purposes
-can be assumed as being a lossless rendition of the published abstract specifications.</p>
+<p>On the upper-right hand side in orange is the Impelementation Technology Specifications (ITS) component, which consists of concrete expressions of the formal specificaitons in the other components, in various programming, API and schema languages. The artefacts in this component provide the directly usable basis for building an implementation of the openEHR health computing platform, any one of its components, or client applications or tools.</p>
 </div>
 <div class="paragraph">
-<p>The implementation technology specifications on the other hand correspond to the expression of
-abstract specifications in various programming and schema languages, each of which represents an
-imperfect and usually partial transformation from the specification models. There are numerous
-implementation technologies, ranging from programming languages, serial formalisms such as XML,
-to database and distributed object interfaces. Each of these has its own limits and strengths. The
-approach to implementing any of the openEHR abstract models in a given implementation technology
-is to firstly define an ITS for the particular technology, then to use it to formally map the abstract
-models into expressions in that technology.</p>
+<p>The final component on the top right is the Conformance (CNF) component, containing a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.</p>
+</div>
+<div class="paragraph">
+<p>The specifications published by openEHR constitute the <em>primary reference for all openEHR semantics</em>. The presentation style is deliberately intended to be clear and semantically close to the <em>ideas</em> being communicated. Accordingly, the specifications do not follow any particular programming language or idiom, but instead use  various formalisms and illustrations appropriate to each topic.</p>
+</div>
+<div class="paragraph">
+<p>Change control is performed by the <a href="http://www.openehr.org/programs/specification/editorialcommittee">openEHR Specifications Editorial Committee (SEC)</a>, using a formal process based on Problem Reports (PRs) and Change Reqests (CRs), and a formal release cycle. The details are described in the <a href="http://www.openehr.org/programs/specification">Specifications Program part of the openEHR website</a>.</p>
+</div>
+<div class="paragraph">
+<p>The openEHR specification documents and related formal artefacts may be found on the <a href="http://www.openehr.org/programs/specification/workingbaseline">specifications home page</a>. The documents are maintained in [Asciidoctor] source form, and make heavy use of included formal elements, including extracted UML class texts and diagrams, as well as grammar files.</p>
 </div>
 </div>
 </div>
@@ -651,20 +661,19 @@ models into expressions in that technology.</p>
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>This section provides a brief overview of the requirements underpinning the openEHR architecture.
-The openEHR architecture embodies 15 years of research from numerous projects and standards from
-around the world. It has been designed based on requirements captured over many years.</p>
+<p>The openEHR architecture embodies over 20 years of research from numerous projects and standards from
+around the world. It has been designed based on requirements captured over many years, including those developed in the <a href="http://www.openehr.org/resources/related_projects#gehr">EU FP3 Good European Health Record (GEHR) project (1992-1995)</a>.</p>
 </div>
 <div class="paragraph">
 <p>Because the architecture is highly generic, and particularly due to being archetype-driven, it satisfies
-many requirements outside the original concept of the "clinical EHR". For example, the same reference
-architecture can be used for veterinary health or even "care" of public infrastructure or listed
-buildings. This is due to the fact that the reference model embodies only concepts relating to "service
-and administrative events relating to a subject of care"; it is in archetypes and templates that specifics
+many requirements outside the original concept of the 'clinical EHR'. For example, the same reference
+architecture can be used for veterinary health or even care of public infrastructure or listed
+buildings. This is due to the fact that the reference model embodies only concepts relating to 'service
+and administrative events relating to a subject of care'; it is in archetypes and templates that specifics
 of the kinds of care events and subjects of care are defined. In another dimension, although one of the
-requirements for the openEHR EHR was a "patient-centric, longitudinal, shared care EHR", it is not
+requirements for the openEHR EHR was a 'patient-centric, longitudinal, shared care EHR', it is not
 limited to this, and can be used in purely episodic, specialist situations, e.g. as a radiology department
-record system. Requirements for various flavours of "health care record" can be categorised according
+record system. Requirements for various flavours of 'health care record' can be categorised according
 to the two dimensions, scope, and kind of subject, as shown below.</p>
 </div>
 <div id="scope_of_openehr" class="imageblock text-center" style="text-align: center">
@@ -679,7 +688,7 @@ bubbles contained within it. Requirements for a generic record of care for any k
 local deployment are represented by the top left bubble. The subsequent addition of requirements corresponding
 to living subjects and then human subjects is represented by the bubbles down the left side
 of the diagram. The requirements represented by the largest bubble on the left hand side correspond to
-"local health records for human care", such as radiology records, hospital EPRs and so on. Additional
+'local health records for human care', such as radiology records, hospital EPRs and so on. Additional
 sets of requirements represented by wider bubbles going across the diagram correspond to extending
 the scope of the content of the care record first to a whole subject (resulting in a patient-centric, longitudinal
 health record) and then to populations or cohorts of subjects, as done in population health and
@@ -688,10 +697,10 @@ the way to the bottom row of the diagram.</p>
 </div>
 <div class="paragraph">
 <p>Going down the diagram, requirements corresponding to increasing specificity of subject of care
-(from "any" to "human") are mostly implemented in openEHR by the use of archetypes. Going across
+(from 'any' to 'human') are mostly implemented in openEHR by the use of archetypes. Going across
 the diagram, the requirements corresponding to increasing scope of record content (from episodic to
 population) are mainly expressed in different deployments, generally going from standalone to a
-shared interoperable form. One of the key aspirations for EHRs today is the "integrated care record"
+shared interoperable form. One of the key aspirations for EHRs today is the 'integrated care record'
 sought by many health authorities today (see <a href="#ISO_20514">[ISO_20514]</a> for definition of ICEHR), which provides an informational framework for integrated
 shared care.</p>
 </div>
@@ -832,9 +841,9 @@ summarised as:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>One comprehensive statement of EHR requirements covering many of the above is the ISO Technical
-Report 18308 <a href="#ISO_18308">[ISO_18308]</a> for which an <a href="http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf">openEHR profile has been created</a>. The requirements summarised above
-are described in more detail in the openEHR EHR Information Model document.</p>
+<p>One comprehensive statement of EHR requirements covering many of the above is the <a href="#ISO_18308">ISO Technical
+Report 18308</a> for which an <a href="http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf">openEHR profile has been created</a>. The requirements summarised above
+are described in more detail in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html">openEHR EHR Information Model specification</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -902,7 +911,7 @@ of description of the real world. All models carry some kind of semantic content
 semantics are the same, or even of the same category. For example, some part of the <a href="http://www.ihtsdo.org">SNOMED CT</a>
 terminology describes types of bacterial infection, sites in the body, and symptoms. An information
 model might specify a logical type Quantity. A content model might define the model of information
-collected in an ante-natal examination by a physician. These types of "information" are qualitatively
+collected in an ante-natal examination by a physician. These types of 'information' are qualitatively
 different, and need to be developed and maintained separately within the overall model eco-system.
 The figure below illustrates these distinctions, and indicates what parts are built directly into software
 and databases.</p>
@@ -914,8 +923,8 @@ and databases.</p>
 <div class="title">Figure 4. The Ontological Landscape</div>
 </div>
 <div class="paragraph">
-<p>This figure shows a primary separation between "ontologies of information" i.e. models of information
-content, and "ontologies of reality" i.e. descriptions and classifications of real phenomena. These
+<p>This figure shows a primary separation between 'ontologies of information' i.e. models of information
+content, and 'ontologies of reality' i.e. descriptions and classifications of real phenomena. These
 two categories have to be separated because the type of authors, the representation and the purposes
 are completely different. In health informatics, this separation already exists by and large, due to the
 development of terminologies and classifications.</p>
@@ -925,7 +934,7 @@ development of terminologies and classifications.</p>
 and domain content models. The former category corresponds to semantics that are <em>invariant</em> across
 the domain (e.g. basic data types like coded terms, data structures like lists, identifiers), while the latter
 corresponds to <em>variable</em> domain level content descriptions - descriptions of information structures
-such as "microbiology result" rather than descriptions of actual phenomena in the real world (such as
+such as 'microbiology result' rather than descriptions of actual phenomena in the real world (such as
 infection by a microbe). This separation is not generally well understood, and historically, a great deal
 of domain-level semantics has been hard-wired into the software and databases, leading to relatively
 unmaintainable systems.</p>
@@ -939,7 +948,7 @@ systems.</p>
 <div class="sect3">
 <h4 id="_two_level_modelling_and_archetypes"><a class="anchor" href="#_two_level_modelling_and_archetypes"></a>4.1.1. Two-level Modelling and Archetypes</h4>
 <div class="paragraph">
-<p>One of the key paradigms on which openEHR is based is known as "two-level" modelling, described
+<p>One of the key paradigms on which openEHR is based is known as 'two-level' modelling, described
 in <a href="#Beale_2000">[Beale_2000]</a>. Under the two-level approach, a stable reference information model constitutes the first level
 of modelling, while formal definitions of clinical content in the form of archetypes and templates constitute
 the second. Only the first level (the Reference Model) is implemented in software, significantly
@@ -953,7 +962,7 @@ since they are built to consume archetypes and templates as they are developed i
 <p>Archetypes and templates also act as a well-defined semantic gateway to terminologies, classifications
 and computerised clinical guidelines. The alternative in the past has been to try to make systems
 function solely with a combination of hard-wired software and terminology. This approach is flawed,
-since terminologies don’t contain definitions of domain content (e.g. "microbiology result"), but
+since terminologies don’t contain definitions of domain content (e.g. 'microbiology result'), but
 rather facts about the real world (e.g. kinds of microbes and the effects of infection in humans).</p>
 </div>
 <div class="paragraph">
@@ -967,8 +976,8 @@ shown in the following figure.</p>
 <div class="title">Figure 5. Archetype Meta-architecture</div>
 </div>
 <div class="paragraph">
-<p>In this figure, "data" as we know it in normal information systems (shown on the bottom left) conforms
-in the usual way to an object model (top left). Systems engineered in the "classic" way (i.e. all
+<p>In this figure, 'data' as we know it in normal information systems (shown on the bottom left) conforms
+in the usual way to an object model (top left). Systems engineered in the 'classic' way (i.e. all
 domain semantics are encoded somewhere in the software or database) are limited to this kind of
 architecture. With the use of two-level modelling, runtime data now conform semantically to archetypes
 as well as concretely to the reference model. All archetypes are expressed in a generic Archetype
@@ -983,7 +992,7 @@ Definition Language (ADL).</p>
 <div class="paragraph">
 <p>Two-level modelling significantly changes the dynamics of the systems development process. In the
 usual IT-intensive process, requirements are gathered via ad hoc discussions with users (typically via
-the well-known "use case" methodology), designs and models built from the requirements, implementation
+the well-known 'use case' methodology), designs and models built from the requirements, implementation
 proceeds from the design, followed by testing and deployment and ultimately the maintenance
 part of the lifecycle. This is usually characterised by ongoing high costs of implementation
 change and/or a widening gap between system capabilities and the requirements at any moment. The
@@ -1019,8 +1028,8 @@ semantics.</p>
 <div class="paragraph">
 <p>A second key design paradigm used in openEHR is that of separation of responsibilities within the
 computing environment. Complex domains are only tractable if the functionality is first partitioned
-into broad areas of interest, i.e. into a "system of systems" [6]. This principle has been understood in
-computer science for a long time under the rubrics "low coupling", "encapsulation" and "componentisation",
+into broad areas of interest, i.e. into a 'system of systems' <a href="#Maier_2000">[Maier_2000]</a>. This principle has been understood in
+computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation',
 and has resulted in highly successful frameworks and standards, including the OMG’s
 CORBA specifications and the explosion of object-oriented languages, libraries and frameworks.
 Each area of functionality forms a focal point for a set of models formally describing that area, which,
@@ -1052,7 +1061,7 @@ to integrate existing standards.</p>
 <p>The third computing paradigm used in openEHR is a natural consequence of the separation of responsibilities,
 namely the separation of viewpoints. When responsibilities are divided up among distinct
 components, it becomes necessary to define a) the information that each processes, and b) how they
-will communicate. These two aspects of models constitute the two central "viewpoints" of the ISO
+will communicate. These two aspects of models constitute the two central 'viewpoints' of the ISO
 RM/ODP model [4], marked in bold in the following:</p>
 </div>
 <div class="hdlist">
@@ -1105,11 +1114,11 @@ Model - and a computational viewpoint - the openEHR Service Model. The Engineeri
 corresponds to the Implementation Technology Specification (ITS) models of openEHR (see <a href="#_implementation_technology_specifications">Implementation Technology Specifications</a>), while the Technological viewpoint corresponds to
 the technologies and components used in an actual deployment. An important aspect of the division
 into viewpoints is that there is generally not a 1:1 relationship between model specifications in each
-viewpoint. For example, there might be a concept of "health mandate" (a CEN ENV13940 Continuity
+viewpoint. For example, there might be a concept of 'health mandate' (an <a href="#ISO_13940">ISO 13940</a> Continuity
 of Care concept) in the enterprise viewpoint. In the information viewpoint, this might have become a
 model containing many classes. In the computational viewpoint, the information structures defined in
 the information viewpoint are likely to recur in multiple services, and there may or may not be a
-"health mandate" service. The granularity of services defined in the computational viewpoint corresponds
+'health mandate' service. The granularity of services defined in the computational viewpoint corresponds
 most strongly to divisions of function in an enterprise or region, while the granularity of components
 in the information view points corresponds to the granularity of mental concepts in the
 problem space, the latter almost always being more fine-grained.</p>
@@ -1118,84 +1127,224 @@ problem space, the latter almost always being more fine-grained.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_openehr_package_structure"><a class="anchor" href="#_openehr_package_structure"></a>5. openEHR Package Structure</h2>
+<h2 id="_openehr_specification_structure"><a class="anchor" href="#_openehr_specification_structure"></a>5. openEHR Specification Structure</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>The following figure illustrates the package structure of the openEHR formal specifications. Three major packages
-are defined: rm, am and sm. All packages defining detailed models appear inside one of these
-outer packages, which may also be thought of as namespaces. They are conceptually defined within
-the org.openehr namespace, which can be represented in UML as further packages. In some implementation
-technologies (e.g. Java), the <code>org.openehr</code> namespace may actually be used within program
-texts.</p>
+<p>This section provides an overview of the specifications of the openEHR platform components (i.e. the components on the left side of the <a href="#specification_project">Specification Program figure</a>). Each component contains one or more specifications, which come in three types:</p>
 </div>
-<div id="global_package_structure" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="diagrams/global_package_structure.png" alt="global package structure" width="50%">
-</div>
-<div class="title">Figure 8. Global Package Structure of openEHR</div>
+<div class="ulist">
+<ul>
+<li>
+<p>language specifications, expressed in Antlr and/or other formal grammars;</p>
+</li>
+<li>
+<p>information models, expressed in UML;</p>
+</li>
+<li>
+<p>service models (APIs), expressed in UML.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>One of the important design aims of openEHR is to provide a coherent, consistent and re-usable type
-system for scientific and health computing. Accordingly, the ‘core’ of the RM (bottom-most layers)
-provides identifiers, data types, data structures and various common design patterns that can be reused
-ubiquitously in the upper layers of the RM, and equally in the AM and SM packages. The figure below
-illustrates the relationships between the key packages. Dependencies only exist from higher packages to
-lower packages.</p>
+<p>The specifications are published as generated documents consisting of text and various formal elements including:</p>
 </div>
-<div class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="75%">
+<div class="ulist">
+<ul>
+<li>
+<p>class texts extracted from UML models;</p>
+</li>
+<li>
+<p>diagrams extracted from UML models;</p>
+</li>
+<li>
+<p>grammar files, typically in Antlr4 syntax;</p>
+</li>
+<li>
+<p>EBNF grammars.</p>
+</li>
+</ul>
 </div>
-<div class="title">Figure 9. openEHR Package Structure</div>
+<div class="paragraph">
+<p>The ITS component consists of concrete artefacts of various forms including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>XML Schemas;</p>
+</li>
+<li>
+<p>API definitions (JSON / Swagger / Apiary etc).</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reference_model_rm"><a class="anchor" href="#_reference_model_rm"></a>5.2. Reference Model (RM)</h3>
+<h3 id="_consolidated_package_structure"><a class="anchor" href="#_consolidated_package_structure"></a>5.2. Consolidated Package Structure</h3>
 <div class="paragraph">
-<p>Each package defines a local context for definition of classes. The figure below illustrates the RM package
-structure. An informal division into "domain", "patterns" and "core" is shown. The packages in the
-latter group are generic, and are used by all openEHR models, in all the outer packages. Together,
-they provide identification, access to knowledge resources, data types and structures, versioning
-semantics, and support for archetyping. The packages in the former group define the semantics of
-enterprise level health information types, including the EHR and demographics.</p>
+<p>From the software engineering point of view, the consolidated package structure of UML packages from those specifications that contain them is useful, and is illustrated below. The top-level packages include: <code>base</code>, <code>rm</code>, <code>am</code>, and <code>sm</code>. All packages defining detailed models appear inside one of these outer packages, which are conceptually defined within the <code>org.openehr</code> namespace (also represented in UML as packages). In some implementation technologies (e.g. Java / Maven), the <code>org.openehr</code> namespace is formally used.</p>
+</div>
+<div class="paragraph">
+<p>These packages do not include the specifications for various languages (ADL, AQL etc), identification systems, or downstream implementation technology specifictions (ITSs), which are included in the corresponding component or else in other components.</p>
+</div>
+<div id="consolidated_package_structure" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/global_package_structure.svg" alt="global package structure" width="35%">
+</div>
+<div class="title">Figure 8. Consolidated Package Structure of openEHR</div>
+</div>
+<div class="paragraph">
+<p>In the following sections, diagrams provide a visual association of the various specifications to the top-level UML packages, where it exists.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_base_component_base"><a class="anchor" href="#_base_component_base"></a>5.3. Base Component (BASE)</h3>
+<div class="paragraph">
+<p>The openEHR BASE component is illustrated below. On the right-hand side specifications are shown, of which three are based on UML models. These packages fall within the top-level <code>org.openehr.base</code> UML package, as shown on the left side of the figure.</p>
+</div>
+<div id="spec_component_base" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/spec_component-base.svg" alt="spec component base" width="60%">
+</div>
+<div class="title">Figure 9. BASE Component of openEHR</div>
+</div>
+<div class="paragraph">
+<p>The <code>base</code> package defines identifiers, data types, data structures and various common design patterns that can be re-used ubiquitously in the <code>rm</code>, <code>am</code> and <code>sm</code> packages. The <code>base</code> packages are shown below.</p>
+</div>
+<div id="base_packages" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-packages.svg" alt="BASE packages">
+</div>
+<div class="title">Figure 10. Structure of <code>org.openehr.base</code> package</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In Release 1.0.3 and earlier releases, the contents of the <code>base</code> package resided in the RM <code>support</code> paackage.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sub-sections describe the BASE component specifications.</p>
+</div>
+<div class="sect3">
+<h4 id="_foundation_types"><a class="anchor" href="#_foundation_types"></a>5.3.1. Foundation Types</h4>
+<div class="paragraph">
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/foundation_types.html">Foundation Types specification</a> provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the <code>foundations_types</code> package. This contains the special package <code>primitive_types</code>, which describes inbuilt types <em>assumed</em> by openEHR in external type systems. This provides a basis for detremining mappings from openEHR to programming languages. For example such as <code>String.<em>is_empty</em></code> in openEHR might be mapped to <code>String.<em>empty()</em></code> in a programming environment.</p>
+</div>
+<div class="paragraph">
+<p>Other foundation types include basic structures (<code>Array&lt;T&gt;</code>, <code>Hash&lt;K,V&gt;</code> etc), time types, and various types enabling functional concepts (principally lambda expressions) to be expressed in the openEHR specifications.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_base_types"><a class="anchor" href="#_base_types"></a>5.3.2. Base Types</h4>
+<div class="paragraph">
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/base_types.html">Base Types specification</a> defines the most basic concepts internal to <a href="http://www.openehr.org/releases/BASE/latest/foundation_types.html" class="bare">http://www.openehr.org/releases/BASE/latest/foundation_types.html</a>, used by all other packages. It is comprised of the <code>definitions</code>, <code>identification</code>, <code>terminology</code> and  <code>measurement</code> sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_resource_model"><a class="anchor" href="#_resource_model"></a>5.3.3. Resource Model</h4>
+<div class="paragraph">
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/resource.html">Resource Model specification</a> defines a generic 'authored resource' class that carries meta-data relating to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>authorship;</p>
+</li>
+<li>
+<p>copyright, licences and other related meta-data;</p>
+</li>
+<li>
+<p>languages and translations;</p>
+</li>
+<li>
+<p>annotations.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The class is used via inheritance to provide types in other models with meta-data to enable instances to be managed as resources with appropriate meta-data.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_basic_meta_model_bmm"><a class="anchor" href="#_basic_meta_model_bmm"></a>5.3.4. Basic Meta-Model (BMM)</h4>
+<div class="paragraph">
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/bmm.html">BMM specification</a> defines a generic meta-model, suitable for formally expressing other models, including those of openEHR. It is roughly an equivalent of UML&#8217;s XMI, but fixes various problems with the latter around generic (template) types, while being vastly less complex and obscure. BMM models can be expressed in the ODIN or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the <a href="http://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_object_data_instance_notation_odin"><a class="anchor" href="#_object_data_instance_notation_odin"></a>5.3.5. Object Data Instance Notation (ODIN)</h4>
+<div class="paragraph">
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a> is used to implement faithful machine serialisation and deserialisation of in-memory object graphs, and is a rough equivalent of JSON, YAML and some kinds of XML. It provides more leaf types than any of these, and also supports in-built typing (required to properly represent dynamic binding of polymorphic attributes) and Xpath-like paths.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reference_model_component_rm"><a class="anchor" href="#_reference_model_component_rm"></a>5.4. Reference Model Component (RM)</h3>
+<div class="paragraph">
+<p>The openEHR RM component is illustrated below. All of its specifications are UML model-based.</p>
+</div>
+<div id="spec_component_rm" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/spec_component-rm.svg" alt="spec component rm" width="50%">
+</div>
+<div class="title">Figure 11. RM Component of openEHR</div>
+</div>
+<div class="paragraph">
+<p>The figure below illustrates the <code>rm</code> package structure. The packages are in two categories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>domain-related</em>: <code>ehr</code>, <code>demogaphic</code>, <code>ehr_extract</code>, <code>composition</code>, <code>integration</code>;</p>
+</li>
+<li>
+<p><em>generic</em>: <code>common</code>, <code>data_structures</code>, <code>data_types</code>, <code>support</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The packages in the latter group are generic, and are used by all openEHR models, in all the outer packages. Together, they provide identification, access to knowledge resources, data types and structures, versioning semantics, and support for archetyping. The packages in the first group define the semantics of enterprise level health information types, including the EHR and demographics.</p>
 </div>
 <div id="rm_packages" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/RM-packages.svg" alt="RM packages">
+<img src="../../../specifications-RM/docs/UML/diagrams/RM-packages.svg" alt="RM packages">
 </div>
-<div class="title">Figure 10. Structure of org.openehr.rm package</div>
+<div class="title">Figure 12. Structure of <code>org.openehr.rm</code> package</div>
 </div>
 <div class="paragraph">
-<p>Each outer package in the figure <a href="#rm_packages">Structure of org.openehr.rm package</a> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference
-Model document), documenting
-an "information model" (IM). The package structure will normally be replicated in all ITS expressions,
-e.g. XML schema, programming languages like Java, C# and Eiffel, and interoperability
-definitions like WSDL, IDL and .Net.</p>
+<p>Each outer package in the figure <a href="#rm_packages">Structure of <code>org.openehr.rm</code> package</a> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference Model document), documenting an "information model" (IM). The package structure will normally be replicated in all ITS expressions,
+e.g. XML schema, programming languages like Java, C# and Eiffel, and interoperability definitions like WSDL, IDL and .Net.</p>
 </div>
 <div class="sect3">
-<h4 id="_package_overview"><a class="anchor" href="#_package_overview"></a>5.2.1. Package Overview</h4>
+<h4 id="_package_overview"><a class="anchor" href="#_package_overview"></a>5.4.1. Package Overview</h4>
 <div class="paragraph">
-<p>The following sub-sections provide a brief overview of the RM packages.</p>
+<p>The following sub-sections provide a brief overview of the <code>rm</code> sub-packages.</p>
 </div>
 <div class="sect4">
-<h5 id="_support_information_model"><a class="anchor" href="#_support_information_model"></a>5.2.1.1. Support Information Model</h5>
-<div class="paragraph">
-<p>This package describes the most basic concepts, required by all other packages, and is comprised of
-the <code>definitions</code>, <code>identification</code>, <code>terminology</code> and <code>measurement</code> packages. The semantics defined in
-these packages allow all other models to use identifiers and to have access to knowledge services like
-terminology and other reference data.</p>
-</div>
-<div class="paragraph">
-<p>The special package <code>assumed_types</code>, describing what basic types are assumed by openEHR in external type systems is
-included in the <code>support</code> package, although it may move depending on the use of UML and other modelling tools.
-The package provides a guide for integrating openEHR models proper into the type systems of implementation
-technologies, e.g. mappings such as <code>String</code>.<code><em>is_empty</em></code> and a routine <code>empty()</code> in a programming library.</p>
+<h5 id="_support_information_model"><a class="anchor" href="#_support_information_model"></a>5.4.1.1. Support Information Model</h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+this part of the RM has been moved to the BASE component; see above.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_data_types_information_model"><a class="anchor" href="#_data_types_information_model"></a>5.2.1.2. Data Types Information Model</h5>
+<h5 id="_data_types_information_model"><a class="anchor" href="#_data_types_information_model"></a>5.4.1.2. Data Types Information Model</h5>
 <div class="paragraph">
 <p>A set of clearly defined data types underlies all other models, and provides a number of general and
 clinically specific types required for all kinds of health information. The following categories of data
@@ -1255,7 +1404,7 @@ Uri
 </div>
 </div>
 <div class="sect4">
-<h5 id="_data_structures_information_model"><a class="anchor" href="#_data_structures_information_model"></a>5.2.1.3. Data Structures Information Model</h5>
+<h5 id="_data_structures_information_model"><a class="anchor" href="#_data_structures_information_model"></a>5.4.1.3. Data Structures Information Model</h5>
 <div class="paragraph">
 <p>In most openEHR information models, generic data structures are used for expressing content whose
 particular structure will be defined by archetypes. The generic structures are as follows.</p>
@@ -1306,28 +1455,28 @@ History
 </div>
 </div>
 <div class="sect4">
-<h5 id="_common_information_model"><a class="anchor" href="#_common_information_model"></a>5.2.1.4. Common Information Model</h5>
+<h5 id="_common_information_model"><a class="anchor" href="#_common_information_model"></a>5.4.1.4. Common Information Model</h5>
 <div class="paragraph">
 <p>Several concepts that recur in higher level packages are defined in the <code>common</code> package. For example, the classes <code>LOCATABLE</code> and <code>ARCHETYPED</code> provide the link between information and archetype models. The classes <code>ATTESTATION</code> and <code>PARTICIPATION</code> are generic domain concepts that provide a standard way of documenting involvement of clinical professionals and other agents with the EHR, including signing.</p>
 </div>
 <div class="paragraph">
-<p>The change_control package defines a formal model of change management and versioning which applies to any service that needs to be able to supply previous states of its information, in particular the demographic and EHR services. The key semantics of versioning in openEHR are described in the <a href="#_versioning">Versioning</a> section.</p>
+<p>The <code>change_control</code> package defines a formal model of change management and versioning which applies to any service that needs to be able to supply previous states of its information, in particular the demographic and EHR services. The key semantics of versioning in openEHR are described in the <a href="#_versioning">Versioning</a> section.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_security_information_model"><a class="anchor" href="#_security_information_model"></a>5.2.1.5. Security Information Model</h5>
+<h5 id="_security_information_model"><a class="anchor" href="#_security_information_model"></a>5.4.1.5. Security Information Model</h5>
 <div class="paragraph">
 <p>The Security Information Model defines the semantics of access control and privacy setting for information in the EHR.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_ehr_information_model"><a class="anchor" href="#_ehr_information_model"></a>5.2.1.6. EHR Information Model</h5>
+<h5 id="_ehr_information_model"><a class="anchor" href="#_ehr_information_model"></a>5.4.1.6. EHR Information Model</h5>
 <div class="paragraph">
 <p>The EHR IM includes the <code>ehr</code> and <code>composition</code> packages, and defines the containment and context semantics of the key concepts <code>EHR</code>, <code>COMPOSITION</code>, <code>SECTION</code>, and <code>ENTRY</code>. These classes are the major coarse-grained components of the EHR, and correspond directly to the classes of the same names in CEN EN13606:2005 and fairly closely to the "levels" of the same names in the HL7 Clinical Document Architecture (CDA) release 2.0.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_ehr_extract_information_model"><a class="anchor" href="#_ehr_extract_information_model"></a>5.2.1.7. EHR Extract Information Model</h5>
+<h5 id="_ehr_extract_information_model"><a class="anchor" href="#_ehr_extract_information_model"></a>5.4.1.7. EHR Extract Information Model</h5>
 <div class="paragraph">
 <p>The EHR Extract IM defines how an EHR extract is built from <code>COMPOSITIONs</code>, demographic, and
 access control information from the EHR. A number of Extract variations are supported, including
@@ -1336,7 +1485,7 @@ synchronisation Extract.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_integration_information_model"><a class="anchor" href="#_integration_information_model"></a>5.2.1.8. Integration Information Model</h5>
+<h5 id="_integration_information_model"><a class="anchor" href="#_integration_information_model"></a>5.4.1.8. Integration Information Model</h5>
 <div class="paragraph">
 <p>The Integration model defines the class <code>GENERIC_ENTRY</code>, a subtype of <code>ENTRY</code> used to represent freeform
 legacy or external data as a tree. This Entry type has its own archetypes, known as "integration
@@ -1345,7 +1494,7 @@ integration system. See <a href="#_integrating_openehr_with_other_systems">Integ
 </div>
 </div>
 <div class="sect4">
-<h5 id="_demographics_information_model"><a class="anchor" href="#_demographics_information_model"></a>5.2.1.9. Demographics Information Model</h5>
+<h5 id="_demographics_information_model"><a class="anchor" href="#_demographics_information_model"></a>5.4.1.9. Demographics Information Model</h5>
 <div class="paragraph">
 <p>The demographic model defines generic concepts of <code>PARTY</code>, <code>ROLE</code> and related details such as contact
 addresses. The archetype model defines the semantics of constraint on <code>PARTYs</code>, allowing archetypes
@@ -1357,25 +1506,46 @@ PIDS standard <a href="#Corbamed_PIDS">[Corbamed_PIDS]</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_archetype_model_am"><a class="anchor" href="#_archetype_model_am"></a>5.3. Archetype Model (AM)</h3>
+<h3 id="_archetype_model_component_am"><a class="anchor" href="#_archetype_model_component_am"></a>5.5. Archetype Model Component (AM)</h3>
 <div class="paragraph">
-<p>The openEHR am package contains the models necessary to describe the semantics of archetypes and
-templates, and their use within openEHR. These include ADL, the Archetype Definition Language
-(expressed in the form of a syntax specification), the <code>archetype</code> and <code>template</code> packages, defining
-the object-oriented semantics of archetypes and templates, and the <code>openehr_profile</code> package,
-which defines a profile of the generic archetype model defined in the archetype package, for use in
-openEHR (and other health computing endeavours). The internal structure of the <code>am</code> package is
-shown below.</p>
+<p>The openEHR AM component is illustrated below.</p>
 </div>
-<div id="archetype_package" class="imageblock text-center" style="text-align: center">
+<div id="spec_component_am" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/archetype_package.png" alt="archetype package" width="70%">
+<img src="diagrams/spec_component-am.svg" alt="spec component am">
 </div>
-<div class="title">Figure 11. Structure of the org.openehr.am package</div>
+<div class="title">Figure 13. AM Component of openEHR</div>
+</div>
+<div class="paragraph">
+<p>The openEHR <code>am</code> package contains the models necessary to describe the semantics of archetypes and templates, and their use within openEHR. There are currently two extant major versions of archetype technology in openEHR: 'ADL 1.4', the original version, and 'ADL 2', a more modern version, which is slowly being adopted. Both versions are maintained side by side, to enable implementers to work with the version(s) that suit their needs.</p>
+</div>
+<div class="paragraph">
+<p>In both versions, the Archetype Model consists of ADL, the Archetype Definition Language (expressed in the form of a syntax specification), and the Archetype Object Model (AOM), a structured model of archetypes.</p>
+</div>
+<div class="paragraph">
+<p>The package structure of the version 2 form of the AM is shown below.</p>
+</div>
+<div id="aom_2_packages" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../../../specifications-AM/docs/UML/diagrams/AOM-packages.png" alt="AOM packages">
+</div>
+<div class="title">Figure 14. Structure of the ADL 1.4 version <code>org.openehr.am</code> package</div>
+</div>
+<div class="paragraph">
+<p>The package structure of the version 1.4 form of the AM is shown below.</p>
+</div>
+<div id="aom_14_packages" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../../../specifications-AM/docs/UML/AOM1.4/diagrams/AOM-packages.png" alt="AOM packages">
+</div>
+<div class="title">Figure 15. Structure of the ADL 2 <code>org.openehr.am</code> package</div>
+</div>
+<div class="paragraph">
+<p>Another key specification is the Archetype Identification specification, which defines semantics for archetype identifiers, versioning and life-cycle. The formal specifications may be found on the <a href="http://www.openehr.org/releases/AM/latest/docs/index">Archetype Model index page</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_service_model_sm"><a class="anchor" href="#_service_model_sm"></a>5.4. Service Model (SM)</h3>
+<h3 id="_service_model_sm"><a class="anchor" href="#_service_model_sm"></a>5.6. Service Model (SM)</h3>
 <div class="paragraph">
 <p>The openEHR service model includes definitions of basic services in the health information environment,
 centred around the EHR. It is illustrated in the figure below. The set of services actually included
@@ -1385,10 +1555,10 @@ will undoubtedly evolve over time, so this diagram should not be seen as definit
 <div class="content">
 <img src="diagrams/service_packages.png" alt="service packages" width="50%">
 </div>
-<div class="title">Figure 12. Structure of the org.openehr.sm package</div>
+<div class="title">Figure 16. Structure of the <code>org.openehr.sm</code> package</div>
 </div>
 <div class="sect3">
-<h4 id="_virtual_ehr_api"><a class="anchor" href="#_virtual_ehr_api"></a>5.4.1. Virtual EHR API</h4>
+<h4 id="_virtual_ehr_api"><a class="anchor" href="#_virtual_ehr_api"></a>5.6.1. Virtual EHR API</h4>
 <div class="paragraph">
 <p>The virtual EHR API defines the fine-grained interface to EHR data, at the level of Compositions and
 below. It allows an application to create new EHR information, and to request parts of an existing
@@ -1397,7 +1567,7 @@ Changes to the EHR are committed via the EHR service.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ehr_service_model"><a class="anchor" href="#_ehr_service_model"></a>5.4.2. EHR Service Model</h4>
+<h4 id="_ehr_service_model"><a class="anchor" href="#_ehr_service_model"></a>5.6.2. EHR Service Model</h4>
 <div class="paragraph">
 <p>The EHR service model defines the coarse-grained interface to electronic health record service. The
 level of granularity is openEHR Contributions and Compositions, i.e. a version-control / change-set
@@ -1410,7 +1580,7 @@ sets of ids of patients matching a particular criterion.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_archetype_service_model"><a class="anchor" href="#_archetype_service_model"></a>5.4.3. Archetype Service Model</h4>
+<h4 id="_archetype_service_model"><a class="anchor" href="#_archetype_service_model"></a>5.6.3. Archetype Service Model</h4>
 <div class="paragraph">
 <p>The archetype service model defines the interface to online repositories of archetypes, and can be
 used both by GUI applications designed for human browsing as well as access by other software services
@@ -1418,7 +1588,7 @@ such as the EHR.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_terminology_interface_model"><a class="anchor" href="#_terminology_interface_model"></a>5.4.4. Terminology Interface Model</h4>
+<h4 id="_terminology_interface_model"><a class="anchor" href="#_terminology_interface_model"></a>5.6.4. Terminology Interface Model</h4>
 <div class="paragraph">
 <p>The terminology interface service provides the means for all other services to access any terminology
 available in the health information environment, including basic classification vocabularies such as
@@ -1429,6 +1599,18 @@ based knowledge services in the environment, which along with services for acces
 guidelines, drug data and other "reference data" enables inferencing and decision support to be carried
 out in the environment.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_global_functional_view"><a class="anchor" href="#_global_functional_view"></a>5.7. Global Functional View</h3>
+<div class="paragraph">
+<p>The figure below shows a view of all key functional elements of the openEHR specifications, i.e. object models, languages and APIs. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements.</p>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/openehr_block_diagram.png" alt="openEHR_packages_and_languages" width="75%">
+</div>
+<div class="title">Figure 17. openEHR Packages and Languages View</div>
 </div>
 </div>
 </div>
@@ -1445,7 +1627,7 @@ out in the environment.</p>
 <div class="content">
 <img src="diagrams/minimal_openehr_system.png" alt="minimal_openehr_system" width="80%">
 </div>
-<div class="title">Figure 13. Minimal openEHR EHR System</div>
+<div class="title">Figure 18. Minimal openEHR EHR System</div>
 </div>
 <div class="paragraph">
 <p>The latter may be in the form of an existing PMI (patient master index) or other directory, or it may be
@@ -1465,8 +1647,8 @@ security-related) would normally be deployed, as shown in figure <a href="#healt
 <div class="paragraph">
 <p>As has been shown, the openEHR information models define information at varying levels of granularity.
 Fine-grained structures defined in the Support and Data types are used in the Data Structures
-and Common models; these are used in turn in the EHR, EHR Extract, Demographic and other "toplevel"
-models. These latter models define the "top-level structures" of openEHR, i.e. content structures
+and Common models; these are used in turn in the EHR, EHR Extract, Demographic and other 'top-level'
+models. These latter models define the 'top-level structures' of openEHR, i.e. content structures
 that can sensibly stand alone, and may be considered the equivalent of separate documents in a
 document-oriented system. In openEHR information systems, it is generally the top-level structures
 that are of direct interest to users. The major top-level structures include the following:</p>
@@ -1540,7 +1722,7 @@ of the openEHR EHR is shown below.</p>
 <div class="content">
 <img src="diagrams/high_level_ehr_structure.png" alt="high_level_ehr_structure" width="70%">
 </div>
-<div class="title">Figure 14. High-level Structure of the openEHR EHR</div>
+<div class="title">Figure 19. High-level Structure of the openEHR EHR</div>
 </div>
 <div class="paragraph">
 <p>In this figure, the parts of the EHR are as follows:</p>
@@ -1580,32 +1762,30 @@ The 21 data types provide for all types of data needed for clinical and administ
 <div class="content">
 <img src="diagrams/composition_structure.png" alt="composition_structure" width="80%">
 </div>
-<div class="title">Figure 15. Elements of an openEHR Composition</div>
+<div class="title">Figure 20. Elements of an openEHR Composition</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_entries_and_clinical_statements"><a class="anchor" href="#_entries_and_clinical_statements"></a>6.4. Entries and "clinical statements"</h3>
+<h3 id="_entries_and_clinical_statements"><a class="anchor" href="#_entries_and_clinical_statements"></a>6.4. Entries and Clinical Statements</h3>
 <div class="sect3">
 <h4 id="_entry_subtypes"><a class="anchor" href="#_entry_subtypes"></a>6.4.1. Entry Subtypes</h4>
 <div class="paragraph">
-<p>All clinical information created in the openEHR EHR is ultimately expressed in "Entries". An Entry
-is logically a single ‘clinical statement’, and may be a single short narrative phrase, but may also contain
+<p>All clinical information created in the openEHR EHR is ultimately expressed in 'Entries'. An Entry
+is logically a single 'clinical statement', and may be a single short narrative phrase, but may also contain
 a significant amount of data, e.g. an entire microbiology result, a psychiatric examination note, a
 complex medication order. In terms of actual content, the Entry classes are the most important in the
-openEHR EHR Information Model, since they define the semantics of all the ‘hard’ information in
+openEHR EHR Information Model, since they define the semantics of all the 'hard' information in
 the record. They are intended to be archetyped, and in fact, archetypes for Entries and sub-parts of
 Entries make up the vast majority of archetypes defined for the EHR.</p>
 </div>
 <div class="paragraph">
-<p>The openEHR <code>ENTRY</code> classes are shown below. There are five concrete subtypes:
-<code>ADMIN_ENTRY</code>, <code>OBSERVATION</code>, <code>EVALUATION</code>, <code>INSTRUCTION</code> and <code>ACTION</code>, of which the latter four
-are kinds of <code>CARE_ENTRY</code>.</p>
+<p>The openEHR <code>ENTRY</code> classes are shown below. There are five concrete subtypes: <code>ADMIN_ENTRY</code>, <code>OBSERVATION</code>, <code>EVALUATION</code>, <code>INSTRUCTION</code> and <code>ACTION</code>, of which the latter four are kinds of <code>CARE_ENTRY</code>.</p>
 </div>
 <div id="entry_model_simple" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/RM-composition.entry-simple.svg" alt="RM composition.entry simple" width="60%">
+<img src="../../../specifications-RM/docs/UML/diagrams/RM-composition.entry-simple.svg" alt="RM composition.entry simple" width="60%">
 </div>
-<div class="title">Figure 16. The openEHR Entry model (in EHR IM)</div>
+<div class="title">Figure 21. The openEHR Entry model (in EHR IM)</div>
 </div>
 <div class="paragraph">
 <p>The choice of these types is based on the clinical problem-solving process shown below.</p>
@@ -1614,12 +1794,12 @@ are kinds of <code>CARE_ENTRY</code>.</p>
 <div class="content">
 <img src="diagrams/clinical_investigator_process.png" alt="clinical_investigator_process" width="80%">
 </div>
-<div class="title">Figure 17. Relationship of information types to the investigation process</div>
+<div class="title">Figure 22. Relationship of information types to the investigation process</div>
 </div>
 <div class="paragraph">
 <p>This figure shows the cycle of information creation due to an iterative, problem solving process typical
-not just of clinical medicine but of science in general. The "system" as a whole is made up of two
-parts: the "patient system" and the "clinical investigator system". The latter consists of health carers,
+not just of clinical medicine but of science in general. The 'system' as a whole is made up of two
+parts: the 'patient system' and the 'clinical investigator system'. The latter consists of health carers,
 and may include the patient (at points in time when the patient performs observational or therapeutic
 activities), and is responsible for understanding the state of the patient system and delivering care to
 it. A problem is solved by making observations, forming opinions (hypotheses), and prescribing
@@ -1627,34 +1807,24 @@ actions (instructions) for next steps, which may be further investigation, or ma
 designed to resolve the problem, and finally, executing the instructions (actions).</p>
 </div>
 <div class="paragraph">
-<p>This process model is a synthesis of Lawrence Weed’s "problem-oriented" method of EHR recording,
-and later related efforts, including the model of Rector, Nowlan &amp; Kay <a href="#Rector_1994">[Rector_1994]</a>, and the "hypothetico-deductive" model of reasoning (see e.g. <a href="#Elstein_1987">[Elstein_1987]</a>). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older
-and more experienced) rely on pattern recognition and direct retrieval of plans used previously with
-similar patients or prototype models. The investigator process model used in openEHR is compatible
-with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific
-number or size of iterations to bring the process to a conclusion, nor even require all steps to be
-present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the
-openEHR Entry model does not impose a process model, it only provides the possible types of information
-that might occur.</p>
+<p>This process model is a synthesis of Lawrence Weed&#8217;s 'problem-oriented' method of EHR recording, and later related efforts, including the model of Rector, Nowlan &amp; Kay <a href="#Rector_1994">[Rector_1994]</a>, and the 'hypothetico-deductive' model of reasoning (see e.g. <a href="#Elstein_1987">[Elstein_1987]</a>). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process model used in openEHR is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion, nor even require all steps to be present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the openEHR Entry model does not impose a process model, it only provides the possible types of information that might occur.</p>
 </div>
 <div class="sect4">
 <h5 id="_ontology_of_entry_types"><a class="anchor" href="#_ontology_of_entry_types"></a>6.4.1.1. Ontology of Entry Types</h5>
 <div class="paragraph">
-<p>In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the
-subtypes of Entry described above. There are many subtypes of each of these types, of which some
-are shown in the figure below.</p>
+<p>In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the subtypes of Entry described above. There are many subtypes of each of these types, of which some are shown in the figure below.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/CIR_ontology.png" alt="CIR_ontology" width="80%">
 </div>
-<div class="title">Figure 18. Ontology of Recorded Information</div>
+<div class="title">Figure 23. Ontology of Recorded Information</div>
 </div>
 <div class="paragraph">
-<p>The key top-level categories are ‘care information’ and ‘administrative information’. The former
+<p>The key top-level categories are 'care information' and 'administrative information'. The former
 encompasses all statements that might be recorded at any point during the care process, and consists
-of the major sub-categories on which the Entry model is based, namely ‘observation’, ‘opinion’,
-‘instruction’, and ‘action’ (a kind of observation) which themselves correspond to the past, present
+of the major sub-categories on which the Entry model is based, namely 'observation', 'opinion',
+'instruction', and 'action' (a kind of observation) which themselves correspond to the past, present
 and future in time. The administrative information category covers information which is not generated
 by the care process proper, but relates to organising it, such as appointments and admissions.
 This information is not about care, but about the logistics of care delivery.
@@ -1668,14 +1838,14 @@ express the information of interest (say a risk assessment) in terms of a partic
 this case, Evaluation). In a system where Entries are thus modelled, there will be no danger of incorrectly
 identifying the various kinds of Entries, as long as the Entry subtype, time, and certainty/negation are taken into account.
 Note that even if the ontology shown in the <a href="#CIR_ontology">[CIR_ontology]</a> figure is not correct (undoubtedly
-it isn’t), archetypes will be constructed to account for each improved idea of what such categories
+it isn&#8217;t), archetypes will be constructed to account for each improved idea of what such categories
 should really be.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_clinical_statement_status_and_negation"><a class="anchor" href="#_clinical_statement_status_and_negation"></a>6.4.1.2. Clinical Statement Status and Negation</h5>
 <div class="paragraph">
-<p>A well-known problem in clinical information recording is the assignment of "status" to recorded
+<p>A well-known problem in clinical information recording is the assignment of 'status' to recorded
 items. Kinds of status include variants like "actual value of P" (P stands for some phenomenon),
 "family history of P", "risk of P", "fear of P", as well as negation of any of these, i.e. "not/no P", "no
 history of P" etc. A proper analysis of these so called statuses shows that they are not "statuses" at all,
@@ -1703,11 +1873,11 @@ Section.</p>
 <div class="paragraph">
 <p>A key part of the investigation process shown in figure <a href="#clinical_investigator_process">[clinical_investigator_process]</a>, and indeed healthcare in general, is
 intervention. Specifying and managing interventions (whether the simplest prescriptions or complex
-surgery and therapy) is a hard problem for information systems because it is in "future time" (meaning
+surgery and therapy) is a hard problem for information systems because it is in 'future time' (meaning
 that intervention activities have to be expressed using branching/looping time specifications, not
 the simple linear time of observations), unexpected events can change things (e.g. patient reaction to
 drugs), and the status of a given intervention can be hard to track, particularly in distributed systems.
-However, from the health professional’s point of view, almost nothing is more basic than wanting to
+However, from the health professional&#8217;s point of view, almost nothing is more basic than wanting to
 find out: what medications is this patient on, since when, and what is the progress?
 The openEHR approach to these challenges is to use the Entry type <code>INSTRUCTION</code>, its subpart
 <code>ACTIVITY</code> to specify interventions in the future, and the Entry subtype <code>ACTION</code> to record what has
@@ -1719,7 +1889,7 @@ actually happened. A number of important features are provided in this model, in
 <p>a single, flexible way of modelling all interventions, whether they be single drug medication orders or complex hospital-based therapies;</p>
 </li>
 <li>
-<p>a way of knowing the state of any intervention, in terms of the states in a standard state machine, shown below; this allows a patient’s EHR to be queried in a standard way so as to return "all active medications", "all suspended interventions" etc.;</p>
+<p>a way of knowing the state of any intervention, in terms of the states in a standard state machine, shown below; this allows a patient&#8217;s EHR to be queried in a standard way so as to return "all active medications", "all suspended interventions" etc.;</p>
 </li>
 <li>
 <p>a way of mapping particular care process flow steps to the standard state machine states, enabling health professionals to define and view interventions in terms they understand;</p>
@@ -1736,9 +1906,9 @@ environment.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/instruction_state_machine.png" alt="instruction_state_machine">
+<img src="../../../specifications-RM/docs/UML/diagrams/RM-InstructionStateMachine.svg" alt="instruction_state_machine">
 </div>
-<div class="title">Figure 19. openEHR standard Instruction State Machine</div>
+<div class="title">Figure 24. openEHR standard Instruction State Machine</div>
 </div>
 </div>
 <div class="sect2">
@@ -1758,7 +1928,7 @@ Time is described in detail in the <a href="http://www.openehr.org/releases/RM/l
 <div class="content">
 <img src="diagrams/time_in_the_ehr.png" alt="time_in_the_ehr" width="70%">
 </div>
-<div class="title">Figure 20. Time in the EHR</div>
+<div class="title">Figure 25. Time in the EHR</div>
 </div>
 </div>
 <div class="sect2">
@@ -1777,7 +1947,7 @@ Entries (i.e. Observations, etc), in a language attribute. This allows both Comp
 languages in the EHR, and Entries of different languages in the same Composition. Additionally,
 within Entries, text and coded text items may optionally have language recorded if it is different from
 the language of the enclosing Entry, or where these types are used within other non-Entry structures
-that don’t indicate language.</p>
+that don&#8217;t indicate language.</p>
 </div>
 <div class="paragraph">
 <p>The use of these features is mostly likely to occur due to translation, although in some cases a truly
@@ -1787,7 +1957,7 @@ as to make the information available in the primary language of the EHR. The act
 any other interaction with the EHR) will cause changes to the record, in the form of new Versions.
 New translations can conveniently be recorded as branch versions, attached to the version of which
 they are a translation. This is not mandatory, but provides a convenient way to store translations so
-that they don’t appear to replace the original content.</p>
+that they don&#8217;t appear to replace the original content.</p>
 </div>
 </div>
 </div>
@@ -1954,25 +2124,19 @@ requirements and configurations can nevertheless implement the basic principles 
 way.</p>
 </div>
 <div class="paragraph">
-<p>The figure below illustrates the main security measures directly specified by the openEHR architecture.
-These include EHR/demographic separation and an EHR-wide access control object. At the level of
-versioned objects, commit audits (mandatory), digital signatures and hashes are available. The following
-subsections describe these features in more detail.</p>
+<p>The figure below illustrates the main security measures directly specified by the openEHR architecture. These include EHR/demographic separation and an EHR-wide access control object. At the level of versioned objects, commit audits (mandatory), digital signatures and hashes are available. The following subsections describe these features in more detail.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/security_features.png" alt="security_features" width="80%">
 </div>
-<div class="title">Figure 21. Security Features of the openEHR EHR</div>
+<div class="title">Figure 26. Security Features of the openEHR EHR</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_security_policy"><a class="anchor" href="#_security_policy"></a>7.3.2. Security Policy</h4>
 <div class="paragraph">
-<p>In and of itself, the openEHR EHR imposes only a minimal security policy profile which could be
-regarded as necessary, but generally not sufficient for a deployed system (i.e. other aspects would still
-need to be implemented in layers whose semantics are not defined in openEHR). The following policy
-principles are embodied in openEHR.</p>
+<p>In and of itself, the openEHR EHR imposes only a minimal security policy profile which could be regarded as necessary, but generally not sufficient for a deployed system (i.e. other aspects would still need to be implemented in layers whose semantics are not defined in openEHR). The following policy principles are embodied in openEHR.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1986,8 +2150,7 @@ principles are embodied in openEHR.</p>
 </dd>
 <dt class="hdlist1">Audit trailing</dt>
 <dd>
-<p>All changes made to the EHR including content objects as well as the EHR status and access control objects are audit-trailed with user identity, time-stamp, reason, optionally digital signature and relevant version information; one exception is where the modifier is the patient, in which case, a symbolic identifier can be used (known as PARTY_SELF in
-openEHR; see next point).</p>
+<p>All changes made to the EHR including content objects as well as the EHR status and access control objects are audit-trailed with user identity, time-stamp, reason, optionally digital signature and relevant version information; one exception is where the modifier is the patient, in which case, a symbolic identifier can be used (known as <code>PARTY_SELF</code> in openEHR; see next point).</p>
 </dd>
 <dt class="hdlist1">Anonymity</dt>
 <dd>
@@ -2006,8 +2169,7 @@ openEHR; see next point).</p>
 </dd>
 <dt class="hdlist1">Access control of access settings</dt>
 <dd>
-<p>a gate-keeper controls access to the EHR access control
-settings. The gate-keeper is established at the time of EHR creation as being one of the identities known in the EHR, usually the patient for mentally competent adults, otherwise a parent, legal guardian, advocate or other responsible person. The gate-keeper determines who can make changes to the access control list. All changes to the list are audit-trailed as for normal data (achieved due to normal versioning).</p>
+<p>a gate-keeper controls access to the EHR access control settings. The gate-keeper is established at the time of EHR creation as being one of the identities known in the EHR, usually the patient for mentally competent adults, otherwise a parent, legal guardian, advocate or other responsible person. The gate-keeper determines who can make changes to the access control list. All changes to the list are audit-trailed as for normal data (achieved due to normal versioning).</p>
 </dd>
 <dt class="hdlist1">Privacy</dt>
 <dd>
@@ -2099,7 +2261,7 @@ time, reason, and potentially other meta-data.</p>
 (i.e. for each Version of any logical item, such as medications list, encounter note etc.). The signature
 is created as a private-key encryption (e.g. RSA-1) of a hash (e.g. MD5) of a canonical representation
 (such as in schema-based XML) of the Version being committed. A likely candidate for defining the
-signature and digest strings in openEHR is the openPGP message format (IETF RFC2440 <a href="#rfc_2440">[rfc_2440]</a>), due to
+signature and digest strings in openEHR is the openPGP message format (<a href="#rfc_2440">IETF RFC2440</a>), due to
 being an open specification and self-describing. The use of RFC2440 for the format does not imply
 the use of the PGP distributed certificate infrastructure, or indeed any certification infrastructure;
 openEHR is agnostic on this point. If no public key or equivalent infrastructure is available, the
@@ -2111,7 +2273,7 @@ shown in the following figure.</p>
 <div class="content">
 <img src="diagrams/version_signature.png" alt="version_signature" width="80%">
 </div>
-<div class="title">Figure 22. Version Signature</div>
+<div class="title">Figure 27. Version Signature</div>
 </div>
 <div class="paragraph">
 <p>The signing of data in a versioning system acts as an integrity check (the digest performs this function),
@@ -2141,7 +2303,7 @@ this external identifier is actually set in <code>PARTY_SELF</code> instances, a
 <div class="ulist">
 <ul>
 <li>
-<p>Nowhere in the EHR (i.e. every <code>PARTY_SELF</code> instance is a blank placeholder). This is the most secure approach, and means that the link between the EHR and the patient has to be done outside the EHR, by associating <code>EHR</code>.<code><em>ehr_id</em></code> and the subject identifier. This approach is more likely for more open environments.</p>
+<p>Nowhere in the EHR (i.e. every <code>PARTY_SELF</code> instance is a blank placeholder). This is the most secure approach, and means that the link between the EHR and the patient has to be done outside the EHR, by associating <code>EHR.<em>ehr_id</em></code> and the subject identifier. This approach is more likely for more open environments.</p>
 </li>
 <li>
 <p>Once only in the <code>EHR_STATUS</code> object (subject attribute), and nowhere else. This is also relatively secure, if the EHR Status object is protected in some way.</p>
@@ -2170,13 +2332,7 @@ This object acts as a gateway for all information access, and any access decisio
 on the policies and rules it contains.</p>
 </div>
 <div class="paragraph">
-<p>One of the problems with defining the semantics of the EHR Access object is that there is currently
-no published formal, proven model of access control for shared health information. Various efforts
-underway include the CEN EN13606 part 4 work, the ISO PMAC (Privilege Management and
-Access Control) work being done in TC/215 based on the generic security standard ISO/IEC 17799.
-Undoubtedly experimental and even some limited production health information security implementations
-exist. In reality however, no large-scale shared EHR deployments exist, and so security solutions
-to date are still developmental.</p>
+<p>One of the problems with defining the semantics of the EHR Access object is that there is currently no published formal, proven model of access control for shared health information. Relevant standards include <a href="#ISO_13606-4">ISO EN13606 part 4</a>, the <a href="#ISO_22600">ISO PMAC (Privilege Management and Access Control) standard</a>. Undoubtedly experimental and even some limited production health information security implementations exist. In reality however, no large-scale shared EHR deployments exist, and so security solutions to date are still developmental.</p>
 </div>
 <div class="paragraph">
 <p>The openEHR architecture is therefore designed to accommodate alternative models of access control,
@@ -2205,7 +2361,7 @@ over time. A version-controlled top-level content structure is visualised below.
 <div class="content">
 <img src="diagrams/version_control_structures.png" alt="version_control_structures" width="80%">
 </div>
-<div class="title">Figure 23. Version Signature</div>
+<div class="title">Figure 28. Version Signature</div>
 </div>
 <div class="paragraph">
 <p>Versioning of single top-level structures is a necessary, but not sufficient requirement for a repository
@@ -2267,7 +2423,7 @@ abstraction is visualised as follows.</p>
 <div class="content">
 <img src="diagrams/controlled_repository.png" alt="controlled_repository" width="70%">
 </div>
-<div class="title">Figure 24. General Structure of a Controlled Repository</div>
+<div class="title">Figure 29. General Structure of a Controlled Repository</div>
 </div>
 </div>
 <div class="sect3">
@@ -2354,7 +2510,7 @@ kinds of changes that can occur to items affected in a Contribution are:</p>
 <div class="content">
 <img src="diagrams/contribution_deltas.png" alt="contribution_deltas" width="80%">
 </div>
-<div class="title">Figure 25. Contributions to the Repository (delta form)</div>
+<div class="title">Figure 30. Contributions to the Repository (delta form)</div>
 </div>
 <div class="paragraph">
 <p>This shows the effect of four Contributions (indicated by blue ovals on the left hand side) to a repository
@@ -2378,7 +2534,7 @@ versioning implementation may or may not generate deltas as a way of efficient s
 <div class="content">
 <img src="diagrams/contributions_non_delta.png" alt="contributions_non_delta" width="80%">
 </div>
-<div class="title">Figure 26. Contributions to the Repository (non-delta form)</div>
+<div class="title">Figure 31. Contributions to the Repository (non-delta form)</div>
 </div>
 <div class="paragraph">
 <p>For the purposes of openEHR, a Contribution is considered as being the set of Versions created or
@@ -2393,7 +2549,7 @@ attested at one time, as implied by the figure above.</p>
 <div class="content">
 <img src="diagrams/abstract_model_repository.png" alt="abstract_model_repository" width="60%">
 </div>
-<div class="title">Figure 27. Abstract Model of Change-controlled Repository</div>
+<div class="title">Figure 32. Abstract Model of Change-controlled Repository</div>
 </div>
 <div class="paragraph">
 <p>This consists of:</p>
@@ -2419,7 +2575,7 @@ formal specification for them.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_virtual_version_tree"><a class="anchor" href="#_the_virtual_version_tree"></a>8.4. The "Virtual Version Tree"</h3>
+<h3 id="_the_virtual_version_tree"><a class="anchor" href="#_the_virtual_version_tree"></a>8.4. The Virtual Version Tree</h3>
 <div class="paragraph">
 <p>An underlying design concept of the versioning model defined in openEHR is known as a "virtual version tree".
 The idea is simple in the abstract. Information is committed to a repository (such as an
@@ -2507,7 +2663,7 @@ distinction is illustrated in the following figure. Here we see two container ob
 <div class="content">
 <img src="diagrams/ids_and_references.png" alt="ids_and_references" width="50%">
 </div>
-<div class="title">Figure 28. XXX_IDs and XXX_REFs</div>
+<div class="title">Figure 33. XXX_IDs and XXX_REFs</div>
 </div>
 </div>
 <div class="sect3">
@@ -2579,7 +2735,7 @@ objects, and to reference them from the outside, respectively.</p>
 <div class="content">
 <img src="diagrams/object_referencing.png" alt="object_referencing" width="65%">
 </div>
-<div class="title">Figure 29. How to reference various levels of object</div>
+<div class="title">Figure 34. How to reference various levels of object</div>
 </div>
 </div>
 </div>
@@ -2596,12 +2752,12 @@ two levels. The lower level is that of the reference model, a stable object mode
 and data can be built. Concepts in the openEHR reference model are invariant, and include things like
 Composition, Section, Observation, and various data types such as Quantity and Coded text. The
 upper level consists of domain-level definitions in the form of archetypes and templates. Concepts
-defined at this level include things such as "blood pressure measurement", "SOAP headings", and
-"HbA1c Result".</p>
+defined at this level include things such as 'blood pressure measurement', 'SOAP headings', and
+'HbA1c Result'.</p>
 </div>
 <div class="paragraph">
 <p>All information conforming to the openEHR Reference Model (RM) - i.e. the collection of Information
-Models (IMs) - is "archetypable", meaning that the creation and modification of the content, and
+Models (IMs) - is 'archetypable', meaning that the creation and modification of the content, and
 subsequent querying of data is controllable by archetypes. Archetypes are themselves separate from
 the data, and are stored in their own repository. The archetype repository at any particular location
 will usually include archetypes from well-known online archetype libraries. Archetypes are deployed
@@ -2613,7 +2769,7 @@ often corresponding to a screen form.</p>
 write archetypes; the syntax equivalent of the model is the Archetype Definition Language, ADL.
 These formalisms are specified in the openEHR Archetype Object Model (AOM) and ADL documents
 respectively. Each archetype is a set of constraints on the reference model, defining a subset of
-instances that are considered to conform to the subject of the archetype, e.g. "laboratory result". An
+instances that are considered to conform to the subject of the archetype, e.g. 'laboratory result'. An
 archetype can thus be thought of as being similar to a LEGO&#174; instruction sheet (e.g. for a tractor) that
 defines the configuration of LEGO&#174; bricks making up a tractor. Archetypes are flexible; one archetype
 includes many variations, in the same way that a LEGO&#174; instruction might include a number of
@@ -2624,10 +2780,10 @@ options for the same basic object. Mathematically, an archetype is equivalent to
 validation purposes, they are usually used at runtime by templates.
 An openEHR Template is a specification that defines a tree of of one or more archetypes, each constraining
 instances of various reference model types, such as Composition, Section, Entry subtypes
-and so on. Thus, while there are likely to be archetypes for such things as "biochemistry results" (an
-Observation archetype) and "SOAP headings" (a Section archetype), templates are used to put archetypes
-together to form whole Compositions in the EHR, e.g. for "discharge summary", "antenatal
-exam" and so on. Templates usually correspond closely to screen forms, printed reports, and in general,
+and so on. Thus, while there are likely to be archetypes for such things as 'biochemistry results' (an
+Observation archetype) and 'SOAP headings' (a Section archetype), templates are used to put archetypes
+together to form whole Compositions in the EHR, e.g. for 'discharge summary', 'antenatal
+exam' and so on. Templates usually correspond closely to screen forms, printed reports, and in general,
 complete application-level lumps of information to be captured or sent; they may therefore be
 used to define message content. They are generally developed and used locally, while archetypes are
 usually widely used.</p>
@@ -2654,22 +2810,14 @@ synthesis of SQL (SELECT/FROM/WHERE) and W3C XPaths, extracted from the archetyp
 <div class="paragraph">
 <p>In openEHR, archetypes are formalised by the Archetype Object Model (AOM). This is an object
 model of the semantics of archetypes. When an archetype is represented in memory (for example in
-an archetype-enabled EHR "kernel"), the archetype will exist as instances of the classes of this
+an archetype-enabled EHR 'kernel'), the archetype will exist as instances of the classes of this
 model. The AOM is thus the definitive statement of the semantics of archetypes.</p>
 </div>
 <div class="paragraph">
-<p>In serialised form, archetypes can be represented in various ways. The normative, abstract serialisation
-in openEHR is Archetype Definition Language (ADL). This is an abstract language based on
-Frame Logic queries with the addition of terminology. An ADL archetype
-is a guaranteed 100% lossless rendering of the semantics of any archetype, and is designed to be a
-syntactic analogue of the AOM. Nevertheless, other lossless and lossy serialisations are possible and
-some already exist. For practical purposes, XML-based serialisations are used in some situations. A
-serialisation purely expressed in dADL, the ADL object serialisation syntax will be available in the
-future. Various HTML, RTF and other formats are used for screen rendering and human review.</p>
+<p>In serialised form, archetypes can be represented in various ways. The normative, abstract serialisation in openEHR is Archetype Definition Language (ADL). This is an abstract language based on Frame Logic queries with the addition of terminology. An ADL archetype is a guaranteed 100% lossless rendering of the semantics of any archetype, and is designed to be a syntactic analogue of the AOM. Nevertheless, other lossless and lossy serialisations are possible and some already exist. For practical purposes, XML-based serialisations are used in some situations. A serialisation purely expressed in ODIN, the ADL object serialisation syntax is available for ADL2 archetypes. Various HTML, RTF and other formats are used for screen rendering and human review.</p>
 </div>
 <div class="paragraph">
-<p>openEHR Templates are represented as dADL documents whose object model conforms to the Template
-Object Model (TOM).</p>
+<p>openEHR ADL2 Templates are represented as ODIN documents whose object model conforms to the AOM.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2723,8 +2871,8 @@ allowed at a slot will actually be used in a given circumstance.</p>
 <div class="sect2">
 <h3 id="_relationship_of_archetypes_and_templates_to_data"><a class="anchor" href="#_relationship_of_archetypes_and_templates_to_data"></a>10.3. Relationship of Archetypes and Templates to Data</h3>
 <div class="paragraph">
-<p>All nodes within the top-level information structures in the openEHR RM are "archetypable", with
-certain nodes within those structures being archetype "root points". Each top-level type is always
+<p>All nodes within the top-level information structures in the openEHR RM are 'archetypable', with
+certain nodes within those structures being archetype 'root points'. Each top-level type is always
 guaranteed to be an archetype root point. Although it is theoretically possible to use a single archetype
 for an entire top-level structure, in most cases, particularly for <code>COMPOSITION</code> and <code>PARTY</code>, a hierarchical
 structure of multiple archetypes will be used, via the slot mechanism described above. This
@@ -2741,7 +2889,7 @@ templates to data.</p>
 <div class="content">
 <img src="diagrams/archetypes_and_data.png" alt="archetypes_and_data" width="80%">
 </div>
-<div class="title">Figure 30. How Archetypes apply to Data</div>
+<div class="title">Figure 35. How Archetypes apply to Data</div>
 </div>
 </div>
 <div class="sect2">
@@ -2753,7 +2901,7 @@ attributes <code><em>archetype_node_id</em></code> and <code><em>archetype_detai
 the archetype. If the node in the data is a root point, it carries the multipart identifier of the generating
 archetype, and <code><em>archetype_details</em></code> carries an <code>ARCHETYPED object</code>, containing information pertinent to
 archetype root points. If it is a non-root node, the <code><em>archetype_node_id</em></code> attribute carries the identifier
-(known as an "at", or "archetype term" code) of the archetype interior node that generated the data
+(known as an 'at', or 'archetype term' code) of the archetype interior node that generated the data
 node, and the <code><em>archetype_details</em></code> attribute is void.</p>
 </div>
 <div class="paragraph">
@@ -2764,8 +2912,8 @@ single archetype node may be replicated in the data.</p>
 <div class="paragraph">
 <p>In this way, each archetyped data composition in openEHR data has a generating archetype which
 defines the particular configuration of instances to create the desired composition. An archetype for
-"biochemistry results" is an <code>OBSERVATION</code> archetype, and constrains the particular arrangement of
-instances beneath an <code>OBSERVATION</code> object; a "problem/SOAP headings" archetype constrains <code>SECTION</code>
+'biochemistry results' is an <code>OBSERVATION</code> archetype, and constrains the particular arrangement of
+instances beneath an <code>OBSERVATION</code> object; a 'problem/SOAP headings' archetype constrains <code>SECTION</code>
 objects forming a SOAP headings structure. In general, an archetyped data composition is any
 composition of data starting at a root node and continuing to its leaf nodes, at which point lower-level
 compositions, if they exist, begin. Each of the archetyped areas and its subordinate archetyped areas
@@ -2778,9 +2926,9 @@ in figure <a href="#archetypes_and_data">[archetypes_and_data]</a> is an archety
 <div class="title">Note</div>
 </td>
 <td class="content">
-care must be taken not to confuse the general term "composition" with the specific use of this word in
+care must be taken not to confuse the general term 'composition' with the specific use of this word in
 openEHR and CEN EN 13606, defined by the <code>COMPOSITION</code> class; the specific use is always indicated by
-using the term "Composition".
+using the term 'Composition'.
 </td>
 </tr>
 </table>
@@ -2797,8 +2945,8 @@ by a template, including all optionality, value, and terminology constraints.</p
 <p>The use of openEHR archetypes and templates enables paths to be used ubiquitously in the openEHR
 architecture. Paths are extracted from Archetypes and templates, and are constructed from attribute
 names and archetype node identifiers, in an Xpath-compatible syntax, as shown in the following figure.
-These paths serve to identify any node in a template or archetype, such as the "diastolic blood pressure"
-<code>ELEMENT</code> node, deep within a "blood pressure measurement" archetype. Since archetype node
+These paths serve to identify any node in a template or archetype, such as the 'diastolic blood pressure'
+<code>ELEMENT</code> node, deep within a 'blood pressure measurement' archetype. Since archetype node
 identifiers are embedded into data at runtime, archetype paths can be used to extract data nodes conforming
 to particular parts of archetypes, providing a very powerful basis for querying. Paths can also
 be constructed into data, using more complex predicates (still in the Xpath style). Paths in openEHR
@@ -2808,7 +2956,7 @@ are explained in detail under Paths and Locators on page 57.</p>
 <div class="content">
 <img src="diagrams/archetype_paths.png" alt="archetype_paths">
 </div>
-<div class="title">Figure 31. Paths extracted from an archetype</div>
+<div class="title">Figure 36. Paths extracted from an archetype</div>
 </div>
 </div>
 <div class="sect2">
@@ -2821,7 +2969,7 @@ They perform two key functions. The first is to facilitate data validation at da
 time, i.e. to guarantee that data conform to not just the reference model, but also to the archetypes
 themselves. Data validation with archetypes is mediated by the use of openEHR Templates. The second
 function is as a design basis for queries. Since data are captured based on archetypes, all
-openEHR data are guaranteed to conform to the "semantic paths" that are created by the composition
+openEHR data are guaranteed to conform to the 'semantic paths' that are created by the composition
 of archetypes within a template. The paths (such as those shown in figure <a href="#archetype_paths">[archetype_paths]</a> above) are incorporated within a familiar SQL-style syntax, to form queries that can be evaluated to retrieve items on a
 semantic basis.</p>
 </div>
@@ -2893,13 +3041,13 @@ copies of the relevant archetypes.</p>
 <div class="content">
 <img src="diagrams/archetype_use.png" alt="archetype_use" width="80%">
 </div>
-<div class="title">Figure 32. Deployment of Archetypes and Templates</div>
+<div class="title">Figure 37. Deployment of Archetypes and Templates</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_validation_during_data_capture"><a class="anchor" href="#_validation_during_data_capture"></a>10.6.3. Validation during Data Capture</h4>
 <div class="paragraph">
-<p>Validation is the primary runtime function of archetypes - it is how "archetype-based" data are created
+<p>Validation is the primary runtime function of archetypes - it is how 'archetype-based' data are created
 in the first place, and modified thereafter. Archetype-based validation can be used in a GUI
 application or in a data import service. Although the source of the data (keystrokes or received XML
 or other messages) is different, the logical process is the same: create archetype-based openEHR data
@@ -2917,13 +3065,13 @@ archetypes, the template that does the job will be completely specified.</p>
 </div>
 <div class="paragraph">
 <p>The actual process of data creation and committal is illustrated below. The essence of the
-process is that a "kernel" component performs the task of data creation and validation by maintaining
-a "template space" and a "data space". The former contains the template and archetypes retrieved due
+process is that a 'kernel' component performs the task of data creation and validation by maintaining
+a 'template space' and a 'data space'. The former contains the template and archetypes retrieved due
 to a screen form being displayed; the latter contains the data structures (instances of the openEHR reference
 model) that are constructed due to user activity on the screen. When data are finally committed,
 they are guaranteed to conform to the template/archetype definitions, due to the checks that are
-made each time the user tries to change the data structure. The committed data contain a "semantic
-imprint" of the generating archetypes, in the form of archetype node identifiers on every node of the
+made each time the user tries to change the data structure. The committed data contain a 'semantic
+imprint' of the generating archetypes, in the form of archetype node identifiers on every node of the
 data. This simple inclusion in the data model ensures that all archetypes data are queryable by the use
 of archetype paths. In XML representations, the archetype node ids are represented as XML attributes
 (i.e. inside the tag), thus enabling XPaths to be conveniently navigated through the data based on
@@ -2933,7 +3081,7 @@ these identifiers (more details on this are in the next section).</p>
 <div class="content">
 <img src="diagrams/kernel.png" alt="kernel" width="80%">
 </div>
-<div class="title">Figure 33. Templated Archetypes at Runtime</div>
+<div class="title">Figure 38. Templated Archetypes at Runtime</div>
 </div>
 <div class="paragraph">
 <p>If data are later modified, they are brought into the kernel along with the relevant template and archetypes,
@@ -3000,7 +3148,7 @@ where they are used.</p>
 <div class="paragraph">
 <p>Paths in openEHR are defined in an Xpath1-compatible syntax which is a superset of the path syntax
 described in the Archetype Definition Language (ADL). The syntax is designed to be easily mappable
-to Xpath <a href="#Xpath">[Xpath]</a> expressions, for use with openEHR-based XML.</p>
+to <a href="#Xpath">Xpath expressions</a>, for use with openEHR-based XML.</p>
 </div>
 <div class="paragraph">
 <p>The data path syntax used in locator expressions follows the general pattern of a path consisting of
@@ -3132,8 +3280,8 @@ while an archetype path is always unique in an archetype, it can correspond to m
 <div class="sect4">
 <h5 id="_other_predicates"><a class="anchor" href="#_other_predicates"></a>11.2.2.4. Other Predicates</h5>
 <div class="paragraph">
-<p>Other predicates can be used, based on the value of other attributes such as <code>ELEMENT</code>.<code><em>name</em></code> or
-<code>EVENT</code>.<code><em>time</em></code>. Combinations of the archetype_node_id and other such values are commonly used in
+<p>Other predicates can be used, based on the value of other attributes such as <code>ELEMENT.<em>name</em></code> or
+<code>EVENT.<em>time</em></code>. Combinations of the archetype_node_id and other such values are commonly used in
 querying, such as the following path fragment (applied to an <code>OBSERVATION</code> instance):</p>
 </div>
 <div class="listingblock">
@@ -3159,7 +3307,7 @@ infections' (ICD10 code <code>A04</code>):</p>
 <div class="sect3">
 <h4 id="_paths_within_top_level_structures"><a class="anchor" href="#_paths_within_top_level_structures"></a>11.2.3. Paths within Top-level Structures</h4>
 <div class="paragraph">
-<p>Paths within top-level structures strictly adhere to attribute and function names in the relevant parts of the reference model. Predicate expressions are needed to distinguish multiple siblings in various points in paths into these structures, but particularly at archetype "chaining" points. A chaining point is where one archetype takes over from another as illustrated in figure <a href="#archetypes_and_data">[archetypes_and_data]</a>. Chaining points in Compositions occur between the Composition and a Section structure, potentially between a Section structure and other sub-Section structures (constrained by a different Section archetype), and between either Compositions or Section structures, and Entries. Chaining might also occur inside an Entry, if archetyping is used on lower level structures such as Item_lists etc. Most chaining points correspond to container types such as <code>List&lt;T&gt;</code> etc., e.g. <code>COMPOSITION</code>.<code><em>content</em></code> is defined to be a <code>List&lt;CONTENT_ITEM&gt;</code>, meaning that in real data, the content of a Composition could be a List of Section structures. To distinguish between such sibling structures, predicate expressions are used, based on the archetype_id. At the root point of an archetype in data (e.g. top of a Section structure), the archetype_id carries the identifier of the archetype used to create that structure, in the same manner as any interior point in an archetyped structure has an <code><em>archetype_node_id</em></code> attribute carrying archetype <code><em>node_id</em></code> values. The chaining point between Sections and Entries works in the same manner, and since multiple Entries can occur under a single Section, <code><em>archetype_id</em></code> predicates are also used to distinguish them. The same shorthand is used for <code><em>archetype_id</em></code> predicate expressions as for <code><em>archetype_node_ids</em></code>, i.e. instead of using <code>[@archetype_id = "xxxxx"]</code>, <code>[xxxx]</code> can be used instead.</p>
+<p>Paths within top-level structures strictly adhere to attribute and function names in the relevant parts of the reference model. Predicate expressions are needed to distinguish multiple siblings in various points in paths into these structures, but particularly at archetype "chaining" points. A chaining point is where one archetype takes over from another as illustrated in figure <a href="#archetypes_and_data">[archetypes_and_data]</a>. Chaining points in Compositions occur between the Composition and a Section structure, potentially between a Section structure and other sub-Section structures (constrained by a different Section archetype), and between either Compositions or Section structures, and Entries. Chaining might also occur inside an Entry, if archetyping is used on lower level structures such as Item_lists etc. Most chaining points correspond to container types such as <code>List&lt;T&gt;</code> etc., e.g. <code>COMPOSITION.<em>content</em></code> is defined to be a <code>List&lt;CONTENT_ITEM&gt;</code>, meaning that in real data, the content of a Composition could be a List of Section structures. To distinguish between such sibling structures, predicate expressions are used, based on the archetype_id. At the root point of an archetype in data (e.g. top of a Section structure), the archetype_id carries the identifier of the archetype used to create that structure, in the same manner as any interior point in an archetyped structure has an <code><em>archetype_node_id</em></code> attribute carrying archetype <code><em>node_id</em></code> values. The chaining point between Sections and Entries works in the same manner, and since multiple Entries can occur under a single Section, <code><em>archetype_id</em></code> predicates are also used to distinguish them. The same shorthand is used for <code><em>archetype_id</em></code> predicate expressions as for <code><em>archetype_node_ids</em></code>, i.e. instead of using <code>[@archetype_id = "xxxxx"]</code>, <code>[xxxx]</code> can be used instead.</p>
 </div>
 <div class="paragraph">
 <p>The following paths are examples of referring to items within a Composition:</p>
@@ -3541,7 +3689,7 @@ using meaningless codes and rubrics. These attributes are always of type <code>D
 itself is contained within the defining_code attribute.</p>
 </div>
 <div class="paragraph">
-<p>The openEHR terminology is described in the <a href="http://www.openehr.org/releases/TERM/{term_release}/SupportTerminology.html">openEHR Terminology specification</a>, with computable
+<p>The openEHR terminology is described in the <a href="http://www.openehr.org/releases/TERM/latest/SupportTerminology.html">openEHR Terminology specification</a>, with computable
 expressions available at the <a href="https://github.com/openEHR/terminology">openEHR terminology page</a>.</p>
 </div>
 </div>
@@ -3739,7 +3887,7 @@ attribute value to be coded is "blood group phenotype".</p>
 <div class="content">
 <img src="diagrams/archetype_constraint_binding.png" alt="archetype_constraint_binding" width="80%">
 </div>
-<div class="title">Figure 34. Archetype Constraint Binding</div>
+<div class="title">Figure 39. Archetype Constraint Binding</div>
 </div>
 <div class="paragraph">
 <p>Currently there is no standard for such queries. This does not affect archetypes directly, since they
@@ -3834,7 +3982,7 @@ machine applications.</p>
 <div class="content">
 <img src="diagrams/system_architecture.png" alt="system_architecture" width="70%">
 </div>
-<div class="title">Figure 35. Basic Enterprise EHR System Architecture</div>
+<div class="title">Figure 40. Basic Enterprise EHR System Architecture</div>
 </div>
 <div class="paragraph">
 <p>The figure below illustrates an approximate mapping of major parts of the openEHR software architecture
@@ -3875,7 +4023,7 @@ of databases.</p>
 <div class="content">
 <img src="diagrams/software_arch_deployment.png" alt="software_arch_deployment" width="70%">
 </div>
-<div class="title">Figure 36. Mapping of software architecture to deployment architecture</div>
+<div class="title">Figure 41. Mapping of software architecture to deployment architecture</div>
 </div>
 </div>
 </div>
@@ -3971,7 +4119,7 @@ data into the openEHR environment.</p>
 <div class="content">
 <img src="diagrams/data_integration.png" alt="data_integration" width="80%">
 </div>
-<div class="title">Figure 37. Data Integration using openEHR</div>
+<div class="title">Figure 42. Data Integration using openEHR</div>
 </div>
 <div class="paragraph">
 <p>Firstly, data are converted from their original syntactic format into openEHR <code>COMPOSITION</code> / <code>SECTION</code> / <code>GENERIC_ENTRY</code> structures, shown in the openEHR integration switch. Most of the data will
@@ -4183,7 +4331,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 <div class="content">
 <img src="diagrams/implem_technologies.png" alt="implem_technologies" width="70%">
 </div>
-<div class="title">Figure 38. Implementation Technologies</div>
+<div class="title">Figure 43. Implementation Technologies</div>
 </div>
 </div>
 </div>
@@ -4341,22 +4489,28 @@ and also provides an expression of each of the abstract models in the ITS formal
 <p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> See <a href="https://www.iso.org/standard/40784.html" class="bare">https://www.iso.org/standard/40784.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> See <a href="https://www.iso.org/standard/50119.html" class="bare">https://www.iso.org/standard/50119.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> See <a href="https://www.iso.org/standard/50120.html" class="bare">https://www.iso.org/standard/50120.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> See <a href="https://www.iso.org/standard/50121.html" class="bare">https://www.iso.org/standard/50121.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> See <a href="https://www.iso.org/standard/52823.html" class="bare">https://www.iso.org/standard/52823.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="https://www.iso.org/standard/39525.html" class="bare">https://www.iso.org/standard/39525.html</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13940"></a>[ISO_13940] ISO. <strong>Health informatics - System of concepts to support continuity of care.</strong> See <a href="https://www.iso.org/standard/58102.html" class="bare">https://www.iso.org/standard/58102.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_22600"></a>[ISO_22600] ISO. <strong>Health informatics - Privilege management and access control.</strong> See <a href="https://www.iso.org/standard/62653.html" class="bare">https://www.iso.org/standard/62653.html</a>.</p>
 </li>
 </ol>
 </div>
@@ -4477,7 +4631,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 11:20:58 BST
+Last updated 2017-04-27 12:20:58 CEST
 </div>
 </div>
 </body>

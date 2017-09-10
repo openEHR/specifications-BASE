@@ -22,7 +22,7 @@ where they are used.
 
 Paths in openEHR are defined in an Xpath1-compatible syntax which is a superset of the path syntax
 described in the Archetype Definition Language (ADL). The syntax is designed to be easily mappable
-to Xpath <<Xpath>> expressions, for use with openEHR-based XML.
+to <<Xpath,Xpath expressions>>, for use with openEHR-based XML.
 
 The data path syntax used in locator expressions follows the general pattern of a path consisting of
 segments each consisting of an attribute name, and separated by the slash ('/') character, i.e.:
@@ -75,6 +75,7 @@ This path refers to the magnitude of a 1-minute Apgar total in an Observation co
 NOTE: while an archetype path is always unique in an archetype, it can correspond to more than one item in runtime data, due to the repeated use of the same archetype node within a container.
 
 ==== Name-based Predicate
+
 If the `LOCATABLE._name_` value in certain data is populated with meningful values, a useful predicate can be formed using a combination of `name.value` (which takes the Xpath-like form `name/value` in a predicate) and the `_archetype_node_id_` value. The standard Xpath form of this expression is exemplified by the following:
 
 ----
@@ -94,8 +95,9 @@ Since the combination of an archetype node identifier and a `_name_` value is ve
 ----
 
 ==== Other Predicates
-Other predicates can be used, based on the value of other attributes such as `ELEMENT`.`_name_` or
-`EVENT`.`_time_`. Combinations of the archetype_node_id and other such values are commonly used in
+
+Other predicates can be used, based on the value of other attributes such as `ELEMENT._name_` or
+`EVENT._time_`. Combinations of the archetype_node_id and other such values are commonly used in
 querying, such as the following path fragment (applied to an `OBSERVATION` instance):
 
 ----
@@ -115,7 +117,7 @@ infections' (ICD10 code `A04`):
 
 === Paths within Top-level Structures
 
-Paths within top-level structures strictly adhere to attribute and function names in the relevant parts of the reference model. Predicate expressions are needed to distinguish multiple siblings in various points in paths into these structures, but particularly at archetype "chaining" points. A chaining point is where one archetype takes over from another as illustrated in figure <<archetypes_and_data>>. Chaining points in Compositions occur between the Composition and a Section structure, potentially between a Section structure and other sub-Section structures (constrained by a different Section archetype), and between either Compositions or Section structures, and Entries. Chaining might also occur inside an Entry, if archetyping is used on lower level structures such as Item_lists etc. Most chaining points correspond to container types such as `List<T>` etc., e.g. `COMPOSITION`.`_content_` is defined to be a `List<CONTENT_ITEM>`, meaning that in real data, the content of a Composition could be a List of Section structures. To distinguish between such sibling structures, predicate expressions are used, based on the archetype_id. At the root point of an archetype in data (e.g. top of a Section structure), the archetype_id carries the identifier of the archetype used to create that structure, in the same manner as any interior point in an archetyped structure has an `_archetype_node_id_` attribute carrying archetype `_node_id_` values. The chaining point between Sections and Entries works in the same manner, and since multiple Entries can occur under a single Section, `_archetype_id_` predicates are also used to distinguish them. The same shorthand is used for `_archetype_id_` predicate expressions as for `_archetype_node_ids_`, i.e. instead of using `[@archetype_id = "xxxxx"]`, `[xxxx]` can be used instead.
+Paths within top-level structures strictly adhere to attribute and function names in the relevant parts of the reference model. Predicate expressions are needed to distinguish multiple siblings in various points in paths into these structures, but particularly at archetype "chaining" points. A chaining point is where one archetype takes over from another as illustrated in figure <<archetypes_and_data>>. Chaining points in Compositions occur between the Composition and a Section structure, potentially between a Section structure and other sub-Section structures (constrained by a different Section archetype), and between either Compositions or Section structures, and Entries. Chaining might also occur inside an Entry, if archetyping is used on lower level structures such as Item_lists etc. Most chaining points correspond to container types such as `List<T>` etc., e.g. `COMPOSITION._content_` is defined to be a `List<CONTENT_ITEM>`, meaning that in real data, the content of a Composition could be a List of Section structures. To distinguish between such sibling structures, predicate expressions are used, based on the archetype_id. At the root point of an archetype in data (e.g. top of a Section structure), the archetype_id carries the identifier of the archetype used to create that structure, in the same manner as any interior point in an archetyped structure has an `_archetype_node_id_` attribute carrying archetype `_node_id_` values. The chaining point between Sections and Entries works in the same manner, and since multiple Entries can occur under a single Section, `_archetype_id_` predicates are also used to distinguish them. The same shorthand is used for `_archetype_id_` predicate expressions as for `_archetype_node_ids_`, i.e. instead of using `[@archetype_id = "xxxxx"]`, `[xxxx]` can be used instead.
 
 The following paths are examples of referring to items within a Composition:
 
@@ -153,6 +155,7 @@ with the openEHR equivalent being:
 ----
 
 ==== Using a Name-based Predicate
+
 If the `LOCATABLE._name_` value in certain data is known to be reliably populated with unique values across immediate siblings, the `name/value` term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following `OBSERVATION` archetype:
 
 [source, cadl]

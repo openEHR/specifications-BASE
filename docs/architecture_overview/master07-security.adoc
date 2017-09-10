@@ -122,10 +122,7 @@ some of the key requirements in a flexible enough way that deployments with subs
 requirements and configurations can nevertheless implement the basic principles in a standard
 way.
 
-The figure below illustrates the main security measures directly specified by the openEHR architecture.
-These include EHR/demographic separation and an EHR-wide access control object. At the level of
-versioned objects, commit audits (mandatory), digital signatures and hashes are available. The following
-subsections describe these features in more detail.
+The figure below illustrates the main security measures directly specified by the openEHR architecture. These include EHR/demographic separation and an EHR-wide access control object. At the level of versioned objects, commit audits (mandatory), digital signatures and hashes are available. The following subsections describe these features in more detail.
 
 [.text-center]
 .Security Features of the openEHR EHR
@@ -133,22 +130,22 @@ image::diagrams/security_features.png[security_features,align="center", width=80
 
 === Security Policy
 
-In and of itself, the openEHR EHR imposes only a minimal security policy profile which could be
-regarded as necessary, but generally not sufficient for a deployed system (i.e. other aspects would still
-need to be implemented in layers whose semantics are not defined in openEHR). The following policy
-principles are embodied in openEHR.
+In and of itself, the openEHR EHR imposes only a minimal security policy profile which could be regarded as necessary, but generally not sufficient for a deployed system (i.e. other aspects would still need to be implemented in layers whose semantics are not defined in openEHR). The following policy principles are embodied in openEHR.
 
 General::
     Indelibility::: health record information cannot be deleted; logical deletion is achieved by marking the data in such a way as to make it appear deleted (implemented in version control).
-    Audit trailing::: All changes made to the EHR including content objects as well as the EHR status and access control objects are audit-trailed with user identity, time-stamp, reason, optionally digital signature and relevant version information; one exception is where the modifier is the patient, in which case, a symbolic identifier can be used (known as PARTY_SELF in
-openEHR; see next point).
+    
+    Audit trailing::: All changes made to the EHR including content objects as well as the EHR status and access control objects are audit-trailed with user identity, time-stamp, reason, optionally digital signature and relevant version information; one exception is where the modifier is the patient, in which case, a symbolic identifier can be used (known as `PARTY_SELF` in openEHR; see next point).
+    
     Anonymity::: the content of the health record is separate from identifying demographic information. This can be configured such that theft of the EHR provides no direct clue to the identity of the owning patient (indirect clues are of course harder to control). Stealing an identified EHR involves theft of data from two servers, or even theft of two physical computers, depending on deployment configuration.
 
 Access Control::
     Access list::: the overriding principle of access control must be "relevance" both in terms of user identity (who is delivering care to the patient) and time (during the current episode of care, and for some reasonable, limited time afterward). An access control list can be defined for the EHR, indicating both identified individuals and categories, the latter of which might be role types, or particular staff groups.
-    Access control of access settings::: a gate-keeper controls access to the EHR access control
-settings. The gate-keeper is established at the time of EHR creation as being one of the identities known in the EHR, usually the patient for mentally competent adults, otherwise a parent, legal guardian, advocate or other responsible person. The gate-keeper determines who can make changes to the access control list. All changes to the list are audit-trailed as for normal data (achieved due to normal versioning).
+    
+    Access control of access settings::: a gate-keeper controls access to the EHR access control settings. The gate-keeper is established at the time of EHR creation as being one of the identities known in the EHR, usually the patient for mentally competent adults, otherwise a parent, legal guardian, advocate or other responsible person. The gate-keeper determines who can make changes to the access control list. All changes to the list are audit-trailed as for normal data (achieved due to normal versioning).
+    
     Privacy::: patients can mark Compositions in the EHR as having one of a number of levels of privacy. The definition of the privacy levels is not hard-wired in the openEHR models but rather is defined by standards or agreements within jurisdictions of use.
+    
     Usability::: The general mentality of access control setting is one of "sensible defaults" that work for most of the information in the EHR, most of the time. The defaults for the EHR can be set by the patient, defining access control behaviour for the majority of access decisions. Exceptions to the default policy are then added. This approach minimises the need to think about the security of every item in the EHR individually.
     
 Other security policy principles that should be implemented in even a minimal EHR deployment but are not directly specified by openEHR include the following.
@@ -177,6 +174,7 @@ The following sections describe how openEHR supports the first list of policy ob
 === Integrity
 
 ==== Versioning
+
 The most basic security-related feature of openEHR is its support for data integrity. This is mainly
 provided by the versioning model, specified in the `change_control` package in the Common Information
 Model, and in the Extract Information Model. Change-set based versioning of all information
@@ -196,11 +194,12 @@ that every write access of any kind to any part of an openEHR record is logged w
 time, reason, and potentially other meta-data.
 
 ==== Digital Signature
+
 The possibility exists within an openEHR EHR to digitally sign each Version in a Versioned object
 (i.e. for each Version of any logical item, such as medications list, encounter note etc.). The signature
 is created as a private-key encryption (e.g. RSA-1) of a hash (e.g. MD5) of a canonical representation
 (such as in schema-based XML) of the Version being committed. A likely candidate for defining the
-signature and digest strings in openEHR is the openPGP message format (IETF RFC2440 <<rfc_2440>>), due to
+signature and digest strings in openEHR is the openPGP message format (<<rfc_2440,IETF RFC2440>>), due to
 being an open specification and self-describing. The use of RFC2440 for the format does not imply
 the use of the PGP distributed certificate infrastructure, or indeed any certification infrastructure;
 openEHR is agnostic on this point. If no public key or equivalent infrastructure is available, the
@@ -232,7 +231,7 @@ only information contained in a `PARTY_SELF` instance is an optional external re
 openEHR EHR can be configured to provide 3 levels of separation by controlling whether and where
 this external identifier is actually set in `PARTY_SELF` instances, as follows:
 
-* Nowhere in the EHR (i.e. every `PARTY_SELF` instance is a blank placeholder). This is the most secure approach, and means that the link between the EHR and the patient has to be done outside the EHR, by associating `EHR`.`_ehr_id_` and the subject identifier. This approach is more likely for more open environments.
+* Nowhere in the EHR (i.e. every `PARTY_SELF` instance is a blank placeholder). This is the most secure approach, and means that the link between the EHR and the patient has to be done outside the EHR, by associating `EHR._ehr_id_` and the subject identifier. This approach is more likely for more open environments.
 * Once only in the `EHR_STATUS` object (subject attribute), and nowhere else. This is also relatively secure, if the EHR Status object is protected in some way.
 * In every instance of `PARTY_SELF`; this solution is reasonable in a secure environment, and convenient for copying parts of the record around locally.
 
@@ -250,13 +249,7 @@ Access control is completely specified in an openEHR EHR in the `EHR_ACCESS` obj
 This object acts as a gateway for all information access, and any access decision must be made based
 on the policies and rules it contains.
 
-One of the problems with defining the semantics of the EHR Access object is that there is currently
-no published formal, proven model of access control for shared health information. Various efforts
-underway include the CEN EN13606 part 4 work, the ISO PMAC (Privilege Management and
-Access Control) work being done in TC/215 based on the generic security standard ISO/IEC 17799.
-Undoubtedly experimental and even some limited production health information security implementations
-exist. In reality however, no large-scale shared EHR deployments exist, and so security solutions
-to date are still developmental.
+One of the problems with defining the semantics of the EHR Access object is that there is currently no published formal, proven model of access control for shared health information. Relevant standards include <<ISO_13606-4,ISO EN13606 part 4>>, the <<ISO_22600,ISO PMAC (Privilege Management and Access Control) standard>>. Undoubtedly experimental and even some limited production health information security implementations exist. In reality however, no large-scale shared EHR deployments exist, and so security solutions to date are still developmental.
 
 The openEHR architecture is therefore designed to accommodate alternative models of access control,
 each defined by a subtype of the class `ACCESS_CONTROL_SETTING` (Security IM). This

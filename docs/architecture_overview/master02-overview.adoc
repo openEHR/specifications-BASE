@@ -1,43 +1,25 @@
 = Overview
 
-This document provides an overview of the openEHR architecture. It commences with a description
-of the specification project, followed by an overview of the reference model structure and packages.
-Key global semantics including security, archetyping, identification, version and paths are then
-described. The relationship to published standards is indicated, and finally, the approach to building
-Implementation Technology Specifications (ITSs) is outlined.
+This document provides an overview of the openEHR architecture. It commences with a description of the specification project, followed by an overview of the model structure and packages. Key global semantics including security, archetyping, identification, version and paths are then described. The relationship to published standards is indicated, and finally, the approach to building Implementation Technology Specifications (ITSs) is outlined.
 
-== The openEHR Specification Project
+== The openEHR Specification Program
 
-FIGURE 1 illustrates the openEHR Specification Project. This project is responsible for developing
-the specifications on which the openEHR Health Computing Platform is based. The relationships
-between the parts of the computing platform and the specifications are indicated on the diagram. The
-project deliverables include requirements, abstract specifications, implementation technology specifications
-(ITSs), computable expressions and conformance criteria.
+The openEHR Specification Program is responsible for developing the specifications of openEHR, from which the openEHR Health Computing Platform is implemented. The outputs of the program consist of a number of _components_, as shown in the diagram below, with each component consisting of one or more separate specifications. The components shown in blue on the left define the _openEHR platform architecture_, and are expressed in a combination of UML models and formal language specifications. They can be implmented using typical software engineering technologies. The formal artefacts (e.g. UML models, Antlr grammars etc) are published online for this purpose. 
 
 [.text-center]
 .The openEHR Specification project
 image::diagrams/specification_project.png[id=specification_project, align="center", width=70%]
 
-The abstract specifications consist of the Reference Model (RM), the Service Model (SM) and Archetype
-Model (AM). The first two correspond to the ISO RM/ODP information and computational
-viewpoints respectively. The latter formalises the bridge between information models and knowledge
-resources.
+The remaining components define artefacts outside the openEHR platform architecture.
 
-The abstract specifications published by openEHR are defined using the UML notation and formal
-textual class specifications. These models constitute the primary references for all openEHR semantics.
-The presentation style of these abstract specifications is deliberately intended to be clear and
-semantically close to the ideas being communicated. Accordingly, the specifications do not follow
-idioms or limitations of particular programming languages, schema languages or other formalisms.
+On the lower right-hand side is the Terminology (TERM) component, which contains formal artefacts representing openEHR's internal terminology, along with expressions of various IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format.
 
-The specifications are also available in a tool-oriented computable UML format in order to
-enable development of software and systems. The computable expressions for all practical purposes
-can be assumed as being a lossless rendition of the published abstract specifications.
+On the upper-right hand side in orange is the Impelementation Technology Specifications (ITS) component, which consists of concrete expressions of the formal specificaitons in the other components, in various programming, API and schema languages. The artefacts in this component provide the directly usable basis for building an implementation of the openEHR health computing platform, any one of its components, or client applications or tools.
 
-The implementation technology specifications on the other hand correspond to the expression of
-abstract specifications in various programming and schema languages, each of which represents an
-imperfect and usually partial transformation from the specification models. There are numerous
-implementation technologies, ranging from programming languages, serial formalisms such as XML,
-to database and distributed object interfaces. Each of these has its own limits and strengths. The
-approach to implementing any of the openEHR abstract models in a given implementation technology
-is to firstly define an ITS for the particular technology, then to use it to formally map the abstract
-models into expressions in that technology.
+The final component on the top right is the Conformance (CNF) component, containing a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.
+
+The specifications published by openEHR constitute the _primary reference for all openEHR semantics_. The presentation style is deliberately intended to be clear and semantically close to the _ideas_ being communicated. Accordingly, the specifications do not follow any particular programming language or idiom, but instead use  various formalisms and illustrations appropriate to each topic.
+
+Change control is performed by the {openehr_sec}[openEHR Specifications Editorial Committee (SEC)], using a formal process based on Problem Reports (PRs) and Change Reqests (CRs), and a formal release cycle. The details are described in the {openehr_specification_program}[Specifications Program part of the openEHR website]. 
+
+The openEHR specification documents and related formal artefacts may be found on the {openehr_specs_home}[specifications home page]. The documents are maintained in {asciidoctor}[Asciidoctor] source form, and make heavy use of included formal elements, including extracted UML class texts and diagrams, as well as grammar files.
