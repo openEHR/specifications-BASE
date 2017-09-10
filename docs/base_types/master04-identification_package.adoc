@@ -8,7 +8,7 @@ The `BASE.base_types.identification` package describes a model of references and
 .BASE.base_types.identification Package
 image::{uml_export_dir}/diagrams/BASE-base_types.identification.svg[id=base_identification_types, align="center"]
 
-=== Requirements
+== Requirements
 
 Identification of entities both in the real world and in information systems is a non-trivial problem. The needs for identification across systems in a health information environment include the following:
 
@@ -26,11 +26,11 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 
 The following subsections describe some of the features and challenges of identification.
 
-==== Identification of Real World Entities (RWEs)
+=== Identification of Real World Entities (RWEs)
 
 Real world entities such as people, car engines, invoices, and appointments can all be assigned identifiers. Although many of these are designed to be unique within a jurisdiction, they are often not, due to data entry errors, bad design (ids that are too small or incorporate some non-unique characteristic of the identified entities), bad process (e.g. non-synchronised id issuing points); identity theft (e.g. via theft of documents of proof or hacking). In general, while some real world identifiers (RWIs) are "nearly unique", none can be guaranteed so. It should also be the case that if two RWE identifiers are equal, they refer to the same RWE, but this is often not the case. For practical purposes, RWIs cannot be regarded as computationally safe for making the inferences described here.
 
-==== Identification of Informational Entities (IEs)
+=== Identification of Informational Entities (IEs)
 
 As soon as information systems are used to record facts about RWEs, the situation becomes more complex because of the intangible nature of information. In particular:
 
@@ -41,7 +41,7 @@ At first sight, it appears that there can also be _purely_ informational entitie
 
 The underlying reason for the multiplicity of IEs is that 'reality' - time and space - in computer systems is not continuous but discrete, and each 'entity' is in fact just a snapshot of certain attribute values of a RWE, at a point in time, in a particular system. If identifiers are assigned to IEs without regard to versions or duplicates, then no assertion can be made about the identified RWE when two IE ids are compared.
 
-==== Identification of Versions
+=== Identification of Versions
 
 The notion of 'versioning' applies only to informational entities, i.e. distinct instances of content each representing a snapshot of some logical entity. Where such instances are stored and managed in versioned containers within a versioning system of some kind, explicit identification of the versions is required. The requirements are discussed in detail in the {openehr_rm_common}#_change_control_package[Common IM, `change_control` package].
 
@@ -51,7 +51,7 @@ They can be summarised as follows:
 * it must be possible to distinguish two versions of the same logical entity created in two distinct systems;
 * it must be possible to tell the relationship between the items in a versioned lineage, from the version identifiers.
 
-==== Referencing of Informational Entities
+=== Referencing of Informational Entities
 
 Within a distributed information environment, there is a need for entities not connected by direct references in the same memory space to be able to refer to each other. There are two competing requirements:
 
@@ -117,7 +117,7 @@ The `TERMINOLOGY_ID` subtype defines a globally unique single string identifier 
 * "SNOMED-CT"
 * "ICD9(1999)"
 
-Currently the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the US National Library of Medicine UMLS identifiers for included terminologies - see http://www.nlm.nih.gov/research/umls/metaa1.html.
+Currently the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the {nlm_umls_list}[US National Library of Medicine UMLS identifiers for included terminologies].
 
 The scheme defined by the `TERMINOLOGY_ID` class provides for the situation where major 'versions' of a terminology such as the World Health Organisation's 'ICD10' and 'ICD10AM' (AM = 'Australian modifications') can accommodate a finer grain of versioning or revisioning, e.g.:
 
