@@ -1,6 +1,6 @@
 === P_BMM_GENERIC_PARAMETER Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*P_BMM_GENERIC_PARAMETER*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Persistent form of BMM_GENERIC_PARAMETER.
 
 h|*Inherit*
-2+|P_BMM_MODEL_ELEMENT
+2+|`P_BMM_MODEL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -31,9 +31,11 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*create_bmm_generic_parameter* (a_bmm_schema: `BMM_MODEL`)
+|*create_bmm_generic_parameter* ( +
+a_bmm_schema: `BMM_MODEL[1]` +
+)
 a|Create bmm_generic_parameter.
 
-h|*Invariant*
-2+a|*_Inv_generic_name_*: name.count = 1 and name.is_upper
+h|*Invariants*
+2+a|*_Inv_generic_name_*: `name.count = 1 and name.is_upper`
 |===

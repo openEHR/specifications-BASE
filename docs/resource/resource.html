@@ -418,9 +418,9 @@
 <h4 id="_authored_resource_class"><a class="anchor" href="#_authored_resource_class"></a>2.2.1. AUTHORED_RESOURCE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -487,54 +487,54 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code><br>
-<strong><em>Post</em></strong>: Result = revision_history.most_recent_version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code>String</code><br>
+<strong><em>Post</em></strong>: <code>Result = revision_history.most_recent_version</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Total list of languages available in this resource, derived from original_language and translations.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Original_language_valid</em></strong>: code_set (Code_set_id_languages).has_code (original_language.as_string)</p>
+<p><strong><em>Original_language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (original_language.as_string)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Current_revision_valid</em></strong>: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</p>
+<p><strong><em>Current_revision_valid</em></strong>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Translations_valid</em></strong>: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</p>
+<p><strong><em>Translations_valid</em></strong>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Description_valid</em></strong>: translations /= Void implies (description.details.for_all (d &#124;
-translations.has_key (d.language.code_string)))</p>
+<p><strong><em>Description_valid</em></strong>: <code>translations /= Void implies (description.details.for_all (d &#124;
+translations.has_key (d.language.code_string)))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
+<p><strong><em>Languages_available_valid</em></strong>: <code>languages_available.has (original_language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
+<p><strong><em>Revision_history_valid</em></strong>: <code>is_controlled xor revision_history = Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -544,9 +544,9 @@ translations.has_key (d.language.code_string)))</p>
 <h4 id="_translation_details_class"><a class="anchor" href="#_translation_details_class"></a>2.2.2. TRANSLATION_DETAILS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -606,9 +606,9 @@ translations.has_key (d.language.code_string)))</p>
 <h4 id="_resource_description_class"><a class="anchor" href="#_resource_description_class"></a>2.2.3. RESOURCE_DESCRIPTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -762,9 +762,9 @@ translations.has_key (d.language.code_string)))</p>
 <h4 id="_resource_description_item_class"><a class="anchor" href="#_resource_description_item_class"></a>2.2.4. RESOURCE_DESCRIPTION_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1029,7 +1029,7 @@ translations.has_key (d.language.code_string)))</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-12 12:53:47 CEST
+Last updated 2017-06-12 11:53:47 BST
 </div>
 </div>
 </body>

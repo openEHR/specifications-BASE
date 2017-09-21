@@ -1,6 +1,6 @@
 === BMM_PACKAGE_CONTAINER Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*BMM_PACKAGE_CONTAINER*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Abstraction of a BMM model component that contains packages and classes.
 
 h|*Inherit*
-2+|BMM_MODEL_ELEMENT
+2+|`BMM_MODEL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -23,14 +23,20 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*package_at_path* (a_path: `String`): `BMM_PACKAGE`
+|*package_at_path* ( +
+a_path: `String[1]` +
+): `BMM_PACKAGE`
 a|Package at the path `a_path'.
 
 h|
-|*do_recursive_packages* (action)
+|*do_recursive_packages* ( +
+action +
+)
 a|Recursively execute `action', which is a procedure taking a BMM_PACKAGE argument, on all members of packages.
 
 h|
-|*has_package_path* (a_path: `String`): `Boolean`
+|*has_package_path* ( +
+a_path: `String[1]` +
+): `Boolean`
 a|True if there is a package at the path `a_path'; paths are delimited with Package_name_delimiter.
 |===

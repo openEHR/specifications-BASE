@@ -1,6 +1,6 @@
 === P_BMM_SCHEMA Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*P_BMM_SCHEMA*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Persisted form of BMM_SCHEMA.
 
 h|*Inherit*
-2+|P_BMM_PACKAGE_CONTAINER, BMM_SCHEMA_CORE
+2+|`P_BMM_PACKAGE_CONTAINER`, `BMM_SCHEMA_CORE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -45,7 +45,7 @@ h|*Functions*
 
 h|
 |*validate_created* +
-*_Pre_state_*: state = P_BMM_PACKAGE_STATE.State_created
+*_Pre_state_*: `state = P_BMM_PACKAGE_STATE.State_created`
 a|Do some basic validation post initial creation
 
 * check that package structure is regular:
@@ -56,14 +56,16 @@ a|Do some basic validation post initial creation
 
 h|
 |*load_finalise* +
-*_Pre_state_*: state = P_BMM_PACKAGE_STATE.State_validated_created
+*_Pre_state_*: `state = P_BMM_PACKAGE_STATE.State_validated_created`
 a|Finalisation work:
 
 * convert packages to canonical form, i.e. full hierarchy with no packages with names like aa.bb.cc
 * set up include processing list
 
 h|
-|*merge* (other)
+|*merge* ( +
+other +
+)
 a|Merge in class and package definitions from `other', except where the current schema already has a definition for the given type or package.
 
 h|
@@ -72,10 +74,10 @@ a|Main validation prior to generation of BMM_SCHEMA; access to `all_schemas' all
 
 h|
 |*create_bmm_schema* +
-*_Pre_state_*: state = P_BMM_PACKAGE_STATE.State_includes_processed
+*_Pre_state_*: `state = P_BMM_PACKAGE_STATE.State_includes_processed`
 a|Generate a BMM_SCHEMA object.
 
 h|
-|*canonical_packages*: `P_BMM_PACKAGE`
+|*canonical_packages* (): `P_BMM_PACKAGE`
 a|Package structure in which all top-level qualified package names like xx.yy.zz have been expanded out to a hierarchy of BMM_PACKAGE objects.
 |===

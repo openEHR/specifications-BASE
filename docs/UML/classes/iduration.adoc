@@ -1,6 +1,6 @@
 === IDuration Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_IDuration (abstract)_*
@@ -9,69 +9,69 @@ h|*Description*
 2+a|Defines the interface of a period of time corresponding to a difference between two timepoints.
 
 h|*Inherit*
-2+|Temporal
+2+|`Temporal`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*years*: `Integer`
+|*years* (): `Integer`
 a|Number of years of nominal 365-day length.
 
 h|
-|*months*: `Integer`
+|*months* (): `Integer`
 a|Number of months.
 
 h|
-|*days*: `Integer`
+|*days* (): `Integer`
 a|Number of 24 hour days.
 
 h|
-|*hours*: `Integer`
+|*hours* (): `Integer`
 a|Number of 60 minute hours.
 
 h|
-|*minutes*: `Integer`
+|*minutes* (): `Integer`
 a|Number of 60 second minutes.
 
 h|
-|*seconds*: `Integer`
+|*seconds* (): `Integer`
 a|Number of seconds.
 
 h|
-|*fractional_seconds*: `Real`
+|*fractional_seconds* (): `Real`
 a|Fractional seconds.
 
 h|
-|*weeks*: `Integer`
+|*weeks* (): `Integer`
 a|Number of 7 day weeks.
 
 h|
-|*to_seconds*: `Integer`
+|*to_seconds* (): `Integer`
 a|Total number of seconds equivalent (including fractional) of entire duration.
 
-h|*Invariant*
-2+a|*_Years_valid_*: years >= 0
+h|*Invariants*
+2+a|*_Years_valid_*: `years >= 0`
 
 h|
-2+a|*_Months_valid_*: months >= 0
+2+a|*_Months_valid_*: `months >= 0`
 
 h|
-2+a|*_Weeks_valid_*: weeks >= 0
+2+a|*_Weeks_valid_*: `weeks >= 0`
 
 h|
-2+a|*_Days_valid_*: days >= 0
+2+a|*_Days_valid_*: `days >= 0`
 
 h|
-2+a|*_Hours_valid_*: hours >= 0
+2+a|*_Hours_valid_*: `hours >= 0`
 
 h|
-2+a|*_Minutes_valid_*: minutes >= 0
+2+a|*_Minutes_valid_*: `minutes >= 0`
 
 h|
-2+a|*_Seconds_valid_*: seconds >= 0
+2+a|*_Seconds_valid_*: `seconds >= 0`
 
 h|
-2+a|*_Fractional_second_valid_*: fractional_second >= 0.0 and fractional_second < 1.0
+2+a|*_Fractional_second_valid_*: `fractional_second >= 0.0 and fractional_second < 1.0`
 |===

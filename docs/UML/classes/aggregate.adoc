@@ -1,6 +1,6 @@
 === Aggregate Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_Aggregate (abstract)_*
@@ -9,21 +9,23 @@ h|*Description*
 2+a|Abstract ancestor of container types whose items are addressable in some way.
 
 h|*Inherit*
-2+|Any
+2+|`Any`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*has* (v: `T`): `Boolean`
+|*has* ( +
+v: `T[1]` +
+): `Boolean`
 a|Test for membership of a value.
 
 h|
-|*count*: `Integer`
+|*count* (): `Integer`
 a|Number of items in container.
 
 h|
-|*is_empty*: `boolean`
+|*is_empty* (): `boolean`
 a|True if container is empty.
 |===

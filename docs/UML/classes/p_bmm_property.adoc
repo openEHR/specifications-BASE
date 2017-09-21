@@ -1,6 +1,6 @@
 === P_BMM_PROPERTY Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_P_BMM_PROPERTY (abstract)_*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Persistent form of BMM_PROPERTY.
 
 h|*Inherit*
-2+|P_BMM_MODEL_ELEMENT
+2+|`P_BMM_MODEL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -47,6 +47,9 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*create_bmm_property* (a_bmm_schema: `BMM_MODEL`, a_class_def: `BMM_CLASS`)
+|*create_bmm_property* ( +
+a_bmm_schema: `BMM_MODEL[1]`, +
+a_class_def: `BMM_CLASS[1]` +
+)
 a|Create bmm_property_definition from P_BMM_ parts.
 |===

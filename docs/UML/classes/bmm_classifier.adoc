@@ -1,6 +1,6 @@
 === BMM_CLASSIFIER Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_BMM_CLASSIFIER (abstract)_*
@@ -9,29 +9,29 @@ h|*Description*
 2+a|Abstract idea of specifying a type either by definition or by reference.
 
 h|*Inherit*
-2+|BMM_MODEL_ELEMENT
+2+|`BMM_MODEL_ELEMENT`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*type_name*: `String`
+|*type_name* (): `String`
 a|Formal string form of the type as per UML.
 
 h|
-|*type_category*: `String`
+|*type_category* (): `String`
 a|Generate a type category of main target type from Type_category_xx values.
 
 h|
-|*type_signature*: `String`
+|*type_signature* (): `String`
 a|Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>
 
 h|
-|*base_class*: `BMM_CLASS`
+|*base_class* (): `BMM_CLASS`
 a|Main design class for this type, from which properties etc can be extracted.
 
 h|
-|*flattened_type_list*: `List<String>`
+|*flattened_type_list* (): `List<String>`
 a|Completely flattened list of type names, flattening out all generic parameters.
 |===

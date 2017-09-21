@@ -1,6 +1,6 @@
 === Time_Definitions Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*Time_Definitions*
@@ -68,37 +68,55 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*valid_year* (y: `Integer`): `Boolean` +
-*_Post_*: Result = y >= 0
+|*valid_year* ( +
+y: `Integer[1]` +
+): `Boolean` +
+*_Post_*: `Result = y >= 0`
 a|
 
 h|
-|*valid_month* (m: `Integer`): `Boolean` +
-*_Post_*: Result = m >= 1 and m \<= Months_in_year
+|*valid_month* ( +
+m: `Integer[1]` +
+): `Boolean` +
+*_Post_*: `Result = m >= 1 and m \<= Months_in_year`
 a|
 
 h|
-|*valid_day* (y: `Integer`, m: `Integer`, d: `Integer`): `Boolean` +
-*_Post_*: Result = d >= 1 and d \<= days_in_month (m, y)
+|*valid_day* ( +
+y: `Integer[1]`, +
+m: `Integer[1]`, +
+d: `Integer[1]` +
+): `Boolean` +
+*_Post_*: `Result = d >= 1 and d \<= days_in_month (m, y)`
 a|True if d >= 1 and d \<= days_in_month (m, y)
 
 h|
-|*valid_hour* (h, m, s: `Integer`): `Boolean` +
-*_Post_*: Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)
+|*valid_hour* ( +
+h, +
+m, +
+s: `Integer[1]` +
+): `Boolean` +
+*_Post_*: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)`
 a|True if (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)
 
 h|
-|*valid_minute* (m: `Integer`): `Boolean` +
-*_Post_*: Result = m >= 0 and m < Minutes_in_hour
+|*valid_minute* ( +
+m: `Integer[1]` +
+): `Boolean` +
+*_Post_*: `Result = m >= 0 and m < Minutes_in_hour`
 a|True if m >= 0 and m < Minutes_in_hour.
 
 h|
-|*valid_second* (s: `Integer`): `Boolean` +
-*_Post_*: Result = s >= 0 and s < Seconds_in_minute
+|*valid_second* ( +
+s: `Integer[1]` +
+): `Boolean` +
+*_Post_*: `Result = s >= 0 and s < Seconds_in_minute`
 a|True if s >= 0 and s < Seconds_in_minute .
 
 h|
-|*valid_fractional_second* (fs: `Double`): `Boolean` +
-*_Post_*: Result = fs >= 0.0 and fs < 1.0 .
+|*valid_fractional_second* ( +
+fs: `Double[1]` +
+): `Boolean` +
+*_Post_*: `Result = fs >= 0.0 and fs < 1.0 .`
 a|True if fs >= 0.0 and fs < 1.0 .
 |===

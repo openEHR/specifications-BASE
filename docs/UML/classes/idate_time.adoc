@@ -1,6 +1,6 @@
 === IDate_time Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_IDate_time (abstract)_*
@@ -9,64 +9,64 @@ h|*Description*
 2+a|Defines the interface of an absolute point in time, specified to fractional seconds.
 
 h|*Inherit*
-2+|Temporal
+2+|`Temporal`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*year*: `Integer`
+|*year* (): `Integer`
 a|Year.
 
 h|
-|*month*: `Integer` +
-*_Pre_*: not month_unknown
+|*month* (): `Integer` +
+*_Pre_*: `not month_unknown`
 a|Month in year.
 
 h|
-|*day*: `Integer` +
-*_Pre_*: not day_unknown
+|*day* (): `Integer` +
+*_Pre_*: `not day_unknown`
 a|Day in month.
 
 h|
-|*hour*: `Integer` +
-*_Pre_*: not hour_unknown
+|*hour* (): `Integer` +
+*_Pre_*: `not hour_unknown`
 a|Hour in day.
 
 h|
-|*minute*: `Integer` +
-*_Pre_*: not minute_unknown
+|*minute* (): `Integer` +
+*_Pre_*: `not minute_unknown`
 a|Minute in hour.
 
 h|
-|*second*: `Integer` +
-*_Pre_*: not second_unknown
+|*second* (): `Integer` +
+*_Pre_*: `not second_unknown`
 a|Second in minute.
 
 h|
-|*fractional_second*: `Real`
+|*fractional_second* (): `Real`
 a|Fractional seconds.
 
 h|
-|*timezone*: `ITimezone`
+|*timezone* (): `ITimezone`
 a|Timezone; may be Void.
 
-h|*Invariant*
-2+a|*_Day_valid_*: valid_day(year, month, day)
+h|*Invariants*
+2+a|*_Day_valid_*: `valid_day(year, month, day)`
 
 h|
-2+a|*_Month_valid_*: valid_month (month)
+2+a|*_Month_valid_*: `valid_month (month)`
 
 h|
-2+a|*_Year_valid_*: valid_year (year)
+2+a|*_Year_valid_*: `valid_year (year)`
 
 h|
-2+a|*_Month_valid_*: valid_month (month)
+2+a|*_Month_valid_*: `valid_month (month)`
 
 h|
-2+a|*_Day_valid_*: valid_day(year, month, day)
+2+a|*_Day_valid_*: `valid_day(year, month, day)`
 
 h|
-2+a|*_Hour_valid_*: valid_hour (hour, minute, second)
+2+a|*_Hour_valid_*: `valid_hour (hour, minute, second)`
 |===

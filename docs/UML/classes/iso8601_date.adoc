@@ -1,6 +1,6 @@
 === Iso8601_date Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*Iso8601_date*
@@ -9,22 +9,22 @@ h|*Description*
 2+a|Represents an ISO 8601 date, including partial and extended forms.
 
 h|*Inherit*
-2+|Iso8601_type, IDate
+2+|`Iso8601_type`, `IDate`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*month_unknown*: `Boolean`
+|*month_unknown* (): `Boolean`
 a|Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.
 
 h|
-|*day_unknown*: `Boolean`
+|*day_unknown* (): `Boolean`
 a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.
 
 h|
-|*valid_iso8601_date*: `Boolean`
+|*valid_iso8601_date* (): `Boolean`
 a|String is a valid ISO 8601 date, i.e. takes the complete form:
 
 * YYYYMMDD or the extended form:
@@ -45,26 +45,26 @@ Where:
 The combinations of YYYY, MM, DD numbers must be correct with respect to the Gregorian calendar.
 
 h|(effected)
-|*is_partial*: `Boolean`
+|*is_partial* (): `Boolean`
 a|True if this date is partial, i.e. if days or more is missing.
 
 h|(effected)
-|*is_extended*: `Boolean`
+|*is_extended* (): `Boolean`
 a|True if this date uses ‘-’ separators.
 
 h|(effected)
-|*as_string*: `String`
+|*as_string* (): `String`
 a|ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.
 
-h|*Invariant*
-2+a|*_Year_valid_*: valid_year (year)
+h|*Invariants*
+2+a|*_Year_valid_*: `valid_year (year)`
 
 h|
-2+a|*_Month_valid_*: not month_unknown implies valid_month (month)
+2+a|*_Month_valid_*: `not month_unknown implies valid_month (month)`
 
 h|
-2+a|*_Day_valid_*: not day_unknown implies valid_day (year, month, day)
+2+a|*_Day_valid_*: `not day_unknown implies valid_day (year, month, day)`
 
 h|
-2+a|*_Partial_validity_*: month_unknown implies day_unknown
+2+a|*_Partial_validity_*: `month_unknown implies day_unknown`
 |===

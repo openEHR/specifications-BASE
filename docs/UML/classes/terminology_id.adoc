@@ -1,6 +1,6 @@
 === TERMINOLOGY_ID Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*TERMINOLOGY_ID*
@@ -13,17 +13,17 @@ The value if the id attribute is the precise terminology id identifier, includin
 Lexical form: `name [  (' version  )' ]`.
 
 h|*Inherit*
-2+|OBJECT_ID
+2+|`OBJECT_ID`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*name*: `String`
+|*name* (): `String`
 a|Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.
 
 h|
-|*version_id*: `String`
+|*version_id* (): `String`
 a|Version of this terminology, if versioning supported, else the empty string.
 |===

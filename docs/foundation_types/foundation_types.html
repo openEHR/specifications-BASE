@@ -447,9 +447,9 @@
 <h4 id="_any_class"><a class="anchor" href="#_any_class"></a>2.3.1. Any Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -469,28 +469,48 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
+other: <code>Any[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Value equality.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
+other: <code>Any[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference equality.<br></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code><em>other</em></code>
+</td>
+<td class="hdlist2">
 <p>Reference equality.</p>
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (a_type: <code>String</code>): <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
+a_type: <code>String[1]</code><br>
+): <code>Any</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Create new instance of a type.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (an_object: <code>Any</code>): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
+an_object: <code>Any[1]</code><br>
+): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in "Interval&lt;Time&gt;".</p>
 </div></div></td>
@@ -582,9 +602,9 @@
 <h4 id="_boolean_class"><a class="anchor" href="#_boolean_class"></a>3.3.1. Boolean Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -599,7 +619,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -608,71 +628,83 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
-<strong><em>Post_de_Morgan</em></strong>: Result = not (not self or not other)<br>
-<strong><em>Post_commutative</em></strong>: Result = (other and self)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and</strong> (<br>
+other: <code>Boolean[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or not other)</code><br>
+<strong><em>Post_commutative</em></strong>: <code>Result = (other and self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Logical conjunction</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and_then</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
-<strong><em>Post_de_Morgan</em></strong>: Result = not (not self or else not other)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and_then</strong> (<br>
+other: <code>Boolean[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or else not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Boolean semi-strict conjunction with other</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
-<strong><em>Post_de_Morgan</em></strong>: Result = not (not self and not other)<br>
-<strong><em>Post_commutative</em></strong>: Result = (other or Current)<br>
-<strong><em>Post_consistent_with_semi_strict</em></strong>: Result implies (self or else other)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or</strong> (<br>
+other: <code>Boolean[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and not other)</code><br>
+<strong><em>Post_commutative</em></strong>: <code>Result = (other or Current)</code><br>
+<strong><em>Post_consistent_with_semi_strict</em></strong>: <code>Result implies (self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Boolean disjunction with other.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or_else</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
-<strong><em>Post_de_Morgan</em></strong>: Result = not (not self and then not other)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or_else</strong> (<br>
+other: <code>Boolean[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and then not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Boolean semi-strict disjunction with `other'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix xor</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
-<strong><em>Post_definition</em></strong>: Result = self or other) and not (self and other</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix xor</strong> (<br>
+other: <code>Boolean[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_definition</em></strong>: <code>Result = self or other) and not (self and other</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Boolean exclusive or with `other'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix implies</strong> (other: <code>Boolean</code>): <code>Boolean</code><br>
-<strong><em>Post_definition</em></strong>: Result = (not self or else other)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix implies</strong> (<br>
+other: <code>Boolean[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_definition</em></strong>: <code>Result = (not self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Boolean implication of `other' (semi-strict)</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Involutive_negation</em></strong>: is_equal (not (not self))</p>
+<p><strong><em>Involutive_negation</em></strong>: <code>is_equal (not (not self))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Non_contradiction</em></strong>: not (self and (not self))</p>
+<p><strong><em>Non_contradiction</em></strong>: <code>not (self and (not self))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Completeness</em></strong>: self or else (not self)</p>
+<p><strong><em>Completeness</em></strong>: <code>self or else (not self)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -682,9 +714,9 @@
 <h4 id="_ordered_class"><a class="anchor" href="#_ordered_class"></a>3.3.2. Ordered Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -699,7 +731,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -708,7 +740,9 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (other: <code>Ordered</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘&gt;’, ‘&gt;=’, ‘&lt;=’, ‘&lt;&gt;’. In real type systems, this operator might be defined on another class for comparability.</p>
 </div></div></td>
@@ -720,9 +754,9 @@
 <h4 id="_character_class"><a class="anchor" href="#_character_class"></a>3.3.3. Character Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -735,7 +769,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -744,9 +778,9 @@
 <h4 id="_octet_class"><a class="anchor" href="#_octet_class"></a>3.3.4. Octet Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -759,7 +793,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -768,9 +802,9 @@
 <h4 id="_string_class"><a class="anchor" href="#_string_class"></a>3.3.5. String Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -785,7 +819,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -794,28 +828,30 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (other: <code>String</code>): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
+other: <code>String[1]</code><br>
+): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Concatenation operator - causes ‘other’ to be appended to this string.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if string is empty, i.e. equal to "".</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integer</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integer</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if string can be parsed as an integer.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_integer</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_integer</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the integer corresponding to the integer value represented in this string.</p>
 </div></div></td>
@@ -827,9 +863,9 @@
 <h4 id="_uri_class"><a class="anchor" href="#_uri_class"></a>3.3.6. Uri Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -842,7 +878,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -851,9 +887,9 @@
 <h4 id="_numeric_class"><a class="anchor" href="#_numeric_class"></a>3.3.7. Numeric Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -868,7 +904,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -877,21 +913,27 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix *</strong> (other: <code>Numeric</code>): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix *</strong> (<br>
+other: <code>Numeric[1]</code><br>
+): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Product by `other'. Actual type of result depends on arithmetic balancing rules.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (other: <code>Numeric</code>): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
+other: <code>Numeric[1]</code><br>
+): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Sum with `other' (commutative). Actual type of result depends on arithmetic balancing rules.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix -</strong> (other: <code>Numeric</code>): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix -</strong> (<br>
+other: <code>Numeric[1]</code><br>
+): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Result of subtracting `other'. Actual type of result depends on arithmetic balancing rules.</p>
 </div></div></td>
@@ -903,9 +945,9 @@
 <h4 id="_ordered_numeric_class"><a class="anchor" href="#_ordered_numeric_class"></a>3.3.8. Ordered_Numeric Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -920,7 +962,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered, Numeric</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered</code>, <code>Numeric</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -929,9 +971,9 @@
 <h4 id="_integer_class"><a class="anchor" href="#_integer_class"></a>3.3.9. Integer Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -946,7 +988,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -955,9 +997,9 @@
 <h4 id="_integer64_class"><a class="anchor" href="#_integer64_class"></a>3.3.10. Integer64 Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -972,7 +1014,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -981,9 +1023,9 @@
 <h4 id="_real_class"><a class="anchor" href="#_real_class"></a>3.3.11. Real Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -998,7 +1040,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1007,7 +1049,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>floor</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>floor</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the greatest integer no greater than the value of this object.</p>
 </div></div></td>
@@ -1019,9 +1061,9 @@
 <h4 id="_double_class"><a class="anchor" href="#_double_class"></a>3.3.12. Double Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1034,7 +1076,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1097,9 +1139,9 @@
 <h4 id="_aggregate_class"><a class="anchor" href="#_aggregate_class"></a>4.2.1. Aggregate Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1114,7 +1156,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1123,21 +1165,23 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (v: <code>T</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
+v: <code>T[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Test for membership of a value.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of items in container.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong> (): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if container is empty.</p>
 </div></div></td>
@@ -1149,9 +1193,9 @@
 <h4 id="_list_class"><a class="anchor" href="#_list_class"></a>4.2.2. List Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1166,7 +1210,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Aggregate</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1175,28 +1219,28 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>first</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>first</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return first element.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>last</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>last</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return last element.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>First_validity</em></strong>: not is_empty implies first /= Void</p>
+<p><strong><em>First_validity</em></strong>: <code>not is_empty implies first /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Last_validity</em></strong>: not is_empty implies last /= Void</p>
+<p><strong><em>Last_validity</em></strong>: <code>not is_empty implies last /= Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1206,9 +1250,9 @@
 <h4 id="_set_class"><a class="anchor" href="#_set_class"></a>4.2.3. Set Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1223,7 +1267,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Aggregate</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1232,9 +1276,9 @@
 <h4 id="_array_class"><a class="anchor" href="#_array_class"></a>4.2.4. Array Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1249,7 +1293,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Aggregate</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1258,9 +1302,9 @@
 <h4 id="_hash_class"><a class="anchor" href="#_hash_class"></a>4.2.5. Hash Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1275,7 +1319,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Aggregate</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Aggregate</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1284,14 +1328,18 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_key</strong> (a_key: <code>K</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_key</strong> (<br>
+a_key: <code>K[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Test for membership of a key.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> (a_key: <code>K</code>): <code>V</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> (<br>
+a_key: <code>K[1]</code><br>
+): <code>V</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return item for key  a_key'.</p>
 </div></div></td>
@@ -1329,9 +1377,9 @@
 <h4 id="_interval_class"><a class="anchor" href="#_interval_class"></a>5.2.1. Interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1347,7 +1395,7 @@ Interval of ordered items.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1396,7 +1444,9 @@ Interval of ordered items.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (e): <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
+e<br>
+): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if (lower_unbounded or
 lower_included and v &gt;= lower) or v &gt; lower and
@@ -1406,52 +1456,58 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>intersects</strong> (other: <code>Interval</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>intersects</strong> (<br>
+other: <code>Interval[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (other: <code>Interval</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (<br>
+other: <code>Interval[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if current interval properly contains `other'? True if all points of `other' are inside the current interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
+other: <code>Any[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if current object&#8217;s interval is semantically same as `other'.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Lower_included_valid</em></strong>: lower_unbounded implies not lower_included</p>
+<p><strong><em>Lower_included_valid</em></strong>: <code>lower_unbounded implies not lower_included</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Upper_included_valid</em></strong>: upper_unbounded implies not upper_included</p>
+<p><strong><em>Upper_included_valid</em></strong>: <code>upper_unbounded implies not upper_included</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Limits_consistent</em></strong>: (not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</p>
+<p><strong><em>Limits_consistent</em></strong>: <code>(not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Limits_comparable</em></strong>: (not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</p>
+<p><strong><em>Limits_comparable</em></strong>: <code>(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1461,9 +1517,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_point_interval_class"><a class="anchor" href="#_point_interval_class"></a>5.2.2. Point_interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1478,7 +1534,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Interval</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Interval</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1524,7 +1580,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
@@ -1534,9 +1590,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_proper_interval_class"><a class="anchor" href="#_proper_interval_class"></a>5.2.3. Proper_interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1551,7 +1607,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Interval</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Interval</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1572,9 +1628,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_multiplicity_interval_class"><a class="anchor" href="#_multiplicity_interval_class"></a>5.2.4. Multiplicity_interval Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1589,7 +1645,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Proper_interval</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Proper_interval</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1617,28 +1673,28 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this interval imposes no constraints, i.e. is set to 0..*</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this interval expresses optionality, i.e. 0..1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this interval expresses mandation, i.e. 1..1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this interval is set to 0..0.</p>
 </div></div></td>
@@ -1650,9 +1706,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_cardinality_class"><a class="anchor" href="#_cardinality_class"></a>5.2.5. Cardinality Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1698,21 +1754,21 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the semantics of this cardinality represent a bag, i.e. unordered, non-unique membership.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the semantics of this cardinality represent a list, i.e. ordered, non-unique membership.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the semantics of this cardinality represent a set, i.e. unordered, unique membership.</p>
 </div></div></td>
@@ -1819,9 +1875,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>6.5.1. Time_Definitions Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1917,52 +1973,70 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_year</strong> (y: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = y &gt;= 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_year</strong> (<br>
+y: <code>Integer[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = y &gt;= 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_month</strong> (m: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = m &gt;= 1 and m &lt;= Months_in_year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_month</strong> (<br>
+m: <code>Integer[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = m &gt;= 1 and m &lt;= Months_in_year</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_day</strong> (y: <code>Integer</code>, m: <code>Integer</code>, d: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_day</strong> (<br>
+y: <code>Integer[1]</code>,<br>
+m: <code>Integer[1]</code>,<br>
+d: <code>Integer[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if d &gt;= 1 and d &lt;= days_in_month (m, y)</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_hour</strong> (h, m, s: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_hour</strong> (<br>
+h,<br>
+m,<br>
+s: <code>Integer[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_minute</strong> (m: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = m &gt;= 0 and m &lt; Minutes_in_hour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_minute</strong> (<br>
+m: <code>Integer[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = m &gt;= 0 and m &lt; Minutes_in_hour</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if m &gt;= 0 and m &lt; Minutes_in_hour.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_second</strong> (s: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = s &gt;= 0 and s &lt; Seconds_in_minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_second</strong> (<br>
+s: <code>Integer[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = s &gt;= 0 and s &lt; Seconds_in_minute</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if s &gt;= 0 and s &lt; Seconds_in_minute .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_fractional_second</strong> (fs: <code>Double</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = fs &gt;= 0.0 and fs &lt; 1.0 .</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_fractional_second</strong> (<br>
+fs: <code>Double[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = fs &gt;= 0.0 and fs &lt; 1.0 .</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if fs &gt;= 0.0 and fs &lt; 1.0 .</p>
 </div></div></td>
@@ -1974,9 +2048,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_temporal_class"><a class="anchor" href="#_temporal_class"></a>6.5.2. Temporal Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1991,7 +2065,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered, Time_Definitions</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered</code>, <code>Time_Definitions</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2000,9 +2074,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_idate_class"><a class="anchor" href="#_idate_class"></a>6.5.3. IDate Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2017,7 +2091,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Temporal</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2026,37 +2100,37 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Year.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not month_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Month in year.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not day_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Day in month.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>ITimezone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong> (): <code>ITimezone</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Timezone; may be Void.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>ISO8601 string for date/time, in format <code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code> or in extended format <code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code> or a partial variant; see valid_iso8601_date_time() below.</p>
 </div></div></td>
@@ -2068,9 +2142,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_itime_class"><a class="anchor" href="#_itime_class"></a>6.5.4. ITime Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2085,7 +2159,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Temporal</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2094,44 +2168,44 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Hour in day, in 24-hour time.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Minute in hour.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Second in minute.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong>: <code>Real</code><br>
-<strong><em>Pre</em></strong>: not second_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong> (): <code>Real</code><br>
+<strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Fractional seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>ITimezone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong> (): <code>ITimezone</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Timezone; may be Void.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Hour_valid</em></strong>: valid_hour(hour, minute, second)</p>
+<p><strong><em>Hour_valid</em></strong>: <code>valid_hour(hour, minute, second)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2141,9 +2215,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_idate_time_class"><a class="anchor" href="#_idate_time_class"></a>6.5.5. IDate_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2158,7 +2232,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Temporal</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2167,99 +2241,99 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Year.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not month_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Month in year.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not day_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Day in month.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not hour_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not hour_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Hour in day.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not minute_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not minute_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Minute in hour.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not second_unknown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong> (): <code>Integer</code><br>
+<strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Second in minute.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Fractional seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>ITimezone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong> (): <code>ITimezone</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Timezone; may be Void.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Day_valid</em></strong>: valid_day(year, month, day)</p>
+<p><strong><em>Day_valid</em></strong>: <code>valid_day(year, month, day)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Month_valid</em></strong>: valid_month (month)</p>
+<p><strong><em>Month_valid</em></strong>: <code>valid_month (month)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
+<p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Month_valid</em></strong>: valid_month (month)</p>
+<p><strong><em>Month_valid</em></strong>: <code>valid_month (month)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Day_valid</em></strong>: valid_day(year, month, day)</p>
+<p><strong><em>Day_valid</em></strong>: <code>valid_day(year, month, day)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Hour_valid</em></strong>: valid_hour (hour, minute, second)</p>
+<p><strong><em>Hour_valid</em></strong>: <code>valid_hour (hour, minute, second)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2269,9 +2343,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_iduration_class"><a class="anchor" href="#_iduration_class"></a>6.5.6. IDuration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2286,7 +2360,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Temporal</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2295,113 +2369,113 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of years of nominal 365-day length.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of months.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of 24 hour days.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of 60 minute hours.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of 60 second minutes.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>seconds</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>seconds</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_seconds</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_seconds</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Fractional seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>weeks</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>weeks</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of 7 day weeks.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>to_seconds</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>to_seconds</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Total number of seconds equivalent (including fractional) of entire duration.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Years_valid</em></strong>: years &gt;= 0</p>
+<p><strong><em>Years_valid</em></strong>: <code>years &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Months_valid</em></strong>: months &gt;= 0</p>
+<p><strong><em>Months_valid</em></strong>: <code>months &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Weeks_valid</em></strong>: weeks &gt;= 0</p>
+<p><strong><em>Weeks_valid</em></strong>: <code>weeks &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Days_valid</em></strong>: days &gt;= 0</p>
+<p><strong><em>Days_valid</em></strong>: <code>days &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Hours_valid</em></strong>: hours &gt;= 0</p>
+<p><strong><em>Hours_valid</em></strong>: <code>hours &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Minutes_valid</em></strong>: minutes &gt;= 0</p>
+<p><strong><em>Minutes_valid</em></strong>: <code>minutes &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Seconds_valid</em></strong>: seconds &gt;= 0</p>
+<p><strong><em>Seconds_valid</em></strong>: <code>seconds &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</p>
+<p><strong><em>Fractional_second_valid</em></strong>: <code>fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2411,9 +2485,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_itimezone_class"><a class="anchor" href="#_itimezone_class"></a>6.5.7. ITimezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2428,7 +2502,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Temporal</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Temporal</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2437,47 +2511,47 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Hour part of timezone - in the range 00 - 13.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Minute part of timezone. Generally 00 or 30.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sign</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sign</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Direction of timezone expresssed as +1 or -1.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Min_hour_valid</em></strong>: sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</p>
+<p><strong><em>Min_hour_valid</em></strong>: <code>sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Max_hour_valid</em></strong>: sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</p>
+<p><strong><em>Max_hour_valid</em></strong>: <code>sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute (minute)</p>
+<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute (minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Sign_valid</em></strong>: sign = 1 or sign = -1</p>
+<p><strong><em>Sign_valid</em></strong>: <code>sign = 1 or sign = -1</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2487,9 +2561,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_date_class"><a class="anchor" href="#_date_class"></a>6.5.8. Date Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2504,7 +2578,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">IDate</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>IDate</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2525,9 +2599,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_time_class"><a class="anchor" href="#_time_class"></a>6.5.9. Time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2542,7 +2616,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITime</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITime</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2561,9 +2635,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_date_time_class"><a class="anchor" href="#_date_time_class"></a>6.5.10. Date_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2578,7 +2652,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">IDate_time</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>IDate_time</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2599,9 +2673,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_duration_class"><a class="anchor" href="#_duration_class"></a>6.5.11. Duration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2616,7 +2690,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">IDuration</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>IDuration</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2635,9 +2709,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_timezone_class"><a class="anchor" href="#_timezone_class"></a>6.5.12. Timezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2652,7 +2726,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITimezone</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITimezone</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2661,9 +2735,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>6.5.13. Iso8601_type Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2678,7 +2752,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2697,14 +2771,14 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this date time is partial, i.e. if trailing end (right hand) value(s) is/are missing.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this ISO8601 string is in the 'extended' form, i.e. uses ‘-’ and / or ‘:’ separators.</p>
 </div></div></td>
@@ -2716,9 +2790,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>6.5.14. Iso8601_date Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2733,7 +2807,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, IDate</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Iso8601_type</code>, <code>IDate</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2742,21 +2816,21 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_date</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_date</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>String is a valid ISO 8601 date, i.e. takes the complete form:</p>
 </div>
@@ -2808,47 +2882,47 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this date is partial, i.e. if days or more is missing.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this date uses ‘-’ separators.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
+<p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Month_valid</em></strong>: not month_unknown implies valid_month (month)</p>
+<p><strong><em>Month_valid</em></strong>: <code>not month_unknown implies valid_month (month)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Day_valid</em></strong>: not day_unknown implies valid_day (year, month, day)</p>
+<p><strong><em>Day_valid</em></strong>: <code>not day_unknown implies valid_day (year, month, day)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity</em></strong>: month_unknown implies day_unknown</p>
+<p><strong><em>Partial_validity</em></strong>: <code>month_unknown implies day_unknown</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2858,9 +2932,9 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 <h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>6.5.15. Iso8601_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2887,7 +2961,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, ITime</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Iso8601_type</code>, <code>ITime</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2896,28 +2970,28 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether minute is unknown. If so, the time is of the form “hh”.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether second is unknown. If so and month is known, the time is of the form “hh:mm” or “hhmm”.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_time</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_time</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>String is a valid ISO 8601 date, i.e. takes the form:</p>
 </div>
@@ -2993,60 +3067,60 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time is partial, i.e. if seconds or more is missing.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time uses ‘-’, ‘:’ separators.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Hour_valid</em></strong>: valid_hour(hour, minute, second)</p>
+<p><strong><em>Hour_valid</em></strong>: <code>valid_hour(hour, minute, second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute (minute)</p>
+<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute (minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Second_valid</em></strong>: not second_unknown implies valid_second (second)</p>
+<p><strong><em>Second_valid</em></strong>: <code>not second_unknown implies valid_second (second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</p>
+<p><strong><em>Fractional_second_valid</em></strong>: <code>has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity</em></strong>: minute_unknown implies second_unknown</p>
+<p><strong><em>Partial_validity</em></strong>: <code>minute_unknown implies second_unknown</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3056,9 +3130,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>6.5.16. Iso8601_date_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3086,7 +3160,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, IDate_time</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Iso8601_type</code>, <code>IDate_time</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3095,42 +3169,44 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether month in year is unknown.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether day in month is unknown.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether minute in hour is known.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether minute in hour is known.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_date_time</strong> (s: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_date_time</strong> (<br>
+s: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>String is a valid ISO 8601 date-time, i.e. takes the form:</p>
 </div>
@@ -3183,102 +3259,102 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>ISO8601 string for date/time, in format <code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code> or in extended format <code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code> or a partial variant; see valid_iso8601_date_time() below.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this date time is partial, i.e. if seconds or more is missing.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this date/time uses ‘-’, ‘:’ separators.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
+<p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Month_valid</em></strong>: valid_month (month)</p>
+<p><strong><em>Month_valid</em></strong>: <code>valid_month (month)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Day_valid</em></strong>: valid_day(year, month, day)</p>
+<p><strong><em>Day_valid</em></strong>: <code>valid_day(year, month, day)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Hour_valid</em></strong>: valid_hour (hour, minute, second)</p>
+<p><strong><em>Hour_valid</em></strong>: <code>valid_hour (hour, minute, second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute(minute)</p>
+<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute(minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Second_valid</em></strong>: not second_unknown implies valid_second (second)</p>
+<p><strong><em>Second_valid</em></strong>: <code>not second_unknown implies valid_second (second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</p>
+<p><strong><em>Fractional_second_valid</em></strong>: <code>has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity_year</em></strong>: not month_unknown</p>
+<p><strong><em>Partial_validity_year</em></strong>: <code>not month_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity_month</em></strong>: not month_unknown</p>
+<p><strong><em>Partial_validity_month</em></strong>: <code>not month_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity_day</em></strong>: not day_unknown</p>
+<p><strong><em>Partial_validity_day</em></strong>: <code>not day_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity_hour</em></strong>: not hour_unknown</p>
+<p><strong><em>Partial_validity_hour</em></strong>: <code>not hour_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Partial_validity_minute</em></strong>: minute_unknown implies second_unknown</p>
+<p><strong><em>Partial_validity_minute</em></strong>: <code>minute_unknown implies second_unknown</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3288,9 +3364,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>6.5.17. Iso8601_duration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3305,7 +3381,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, IDuration</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Iso8601_type</code>, <code>IDuration</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3314,14 +3390,16 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_duration</strong> (s: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_duration</strong> (<br>
+s: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>String is a valid ISO 8601 duration, i.e. takes the form:</p>
 </div>
@@ -3336,12 +3414,46 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <p>Where each nn represents a number of years, months, etc. nnW represents a number of 7-day weeks.</p>
 </div>
 <div class="paragraph">
-<p>Note: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).</p>
+<p>Note: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).<br></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code><em>s</em></code>
+</td>
+<td class="hdlist2">
+<p>String is a valid ISO 8601 duration, i.e. takes the form:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Where each nn represents a number of years, months, etc. nnW represents a number of 7- day weeks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>ISO8601 string for duration, in format</p>
 </div>
@@ -3355,64 +3467,64 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Returns False.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Returns True.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Years_valid</em></strong>: years &gt;= 0</p>
+<p><strong><em>Years_valid</em></strong>: <code>years &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Months_valid</em></strong>: months &gt;= 0</p>
+<p><strong><em>Months_valid</em></strong>: <code>months &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Weeks_valid</em></strong>: weeks &gt;= 0</p>
+<p><strong><em>Weeks_valid</em></strong>: <code>weeks &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Days_valid</em></strong>: days &gt;= 0</p>
+<p><strong><em>Days_valid</em></strong>: <code>days &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Hours_valid</em></strong>: hours &gt;= 0</p>
+<p><strong><em>Hours_valid</em></strong>: <code>hours &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Minutes_valid</em></strong>: minutes &gt;= 0</p>
+<p><strong><em>Minutes_valid</em></strong>: <code>minutes &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Seconds_valid</em></strong>: seconds &gt;= 0</p>
+<p><strong><em>Seconds_valid</em></strong>: <code>seconds &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</p>
+<p><strong><em>Fractional_second_valid</em></strong>: <code>fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3422,9 +3534,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>6.5.18. Iso8601_timezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3439,7 +3551,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, ITimezone</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Iso8601_type</code>, <code>ITimezone</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3448,14 +3560,14 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether minute part known.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>ISO8601 timezone string, in format:</p>
 </div>
@@ -3485,47 +3597,47 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if timezone is UTC, i.e. +0000.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time zone is partial, i.e. if minutes is missing.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time-zone uses ‘:’ separators.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Min_hour_valid</em></strong>: sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</p>
+<p><strong><em>Min_hour_valid</em></strong>: <code>sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Max_hour_valid</em></strong>: sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</p>
+<p><strong><em>Max_hour_valid</em></strong>: <code>sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: not minute_unknown implies valid_minute (minute)</p>
+<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute (minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Sign_valid</em></strong>: sign = 1 or sign = -1</p>
+<p><strong><em>Sign_valid</em></strong>: <code>sign = 1 or sign = -1</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3562,9 +3674,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_routine_class"><a class="anchor" href="#_routine_class"></a>7.1.2. ROUTINE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3584,9 +3696,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_function_class"><a class="anchor" href="#_function_class"></a>7.1.3. FUNCTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3601,7 +3713,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ROUTINE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ROUTINE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -3610,9 +3722,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_procedure_class"><a class="anchor" href="#_procedure_class"></a>7.1.4. PROCEDURE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3627,7 +3739,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ROUTINE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ROUTINE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -3636,9 +3748,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_tuple_class"><a class="anchor" href="#_tuple_class"></a>7.1.5. TUPLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3658,9 +3770,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_tuple1_class"><a class="anchor" href="#_tuple1_class"></a>7.1.6. TUPLE1 Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3675,7 +3787,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TUPLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>TUPLE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -3684,9 +3796,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <h4 id="_tuple2_class"><a class="anchor" href="#_tuple2_class"></a>7.1.7. TUPLE2 Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3701,7 +3813,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TUPLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>TUPLE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -3921,7 +4033,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-09 08:35:36 CEST
+Last updated 2017-09-09 07:35:36 BST
 </div>
 </div>
 </body>

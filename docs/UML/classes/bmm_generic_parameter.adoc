@@ -1,6 +1,6 @@
 === BMM_GENERIC_PARAMETER Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*BMM_GENERIC_PARAMETER*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Definition of a generic parameter in a class definition of a generic type.
 
 h|*Inherit*
-2+|BMM_TYPE_ELEMENT
+2+|`BMM_TYPE_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -31,17 +31,17 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*flattened_conforms_to_type*: `String`
+|*flattened_conforms_to_type* (): `String`
 a|Get any ultimate type conformance constraint on this generic parameter due to inheritance.
 
 h|
-|*effective_conforms_to_type*: `BMM_CLASS`
+|*effective_conforms_to_type* (): `BMM_CLASS`
 a|Generate ultimate conformance type, which is either from `conforms_to_type' or if not set, 'Any'.
 
 h|(effected)
-|*type_signature*: `String`
+|*type_signature* (): `String`
 a|Signature form of the open type, including constrainer type if there is one, e.g. 'T:Ordered'.
 
-h|*Invariant*
-2+a|*_Inv_generic_name_*: name.count = 1 and name.is_upper
+h|*Invariants*
+2+a|*_Inv_generic_name_*: `name.count = 1 and name.is_upper`
 |===

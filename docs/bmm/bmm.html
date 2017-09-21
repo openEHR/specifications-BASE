@@ -623,9 +623,9 @@
 <h4 id="_reference_model_access_class"><a class="anchor" href="#_reference_model_access_class"></a>4.2.1. REFERENCE_MODEL_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -640,7 +640,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_DEFINITIONS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -685,7 +685,10 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>initialise_with_load_list</strong> (a_schema_dirs: <code>List&lt;String&gt;</code>, a_schema_load_list: <code>List&lt;String&gt;</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>initialise_with_load_list</strong> (<br>
+a_schema_dirs: <code>List&lt;String&gt;[1]</code>,<br>
+a_schema_load_list: <code>List&lt;String&gt;[0..1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Initialise with a specific schema load list, usually a sub-set of schemas that will be found in the directory `an_absolute_dir'.</p>
 </div></div></td>
@@ -707,9 +710,9 @@
 <h4 id="_schema_descriptor_class"><a class="anchor" href="#_schema_descriptor_class"></a>4.2.2. SCHEMA_DESCRIPTOR Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -724,7 +727,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_DEFINITIONS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -818,7 +821,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong> (): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.</p>
 </div></div></td>
@@ -839,7 +842,9 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_includes</strong> (all_schemas_list: <code>List&lt;String&gt;</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_includes</strong> (<br>
+all_schemas_list: <code>List&lt;String&gt;[0..1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Validate includes list for this schema, to see if each mentioned schema exists in read schemas.</p>
 </div></div></td>
@@ -967,9 +972,9 @@
 <h4 id="_bmm_definitions_class"><a class="anchor" href="#_bmm_definitions_class"></a>5.3.1. BMM_DEFINITIONS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1022,9 +1027,9 @@
 <h4 id="_bmm_model_element_class"><a class="anchor" href="#_bmm_model_element_class"></a>5.3.2. BMM_MODEL_ELEMENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1039,7 +1044,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_DEFINITIONS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1060,9 +1065,9 @@
 <h4 id="_bmm_schema_core_class"><a class="anchor" href="#_bmm_schema_core_class"></a>5.3.3. BMM_SCHEMA_CORE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1180,7 +1185,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Derived name of schema, based on model publisher, model name, model release.</p>
 </div></div></td>
@@ -1192,9 +1197,9 @@
 <h4 id="_bmm_model_class"><a class="anchor" href="#_bmm_model_class"></a>5.3.4. BMM_MODEL Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1209,7 +1214,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_SCHEMA_CORE, BMM_PACKAGE_CONTAINER</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_SCHEMA_CORE</code>, <code>BMM_PACKAGE_CONTAINER</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1230,63 +1235,76 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of keys in `class_definitions' of items marked as primitive types, as defined in input schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of keys in `class_definitions' of items that are enumeration types, as defined in input schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition</strong> (a_name: <code>String</code>): <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition</strong> (<br>
+a_name: <code>String[1]</code><br>
+): <code>BMM_CLASS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the class definition corresponding to `a_type_name' (which may contain a generic part).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_definition</strong> (a_name: <code>String</code>): <code>BMM_ENUMERATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_definition</strong> (<br>
+a_name: <code>String[1]</code><br>
+): <code>BMM_ENUMERATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the enumeration definition corresponding to `a_type_name'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong>: <code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong> (): <code>BMM_PROPERTY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the property definition for `a_prop_name' in flattened class corresponding to `a_type_name'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ms_conformant_property_type</strong> (a_bmm_type_name: <code>String</code>, a_bmm_property_name: <code>String</code>, a_ms_property_name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ms_conformant_property_type</strong> (<br>
+a_bmm_type_name: <code>String[1]</code>,<br>
+a_bmm_property_name: <code>String[1]</code>,<br>
+a_ms_property_name: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if `a_ms_property_type' is a valid 'MS' dynamic type for `a_property' in BMM type `a_bmm_type_name'. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like List&lt;&gt;, Set&lt;&gt; etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong>: <code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong> (): <code>BMM_PROPERTY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the property definition for `a_property_path' in flattened class corresponding to `a_type_name'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestor_classes</strong> (a_class: <code>String</code>): <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestor_classes</strong> (<br>
+a_class: <code>String[1]</code><br>
+): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return all ancestor types of `a_class_name' up to root class (usually 'ANY', 'Object' or something similar). Does  not include current class. Returns empty list if none.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (a_desc_type, an_anc_type): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (<br>
+a_desc_type,<br>
+an_anc_type<br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Check conformance of `a_desc_type' to `an_anc_type'; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their apporpriate constrainer types, or Any during the conformance testing process.</p>
 </div>
@@ -1314,9 +1332,9 @@
 <h4 id="_bmm_package_container_class"><a class="anchor" href="#_bmm_package_container_class"></a>5.3.5. BMM_PACKAGE_CONTAINER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1331,7 +1349,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1352,21 +1370,27 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (a_path: <code>String</code>): <code>BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>BMM_PACKAGE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Package at the path `a_path'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (action)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
+action<br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Recursively execute `action', which is a procedure taking a BMM_PACKAGE argument, on all members of packages.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (a_path: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if there is a package at the path `a_path'; paths are delimited with Package_name_delimiter.</p>
 </div></div></td>
@@ -1378,9 +1402,9 @@
 <h4 id="_bmm_package_class"><a class="anchor" href="#_bmm_package_class"></a>5.3.6. BMM_PACKAGE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1395,7 +1419,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_PACKAGE_CONTAINER</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_PACKAGE_CONTAINER</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1423,14 +1447,14 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong> (): <code>List&lt;BMM_CLASS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages. Recurse into each child only far enough to find the first level of classes.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Full path of this package back to root package.</p>
 </div></div></td>
@@ -1442,9 +1466,9 @@
 <h4 id="_bmm_classifier_class"><a class="anchor" href="#_bmm_classifier_class"></a>5.3.7. BMM_CLASSIFIER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1459,7 +1483,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1468,35 +1492,35 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Formal string form of the type as per UML.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_category</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_category</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a type category of main target type from Type_category_xx values.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval&lt;T:Ordered&gt;</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong> (): <code>BMM_CLASS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Main design class for this type, from which properties etc can be extracted.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Completely flattened list of type names, flattening out all generic parameters.</p>
 </div></div></td>
@@ -1508,9 +1532,9 @@
 <h4 id="_bmm_type_element_class"><a class="anchor" href="#_bmm_type_element_class"></a>5.3.8. BMM_TYPE_ELEMENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1523,7 +1547,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASSIFIER</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CLASSIFIER</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1532,9 +1556,9 @@
 <h4 id="_bmm_type_class"><a class="anchor" href="#_bmm_type_class"></a>5.3.9. BMM_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1549,7 +1573,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1558,14 +1582,14 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_substitutions</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_substitutions</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Determine if there are any type substitutions.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_substitutions</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_substitutions</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of type substitutions if any available for this type within the current BMM model.</p>
 </div></div></td>
@@ -1577,9 +1601,9 @@
 <h4 id="_bmm_class_class"><a class="anchor" href="#_bmm_class_class"></a>5.3.10. BMM_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1594,7 +1618,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASSIFIER</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CLASSIFIER</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1671,71 +1695,71 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestors</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestors</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of all inheritance parent class names, recursively.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_descendants</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_descendants</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Compute all descendants by following immediate_descendants.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway). This list includes primitive types.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers_non_primitive</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers_non_primitive</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Same as `suppliers' minus primitive types, as defined in input schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>supplier_closure</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>supplier_closure</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway).  This list includes primitive types.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_path</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_path</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Fully qualified package name, of form: 'package.package'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_path</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_path</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Fully qualified class name, of form: 'package.package.CLASS' with package path in lower-case and class in original case.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_properties</strong>: <code>List&lt;Hash&lt;String, BMM_PROPERTY&lt;BMM_TYPE&gt;&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_properties</strong> (): <code>List&lt;Hash&lt;String, BMM_PROPERTY&lt;BMM_TYPE&gt;&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of all properties due to current and ancestor classes, keyed by property name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code>BMM_CLASS</code><br>
-<strong><em>Post</em></strong>: Result = Current</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong> (): <code>BMM_CLASS</code><br>
+<strong><em>Post</em></strong>: <code>Result = Current</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Main design class for this type, from which properties etc can be extracted.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Formal string form of the type as per UML.</p>
 </div></div></td>
@@ -1747,9 +1771,9 @@
 <h4 id="_bmm_property_class"><a class="anchor" href="#_bmm_property_class"></a>5.3.11. BMM_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1764,7 +1788,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1820,14 +1844,14 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>existence</strong>: <code>Multiplicity_interval</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>existence</strong> (): <code>Multiplicity_interval</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Interval form of 0..1, 1..1 etc, generated from is_mandatory.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Name of this attribute to display in UI.</p>
 </div></div></td>
@@ -1839,9 +1863,9 @@
 <h4 id="_bmm_container_property_class"><a class="anchor" href="#_bmm_container_property_class"></a>5.3.12. BMM_CONTAINER_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1856,7 +1880,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_PROPERTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_PROPERTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1883,7 +1907,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Name of this attribute to display in UI.</p>
 </div></div></td>
@@ -1895,9 +1919,9 @@
 <h4 id="_bmm_simple_type_class"><a class="anchor" href="#_bmm_simple_type_class"></a>5.3.13. BMM_SIMPLE_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1912,7 +1936,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1933,7 +1957,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return base_class.type_name.</p>
 </div></div></td>
@@ -1945,9 +1969,9 @@
 <h4 id="_bmm_open_type_class"><a class="anchor" href="#_bmm_open_type_class"></a>5.3.14. BMM_OPEN_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1962,7 +1986,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1983,7 +2007,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conformance_type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conformance_type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return generic_constraint.conformance_type_name.</p>
 </div></div></td>
@@ -1995,9 +2019,9 @@
 <h4 id="_bmm_container_type_class"><a class="anchor" href="#_bmm_container_type_class"></a>5.3.15. BMM_CONTAINER_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2012,7 +2036,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2040,7 +2064,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return full type name, e.g. 'List&lt;ELEMENT&gt;'.</p>
 </div></div></td>
@@ -2052,9 +2076,9 @@
 <h4 id="_bmm_generic_type_class"><a class="anchor" href="#_bmm_generic_type_class"></a>5.3.16. BMM_GENERIC_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2069,7 +2093,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2097,7 +2121,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the full name of the type including generic parameters, e.g. 'DV_INTERVAL&lt;T&gt;', 'TABLE&lt;List&lt;THING&gt;,String&gt;'.</p>
 </div></div></td>
@@ -2109,9 +2133,9 @@
 <h4 id="_bmm_generic_parameter_class"><a class="anchor" href="#_bmm_generic_parameter_class"></a>5.3.17. BMM_GENERIC_PARAMETER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2126,7 +2150,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_TYPE_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2161,29 +2185,29 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_conforms_to_type</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_conforms_to_type</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Get any ultimate type conformance constraint on this generic parameter due to inheritance.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_conforms_to_type</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_conforms_to_type</strong> (): <code>BMM_CLASS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate ultimate conformance type, which is either from `conforms_to_type' or if not set, 'Any'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Signature form of the open type, including constrainer type if there is one, e.g. 'T:Ordered'.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Inv_generic_name</em></strong>: name.count = 1 and name.is_upper</p>
+<p><strong><em>Inv_generic_name</em></strong>: <code>name.count = 1 and name.is_upper</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2193,9 +2217,9 @@
 <h4 id="_bmm_generic_class_class"><a class="anchor" href="#_bmm_generic_class_class"></a>5.3.18. BMM_GENERIC_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2210,7 +2234,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CLASS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2231,21 +2255,21 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Add suppliers from generic parameters.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval&lt;T:Ordered&gt;</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Formal string form of the type as per UML.</p>
 </div></div></td>
@@ -2257,9 +2281,9 @@
 <h4 id="_bmm_enumeration_class"><a class="anchor" href="#_bmm_enumeration_class"></a>5.3.19. BMM_ENUMERATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2274,7 +2298,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_CLASS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CLASS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2309,9 +2333,9 @@
 <h4 id="_bmm_enumeration_string_class"><a class="anchor" href="#_bmm_enumeration_string_class"></a>5.3.20. BMM_ENUMERATION_STRING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2326,7 +2350,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_ENUMERATION</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ENUMERATION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2348,9 +2372,9 @@
 <h4 id="_bmm_enumeration_integer_class"><a class="anchor" href="#_bmm_enumeration_integer_class"></a>5.3.21. BMM_ENUMERATION_INTEGER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2365,7 +2389,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">BMM_ENUMERATION</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ENUMERATION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2410,9 +2434,9 @@
 <h4 id="_p_bmm_model_element_class"><a class="anchor" href="#_p_bmm_model_element_class"></a>6.2.1. P_BMM_MODEL_ELEMENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2444,9 +2468,9 @@
 <h4 id="_p_bmm_package_container_class"><a class="anchor" href="#_p_bmm_package_container_class"></a>6.2.2. P_BMM_PACKAGE_CONTAINER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2478,9 +2502,9 @@
 <h4 id="_p_bmm_schema_class"><a class="anchor" href="#_p_bmm_schema_class"></a>6.2.3. P_BMM_SCHEMA Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2495,7 +2519,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PACKAGE_CONTAINER, BMM_SCHEMA_CORE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PACKAGE_CONTAINER</code>, <code>BMM_SCHEMA_CORE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2553,7 +2577,7 @@ Persisted attribute.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_created</strong><br>
-<strong><em>Pre_state</em></strong>: state = P_BMM_PACKAGE_STATE.State_created</p></td>
+<strong><em>Pre_state</em></strong>: <code>state = P_BMM_PACKAGE_STATE.State_created</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Do some basic validation post initial creation</p>
 </div>
@@ -2584,7 +2608,7 @@ Persisted attribute.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>load_finalise</strong><br>
-<strong><em>Pre_state</em></strong>: state = P_BMM_PACKAGE_STATE.State_validated_created</p></td>
+<strong><em>Pre_state</em></strong>: <code>state = P_BMM_PACKAGE_STATE.State_validated_created</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Finalisation work:</p>
 </div>
@@ -2601,7 +2625,9 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (other)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (<br>
+other<br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Merge in class and package definitions from `other', except where the current schema already has a definition for the given type or package.</p>
 </div></div></td>
@@ -2616,14 +2642,14 @@ Persisted attribute.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_schema</strong><br>
-<strong><em>Pre_state</em></strong>: state = P_BMM_PACKAGE_STATE.State_includes_processed</p></td>
+<strong><em>Pre_state</em></strong>: <code>state = P_BMM_PACKAGE_STATE.State_includes_processed</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a BMM_SCHEMA object.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_packages</strong>: <code>P_BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_packages</strong> (): <code>P_BMM_PACKAGE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Package structure in which all top-level qualified package names like xx.yy.zz have been expanded out to a hierarchy of BMM_PACKAGE objects.</p>
 </div></div></td>
@@ -2635,9 +2661,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_schema_state_enumeration"><a class="anchor" href="#_p_bmm_schema_state_enumeration"></a>6.2.4. P_BMM_SCHEMA_STATE Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2690,9 +2716,9 @@ Persisted attribute.</p>
 <h4 id="_bmm_include_spec_class"><a class="anchor" href="#_bmm_include_spec_class"></a>6.2.5. BMM_INCLUDE_SPEC Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2724,9 +2750,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_package_class"><a class="anchor" href="#_p_bmm_package_class"></a>6.2.6. P_BMM_PACKAGE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2741,7 +2767,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PACKAGE_CONTAINER, P_BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PACKAGE_CONTAINER</code>, <code>P_BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2776,7 +2802,9 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (other: <code>P_BMM_PACKAGE</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (<br>
+other: <code>P_BMM_PACKAGE[1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.</p>
 </div></div></td>
@@ -2795,9 +2823,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_type_class"><a class="anchor" href="#_p_bmm_type_class"></a>6.2.7. P_BMM_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2812,7 +2840,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2833,14 +2861,17 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_type</strong> (a_schema: <code>BMM_MODEL</code>, a_class_def: <code>BMM_CLASS</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_type</strong> (<br>
+a_schema: <code>BMM_MODEL[1]</code>,<br>
+a_class_def: <code>BMM_CLASS[1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Create appropriate BMM_ object; defined in descendants.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_type_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_type_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Formal name of the type for display.</p>
 </div></div></td>
@@ -2852,9 +2883,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_class_class"><a class="anchor" href="#_p_bmm_class_class"></a>6.2.8. P_BMM_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2869,7 +2900,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2946,8 +2977,8 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_generic</strong>: <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result := generic_parameter_defs /= Void</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_generic</strong> (): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result := generic_parameter_defs /= Void</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this class is a generic class.</p>
 </div></div></td>
@@ -2961,7 +2992,9 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>populate_bmm_class</strong> (a_bmm_schema: <code>BMM_MODEL</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>populate_bmm_class</strong> (<br>
+a_bmm_schema: <code>BMM_MODEL[1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Add remaining model elements from Current to `bmm_class_definition'.</p>
 </div></div></td>
@@ -2973,9 +3006,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_generic_parameter_class"><a class="anchor" href="#_p_bmm_generic_parameter_class"></a>6.2.9. P_BMM_GENERIC_PARAMETER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2990,7 +3023,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3025,15 +3058,17 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_generic_parameter</strong> (a_bmm_schema: <code>BMM_MODEL</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_generic_parameter</strong> (<br>
+a_bmm_schema: <code>BMM_MODEL[1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Create bmm_generic_parameter.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Inv_generic_name</em></strong>: name.count = 1 and name.is_upper</p>
+<p><strong><em>Inv_generic_name</em></strong>: <code>name.count = 1 and name.is_upper</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3043,9 +3078,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_property_class"><a class="anchor" href="#_p_bmm_property_class"></a>6.2.10. P_BMM_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3060,7 +3095,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_MODEL_ELEMENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_MODEL_ELEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3123,7 +3158,10 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_property</strong> (a_bmm_schema: <code>BMM_MODEL</code>, a_class_def: <code>BMM_CLASS</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_property</strong> (<br>
+a_bmm_schema: <code>BMM_MODEL[1]</code>,<br>
+a_class_def: <code>BMM_CLASS[1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Create bmm_property_definition from P_BMM_ parts.</p>
 </div></div></td>
@@ -3135,9 +3173,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_simple_type_class"><a class="anchor" href="#_p_bmm_simple_type_class"></a>6.2.11. P_BMM_SIMPLE_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3152,7 +3190,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3181,9 +3219,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_open_type_class"><a class="anchor" href="#_p_bmm_open_type_class"></a>6.2.12. P_BMM_OPEN_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3198,7 +3236,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3227,9 +3265,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_generic_type_class"><a class="anchor" href="#_p_bmm_generic_type_class"></a>6.2.13. P_BMM_GENERIC_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3244,7 +3282,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3287,7 +3325,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameter_refs</strong>: <code>List&lt;P_BMM_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameter_refs</strong> (): <code>List&lt;P_BMM_TYPE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generic parameters of the root_type in this type specifier. The order must match the order of the owning class&#8217;s formal generic parameter declarations</p>
 </div></div></td>
@@ -3299,9 +3337,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_container_type_class"><a class="anchor" href="#_p_bmm_container_type_class"></a>6.2.14. P_BMM_CONTAINER_TYPE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3316,7 +3354,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_TYPE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3359,7 +3397,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_ref</strong>: <code>P_BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_ref</strong> (): <code>P_BMM_TYPE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE. Persisted attribute.</p>
 </div></div></td>
@@ -3371,9 +3409,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_single_property_class"><a class="anchor" href="#_p_bmm_single_property_class"></a>6.2.15. P_BMM_SINGLE_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3388,7 +3426,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PROPERTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3424,7 +3462,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_SIMPLE_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong> (): <code>P_BMM_SIMPLE_TYPE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate `type_ref' from `type' and save.</p>
 </div></div></td>
@@ -3436,9 +3474,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_single_property_open_class"><a class="anchor" href="#_p_bmm_single_property_open_class"></a>6.2.16. P_BMM_SINGLE_PROPERTY_OPEN Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3453,7 +3491,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PROPERTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3489,7 +3527,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong>: <code>P_BMM_OPEN_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_def</strong> (): <code>P_BMM_OPEN_TYPE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate `type_ref' from `type' and save.</p>
 </div></div></td>
@@ -3501,9 +3539,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_generic_property_class"><a class="anchor" href="#_p_bmm_generic_property_class"></a>6.2.17. P_BMM_GENERIC_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3518,7 +3556,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PROPERTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3548,9 +3586,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_container_property_class"><a class="anchor" href="#_p_bmm_container_property_class"></a>6.2.18. P_BMM_CONTAINER_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3565,7 +3603,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_PROPERTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PROPERTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3602,7 +3640,10 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_property</strong> (a_bmm_schema: <code>BMM_MODEL</code>, a_class_def: <code>BMM_CLASS</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_property</strong> (<br>
+a_bmm_schema: <code>BMM_MODEL[1]</code>,<br>
+a_class_def: <code>BMM_CLASS[1]</code><br>
+)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Create bmm_property_definition.</p>
 </div></div></td>
@@ -3614,9 +3655,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_enumeration_class"><a class="anchor" href="#_p_bmm_enumeration_class"></a>6.2.19. P_BMM_ENUMERATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3631,7 +3672,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_CLASS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_CLASS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3663,9 +3704,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_enumeration_string_class"><a class="anchor" href="#_p_bmm_enumeration_string_class"></a>6.2.20. P_BMM_ENUMERATION_STRING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3680,7 +3721,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_ENUMERATION</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_ENUMERATION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3702,9 +3743,9 @@ Persisted attribute.</p>
 <h4 id="_p_bmm_enumeration_integer_class"><a class="anchor" href="#_p_bmm_enumeration_integer_class"></a>6.2.21. P_BMM_ENUMERATION_INTEGER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3719,7 +3760,7 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">P_BMM_ENUMERATION</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_ENUMERATION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -4441,7 +4482,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-10 10:24:52 CEST
+Last updated 2017-09-10 09:24:52 BST
 </div>
 </div>
 </body>

@@ -1,6 +1,6 @@
 === P_BMM_CLASS Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*P_BMM_CLASS*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Definition of persistent form of BMM_CLASS for serialisation to ODIN, JSON, XML etc.
 
 h|*Inherit*
-2+|P_BMM_MODEL_ELEMENT
+2+|`P_BMM_MODEL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -55,8 +55,8 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*is_generic*: `Boolean` +
-*_Post_*: Result := generic_parameter_defs /= Void
+|*is_generic* (): `Boolean` +
+*_Post_*: `Result := generic_parameter_defs /= Void`
 a|True if this class is a generic class.
 
 h|
@@ -64,6 +64,8 @@ h|
 a|Create bmm_class_definition.
 
 h|
-|*populate_bmm_class* (a_bmm_schema: `BMM_MODEL`)
+|*populate_bmm_class* ( +
+a_bmm_schema: `BMM_MODEL[1]` +
+)
 a|Add remaining model elements from Current to `bmm_class_definition'.
 |===

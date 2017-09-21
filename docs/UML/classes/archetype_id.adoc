@@ -1,6 +1,6 @@
 === ARCHETYPE_ID Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*ARCHETYPE_ID*
@@ -10,39 +10,39 @@ h|*Description*
 Lexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' number`.
 
 h|*Inherit*
-2+|OBJECT_ID
+2+|`OBJECT_ID`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*qualified_rm_entity*: `String`
+|*qualified_rm_entity* (): `String`
 a|Globally qualified reference model entity, e.g.  openehr-composition-OBSERVATION.
 
 h|
-|*domain_concept*: `String`
+|*domain_concept* (): `String`
 a|Name of the concept represented by this archetype, including specialisation, e.g.
 Biochemistry_result-cholesterol .
 
 h|
-|*rm_originator*: `String`
+|*rm_originator* (): `String`
 a|Organisation originating the reference model on which this archetype is based, e.g.
 openehr ,  cen ,  hl7 .
 
 h|
-|*rm_name*: `String`
+|*rm_name* (): `String`
 a|Name of the reference model, e.g. rim,  ehr_rm,  en13606 .
 
 h|
-|*rm_entity*: `String`
+|*rm_entity* (): `String`
 a|Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR,  folder ,  composition ,  section ,  entry .
 
 h|
-|*specialisation*: `String`
+|*specialisation* (): `String`
 a|Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.  cholesterol .
 
 h|
-|*version_id*: `String`
+|*version_id* (): `String`
 a|Version of this archetype.
 |===

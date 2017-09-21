@@ -1,6 +1,6 @@
 === Iso8601_timezone Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*Iso8601_timezone*
@@ -9,18 +9,18 @@ h|*Description*
 2+a|Represents a timezone as used in ISO 8601.
 
 h|*Inherit*
-2+|Iso8601_type, ITimezone
+2+|`Iso8601_type`, `ITimezone`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*minute_unknown*: `Boolean`
+|*minute_unknown* (): `Boolean`
 a|Indicates whether minute part known.
 
 h|
-|*as_string*: `String`
+|*as_string* (): `String`
 a|ISO8601 timezone string, in format:
 
 * Z &#124; ±hh[mm]
@@ -32,26 +32,26 @@ where:
 * Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
 
 h|
-|*is_gmt*: `Boolean`
+|*is_gmt* (): `Boolean`
 a|True if timezone is UTC, i.e. +0000.
 
 h|(effected)
-|*is_partial*: `Boolean`
+|*is_partial* (): `Boolean`
 a|True if this time zone is partial, i.e. if minutes is missing.
 
 h|(effected)
-|*is_extended*: `Boolean`
+|*is_extended* (): `Boolean`
 a|True if this time-zone uses ‘:’ separators.
 
-h|*Invariant*
-2+a|*_Min_hour_valid_*: sign = -1 implies hour > 0 and hour \<= Min_timezone_hour
+h|*Invariants*
+2+a|*_Min_hour_valid_*: `sign = -1 implies hour > 0 and hour \<= Min_timezone_hour`
 
 h|
-2+a|*_Max_hour_valid_*: sign = 1 implies hour > 0 and hour \<= Max_timezone_hour
+2+a|*_Max_hour_valid_*: `sign = 1 implies hour > 0 and hour \<= Max_timezone_hour`
 
 h|
-2+a|*_Minute_valid_*: not minute_unknown implies valid_minute (minute)
+2+a|*_Minute_valid_*: `not minute_unknown implies valid_minute (minute)`
 
 h|
-2+a|*_Sign_valid_*: sign = 1 or sign = -1
+2+a|*_Sign_valid_*: `sign = 1 or sign = -1`
 |===

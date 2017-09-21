@@ -1,6 +1,6 @@
 === SCHEMA_DESCRIPTOR Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*SCHEMA_DESCRIPTOR*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Descriptor for a BMM schema. Contains a meta-data table of attributes obtained from a mini-ODIN parse of the  schema file.
 
 h|*Inherit*
-2+|BMM_DEFINITIONS
+2+|`BMM_DEFINITIONS`
 
 h|*Attributes*
 ^h|*Signature*
@@ -56,7 +56,7 @@ h|
 a|True if this is a top-level schema, i.e. not included by some other schema.
 
 h|
-|*is_bmm_compatible*: `boolean`
+|*is_bmm_compatible* (): `boolean`
 a|True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
 
 h|
@@ -68,7 +68,9 @@ h|
 a|Validate entire schema.
 
 h|
-|*validate_includes* (all_schemas_list: `List<String>`)
+|*validate_includes* ( +
+all_schemas_list: `List<String>[0..1]` +
+)
 a|Validate includes list for this schema, to see if each mentioned schema exists in read schemas.
 
 h|

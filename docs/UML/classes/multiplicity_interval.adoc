@@ -1,6 +1,6 @@
 === Multiplicity_interval Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*Multiplicity_interval*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|An Interval of Integer, used to represent multiplicity, cardinality and optionality in models.
 
 h|*Inherit*
-2+|Proper_interval
+2+|`Proper_interval`
 
 h|*Constants*
 ^h|*Signature*
@@ -27,18 +27,18 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*is_open*: `Boolean`
+|*is_open* (): `Boolean`
 a|True if this interval imposes no constraints, i.e. is set to 0..*
 
 h|
-|*is_optional*: `Boolean`
+|*is_optional* (): `Boolean`
 a|True if this interval expresses optionality, i.e. 0..1.
 
 h|
-|*is_mandatory*: `Boolean`
+|*is_mandatory* (): `Boolean`
 a|True if this interval expresses mandation, i.e. 1..1.
 
 h|
-|*is_prohibited*: `Boolean`
+|*is_prohibited* (): `Boolean`
 a|True if this interval is set to 0..0.
 |===
