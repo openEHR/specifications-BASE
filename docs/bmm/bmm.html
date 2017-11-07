@@ -35,9 +35,9 @@
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
 <li><a href="#_introduction">2.1. Introduction</a></li>
-<li><a href="#_requirements">2.2. Requirements</a></li>
-<li><a href="#_current_state_of_the_art">2.3. Current State of the Art</a></li>
-<li><a href="#_design">2.4. Design</a></li>
+<li><a href="#_current_state_of_the_art">2.2. Current State of the Art</a></li>
+<li><a href="#_design">2.3. Design</a></li>
+<li><a href="#_schema_format">2.4. Schema Format</a></li>
 <li><a href="#_a_note_on_language">2.5. A Note on Language</a></li>
 </ul>
 </li>
@@ -244,7 +244,14 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improve and update introductory text in the Overview section.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>03 Nov 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>P_BMM_SIMPLE_TYPE_OPEN</code> to <code>P_BMM_OPEN_TYPE</code>;<br>
  Remove <code>BMM_CLASSIFIER.<em>conformance_type_name</em></code>;<br>
  Rename <code>P_BMM_GENERIC_PARAMETER.<em>create_bmm_generic_parameter_definition</em></code> to <code><em>create_bmm_generic_parameter</em></code>;<br>
@@ -254,7 +261,7 @@
  Constrain <code>BMM_GENERIC_PARAMETER.<em>name</em></code> and <code>P_BMM_GENERIC_PARAMETER.<em>name</em></code> to one character and upper case.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Nanjo,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Mar 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02 Mar 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.2.0</p></td>
@@ -330,6 +337,12 @@
 <li>
 <p>'OMG' and 'UML' are registered trademarks of the Object Management Group</p>
 </li>
+<li>
+<p>'MagicDraw' is a registered trademark of NoMagic Inc</p>
+</li>
+<li>
+<p>'Rational Software Architect' is a registered trademark of IBM Corporation.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -370,62 +383,41 @@
 <p>One of the key needs in any open computing environment is a computable representation of its own models, for a number of purposes, including reasoning about them, performing validation and consistency checking, building software and generating documentation. This is particularly true of openEHR, where a further need is to be able to validate archetypes and templates with respect to the reference model, and also to validate runtime instance data against operational templates and the reference model.</p>
 </div>
 <div class="paragraph">
-<p>A number of computable representations of the openEHR published models have been available in the past. Unfortunately the standards and tools available for model representation in ICT in general remain problematic.</p>
+<p>A number of computable representations of the openEHR published models have been available in the past. Currently models are represented in two computable forms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MagicDraw 18.5 or higher UML/XMI;</p>
+</li>
+<li>
+<p>Basic Meta-Model (BMM) format, i.e. the format of this specification.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The primary use of the UML expression is for specification publishing. In this role, the internal UML is processed to generate correct signatures for class properties and functions, and can be used computably for other purposes, as long as care is taken with template and qualified attributes.</p>
+</div>
+<div class="paragraph">
+<p>The BMM provides a standalone alternative to UML/XMI which correctly represents all types, including open and closed template types, and is human-readable. It was originally developed in 2012, when the state of UML tools and particularly XMI was poor, and a reliable format was needed for openEHR modelling tools.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Other than for working with particular tools designed to use BMM, BMM is not a required formalism for implementing openEHR, and other methods of accessing models computably may be used, including UML and software implementations of the openEHR Reference Model.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_requirements"><a class="anchor" href="#_requirements"></a>2.2. Requirements</h3>
+<h3 id="_current_state_of_the_art"><a class="anchor" href="#_current_state_of_the_art"></a>2.2. Current State of the Art</h3>
 <div class="paragraph">
-<p>The key requirements for human- and machine-readable models are as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>a primary computable expression of the reference model as published in the specification documents</p>
-<div class="ulist">
-<ul>
-<li>
-<p>functionally, the formalism and tooling need to support static class models, including generic classes, multiple inheritance, class invariants, pre-conditions and post-conditions (i.e. 'design by contract' or DbC elements)</p>
-</li>
-<li>
-<p>ideally this expression would be defined either</p>
-<div class="ulist">
-<ul>
-<li>
-<p>within a UML tool, and exported in a usable form; or</p>
-</li>
-<li>
-<p>within some other editor that makes it easy to maintain.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>this expression should be the basis for published documentation of the specifications;</p>
-</li>
-<li>
-<p>this expression should also support machine validation / compilation to ensure the model is valid.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>one or more data serialisation forms, derived from the primary expression</p>
-<div class="ulist">
-<ul>
-<li>
-<p>at least XML needs to be supported, but other formats such as JSON and the openEHR dADL may also be supported.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_current_state_of_the_art"><a class="anchor" href="#_current_state_of_the_art"></a>2.3. Current State of the Art</h3>
-<div class="paragraph">
-<p>One would think that the ICT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. UML 2.x and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. It will probably eventually come to pass, but a number of obstacles remain to date:</p>
+<p>One would expect that the ICT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. UML 2.x and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. It will probably eventually come to pass, but a number of obstacles remain to date:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -433,13 +425,13 @@
 <p>the UML 2.x specifications are exceedingly complex (see OMG site for specifications; UML 2.1.2 'superstructure' = 738pp; UML 2.1.2 'infrastructure' = 224pp);</p>
 </li>
 <li>
-<p>the XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability;</p>
+<p>the XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability (recognised as a critical issue by OMG in 2015);</p>
 </li>
 <li>
 <p>the Design By Contract (DbC) concept is supported via the use of OCL 2.0 constraints in class models, although there are semantic holes, e.g. proper semantics through inheritance;</p>
 </li>
 <li>
-<p>for some, XML-schema represents a way of expressing object models, but in fact is not semantically suitable for this purpose. It can be and is used (including in openEHR) as a derivative serialisation representation, but from the point of view of specification, it is deficient in having non-object-oriented inheritance semantics, no generic classes, no representation of non-data members, and only marginal support for design by contract.</p>
+<p>for some, XML-schema represents a way of expressing object models, but in fact is not semantically suitable for this purpose, primarily due to its different inheritance model. It can be and is used (including in openEHR) as a derivative serialisation representation, but from the point of view of specification, it is deficient in having non-object-oriented inheritance semantics, no generic classes, no representation of non-data members, and only marginal support for design by contract.</p>
 </li>
 </ul>
 </div>
@@ -455,18 +447,39 @@
 <p>variable support for generic (i.e. template) classes; even those tools that properly implement the UML 2.5 specification are still very hard to use for defining generic classes because of problems in the specification that remain unaddressed;</p>
 </li>
 <li>
+<p>problems with qualified attributes, which are used to represent identifier references to objects rather than direct references;</p>
+</li>
+<li>
 <p>variable support for XSD generation across tools, where the results are wildly wrong in some tools;</p>
 </li>
 <li>
-<p>in some tools, it is impossible to define an abstract formal model. The only option is to select a programming language profile such as Java or C# and thus get locked into the limitations of those languages (messy type systems, weak inheritance semantics, language-specific notion of types such as <code>Array&lt;T&gt;</code>, <code>List&lt;T&gt;</code>, etc.).</p>
+<p>in some tools, it is impossible to define an abstract formal model - the only option is to select a particular programming language profile such as Java or C# and thus get locked into the limitations of those languages (messy type systems, weak inheritance semantics, language-specific notion of types such as <code>Array&lt;T&gt;</code>, <code>List&lt;T&gt;</code>, etc.).</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Since 2015, the quality of UML tools has improved, and the XMI generated by some is more reliable. However, XMI generated by different tools is not the same for identical models, and some XMI importers offer numerous switches in order to process the XMI of another tool properly. XMI thus still needs to be processed with care.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, a small number of tools, including MagicDraw (currently used for representing openEHR models for the specifications) and Rational Software Architect (RSA), appear to implement UML 2.5 faithfully. This means that despite the limitations of UML 2.5 (as noted above), models expressed in it can be correctly interpreted and processed for purposes such as code generation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Other tools may well perform as well or better, and in any case, all tools change over time. No endorsement of a particular tool is intended here.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_design"><a class="anchor" href="#_design"></a>2.4. Design</h3>
+<h3 id="_design"><a class="anchor" href="#_design"></a>2.3. Design</h3>
 <div class="paragraph">
-<p>The Basic Meta-Model provides a model of object models in the data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised schema form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML. In the future an abstract syntax serialisation may be developed in the style of OMG IDL (Interface Definition Language) or similar.</p>
+<p>The Basic Meta-Model supports the representation of object models in the data point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised schema form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML. In the future an abstract syntax serialisation may be developed in the style of OMG IDL (Interface Definition Language) or similar.</p>
 </div>
 <div class="paragraph">
 <p>The BMM packages are as follows:</p>
@@ -508,12 +521,18 @@
 <div class="ulist">
 <ul>
 <li>
-<p>create a P_BMM schema in the form of one or more files, using the <code>P_BMM_</code> form of the model expressed in ODIN. This is easy to understand by using the <a href="../../example/example.bmm">example schema</a> and/or copying other examples;</p>
+<p>create a P_BMM schema in the form of one or more files, using the <code>P_BMM_</code> form of the model. This is easy to understand by using the <a href="../../example/example.bmm">example schema</a> and/or copying other examples;</p>
 </li>
 <li>
 <p>locate these files in a suitable place for use with a tool such as the <a href="http://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench</a> and <a href="http://linkehr.com">LinkEHR</a>.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_schema_format"><a class="anchor" href="#_schema_format"></a>2.4. Schema Format</h3>
+<div class="paragraph">
+<p>BMM models are normally expressed as schema text files that support inclusion and re-use. The default file format has historically been <a href="http://www.openehr.org/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>, and BMM tools to date support this format. However any common format that can express typed object models may be used, including JSON (with type markers), YAML, and XML. The examples shown in this specification are primarily in ODIN, but a tool implementing BMM may choose to serialise in and out of another preferred format.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2416,7 +2435,7 @@ a_path: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>persistence</code> package, shown below, defines a simplified form of the main BMM model suitable for persisting and human authoring. The <a href="https://github.com/openEHR/reference-models/tree/master/models/openEHR/Release-1.0.2/BMM">openEHR BMM schemas</a> are authored in the <code>P_BMM</code> form of the BMM, using the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>.</p>
+<p>The <code>persistence</code> package, shown below, defines a simplified form of the main BMM model suitable for persisting and human authoring. The <a href="https://github.com/openEHR/reference-models/tree/master/models/openEHR/Release-1.0.2/BMM">openEHR BMM schemas</a> are authored in the <code>P_BMM</code> form of the BMM, using the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
 </div>
 <div id="persistence_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3787,7 +3806,7 @@ a_class_def: <code>BMM_CLASS[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>7.1. Overview</h3>
 <div class="paragraph">
-<p>A BMM schema is normally written in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>, although other serialisations are possible. The ODIN form is described here. The structures are direct ODIN serialisations of the <code>P_BMM_XXX</code> classes in the <code>persistence</code> package.</p>
+<p>A BMM schema is normally written in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>, although any other serialisation supporting typed object models may be used, including JSON (with type markers), YAML, XML etc. The ODIN form is described here. The structures are direct ODIN serialisations of the <code>P_BMM_XXX</code> classes in the <code>persistence</code> package.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4482,7 +4501,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-10 09:24:52 BST
+Last updated 2017-11-03 14:15:20 -02
 </div>
 </div>
 </body>
