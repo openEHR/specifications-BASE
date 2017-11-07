@@ -393,6 +393,14 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.
+ Section 5.3.4: Added text indicating BMM usage and alternatives.
+ Section 11.2.4.2: Added JSON format version of example.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>03 Nov 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-15">SPECBASE-15</a>. Add Foundation Types specification to BASE;<br>
  <a href="https://openehr.atlassian.net/browse/SPECBASE-7">SPECBASE-7</a>. Add Base Types specification to BASE.<br>
  <a href="https://openehr.atlassian.net/browse/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.<br>
@@ -400,7 +408,7 @@
  Section 5: Updated package diagrams to exported diags from BASE, RM, AM, SM UML components;<br>
  Section 7.4.1: small updates to statements to make them more current; fixed some references to ISO standards.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Sep 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Sep 2017</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
@@ -1276,7 +1284,13 @@ In Release 1.0.3 and earlier releases, the contents of the <code>base</code> pac
 <div class="sect3">
 <h4 id="_basic_meta_model_bmm"><a class="anchor" href="#_basic_meta_model_bmm"></a>5.3.4. Basic Meta-Model (BMM)</h4>
 <div class="paragraph">
-<p>The <a href="http://www.openehr.org/releases/BASE/latest/bmm.html">BMM specification</a> defines a generic meta-model, suitable for formally expressing other models, including those of openEHR. It is roughly an equivalent of UML&#8217;s XMI, but fixes various problems with the latter around generic (template) types, while being vastly less complex and obscure. BMM models can be expressed in the ODIN or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the <a href="http://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench</a>.</p>
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/bmm.html">BMM specification</a> defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML&#8217;s XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile  . BMM models can be expressed in the <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a> or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the <a href="http://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench</a> and some of the openEHR tooling software.</p>
+</div>
+<div class="paragraph">
+<p>The BMM is primarily intended to reduce complexity for tools that consume reference model definitions, but is not the only way to implement such tools. Similar tools can be based directly on the openEHR published UML models, as long as typing, template types and qualified attributes are properly handled. Another alternative means of working with models is via software library implementations of the relevant models (openEHR Reference Model etc).</p>
+</div>
+<div class="paragraph">
+<p>Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3358,7 +3372,7 @@ to construct a unique path to an item in real data. This can be done by using at
 <div class="sect4">
 <h5 id="_using_a_name_based_predicate"><a class="anchor" href="#_using_a_name_based_predicate"></a>11.2.4.2. Using a Name-based Predicate</h5>
 <div class="paragraph">
-<p>If the <code>LOCATABLE.<em>name</em></code> value in certain data is known to be reliably populated with unique values across immediate siblings, the <code>name/value</code> term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following <code>OBSERVATION</code> archetype:</p>
+<p>If the <code>LOCATABLE.<em>name</em></code> value in certain data is known to be reliably populated with unique values across immediate siblings, the <code>name/value</code> term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following <code>OBSERVATION</code> archetype (expressed in <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3412,7 +3426,7 @@ to construct a unique path to an item in real data. This can be done by using at
 <p>The codes <code>[atnnnn]</code> at each node of the archetype become the <code><em>archetype_node_id</em></code> found in each node in the data.</p>
 </div>
 <div class="paragraph">
-<p>Now consider an <code>OBSERVATION</code> instance (expressed here in ODIN format), in which a history of two blood pressures has been recorded using this archetype:</p>
+<p>Now consider an <code>OBSERVATION</code> instance (expressed here in <a href="http://www.openehr.org/releases/BASE/latest/odin.html">ODIN syntax</a>), in which a history of two blood pressures has been recorded using this archetype:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3466,6 +3480,85 @@ to construct a unique path to an item in real data. This can be done by using at
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span>
 <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same data are shown in JSON syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="json"><span class="tok-p">{</span>
+    <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;openEHR-EHR-OBSERVATION.blood_pressure.v1&quot;</span><span class="tok-p">,</span>
+    <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;BP measurement&quot;</span>
+    <span class="tok-p">},</span>
+    <span class="tok-nt">&quot;data&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0001&quot;</span><span class="tok-p">,</span>
+        <span class="tok-nt">&quot;origin&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;2005-12-03T09:22:00&quot;</span><span class="tok-p">,</span>
+        <span class="tok-nt">&quot;events&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
+            <span class="tok-p">{</span>
+                <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0006&quot;</span><span class="tok-p">,</span>
+                <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                    <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;sitting&quot;</span>
+                <span class="tok-p">},</span>
+                <span class="tok-nt">&quot;time&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;2005-12-03T09:22:00&quot;</span><span class="tok-p">,</span>
+                <span class="tok-nt">&quot;data&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                    <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0003&quot;</span><span class="tok-p">,</span>
+                    <span class="tok-nt">&quot;items&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
+                        <span class="tok-p">{</span>
+                            <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;systolic&quot;</span>
+                            <span class="tok-p">},</span>
+                            <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0004&quot;</span><span class="tok-p">,</span>
+                            <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;120.0&quot;</span>
+                            <span class="tok-p">}</span>
+                        <span class="tok-p">}</span>
+                        <span class="tok-p">{</span>
+                            <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;diastolic&quot;</span>
+                            <span class="tok-p">},</span>
+                            <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0005&quot;</span><span class="tok-p">,</span>
+                            <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;80.0&quot;</span>
+                            <span class="tok-p">}</span>
+                        <span class="tok-p">}</span>
+                    <span class="tok-p">]</span>
+                <span class="tok-p">}</span>
+            <span class="tok-p">}</span>
+            <span class="tok-p">{</span>
+                <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0006&quot;</span><span class="tok-p">,</span>
+                <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                    <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;standing&quot;</span>
+                <span class="tok-p">},</span>
+                <span class="tok-nt">&quot;time&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;2005-12-03T09:27:00&quot;</span><span class="tok-p">,</span>
+                <span class="tok-nt">&quot;data&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                    <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0003&quot;</span><span class="tok-p">,</span>
+                    <span class="tok-nt">&quot;items&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
+                        <span class="tok-p">{</span>
+                            <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;systolic&quot;</span>
+                            <span class="tok-p">},</span>
+                            <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0004&quot;</span><span class="tok-p">,</span>
+                            <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;105.0&quot;</span>
+                            <span class="tok-p">}</span>
+                        <span class="tok-p">}</span>
+                        <span class="tok-p">{</span>
+                            <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;diastolic&quot;</span>
+                            <span class="tok-p">},</span>
+                            <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0005&quot;</span><span class="tok-p">,</span>
+                            <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;70.0&quot;</span>
+                            <span class="tok-p">}</span>
+                        <span class="tok-p">}</span>
+                    <span class="tok-p">]</span>
+                <span class="tok-p">}</span>
+            <span class="tok-p">}</span>
+        <span class="tok-p">]</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4631,7 +4724,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 12:20:58 CEST
+Last updated 2017-04-27 07:20:58 -03
 </div>
 </div>
 </body>

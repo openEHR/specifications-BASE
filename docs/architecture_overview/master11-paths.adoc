@@ -156,7 +156,7 @@ with the openEHR equivalent being:
 
 ==== Using a Name-based Predicate
 
-If the `LOCATABLE._name_` value in certain data is known to be reliably populated with unique values across immediate siblings, the `name/value` term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following `OBSERVATION` archetype:
+If the `LOCATABLE._name_` value in certain data is known to be reliably populated with unique values across immediate siblings, the `name/value` term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following `OBSERVATION` archetype (expressed in {openehr_odin}[ODIN syntax]):
 
 [source, cadl]
 --------
@@ -206,7 +206,7 @@ The following path extracted from the archetype refers to the systolic blood pre
 
 The codes `[atnnnn]` at each node of the archetype become the `_archetype_node_id_` found in each node in the data.
 
-Now consider an `OBSERVATION` instance (expressed here in ODIN format), in which a history of two blood pressures has been recorded using this archetype:
+Now consider an `OBSERVATION` instance (expressed here in {openehr_odin}[ODIN syntax]), in which a history of two blood pressures has been recorded using this archetype:
 
 [source, odin]
 --------
@@ -260,6 +260,84 @@ Now consider an `OBSERVATION` instance (expressed here in ODIN format), in which
         >
     >
 >
+--------
+
+The same data are shown in JSON syntax:
+
+[source, json]
+--------
+{                                                       
+    "archetype_node_id": "openEHR-EHR-OBSERVATION.blood_pressure.v1",
+    "name": {
+        "value": "BP measurement"
+    },
+    "data": {                                            
+        "archetype_node_id": "at0001",
+        "origin": "2005-12-03T09:22:00",
+        "events": [
+            {                                     
+                "archetype_node_id": "at0006",
+                "name": {
+                    "value": "sitting"
+                },
+                "time": "2005-12-03T09:22:00",
+                "data": {                                
+                    "archetype_node_id": "at0003",
+                    "items": [
+                        {
+                            "name": {
+                                "value": "systolic"
+                            },
+                            "archetype_node_id": "at0004",
+                            "value": {
+                                "magnitude": "120.0"
+                            }
+                        }
+                        {
+                            "name": {
+                                "value": "diastolic"
+                            },
+                            "archetype_node_id": "at0005",
+                            "value": {
+                                "magnitude": "80.0"
+                            }
+                        }
+                    ]
+                }
+            }
+            {                                     
+                "archetype_node_id": "at0006",
+                "name": {
+                    "value": "standing"
+                },
+                "time": "2005-12-03T09:27:00",
+                "data": {                                
+                    "archetype_node_id": "at0003",
+                    "items": [
+                        {
+                            "name": {
+                                "value": "systolic"
+                            },
+                            "archetype_node_id": "at0004",
+                            "value": {
+                                "magnitude": "105.0"
+                            }
+                        }
+                        {
+                            "name": {
+                                "value": "diastolic"
+                            },
+                            "archetype_node_id": "at0005",
+                            "value": {
+                                "magnitude": "70.0"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
 --------
 
 NOTE: in the above example, `_name_` values are shown as if they were all `DV_TEXTs`, whereas in reality in openEHR they more likely to be `DV_CODED_TEXT` instances; either is allowed by the archetype. This has been done to reduce the size of the example, and makes no difference to the paths shown below.
