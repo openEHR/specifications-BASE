@@ -396,8 +396,9 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.
  Section 5.3.4: Added text indicating BMM usage and alternatives.
  Section 11.2.4.2: Added JSON format version of example.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>03 Nov 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall,
+ S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Nov 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3488,6 +3489,7 @@ to construct a unique path to an item in real data. This can be done by using at
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="json"><span class="tok-p">{</span>
+    <span class="tok-nt">&quot;_type&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;OBSERVATION&quot;</span><span class="tok-p">,</span>
     <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;openEHR-EHR-OBSERVATION.blood_pressure.v1&quot;</span><span class="tok-p">,</span>
     <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;BP measurement&quot;</span>
@@ -3497,12 +3499,14 @@ to construct a unique path to an item in real data. This can be done by using at
         <span class="tok-nt">&quot;origin&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;2005-12-03T09:22:00&quot;</span><span class="tok-p">,</span>
         <span class="tok-nt">&quot;events&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
             <span class="tok-p">{</span>
+                <span class="tok-nt">&quot;_type&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;POINT_EVENT&quot;</span><span class="tok-p">,</span>
                 <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0006&quot;</span><span class="tok-p">,</span>
                 <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
                     <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;sitting&quot;</span>
                 <span class="tok-p">},</span>
                 <span class="tok-nt">&quot;time&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;2005-12-03T09:22:00&quot;</span><span class="tok-p">,</span>
                 <span class="tok-nt">&quot;data&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                    <span class="tok-nt">&quot;_type&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;ITEM_LIST&quot;</span><span class="tok-p">,</span>
                     <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0003&quot;</span><span class="tok-p">,</span>
                     <span class="tok-nt">&quot;items&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
                         <span class="tok-p">{</span>
@@ -3511,28 +3515,30 @@ to construct a unique path to an item in real data. This can be done by using at
                             <span class="tok-p">},</span>
                             <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0004&quot;</span><span class="tok-p">,</span>
                             <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
-                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;120.0&quot;</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-mf">120.0</span>
                             <span class="tok-p">}</span>
-                        <span class="tok-p">}</span>
+                        <span class="tok-p">},</span>
                         <span class="tok-p">{</span>
                             <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
                                 <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;diastolic&quot;</span>
                             <span class="tok-p">},</span>
                             <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0005&quot;</span><span class="tok-p">,</span>
                             <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
-                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;80.0&quot;</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-mf">80.0</span>
                             <span class="tok-p">}</span>
                         <span class="tok-p">}</span>
                     <span class="tok-p">]</span>
                 <span class="tok-p">}</span>
-            <span class="tok-p">}</span>
+            <span class="tok-p">},</span>
             <span class="tok-p">{</span>
+                <span class="tok-nt">&quot;_type&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;POINT_EVENT&quot;</span><span class="tok-p">,</span>
                 <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0006&quot;</span><span class="tok-p">,</span>
                 <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
                     <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;standing&quot;</span>
                 <span class="tok-p">},</span>
                 <span class="tok-nt">&quot;time&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;2005-12-03T09:27:00&quot;</span><span class="tok-p">,</span>
                 <span class="tok-nt">&quot;data&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+                    <span class="tok-nt">&quot;_type&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;ITEM_LIST&quot;</span><span class="tok-p">,</span>
                     <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0003&quot;</span><span class="tok-p">,</span>
                     <span class="tok-nt">&quot;items&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
                         <span class="tok-p">{</span>
@@ -3541,16 +3547,16 @@ to construct a unique path to an item in real data. This can be done by using at
                             <span class="tok-p">},</span>
                             <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0004&quot;</span><span class="tok-p">,</span>
                             <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
-                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;105.0&quot;</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-mf">105.0</span>
                             <span class="tok-p">}</span>
-                        <span class="tok-p">}</span>
+                        <span class="tok-p">},</span>
                         <span class="tok-p">{</span>
                             <span class="tok-nt">&quot;name&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
                                 <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;diastolic&quot;</span>
                             <span class="tok-p">},</span>
                             <span class="tok-nt">&quot;archetype_node_id&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;at0005&quot;</span><span class="tok-p">,</span>
                             <span class="tok-nt">&quot;value&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
-                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;70.0&quot;</span>
+                                <span class="tok-nt">&quot;magnitude&quot;</span><span class="tok-p">:</span> <span class="tok-mf">70.0</span>
                             <span class="tok-p">}</span>
                         <span class="tok-p">}</span>
                     <span class="tok-p">]</span>
