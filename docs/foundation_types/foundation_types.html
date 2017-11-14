@@ -482,9 +482,10 @@ other: <code>Any[1]</code><br>
 other: <code>Any[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Reference equality.<br></p>
+<p>Reference equality.</p>
 </div>
 <div class="hdlist">
+<div class="title">Parameters<br></div>
 <table>
 <tr>
 <td class="hdlist1">
@@ -1445,7 +1446,7 @@ Interval of ordered items.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
-e<br>
+e: <code>T[1]</code><br>
 ): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if (lower_unbounded or
@@ -2002,8 +2003,8 @@ d: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_hour</strong> (<br>
-h,<br>
-m,<br>
+h: <code>Integer[1]</code>,<br>
+m: <code>Integer[1]</code>,<br>
 s: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post</em></strong>: <code>Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code></p></td>
@@ -3414,9 +3415,10 @@ s: <code>String[1]</code><br>
 <p>Where each nn represents a number of years, months, etc. nnW represents a number of 7-day weeks.</p>
 </div>
 <div class="paragraph">
-<p>Note: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).<br></p>
+<p>Note: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).</p>
 </div>
 <div class="hdlist">
+<div class="title">Parameters<br></div>
 <table>
 <tr>
 <td class="hdlist1">
@@ -4033,7 +4035,7 @@ allowing the W designator in the same expression as other designators is an exce
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-09 07:35:36 BST
+Last updated 2017-09-09 03:35:36 -03
 </div>
 </div>
 </body>

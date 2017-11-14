@@ -836,14 +836,14 @@ a_schema_load_list: <code>List&lt;String&gt;[0..1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_top_level: Boolean</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_top_level</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this is a top-level schema, i.e. not included by some other schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong> (): <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.</p>
 </div></div></td>
@@ -1324,8 +1324,8 @@ a_class: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (<br>
-a_desc_type,<br>
-an_anc_type<br>
+a_desc_type: <code>String[1]</code>,<br>
+an_anc_type: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Check conformance of `a_desc_type' to `an_anc_type'; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their apporpriate constrainer types, or Any during the conformance testing process.</p>
@@ -1402,7 +1402,7 @@ a_path: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
-action<br>
+action: <code>PROCEDURE[1]</code><br>
 )</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Recursively execute `action', which is a procedure taking a BMM_PACKAGE argument, on all members of packages.</p>
@@ -2648,7 +2648,7 @@ Persisted attribute.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (<br>
-other<br>
+other: <code>P_BMM_SCHEMA[1]</code><br>
 )</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Merge in class and package definitions from `other', except where the current schema already has a definition for the given type or package.</p>

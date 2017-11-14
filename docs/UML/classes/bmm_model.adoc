@@ -66,8 +66,8 @@ a|Return all ancestor types of `a_class_name' up to root class (usually 'ANY', '
 
 h|
 |*type_conforms_to* ( +
-a_desc_type, +
-an_anc_type +
+a_desc_type: `String[1]`, +
+an_anc_type: `String[1]` +
 ): `Boolean`
 a|Check conformance of `a_desc_type' to `an_anc_type'; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their apporpriate constrainer types, or Any during the conformance testing process.
 
