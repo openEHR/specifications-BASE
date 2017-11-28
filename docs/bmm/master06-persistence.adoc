@@ -5,7 +5,7 @@
 The `persistence` package, shown below, defines a simplified form of the main BMM model suitable for persisting and human authoring. The https://github.com/openEHR/reference-models/tree/master/models/openEHR/Release-1.0.2/BMM[openEHR BMM schemas] are authored in the `P_BMM` form of the BMM, using the {openehr_odin}[openEHR ODIN syntax].
 
 [.text-center]
-.RM Core Package
+.base.bmm.persistence Package
 image::{uml_export_dir}/diagrams/BASE-bmm.persistence.svg[id=persistence_package, align="center"]
 
 The general approach taken in this model is that attributes name `_bmm_xxx_` and of type `BMM_XXX` are derived from the persisted attributes of the `P_BMM_XXX` classes of this model. In other words, they are in-memory only references to reconstructed instances of `BMM_XXX` types.

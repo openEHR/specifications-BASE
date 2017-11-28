@@ -636,7 +636,7 @@ Other tools may well perform as well or better, and in any case, all tools chang
 <div class="content">
 <img src="../UML/diagrams/BASE-bmm.rm_access.svg" alt="BASE bmm.rm access">
 </div>
-<div class="title">Figure 7. RM Access Package</div>
+<div class="title">Figure 7. base.bmm.rm_access Package</div>
 </div>
 </div>
 <div class="sect2">
@@ -896,7 +896,7 @@ all_schemas_list: <code>List&lt;String&gt;[0..1]</code><br>
 <div class="content">
 <img src="../UML/diagrams/BASE-bmm.core.svg" alt="BASE bmm.core">
 </div>
-<div class="title">Figure 8. RM Core Package</div>
+<div class="title">Figure 8. base.bmm.core Package</div>
 </div>
 </div>
 <div class="sect2">
@@ -2444,7 +2444,7 @@ a_path: <code>String[1]</code><br>
 <div class="content">
 <img src="../UML/diagrams/BASE-bmm.persistence.svg" alt="BASE bmm.persistence">
 </div>
-<div class="title">Figure 12. RM Core Package</div>
+<div class="title">Figure 12. base.bmm.persistence Package</div>
 </div>
 <div class="paragraph">
 <p>The general approach taken in this model is that attributes name <code><em>bmm_xxx</em></code> and of type <code>BMM_XXX</code> are derived from the persisted attributes of the <code>P_BMM_XXX</code> classes of this model. In other words, they are in-memory only references to reconstructed instances of <code>BMM_XXX</code> types.</p>
@@ -3168,7 +3168,7 @@ a_bmm_schema: <code>BMM_MODEL[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_property</strong>: <code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_property</strong>: <code>BMM_PROPERTY&lt;BMM_TYPE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>BMM_PROPERTY created by create_bmm_property_definition.</p>
 </div></div></td>
@@ -4504,7 +4504,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 11:58:39 -02
+Last updated 2017-11-07 13:58:39 GMT
 </div>
 </div>
 </body>

@@ -244,9 +244,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-6">SPECPUB-6</a>Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Nov 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-15">SPECBASE-15</a>: Add foundation types specification to BASE component.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Sep 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Sep 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.7.6</p></td>
@@ -409,7 +415,7 @@
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types-packages.svg" alt="BASE foundation types packages">
 </div>
-<div class="title">Figure 1. org.openehr.base.foundation_types package structure</div>
+<div class="title">Figure 1. base.foundation_types Package</div>
 </div>
 <div class="paragraph">
 <p>The <code>primitive_types</code>, <code>structures</code> and <code>time</code> packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.</p>
@@ -588,7 +594,7 @@ an_object: <code>Any[1]</code><br>
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.primitive_types.svg" alt="BASE foundation types.primitive types">
 </div>
-<div class="title">Figure 3. foundation_types.primitive_types package</div>
+<div class="title">Figure 3. base.foundation_types.primitive_types Package</div>
 </div>
 </div>
 <div class="sect2">
@@ -1125,13 +1131,13 @@ other: <code>Numeric[1]</code><br>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The following UML diagram illustrates the <code>foundation_types.structures</code> package. As with the primitive types, inheritance and abstract classes are used for convenience of the definitions in openEHR models, but are not assumed to exist in exactly the same way within implementation technologies. Hence, in an implementation, various workarounds or equivalences may be needed to obtain the defined semantics.</p>
+<p>The following UML diagram illustrates the <code>base.foundation_types.structures</code> package. As with the primitive types, inheritance and abstract classes are used for convenience of the definitions in openEHR models, but are not assumed to exist in exactly the same way within implementation technologies. Hence, in an implementation, various workarounds or equivalences may be needed to obtain the defined semantics.</p>
 </div>
 <div id="foundation_types_structure_types" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.structures.svg" alt="BASE foundation types.structures">
 </div>
-<div class="title">Figure 4. foundation_types.structures package</div>
+<div class="title">Figure 4. base.foundation_types.structures package</div>
 </div>
 </div>
 <div class="sect2">
@@ -1363,13 +1369,13 @@ a_key: <code>K[1]</code><br>
 <p>In addition to the generic interval types, the derived types <code>Multiplicity_interval</code> and <code>Cardinality</code> are provided, for use in models to represent multiplicity, optionality, and cardinality.</p>
 </div>
 <div class="paragraph">
-<p>The following UML diagram illustrates the <code>foundation_types.interval</code> package.</p>
+<p>The following UML diagram illustrates the <code>interval</code> package.</p>
 </div>
 <div id="foundation_types_interval" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.interval.svg" alt="BASE foundation types.interval">
 </div>
-<div class="title">Figure 5. foundation_types.interval package</div>
+<div class="title">Figure 5. base.foundation_types.interval package</div>
 </div>
 </div>
 <div class="sect2">
@@ -1786,7 +1792,7 @@ other: <code>Any[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>Two packages of time types are defined in this specification: the <code>foundation_types.time</code> package and the <code>foundation_types.iso8601_time</code> package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in types or standard library classes. The second set are conrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a <code>String</code> physical representation, and also inherit from the <code>IDate</code> etc classes.</p>
+<p>Two packages of time types are defined in this specification: the <code>base.foundation_types.time</code> package and the <code>base.foundation_types.iso8601_time</code> package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in types or standard library classes. The second set are conrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a <code>String</code> physical representation, and also inherit from the <code>IDate</code> etc classes.</p>
 </div>
 <div class="paragraph">
 <p>The two packages are shown below.</p>
@@ -1795,7 +1801,7 @@ other: <code>Any[1]</code><br>
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.time.svg" alt="BASE foundation types.time">
 </div>
-<div class="title">Figure 6. foundation_types.time and iso8601_time packages</div>
+<div class="title">Figure 6. base.foundation_types.time and iso8601_time packages</div>
 </div>
 </div>
 <div class="sect2">
@@ -3657,13 +3663,13 @@ allowing the W designator in the same expression as other designators is an exce
 <p>A small number of meta-types are defined that correspond to functional programming primitives, otherwise known as 'closures', 'lambda expressions' and so on. These concepts are supported in most modern programming languages now, and the types defined here are intended to provide a minimal formal basis to enable other openEHR specification to defined function-related elements. Since UML does not contain native functional elements, the semantics here are approximated using normal class facilities.</p>
 </div>
 <div class="paragraph">
-<p>The following illustrates the <code>foundation_types.functional</code> package.</p>
+<p>The following illustrates the <code>functional</code> package.</p>
 </div>
 <div id="foundation_types_functional" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/BASE-foundation_types.functional.svg" alt="BASE foundation types.functional">
 </div>
-<div class="title">Figure 8. foundation_types.functional package</div>
+<div class="title">Figure 8. base.foundation_types.functional Package</div>
 </div>
 <div class="paragraph">
 <p>Two key abstractions are required, namely 'function as a type', and 'tuple', which enables arguments to be formalised. To provide a 'function' type, a 'routine' type is also required. For completeness, a 'procedure' type is also defined. The 'tuple' type is defined as a generic meta-type whose descendants may additionally define any number of generic parameter types, corresponding to a type list.</p>
@@ -4035,7 +4041,7 @@ allowing the W designator in the same expression as other designators is an exce
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-09 03:35:36 -03
+Last updated 2017-09-09 07:35:36 BST
 </div>
 </div>
 </body>

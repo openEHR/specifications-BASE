@@ -89,11 +89,12 @@
 <li><a href="#_object_version_id_class">4.4.8. OBJECT_VERSION_ID Class</a></li>
 <li><a href="#_version_tree_id_class">4.4.9. VERSION_TREE_ID Class</a></li>
 <li><a href="#_archetype_id_class">4.4.10. ARCHETYPE_ID Class</a></li>
-<li><a href="#_terminology_id_class">4.4.11. TERMINOLOGY_ID Class</a></li>
-<li><a href="#_generic_id_class">4.4.12. GENERIC_ID Class</a></li>
-<li><a href="#_object_ref_class">4.4.13. OBJECT_REF Class</a></li>
-<li><a href="#_party_ref_class">4.4.14. PARTY_REF Class</a></li>
-<li><a href="#_locatable_ref_class">4.4.15. LOCATABLE_REF Class</a></li>
+<li><a href="#_template_id_class">4.4.11. TEMPLATE_ID Class</a></li>
+<li><a href="#_terminology_id_class">4.4.12. TERMINOLOGY_ID Class</a></li>
+<li><a href="#_generic_id_class">4.4.13. GENERIC_ID Class</a></li>
+<li><a href="#_object_ref_class">4.4.14. OBJECT_REF Class</a></li>
+<li><a href="#_party_ref_class">4.4.15. PARTY_REF Class</a></li>
+<li><a href="#_locatable_ref_class">4.4.16. LOCATABLE_REF Class</a></li>
 </ul>
 </li>
 <li><a href="#_syntaxes">4.5. Syntaxes</a></li>
@@ -208,9 +209,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-6">SPECPUB-6</a>Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Nov 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-7">SPECBASE-7</a>: Add Base Types specification to BASE component.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Sep 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02 Sep 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.7.0</p></td>
@@ -323,7 +330,7 @@
 <div class="content">
 <img src="../UML/diagrams/BASE-base_types-packages.svg" alt="BASE base types packages">
 </div>
-<div class="title">Figure 1. org.openehr.base_types package</div>
+<div class="title">Figure 1. base.base_types Package</div>
 </div>
 </div>
 </div>
@@ -339,7 +346,7 @@
 <div class="content">
 <img src="../UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions">
 </div>
-<div class="title">Figure 2. base_types.definitions package</div>
+<div class="title">Figure 2. base.base_types.definitions package</div>
 </div>
 </div>
 <div class="sect2">
@@ -567,7 +574,7 @@ of Date/Time fields.</p>
 <div class="content">
 <img src="../UML/diagrams/BASE-base_types.identification.svg" alt="BASE base types.identification">
 </div>
-<div class="title">Figure 3. BASE.base_types.identification Package</div>
+<div class="title">Figure 3. base.base_types.identification Package</div>
 </div>
 </div>
 <div class="sect2">
@@ -1439,7 +1446,33 @@ openehr ,  cen ,  hl7 .</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_terminology_id_class"><a class="anchor" href="#_terminology_id_class"></a>4.4.11. TERMINOLOGY_ID Class</h4>
+<h4 id="_template_id_class"><a class="anchor" href="#_template_id_class"></a>4.4.11. TEMPLATE_ID Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TEMPLATE_ID</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Identifier for templates. Lexical form to be determined.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OBJECT_ID</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_terminology_id_class"><a class="anchor" href="#_terminology_id_class"></a>4.4.12. TERMINOLOGY_ID Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1490,7 +1523,7 @@ openehr ,  cen ,  hl7 .</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_generic_id_class"><a class="anchor" href="#_generic_id_class"></a>4.4.12. GENERIC_ID Class</h4>
+<h4 id="_generic_id_class"><a class="anchor" href="#_generic_id_class"></a>4.4.13. GENERIC_ID Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1528,7 +1561,7 @@ openehr ,  cen ,  hl7 .</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_object_ref_class"><a class="anchor" href="#_object_ref_class"></a>4.4.13. OBJECT_REF Class</h4>
+<h4 id="_object_ref_class"><a class="anchor" href="#_object_ref_class"></a>4.4.14. OBJECT_REF Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1589,7 +1622,7 @@ openehr ,  cen ,  hl7 .</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_party_ref_class"><a class="anchor" href="#_party_ref_class"></a>4.4.14. PARTY_REF Class</h4>
+<h4 id="_party_ref_class"><a class="anchor" href="#_party_ref_class"></a>4.4.15. PARTY_REF Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1621,7 +1654,7 @@ openehr ,  cen ,  hl7 .</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_locatable_ref_class"><a class="anchor" href="#_locatable_ref_class"></a>4.4.15. LOCATABLE_REF Class</h4>
+<h4 id="_locatable_ref_class"><a class="anchor" href="#_locatable_ref_class"></a>4.4.16. LOCATABLE_REF Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1777,7 +1810,7 @@ openehr ,  cen ,  hl7 .</p>
 <div class="content">
 <img src="../UML/diagrams/BASE-base_types.terminology.svg" alt="BASE base types.terminology">
 </div>
-<div class="title">Figure 4. base_types.terminology package</div>
+<div class="title">Figure 4. base.base_types.terminology package</div>
 </div>
 </div>
 <div class="sect2">
