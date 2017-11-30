@@ -52,13 +52,13 @@ The following sub-sections describe the BASE component specifications.
 
 === Foundation Types
 
-The {openehr_foundation_types}[Foundation Types specification] provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the `foundations_types` package. This contains the special package `primitive_types`, which describes inbuilt types _assumed_ by openEHR in external type systems. This provides a basis for detremining mappings from openEHR to programming languages. For example such as `String._is_empty_` in openEHR might be mapped to `String._empty()_` in a programming environment.
+The {openehr_foundation_types}[Foundation Types specification] provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the `foundations_types` package. This contains the special package `primitive_types`, which describes inbuilt types _assumed_ by openEHR in external type systems. This provides a basis for determining mappings from openEHR to programming languages. For example such as `String._is_empty_` in openEHR might be mapped to `String._empty()_` in a programming environment.
 
 Other foundation types include basic structures (`Array<T>`, `Hash<K,V>` etc), time types, and various types enabling functional concepts (principally lambda expressions) to be expressed in the openEHR specifications.
 
 === Base Types
 
-The {openehr_base_types}[Base Types specification] defines the most basic concepts internal to {openehr_foundation_types}, used by all other packages. It is comprised of the `definitions`, `identification`, `terminology` and  `measurement` sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.
+The {openehr_base_types}[Base Types specification] defines generic openEHR types used in other openEHR components. It is comprised of the `definitions`, `identification`, `terminology` and  `measurement` sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.
 
 === Resource Model
 
