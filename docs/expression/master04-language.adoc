@@ -33,25 +33,25 @@ Automatic type promotion from `Integer` to `Real` applies to all integer and rea
 
 == Variable Declarations, References and Assignments
 
-Variables may be declared within a statement set, consisting of a name of the form `$var` and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:
+Variables may be declared within a statement set, consisting of a name of the form `var` and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:
 
 --------
-    $date_of_birth: Date
-    $age_in_years: Integer
+    date_of_birth: Date
+    age_in_years: Integer
 
-    $weight, $height, $bmi: Real
+    weight, height, bmi: Real
 --------
 
-Variables are referenced within assignments and expressions using the same syntax, i.e. `$var`. 
+Variables are referenced within assignments and expressions using the same syntax, i.e. `var`. 
 
 Typically declarations are used with assignments in the same way as in general purpose programming in mainstream languages. A variable can be assigned a number of kinds of things that are useful in statement sets, including constants, expressions and value-references. A declaration can be combined with an assignment. These are illustrated below.
 
 --------
-    $Mph_to_kmh_factor: Real := 1.6                 -- literal assigmment to create a constant
-    $speed_kmh, $speed_mph: Real                    -- variable declarations
+    Mph_to_kmh_factor: Real := 1.6                 -- literal assigmment to create a constant
+    speed_kmh, speed_mph: Real                     -- variable declarations
         
-    $speed_mph := /path/to/mph/data/value           -- (provided by an extension)
-    $speed_kmh := $speed_mph * $Mph_to_kmh_factor   -- an assertion containing variable references
+    speed_mph := /path/to/mph/data/value           -- (provided by an extension)
+    speed_kmh := speed_mph * Mph_to_kmh_factor     -- an assertion containing variable references
 --------
 
 Above, the path `/path/to/mph/data/value` is assumed to be provided by an extension to the language, for example that enables archetype or XML data to be accessed.
@@ -61,10 +61,10 @@ Above, the path `/path/to/mph/data/value` is assumed to be provided by an extens
 An assertion is a standalone expression, often with a tag, which enables the meaning of the expression to be understood in context. If a tag is supplied it is prepended with a colon. The following example states that the speed in kilometres of some node is related to the speed-in-miles by a factor of 1.6:
 
 --------
-    speed_validity: $speed_kmh = $speed_mph * $Mph_to_kmh_factor
+    speed_validity: speed_kmh = speed_mph * Mph_to_kmh_factor
 --------
 
-Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor `$Mph_to_kmh_factor`, which was earlier defined to be `1.6`. This is different from the last statement in the previous example, which _assigns_ the result of a multiplication to the variable `$speed_kph`.
+Note that the final statement here is a Boolean-returning equality expression, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor `Mph_to_kmh_factor`, which was earlier defined to be `1.6`. This is different from the last statement in the previous example, which _assigns_ the result of a multiplication to the variable `speed_kph`.
 
 The above example could also have been achieved without variables, as follows:
 
@@ -114,7 +114,7 @@ The following shows a value reference in the form of an archetype path followed 
 An object reference can be assigned to a variable in the normal way. This variable must have the type `Object_ref`. It can then be used in the normal way in expressions and assignments with operators that apply to object references. The following illustrates.
 
 --------
-    $pregnancy_data: Object_ref := @/path/to/pregnancy/data
+    pregnancy_data: Object_ref := @/path/to/pregnancy/data
 --------
 
 ==== Functions
@@ -201,29 +201,29 @@ All Boolean operators take Boolean operands and generate a Boolean result. The `
 The two standard logical quantifier operators are supported, `exists`, `for_all`. Both operators are used with respect to value references within the execution data context. The `exists` operator applied to a value reference (such as a path in an information structure) state that the value is present in the data context; the negated form states that it does not exist. The following simple example illustrates.
 
 --------
-    $is_female implies exists @/path/to/data/about/pregnancies
+    is_female implies exists @/path/to/data/about/pregnancies
 
-    $is_female ⇒ ∃ @/path/to/data/about/pregnancies     -- symbolic form
+    is_female ⇒ ∃ @/path/to/data/about/pregnancies     -- symbolic form
 --------
 
 The same may be achieved using variables.
 
 --------
-    $pregnancy_data: Object_ref := @/path/to/data/about/pregnancies
+    pregnancy_data: Object_ref := @/path/to/data/about/pregnancies
 
-    $is_female implies exists $pregnancy_data
+    is_female implies exists pregnancy_data
 
-    $is_female ⇒ ∃ $pregnancy_data     -- symbolic form
+    is_female ⇒ ∃ pregnancy_data     -- symbolic form
 --------
 
 Similarly, the `for_all` operator is applied to value references representing sets and lists, such as referred to by a path to a multiply-valued attribute.
 
 --------
-    $pregnancy_data: Object_ref := @/path/to/data/about/pregnancies
+    pregnancy_data: Object_ref := @/path/to/data/about/pregnancies
 
-    $no_premature_births := for_all $p in $pregnancy_data $p/term > P36W
+    no_premature_births := for_all p in pregnancy_data p/term > P36W
 
-    $no_premature_births := ∀ $p ∈ $pregnancy_data $p/term > P36W     -- symbolic form
+    no_premature_births := ∀ p ∈ pregnancy_data p/term > P36W     -- symbolic form
 --------
 
 ==== Precedence and Parentheses
@@ -231,32 +231,8 @@ Similarly, the `for_all` operator is applied to value references representing se
 The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.
 
 --------
-    $at_risk := $weight > 120 and ( $is_smoker or $is_hypertensive)
+    at_risk := weight > 120 and ( is_smoker or is_hypertensive)
 --------
-
-== Other Statement Elements
-
-=== External Queries
-
-An expression referring to an externally defined query, possibly including arguments, may be defined using the variable declaration syntax. The general pattern is as follows:
-
---------
-    $varname: Type
-    $varname := query (context, query_name, arg1, arg2, ...)
---------
-
-Examples include:
-
---------
-    $date_of_birth: ISO8601_DATE
-    $has_diabetes, $is_female: Boolean
-
-    $date_of_birth := query ("ehr", "date_of_birth")
-    $has_diabetes := query ("ehr", "has_diagnosis", "[snomed_ct::1234567]")
-    $is_female := query ("ehr", "is_female")
---------
-
-Any number of arguments can be included.
 
 == [[language-extensions]]Extensions
 

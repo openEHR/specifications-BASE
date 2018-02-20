@@ -41,12 +41,6 @@ Where each nn represents a number of years, months, etc. nnW represents a number
 
 NOTE: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).
 
-h|
-|*as_string* (): `String`
-a|ISO8601 string for duration, in format
-
-* P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]
-
 h|(effected)
 |*is_partial* (): `Boolean`
 a|Returns False.
@@ -54,6 +48,12 @@ a|Returns False.
 h|(effected)
 |*is_extended* (): `Boolean`
 a|Returns True.
+
+h|
+|*as_string* (): `String`
+a|ISO8601 string for duration, in format
+
+* P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]
 
 h|*Invariants*
 2+a|*_Years_valid_*: `years >= 0`

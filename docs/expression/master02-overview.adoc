@@ -1,8 +1,8 @@
 = Overview
 
-The openEHR Expression Language and Expression Object Model (EOM) define an extensible core formalism suitable for use in other expression- and rule-based formalisms and environments. The Expression Language is the abstract syntax counterpart to the Statement Object Model. The EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the EOM.
+The openEHR Expression Language and Expression Object Model (EOM) define an extensible core formalism suitable for use in other expression- and rule-based formalisms and environments. The Expression Language is the abstract syntax counterpart to the Expression Object Model. The EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the EOM.
 
-The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extentions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.
+The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extensions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.
 
 Key features of the formalism include:
 
@@ -15,13 +15,11 @@ Key features of the formalism include:
 
 == Execution Model
 
-The assumed execution model of the Expression formalism is that it defines statements in a _statement set_ that are evaluated by a _statement evaluator_ against one or more _data contexts_ which determine the truth values of the statements. The data context provides the computable representation of those aspects of reality to which the statements refer. Thus, a statement that asserts that `heartrate > 50` is making an assertion about values found in some data - i.e. `heartrate` is a path or other resolvable reference to a value in some data representing an actual heart rate.
+The assumed execution model of the Expression language is that an expression text defines _statements_ that are evaluated by an _evaluator_ against one or more _data contexts_, which determine the truth values of the statements. The data context provides the computable representation of those aspects of reality to which the statements refer. Thus, a statement that asserts that `heart_rate > 50` is making an assertion about values found in some data - i.e. `heart_rate` is a _symbolic variable_ that is mapped to a data entity in the data context, representing an actual heart rate.
 
-It is thus the job of _value references_ in expressions to reference values in the data context. The data context is not concretely defined in this specification, and must be specified in full languages based on this core formalism, which can be done in two places: by defining concrete value references, and by implementing the 'external query' facility to access data from services in the environment. The formalism as defined here is thus _not complete on its own_.
+The mapping of symbolic variables to entities in the data context is done via _bindings_. Each binding states where a variable's value is obtained from, and whether it is an input or output variable. This provides clear semantics for statements in the expression text.
 
-If the Statement set contains Assertions, they are treated as conditions that must evaluate to `True` to pass. If an assertion fails at execution time, an _assertion violation_ is raised. If any assertion violations occur, the Statement set is said to have _failed_.
-
-No assumption is implied about whether the data context used is complete or faithful to reality. Consequently, the _expression universe_ is technically speaking an 'open world' in the sense of the {wikipedia_open_world_assumption}[open-world assumption]. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.
+No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the _expression universe_ is technically speaking an 'open world' in the sense of the {wikipedia_open_world_assumption}[open-world assumption]. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.
 
 == Design Background
 

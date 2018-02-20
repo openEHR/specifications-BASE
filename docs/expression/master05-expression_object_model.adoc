@@ -1,22 +1,22 @@
-= The Expressions Package
+= The Expression Object Model
 
 == Overview
 
-The `expressions` package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the `expressions` package and further specialise some of its types specifically intended for extension.
+The `expression` package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the `expression` package and further specialise some of its types specifically intended for extension.
 
-The package structure of the `expressions` package is shown below.
+The package structure of the `expression` package is shown below.
 
 [.text-center]
-.Statement Package
-image::{uml_export_dir}/diagrams/BASE-expressions_packages.svg[id=expressions_packages, align="center"]
+.base.expression Package
+image::{uml_export_dir}/diagrams/BASE-expression_packages.svg[id=expression_packages, align="center"]
 
 == Core Package
 
-The main `expressions` packages `core` and `extension` are illustrated below.
+The main `expression` packages `core` and `extension` are illustrated below.
 
 [.text-center]
-.Statement Package
-image::{uml_export_dir}/diagrams/BASE-expressions.svg[id=expressions_package, align="center"]
+.base.expression.core Package
+image::{uml_export_dir}/diagrams/BASE-expression.svg[id=expression_package, align="center"]
 
 A group of statements to be used together is formally defined as one or more `STATEMENTs` in a `STATEMENT_SET`. There are three types of statements corresponding to the classes `ASSERTION`, `VARIABLE_DECLARATION` and `ASSIGNMENT`. Assertions consist of an expression tree structure that evaluates to a `Boolean` value. The root of the tree is a descendant of the class `EXPR_ITEM` that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named. 
 
@@ -54,7 +54,7 @@ include::{uml_export_dir}/classes/expr_value.adoc[leveloffset=+1]
 
 include::{uml_export_dir}/classes/external_query.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/expr_item.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expression.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/expr_operator.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/expr_unary_operator.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/expr_binary_operator.adoc[leveloffset=+1]
@@ -114,8 +114,8 @@ include::{uml_export_dir}/classes/function_def_example.adoc[leveloffset=+1]
 The `expressions.types` package is shown below.
 
 [.text-center]
-.Statement.types Package
-image::{uml_export_dir}/diagrams/BASE-expressions.types.svg[id=expressions_types_package, align="center"]
+.baes.expression.types Package
+image::{uml_export_dir}/diagrams/BASE-expression.types.svg[id=expressions_types_package, align="center"]
 
 The type system of the Expression formalism is defined via the type `EXPR_TYPE_DEF` and its descendants. All types have a `_type_name_` and a `_type_anchor_`, which is a variable of the coresponding primtive type from within the openEHR `base_types` package, i.e. `Integer`, `Real`, `String`, etc. The type anchor can be used for testing assignments within the implementation. A special type `TYPE_DEF_OBJECT` is included to enable a value reference (descendant of `EXPR_VALUE_REF`) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.
 

@@ -64,14 +64,6 @@ or the equivalent extended forms:
 
 (meanings as in DV_DATE, DV_TIME) and the values in each field are valid.
 
-h|
-|*as_string* (): `String`
-a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
-
-h|
-|*has_fractional_second* (): `Boolean`
-a|True if the fractional_second part is signficant (i.e. even if = 0.0).
-
 h|(effected)
 |*is_partial* (): `Boolean`
 a|True if this date time is partial, i.e. if seconds or more is missing.
@@ -79,6 +71,14 @@ a|True if this date time is partial, i.e. if seconds or more is missing.
 h|(effected)
 |*is_extended* (): `Boolean`
 a|True if this date/time uses ‘-’, ‘:’ separators.
+
+h|
+|*as_string* (): `String`
+a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
+
+h|
+|*has_fractional_second* (): `Boolean`
+a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|*Invariants*
 2+a|*_Year_valid_*: `valid_year (year)`

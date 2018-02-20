@@ -74,6 +74,11 @@ h|
 |*supplier_closure* (): `List<String>`
 a|List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway).  This list includes primitive types.
 
+h|(effected)
+|*base_class* (): `BMM_CLASS` +
+*_Post_*: `Result = Current`
+a|Main design class for this type, from which properties etc can be extracted.
+
 h|
 |*package_path* (): `String`
 a|Fully qualified package name, of form: 'package.package'.
@@ -85,11 +90,6 @@ a|Fully qualified class name, of form: 'package.package.CLASS' with package path
 h|
 |*flat_properties* (): `List<Hash<String, BMM_PROPERTY<BMM_TYPE>>>`
 a|List of all properties due to current and ancestor classes, keyed by property name.
-
-h|(effected)
-|*base_class* (): `BMM_CLASS` +
-*_Post_*: `Result = Current`
-a|Main design class for this type, from which properties etc can be extracted.
 
 h|(effected)
 |*type_name* (): `String`

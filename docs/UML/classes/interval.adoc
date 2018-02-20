@@ -62,15 +62,15 @@ other: `Interval[1]` +
 ): `Boolean`
 a|True if current interval properly contains `other'? True if all points of `other' are inside the current interval.
 
-h|
-|*upper* (): `T`
-a|
-
 h|(effected)
 |*is_equal* ( +
 other: `Any[1]` +
 ): `Boolean`
 a|True if current object's interval is semantically same as `other'.
+
+h|(abstract)
+|*upper* (): `T`
+a|
 
 h|*Invariants*
 2+a|*_Lower_included_valid_*: `lower_unbounded implies not lower_included`

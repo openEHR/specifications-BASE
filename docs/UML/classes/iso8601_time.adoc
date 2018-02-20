@@ -59,14 +59,6 @@ Where:
 * [(,&#124;.)s+] is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
 * Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
 
-h|
-|*as_string* (): `String`
-a|ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
-
-h|
-|*has_fractional_second* (): `Boolean`
-a|True if the fractional_second part is signficant (i.e. even if = 0.0).
-
 h|(effected)
 |*is_partial* (): `Boolean`
 a|True if this time is partial, i.e. if seconds or more is missing.
@@ -74,6 +66,14 @@ a|True if this time is partial, i.e. if seconds or more is missing.
 h|(effected)
 |*is_extended* (): `Boolean`
 a|True if this time uses ‘-’, ‘:’ separators.
+
+h|
+|*as_string* (): `String`
+a|ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
+
+h|
+|*has_fractional_second* (): `Boolean`
+a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|*Invariants*
 2+a|*_Hour_valid_*: `valid_hour(hour, minute, second)`
