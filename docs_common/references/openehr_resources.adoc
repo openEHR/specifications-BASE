@@ -38,7 +38,12 @@
 :openehr_overview: {openehr_base_releases}/architecture_overview.html
 
 :openehr_sm_releases: {openehr_org}/releases/SM/{sm_release}
-:openehr_sm_uml_diagrams: {openehr_sm_releases}/docs/UML/diagrams
+//
+// FIXME: the following is necesasry to stop the 'link:' from winding up inside
+// an 'image::' line, which won't render in HTML. Probably an Asciidoctor bug.
+//
+:openehr_sm_releases_diags: /releases/SM/{sm_release}
+:openehr_sm_uml_diagrams: {openehr_sm_releases_diags}/docs/UML/diagrams
 :openehr_sm_openehr_platform: {openehr_sm_releases}/openehr_platform.html
 
 :openehr_query_releases: {openehr_org}/releases/QUERY/{query_release}
@@ -74,11 +79,12 @@
 :openehr_terminology_url: {openehr_domain}/releases/TERM/latest/SupportTerminology.html
 :openehr_terminology_resources: {openehr_git}/openEHR/terminology
 
-:openehr_rest_apis: {openehr_git}/specifications-ITS/
+:openehr_rest_apis: {openehr_git}/specifications-ITS/docs
 :openehr_ehr_rest_api: {openehr_rest_apis}/ehr.html
 :openehr_query_rest_api: {openehr_rest_apis}/query.html
 :openehr_cds_rest_api: {openehr_rest_apis}/query.html
 :openehr_definitions_rest_api: {openehr_rest_apis}/definitions.html
+:openehr_demographic_rest_api: {openehr_rest_apis}/demographic.html
 
 //
 // openEHR online resources
@@ -167,3 +173,11 @@
 :medscape_cannulation: http://emedicine.medscape.com/article/1998177-overview 
 :semver: http://semver.org
 :asciidoctor: http://asciidoctor.org
+:apache_kafka: https://kafka.apache.org/
+:apache_avro: https://avro.apache.org/
+:apache_thrift: https://thrift.apache.org/
+:ampq: https://www.amqp.org/
+:google_protobuf: https://github.com/google/protobuf/wiki
+:zeroc_ice: https://zeroc.com/products/ice#what-is-ice
+:soap_protocol: https://en.wikipedia.org/wiki/SOAP
+:rest_ws: https://en.wikipedia.org/wiki/Representational_state_transfer
