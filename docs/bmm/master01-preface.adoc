@@ -14,3 +14,19 @@ Known omissions or questions are indicated in the text with a 'to be determined'
 
 Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the {openehr_technical_list}[technical mailing list], or on the {openehr_jira_prs_base}[specifications issue tracker].
 
+== A Note on Language
+
+The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we have used the following terms:
+
+feature (of a class):: any stored or computed element of a class, including constants, attributes (properties) and routines (methods);
+property:: a stored class feature; also known as 'attribute';
+routine:: a computed class feature that may be either value-returning (a function) or work-performing (a procedure);
+function:: a routine that computes and returns a value; typically causes no side-effects in the object;
+procedure:: a routine that performs a computation; typically has side-effects;
+generic (class or type):: a kind of class or type that has parameters of other types; known as 'template' type in some programming languages.
+
+== Tooling
+
+The {openehr_awb}[openEHR ADL Workbench (AWB)] fully implements this specification, and provide a convenient way of illustrating BMM semantics. The screenshots used in this specification are all from the ADL Workbench. The tool is written in the Eiffel language, and is available as {openehr_awb_github}[open source on Github]. The BMM libraries can be found in the {eomf_bmm}[EOMF Github repository].
+
+A modelling tool known as Archie implements BMM in Java, and {openehr_archie_github}[can be found in the openEHR Github area].

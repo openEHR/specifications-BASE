@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*BMM_CONTAINER_TYPE*
 
 h|*Description*
-2+a|Type reference that specifies containers with one generic parameter.
+2+a|Type reference that specifies containers with one generic parameter, and whose outer type is guaranteed to be a primitive container generic type such as List<>, Hash<> etc.
 
 h|*Inherit*
 2+|`BMM_TYPE`
@@ -16,17 +16,42 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*container_type*: `BMM_CLASS`
-a|The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
+|*container_type*: `BMM_GENERIC_CLASS`
+a|The type of the container. This converts to the `_root_type_` in `BMM_GENERIC_TYPE`.
 
 h|*1..1*
-|*base_type*: `BMM_TYPE`
-a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
+|*base_type*: `BMM_BASE_TYPE`
+a|The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|(effected)
 |*type_name* (): `String`
-a|Return full type name, e.g. 'List<ELEMENT>'.
+a|Return full type name, e.g. `List<ELEMENT>`.
+
+h|(effected)
+|*base_class* (): `BMM_CLASS` +
+*_Post_validity_*: `Result = base_type.base_class`
+a|Result is `_base_class_` of `_base_type_`.
+
+h|(effected)
+|*is_abstract* (): `Boolean`
+a|True if `_base_type.is_abstract_` or `_container_type.is_abstract_`.
+
+h|(effected)
+|*entity_metatype* (): `String`
+a|Meta-type of container type is `Classifier_metatype_container`.
+
+h|(effected)
+|*flattened_type_list* (): `List<String>`
+a|Completely flattened list of type names, flattening out all generic parameters.
+
+h|(effected)
+|*type_substitutions* (): `List<String>`
+a|Result is all permutations of current container type and its descendants with the current `_base_type_` and its descendants.
+
+h|(effected)
+|*has_type_substitutions* (): `Boolean`
+a|Determine if there are any type substitutions.
 |===

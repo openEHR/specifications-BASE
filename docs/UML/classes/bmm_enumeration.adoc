@@ -21,9 +21,16 @@ a|The list of names of the enumeration. If no values are supplied, the integer v
 
 h|*0..1*
 |*item_values*: `List<T>`
-a|Optional list of specific values. Must be 1:1 with `items_names' list.
+a|Optional list of specific values. Must be 1:1 with `_item_names_` list.
 
 h|*1..1*
 |*underlying_type_name*: `String`
-a|Name of type any concrete BMM_ENUMERATION_* sub-type is based on, i.e. the name of type bound to 'T' in a declared use of this type.
+a|Name of type any concrete `BMM_ENUMERATION_*` sub-type is based on, i.e. the name of type bound to 'T' in a declared use of this type.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|(effected)
+|*entity_metatype* (): `String`
+a|Meta-type of `BMM_ENUMERATION`, which is `Entity_metatype_enumeration`.
 |===

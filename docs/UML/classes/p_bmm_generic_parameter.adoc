@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*P_BMM_GENERIC_PARAMETER*
 
 h|*Description*
-2+a|Persistent form of BMM_GENERIC_PARAMETER.
+2+a|Persistent form of `BMM_GENERIC_PARAMETER`.
 
 h|*Inherit*
 2+|`P_BMM_MODEL_ELEMENT`
@@ -24,8 +24,8 @@ h|*0..1*
 a|Optional conformance constraint - the name of a type to which a concrete substitution of this generic parameter must conform. Persisted attribute.
 
 h|*0..1*
-|*bmm_generic_parameter*: `BMM_GENERIC_PARAMETER`
-a|BMM_GENERIC_PARAMETER created by create_bmm_generic_parameter.
+|*bmm_generic_parameter*: `BMM_PARAMETER_TYPE`
+a|`BMM_GENERIC_PARAMETER` created by `_create_bmm_generic_parameter_`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -34,7 +34,7 @@ h|
 |*create_bmm_generic_parameter* ( +
 a_bmm_schema: `BMM_MODEL[1]` +
 )
-a|Create bmm_generic_parameter.
+a|Create `_bmm_generic_parameter_`.
 
 h|*Invariants*
 2+a|*_Inv_generic_name_*: `name.count = 1 and name.is_upper`

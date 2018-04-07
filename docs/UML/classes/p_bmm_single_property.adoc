@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*P_BMM_SINGLE_PROPERTY*
 
 h|*Description*
-2+a|Persistent form of BMM_SINGLE_PROPERTY.
+2+a|Persistent form of `BMM_SINGLE_PROPERTY`.
 
 h|*Inherit*
 2+|`P_BMM_PROPERTY`
@@ -21,17 +21,17 @@ a|If the type is a simple type, then this attribute will hold the type name. If 
 
 h|*0..1*
 |*type_ref*: `P_BMM_SIMPLE_TYPE`
-a|Type definition of this property, if not a simple String type reference. Can be used in schema instead of `type', but less readable. Persisted attribute.
+a|Type definition of this property, if not a simple String type reference. Can be used in schema instead of `_type_`, but less readable. Persisted attribute.
 
 h|*0..1 +
 (redefined)*
 |*bmm_property*: `BMM_PROPERTY<BMM_SIMPLE_TYPE>`
-a|BMM_PROPERTY created by create_bmm_property_definition.
+a|`BMM_PROPERTY` created by `_create_bmm_property_definition_`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
 |*type_def* (): `P_BMM_SIMPLE_TYPE`
-a|Generate `type_ref' from `type' and save.
+a|Generate `_type_ref_` from `_type_` and save.
 |===

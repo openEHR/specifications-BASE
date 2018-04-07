@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*BMM_MODEL*
 
 h|*Description*
-2+a|Model of a BMM schema (along with what is inherited from BMM_SCHEMA_CORE).
+2+a|Model of a BMM schema (along with what is inherited from `BMM_SCHEMA_CORE`).
 
 h|*Inherit*
 2+|`BMM_SCHEMA_CORE`, `BMM_PACKAGE_CONTAINER`
@@ -17,34 +17,34 @@ h|*Attributes*
 
 h|*0..1*
 |*class_definitions*: `Hash<String,BMM_CLASS>`
-a|All classes in this schema.
+a|All classes in this schema, keyed by type name.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
-|*primitive_types* (): `List<String>`
-a|List of keys in `class_definitions' of items marked as primitive types, as defined in input schema.
-
-h|
-|*enumeration_types* (): `List<String>`
-a|List of keys in `class_definitions' of items that are enumeration types, as defined in input schema.
-
-h|
 |*class_definition* ( +
 a_name: `String[1]` +
 ): `BMM_CLASS`
-a|Retrieve the class definition corresponding to `a_type_name' (which may contain a generic part).
+a|Retrieve the class definition corresponding to `_a_type_name_` (which may contain a generic part).
+
+h|
+|*primitive_types* (): `List<String>`
+a|List of keys in `_class_definitions_` of items marked as primitive types, as defined in input schema.
+
+h|
+|*enumeration_types* (): `List<String>`
+a|List of keys in `_class_definitions_` of items that are enumeration types, as defined in input schema.
 
 h|
 |*enumeration_definition* ( +
 a_name: `String[1]` +
 ): `BMM_ENUMERATION`
-a|Retrieve the enumeration definition corresponding to `a_type_name'.
+a|Retrieve the enumeration definition corresponding to `_a_type_name_`.
 
 h|
 |*property_definition* (): `BMM_PROPERTY`
-a|Retrieve the property definition for `a_prop_name' in flattened class corresponding to `a_type_name'.
+a|Retrieve the property definition for `_a_prop_name_` in flattened class corresponding to `_a_type_name_`.
 
 h|
 |*ms_conformant_property_type* ( +
@@ -52,28 +52,32 @@ a_bmm_type_name: `String[1]`, +
 a_bmm_property_name: `String[1]`, +
 a_ms_property_name: `String[1]` +
 ): `Boolean`
-a|True if `a_ms_property_type' is a valid 'MS' dynamic type for `a_property' in BMM type `a_bmm_type_name'. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like List<>, Set<> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.
+a|True if `_a_ms_property_type_` is a valid 'MS' dynamic type for `_a_property_` in BMM type `_a_bmm_type_name_`. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like `List<>`, `Set<>` etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.
 
 h|
 |*property_definition_at_path* (): `BMM_PROPERTY`
-a|Retrieve the property definition for `a_property_path' in flattened class corresponding to `a_type_name'.
+a|Retrieve the property definition for `_a_property_path_` in flattened class corresponding to `_a_type_name_`.
 
 h|
 |*all_ancestor_classes* ( +
 a_class: `String[1]` +
 ): `List<String>`
-a|Return all ancestor types of `a_class_name' up to root class (usually 'ANY', 'Object' or something similar). Does  not include current class. Returns empty list if none.
+a|Return all ancestor types of `_a_class_name_` up to root class (usually `Any`, `Object` or something similar). Does  not include current class. Returns empty list if none.
 
 h|
 |*type_conforms_to* ( +
 a_desc_type: `String[1]`, +
 an_anc_type: `String[1]` +
 ): `Boolean`
-a|Check conformance of `a_desc_type' to `an_anc_type'; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their apporpriate constrainer types, or Any during the conformance testing process.
+a|Check conformance of `_a_desc_type_` to `_an_anc_type_`; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their appropriate constrainer types, or Any during the conformance testing process.
 
 Conformance is found if:
 
-* [base class test] types are non-generic, and either type names are identical, or else `a_desc_type' has `an_anc_type' in its ancestors
-* both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes `type_name_conforms_to' test
-* descendant type is generic and ancestor type is not, and they pass base classes test
+* [base class test] types are non-generic, and either type names are identical, or else `_a_desc_type_` has `_an_anc_type_` in its ancestors;
+* both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes; `_type_name_conforms_to_` test
+* descendant type is generic and ancestor type is not, and they pass base classes test.
+
+h|
+|*any_class_definition* (): `BMM_CLASS`
+a|`BMM_CLASS` instance for the `Any` class. This may be defined in the BMM schema, but if not, a default `Any` class will be generated.
 |===

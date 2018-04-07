@@ -1,15 +1,15 @@
-=== BMM_GENERIC_PARAMETER Class
+=== BMM_PARAMETER_TYPE Class
 
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*BMM_GENERIC_PARAMETER*
+2+^h|*BMM_PARAMETER_TYPE*
 
 h|*Description*
 2+a|Definition of a generic parameter in a class definition of a generic type.
 
 h|*Inherit*
-2+|`BMM_TYPE_ELEMENT`
+2+|`BMM_BASE_TYPE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -20,11 +20,11 @@ h|*1..1*
 a|Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.
 
 h|*0..1*
-|*conforms_to_type*: `BMM_CLASS`
+|*conforms_to_type*: `BMM_SIMPLE_TYPE`
 a|Optional conformance constraint that must be another valid class name.
 
 h|*0..1*
-|*inheritance_precursor*: `BMM_GENERIC_PARAMETER`
+|*inheritance_precursor*: `BMM_PARAMETER_TYPE`
 a|If set, is the corresponding generic parameter definition in an ancestor class.
 h|*Functions*
 ^h|*Signature*
@@ -36,11 +36,23 @@ a|Get any ultimate type conformance constraint on this generic parameter due to 
 
 h|
 |*effective_conforms_to_type* (): `BMM_CLASS`
-a|Generate ultimate conformance type, which is either from `conforms_to_type' or if not set, 'Any'.
+a|Generate ultimate conformance type, which is either from `conforms_to_type` or if not set, `Any`.
 
 h|(redefined)
 |*type_signature* (): `String`
-a|Signature form of the open type, including constrainer type if there is one, e.g. 'T:Ordered'.
+a|Signature form of the open type, including constrainer type if there is one, e.g. `T:Ordered`.
+
+h|(effected)
+|*is_primitive* (): `Boolean`
+a|Result = `False` - generic parameters are understood by definition to be non-primitive.
+
+h|(effected)
+|*is_abstract* (): `Boolean`
+a|Result = `False` - generic parameters are understood by definition to be non-abstract.
+
+h|(effected)
+|*entity_metatype* (): `String`
+a|Meta-type of a container type is `Entity_metatype_container`.
 
 h|*Invariants*
 2+a|*_Inv_generic_name_*: `name.count = 1 and name.is_upper`

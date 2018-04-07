@@ -9,7 +9,7 @@ h|*Description*
 2+a|Type reference to a single type i.e. not generic or container type.
 
 h|*Inherit*
-2+|`BMM_TYPE`
+2+|`BMM_BASE_TYPE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,12 +17,28 @@ h|*Attributes*
 
 h|*1..1*
 |*base_class*: `BMM_CLASS`
-a|The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
+a|The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|(effected)
 |*type_name* (): `String`
-a|Return base_class.type_name.
+a|Result is `_base_class.name_`.
+
+h|(effected)
+|*is_abstract* (): `Boolean`
+a|Result is `_base_class.is_abstract_`.
+
+h|(effected)
+|*flattened_type_list* (): `List<String>`
+a|Result is `_base_class.name_` .
+
+h|(effected)
+|*type_substitutions* (): `List<String>`
+a|Result is `_base_class.all_descendants_` .
+
+h|(effected)
+|*has_type_substitutions* (): `Boolean`
+a|True if `_base_class.has_descendants_` .
 |===

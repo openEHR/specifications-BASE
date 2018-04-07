@@ -16,7 +16,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_parameters*: `Hash<String,BMM_GENERIC_PARAMETER>`
+|*generic_parameters*: `Hash<String,BMM_PARAMETER_TYPE>`
 a|List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.
 h|*Functions*
 ^h|*Signature*
@@ -26,11 +26,7 @@ h|(redefined)
 |*suppliers* (): `List<String>`
 a|Add suppliers from generic parameters.
 
-h|(redefined)
-|*type_signature* (): `String`
-a|Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>
-
 h|(effected)
-|*type_name* (): `String`
-a|Formal string form of the type as per UML.
+|*entity_metatype* (): `String`
+a|Meta-type of `BMM_GENERIC_CLASS`, which is `Entity_metatype_generic`.
 |===

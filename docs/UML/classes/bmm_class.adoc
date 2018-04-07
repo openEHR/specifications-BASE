@@ -9,7 +9,7 @@ h|*Description*
 2+a|Definition of a class in an object model. A class is type that may be open or closed in terms of other types mentioned within.
 
 h|*Inherit*
-2+|`BMM_CLASSIFIER`
+2+|`BMM_ENTITY`, `BMM_MODEL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,10 +17,10 @@ h|*Attributes*
 
 h|*1..1*
 |*name*: `String`
-a|Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic.
+a|Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic. Use `_type_name()_` to obtain the full type name.
 
 h|*0..1*
-|*ancestors*: `Hash<String,BMM_CLASS>`
+|*ancestors*: `Hash<String,BMM_SIMPLE_TYPE>`
 a|List of immediate inheritance parents.
 
 h|*1..1*
@@ -36,16 +36,8 @@ h|*1..1*
 a|Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.
 
 h|*0..1*
-|*immediate_descendants*: `List<String>`
-a|List of immediate inheritance descendants.
-
-h|*1..1*
-|*is_abstract*: `Boolean`
-a|True if this class is abstract in its model.
-
-h|*1..1*
-|*is_primitive_type*: `Boolean`
-a|True if this class is designated a primitive type within the overall type system of the schema.
+|*immediate_descendants*: `List<BMM_CLASS>`
+a|List of references to immediate inheritance descendants.
 
 h|*1..1*
 |*is_override*: `Boolean`
@@ -60,38 +52,45 @@ a|List of all inheritance parent class names, recursively.
 
 h|
 |*all_descendants* (): `List<String>`
-a|Compute all descendants by following immediate_descendants.
+a|Compute all descendants by following `_immediate_descendants_`.
 
 h|
 |*suppliers* (): `List<String>`
-a|List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway). This list includes primitive types.
+a|List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be `Any` and this can always be assumed anyway). This list includes primitive types.
 
 h|
 |*suppliers_non_primitive* (): `List<String>`
-a|Same as `suppliers' minus primitive types, as defined in input schema.
+a|Same as `suppliers` minus primitive types, as defined in input schema.
 
 h|
 |*supplier_closure* (): `List<String>`
-a|List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed anyway).  This list includes primitive types.
-
-h|(effected)
-|*base_class* (): `BMM_CLASS` +
-*_Post_*: `Result = Current`
-a|Main design class for this type, from which properties etc can be extracted.
+a|List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be `Any` and this can always be assumed anyway).  This list includes primitive types.
 
 h|
 |*package_path* (): `String`
-a|Fully qualified package name, of form: 'package.package'.
+a|Fully qualified package name, of form: `package.package`.
 
 h|
 |*class_path* (): `String`
-a|Fully qualified class name, of form: 'package.package.CLASS' with package path in lower-case and class in original case.
+a|Fully qualified class name, of form: `package.package.CLASS` with package path in lower-case and class in original case.
 
 h|
 |*flat_properties* (): `List<Hash<String, BMM_PROPERTY<BMM_TYPE>>>`
 a|List of all properties due to current and ancestor classes, keyed by property name.
 
 h|(effected)
-|*type_name* (): `String`
-a|Formal string form of the type as per UML.
+|*is_primitive* (): `Boolean`
+a|True if this class is designated a primitive type within the overall type system of the schema. Set from schema.
+
+h|(effected)
+|*is_abstract* (): `Boolean`
+a|True if this class is abstract in its model. Value provided from an underlying data property set at creation or construction time.
+
+h|
+|*type* (): `BMM_SIMPLE_TYPE`
+a|Generate a type object that represents the type of this class. Can only be an instance of `BMM_SIMPLE_TYPE` or a descendant.
+
+h|(effected)
+|*entity_metatype* (): `String`
+a|Meta-type of `BMM_CLASS`, which is `Entity_metatype_simple`.
 |===

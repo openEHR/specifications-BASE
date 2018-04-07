@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*P_BMM_CLASS*
 
 h|*Description*
-2+a|Definition of persistent form of BMM_CLASS for serialisation to ODIN, JSON, XML etc.
+2+a|Definition of persistent form of `BMM_CLASS` for serialisation to ODIN, JSON, XML etc.
 
 h|*Inherit*
 2+|`P_BMM_MODEL_ELEMENT`
@@ -41,11 +41,11 @@ a|List of generic parameter definitions. Persisted attribute.
 
 h|*1..1*
 |*source_schema_id*: `String`
-a|Reference to original source schema defining this class. Set during BMM_SCHEMA materialise. Useful for GUI tools to enable user to edit the schema file containing a given class (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
+a|Reference to original source schema defining this class. Set during `BMM_SCHEMA` materialise. Useful for GUI tools to enable user to edit the schema file containing a given class (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
 
 h|*0..1*
 |*bmm_class*: `BMM_CLASS`
-a|BMM_CLASS object build by create_bmm_class_definition and populate_bmm_class_definition.
+a|`BMM_CLASS` object built by `_create_bmm_class_definition_` and `_populate_bmm_class_definition_`.
 
 h|*1..1*
 |*uid*: `Integer`
@@ -61,11 +61,11 @@ a|True if this class is a generic class.
 
 h|
 |*create_bmm_class*
-a|Create bmm_class_definition.
+a|Create `_bmm_class_definition_`.
 
 h|
 |*populate_bmm_class* ( +
 a_bmm_schema: `BMM_MODEL[1]` +
 )
-a|Add remaining model elements from Current to `bmm_class_definition'.
+a|Add remaining model elements from Current to `_bmm_class_definition_`.
 |===

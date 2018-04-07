@@ -8,30 +8,53 @@ The `core` package, shown below, defines the main BMM model.
 .base.bmm.core Package
 image::{uml_export_dir}/diagrams/BASE-bmm.core.svg[id=core_package, align="center"]
 
+== Structure
+
+A BMM model is structured in the same basic way as a UML model, i.e. with a hierarchical package containment structure and a set of class definitions. Class definitions consist of property definitions, each of which refers to a type, which in turn refers to a 'base class'. The general structure is shown below. Structures specific to generic and container types are shown in relevant sections below.
+
+[.text-center]
+.BMM model structure
+image::diagrams/bmm_structure.svg[id=bmm_structure, align="center"]
+
+As can be seen here, ignoring packages, a BMM model consists of class definitions containing property definitions, each of a particular type, represented as an instance of a descendant of `BMM_TYPE`.
+
+== Documentation
+
+A `_documentation_` attribute is inherited from `BMM_MODEL_ELEMENT` into `BMM_CLASS`, `BMM_PROPERTY`, `BMM_MODEL` and `BMM_PACKAGE` (the latter two via `BMM_PACKAGE_CONTAINER`).
+
+[.tbd]
+TBD: expand to be of type `Hash<String,Any>` or similar?
+
 == Semantics
 
-=== Basics
+=== The Class / Type Dvision
 
-Three top-level classes define basic abstract semantics for all other entities in the BMM: `BMM_MODEL_ELEMENT`, `BMM_CLASSIFIER` and `BMM_TYPE`. The first of these introduces features common to all elements of any BMM, such as `_documentation_`. The class `BMM_CLASSIFIER` is the abstract parent of anything that functions as the type of a property (viz: classes, types and generic parameters), while its descendant `BMM_TYPE` defines the semantics of types of instances, described below.
+One of the foundational concepts in the BMM is a distinction between _class_ and _type_, in common with the type systems of the modern forms of most object-oriented languages. Classes are _definitional_ entities, while 'type' has two meanings: as the static (design time) type of a class feature (property or function result), and as the dynamic (run-time) type of the object referred to by or computed by that feature. In a static model, types are references. For simple types, they refer to the corresponding simple class definition, but for generic types, they refer to a particular usage of a generic class definition. A given generic class may generate numerous types.
 
-The `BMM_CLASSIFIER` class has a small number of important features that establish formally the meaning of various kinds of class names, type names etc, as follows:
+This central division in the BMM is reflected in the two types `BMM_CLASS` and `BMM_TYPE`. The common parent class `BMM_ENTITY` defines a small number of properties that classify both classes and types in a model: `_entity_metatype_`, `_is_abstract_` and `_is_primitive_`. These are combined to produce a String classifier `_entity_category_`, which can be used to help visualise elements of a BMM model.
 
-* _type_name_: the effective type of an entity; for simple classes, this will just be the class name (`BMM_CLASS._name_`); for generic and container classes it will be generic name such as `List<T>`, `Interval<T>` etc; for feature types it will be the declared type, i.e. a simple name, an open type name (e.g. `T`) or a generic type name (e.g. `Interval<Time>`);
-* _type_signature_: a form of the type name that can be used as a fully-defined type signature, which for generic classes includes generic constrainer types, giving a signature such as `Interval<T:Ordered>`;
-* _conformance_type_name_: a reduced form of the type useful in some circumstances that is either a simple class name, the _contained_ type for a container type (e.g. `ELEMENT` from the type `List<ELEMENT>`), and the _root_ type from a generic type (e.g. `Interval` from `Interval<T>`).
+=== Types
 
-In addition, concrete classes such as `BMM_CLASS` and `BMM_PROPERTY` have a simple `_name_` property, corresponding to the literal names of these entities.
+Types are used for two purposes: to define the type of a property, and to define type(s) of inheritance ancestors of classes. Every type entity can be mapped back to its generating class(es), which provide the definitional basis for the type. The class `BMM_TYPE` and its descendants define the kinds of types available in a BMM model. The `BMM_TYPE` class features common to all meta-types:
 
-=== Classes and Types
+* _base_class_: a reference to the generating class;
+* _type_name_: the effective type name of an entity; for simple classes, this will just be the class name (`BMM_CLASS._name_`); for generic and container classes it will be generic name such as `List<T>`, `Interval<T>` etc; for feature types it will be the declared type, i.e. a simple name, an open type name (e.g. `T`) or a generic type name (e.g. `Interval<Time>`);
+* _type_signature_: a form of the type name that can be used as a fully-defined type signature, which for generic classes includes generic constrainer types, giving a signature such as `Interval<T:Ordered>`.
 
-One of the foundational concepts in the BMM is a distinction between _class_ and _type_, in common with the type systems of the modern forms of most object-oriented languages. Classes are definitional entities, while 'type' has two meanings: as the static (design time) type of a class feature (property or function result) and as the dynamic (run-time) type of the object referred to by or computed by that feature. At design time, the type of a property in a BMM model can be one of the following:
+The type of a property in a BMM model has one of the following `BMM_TYPE` descendants as its metatype:
 
-* a `BMM_SIMPLE_TYPE` - corresponds to a simple class;
-* a `BMM_OPEN_TYPE` - corresponds to a generic parameter type from the class type definition, e.g. `T`, `U` etc;
-* a `BMM_GENERIC_TYPE` - a type generated by the use of a generic type with filled type parameters, e.g. `Interval<Time>`;
+* a `BMM_SIMPLE_TYPE` - corresponds to a simple type such as `Document`;
+* a `BMM_GENERIC_TYPE` - a type generated by the use of a generic class with one or more filled type parameters, e.g. `Interval<Time>`, `Packet<T,Payload>`;
+* a `BMM_PARAMETER_TYPE` - corresponds to a generic parameter type from the class type definition, e.g. `T`, `U` etc;
 * a `BMM_CONTAINER_TYPE` - a type generated by the use of a linear container type such as `List<T>`, `Hash<T,U>` with actual generic parameters.
 
-In object-oriented type theory, the last two are really the same thing, but the BMM treats them slightly differently for reasons of clarity: a `BMM_CONTAINER_TYPE` can be thought of as a 1:N counterpart to a `BMM_SIMPLE_TYPE`, whereas `BMM_GENERIC_TYPE` is typically used for objects considered to be singular, but whose types are a product of a special container and one or more parameter types.
+==== Generic Types
+
+
+
+==== Container Types
+
+In object-oriented type theory, `BMM_GENERIC_TYPE` and `BMM_CONTAINER_TYPE` are really the same thing, but the BMM treats container types in a special way. A `BMM_CONTAINER_TYPE` can be thought of as a 1:N counterpart to a `BMM_SIMPLE_TYPE`, such as the type `List<Paragraph>`, whereas `BMM_GENERIC_TYPE` is typically used for objects considered to be singular, but whose types are a product of the base class and one or more parameter types, e.g. `Interval<Quantity>`. The explicit provision of `BMM_CONTAINER_TYPE` enables BMM models to mention logical linear container types such as `Array<T>`, `List<T>` and `Set<T>`, on the assumption of their standard semantics in computer science , without worrying about providing concrete types which may be numerous and also variable across programming languages, e.g. `ArrayedList<T>`, `LinkedSet<T>`, `ArrayedStack<T>` and so on.
 
 === Inheritance
 
@@ -51,7 +74,7 @@ Multiple inheritance is typically used in the definition of classes that have a 
 
 [.text-center]
 .BMM class - descendants view
-image::images/awb_multiple_inheritance.png[id=awb_class_inheritance, align="center", width="40%"]
+image::images/awb_multiple_inheritance.png[id=awb_class_inheritance, align="center", width="50%"]
 
 === Classes and Properties
 
@@ -65,18 +88,20 @@ include::{uml_export_dir}/classes/bmm_schema_core.adoc[]
 include::{uml_export_dir}/classes/bmm_model.adoc[]
 include::{uml_export_dir}/classes/bmm_package_container.adoc[]
 include::{uml_export_dir}/classes/bmm_package.adoc[]
-include::{uml_export_dir}/classes/bmm_classifier.adoc[]
-include::{uml_export_dir}/classes/bmm_type_element.adoc[]
-include::{uml_export_dir}/classes/bmm_type.adoc[]
+
+include::{uml_export_dir}/classes/bmm_entity.adoc[]
 include::{uml_export_dir}/classes/bmm_class.adoc[]
 include::{uml_export_dir}/classes/bmm_property.adoc[]
 include::{uml_export_dir}/classes/bmm_container_property.adoc[]
+
+include::{uml_export_dir}/classes/bmm_type.adoc[]
+include::{uml_export_dir}/classes/bmm_base_type.adoc[]
 include::{uml_export_dir}/classes/bmm_simple_type.adoc[]
-include::{uml_export_dir}/classes/bmm_open_type.adoc[]
 include::{uml_export_dir}/classes/bmm_container_type.adoc[]
 include::{uml_export_dir}/classes/bmm_generic_type.adoc[]
-include::{uml_export_dir}/classes/bmm_generic_parameter.adoc[]
+include::{uml_export_dir}/classes/bmm_parameter_type.adoc[]
 include::{uml_export_dir}/classes/bmm_generic_class.adoc[]
+include::{uml_export_dir}/classes/bmm_generic_class_effective.adoc[]
 include::{uml_export_dir}/classes/bmm_enumeration.adoc[]
 include::{uml_export_dir}/classes/bmm_enumeration_string.adoc[]
 include::{uml_export_dir}/classes/bmm_enumeration_integer.adoc[]
