@@ -11,6 +11,13 @@ h|*Description*
 h|*Inherit*
 2+|`BMM_GENERIC_CLASS`
 
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*generic_substitutions*: `Hash<String,BMM_TYPE>`
+a|List of generic parameter substitutions, keyed by formal parameter name, e.g. 'T', 'U'.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -18,4 +25,8 @@ h|*Functions*
 h|(effected)
 |*entity_metatype* (): `String`
 a|Meta-type of `BMM_GENERIC_CLASS_EFFECTIVE`, which is `Entity_metatype_generic_effective`.
+
+h|(redefined)
+|*type* (): `BMM_GENERIC_TYPE`
+a|Generate a partially or full closed `BMM_GENERIC_TYPE` instance that corresponds to this class definition.
 |===

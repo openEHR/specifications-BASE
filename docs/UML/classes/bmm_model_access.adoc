@@ -1,0 +1,65 @@
+=== BMM_MODEL_ACCESS Class
+
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*BMM_MODEL_ACCESS*
+
+h|*Description*
+2+a|Access to BMM models that have been loaded and validated from one or more schema sets.
+
+h|*Inherit*
+2+|`BMM_DEFINITIONS`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*schema_directories*: `List<String>`
+a|List of directories where all the schemas loaded here are found.
+
+h|*0..1*
+|*all_p_schemas*: `Hash<String,P_BMM_SCHEMA_DESCRIPTOR>`
+a|All schemas found and loaded from `_schema_directory_`. Keyed by `_schema_id_`, i.e.
+
+* model_publisher '\_' schema_name '_' model_release
+
+e.g. `openehr_rm_1.0.3`, `openehr_test_1.0.1`, `iso_13606-1_2008`. This is the same key as `BMM_SCHEMA._schema_id_`. Does not include schemas that failed to parse.)
+
+h|*0..1*
+|*valid_models*: `Hash<String,BMM_MODEL>`
+a|Top-level (root) schemas in use. Table is keyed by logical schema_name, i.e. `model_publisher '_' model_name`, e.g. `"openehr_rm"`. Schemas containing different variants of same model (i.e. `_model_publisher_` + `_model_name_`) are considered duplicates.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*initialise_with_load_list* ( +
+a_schema_dirs: `List<String>[1]`, +
+a_schema_load_list: `List<String>[0..1]` +
+)
+a|Initialise with a specific schema load list, usually a sub-set of schemas that will be found in a specified directories `_a_schema_dirs_`.
+
+h|
+|*initialise_all* ( +
+a_schema_dirs: `List<String>[1]` +
+)
+a|Load all schemas found in a specified directories `_a_schema_dirs_`.
+
+h|
+|*reload_schemas*
+a|Reload BMM schemas.
+
+h|
+|*model_for_namespace* ( +
+a_qualified_namespace: `String[1]` +
+): `BMM_MODEL`
+a|Return ref model containing the model-class key `a_qualified_namespace', e.g. "openEHR-EHR".
+
+h|
+|*has_model_for_namespace* ( +
+a_qualified_namespace: `String[1]` +
+): `Boolean`
+a|True if a model for a publisher and namespace is available.
+|===

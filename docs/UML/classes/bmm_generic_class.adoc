@@ -29,4 +29,14 @@ a|Add suppliers from generic parameters.
 h|(effected)
 |*entity_metatype* (): `String`
 a|Meta-type of `BMM_GENERIC_CLASS`, which is `Entity_metatype_generic`.
+
+h|(redefined)
+|*type* (): `BMM_GENERIC_TYPE`
+a|Generate a fully open `BMM_GENERIC_TYPE` instance that corresponds to this class definition
+
+h|
+|*generic_parameter_conformance_type* ( +
+a_name: `String[1]` +
+): `String`
+a|For a generic class, type to which generic parameter `a_name` conforms e.g. if this class is `Interval <T:Comparable>` then the Result will be the single type `Comparable`. For an unconstrained type `T`, the Result will be `Any`.
 |===

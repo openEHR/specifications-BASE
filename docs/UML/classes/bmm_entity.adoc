@@ -17,38 +17,35 @@ h|*Constants*
 
 h|*1..1*
 |*Entity_metatype_simple*: `String{nbsp}={nbsp}"simple_entity"`
-a|
+a|Category of a simple entity, other than enumerated types.
 
 h|*1..1*
 |*Entity_metatype_enumeration*: `String{nbsp}={nbsp}"enumeration_entity"`
-a|
+a|Category of any enumeration entity.
 
 h|*1..1*
 |*Entity_metatype_generic*: `String{nbsp}={nbsp}"generic_entity"`
-a|
-h|*Attributes*
-^h|*Signature*
-^h|*Meaning*
+a|Category of any generic entity that is not a container entity.
 
 h|*1..1*
 |*Entity_metatype_generic_effective*: `String{nbsp}={nbsp}"generic_effective_entity"`
-a|
+a|Category of an effected generic entity, corresponding to a partially- or fully-substituted generic type.
 
 h|*1..1*
 |*Entity_metatype_parameter*: `String{nbsp}={nbsp}"generic_parameter_entity"`
-a|
+a|Category of a formal generic parameter entity.
 
 h|*1..1*
 |*Entity_metatype_container*: `String{nbsp}={nbsp}"container_entity"`
-a|
+a|Category of any container entity.
 
 h|*1..1*
 |*Entity_category_modifier_abstract*: `String{nbsp}={nbsp}"abstract"`
-a|
+a|Category modifier indicating an entity is formally defined as abstract, i.e. not-directly instantiable within a BMM model.
 
 h|*1..1*
 |*Entity_category_modifier_primitive*: `String{nbsp}={nbsp}"primitive"`
-a|
+a|Category modifier indicating that an entity is considered to be primitive within the type system of a given BMM model. Has no semantic consequences within the BMM.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -68,14 +65,6 @@ entity_metatype [ '-' abstract_modifier ] [ '-' primitive_modifier ]
 ----
 
 h|(abstract)
-|*is_abstract* (): `Boolean`
-a|
-
-h|(abstract)
-|*is_primitive* (): `Boolean`
-a|
-
-h|(abstract)
 |*entity_metatype* (): `String`
 a|Meta-type of entity, which classifies it according to the kind of formal entity it represents from the following:
 
@@ -87,4 +76,12 @@ a|Meta-type of entity, which classifies it according to the kind of formal entit
 * container type
 
 These meta-types don't exactly match the `BMM_*` types defined in the model, but are useful for displaying models visually.
+
+h|(abstract)
+|*is_abstract* (): `Boolean`
+a|
+
+h|(abstract)
+|*is_primitive* (): `Boolean`
+a|
 |===
