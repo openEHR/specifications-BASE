@@ -9,15 +9,8 @@ h|*Description*
 2+a|Type reference to a single type i.e. not generic or container type.
 
 h|*Inherit*
-2+|`BMM_BASE_TYPE`
+2+|`BMM_DEFINED_TYPE`
 
-h|*Attributes*
-^h|*Signature*
-^h|*Meaning*
-
-h|*1..1*
-|*base_class*: `BMM_CLASS`
-a|The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -41,4 +34,8 @@ a|Result is `_base_class.all_descendants_` .
 h|(effected)
 |*has_type_substitutions* (): `Boolean`
 a|True if `_base_class.has_descendants_` .
+
+h|(effected)
+|*base_class* (): `BMM_SIMPLE_CLASS`
+a|Main design class for this type, from which properties etc can be extracted.
 |===
