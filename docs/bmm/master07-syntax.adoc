@@ -44,33 +44,6 @@ includes = <
 >
 --------
 
-== Archetyping related
-
-Three archetyping related attributes can be set below, but would not usually all in the same schema. Only the archetype_rm_closure_packages variable is needed in at least one schema, usually the top-most one. 
-
-`archetype_parent_class` defines a base class from the Reference Model that provides archetyping capability in RM data structures. It is optional, and there need be no such class in the RM. In the openEHR and 13606 RMs, this class exists, (`LOCATABLE`, and `RECORD_COMPONENT` respectively). Defining it here has the effect in tools that the class tree under which archetypes are arranged contains only RM classes inheriting from this class, e.g. `LOCATABLE` classes in the case of openEHR. If nothing is set here, all classes in the RM are assumed as candidates for archetypes. This attribute, if defined, must be defined in the same schema that defines the referenced class.                                                                     
-
-`archetype_data_value_parent_class` defines a base class from the Reference Model whose descendants are considered to be 'logical data types' (i.e. of some higher level than the built-in primitive types String, Integer etc). This attribute is optional, even if the RM does have such a class, and is only used to help tooling provide more intelligent display, e.g. in statistical reports.                        
-
-This attribute, if defined, must be defined in the same schema that defines the referenced class.
-
-If `archetype_parent_class` is not set, designate a class whose descendants should be made visible in tree and grid renderings of the archetype definition. For openEHR and CEN this class is normally the same as the archetype_parent_class, i.e. `LOCATABLE` and `RECORD_COMPONENT` respectively. It is typically set for CEN, because `archetype_parent_class` may not be stated, due to demographic types not inheriting from it. The effect of this attribute in visualisation is to generate the most natural tree or grid-based view of an archetype definition, from the semantic viewpoint.
-
-`archetype_rm_closure_packages` defines the package or packages that are considered the archetyping namespace used in archetype multi-axial ids. For example, in openEHR, an archetype is identified by an id of the form `openEHR-EHR-OBSERVATION.some_obs.vN`. The 'EHR' in the above is an 'RM package closure', i.e. the name of an RM package whose class closure by reachability provides the set of classes that may be archetyped in the 'EHR' namespace. The reason for this is somewhat subtle: consider that if you want archetypes based on classes defined directly within a package P, and you also define these archetypes that re-use other archetypes based on more basic types like openEHR's `CLUSTER` or similar (typically not defined in the head package), then you will inevitably have archetypes based on `CLUSTER` only for use with EHR archetypes e.g. archetypes based on `OBSERVATION`. However, you may well create archetypes based on `CLUSTER` only for use with e.g. top-level archetypes from the demographic package. The archetype_rm_closure_packages setting is used to define the root id namespaces for archetypes, allowing low-level archetypes to be designated for use with one or other high-level archetype. E.g. `openEHR-EHR-CLUSTER.bp_position.v1` would be used only with `openEHR-EHR-OBSERVATION.bp_measurement.vX`, or similar, and most likely not with any `openEHR-DEMOGRAPHIC-XXXX.yyyy.vN` archetype. Note that in openEHR, there is nothing to prevent such cross-namespace reuse - it is just a design guideline. This attribute, must be defined in the same schema that defines the referenced package(s).
-
-[source, odin]
---------
-------------------------------------------------------
--- archetyping
--- override archetype parent class from included schema
-------------------------------------------------------
-archetype_parent_class = <"CLASS_NAME">
-archetype_data_value_parent_class = <"CLASS_NAME">
-archetype_visualise_descendants_of = <"CLASS_NAME">
-archetype_rm_closure_packages = <"org.openehr.test_pkg", ...>
---------
-
-
 == Package Definition
 
 The packages definition should be self-explanatory: just name the classes and packages in a recursive fashion.
@@ -91,7 +64,9 @@ packages = <
 >
 --------
 
-== Primitive Types
+== Class Definitions
+
+=== Classes for Primitive Types
 
 Definitions for primitive types in a BMM schema are just normal class definitions within a `primitive_types` block. Types that are included here are usually types corresonding to primitives in target programming languages, XML schema or other downstream technologies. These types can be be detected as primitive types by tools, but otherwise are processed in the same way as types defined in the main `class_definitions` group.
 
@@ -107,12 +82,12 @@ primitive_types = <
     ["Ordered"] = <
         name = <"Ordered">
         is_abstract = <True>
-        ancestors = <"Any", ...>
+        ancestors = <"Any">
     >
 >
 --------
 
-== Class Definitions
+=== Non-primitive Classes
 
 The main group of class definitions in a schema occurs within the `_class_definitions_` block. Each definition is a keyed ODIN object block correspnding to a serialised `P_BMM_CLASS` object, where the key is the class name. Since `name` is a BMM meta-model attribute, the class definition always contains its ODIN key. 
 
@@ -132,7 +107,7 @@ Simple classes are those whose type is the same as the class, as opposed to gene
 class_definitions = <
     ["ITEM"] = <
         name = <"ITEM">
-        ancestors = <"Any", ...>
+        ancestors = <"Any">
         is_abstract = <True>
         properties = <
             -- properties here
@@ -157,7 +132,7 @@ The following shows the class `ELEMENT` with two properties `_null_flavour_` and
 --------
     ["ELEMENT"] = <
         name = <"ELEMENT">
-        ancestors = <"ITEM", ...>
+        ancestors = <"ITEM">
         properties = <
             ["null_flavour"] = (P_BMM_SINGLE_PROPERTY) <
                 name = <"null_flavour">
@@ -180,7 +155,7 @@ The following is a `P_BMM_CONTAINER_PROPERTY` definition for the model property 
 --------
     ["ELEMENT"] = <
         name = <"ELEMENT">
-        ancestors = <"ITEM", ...>
+        ancestors = <"ITEM">
         properties = <
             ["items"] = (P_BMM_CONTAINER_PROPERTY) <
                 name = <"items">
@@ -195,7 +170,6 @@ The following is a `P_BMM_CONTAINER_PROPERTY` definition for the model property 
     >
 --------
 
-
 === Generic Classes
 
 Generic classes are those that have one or more substitutable generic type parameters. Such classes are therefore _type generators_, since actual types are formed by substitution of concrete types (typically simple classes) for the formal type parameters. The following example shows a generic class `Interval` with `generic_parameter_defs` of `T` which is constrained to conform to the type `Ordered`. This structure defineds the type `Interval<T->Ordered>`, with the same meaning as UML and programming languages supporting generic (templated) types.
@@ -206,7 +180,7 @@ Generic classes will normally contain one or more properties whose formal type i
 --------
     ["Interval"] = <
         name = <"Interval">
-        ancestors = <"Any", ...>
+        ancestors = <"Any">
         generic_parameter_defs = <
             ["T"] = <
                 name = <"T">
@@ -262,7 +236,7 @@ Type declarations can also be nested types, for example and container followed b
 --------
     ["Patient"] = <
         name = <"Patient">
-        ancestors = <"Any", ...>
+        ancestors = <"Any">
         properties = <
             ["careProvider"] = (P_BMM_CONTAINER_PROPERTY) <
                 name = <"careProvider">
@@ -285,7 +259,7 @@ The following property definition is based on the class `REFERENCE_RANGE`, and i
 --------
     ["REFERENCE_RANGE"] = <
         name = <"REFERENCE_RANGE">
-        ancestors = <"Any", ...>
+        ancestors = <"Any">
         generic_parameter_defs = <
             ["T"] = <
                 name = <"T">
@@ -330,7 +304,7 @@ The following example just does the same as the one above, but shows an (unreali
 --------
     ["CRAZY_TYPE"] = <
         name = <"CRAZY_TYPE">
-        ancestors = <"Any", ...>
+        ancestors = <"Any">
         properties = <
             ["range"] = (P_BMM_GENERIC_PROPERTY) <
                 name = <"range">
@@ -372,13 +346,13 @@ The following example shows two variants of am enumerated type based on the `Int
 --------
     ["PROPORTION_KIND"] = (P_BMM_ENUMERATION_INTEGER) <
         name = <"PROPORTION_KIND">
-        ancestors = <"Integer", ...>
+        ancestors = <"Integer">
         item_names = <"pk_ratio", "pk_unitary", "pk_percent", "pk_fraction", "pk_integer_fraction">
     >
 
     ["PROPORTION_KIND_2"] = (P_BMM_ENUMERATION_INTEGER) <
         name = <"PROPORTION_KIND_2">
-        ancestors = <"Integer", ...>
+        ancestors = <"Integer">
         item_names = <"pk_ratio", "pk_unitary", "pk_percent", "pk_fraction", "pk_integer_fraction">
         item_values = <0, 1001, 1002, 1003>
     >
@@ -402,3 +376,144 @@ The following example shows two similar examples based on `String`.
     >
 --------
 
+== Inheritance
+
+In the case of inheritance from simple classes, the `ancestors` list of Strings may be used to simply name the types (which are the same as class names), as seen in the above examples. In the case of generic inheritance, the ancestors are generic types, which may be open, partially closed or fully closed. The following example shows a class model containing generic inheritance in UML (using the closest approximation available in UML), followed by the equivalent P_BMM schema. In the latter, a structured `ancestor_defs` section is used instead of the `ancestors` String list, in the same way as for the `P_BMM_GENERIC_PROPERTY` examples above.
+
+[.text-center]
+.Generic inheritance eaxmple model
+image::{uml_export_dir}/diagrams/BASE-bmm-inheritance-example.svg[id=inheritance_example, align="center"]
+
+[source, odin]
+--------
+	["GENERIC_PARENT"] = <
+		name = <"GENERIC_PARENT">
+		generic_parameter_defs = <
+			["T"] = <
+				name = <"T">
+				conforms_to_type = <"SUPPLIER">
+			>
+			["U"] = <
+				name = <"U">
+				conforms_to_type = <"SUPPLIER">
+			>
+		>
+		properties = <
+			["property_a"] = (P_BMM_SINGLE_PROPERTY_OPEN) <
+				name = <"property_a">
+				type = <"T">
+			>
+			["property_b"] = (P_BMM_SINGLE_PROPERTY_OPEN) <
+				name = <"property_b">
+				type = <"U">
+			>
+		>
+	>
+
+	["SUPPLIER"] = <
+		name = <"SUPPLIER">
+		is_abstract = <True>
+		properties = <
+			["abstract_prop"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"abstract_prop">
+				type = <"String">
+			>
+		>
+	>
+
+	["SUPPLIER_A"] = <
+		name = <"SUPPLIER_A">
+		ancestors = <"SUPPLIER">
+		properties = <
+			["magnitude"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"magnitude">
+				type = <"Double">
+				is_mandatory = <True>
+			>
+			["units"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"units">
+				type = <"String">
+				is_mandatory = <True>
+			>
+		>
+	>
+
+	["SUPPLIER_B"] = <
+		name = <"SUPPLIER_B">
+		ancestors = <"SUPPLIER">
+		properties = <
+			["property"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"property">
+				type = <"CODE_PHRASE">
+				is_mandatory = <True>
+			>
+			["precision"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"precision">
+				type = <"Integer">
+			>
+		>
+	>
+
+	["GENERIC_CHILD_OPEN_T"] = <
+		name = <"GENERIC_CHILD_OPEN_T">
+		ancestor_defs = <
+			["GENERIC_PARENT<T,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) <
+				root_type = <"GENERIC_PARENT">
+				generic_parameters = <"T", "SUPPLIER_B">
+			>
+		>
+		generic_parameter_defs = <
+			["T"] = <
+				name = <"T">
+				conforms_to_type = <"SUPPLIER">
+			>
+		>
+		properties = <
+			["gen_child_open_t_prop"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"gen_child_open_t_prop">
+				type = <"String">
+			>
+		>
+	>
+
+	["GENERIC_CHILD_OPEN_U"] = <
+		name = <"GENERIC_CHILD_OPEN_U">
+		ancestor_defs = <
+			["GENERIC_PARENT<SUPPLIER_A,U>"] = (P_BMM_GENERIC_TYPE) <
+				root_type = <"GENERIC_PARENT">
+				generic_parameters = <"SUPPLIER_A", "U">
+			>
+		>
+		generic_parameter_defs = <
+			["U"] = <
+				name = <"U">
+				conforms_to_type = <"SUPPLIER">
+			>
+		>
+		properties = <
+			["gen_child_open_u_prop"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"gen_child_open_u_prop">
+				type = <"String">
+			>
+		>
+	>
+
+	["GENERIC_CHILD_CLOSED"] = <
+		name = <"GENERIC_CHILD_CLOSED">
+		ancestor_defs = <
+			["GENERIC_PARENT<SUPPLIER_A,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) <
+				root_type = <"GENERIC_PARENT">
+				generic_parameters = <"SUPPLIER_A", "SUPPLIER_B">
+			>
+		>
+		properties = <
+			["gen_child_closed_prop"] = (P_BMM_SINGLE_PROPERTY) <
+				name = <"gen_child_closed_prop">
+				type = <"String">
+			>
+		>
+	>
+
+>
+
+--------
