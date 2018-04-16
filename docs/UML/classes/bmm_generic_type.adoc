@@ -16,7 +16,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_parameters*: `List<BMM_TYPE>`
+|*generic_parameters*: `List<BMM_UNITARY_TYPE>`
 a|Generic parameters of the root_type in this type specifier. The order must match the order of the owning class's formal generic parameter declarations.
 
 h|*1..1 +
@@ -44,11 +44,11 @@ h|(effected)
 a|Result is `_base_class.name_` followed by names of all generic parameter type names, which may be open or closed.
 
 h|(effected)
-|*type_substitutions* (): `List<String>`
+|*subtypes* (): `List<String>`
 a|Result is the permutation of the base class type and type substitutions of all generic parameters.
 
 h|(effected)
-|*has_type_substitutions* (): `Boolean`
+|*has_subtypes* (): `Boolean`
 a|True if `_base_class.has_descendants_` or any generic parameter type `_type_substitutions_` is True.
 
 h|
