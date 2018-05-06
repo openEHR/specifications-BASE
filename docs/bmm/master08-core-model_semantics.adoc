@@ -1,0 +1,44 @@
+= Model Semantics
+
+== Simple Inheritance
+
+The BMM supports single and multiple inheritance, although it does not distinguish between different types of inheritance relation as some programming languages do. Inheritance is formally defined to be between a class definition (an instance of `BMM_CLASS`) and a defined type, i.e. a `BMM_SIMPLE_TYPE` or `BMM_GENERIC_TYPE`. This is because inheritance parents of a class may be:
+
+* a simple class;
+* a generic class;
+* an effective generic type, i.e. with one or more formal parameters substituted.
+
+The general case for all three is represented by the corresponding _type_, i.e., simple type or generic type.
+
+The evaluation of inheritance relations defined in a BMM model results in an acyclic graph such that ancestors and descendants can be visualised for any class. The following screen shot shows the ancestors view of a class `OBSERVATION`.
+
+[.text-center]
+.BMM class - ancestors view
+image::images/awb_class_ancestors.png[id=awb_class_ancestors, align="center", width="45%"]
+
+The next screenshot shows the descendants view of one of the ancestor classes of the same class.
+
+[.text-center]
+.BMM class - descendants view
+image::images/awb_class_descendants.png[id=awb_class_descendants, align="center", width="45%"]
+
+== Generic Inheritance
+
+Inheritance between generic classes works in the same way as for simple classes, with the additional semantics of formal parameter inheritance, which are as follows:
+
+* each unsubstituted formal parameter of the parent type must have a same-named counterpart in the formal parameters of the inheriting class;
+* the formal parameters of the inheriting class may further constrain any of the ancestor type's formal parameters.
+
+The following example shows the class `DV_INTERVAL<T:DV_ORDERED>` inheriting from `Interval<T:Ordered>`. Here the type constraint `Ordered` is being covariantly narrowed to `DV_ORDERED`, which inherits from the `Ordered` type.
+
+[.text-center]
+.Generic inheritance
+image::images/awb_generic_inheritance.png[id=awb_generic_inheritance, align="center", width="65%"]
+
+== Multiple Inheritance
+
+Multiple inheritance is typically used in the definition of classes that have a Liskov substitution inheritance relation as well as a re-use inheritance relation. The following shows a class `DV_INTERVAL<T>` multiply inheriting from `Interval<T>` and `DATA_VALUE`, where the latter is considered the substitutable type, and the former an interface re-use.
+
+[.text-center]
+.Multiple inheritance
+image::images/awb_multiple_inheritance.png[id=awb_multiple_inheritance, align="center", width="45%"]

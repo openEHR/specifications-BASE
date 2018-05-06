@@ -4,10 +4,7 @@
 
 One of the key needs in any open computing environment is a computable representation of its own models. This is for a number of purposes, including reasoning about them, performing validation and consistency checking, building software and generating documentation. This is particularly true of openEHR and other archetype-based frameworks, where a further need is to be able to validate archetypes and templates with respect to the reference model, and also to validate runtime instance data against operational templates and the reference model.
 
-A number of computable representations of the openEHR published models have been available in the past. Currently models are represented in two computable forms:
-
-* _model representation_: MagicDraw 18.5 or higher UML;
-* _serial representation_: Basic Meta-Model (BMM) format, i.e. the format of this specification.
+A number of computable representations of the openEHR published models have been available in the past. Currently models are represented in two computable forms, namely UML and BMM (i.e. the format described in this specification).
 
 The primary use of the UML expression is for specification publishing. In this role, UML diagrams and static models are built, and then post-processed to correct signatures of class properties and functions. The post-processing corrects UML's shortcomings and errors in non-singular relations, generic (template) types, and qualified attributes. The result can be used for publishing documentation with feature signatures that are formally correct and will be understood by developers in most programming languages. It can also be serialised and used computably, e.g. in other visualisation or modelling tools. UML's own serial format, XMI is thus generally unsuitable for such uses, due to the formal errors, as well as its excessive complexity. XMI is also notoriously non-standard across UML tools.
 
@@ -19,12 +16,11 @@ NOTE: Other than for working with particular tools designed to use BMM, BMM is n
 
 == Current State of the Art
 
-One would expect that the ICT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. UML 2.x and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. It will probably eventually come to pass, but a number of obstacles remain to date:
+=== UML
 
-* the UML 2.x specifications are exceedingly complex (see OMG site for specifications; UML 2.1.2 'superstructure' = 738pp; UML 2.1.2 'infrastructure' = 224pp);
-* the XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability (recognised as a critical issue by OMG in 2015);
-* the Design By Contract (DbC) concept is supported via the use of OCL 2.0 constraints in class models, although there are semantic holes, e.g. proper semantics through inheritance;
-* for some, XML-schema represents a way of expressing object models, but in fact is not semantically suitable for this purpose, primarily due to its different inheritance model. It can be and is used (including in openEHR) as a derivative serialisation representation, but from the point of view of specification, it is deficient in having non-object-oriented inheritance semantics, no generic classes, no representation of non-data members, and only marginal support for design by contract.
+One would expect that the IT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. UML 2.x and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. However the evolution of UML and XMI has not been toward a clear meta-model and language for each of its sub-languages (i.e. static class model, state machine, interaction diagram etc) but rather toward a single universal model of everything in which elements of all of its needs are confusingly buried. 
+
+The UML 2.x specifications are exceedingly complex: UML 2.1.2 was specified by two documents, 'Superstructure' (738pp) and 'Infrastructure' (224pp); the UML 2.5.1 specification is only slightly smaller at 796 pages (see the {uml}[OMG UML page] for current specifications). The XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability (recognised as a critical issue by OMG in 2015). Despite the complexity, there are significant holes in the UML meta-model, including: the notion of 'type' is not formalised and the meta-model of generic types and container properties is problematic and does not map well to object programming languages. The Design By Contract (DbC) concept (i.e. pre-, post-conditions, class invariants), crucial for proper specifications, is in theory supported via the use of OCL 2.0 constraints in class definitions, but OCL suffers from the underlying semantic weaknesses as UML.
 
 Experience with various UML tools (up till 2015) highlighted the following problems:
 
@@ -36,9 +32,13 @@ Experience with various UML tools (up till 2015) highlighted the following probl
 
 Since 2015, the quality of UML tools has improved, and the XMI generated by some is more reliable. However, XMI generated by different tools is not the same for identical models, and some XMI importers offer numerous switches in order to process the XMI of another tool properly. XMI thus still needs to be processed with care.
 
-Nevertheless, a small number of tools, including MagicDraw (currently used for representing openEHR models for the specifications) and Rational Software Architect (RSA), appear to implement UML 2.5 faithfully. This means that despite the limitations of UML 2.5 (as noted above), models expressed in it can be correctly interpreted and processed for purposes such as code generation.
+Nevertheless, a small number of tools, including MagicDraw (currently used for representing openEHR models for the specifications) and Rational Software Architect (RSA), appear to implement UML 2.5 faithfully. This means that despite the limitations of UML 2.5 (as noted above), models expressed in it can be mostly correctly interpreted and post-processed for purposes such as code generation.
 
 NOTE: Other tools may well perform as well or better, and in any case, all tools change over time. No endorsement of a particular tool is intended here.
+
+=== XML Schema
+
+For some, XML-schema represents a way of expressing object models, but it is not semantically suitable for this purpose, primarily due to its problematic non-object-oriented inheritance semantics, lack of generic classes, no representation of non-data members, and only marginal support for design by contract. It can be and is often used (including in openEHR) as a derivative serialisation representation.
 
 == Design Approach
 
@@ -58,33 +58,17 @@ image::images/archetype_rm.png[id=archetype_rm, align="center"]
 
 == Specification Structure
 
-This specification defines a BMM object model, i.e. the in-memory object structure of a BMM, and also an object model for a serialised schema form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML.
+This specification defines a BMM object model, i.e. the in-memory object structure of a BMM. The BMM Persistence specification defines an object model for a serialised schema form. The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML.
 
 The BMM packages are as follows:
 
-* `rm_access`: the interface to most features including schema load/reload, generally used by an application as a reflection library;
-* `core`: the core BMM classes used for in-memory representation of an object model;
-* `persistence`: a simplified version of the core classes prefixed with `P_BMM_`, used for persistence and human authoring, which allow file (i.e. schema) inclusion and re-use.
+* `bmm`: the BMM
+** `rm_access`: the interface to most features including schema load/reload, generally used by an application as a reflection library;
+** `core`: the core BMM classes used for in-memory representation of an object model;
+* `bmm_persistence`: a simplified version of the core classes prefixed with `P_BMM_`, used for persistence and human authoring, which allow file (i.e. schema) inclusion and re-use.
 
 These are illustrated below.
 
 [.text-center]
 .Package Overview
 image::{uml_export_dir}/diagrams/BASE-bmm-packages.svg[id=package_overview, align="center"]
-
-The `P_BMM_*` classes perform two functions. Firstly, they are a modified and simplified version of the `BMM_*` classes that enable for example symbolic referencing via class names, syntactical type names to be used etc, rather than the full explosion of fine-grained objects that would result from a direct serialisation of `BMM_*` classes. This is what enables an object model represented internally (to a tool, say) in `BMM` form, converted to `P_BMM` form, and then serialised to a `.bmm` file, to be easily readable and editable by human users.
-
-The second is that `.bmm` files function as schemas that support schema inclusion and therefore re-use, in a similar manner to the XML schema languages. Thus, a single logical BMM model can be expressed as a _number_ of `.bmm` schema files which are actually `P_BMM_*` object serialisations. A schema reading component has to resolve the schema inclusions and ultimately `BMM_*` object instantiations to obtain the in-memory form of the model.
-
-We thus talk of the `P_BMM_*` classes as a model of 'BMM schemas' and the `BMM_*` classes as a model of 'BMM models', where the latter is understood as the fully computable in-memory object structure with all name references resolved to object references.
-
-The `P_BMM` format is not the only serial format possible for BMM, and is likely to be augmented or replaced by a more syntactic style, reminiscent of OMG IDL, at some point in the future.
-
-The normal use of BMM is as follows:
-
-* create one or more `.bmm` schema files, using the `P_BMM_` form of the model. This is easy to understand by using the link:../../example/example.bmm[example schema] and/or copying other examples;
-* locate these files in a suitable place for use with a tool such as the {openehr_awb}[openEHR ADL Workbench] and {linkehr}[LinkEHR].
-
-== Schema Format
-
-BMM models are normally expressed as schema text files that support inclusion and re-use. The default file format has historically been {openehr_odin}[openEHR ODIN syntax], and BMM tools to date support this format. However any common format that can express typed object models may be used, including JSON (with type markers), YAML, and XML. The examples shown in this specification are primarily in ODIN, but a tool implementing BMM may choose to serialise in and out of another preferred format.

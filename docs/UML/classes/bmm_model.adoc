@@ -9,7 +9,7 @@ h|*Description*
 2+a|Definition of the root of a BMM model (along with what is inherited from `BMM_SCHEMA_CORE`).
 
 h|*Inherit*
-2+|`BMM_MODEL_CORE`, `BMM_PACKAGE_CONTAINER`
+2+|`BMM_PACKAGE_CONTAINER`, `BMM_MODEL_METADATA`
 
 h|*Attributes*
 ^h|*Signature*
@@ -18,9 +18,21 @@ h|*Attributes*
 h|*0..1*
 |*class_definitions*: `Hash<String,BMM_CLASS>`
 a|All classes in this schema, keyed by type name.
+
+h|*1..1*
+|*model_name*: `String`
+a|Name of this model.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
+
+h|
+|*model_id* (): `String`
+a|Identifier of this model, lower-case, formed from:
+
+`_rm_publisher_ '_' _model_name_ '_' _rm_release_`
+
+E.g. `'openehr_ehr_1.0.4'`.
 
 h|
 |*class_definition* ( +

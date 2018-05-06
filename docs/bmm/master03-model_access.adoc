@@ -2,25 +2,29 @@
 
 == Overview
 
-The `model_access` package provides an interface for the application to load and access BMM schemas, and is shown below.
+NOTE: This package is considered informative within this specification, not normative.
+
+The `model_access` package provides an interface for the application to load BMM schemas and convert them to BMM model form, and is shown below. In this model, a _schema_ is a concrete serial form of a _model_ or part of a model. One or more schema files are parsed, validated and then converted to create a single `BMM_MODEL` instance.
 
 [.text-center]
 .base.bmm.model_access Package
 image::{uml_export_dir}/diagrams/BASE-bmm.model_access.svg[id=model_access_package, align="center"]
 
-More than one scheme for loading serialised BMM models is possible, depending on the serial format and also exact load, validation and error-reporting logic. The following scheme describes approximately how `P_BMM` version 2.x files are loaded. Alternative loading systems should nevertheless respect the basic specification of the `BMM_MODEL_ACCESS` class.
+More than one format for representing serialised BMM models is possible, each having its load, validation and error-reporting logic. The common elements of the load, validate and convert logic are defined by the non format-specific classes in the package, with specific forms of the classes `BMM_SCHEMA_DESCRIPTOR` and `BMM_SCHEMA` required for each concrete format. The package above shows the relevant classes for the `P_BMM` version 2.x format, which is normally saved in `.bmm` files. Other formats may be saved in files with different extensions.
 
-The singleton class `BMM_MODEL_ACCESS` acts as the entry point for client software to obtain access to loaded BMM models. Since the latter start as `.bmm` schema files which are typically nested according to an 'include' hierarchy, they must be parsed, validated and merged to create each 'top-level' _model_. The schemas are accessed via instances of the `SCHEMA_DESCRIPTOR` object, one for each `.bmm` schema file. The `_load()_` routine loads a BMM schema file by direct deserialisation. If the file is structurally correct (say ODIN, JSON etc), a `P_BMM_SCHEMA` instance will result, and its `_validate_created_` method called. If this succeeds, `SCHEMA_DESCRIPTOR._p_schema_` will be populated. Subsequently, `_p_schema.merge()_` will be called repeatedly, which results in each `_p_schema_` instance being the merged result of its include children and itself. After merging, `SCHEMA_DESCRIPTOR._validate_merged()_` will be called, and if successful, a call to `_create_model()_` will result in `_model_` being populated.
+The singleton class `BMM_MODEL_ACCESS` acts as the entry point for client software to obtain access to loaded BMM models. Since the latter start as schema files which are typically nested according to an 'include' hierarchy, they must be parsed, validated and merged to create each 'top-level' _model_. The schemas are accessed via instances of the `BMM_SCHEMA_DESCRIPTOR` object, one for each schema file. The `_load()_` routine loads a BMM schema file by direct deserialisation. 
+
+If the file is structurally correct (say ODIN, JSON etc), an in-memory schema instance will result (e.g. `P_BMM_SCHEMA` in the case of the `P_BMM` format), and its `_validate_created_` method called. If this succeeds, `SCHEMA_DESCRIPTOR._schema_` will be set to this instance. Subsequently, `_schema.merge()_` will be called repeatedly, which results in each `_schema_` instance being the merged result of its include children and itself. After merging, `BMM_SCHEMA_DESCRIPTOR._validate_merged()_` will be called, and if successful, a call to `_create_model()_` will result in `BMM_SCHEMA_DESCRIPTOR._model_` being populated.
 
 Each successfully loaded model is thus instantiated as a `BMM_MODEL`, and referenceable via `BMM_MODEL_ACCESS._valid_models_`, which keys models by model identifiers (`BMM_SCHEMA_CORE._identifier_`). The methods `_model_for_namespace()_` and `_model_for_namespace()_` are used to access a given model for a namespace to which the model applies.
 
-The following screenshot shows the BMM schema configuration dialog in the AWB, including some meta-data, validation status etc, and also the schema nesting structure.
+The following screenshot shows the BMM schema configuration dialog in the AWB, including some meta-data, validation status etc, and also the schema nesting structure. A single hierarchy of schemas corresponds to a single instantiated BMM model.
 
 [.text-center]
 .BMM schema configuration
 image::images/awb_schemas_config.png[id=awb_schemas_config, align="center", width="60%"]
 
-The screenshot below shows a number of merged BMMs loaded into the AWB, including some of the packages and classes for the `openehr_ehr_extract_1.0.4` model.
+The screenshot below shows a number of merged BMM models loaded into the AWB, including some of the packages and classes for the `openehr_ehr_extract_1.0.4` model.
 
 [.text-center]
 .BMM schemas loaded
@@ -29,5 +33,11 @@ image::images/awb_loaded_bmm_schemas.png[id=awb_loaded_bmm_schemas, align="cente
 == Class Definitions
 
 include::{uml_export_dir}/classes/bmm_model_access.adoc[]
+include::{uml_export_dir}/classes/bmm_schema_descriptor.adoc[]
+include::{uml_export_dir}/classes/bmm_model_metadata.adoc[]
+include::{uml_export_dir}/classes/bmm_schema.adoc[]
+include::{uml_export_dir}/classes/bmm_schema_state.adoc[]
+include::{uml_export_dir}/classes/bmm_include_spec.adoc[]
 include::{uml_export_dir}/classes/p_bmm_schema_descriptor.adoc[]
+include::{uml_export_dir}/classes/p_bmm_schema.adoc[]
 

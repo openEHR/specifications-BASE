@@ -20,16 +20,16 @@ h|*0..1*
 a|List of directories where all the schemas loaded here are found.
 
 h|*0..1*
-|*all_p_schemas*: `Hash<String,P_BMM_SCHEMA_DESCRIPTOR>`
-a|All schemas found and loaded from `_schema_directory_`. Keyed by `_schema_id_`, i.e.
-
-* model_publisher '\_' schema_name '_' model_release
-
-e.g. `openehr_rm_1.0.3`, `openehr_test_1.0.1`, `iso_13606-1_2008`. This is the same key as `BMM_SCHEMA._schema_id_`. Does not include schemas that failed to parse.)
+|*all_schemas*: `Hash<String,BMM_SCHEMA_DESCRIPTOR>`
+a|All schemas found and loaded from `_schema_directory_`. Keyed by `_schema_id_`.
 
 h|*0..1*
-|*valid_models*: `Hash<String,BMM_MODEL>`
-a|Top-level (root) schemas in use. Table is keyed by logical schema_name, i.e. `model_publisher '_' model_name`, e.g. `"openehr_rm"`. Schemas containing different variants of same model (i.e. `_model_publisher_` + `_model_name_`) are considered duplicates.
+|*bmm_models*: `Hash<String,BMM_MODEL>`
+a|Top-level (root) schemas in use. Table is keyed by `_model_id_`.
+
+h|*0..1*
+|*matching_bmm_models*: `Hash<String,BMM_MODEL>`
+a|`BMM_MODELs` keyed by `_model_id()_` and any shorter form used in calls to
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -52,14 +52,14 @@ h|
 a|Reload BMM schemas.
 
 h|
-|*model_for_namespace* ( +
-a_qualified_namespace: `String[1]` +
+|*bmm_model* ( +
+a_model_key: `String[1]` +
 ): `BMM_MODEL`
-a|Return ref model containing the model-class key `a_qualified_namespace', e.g. "openEHR-EHR".
+a|Return ref model containing the model key which is a `_model_id_` or any shorter form e.g. model id minus the version. If a shorter key is used, the `BMM_MODEL` with the highest version will be selected.
 
 h|
-|*has_model_for_namespace* ( +
-a_qualified_namespace: `String[1]` +
+|*has_bmm_model* ( +
+a_model_key: `String[1]` +
 ): `Boolean`
-a|True if a model for a publisher and namespace is available.
+a|True if a model for a `_model_key_` is available. A model key is a `_model_id_` or any shorter form e.g. model id minus the version. If a shorter key is used, the Result s True if a `BMM_MODEL` with any version exists.
 |===

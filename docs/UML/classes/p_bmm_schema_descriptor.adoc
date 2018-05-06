@@ -6,74 +6,17 @@ h|*Class*
 2+^h|*P_BMM_SCHEMA_DESCRIPTOR*
 
 h|*Description*
-2+a|Descriptor for a BMM schema. Contains a meta-data table of attributes obtained from a mini-ODIN parse of the  schema file.
+2+a|Concrete descendant of `BMM_SCHEMA_DESCRIPTOR` that provides a way to read an ODIN or other similarly encoded P_BMM schema file.
 
 h|*Inherit*
-2+|`BMM_DEFINITIONS`
+2+|`BMM_SCHEMA_DESCRIPTOR`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*0..1*
-|*p_schema*: `P_BMM_SCHEMA`
+h|*0..1 +
+(redefined)*
+|*bmm_schema*: `P_BMM_SCHEMA`
 a|Persistent form of model.
-
-h|*0..1*
-|*model*: `BMM_MODEL`
-a|Computable form of model.
-
-h|*1..1*
-|*schema_id*: `String`
-a|Schema id, formed from:
-
-* meta_data(Metadata_model_publisher) '-' meta_data(metadata_schema_name) '-' meta_data(Metadata_model_release)
-
-e.g. openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606-1_2008.
-
-h|*1..1*
-|*meta_data*: `Hash<String, String>`
-a|Table of `{key, value}` pairs of schema meta-data, keys as follows:
-
-* "bmm_version",
-* "model_publisher",
-* "schema_name",
-* "model_release",
-* "schema_revision",
-* "schema_lifecycle_state",
-* "schema_description",
-* "schema_path"
-
-h|*0..1*
-|*includes*: `List<String>`
-a|Identifiers of schemas included by this schema.
-h|*Functions*
-^h|*Signature*
-^h|*Meaning*
-
-h|
-|*is_top_level* (): `Boolean`
-a|True if this is a top-level schema, i.e. not included by some other schema.
-
-h|
-|*is_bmm_compatible* (): `Boolean`
-a|True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
-
-h|
-|*load*
-a|Load schema into in-memory form, i.e. a `P_BMM_SCHEMA` instance, if structurally valid. If successful, `_p_schema_` will be set.
-
-h|
-|*validate_merged*
-a|Validate loaded schema and report errors.
-
-h|
-|*validate_includes* ( +
-all_schemas_list: `List<String>[0..1]` +
-)
-a|Validate includes list for this schema, to see if each mentioned schema exists in `_all_schemas_` list.
-
-h|
-|*create_model*
-a|Create `schema`, i.e. the `BMM_MODEL` from one `P_BMM_SCHEMA` schema.
 |===
