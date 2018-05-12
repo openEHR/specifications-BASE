@@ -71,8 +71,8 @@ literal:
   font_color: b12146
   font_family: M+ 1mn
 heading:
-  font_color: #0066cc
-  #font_color: $base_font_color
+  #font_color: 181818
+  font_color: $base_font_color
   font_family: $base_font_family
   font_style: bold
   # h1 is used for part titles
@@ -83,13 +83,13 @@ heading:
   h4_font_size: $base_font_size_large
   h5_font_size: $base_font_size
   h6_font_size: $base_font_size_small
-  #line_height: 1.2
+  #line_height: 1.4
   # correct line height for Noto Serif metrics (comes with built-in line height)
   line_height: 1
   margin_top: $vertical_rhythm * 0.4
   margin_bottom: $vertical_rhythm * 0.9
 title_page:
-  align: center
+  align: right
   logo:
     top: 10%
   title:
@@ -217,13 +217,6 @@ toc:
   indent: $horizontal_rhythm
   line_height: 1.4
 # NOTE In addition to footer, header is also supported
-header:
-  recto_content:
-    left: image:images/openehr-logo-150x50.png[]
-    right: '{section-or-chapter-title}'
-  verso_content:
-    left: '{section-or-chapter-title}'
-    right: image:images/openehr-logo-150x50.png[]
 footer:
   font_size: $base_font_size_small
   font_color: $base_font_color
@@ -244,6 +237,11 @@ footer:
   # * {section-title}
   # * {section-or-chapter-title}
   recto_content:
-    center: '*Page {page-number}* | {page-count}'
+    #right: '{section-or-chapter-title} | {page-number}'
+    #right: '{document-title} | {page-number}'
+    right: '{page-number}'
+    #center: '{page-number}'
   verso_content:
-    center: '*Page {page-number}* | {page-count}'
+    #left: '{page-number} | {chapter-title}'
+    left: '{page-number}'
+    #center: '{page-number}'
