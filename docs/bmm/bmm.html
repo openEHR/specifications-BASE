@@ -246,17 +246,18 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>3.0.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Separate <code>P_BMM</code> model and syntax to BMM Persistence specification;<br>
  refactor / tighten class model:<br>
- rename <code>BMM_GENERIC_PARAMTER</code> to <code>BMM_PARAMTER_TYPE</code>; remove <code>BMM_OPEN_TYPE</code>; remove <code>BMM_TYPE_ELEMENT</code>;<br>
+ rename <code>BMM_GENERIC_PARAMTER</code> to <code>BMM_PARAMETER_TYPE</code>;<br>
+ remove <code>BMM_OPEN_TYPE</code>; remove <code>BMM_TYPE_ELEMENT</code>;<br>
  add new type <code>BMM_DEFINED_TYPE</code> as parent of <code>BMM_SIMPLE_TYPE</code> and <code>BMM_GENERIC_TYPE</code>;<br>
  add new type <code>BMM_UNITARY_TYPE</code> as parent of <code>BMM_DEFINED_TYPE</code> and <code>BMM_PARAMETER_TYPE</code>;<br>
- redefine <code>BMM_CLASS.<em>ancestors</em></code> to be of type <code>BMM_SMPLE_TYPE</code>;<br>
- <code>BMM_PARAMETER_TYPE.<em>conforms_type_type</em></code> is now of type <code>BMM_SIMPLE_TYPE</code>;<br>
+ redefine <code>BMM_CLASS.<em>ancestors</em></code> to be of type <code>BMM_DEFINED_TYPE</code>;<br>
+ redefine <code>BMM_PARAMETER_TYPE.<em>conforms_to</em></code> to <code><em>type_constraint</em></code> of type <code>BMM_DEFINED_TYPE</code>;<br>
  correct <code>BMM_CLASS.<em>immediate_descendants</em></code> to be of type <code>List&lt;BMM_CLASS&gt;</code>;<br>
  rename <code>BMM_CLASIFIER</code> to <code>BMM_ENTITY</code>;<br>
  Support generic types as class ancestors;<br>
  Remove archetype-related meta-data.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 May 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.2.2</p></td>
@@ -333,16 +334,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p>'openEHR' is a registered trademark of the openEHR Foundation</p>
+<p>'openEHR' is a registered trademark of the openEHR Foundation;</p>
 </li>
 <li>
-<p>'Java' is a registered trademark of Oracle Corporation</p>
+<p>'Java' is a registered trademark of Oracle Corporation;</p>
 </li>
 <li>
-<p>'OMG' and 'UML' are registered trademarks of the Object Management Group</p>
+<p>'C#' is a registered trademark of Microsoft;</p>
 </li>
 <li>
-<p>'MagicDraw' is a registered trademark of NoMagic Inc</p>
+<p>'OMG' and 'UML' are registered trademarks of the Object Management Group;</p>
+</li>
+<li>
+<p>'MagicDraw' is a registered trademark of NoMagic Inc;</p>
 </li>
 <li>
 <p>'Rational Software Architect' is a registered trademark of IBM Corporation.</p>
@@ -2132,7 +2136,7 @@ an_anc_type: <code>String[1]</code><br>
 <div class="ulist">
 <ul>
 <li>
-<p><em>base_class</em>: a reference to the generating class;</p>
+<p><em>effective_base_class</em>: a reference to the effective generating class;</p>
 </li>
 <li>
 <p><em>type_name</em>: the effective type name of an entity; for simple classes, this will just be the class name (<code>BMM_CLASS.<em>name</em></code>); for generic and container classes it will be generic name such as <code>List&lt;T&gt;</code>, <code>Interval&lt;T&gt;</code> etc; for feature types it will be the declared type, i.e. a simple name, an open type name (e.g. <code>T</code>) or a generic type name (e.g. <code>Interval&lt;Time&gt;</code>);</p>
@@ -2146,7 +2150,7 @@ an_anc_type: <code>String[1]</code><br>
 <p>Below <code>BMM_TYPE</code> are the abstract meta-type <code>BMM_UNITARY_TYPE</code> and the concrete meta-type <code>BMM_CONTAINER_TYPE</code> and its specialisation <code>BMM_INDEXED_CONTAINER_TYPE</code>. <code>BMM_UNITARY_TYPE</code> corresponds to meta-types whose <em>instances are unitary</em> i.e. singular, while the container meta-types correspond to <em>collections of instances</em>. The latter are further described below. This division is made to enable BMM to directly support collections in the type system.</p>
 </div>
 <div class="paragraph">
-<p>Unitary meta-types are further distinguished as either formal generic parameters (<code>BMM_PARAMETER TYPE</code>) and <em>defined</em> types, i.e. types with class definitions, via the abstract meta-type <code>BMM_DEFINED_TYPE</code>. The subtypes of the BMM defined meta-type are <code>BMM_SIMPLE_TYPE</code> and <code>BMM_GENERIC _TYPE</code>, corresponding to the standard notions of type familiar in modern programming languages.</p>
+<p>Unitary meta-types are further distinguished as either formal generic parameters (<code>BMM_PARAMETER TYPE</code>) and <em>defined</em> types, i.e. types with class definitions, via the abstract meta-type <code>BMM_DEFINED_TYPE</code>. The subtypes of the BMM defined meta-type are <code>BMM_SIMPLE_TYPE</code> and <code>BMM_GENERIC <em>TYPE</code>, corresponding to the standard notions of type familiar in modern programming languages. The class definitions of instances (i.e. BMM model class deifintions) of these meta-types are available via the property <code>_base_class</em></code>, of meta-type <code>BMM_CLASS</code> for a BMM simple type, and <code>BMM_GENERIC_CLASS</code> for BMM generic type.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2220,7 +2224,7 @@ an_anc_type: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_container_types"><a class="anchor" href="#_container_types"></a>6.4. Container Types</h3>
 <div class="paragraph">
-<p>In object-oriented type theory, 'container' types are generic types whose outer class happens to have the semantics of a container object, such as a list, set etc. In the BMM, containers and non-container generic types are distinguished via the classes <code>BMM_GENERIC_TYPE</code> and <code>BMM_CONTAINER_TYPE</code>. This allows the BMM to treat container types in a special way. A <code>BMM_CONTAINER_TYPE</code> can be thought of as a 1:N counterpart to a <code>BMM_UNITARY_TYPE</code>, such as the type <code>List&lt;Paragraph&gt;</code> with respect to <code>Paragraph</code>. <code>BMM_GENERIC_TYPE</code> is typically used for objects considered to be singular, but whose types are a product of the base class and one or more parameter types, e.g. <code>Interval&lt;Quantity&gt;</code>.</p>
+<p>In object-oriented type theory, 'container' types are generic types whose outer class happens to have the semantics of a container object, such as a list, set etc. Container types such as <code>List&lt;T&gt;</code> and <code>Set&lt;T&gt;</code> are used ubiquitously in object models. In the BMM, containers and non-container generic types are distinguished via the meta-classes <code>BMM_GENERIC_TYPE</code> and <code>BMM_CONTAINER_TYPE</code>. This allows the BMM to treat container types in a special way. A <code>BMM_CONTAINER_TYPE</code> can be thought of as a 1:N counterpart to a <code>BMM_UNITARY_TYPE</code>, such as the type <code>List&lt;Paragraph&gt;</code> with respect to <code>Paragraph</code>. <code>BMM_GENERIC_TYPE</code> is typically used for objects considered to be singular, but whose types are a product of the base class and one or more parameter types, e.g. <code>Interval&lt;Quantity&gt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>The explicit provision of <code>BMM_CONTAINER_TYPE</code> enables BMM models to mention logical linear container types such as <code>Array&lt;T&gt;</code>, <code>List&lt;T&gt;</code> and <code>Set&lt;T&gt;</code>, on the assumption of their standard semantics in computer science , without worrying about providing concrete types which may be numerous and also variable across programming languages, e.g. <code>ArrayedList&lt;T&gt;</code>, <code>LinkedSet&lt;T&gt;</code>, <code>ArrayedStack&lt;T&gt;</code> and so on. (This corrects one of the errors in UML, which does not represent containment via typing, but via cardinality, and uniqueness constraints.)</p>
@@ -2233,6 +2237,18 @@ an_anc_type: <code>String[1]</code><br>
 <img src="diagrams/bmm_structure-container.svg" alt="bmm structure container">
 </div>
 <div class="title">Figure 15. Container Type</div>
+</div>
+<div class="paragraph">
+<p>One other container type is also ubiquitous in object models and object-oriented programming: indexed containers, commonly known under the type name <code>Hash&lt;K,V&gt;</code>, <code>HashMap&lt;K,V&gt;</code>, <code>HashTable&lt;K,V&gt;</code>, <code>Dictionary&lt;K,V&gt;</code> and so on. This type always takes two parameters, a key type and a value type. The key type must be such that hash values can be generated, and may be any type, but practically speaking, is almost always a <code>String</code> or <code>Integer</code>, or a Date/Time type if such exists.</p>
+</div>
+<div class="paragraph">
+<p>The indexed container is represented by the meta-type <code>BMM_INDEXED_CONTAINER_TYPE</code>, which inherits from <code>BMM_CONTAINER_TYPE</code>, and adds the property <code><em>index_type</em></code>. The following diagram shows how the container type <code>Hash&lt;String, Person&gt;</code> is represented in a BMM model.</p>
+</div>
+<div id="bmm_structure_indexed_container" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/bmm_structure-indexed_container.svg" alt="bmm structure indexed container">
+</div>
+<div class="title">Figure 16. Indexed Container Type</div>
 </div>
 </div>
 <div class="sect2">
@@ -2345,9 +2361,9 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong> (): <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_CLASS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Main design class for this type, from which properties etc can be extracted.</p>
+<p>Effective underlying class for this type, abstracting away any container type.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2481,22 +2497,22 @@ an_anc_type: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_substitutions</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Result is <code><em>base_class.all_descendants</em></code> .</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_substitutions</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if <code><em>base_class.has_descendants</em></code> .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong> (): <code>BMM_SIMPLE_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_SIMPLE_CLASS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Main design class for this type, from which properties etc can be extracted.</p>
 </div></div></td>
@@ -2560,7 +2576,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong> (): <code>BMM_CLASS</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_CLASS</code><br>
 <strong><em>Post_validity</em></strong>: <code>Result = base_type.base_class</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Result is <code><em>base_class</em></code> of <code><em>base_type</em></code>.</p>
@@ -2739,6 +2755,13 @@ an_anc_type: <code>String[1]</code><br>
 <p>Returns True if there is any substituted generic parameter.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_GENERIC_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Effective underlying class for this type, abstracting away any container type.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2840,7 +2863,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong> (): <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_CLASS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The effective conformance type of this parameter, or the 'Any' class if none.</p>
 </div></div></td>
@@ -2891,10 +2914,10 @@ an_anc_type: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>7.1. Overview</h3>
 <div class="paragraph">
-<p>Class definitions are the core of any BMM model. BMM distinguishes between simple, enumeration and generic class definitions via the descendants of <code>BMM_CLASS</code>, i.e. <code>BMM_SIMPLE_CLASS</code>, <code>BMM_ENUMERATION</code> and <code>BMM_GENERIC_CLASS</code>. Class properties are defined using the generic class <code>BMM_PROPERTY &lt;T: BMM_TYPE&gt;</code>. The use of a generic meta-type provides a formal way of expressing the semantics of property meta-types as listed above.</p>
+<p>Class definitions are the core of any BMM model. BMM distinguishes between simple and generic class definitions via two descendants of <code>BMM_CLASS</code>, i.e. <code>BMM_SIMPLE_CLASS</code> and <code>BMM_GENERIC_CLASS</code>, with the first providing a concrete form of <code>BMM_CLASS</code> that applies to non-generic classes, and the latter defining the additional semantics of generic classes. The meta-type <code>BMM_ENUMERATION</code> is a specialisation of <code>BMM_SIMPLE_CLASS</code> used to represent enumeration classes in BMM models.</p>
 </div>
 <div class="paragraph">
-<p>The type of a property in a BMM model has one of the following <code>BMM_TYPE</code> descendants as its metatype:</p>
+<p>Class properties are defined using the generic class <code>BMM_PROPERTY &lt;T: BMM_TYPE&gt;</code>. The use of a generic meta-type provides a formal way of expressing the semantics of meta-types described in the section on types. The generic parameter is one of the following <code>BMM_TYPE</code> descendants:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2928,19 +2951,25 @@ an_anc_type: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_primitive_types.png" alt="awb primitive types" width="50%">
 </div>
-<div class="title">Figure 16. Primitive classes</div>
+<div class="title">Figure 17. Primitive classes</div>
+</div>
+<div class="paragraph">
+<p>Primitive classes are normal BMM classes, other than being marked primitive for convenience, and do not have different semantics.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_enumeration_classes"><a class="anchor" href="#_enumeration_classes"></a>7.3. Enumeration Classes</h3>
 <div class="paragraph">
-<p>The enumeration meta-type adds a set of enumeration labels and option <code>String</code> or <code>Integer</code> values, in the manner of contemporary languages such as Java and C#. This meta-type allows classes to be declared in a BMM to be enumerations without either having to manufacture a representation from simple class definitions, or having to replicate the representatino of enumerations in some target language. The following screenshot shows how a BMM integer enumeration class appears within a BMM model.</p>
+<p>The enumeration meta-type adds a set of enumeration labels and optional <code>String</code> or <code>Integer</code> values, in the manner of contemporary languages such as Java and C#. This meta-type allows classes to be declared in a BMM to be enumerations without either having to manufacture a representation from simple class definitions, or having to replicate the representation of enumerations in some target language. The following screenshot shows how a BMM integer enumeration class appears within a BMM model.</p>
 </div>
 <div id="awb_enumeration" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/awb_enumeration.png" alt="awb enumeration" width="65%">
 </div>
-<div class="title">Figure 17. Enumeration Example</div>
+<div class="title">Figure 18. Enumeration Example</div>
+</div>
+<div class="paragraph">
+<p>The types <code>String</code> and <code>Integer</code> are assumed to be defined via primitive classes of the same names.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2952,7 +2981,7 @@ an_anc_type: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_generic_class.png" alt="awb generic class" width="50%">
 </div>
-<div class="title">Figure 18. BMM class - generic class</div>
+<div class="title">Figure 19. BMM class - generic class</div>
 </div>
 </div>
 <div class="sect2">
@@ -2977,13 +3006,13 @@ an_anc_type: <code>String[1]</code><br>
 <p>Unitary properties in a BMM model are instances of the types <code>BMM_PROPERTY&lt;BMM_SIMPLE_TYPE&gt;</code> and so on. Container properties are instances of the type <code>BMM_CONTAINER_PROPERTY</code>, which inherits from <code>BMM_PROPERTY&lt;BMM_CONTAINER_TYPE&gt;</code>, in order to add the meta-data item <code><em>cardinality</em></code>, which enables the possible number of container elements to be constrained, corresponding to the multiplicities used at the end of UML associations.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows a BMM class in a model whose flat properties have different settings of the <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code> meta-data flags: property names in black are neither; those in grey are IM runtime, and those in light frey are infrastructure properties.</p>
+<p>The following example shows a BMM class in a model whose flat properties have different settings of the <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code> meta-data flags: property names in black are neither; those in grey are IM runtime, and those in light grey are infrastructure properties.</p>
 </div>
 <div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="images/awb_class_properties.png" alt="awb class properties" width="50%">
 </div>
-<div class="title">Figure 19. BMM class - properties view</div>
+<div class="title">Figure 20. BMM class - properties view</div>
 </div>
 </div>
 <div class="sect2">
@@ -3055,7 +3084,7 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>immediate_descendants</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of references to immediate inheritance descendants.</p>
+<p>List of references to base classes of immediate inheritance descendants.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3254,6 +3283,13 @@ an_anc_type: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Meta-type of <code>BMM_ENUMERATION</code>, which is <code>Entity_metatype_enumeration</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name_map</strong> (): <code>Hash&lt;String,String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Map of <code><em>item_values</em></code> (stringified) to <code><em>item_names</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3574,7 +3610,7 @@ a_name: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_simple_inheritance"><a class="anchor" href="#_simple_inheritance"></a>8.1. Simple Inheritance</h3>
 <div class="paragraph">
-<p>The BMM supports single and multiple inheritance, although it does not distinguish between different types of inheritance relation as some programming languages do. Inheritance is formally defined to be between a class definition (an instance of <code>BMM_CLASS</code>) and a defined type, i.e. a <code>BMM_SIMPLE_TYPE</code> or <code>BMM_GENERIC_TYPE</code>. This is because inheritance parents of a class may be:</p>
+<p>The BMM supports single and multiple inheritance, although it does not distinguish between different types of inheritance relation as some programming languages do. Inheritance is formally defined to be between a class definition (an instance of <code>BMM_CLASS</code>) and a defined type, i.e. a <code>BMM_SIMPLE_TYPE</code> or <code>BMM_GENERIC_TYPE</code>. This is because the inheritance parents of a class may be any of:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3585,12 +3621,12 @@ a_name: <code>String[1]</code><br>
 <p>a generic class;</p>
 </li>
 <li>
-<p>an effective generic type, i.e. with one or more formal parameters substituted.</p>
+<p>a <em>class type</em>, i.e. the effective class definition corresponding to an effective generic type, which has one or more formal parameters substituted.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The general case for all three is represented by the corresponding <em>type</em>, i.e., simple type or generic type.</p>
+<p>The general case for all three is represented by the corresponding <em>type</em>, i.e., a simple type or generic type.</p>
 </div>
 <div class="paragraph">
 <p>The evaluation of inheritance relations defined in a BMM model results in an acyclic graph such that ancestors and descendants can be visualised for any class. The following screen shot shows the ancestors view of a class <code>OBSERVATION</code>.</p>
@@ -3599,7 +3635,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_class_ancestors.png" alt="awb class ancestors" width="45%">
 </div>
-<div class="title">Figure 20. BMM class - ancestors view</div>
+<div class="title">Figure 21. BMM class - ancestors view</div>
 </div>
 <div class="paragraph">
 <p>The next screenshot shows the descendants view of one of the ancestor classes of the same class.</p>
@@ -3608,7 +3644,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_class_descendants.png" alt="awb class descendants" width="45%">
 </div>
-<div class="title">Figure 21. BMM class - descendants view</div>
+<div class="title">Figure 22. BMM class - descendants view</div>
 </div>
 </div>
 <div class="sect2">
@@ -3627,13 +3663,31 @@ a_name: <code>String[1]</code><br>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following example shows the class <code>DV_INTERVAL&lt;T:DV_ORDERED&gt;</code> inheriting from <code>Interval&lt;T:Ordered&gt;</code>. Here the type constraint <code>Ordered</code> is being covariantly narrowed to <code>DV_ORDERED</code>, which inherits from the <code>Ordered</code> type.</p>
+<p>The following example shows the class <code>DV_INTERVAL&lt;T:DV_ORDERED&gt;</code> inheriting from <code>Interval&lt;T:Ordered&gt;</code>. Here the number of open generic parameters remains unchanged, while the type constraint <code>Ordered</code> is being covariantly narrowed to <code>DV_ORDERED</code>, which inherits from the <code>Ordered</code> type.</p>
 </div>
 <div id="awb_generic_inheritance" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="images/awb_generic_inheritance.png" alt="awb generic inheritance" width="65%">
+<img src="images/awb_generic_inheritance.png" alt="awb generic inheritance" width="70%">
 </div>
-<div class="title">Figure 22. Generic inheritance</div>
+<div class="title">Figure 23. Generic inheritance, open parameter</div>
+</div>
+<div class="paragraph">
+<p>A simple class may also inherit from a closed generic type, with the parameters of the latter fixed to specific type(s), as shown in the following example.</p>
+</div>
+<div id="awb_generic_inheritance_closed" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_generic_inheritance_closed.png" alt="awb generic inheritance closed" width="85%">
+</div>
+<div class="title">Figure 24. Generic inheritance, closed</div>
+</div>
+<div class="paragraph">
+<p>The general case is that any number of formal generic parameters may be substituted or left open down the inheritance lineage, as shown by the variants in the following example.</p>
+</div>
+<div id="awb_generic_inheritance_mixed" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_generic_inheritance_mixed.png" alt="awb generic inheritance mixed" width="90%">
+</div>
+<div class="title">Figure 25. Generic inheritance, mixed open and closed</div>
 </div>
 </div>
 <div class="sect2">
@@ -3645,7 +3699,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_multiple_inheritance.png" alt="awb multiple inheritance" width="45%">
 </div>
-<div class="title">Figure 23. Multiple inheritance</div>
+<div class="title">Figure 26. Multiple inheritance</div>
 </div>
 </div>
 </div>
@@ -3945,7 +3999,7 @@ a_name: <code>String[1]</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-06 14:19:42 EDT
+Last updated 2018-05-12 09:34:24 BST
 </div>
 </div>
 </body>

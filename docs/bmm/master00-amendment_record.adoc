@@ -7,17 +7,18 @@
 |[[latest_issue]]3.0.0
 |Separate `P_BMM` model and syntax to BMM Persistence specification; +
  refactor / tighten class model: +
- rename `BMM_GENERIC_PARAMTER` to `BMM_PARAMTER_TYPE`; remove `BMM_OPEN_TYPE`; remove `BMM_TYPE_ELEMENT`; +
+ rename `BMM_GENERIC_PARAMTER` to `BMM_PARAMETER_TYPE`; +
+ remove `BMM_OPEN_TYPE`; remove `BMM_TYPE_ELEMENT`; +
  add new type `BMM_DEFINED_TYPE` as parent of `BMM_SIMPLE_TYPE` and `BMM_GENERIC_TYPE`; +
  add new type `BMM_UNITARY_TYPE` as parent of `BMM_DEFINED_TYPE` and `BMM_PARAMETER_TYPE`; +
- redefine `BMM_CLASS._ancestors_` to be of type `BMM_SMPLE_TYPE`; +
- `BMM_PARAMETER_TYPE._conforms_type_type_` is now of type `BMM_SIMPLE_TYPE`; +
+ redefine `BMM_CLASS._ancestors_` to be of type `BMM_DEFINED_TYPE`; +
+ redefine `BMM_PARAMETER_TYPE._conforms_to_` to `_type_constraint_` of type `BMM_DEFINED_TYPE`; +
  correct `BMM_CLASS._immediate_descendants_` to be of type `List<BMM_CLASS>`; +
  rename `BMM_CLASIFIER` to `BMM_ENTITY`; +
  Support generic types as class ancestors; +
  Remove archetype-related meta-data.
 |T Beale
-|[[latest_issue_date]]27 Apr 2018
+|[[latest_issue_date]]12 May 2018
 
 |2.2.2
 |Improve and update introductory text in the Overview section.
