@@ -52,7 +52,7 @@ h|*Invariants*
 2+a|*_Original_language_valid_*: `code_set (Code_set_id_languages).has_code (original_language.as_string)`
 
 h|
-2+a|*_Current_revision_valid_*: `(current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)`
+2+a|*_Current_revision_valid_*: `(current_revision /= Void and not is_controlled) implies current_revision.is_equal ("(uncontrolled)")`
 
 h|
 2+a|*_Translations_valid_*: `translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))`
