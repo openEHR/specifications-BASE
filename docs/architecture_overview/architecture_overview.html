@@ -392,6 +392,12 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.1.0</strong></p></th>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-18">SPECBASE-18</a>. Update text in Common IM to latest openPGP specification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>17 May 2018</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.
  Section 5.3.4: Added text indicating BMM usage and alternatives.
@@ -2276,8 +2282,8 @@ time, reason, and potentially other meta-data.</p>
 (i.e. for each Version of any logical item, such as medications list, encounter note etc.). The signature
 is created as a private-key encryption (e.g. RSA-1) of a hash (e.g. MD5) of a canonical representation
 (such as in schema-based XML) of the Version being committed. A likely candidate for defining the
-signature and digest strings in openEHR is the openPGP message format (<a href="#rfc_2440">IETF RFC2440</a>), due to
-being an open specification and self-describing. The use of RFC2440 for the format does not imply
+signature and digest strings in openEHR is the openPGP message format (<a href="#rfc_4880">IETF RFC 4880</a>), due to
+being an open specification and self-describing. The use of RFC 4880 for the format does not imply
 the use of the PGP distributed certificate infrastructure, or indeed any certification infrastructure;
 openEHR is agnostic on this point. If no public key or equivalent infrastructure is available, the
 encryption step might be omitted, resulting in a digest only of the content. The signature is stored
@@ -4314,10 +4320,7 @@ means of normative comparison of openEHR with other related specifications or sy
 <p>ISO 8601: Syntax for expressing dates and times (used in openEHR Quantity package)</p>
 </li>
 <li>
-<p>ISO 11404: General Purpose Data types (mapped to in openEHR assumed_types package in Support Information Model)</p>
-</li>
-<li>
-<p>HL7 UCUM: Unified Coding for Units of Measure (used by openEHR Quantity data type)</p>
+<p><a href="#ucum">UCUM</a>: Unified Coding for Units of Measure (used by openEHR Quantity data type)</p>
 </li>
 <li>
 <p>HL7v3 GTS: General Timing Specification syntax (used by openEHR Time specification data types).</p>
@@ -4326,7 +4329,7 @@ means of normative comparison of openEHR with other related specifications or sy
 <p>some HL7v3 domain vocabularies are mapped to the openEHR terminology.</p>
 </li>
 <li>
-<p>IETF RFC 2440 - openPGP.</p>
+<p><a href="#rfc_4880">IETF RFC 4880</a> - openPGP.</p>
 </li>
 </ul>
 </div>
@@ -4692,7 +4695,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 <p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
 </li>
 <li>
-<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+<p><a id="rfc_4880"></a>[rfc_4880] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
 </li>
 <li>
 <p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
@@ -4730,7 +4733,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-29 23:54:20 GMT
+Last updated 2018-05-17 10:12:55 BST
 </div>
 </div>
 </body>
