@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*Iso8601_duration*
 
 h|*Description*
-2+a|Represents an ISO 8601 duration.
+2+a|Represents an ISO 8601 duration, which may have multiple parts from years down to seconds.
 
 h|*Inherit*
 2+|`Iso8601_type`, `IDuration`
@@ -53,7 +53,39 @@ h|
 |*as_string* (): `String`
 a|ISO8601 string for duration, in format
 
-* P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]
+* `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`
+
+h|
+|*months* (): `Integer`
+a|Number of months.
+
+h|
+|*years* (): `Integer`
+a|Number of years of nominal 365-day length.
+
+h|
+|*weeks* (): `Integer`
+a|Number of 7 day weeks.
+
+h|
+|*to_seconds* (): `Integer`
+a|Total number of seconds equivalent (including fractional) of entire duration.
+
+h|
+|*minutes* (): `Integer`
+a|Number of 60 second minutes.
+
+h|
+|*hours* (): `Integer`
+a|Number of 60 minute hours.
+
+h|
+|*days* (): `Integer`
+a|Number of 24 hour days.
+
+h|
+|*as_duration* (): `Duration`
+a|Convert to a native `Duration`.
 
 h|*Invariants*
 2+a|*_Years_valid_*: `years >= 0`

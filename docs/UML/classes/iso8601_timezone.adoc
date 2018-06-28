@@ -31,17 +31,21 @@ h|
 |*as_string* (): `String`
 a|ISO8601 timezone string, in format:
 
-* Z &#124; ±hh[mm]
+* `Z &#124; ±hh[mm]`
 
 where:
 
-* hh is “00” - “23” (0-filled to two digits)
-* mm is “00” - “59” (0-filled to two digits)
-* Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
+* `hh` is "00" - "23" (0-filled to two digits)
+* `mm` is "00" - "59" (0-filled to two digits)
+* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
 
 h|
 |*is_gmt* (): `Boolean`
 a|True if timezone is UTC, i.e. +0000.
+
+h|
+|*as_timezone* (): `Timezone`
+a|Convert to a native `Timezone`.
 
 h|*Invariants*
 2+a|*_Min_hour_valid_*: `sign = -1 implies hour > 0 and hour \<= Min_timezone_hour`

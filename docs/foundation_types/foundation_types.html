@@ -244,15 +244,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-6">SPECPUB-6</a>. Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-15">SPECBASE-15</a>. Add foundation types specification to BASE component.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Nov 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Jun 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-15">SPECBASE-15</a>. Add foundation types specification to BASE component.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-6">SPECPUB-6</a>. Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">08 Sep 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27 Nov 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.7.6</p></td>
@@ -1792,7 +1792,10 @@ other: <code>Any[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>Two packages of time types are defined in this specification: the <code>base.foundation_types.time</code> package and the <code>base.foundation_types.iso8601_time</code> package. The first group are assumed to be available within the implementation environment, and normally correspond to either built-in types or standard library classes. The second set are conrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a <code>String</code> physical representation, and also inherit from the <code>IDate</code> etc classes.</p>
+<p>Two packages of time types are defined in this specification: the <code>base.foundation_types.time</code> package and the <code>base.foundation_types.iso8601_time</code> package. The first group are assumed to be available in some form within the implementation environment, and normally correspond to either built-in types or standard library classes. It is not assumed that the class names in any actual environment match those shown in the package here. The second set are concrete types based on the ISO 8601 time standard, which supports partial dates, times, and complex durations, all of which are needed in the biomedical and clinical domains. These classes have a <code>String</code> physical representation, and also inherit from the <code>IDate</code> etc classes.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Iso8601_xxx</code> classes are assumed to exist in close to the form specified here, because they are specified in other openEHR specifications.</p>
 </div>
 <div class="paragraph">
 <p>The two packages are shown below.</p>
@@ -1807,7 +1810,7 @@ other: <code>Any[1]</code><br>
 <div class="sect2">
 <h3 id="_primitive_time_types"><a class="anchor" href="#_primitive_time_types"></a>6.2. Primitive Time Types</h3>
 <div class="paragraph">
-<p>The classes in the <code>foundation_types.time</code> package are divided into interface classes <code>IDate</code> etc, and concrete primitive types <code>Date</code>, <code>Time</code> etc, which are assumed to have some 'native' data representation such as a long integer or similar. The separation is a clarifying device for this specification. It is not assumed that the classes <code>IDate</code> etc literally exist in a given implementation environment.</p>
+<p>The classes in the <code>foundation_types.time</code> package are divided into interface classes <code>IDate</code> etc, and concrete primitive types <code>Date</code>, <code>Time</code> etc, which are assumed to have some native data representation such as a long integer or similar. The separation is a clarifying device for this specification. It is not assumed that the classes <code>IDate</code> etc literally exist in a given implementation environment.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2376,41 +2379,6 @@ fs: <code>Double[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of years of nominal 365-day length.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of months.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 24 hour days.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 60 minute hours.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 60 second minutes.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>seconds</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Number of seconds.</p>
@@ -2421,20 +2389,6 @@ fs: <code>Double[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_seconds</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Fractional seconds.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>weeks</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 7 day weeks.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>to_seconds</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Total number of seconds equivalent (including fractional) of entire duration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2902,14 +2856,21 @@ fs: <code>Double[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this date uses ‘-’ separators.</p>
+<p>True if this date uses <code>'-'</code> separators.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.</p>
+<p>ISO8601 string for date, in format <code>YYYYMMDD</code> or <code>YYYY-MM-DD</code>, or a partial invariant. See <code><em>valid_iso8601_date()</em></code> for validity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_date</strong> (): <code>Date</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convert to a native <code>Date</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3094,7 +3055,27 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
+<p>ISO8601 string for time, i.e. in the form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hhmmss[,sss][Z&#124;±hh[mm]]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or the extended form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hh:mm:ss[,sss][Z&#124;±hh[mm]]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or a partial invariant. See <code><em>valid_iso8601_time()</em></code> for validity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3102,6 +3083,13 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_time</strong> (): <code>Time</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convert to a native <code>Time</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3286,7 +3274,27 @@ s: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for date/time, in format <code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code> or in extended format <code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code> or a partial variant; see valid_iso8601_date_time() below.</p>
+<p>ISO8601 string for date/time, in format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or in extended format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or a partial variant; see <code><em>valid_iso8601_date_time()</em></code> for validity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3294,6 +3302,13 @@ s: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_date_time</strong> (): <code>Date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convert to a native <code>Date_time</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3387,7 +3402,7 @@ s: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents an ISO 8601 duration.</p>
+<p>Represents an ISO 8601 duration, which may have multiple parts from years down to seconds.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3486,9 +3501,65 @@ allowing the W designator in the same expression as other designators is an exce
 <div class="ulist">
 <ul>
 <li>
-<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
+<p><code>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</code></p>
 </li>
 </ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of months.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of years of nominal 365-day length.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>weeks</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 7 day weeks.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>to_seconds</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Total number of seconds equivalent (including fractional) of entire duration.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 60 second minutes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 60 minute hours.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of 24 hour days.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_duration</strong> (): <code>Duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convert to a native <code>Duration</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3600,7 +3671,7 @@ allowing the W designator in the same expression as other designators is an exce
 <div class="ulist">
 <ul>
 <li>
-<p>Z &#124; ±hh[mm]</p>
+<p><code>Z &#124; ±hh[mm]</code></p>
 </li>
 </ul>
 </div>
@@ -3610,13 +3681,13 @@ allowing the W designator in the same expression as other designators is an exce
 <div class="ulist">
 <ul>
 <li>
-<p>hh is “00” - “23” (0-filled to two digits)</p>
+<p><code>hh</code> is "00" - "23" (0-filled to two digits)</p>
 </li>
 <li>
-<p>mm is “00” - “59” (0-filled to two digits)</p>
+<p><code>mm</code> is "00" - "59" (0-filled to two digits)</p>
 </li>
 <li>
-<p>Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000</p>
+<p><code>Z</code> is a literal meaning UTC (modern replacement for GMT), i.e. timezone <code>+0000</code></p>
 </li>
 </ul>
 </div></div></td>
@@ -3626,6 +3697,13 @@ allowing the W designator in the same expression as other designators is an exce
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if timezone is UTC, i.e. +0000.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_timezone</strong> (): <code>Timezone</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convert to a native <code>Timezone</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4045,7 +4123,7 @@ allowing the W designator in the same expression as other designators is an exce
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-29 23:55:42 GMT
+Last updated 2018-05-17 10:12:55 BST
 </div>
 </div>
 </body>

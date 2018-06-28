@@ -50,11 +50,15 @@ a|True if this date is partial, i.e. if days or more is missing.
 
 h|(effected)
 |*is_extended* (): `Boolean`
-a|True if this date uses ‘-’ separators.
+a|True if this date uses `'-'` separators.
 
 h|(redefined)
 |*as_string* (): `String`
-a|ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.
+a|ISO8601 string for date, in format `YYYYMMDD` or `YYYY-MM-DD`, or a partial invariant. See `_valid_iso8601_date()_` for validity.
+
+h|
+|*as_date* (): `Date`
+a|Convert to a native `Date`.
 
 h|*Invariants*
 2+a|*_Year_valid_*: `valid_year (year)`

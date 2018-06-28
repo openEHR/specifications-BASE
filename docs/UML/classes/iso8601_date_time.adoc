@@ -74,11 +74,23 @@ a|True if this date/time uses ‘-’, ‘:’ separators.
 
 h|
 |*as_string* (): `String`
-a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
+a|ISO8601 string for date/time, in format:
+
+* `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]`
+
+or in extended format:
+
+* `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]`
+
+or a partial variant; see `_valid_iso8601_date_time()_` for validity.
 
 h|
 |*has_fractional_second* (): `Boolean`
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
+
+h|
+|*as_date_time* (): `Date_time`
+a|Convert to a native `Date_time`.
 
 h|*Invariants*
 2+a|*_Year_valid_*: `valid_year (year)`
