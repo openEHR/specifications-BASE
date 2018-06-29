@@ -1,42 +1,186 @@
 = Overview
 
-The openEHR Expression Language and Expression Object Model (EOM) define an extensible core formalism suitable for use in other expression- and rule-based formalisms and environments. The Expression Language is the abstract syntax counterpart to the Expression Object Model. The EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in an 'object-dump' format or use purely graphical visualisation. However, the language described here still serves two purposes: providing at least one abstract formal serial form that is independent of any concrete format such as XML, RDF, JSON etc; and of providing a human-understandable notation for explaining the semantics of the EOM.
+The openEHR Expression Object Model (EOM) defines the semantics of all of the elements of computable expressions that are used in openEHR, and are likely to be used in healthcare and life sciences computing where rules and expressions are needed. The model is designed as an extensible core formalism suitable for use and extension in other formalisms (such as the openEHR Archetype formalism).
+
+The openEHR Expression Language (EL) specified here is an abstract syntax counterpart to the Expression Object Model, and may be considered a 'default syntax'. Other syntaxes or syntax variants are certainly possible, and other serialisation methods are possible, such as object graph serialisation into XML, JSON, YAML etc. The EL is provided firstly as a way of specifying and explaining the semantics of the EOM, and secondly, as one way of actually authoring expressions and rules in textual form. This approach is the same as with any programming language, where the usual form for learning and programming is the abstract language form, while the computational form is an abstract syntax tree (AST) or similar.
+
+Accordingly, the EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in JSON or use purely graphical visualisation.
 
 The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extensions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.
 
 Key features of the formalism include:
 
-* it supports variable declarations, assignments and expressions;
-* expressions are typed, using a set of primitive types to which every expression node must evaluate;
-* it supports all standard logical operators including universal and existential quantification, as well as user-defined operators;
-* it supports standard arithmetic and relational comparison operators, enabling the use of numerics;
-* parentheses for overridding operator precedence are supported;
-* it supports functions, including built-ins like `current_date`, standard functions like `max()` as well as user-defined functions.
+* variable declarations, assignments and expressions;
+* strong typing;
+* standard logical operators including universal and existential quantification, as well as user-defined operators;
+* standard arithmetic and relational comparison operators, enabling the use of numerics;
+* parentheses for overridding operator precedence;
+* functions, including built-ins like `current_date`, standard functions like `max()` as well as user-defined functions.
 
-== Execution Model
-
-The assumed execution model of the Expression language is that an expression text defines _statements_ that are evaluated by an _evaluator_ against one or more _data contexts_, which determine the truth values of the statements. The data context provides the computable representation of those aspects of reality to which the statements refer. Thus, a statement that asserts that `heart_rate > 50` is making an assertion about values found in some data - i.e. `heart_rate` is a _symbolic variable_ that is mapped to a data entity in the data context, representing an actual heart rate.
-
-The mapping of symbolic variables to entities in the data context is done via _bindings_. Each binding states where a variable's value is obtained from, and whether it is an input or output variable. This provides clear semantics for statements in the expression text.
-
-No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the _expression universe_ is technically speaking an 'open world' in the sense of the {wikipedia_open_world_assumption}[open-world assumption]. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.
+For reasons of comprehensibility and explanation, the Expression Language is defined first in this specification.
 
 == Design Background
 
 The openEHR Expression formalism is based on a limited first-order predicate logic language with extensions for numeric sub-expressions. It has similarities with OMG's OCL (Object Constraint Language) syntax, and is also similar to the assertion syntax used in the <<Object_Z>> and <<Eiffel>> languages and tools for over a decade (see <<Sowa>>, <<Hein>>, <<Kilov_Ross>> for an explanation of predicate logic in information modelling). None of these languages has been used directly, for reasons including:
 
 * OCL has a complex type system connected to the UML meta-model, and includes some undecidable procedural semantics;
-* none have adequate variable referencing mechanisms, such as to paths and external queries;
-* they are too powerful, and would introduce unnecessary complexity.
+* none have adequate variable referencing mechanisms, such as to paths and external queries.
 
-There are also similarities with other languages developed in the health arena for expressing 'medical logic' (Arden <<hl7_arden>>), guidelines (<<GLIF>> and many others) and decision support (e.g. GELLO <<hl7_gello>>). These languages were not used either, for reasons including:
+There are also similarities with other languages developed in the health arena for expressing 'medical logic' (Arden <<hl7_arden>>), guidelines (<<GLIF>> and many others) and decision support (e.g. GELLO <<hl7_gello>>). These languages were not directly used, for reasons including:
 
 * none have an easily extensible value referencing mechanism;
 * some are too procedural (Arden, GLIF);
 * current versions of some of these languages have been made specific to the HL7v3 RIM, a particular model of health information designed for message representation (GLIF 3.x, GELLO).
 
+Nevertheless, various elements of Arden and GELLO provided useful models for corresponding elements of the formalism described here.
+
 Modern syntaxes that provide a more generic and minimal inspiration for the expression syntax described here include the {xpath}[Xpath syntax].
 
-The design approach used here was thus to create a small concrete syntax allowing for a core subset of first-order predicate logic, and a corresponding object model representing the parse-tree form of the language.
-
 The semantic requirements are for expressions including arithmetic, boolean, and relational operators, functions, quantifier operators, operator precedence, parentheses, constant values, and certain kinds of variables. However, there is no support in the core specification for procedural semantics or most of the other complexities of full-blown programming languages.
+
+== Execution Model
+
+The assumed execution model of the Expression language is that an EL text is evaluated by an _evaluator_ against a _data context_, which determines the truth values of the expression(s). The data context typically includes data services such as the EHR, patient demographics, laboratory systems and so on - anything that is available computationally via some service. The text may contain symbols representing internal variables and bound variables, the latter of which map to entities in the data context.
+
+An EL text is minimally a single assertion such as `systolic_pressure > 0`, and more typically a set of _statements_ or _rules_ that generates output values or actions.
+
+No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the _expression universe_ is technically speaking an 'open world' in the sense of the {wikipedia_open_world_assumption}[open-world assumption]. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.
+
+== General Structure
+
+The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing `EL text`,  with a similar structure to an archetype. The key sections are `definition`, `terminology` and `context`. The `definition` section contains _statements_ and/or _rules_. These are made up of expressions containing _symbols_, which represent _variables_ and _constants_, and which are typed. Variables are either _bound variables_, indicated with a `$` character, and _local variables_. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.
+
+Mappings between bound variables and external entities are described by _bindings_ in the `data_context` section. For example, the expression `$heart_rate > 50` is an assertion about values found in some data - i.e. `$heart_rate` is a variable that is mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable's value is obtained from (e.g. some larger data entity such as a document or message, or via an API call), and whether it is an input or output variable. This provides clear semantics for statements in the expression text.
+
+Symbols are _names_ in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in the `terminology` section of an EL text, in the same way as for openEHR archetypes. For example, the symbol `heart_rate` of type `Integer` may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).
+
+Additionally, user-defined functions mentioned within the main text are bound to methods from external libraries in a `computing_context` section. 
+
+In addition to these computable sections, various meta-data sections are added, including the `description` and `language` sections defined by the {openehr_resource}[openEHR Resource specification], and an identification line at the top. As with archetypes, the sections other than the `definition` are expressed in {openehr_odin}[openEHR ODIN syntax].
+
+The structure of a self-standing EL text is thus as follows:
+
+----
+<identifier>
+
+language
+    original_language = <...>
+    translations = <...>	
+    
+description
+    <descriptive meta-data>
+    
+definition
+    <statements>
+    <rules>
+    
+terminology
+    symbol_definitions = <
+        ["lang"] = <
+            <symbol definitions in lang>
+        >
+        ...
+    >
+    
+data_context
+    <symbol bindings>
+    
+computing_context
+    <method bindings>
+----
+
+An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.
+
+[source,adl]
+----
+openEHR-bmi.v1
+
+language
+    original_language = <[ISO_639-1::en]>
+    translations = <
+        ["pt"] = <...>
+    >	
+    
+description
+    lifecycle_state = <"unmanaged">
+    original_author = <...>
+    details = <
+    ["pt"] = <
+        language = <[ISO_639-1::pt]>
+            purpose = <"Cálculo do peso do corpo">
+            use = <"...">
+        >
+    >
+
+definition
+    $body_weight, $height: Real
+    $bmi: Real
+    
+    $bmi := $body_weight / $height ^ 2
+    
+terminology
+    symbol_definitions = <
+        ["en"] = <
+            ["body_weight"] = <
+                text = <"body weight"> 
+                description = <"weight of subject body">
+            >
+            ["height"] = <...>
+            ["bmi"] = <
+                text = <"body mass index">
+                description = <"body mass index">
+            >
+        >
+        ["pt"] = <
+            ["body_weight"] = <
+                text = <"peso do corpo"> 
+                description = <"peso do corpo do sujeito">
+            >
+            ["height"] = <...>
+            ["bmi"] = <
+                text = <"índice de massa corporal">
+                description = <"índice de massa corporal">
+            >
+        >
+    >
+   
+data_context
+    content_bindings = <
+        ["openEHR-EHR-OBSERVATION.body_measurements.v1"] = <
+            ["body_weight"] = <
+                target = <"/data/events[id3]/data/items[id5]/value/magnitude">
+                direction = <"in">
+            >
+            ["height"] = <
+                target = <"/data/events[id3]/data/items[id6]/value/magnitude">
+                direction = <"in">
+            >
+        >
+        ["openEHR-EHR-OBSERVATION.body_mass_index.v1"] = <
+            ["body_mass_index"] = <
+                target = <"/data/events[id3]/data/items[id5]/value/magnitude">
+                direction = <"out">
+            >
+        >
+    >
+    
+computing_context
+    library_bindings = <
+        ["onco_staging_lib"] = <
+            connector = <
+                language = <"java8">
+                library = <"onco_staging_lib.jar">
+            >
+            bindings = <
+                ["tnm_major_number"] = <"TnmCalculator::tnmNumericVal">
+                ["tnm_prefix"] = <"TnmCalculator::tnmPrefixVal">
+            >
+        >
+    >
+----
+
+WHen used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:
+
+* including the definitions in the `rules` section;
+* adding the EL text `symbol_definitions` section to the archetype `terminology` section;
+* adding the `data_context` and `computing_context` as additional sections.
