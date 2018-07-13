@@ -48,7 +48,6 @@
 <li><a href="#_primitive_types">3.3.1. Primitive Types</a></li>
 <li><a href="#_container_types">3.3.2. Container Types</a></li>
 <li><a href="#_interval_type">3.3.3. Interval Type</a></li>
-<li><a href="#_non_primitive_types">3.3.4. Non-primitive types</a></li>
 </ul>
 </li>
 <li><a href="#_basic_structures">3.4. Basic Structures</a>
@@ -69,15 +68,18 @@
 <li><a href="#_bound_variables_evaluation_and_validity">3.6. Bound Variables, Evaluation and Validity</a></li>
 <li><a href="#_a_id_language_expressions_a_expressions">3.7. <a id="language-expressions"></a>Expressions</a>
 <ul class="sectlevel3">
-<li><a href="#_functions">3.7.1. Functions</a></li>
+<li><a href="#_functions">3.7.1. Functions</a>
+<ul class="sectlevel4">
+<li><a href="#_built_in_functions">3.7.1.1. Built-in Functions</a></li>
+<li><a href="#_user_defined_functions">3.7.1.2. User-defined Functions</a></li>
+</ul>
+</li>
 <li><a href="#_a_id_language_operators_a_operators">3.7.2. <a id="language-operators"></a>Operators</a>
 <ul class="sectlevel4">
 <li><a href="#_logical_negation">3.7.2.1. Logical Negation</a></li>
-<li><a href="#_logical_quantifiers">3.7.2.2. Logical Quantifiers</a></li>
-<li><a href="#_precedence_and_parentheses">3.7.2.3. Precedence and Parentheses</a></li>
+<li><a href="#_precedence_and_parentheses">3.7.2.2. Precedence and Parentheses</a></li>
 </ul>
 </li>
-<li><a href="#_assertions">3.7.3. Assertions</a></li>
 </ul>
 </li>
 <li><a href="#_rules">3.8. Rules</a></li>
@@ -711,7 +713,14 @@ computing_context
 </div>
 </li>
 <li>
+<p>an interval type:</p>
+<div class="ulist">
+<ul>
+<li>
 <p><code>Interval&lt;T: Ordered&gt;</code> where T is any ordered primitive type.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -759,7 +768,7 @@ computing_context
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date_time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2004-08-12T12:00:59</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2004-08-12T12:00:59+0100</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601-format date/time</p></td>
 </tr>
 <tr>
@@ -785,11 +794,14 @@ computing_context
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Terminology_code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[snomed_ct::389086002]</code><br>
-                         `[snomed_ct::389086002</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hypoxia</p></td>
+                         <code>[snomed_ct::389086002|Hypoxia|]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terminology code reference</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Automatic type promotion from <code>Integer</code> to <code>Real</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
+</div>
 <div class="paragraph tbd">
 <p>TBD: do we need <code>Integer64</code> and <code>Real64</code>?</p>
 </div>
@@ -816,12 +828,12 @@ computing_context
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;T&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[val, val, &#8230;&#8203;]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of any primitive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linear list of items of any primitive type, allowing order and repeated membership'</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{val, val, &#8230;&#8203;}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set of any primitive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of items of any primitive type; no order, unique membership;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;K:Ordered, V&gt;</code></p></td>
@@ -831,10 +843,57 @@ computing_context
                               &#8230;&#8203;<br>
                               ["keyN"] = &lt;valN&gt;<br>
                          &gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Table of values of any type V, keyed by values of any Ordered descendant K, typically String or Integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indexed linear container;<br>
+                                                         concretely, a table of values of any type V, keyed by values of any Ordered descendant K, typically String or Integer</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    has (v: T): Boolean
+            -- True container contains v
+
+    all (test(v: T): Boolean): Boolean
+            -- True if for every v in container, test (v) is True
+
+    some (test(v: T): Boolean): Boolean
+            -- True if there is any v in container for which test (v) is True
+
+    do_all (proc(v: T))
+            -- execute proc(v) for every v in interval
+
+    do_if (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in interval for which test(v) is True
+
+    do_while (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in interval until test (v) returns False
+
+    do_until (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in interval until test (v) returns True</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Any such method may be accessed in the usual way, using dot notation, i.e. as shown below for the method <code>some()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $heart_rate_samples: List&lt;Real&gt;
+    Atrial_fibrillation_threshold: Real = 100.0
+
+    if $heart_rate_samples.some (
+        (v:Real): Boolean
+            do
+                Result := v &gt; Atrial_fibrillation_threshold
+            end
+        )
+    then
+        --
+    end</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_interval_type"><a class="anchor" href="#_interval_type"></a>3.3.3. Interval Type</h4>
@@ -862,59 +921,68 @@ computing_context
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|N..M|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|N..M|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the two-sided interval N &gt;= x &lt;= M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|&gt;N..M|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|&gt;N..M|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the two-sided interval N &gt; x &lt;= M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|N..&lt;M|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|N..&lt;M|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the two-sided interval N &gt;= x &lt; M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|&lt;N|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|&lt;N|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the one-sided interval x &lt; N</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|&gt;N|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|&gt;N|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the one-sided interval x &gt; N</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|&lt;=N|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|&lt;=N|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the one-sided interval x &lt;= N</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|&gt;=N|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|&gt;=N|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the one-sided interval x &gt;= N</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|N +/-M|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|N +/-M|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the two-sided interval of N ±M</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|N±M|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|N±M|</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the two-sided interval of N ±M</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect3">
-<h4 id="_non_primitive_types"><a class="anchor" href="#_non_primitive_types"></a>3.3.4. Non-primitive types</h4>
-<div class="paragraph tbd">
-<p>The special <code>Object_ref</code> type is reserved for creating references to arbitrary objects in the data context, to which some operations can be applied.</p>
+<div class="paragraph">
+<p>Automatic type promotion from <code>Interval&lt;Integer&gt;</code> to <code>Interval&lt;Real&gt;</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
 </div>
 <div class="paragraph">
-<p>Automatic type promotion from <code>Integer</code> to <code>Real</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
+<p>Various methods are defined for <code>Interval&lt;T&gt;</code>, as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    has (v: T): Boolean
+            -- True if for Interval contains v
+
+    overlaps (other: like Current): Boolean
+            -- True if this Interval overlaps other
+
+    contains (other: like Current): Boolean
+            -- True if this Interval contains other</pre>
+</div>
 </div>
 </div>
 </div>
@@ -923,7 +991,7 @@ computing_context
 <div class="sect3">
 <h4 id="_declarations"><a class="anchor" href="#_declarations"></a>3.4.1. Declarations</h4>
 <div class="paragraph">
-<p>Variables may be declared within a statement set, consisting of a name of the form <code>var_name</code> for a local variable, and <code>$var_name</code> for a bound variable, and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:</p>
+<p>Variables may be declared within a statement set, consisting of a name of the form <code>var_name</code> for a local variable, and <code>$var_name</code> for a bound variable, and a type. Multiple variables may be declared on the same line. The following shows various declarations:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1016,31 +1084,10 @@ computing_context
 <div class="sect3">
 <h4 id="_iteration"><a class="anchor" href="#_iteration"></a>3.5.3. Iteration</h4>
 <div class="paragraph">
-<p>Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container and interval types, which are as follows.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    all (test(v: T): Boolean): Boolean
-            -- True if for every v in container, test (v) is True
-
-    some (test(v: T): Boolean): Boolean
-            -- True if there is any v in container for which test (v) is True
-
-    do_all (proc(v: T))
-            -- execute proc(v) for every v in interval
-
-    do_if (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval for which test(v) is True
-
-    do_while (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns False
-
-    do_until (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns True</pre>
-</div>
+<p>Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container and interval types, i.e. <code>do_all</code>, <code>do_if</code>, <code>do_while</code> and <code>do_until</code> as defined earlier.</p>
 </div>
 <div class="paragraph">
-<p>Iteration over a range of integers can be performed using an interval literal, as follows:</p>
+<p>Iteration over a range of integers can be performed using an <code>Interval&lt;Integer&gt;</code> literal, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1052,10 +1099,15 @@ computing_context
     )</pre>
 </div>
 </div>
+<div class="paragraph tbd">
+<p>TBD: more on how this works (it&#8217;s defined on <code>Discrete_interval&lt;T&gt;</code>)</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_rule_when_then"><a class="anchor" href="#_rule_when_then"></a>3.5.4. Rule (when/then)</h4>
-
+<div class="paragraph tbd">
+<p>TBD:</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1064,11 +1116,11 @@ computing_context
 <p>Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable <code>$body_weight</code> may be bound to a call that retrieves a patient heart rate from the EHR, via an appropriate API call. There is no guarantee that the value is available, so <code>$body_weight</code> may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. <code>0</code> for <code>Integer</code>) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, we want something like an exception to occur.</p>
 </div>
 <div class="paragraph">
-<p>The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an <code>'undefined value'</code> exception should be generated, indicating which variable could not be evaluated. To impose more control, a special predicate <code>defined ()</code> can be used within a <code>if()</code> or <code>check()</code> block to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:</p>
+<p>The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an <code>'undefined value'</code> exception should be generated, indicating which variable could not be evaluated. To impose more control, the predicate <code>defined ()</code> can be used within a <code>if()</code> or <code>check()</code> block to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if available ($heart_rate) and available ($blood_pressure) then
+<pre>    if defined ($heart_rate) and defined ($blood_pressure) then
         -- statements mentioning $heart_rate and $blood_pressure
     end
 
@@ -1080,11 +1132,19 @@ computing_context
 <div class="paragraph">
 <p>Another difference between bound and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of a bound variable <code>v</code>, is <code>v</code> read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the <code>currency</code> attribute.</p>
 </div>
+<div class="paragraph">
+<p>To assert that a certain part of a larger data structure exists, the following construct can be used.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    check $is_smoker implies defined ($smoking_details) end</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_a_id_language_expressions_a_expressions"><a class="anchor" href="#_a_id_language_expressions_a_expressions"></a>3.7. <a id="language-expressions"></a>Expressions</h3>
 <div class="paragraph">
-<p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Expressions may contain the following entities:</p>
+<p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1099,20 +1159,20 @@ computing_context
 <p><em>constants</em>;</p>
 </li>
 <li>
-<p><em>literals</em>: values are of any primitive type, and are expressed in the <a href="/releases/BASE/latest/odin.html">ODIN syntax</a>. Examples are shown above under <a href="#_typing">Typing</a>.;</p>
+<p><em>literals</em>: values are of any primitive type, and are expressed in the <a href="/releases/BASE/latest/odin.html">ODIN syntax</a>. Examples are shown above under <a href="#_typing">Typing</a>;</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><em>non-terminals</em>:</p>
+<p><em>non-terminal entities</em>:</p>
 <div class="ulist">
 <ul>
 <li>
 <p><em>operators</em>: arithmetic operators, relational operators, boolean operators, quantification operators;</p>
 </li>
 <li>
-<p><em>functions</em>: built-in functions as well as user-defined functions.</p>
+<p><em>functions</em>: built-in functions and user-defined functions.</p>
 </li>
 </ul>
 </div>
@@ -1120,43 +1180,10 @@ computing_context
 </ul>
 </div>
 <div class="paragraph">
-<p>Operands in an assertion expression are typed and are of four kinds, as described in the following sub-sections.</p>
+<p>The terminal entity types have already been described above. This section describes operators and functions.</p>
 </div>
 <div class="sect3">
 <h4 id="_functions"><a class="anchor" href="#_functions"></a>3.7.1. Functions</h4>
-<div class="paragraph">
-<p>Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. A simple example is</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    date_of_birth: Date                   -- bound to data context
-    age: Duration
-
-    age := current_date - date_of_birth</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This uses the built-in 0-order function <code>current_date</code> to compute a person&#8217;s age in the standard way. The typing is based on the operator <code>-</code> (subtract) being defined on the type <code>Date</code> as the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    class Date
-        infix '-' alias subtract (Date): Duration</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The built-in functions are listed below. Note that 0-order built-in functions do not require parentheses, and may be considered the equivalent of built-in variables.</p>
-</div>
-<div class="paragraph">
-<p>User-defined functions can be declared and used as in the following example, which defines functions to extract various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    func tnm_major_number (String): Integer
-
-    is_luminal_A: Boolean := tnm_major_number (tnm_t) &lt; 3 and tnm_major_number (tnm_n) &lt; 2 and tnm_major_number (tnm_g) &lt; 3</pre>
-</div>
-</div>
 <div class="paragraph">
 <p>All functions are considered to have a formal type signature of the form:</p>
 </div>
@@ -1172,7 +1199,35 @@ e.g.
 </div>
 </div>
 <div class="paragraph">
-<p>The following functions are built in (how particular implementations achieve this may vary).</p>
+<p>Note that 0-order functions do not require parentheses when called.</p>
+</div>
+<div class="paragraph">
+<p>All functions that take <code>Real</code> argument will take <code>Integer</code> arguments and automatically promote them to <code>Real</code> in the usual fashion.</p>
+</div>
+<div class="sect4">
+<h5 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>3.7.1.1. Built-in Functions</h5>
+<div class="paragraph">
+<p>Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. A simple example is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $date_of_birth: Date                   -- bound to data context
+    age: Duration
+
+    age := current_date - $date_of_birth</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This uses the built-in 0-order function <code>current_date</code> to compute a person&#8217;s age in the standard way. The typing is based on the operator <code>-</code> (subtract) being defined on the type <code>Date</code> as the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    class Date
+        infix '-' alias subtract (Date): Duration</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The built-in functions are listed below.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1218,7 +1273,7 @@ e.g.
 <td class="tableblock halign-left valign-top"><p class="tableblock">sum</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sum (x, y, &#8230;&#8203;.)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;Real, &#8230;&#8203;&gt;: Real</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Equivalent to <code>x + y + &#8230;&#8203;.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equivalent to x + y + &#8230;&#8203;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mean</p></td>
@@ -1240,11 +1295,22 @@ e.g.
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect4">
+<h5 id="_user_defined_functions"><a class="anchor" href="#_user_defined_functions"></a>3.7.1.2. User-defined Functions</h5>
 <div class="paragraph">
-<p>All of the above functions which take <code>Real</code> argument will take <code>Integer</code> arguments and automatically promote them to <code>Real</code> in the usual fashion.</p>
+<p>User-defined functions can be declared and used as in the following example, which defines functions to extract various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    func tnm_major_number (String): Integer
+
+    is_luminal_A: Boolean := tnm_major_number (tnm_t) &lt; 3 and tnm_major_number (tnm_n) &lt; 2 and tnm_major_number (tnm_g) &lt; 3</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Externally defined functions are described below under <a href="#language-extensions">Extensions</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -1263,9 +1329,9 @@ e.g.
 <tr>
 <th class="tableblock halign-left valign-top">Identifier</th>
 <th class="tableblock halign-left valign-top">Textual<br>
-                     Rendering</th>
+               Rendering</th>
 <th class="tableblock halign-left valign-top">Symbolic<br>
-                                         Rendering</th>
+                               Rendering</th>
 <th class="tableblock halign-left valign-top">Meaning</th>
 </tr>
 </thead>
@@ -1354,7 +1420,7 @@ e.g.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">not</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">not, ~</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">∼, ¬</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∼</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Negation, "not p"</p></td>
 </tr>
 <tr>
@@ -1376,18 +1442,6 @@ e.g.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Exclusive or, "only one of p or q"</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">exists</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">exists</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">∃</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Existential quantifier, "there exists &#8230;&#8203;"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">for_all</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">for_all &#8230;&#8203; in</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">∀ &#8230;&#8203; ∈</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Universal quantifier, "for all x in y P"</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">implies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">implies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">⇒</p></td>
@@ -1405,44 +1459,15 @@ e.g.
 </div>
 </div>
 <div class="sect4">
-<h5 id="_logical_quantifiers"><a class="anchor" href="#_logical_quantifiers"></a>3.7.2.2. Logical Quantifiers</h5>
-<div class="paragraph">
-<p>The two standard logical quantifier operators are supported, <code>exists</code>, <code>for_all</code>.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBC:</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.7.2.3. Precedence and Parentheses</h5>
+<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.7.2.2. Precedence and Parentheses</h5>
 <div class="paragraph">
 <p>The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    at_risk := weight &gt; 120 and ( is_smoker or is_hypertensive)</pre>
+<pre>    at_risk := $weight &gt; 120 and ($is_smoker or $is_hypertensive)</pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_assertions"><a class="anchor" href="#_assertions"></a>3.7.3. Assertions</h4>
-<div class="paragraph">
-<p>An assertion is a standalone expression, often with a tag, which enables the meaning of the expression to be understood in context. If a tag is supplied it is prepended with a colon. The following example states that the speed in kilometres of some node is related to the speed-in-miles by a factor of 1.6:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    speed_validity: speed_kmh = speed_mph * Mph_to_kmh_factor</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that this statement is a Boolean-returning equality, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor <code>Mph_to_kmh_factor</code>, which was earlier defined to be <code>1.6</code>. This is different from the statement in the previous example, which <em>assigns</em> the result of a multiplication to the variable <code>speed_kph</code>.</p>
-</div>
-<div class="paragraph">
-<p>An assertion may be violated when evaluated, in which case the statement evaluator can generate an <em>assertion violation</em> which might be used to notify a user or do some other action.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: alternative: could include the keyword <code>check</code> or <code>assert</code> prior to assertion expression to make it clearer that the intention is to check that this condition holds; may also prevent confusion for readers used to languages where '=' is assignment.</p>
 </div>
 </div>
 </div>

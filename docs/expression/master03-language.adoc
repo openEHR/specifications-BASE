@@ -17,7 +17,8 @@ The Expression language is fully typed. The type system is the same as that used
 ** `List<T>`, i.e. an ordered list of elements of primitive type T;
 ** `Set<T>`, i.e. a set of elements of primitive type T;
 ** `Hash<K:Ordered,V>`, i.e. a Hash table or dictionary;
-* `Interval<T: Ordered>` where T is any ordered primitive type.
+* an interval type:
+** `Interval<T: Ordered>` where T is any ordered primitive type.
 
 These types are described below.
 
@@ -33,14 +34,16 @@ The primitive types are shown below, along with typical literal values, which ar
 | `Integer`             |`10`, `-4`, `1024`                     |Integer value
 | `Real`                |`10.0`, `0.345`                        |Real value
 | `Date`                |`2004-08-12`                           |ISO8601-format date
-| `Date_time`           |`2004-08-12T12:00:59`                  |ISO8601-format date/time
+| `Date_time`           |`2004-08-12T12:00:59+0100`             |ISO8601-format date/time
 | `Time`                |`12:00:59`                             |ISO8601-format time
 | `Duration`            |`P39W`                                 |ISO8601-format duration
 | `String`              |`"this is a string"`                   |String
 | `Uri`                 |`https://en.wikipedia.org/wiki/Everest`|Uri in <<uri_syntax,RFC3986 format>>
 | `Terminology_code`    |`[snomed_ct::389086002]` +
-                         `[snomed_ct::389086002|Hypoxia|]`      |Terminology code reference
+                         `[snomed_ct::389086002\|Hypoxia\|]`      |Terminology code reference
 |=================================================================
+
+Automatic type promotion from `Integer` to `Real` applies to all integer and real values and expressions, in the same fashion as most programming languages.
 
 [.tbd]
 TBD: do we need `Integer64` and `Real64`?
@@ -53,15 +56,59 @@ The same container types as defined in the {openehr_foundation_types}#_structure
 |=================================================================
 |Name                   |Literal value                  |Description
 
-| `List<T>`             |`[val, val, ...]`              |List of any primitive
-| `Set<T>`              |`{val, val, ...}`              |Set of any primitive
+| `List<T>`             |`[val, val, ...]`              |Linear list of items of any primitive type, allowing order and repeated membership'
+| `Set<T>`              |`{val, val, ...}`              |Set of items of any primitive type; no order, unique membership;
 | `Hash<K:Ordered, V>`  |`< +
                               ["key1"] = <val1> +
                               ["key2"] = <val2> +
                               ... +
                               ["keyN"] = <valN> +
-                         >`                             |Table of values of any type V, keyed by values of any Ordered descendant K, typically String or Integer
+                         >`                             |Indexed linear container; +
+                                                         concretely, a table of values of any type V, keyed by values of any Ordered descendant K, typically String or Integer
 |=================================================================
+
+
+The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following.
+
+----
+    has (v: T): Boolean
+            -- True container contains v
+
+    all (test(v: T): Boolean): Boolean
+            -- True if for every v in container, test (v) is True
+
+    some (test(v: T): Boolean): Boolean
+            -- True if there is any v in container for which test (v) is True
+            
+    do_all (proc(v: T))
+            -- execute proc(v) for every v in interval
+
+    do_if (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in interval for which test(v) is True
+
+    do_while (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in interval until test (v) returns False
+
+    do_until (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in interval until test (v) returns True
+----
+
+Any such method may be accessed in the usual way, using dot notation, i.e. as shown below for the method `some()`.
+
+----
+    $heart_rate_samples: List<Real>
+    Atrial_fibrillation_threshold: Real = 100.0
+    
+    if $heart_rate_samples.some (
+        (v:Real): Boolean
+            do
+                Result := v > Atrial_fibrillation_threshold 
+            end
+        )
+    then
+        --
+    end
+----
 
 === Interval Type
 
@@ -72,29 +119,37 @@ The same `Interval` type as defined in the {openehr_foundation_types}#_interval[
 |Name                   |Literal value                  |Description
 
 | `Interval<T>`         |                               |Interval of any ordered primitive
-|                       |\|N..M\|                       |the two-sided interval N >= x \<= M
-|                       |\|>N..M\|                      |the two-sided interval N > x \<= M
-|                       |\|N..<M\|                      |the two-sided interval N >= x < M
-|                       |\|<N\|                         |the one-sided interval x < N
-|                       |\|>N\|                         |the one-sided interval x > N
-|                       |\|\<=N\|                       |the one-sided interval x \<= N
-|                       |\|>=N\|                        |the one-sided interval x >= N
-|                       |\|N +/-M\|                     |the two-sided interval of N ±M
-|                       |\|N±M\|                        |the two-sided interval of N ±M
+|                       |`\|N..M\|`                     |the two-sided interval N >= x \<= M
+|                       |`\|>N..M\|`                    |the two-sided interval N > x \<= M
+|                       |`\|N..<M\|`                    |the two-sided interval N >= x < M
+|                       |`\|<N\|`                       |the one-sided interval x < N
+|                       |`\|>N\|`                       |the one-sided interval x > N
+|                       |`\|\<=N\|`                     |the one-sided interval x \<= N
+|                       |`\|>=N\|`                      |the one-sided interval x >= N
+|                       |`\|N +/-M\|`                   |the two-sided interval of N ±M
+|                       |`\|N±M\|`                      |the two-sided interval of N ±M
 |=================================================================
 
-=== Non-primitive types
+Automatic type promotion from `Interval<Integer>` to `Interval<Real>` applies to all integer and real values and expressions, in the same fashion as most programming languages.
 
-[.tbd]
-The special `Object_ref` type is reserved for creating references to arbitrary objects in the data context, to which some operations can be applied.
+Various methods are defined for `Interval<T>`, as follows.
 
-Automatic type promotion from `Integer` to `Real` applies to all integer and real values and expressions, in the same fashion as most programming languages.
+----
+    has (v: T): Boolean
+            -- True if for Interval contains v
+
+    overlaps (other: like Current): Boolean
+            -- True if this Interval overlaps other
+            
+    contains (other: like Current): Boolean
+            -- True if this Interval contains other
+----
 
 == Basic Structures
 
 === Declarations
 
-Variables may be declared within a statement set, consisting of a name of the form `var_name` for a local variable, and `$var_name` for a bound variable, and a type. Multiple variables may be declared on the same line in the same way as in many programming languages. The following shows various declarations:
+Variables may be declared within a statement set, consisting of a name of the form `var_name` for a local variable, and `$var_name` for a bound variable, and a type. Multiple variables may be declared on the same line. The following shows various declarations:
 
 --------
     date_of_birth: Date                     -- local variable
@@ -166,29 +221,9 @@ TBD describe exception handling.
 
 === Iteration
 
-Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container and interval types, which are as follows.
+Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container and interval types, i.e. `do_all`, `do_if`, `do_while` and `do_until` as defined earlier.
 
-----
-    all (test(v: T): Boolean): Boolean
-            -- True if for every v in container, test (v) is True
-
-    some (test(v: T): Boolean): Boolean
-            -- True if there is any v in container for which test (v) is True
-            
-    do_all (proc(v: T))
-            -- execute proc(v) for every v in interval
-
-    do_if (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval for which test(v) is True
-
-    do_while (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns False
-
-    do_until (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns True
-----
-
-Iteration over a range of integers can be performed using an interval literal, as follows:
+Iteration over a range of integers can be performed using an `Interval<Integer>` literal, as follows:
 
 ----
     (|1..5|).do_all (
@@ -199,16 +234,22 @@ Iteration over a range of integers can be performed using an interval literal, a
     )
 ----
 
+[.tbd]
+TBD: more on how this works (it's defined on `Discrete_interval<T>`)
+
 === Rule (when/then)
+
+[.tbd]
+TBD: 
 
 == Bound Variables, Evaluation and Validity
 
 Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable `$body_weight` may be bound to a call that retrieves a patient heart rate from the EHR, via an appropriate API call. There is no guarantee that the value is available, so `$body_weight` may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. `0` for `Integer`) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, we want something like an exception to occur.
 
-The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an `'undefined value'` exception should be generated, indicating which variable could not be evaluated. To impose more control, a special predicate `defined ()` can be used within a `if()` or `check()` block to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:
+The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an `'undefined value'` exception should be generated, indicating which variable could not be evaluated. To impose more control, the predicate `defined ()` can be used within a `if()` or `check()` block to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:
 
 ----
-    if available ($heart_rate) and available ($blood_pressure) then
+    if defined ($heart_rate) and defined ($blood_pressure) then
         -- statements mentioning $heart_rate and $blood_pressure
     end
 
@@ -219,47 +260,27 @@ The approach used for EL is to allow bound variables to be used freely, as for l
 
 Another difference between bound and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of a bound variable `v`, is `v` read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the `currency` attribute.
 
+To assert that a certain part of a larger data structure exists, the following construct can be used.
+
+--------
+    check $is_smoker implies defined ($smoking_details) end
+--------
+
 == [[language-expressions]]Expressions
 
-Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Expressions may contain the following entities:
+Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:
 
 * _terminal entities_:
 ** _symbolic variables_;
 ** _constants_;
-** _literals_: values are of any primitive type, and are expressed in the {openehr_odin}[ODIN syntax]. Examples are shown above under <<Typing>>.;
-* _non-terminals_:
+** _literals_: values are of any primitive type, and are expressed in the {openehr_odin}[ODIN syntax]. Examples are shown above under <<Typing>>;
+* _non-terminal entities_:
 ** _operators_: arithmetic operators, relational operators, boolean operators, quantification operators;
-** _functions_: built-in functions as well as user-defined functions.
+** _functions_: built-in functions and user-defined functions.
 
-Operands in an assertion expression are typed and are of four kinds, as described in the following sub-sections.
+The terminal entity types have already been described above. This section describes operators and functions.
 
 === Functions
-
-Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. A simple example is 
-
-----
-    date_of_birth: Date                   -- bound to data context
-    age: Duration
-    
-    age := current_date - date_of_birth   
-----
-
-This uses the built-in 0-order function `current_date` to compute a person's age in the standard way. The typing is based on the operator `-` (subtract) being defined on the type `Date` as the following:
-
-----
-    class Date
-        infix '-' alias subtract (Date): Duration
-----
-
-The built-in functions are listed below. Note that 0-order built-in functions do not require parentheses, and may be considered the equivalent of built-in variables.
-
-User-defined functions can be declared and used as in the following example, which defines functions to extract various elements of {wikipedia}/TNM_staging_system[Tumour/Node/Metastasis ('TNM')] cancer staging values, such as `'Tis'`, `'G3'` and so on.
-
-----
-    func tnm_major_number (String): Integer
-
-    is_luminal_A: Boolean := tnm_major_number (tnm_t) < 3 and tnm_major_number (tnm_n) < 2 and tnm_major_number (tnm_g) < 3
-----
 
 All functions are considered to have a formal type signature of the form:
 
@@ -273,7 +294,29 @@ e.g.
     <Integer, Integer>: Integer     -- signature of a 2nd-order function like 'add' for the domain I
 ----
 
-The following functions are built in (how particular implementations achieve this may vary).
+Note that 0-order functions do not require parentheses when called.
+
+All functions that take `Real` argument will take `Integer` arguments and automatically promote them to `Real` in the usual fashion.
+
+==== Built-in Functions
+
+Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. A simple example is:
+
+----
+    $date_of_birth: Date                   -- bound to data context
+    age: Duration
+    
+    age := current_date - $date_of_birth   
+----
+
+This uses the built-in 0-order function `current_date` to compute a person's age in the standard way. The typing is based on the operator `-` (subtract) being defined on the type `Date` as the following:
+
+----
+    class Date
+        infix '-' alias subtract (Date): Duration
+----
+
+The built-in functions are listed below.
 
 [cols="1,1,1,2",options="header"]
 |=================================================================
@@ -287,14 +330,22 @@ The following functions are built in (how particular implementations achieve thi
 
 4+^h|Degree N functions (N arguments)
 
-|sum                |`sum (x, y, ....)` |<Real, ...>: Real  |Equivalent to `x + y + ....`
+|sum                |`sum (x, y, ....)` |<Real, ...>: Real  |Equivalent to x + y + ...
 |mean               |`mean (x, y, ...)` |<Real, ...>: Real  |The mean (average) value of x, y, ...
 |max                |`max (x, y, ...)`  |<Real, ...>: Real  |The maximum value among x, y, ...
 |min                |`min (x, y, ...)`  |<Real, ...>: Real  |The minimum value among x, y, ...
 
 |=================================================================
 
-All of the above functions which take `Real` argument will take `Integer` arguments and automatically promote them to `Real` in the usual fashion.
+==== User-defined Functions
+
+User-defined functions can be declared and used as in the following example, which defines functions to extract various elements of {wikipedia}/TNM_staging_system[Tumour/Node/Metastasis ('TNM')] cancer staging values, such as `'Tis'`, `'G3'` and so on.
+
+----
+    func tnm_major_number (String): Integer
+
+    is_luminal_A: Boolean := tnm_major_number (tnm_t) < 3 and tnm_major_number (tnm_n) < 2 and tnm_major_number (tnm_g) < 3
+----
 
 Externally defined functions are described below under <<language-extensions, Extensions>>.
 
@@ -304,9 +355,10 @@ Expressions can include arithmetic, relational and boolean operators, plus the e
 
 [cols="1,1,1,3",options="header"]
 |=================================================================
-|Identifier         |Textual +
-                     Rendering 		|Symbolic +
-                                         Rendering 	|Meaning
+|Identifier   |Textual +
+               Rendering 	  |Symbolic +
+                               Rendering  |Meaning
+                               
 4+^h|Arithmetic Operators - Numeric result; descending precendence order
 
 |exp          | ^             |≥          |Expontentiation
@@ -327,13 +379,12 @@ Expressions can include arithmetic, relational and boolean operators, plus the e
 
 4+^h|Logical Operators - Boolean result; descending precendence order
 
-|not          |not, ~ 		|∼, ¬ 		|Negation, "not p"
+|not          |not, ~ 		|∼  		 |Negation, "not p"
 |and          |and 			|∧ 			|Logical conjunction, "p and q"
 |or           |or 			|∨ 			|Logical disjunction, "p or q"
-|xor          |xor 			|⊻ 			|Exclusive or, "only one of p or q"
-|exists       |exists 		|∃ 			|Existential quantifier, "there exists ..."
-|for_all      |for_all ... in |∀ ... ∈	|Universal quantifier, "for all x in y P"
-|implies      |implies 		|⇒ 			|Material implication, "p implies q", or "if p then q"
+|xor          |xor 			|⊻ 			 |Exclusive or, "only one of p or q"
+|implies      |implies 		|⇒ 			 |Material implication, "p implies q", or "if p then q"
+
 |=================================================================
 
 Operator semantics that require further explanation are described below.
@@ -342,35 +393,13 @@ Operator semantics that require further explanation are described below.
 
 All Boolean operators take Boolean operands and generate a Boolean result. The `not` operator can be applied as a prefix operator to all operators returning a Boolean result as well as a parenthesised Boolean expression.
 
-==== Logical Quantifiers
-
-The two standard logical quantifier operators are supported, `exists`, `for_all`. 
-
-[.tbd]
-TBC:
-
 ==== Precedence and Parentheses
 
 The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.
 
 --------
-    at_risk := weight > 120 and ( is_smoker or is_hypertensive)
+    at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
 --------
-
-=== Assertions
-
-An assertion is a standalone expression, often with a tag, which enables the meaning of the expression to be understood in context. If a tag is supplied it is prepended with a colon. The following example states that the speed in kilometres of some node is related to the speed-in-miles by a factor of 1.6:
-
---------
-    speed_validity: speed_kmh = speed_mph * Mph_to_kmh_factor
---------
-
-Note that this statement is a Boolean-returning equality, not an assignment. It is stating that the data items representing speed in miles per hour and km per hour are related by the conversion factor `Mph_to_kmh_factor`, which was earlier defined to be `1.6`. This is different from the statement in the previous example, which _assigns_ the result of a multiplication to the variable `speed_kph`.
-
-An assertion may be violated when evaluated, in which case the statement evaluator can generate an _assertion violation_ which might be used to notify a user or do some other action.
-
-[.tbd]
-TBD: alternative: could include the keyword `check` or `assert` prior to assertion expression to make it clearer that the intention is to check that this condition holds; may also prevent confusion for readers used to languages where '=' is assignment.
 
 == Rules
 
