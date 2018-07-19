@@ -2,30 +2,54 @@
 
 == Overview
 
-This section describes the openEHR Expression Language. In the various contexts where openEHR expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.
+This section describes the openEHR Expression Language (EL). In the various contexts where EL expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.
 
 Formally, an expression is any of the following value-returning entities:
 
-* _terminal expressoin entities_:
+* _terminal entities_:
 ** _literals_;
 ** _constants_;
 ** _symbolic variables_;
-** _routine invocations_;
+** _function calls_;
 * _predicates_:
-** _check predicate_: special expression for asserting a truth value;
-** _defined predicate_: special expression for determing validity of external variable;
+** _check() predicate_: special expression for asserting a truth value;
+** _defined() predicate_: special expression for determing validity of external variable;
 * _complex expressions_:
-** _equality_: equality operator;
-** _basic operators_: arithmetic operators, relational operators, boolean operators;
-** _logical quantifiers_: logical quantification operators.
+** _equality operator_: equality operator;
+** _primitive operators_: arithmetic operators, relational operators, boolean operators;
+** _collection operators_: logical quantification operators.
 
-EL is designed to appear syntactically as a language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the `Date` type, or the `for_all` universal quantifier operator may be mapped to underlying methods such as `Date._add_()` and `Container._for_all_()`.
+EL is designed syntactically as a readable language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal built-in core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the `Date` type, or the `for_all` universal quantifier operator may be mapped to underlying methods such as `Date._add_()` and `Container._for_all_()`.
 
 EL is not intended for writing functions or classes, rather it is designed as a minimalist logic-based language in which expressions can be written, but whose programming is undertaken inside libraries in existing programming languages. Routine declarations in EL are the primary mechanism to connect external software libraries to the EL context. In EL, both functions and procedures are supported, and are collectively known as _routines_.
 
 == Syntax style
 
-The syntax style used here is generally so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications.
+The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (`{}`). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to EL syntax such as the following.
+
+----
+    -- a universal quantifier expression
+    if for_all v in $systolic_bp_samples : v <= Systolic_bp_threshold then
+        -- statements
+    end
+    
+    -- a when/then block
+    when $systolic_bp
+        matches |>= 200.0| then
+            -- statements to raise emergency alert
+
+        matches |>= 180.0| then
+            -- statements to request nurse check
+
+        ...
+    end    
+----
+
+In the above, nearly all lexical elements are words, such as `if`, `in`, `when`, `then` and so on, leading to a more natural reading experience.
+
+Nevertheless, the style chosen here should not be regarded as fixed forever, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.
+
+The lexical style used is so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications. One reason for using snake-case may be to render EL texts more readable to the non-IT professional.
 
 == Types
 
@@ -81,6 +105,9 @@ The same container types as defined in the {openehr_foundation_types}#_structure
 |=================================================================
 
 
+[.tbd]
+TBD: the following is functional style; we would need keywords to enable it in the EL syntax, e.g. `has` etc. Also, `has()` can be done via `there_exists()`.
+
 The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following.
 
 ----
@@ -111,6 +138,9 @@ The same `Interval` type as defined in the {openehr_foundation_types}#_interval[
 |=================================================================
 
 Automatic type promotion from `Interval<Integer>` to `Interval<Real>` applies to all integer and real values and expressions, in the same fashion as most programming languages.
+
+[.tbd]
+TBD: the following is functional style; we would need keywords to enable it in the EL syntax, e.g. `contains`, `overlaps` etc.
 
 Various methods are defined for `Interval<T>`, as follows.
 
@@ -222,12 +252,14 @@ In EL, the function is the primary means to link expressions to implementations.
 In EL, a function is a routine that returns a result and is assumed to have no side-effects on previously declared entities. It has a signature of the form:
 
 ----
+    -- NB: not EL text
     <T_arg1, T_arg2, ....>: T_result
 ----
 
 Typical examples of function signatures:
 
 ----
+    -- NB: not EL text
     : Date                          -- signature of a 0-order function like current_date()
     <Real, Real>: Real              -- signature of a 2nd-order function like '*' for the domain R
     <Integer, Integer>: Integer     -- signature of a 2nd-order function like 'add' for the domain I
@@ -235,7 +267,7 @@ Typical examples of function signatures:
 
 EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of _declaring routine signatures_, using the `func` keyword. This is similar to the declaration of methods in interface classes in languages like C# and Java.
 
-Examples of routine declarations:
+Examples of function declarations:
 
 ----
     func current_date(): Date                            -- a function that obtains today's date
@@ -325,17 +357,15 @@ To assert that a certain part of a larger data structure exists depending on val
 
 == [[language-complex-expressions]]Complex Expressions
 
-Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. 
+Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.
 
-=== [[language-equality]]Equality
+=== [[language-equality]]Equality Operator
 
 The equality operator `=` is special in EL as in most languages, and has two meanings. For all primitive types, the semantics are value comparison, while for container and other non-primitive types, the semantics are reference comparison.
 
-=== [[language-operators]]Basic Operators
+=== [[language-operators]]Primitive Operators
 
-The main basis of complex expressions, as in most languages, is the use of operators. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.
-
-Operators in EL are the infix or prefix syntax form of various functions available on certain types. For example, the operator `-` (minus) is defined on the class `Numeric` (an inheritance ancestor of the classes `Integer`, `Real` etc) as the following (using syntax from Java, TypeScript and similar languages):
+Primitive operators in EL are the infix or prefix syntax form of various functions available on primitive types. For example, the operator `-` (minus) is defined on the class `Numeric` (an inheritance ancestor of the classes `Integer`, `Real` etc) as the following (using syntax from Java, TypeScript and similar languages):
 
 ----
     function minus<T extends Numeric> (other: T): T
@@ -427,14 +457,14 @@ The precedence of operators follows the order shown in the operator tables above
     at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
 --------
 
-=== [[language-logical-quantifiers]]Logical Quantifiers
+=== [[language-logical-quantifiers]]Collection Operators
 
 A common need in an expression language featuring container types (i.e. sets, lists etc) is the need to perform basic reasoning over them. The two standard operators from predicate logic `there exists` (∃ operator) and `for all` (∀ operator) are defined in EL for the container types, and are kinds of Boolean-returning expressions.
 
 The syntax of `there exists` is as follows:
 
 ----
-    there_exists v in container_var : ( <Boolean expression mentioning v> )
+    there_exists v in container_var : <Boolean expression mentioning v> 
 ----
 
 Here, the `:` symbol is usually read in English as 'such that'. The expression may be used as in the following example:
@@ -443,7 +473,7 @@ Here, the `:` symbol is usually read in English as 'such that'. The expression m
     $systolic_bp_samples: List<Real>
     Systolic_bp_threshold: Real = 160.0
     
-    if there_exists v in $systolic_bp_samples : (v > Systolic_bp_threshold) then
+    if there_exists v in $systolic_bp_samples : v > Systolic_bp_threshold then
         -- statements
     end
 ----
@@ -451,7 +481,7 @@ Here, the `:` symbol is usually read in English as 'such that'. The expression m
 The `for_all` operator has similar syntax:
 
 ----
-    for_all v in container_var : ( <Boolean expression mentioning v> )
+    for_all v in container_var : <Boolean expression mentioning v>
 ----
 
 Here, the `:` symbol is normally read as 'it holds that' A typical use is as follows:
@@ -460,7 +490,7 @@ Here, the `:` symbol is normally read as 'it holds that' A typical use is as fol
     $systolic_bp_samples: List<Real>
     Systolic_bp_threshold: Real = 160.0
     
-    if for_all v in $systolic_bp_samples : (v <= Systolic_bp_threshold) then
+    if for_all v in $systolic_bp_samples : v <= Systolic_bp_threshold then
         -- statements
     end
 ----
@@ -546,12 +576,12 @@ This structure is always evaluated in order.
 
 ==== When / then
 
-EL provides a `when / matches / then` statement that is roughly equivalent to 'case' or 'switch' statements in most other languages. The `when` part indicates a  value, which may be of any type, while the `matches` parts define value intervals that are used to match the `when` value. The first branch matched is executed.
+EL provides a `when / matches / then` statement that is roughly equivalent to 'case' or 'switch' statements in most other languages. The `when` part indicates a  value-returning expression (such as a variable reference), which may be of any type, while the `matches` parts define value intervals that are used to match the `when` value. The first branch matched is executed.
 
 the syntax is as follows.
 
 --------
-    when <value>
+    when <expression>
         matches <value_interval_1> then
             -- statements
         matches <value_interval_2> then
@@ -570,13 +600,13 @@ The syntax for the match intervals is the standard EL Interval type literal synt
 --------
     when $systolic_bp
         matches |>= 200.0| then
-            -- statements to raise emergency alert
+            -- raise emergency alert
 
         matches |>= 180.0| then
-            -- statements to request nurse check
+            -- request nurse check
 
         matches |>= 160.0| then
-            -- statements to record 'high pressure'
+            -- record 'high pressure'
     end
 --------
 

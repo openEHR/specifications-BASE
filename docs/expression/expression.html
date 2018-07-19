@@ -71,14 +71,14 @@
 </li>
 <li><a href="#_a_id_language_complex_expressions_a_complex_expressions">3.7. <a id="language-complex-expressions"></a>Complex Expressions</a>
 <ul class="sectlevel3">
-<li><a href="#_a_id_language_equality_a_equality">3.7.1. <a id="language-equality"></a>Equality</a></li>
-<li><a href="#_a_id_language_operators_a_basic_operators">3.7.2. <a id="language-operators"></a>Basic Operators</a>
+<li><a href="#_a_id_language_equality_a_equality_operator">3.7.1. <a id="language-equality"></a>Equality Operator</a></li>
+<li><a href="#_a_id_language_operators_a_primitive_operators">3.7.2. <a id="language-operators"></a>Primitive Operators</a>
 <ul class="sectlevel4">
 <li><a href="#_logical_negation">3.7.2.1. Logical Negation</a></li>
 <li><a href="#_precedence_and_parentheses">3.7.2.2. Precedence and Parentheses</a></li>
 </ul>
 </li>
-<li><a href="#_a_id_language_logical_quantifiers_a_logical_quantifiers">3.7.3. <a id="language-logical-quantifiers"></a>Logical Quantifiers</a></li>
+<li><a href="#_a_id_language_logical_quantifiers_a_collection_operators">3.7.3. <a id="language-logical-quantifiers"></a>Collection Operators</a></li>
 </ul>
 </li>
 <li><a href="#_procedural_elements">3.8. Procedural Elements</a>
@@ -115,77 +115,64 @@
 </ul>
 </li>
 <li><a href="#_a_id_computing_context_a_computing_context">7. <a id="computing_context"></a>Computing Context</a></li>
-<li><a href="#_the_expression_object_model">8. The Expression Object Model</a>
+<li><a href="#_module_structure">8. Module Structure</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_3">8.1. Overview</a></li>
-<li><a href="#_core_package">8.2. Core Package</a>
+<li><a href="#_el_text_identification">8.1. EL Text Identification</a></li>
+</ul>
+</li>
+<li><a href="#_the_expression_object_model">9. The Expression Object Model</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_3">9.1. Overview</a></li>
+<li><a href="#_core_package">9.2. Core Package</a>
 <ul class="sectlevel3">
-<li><a href="#_expressions">8.2.1. Expressions</a></li>
-<li><a href="#_other_statement_elements">8.2.2. Other Statement Elements</a>
+<li><a href="#_expressions">9.2.1. Expressions</a></li>
+<li><a href="#_class_descriptions">9.2.2. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_external_query">8.2.2.1. External Query</a></li>
+<li><a href="#_el_text_class">9.2.2.1. EL_TEXT Class</a></li>
+<li><a href="#_el_declaration_class">9.2.2.2. EL_DECLARATION Class</a></li>
+<li><a href="#_el_variable_declaration_class">9.2.2.3. EL_VARIABLE_DECLARATION Class</a></li>
+<li><a href="#_el_routine_declaration_class">9.2.2.4. EL_ROUTINE_DECLARATION Class</a></li>
+<li><a href="#_el_function_declaration_class">9.2.2.5. EL_FUNCTION_DECLARATION Class</a></li>
+<li><a href="#_el_procedure_declaration_class">9.2.2.6. EL_PROCEDURE_DECLARATION Class</a></li>
+<li><a href="#_el_statement_class">9.2.2.7. EL_STATEMENT Class</a></li>
+<li><a href="#_el_assignment_class">9.2.2.8. EL_ASSIGNMENT Class</a></li>
+<li><a href="#_el_procedure_call_class">9.2.2.9. EL_PROCEDURE_CALL Class</a></li>
+<li><a href="#_el_choice_group_class">9.2.2.10. EL_CHOICE_GROUP Class</a></li>
+<li><a href="#_el_choice_branch_class">9.2.2.11. EL_CHOICE_BRANCH Class</a></li>
+<li><a href="#_el_condition_group_class">9.2.2.12. EL_CONDITION_GROUP Class</a></li>
+<li><a href="#_el_condition_branch_class">9.2.2.13. EL_CONDITION_BRANCH Class</a></li>
+<li><a href="#_el_decision_group_class">9.2.2.14. EL_DECISION_GROUP Class</a></li>
+<li><a href="#_el_decision_branch_class">9.2.2.15. EL_DECISION_BRANCH Class</a></li>
+<li><a href="#_el_expression_class">9.2.2.16. EL_EXPRESSION Class</a></li>
+<li><a href="#_el_operator_class">9.2.2.17. EL_OPERATOR Class</a></li>
+<li><a href="#_operator_def_class">9.2.2.18. OPERATOR_DEF Class</a></li>
+<li><a href="#_el_unary_operator_class">9.2.2.19. EL_UNARY_OPERATOR Class</a></li>
+<li><a href="#_el_binary_operator_class">9.2.2.20. EL_BINARY_OPERATOR Class</a></li>
+<li><a href="#_el_leaf_class">9.2.2.21. EL_LEAF Class</a></li>
+<li><a href="#_el_literal_class">9.2.2.22. EL_LITERAL Class</a></li>
+<li><a href="#_el_variable_class">9.2.2.23. EL_VARIABLE Class</a></li>
+<li><a href="#_el_bound_variable_class">9.2.2.24. EL_BOUND_VARIABLE Class</a></li>
+<li><a href="#_el_function_call_class">9.2.2.25. EL_FUNCTION_CALL Class</a></li>
 </ul>
 </li>
-<li><a href="#_class_descriptions">8.2.3. Class Descriptions</a>
-<ul class="sectlevel4">
-<li><a href="#_statement_set_class">8.2.3.1. STATEMENT_SET Class</a></li>
-<li><a href="#_statement_class">8.2.3.2. STATEMENT Class</a></li>
-<li><a href="#_assertion_class">8.2.3.3. ASSERTION Class</a></li>
-<li><a href="#_variable_declaration_class">8.2.3.4. VARIABLE_DECLARATION Class</a></li>
-<li><a href="#_assignment_class">8.2.3.5. ASSIGNMENT Class</a></li>
-<li><a href="#_expr_value_class">8.2.3.6. EXPR_VALUE Class</a></li>
-<li><a href="#_external_query_class">8.2.3.7. EXTERNAL_QUERY Class</a></li>
-<li><a href="#_expression_class">8.2.3.8. EXPRESSION Class</a></li>
-<li><a href="#_expr_operator_class">8.2.3.9. EXPR_OPERATOR Class</a></li>
-<li><a href="#_expr_unary_operator_class">8.2.3.10. EXPR_UNARY_OPERATOR Class</a></li>
-<li><a href="#_expr_binary_operator_class">8.2.3.11. EXPR_BINARY_OPERATOR Class</a></li>
-<li><a href="#_operator_def_class">8.2.3.12. OPERATOR_DEF Class</a></li>
-<li><a href="#_operator_def_builtin_class">8.2.3.13. OPERATOR_DEF_BUILTIN Class</a></li>
-<li><a href="#_builtin_operators_class">8.2.3.14. BUILTIN_OPERATORS Class</a></li>
-<li><a href="#_expr_leaf_class">8.2.3.15. EXPR_LEAF Class</a></li>
-<li><a href="#_expr_literal_class">8.2.3.16. EXPR_LITERAL Class</a></li>
-<li><a href="#_expr_variable_ref_class">8.2.3.17. EXPR_VARIABLE_REF Class</a></li>
-<li><a href="#_expr_value_ref_class">8.2.3.18. EXPR_VALUE_REF Class</a></li>
-<li><a href="#_expr_function_class">8.2.3.19. EXPR_FUNCTION Class</a></li>
-<li><a href="#_function_def_class">8.2.3.20. FUNCTION_DEF Class</a></li>
-<li><a href="#_function_def_builtin_class">8.2.3.21. FUNCTION_DEF_BUILTIN Class</a></li>
-<li><a href="#_builtin_functions_class">8.2.3.22. BUILTIN_FUNCTIONS Class</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_extension_package">8.3. Extension Package</a>
+<li><a href="#_typing">9.3. Typing</a>
 <ul class="sectlevel3">
-<li><a href="#_value_references">8.3.1. Value References</a></li>
-<li><a href="#_operators_and_functions">8.3.2. Operators and Functions</a></li>
-<li><a href="#_class_descriptions_2">8.3.3. Class Descriptions</a>
+<li><a href="#_class_descriptions_2">9.3.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_operator_def_external_class">8.3.3.1. OPERATOR_DEF_EXTERNAL Class</a></li>
-<li><a href="#_op_def_example_class">8.3.3.2. OP_DEF_EXAMPLE Class</a></li>
-<li><a href="#_op_def_and_class">8.3.3.3. OP_DEF_AND Class</a></li>
-<li><a href="#_op_def_exists_class">8.3.3.4. OP_DEF_EXISTS Class</a></li>
-<li><a href="#_function_def_external_class">8.3.3.5. FUNCTION_DEF_EXTERNAL Class</a></li>
-<li><a href="#_function_def_example_class">8.3.3.6. FUNCTION_DEF_EXAMPLE Class</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_typing">8.4. Typing</a>
-<ul class="sectlevel3">
-<li><a href="#_class_descriptions_3">8.4.1. Class Descriptions</a>
-<ul class="sectlevel4">
-<li><a href="#_expr_type_def_class">8.4.1.1. EXPR_TYPE_DEF Class</a></li>
-<li><a href="#_type_def_boolean_class">8.4.1.2. TYPE_DEF_BOOLEAN Class</a></li>
-<li><a href="#_type_def_integer_class">8.4.1.3. TYPE_DEF_INTEGER Class</a></li>
-<li><a href="#_type_def_real_class">8.4.1.4. TYPE_DEF_REAL Class</a></li>
-<li><a href="#_type_def_date_class">8.4.1.5. TYPE_DEF_DATE Class</a></li>
-<li><a href="#_type_def_date_time_class">8.4.1.6. TYPE_DEF_DATE_TIME Class</a></li>
-<li><a href="#_type_def_time_class">8.4.1.7. TYPE_DEF_TIME Class</a></li>
-<li><a href="#_type_def_duration_class">8.4.1.8. TYPE_DEF_DURATION Class</a></li>
-<li><a href="#_type_def_string_class">8.4.1.9. TYPE_DEF_STRING Class</a></li>
-<li><a href="#_type_def_uri_class">8.4.1.10. TYPE_DEF_URI Class</a></li>
-<li><a href="#_type_def_terminology_code_class">8.4.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
-<li><a href="#_type_def_object_ref_class">8.4.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
+<li><a href="#_expr_type_def_class">9.3.1.1. EXPR_TYPE_DEF Class</a></li>
+<li><a href="#_type_def_boolean_class">9.3.1.2. TYPE_DEF_BOOLEAN Class</a></li>
+<li><a href="#_type_def_integer_class">9.3.1.3. TYPE_DEF_INTEGER Class</a></li>
+<li><a href="#_type_def_real_class">9.3.1.4. TYPE_DEF_REAL Class</a></li>
+<li><a href="#_type_def_date_class">9.3.1.5. TYPE_DEF_DATE Class</a></li>
+<li><a href="#_type_def_date_time_class">9.3.1.6. TYPE_DEF_DATE_TIME Class</a></li>
+<li><a href="#_type_def_time_class">9.3.1.7. TYPE_DEF_TIME Class</a></li>
+<li><a href="#_type_def_duration_class">9.3.1.8. TYPE_DEF_DURATION Class</a></li>
+<li><a href="#_type_def_string_class">9.3.1.9. TYPE_DEF_STRING Class</a></li>
+<li><a href="#_type_def_uri_class">9.3.1.10. TYPE_DEF_URI Class</a></li>
+<li><a href="#_type_def_terminology_code_class">9.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
+<li><a href="#_type_def_object_ref_class">9.3.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
 </ul>
 </li>
 </ul>
@@ -305,7 +292,7 @@
 <p><a href="https://openehr.atlassian.net/browse/SPECBASE-3">SPECBASE-3</a>. Major rewrite.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>18 Jul 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>19 Jul 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1.0</p></td>
@@ -530,7 +517,7 @@
 <div class="sect2">
 <h3 id="_general_structure"><a class="anchor" href="#_general_structure"></a>2.3. General Structure</h3>
 <div class="paragraph">
-<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing <code>EL text</code>,  with a similar structure to an archetype. The key sections are <code>definition</code>, <code>terminology</code> and <code>context</code>. The <code>definition</code> section contains <em>statements</em> and/or <em>rules</em>. These are made up of expressions containing <em>symbols</em>, which represent <em>variables</em> and <em>constants</em>, and which are typed. Variables are either <em>bound variables</em>, indicated with a <code>$</code> character, and <em>local variables</em>. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.</p>
+<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing <code>EL text</code> containing procedural elements,  with a similar structure to an archetype. The key sections of an EL text are <code>definition</code>, <code>terminology</code> and <code>context</code>. The <code>definition</code> section contains <em>statements</em>. These are made up of expressions containing <em>symbols</em>, which represent <em>variables</em> and <em>constants</em>, and which are typed. Variables are either <em>bound variables</em>, indicated with a <code>$</code> character, and <em>local variables</em>. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.</p>
 </div>
 <div class="paragraph">
 <p>Mappings between bound variables and external entities are described by <em>bindings</em> in the <code>data_context</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is a variable that is mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call), and whether it is an input or output variable. This provides clear semantics for statements in the expression text.</p>
@@ -539,10 +526,13 @@
 <p>Symbols are <em>names</em> in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in the <code>terminology</code> section of an EL text, in the same way as for openEHR archetypes. For example, the symbol <code>heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
 </div>
 <div class="paragraph">
-<p>Additionally, user-defined functions mentioned within the main text are bound to methods from external libraries in a <code>computing_context</code> section.</p>
+<p>Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in the <code>computing_context</code> section.</p>
 </div>
 <div class="paragraph">
 <p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than the <code>definition</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the <code>import</code> keyword.</p>
 </div>
 <div class="paragraph">
 <p>The structure of a self-standing EL text is thus as follows:</p>
@@ -550,6 +540,11 @@
 <div class="listingblock">
 <div class="content">
 <pre>&lt;identifier&gt;
+
+import
+    &lt;identifier&gt;
+    &lt;identifier&gt;
+    ...
 
 language
     original_language = &lt;...&gt;
@@ -669,7 +664,7 @@ computing_context
 </div>
 </div>
 <div class="paragraph">
-<p>WHen used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
+<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -693,7 +688,7 @@ computing_context
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>This section describes the openEHR Expression Language. In the various contexts where openEHR expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.</p>
+<p>This section describes the openEHR Expression Language (EL). In the various contexts where EL expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.</p>
 </div>
 <div class="paragraph">
 <p>Formally, an expression is any of the following value-returning entities:</p>
@@ -701,7 +696,7 @@ computing_context
 <div class="ulist">
 <ul>
 <li>
-<p><em>terminal expressoin entities</em>:</p>
+<p><em>terminal entities</em>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -714,7 +709,7 @@ computing_context
 <p><em>symbolic variables</em>;</p>
 </li>
 <li>
-<p><em>routine invocations</em>;</p>
+<p><em>function calls</em>;</p>
 </li>
 </ul>
 </div>
@@ -724,10 +719,10 @@ computing_context
 <div class="ulist">
 <ul>
 <li>
-<p><em>check predicate</em>: special expression for asserting a truth value;</p>
+<p><em>check() predicate</em>: special expression for asserting a truth value;</p>
 </li>
 <li>
-<p><em>defined predicate</em>: special expression for determing validity of external variable;</p>
+<p><em>defined() predicate</em>: special expression for determing validity of external variable;</p>
 </li>
 </ul>
 </div>
@@ -737,13 +732,13 @@ computing_context
 <div class="ulist">
 <ul>
 <li>
-<p><em>equality</em>: equality operator;</p>
+<p><em>equality operator</em>: equality operator;</p>
 </li>
 <li>
-<p><em>basic operators</em>: arithmetic operators, relational operators, boolean operators;</p>
+<p><em>primitive operators</em>: arithmetic operators, relational operators, boolean operators;</p>
 </li>
 <li>
-<p><em>logical quantifiers</em>: logical quantification operators.</p>
+<p><em>collection operators</em>: logical quantification operators.</p>
 </li>
 </ul>
 </div>
@@ -751,7 +746,7 @@ computing_context
 </ul>
 </div>
 <div class="paragraph">
-<p>EL is designed to appear syntactically as a language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the <code>Date</code> type, or the <code>for_all</code> universal quantifier operator may be mapped to underlying methods such as <code>Date.<em>add</em>()</code> and <code>Container.<em>for_all</em>()</code>.</p>
+<p>EL is designed syntactically as a readable language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal built-in core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the <code>Date</code> type, or the <code>for_all</code> universal quantifier operator may be mapped to underlying methods such as <code>Date.<em>add</em>()</code> and <code>Container.<em>for_all</em>()</code>.</p>
 </div>
 <div class="paragraph">
 <p>EL is not intended for writing functions or classes, rather it is designed as a minimalist logic-based language in which expressions can be written, but whose programming is undertaken inside libraries in existing programming languages. Routine declarations in EL are the primary mechanism to connect external software libraries to the EL context. In EL, both functions and procedures are supported, and are collectively known as <em>routines</em>.</p>
@@ -760,7 +755,35 @@ computing_context
 <div class="sect2">
 <h3 id="_syntax_style"><a class="anchor" href="#_syntax_style"></a>3.2. Syntax style</h3>
 <div class="paragraph">
-<p>The syntax style used here is generally so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications.</p>
+<p>The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (<code>{}</code>). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to EL syntax such as the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    -- a universal quantifier expression
+    if for_all v in $systolic_bp_samples : v &lt;= Systolic_bp_threshold then
+        -- statements
+    end
+
+    -- a when/then block
+    when $systolic_bp
+        matches |&gt;= 200.0| then
+            -- statements to raise emergency alert
+
+        matches |&gt;= 180.0| then
+            -- statements to request nurse check
+
+        ...
+    end</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above, nearly all lexical elements are words, such as <code>if</code>, <code>in</code>, <code>when</code>, <code>then</code> and so on, leading to a more natural reading experience.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, the style chosen here should not be regarded as fixed forever, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.</p>
+</div>
+<div class="paragraph">
+<p>The lexical style used is so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications. One reason for using snake-case may be to render EL texts more readable to the non-IT professional.</p>
 </div>
 </div>
 <div class="sect2">
@@ -905,6 +928,9 @@ computing_context
 </tr>
 </tbody>
 </table>
+<div class="paragraph tbd">
+<p>TBD: the following is functional style; we would need keywords to enable it in the EL syntax, e.g. <code>has</code> etc. Also, <code>has()</code> can be done via <code>there_exists()</code>.</p>
+</div>
 <div class="paragraph">
 <p>The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following.</p>
 </div>
@@ -953,6 +979,9 @@ computing_context
 </table>
 <div class="paragraph">
 <p>Automatic type promotion from <code>Interval&lt;Integer&gt;</code> to <code>Interval&lt;Real&gt;</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: the following is functional style; we would need keywords to enable it in the EL syntax, e.g. <code>contains</code>, <code>overlaps</code> etc.</p>
 </div>
 <div class="paragraph">
 <p>Various methods are defined for <code>Interval&lt;T&gt;</code>, as follows.</p>
@@ -1189,7 +1218,8 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    &lt;T_arg1, T_arg2, ....&gt;: T_result</pre>
+<pre>    -- NB: not EL text
+    &lt;T_arg1, T_arg2, ....&gt;: T_result</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1197,7 +1227,8 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    : Date                          -- signature of a 0-order function like current_date()
+<pre>    -- NB: not EL text
+    : Date                          -- signature of a 0-order function like current_date()
     &lt;Real, Real&gt;: Real              -- signature of a 2nd-order function like '*' for the domain R
     &lt;Integer, Integer&gt;: Integer     -- signature of a 2nd-order function like 'add' for the domain I</pre>
 </div>
@@ -1206,7 +1237,7 @@ computing_context
 <p>EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of <em>declaring routine signatures</em>, using the <code>func</code> keyword. This is similar to the declaration of methods in interface classes in languages like C# and Java.</p>
 </div>
 <div class="paragraph">
-<p>Examples of routine declarations:</p>
+<p>Examples of function declarations:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1322,21 +1353,18 @@ computing_context
 <div class="sect2">
 <h3 id="_a_id_language_complex_expressions_a_complex_expressions"><a class="anchor" href="#_a_id_language_complex_expressions_a_complex_expressions"></a>3.7. <a id="language-complex-expressions"></a>Complex Expressions</h3>
 <div class="paragraph">
-<p>Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics.</p>
+<p>Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.</p>
 </div>
 <div class="sect3">
-<h4 id="_a_id_language_equality_a_equality"><a class="anchor" href="#_a_id_language_equality_a_equality"></a>3.7.1. <a id="language-equality"></a>Equality</h4>
+<h4 id="_a_id_language_equality_a_equality_operator"><a class="anchor" href="#_a_id_language_equality_a_equality_operator"></a>3.7.1. <a id="language-equality"></a>Equality Operator</h4>
 <div class="paragraph">
 <p>The equality operator <code>=</code> is special in EL as in most languages, and has two meanings. For all primitive types, the semantics are value comparison, while for container and other non-primitive types, the semantics are reference comparison.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_a_id_language_operators_a_basic_operators"><a class="anchor" href="#_a_id_language_operators_a_basic_operators"></a>3.7.2. <a id="language-operators"></a>Basic Operators</h4>
+<h4 id="_a_id_language_operators_a_primitive_operators"><a class="anchor" href="#_a_id_language_operators_a_primitive_operators"></a>3.7.2. <a id="language-operators"></a>Primitive Operators</h4>
 <div class="paragraph">
-<p>The main basis of complex expressions, as in most languages, is the use of operators. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.</p>
-</div>
-<div class="paragraph">
-<p>Operators in EL are the infix or prefix syntax form of various functions available on certain types. For example, the operator <code>-</code> (minus) is defined on the class <code>Numeric</code> (an inheritance ancestor of the classes <code>Integer</code>, <code>Real</code> etc) as the following (using syntax from Java, TypeScript and similar languages):</p>
+<p>Primitive operators in EL are the infix or prefix syntax form of various functions available on primitive types. For example, the operator <code>-</code> (minus) is defined on the class <code>Numeric</code> (an inheritance ancestor of the classes <code>Integer</code>, <code>Real</code> etc) as the following (using syntax from Java, TypeScript and similar languages):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1601,7 +1629,7 @@ computing_context
 </div>
 </div>
 <div class="sect3">
-<h4 id="_a_id_language_logical_quantifiers_a_logical_quantifiers"><a class="anchor" href="#_a_id_language_logical_quantifiers_a_logical_quantifiers"></a>3.7.3. <a id="language-logical-quantifiers"></a>Logical Quantifiers</h4>
+<h4 id="_a_id_language_logical_quantifiers_a_collection_operators"><a class="anchor" href="#_a_id_language_logical_quantifiers_a_collection_operators"></a>3.7.3. <a id="language-logical-quantifiers"></a>Collection Operators</h4>
 <div class="paragraph">
 <p>A common need in an expression language featuring container types (i.e. sets, lists etc) is the need to perform basic reasoning over them. The two standard operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types, and are kinds of Boolean-returning expressions.</p>
 </div>
@@ -1610,7 +1638,7 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    there_exists v in container_var : ( &lt;Boolean expression mentioning v&gt; )</pre>
+<pre>    there_exists v in container_var : &lt;Boolean expression mentioning v&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1621,7 +1649,7 @@ computing_context
 <pre>    $systolic_bp_samples: List&lt;Real&gt;
     Systolic_bp_threshold: Real = 160.0
 
-    if there_exists v in $systolic_bp_samples : (v &gt; Systolic_bp_threshold) then
+    if there_exists v in $systolic_bp_samples : v &gt; Systolic_bp_threshold then
         -- statements
     end</pre>
 </div>
@@ -1631,7 +1659,7 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    for_all v in container_var : ( &lt;Boolean expression mentioning v&gt; )</pre>
+<pre>    for_all v in container_var : &lt;Boolean expression mentioning v&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1642,7 +1670,7 @@ computing_context
 <pre>    $systolic_bp_samples: List&lt;Real&gt;
     Systolic_bp_threshold: Real = 160.0
 
-    if for_all v in $systolic_bp_samples : (v &lt;= Systolic_bp_threshold) then
+    if for_all v in $systolic_bp_samples : v &lt;= Systolic_bp_threshold then
         -- statements
     end</pre>
 </div>
@@ -1751,14 +1779,14 @@ computing_context
 <div class="sect4">
 <h5 id="_when_then"><a class="anchor" href="#_when_then"></a>3.8.3.2. When / then</h5>
 <div class="paragraph">
-<p>EL provides a <code>when / matches / then</code> statement that is roughly equivalent to 'case' or 'switch' statements in most other languages. The <code>when</code> part indicates a  value, which may be of any type, while the <code>matches</code> parts define value intervals that are used to match the <code>when</code> value. The first branch matched is executed.</p>
+<p>EL provides a <code>when / matches / then</code> statement that is roughly equivalent to 'case' or 'switch' statements in most other languages. The <code>when</code> part indicates a  value-returning expression (such as a variable reference), which may be of any type, while the <code>matches</code> parts define value intervals that are used to match the <code>when</code> value. The first branch matched is executed.</p>
 </div>
 <div class="paragraph">
 <p>the syntax is as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    when &lt;value&gt;
+<pre>    when &lt;expression&gt;
         matches &lt;value_interval_1&gt; then
             -- statements
         matches &lt;value_interval_2&gt; then
@@ -1779,13 +1807,13 @@ computing_context
 <div class="content">
 <pre>    when $systolic_bp
         matches |&gt;= 200.0| then
-            -- statements to raise emergency alert
+            -- raise emergency alert
 
         matches |&gt;= 180.0| then
-            -- statements to request nurse check
+            -- request nurse check
 
         matches |&gt;= 160.0| then
-            -- statements to record 'high pressure'
+            -- record 'high pressure'
     end</pre>
 </div>
 </div>
@@ -2168,10 +2196,36 @@ computing_context
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>8. The Expression Object Model</h2>
+<h2 id="_module_structure"><a class="anchor" href="#_module_structure"></a>8. Module Structure</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Expression Language supports inclusion of one EL text in another via the <code>import</code> keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL text to contain just the specific functionality for which it is authored.</p>
+</div>
 <div class="sect2">
-<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>8.1. Overview</h3>
+<h3 id="_el_text_identification"><a class="anchor" href="#_el_text_identification"></a>8.1. EL Text Identification</h3>
+<div class="paragraph tbd">
+<p>TBD: xxxx</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>9. The Expression Object Model</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the model and description shown here is first draft only
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>9.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>expression</code> package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>expression</code> package and further specialise some of its types specifically intended for extension.</p>
 </div>
@@ -2186,7 +2240,7 @@ computing_context
 </div>
 </div>
 <div class="sect2">
-<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>8.2. Core Package</h3>
+<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>9.2. Core Package</h3>
 <div class="paragraph">
 <p>The main <code>expression</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
 </div>
@@ -2206,7 +2260,7 @@ computing_context
 <p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>EXPR_VALUE</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>8.2.1. Expressions</h4>
+<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>9.2.1. Expressions</h4>
 <div class="paragraph">
 <p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
 </div>
@@ -2224,18 +2278,9 @@ computing_context
 </div>
 </div>
 <div class="sect3">
-<h4 id="_other_statement_elements"><a class="anchor" href="#_other_statement_elements"></a>8.2.2. Other Statement Elements</h4>
+<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>9.2.2. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_external_query"><a class="anchor" href="#_external_query"></a>8.2.2.1. External Query</h5>
-<div class="paragraph">
-<p>An <code>EXTERNAL_QUERY</code> is a type of expression representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within expressions.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>8.2.3. Class Descriptions</h4>
-<div class="sect4">
-<h5 id="_statement_set_class"><a class="anchor" href="#_statement_set_class"></a>8.2.3.1. STATEMENT_SET Class</h5>
+<h5 id="_el_text_class"><a class="anchor" href="#_el_text_class"></a>9.2.2.1. EL_TEXT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2245,7 +2290,7 @@ computing_context
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>STATEMENT_SET</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_TEXT</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2260,17 +2305,15 @@ computing_context
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>statement</strong>: <code>List&lt;STATEMENT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>statements</strong>: <code>List&lt;EL_STATEMENT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The member statements of this statement set.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional name of this rule set.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>declarations</strong>: <code>List&lt;EL_DECLARATION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2288,7 +2331,7 @@ computing_context
 </table>
 </div>
 <div class="sect4">
-<h5 id="_statement_class"><a class="anchor" href="#_statement_class"></a>8.2.3.2. STATEMENT Class</h5>
+<h5 id="_el_declaration_class"><a class="anchor" href="#_el_declaration_class"></a>9.2.2.2. EL_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2298,91 +2341,11 @@ computing_context
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>STATEMENT (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_DECLARATION (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract concept of any statement in a block of rule statements.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_assertion_class"><a class="anchor" href="#_assertion_class"></a>8.2.3.3. ASSERTION Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ASSERTION</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Structural model of a typed first order predicate logic assertion, in the form of an expression tree, including optional variable definitions.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>STATEMENT</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tag</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Expression tag, used for differentiating multiple assertions.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>string_expression</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>String form of expression, in case an expression evaluator taking String expressions is used for evaluation.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expression</strong>: <code>EXPRESSION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Root of expression tree.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_variable_declaration_class"><a class="anchor" href="#_variable_declaration_class"></a>8.2.3.4. VARIABLE_DECLARATION Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VARIABLE_DECLARATION</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Definition of a named variable that can be used in an expression.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>STATEMENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2396,6 +2359,37 @@ computing_context
 <p>Name of the variable.</p>
 </div></div></td>
 </tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_variable_declaration_class"><a class="anchor" href="#_el_variable_declaration_class"></a>9.2.2.3. EL_VARIABLE_DECLARATION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_VARIABLE_DECLARATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a named variable that can be used in an expression.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_DECLARATION</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EXPR_TYPE_DEF</code></p></td>
@@ -2407,7 +2401,7 @@ computing_context
 </table>
 </div>
 <div class="sect4">
-<h5 id="_assignment_class"><a class="anchor" href="#_assignment_class"></a>8.2.3.5. ASSIGNMENT Class</h5>
+<h5 id="_el_routine_declaration_class"><a class="anchor" href="#_el_routine_declaration_class"></a>9.2.2.4. EL_ROUTINE_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2417,7 +2411,123 @@ computing_context
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ASSIGNMENT</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_ROUTINE_DECLARATION (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_DECLARATION</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_function_declaration_class"><a class="anchor" href="#_el_function_declaration_class"></a>9.2.2.5. EL_FUNCTION_DECLARATION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_FUNCTION_DECLARATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_ROUTINE_DECLARATION</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_procedure_declaration_class"><a class="anchor" href="#_el_procedure_declaration_class"></a>9.2.2.6. EL_PROCEDURE_DECLARATION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_PROCEDURE_DECLARATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_ROUTINE_DECLARATION</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>9.2.2.7. EL_STATEMENT Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_STATEMENT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract concept of any statement in a block of rule statements.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>9.2.2.8. EL_ASSIGNMENT Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_ASSIGNMENT</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2427,7 +2537,7 @@ computing_context
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>STATEMENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_STATEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2436,14 +2546,14 @@ computing_context
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>VARIABLE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>EL_VARIABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The target variable on the notional left-hand side of this assignment.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>EXPR_VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>EL_EXPRESSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Source right hand side) of the assignment.</p>
 </div></div></td>
@@ -2452,7 +2562,7 @@ computing_context
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_value_class"><a class="anchor" href="#_expr_value_class"></a>8.2.3.6. EXPR_VALUE Class</h5>
+<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>9.2.2.9. EL_PROCEDURE_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2462,51 +2572,15 @@ computing_context
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_VALUE (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_PROCEDURE_CALL</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Any kind of statement element that can be evaluated. The type will either be supplied in descendant types or else will be inferred by an assignment statement linked to a typed variable.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong> (): <code>Any</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_external_query_class"><a class="anchor" href="#_external_query_class"></a>8.2.3.7. EXTERNAL_QUERY Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXTERNAL_QUERY</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Definition of a variable whose value is derived from a query run on a data context in the operational environment. Typical uses of this kind of variable are to obtain values like the patient date of birth, sex, weight, and so on. It could also be used to obtain items from a knowledge context, such as a drug database.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_VALUE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_STATEMENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2515,33 +2589,14 @@ computing_context
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>context</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional name of context. This allows a basic separation of query types to be done in more sophisticated environments. Possible values might be “patient”, “medications” and so on.
-Not yet standardised.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>query_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identifier of query in the external context, e.g. “date_of_birth”.
-Not yet standardised.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>query_args</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional arguments to query.
-Not yet standardised.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EL_PROCEDURE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expression_class"><a class="anchor" href="#_expression_class"></a>8.2.3.8. EXPRESSION Class</h5>
+<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>9.2.2.10. EL_CHOICE_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2551,17 +2606,223 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPRESSION (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_CHOICE_GROUP (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of multi-branch control structures.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_STATEMENT</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>EL_CHOICE_BRANCH</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>9.2.2.11. EL_CHOICE_BRANCH Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_CHOICE_BRANCH (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of branch in a multi-branch control structure.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>statements</strong>: <code>List&lt;EL_STATEMENT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>9.2.2.12. EL_CONDITION_GROUP Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_CONDITION_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Structural representation of an if/then statement.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_CHOICE_GROUP</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>EL_CONDITION_BRANCH</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>9.2.2.13. EL_CONDITION_BRANCH Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_CONDITION_BRANCH</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Representation of one conditional branch of an if/then statement.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_CHOICE_BRANCH</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>test</strong>: <code>EL_EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>9.2.2.14. EL_DECISION_GROUP Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_DECISION_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_CHOICE_GROUP</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>EL_DECISION_BRANCH</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>9.2.2.15. EL_DECISION_BRANCH Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_DECISION_BRANCH</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_CHOICE_BRANCH</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value_constraint</strong>: <code>EL_LITERAL</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>9.2.2.16. EL_EXPRESSION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_EXPRESSION (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Abstract parent of all typed expression tree items.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_VALUE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2575,11 +2836,18 @@ Not yet standardised.</p>
 <p>The primitive type of this node, which must be determined by redefinitions in concrete classes.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong> (): <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_operator_class"><a class="anchor" href="#_expr_operator_class"></a>8.2.3.9. EXPR_OPERATOR Class</h5>
+<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>9.2.2.17. EL_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2589,7 +2857,7 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_OPERATOR (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_OPERATOR (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2599,7 +2867,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_EXPRESSION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2631,90 +2899,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_unary_operator_class"><a class="anchor" href="#_expr_unary_operator_class"></a>8.2.3.10. EXPR_UNARY_OPERATOR Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_UNARY_OPERATOR</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Unary operator expression node.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_OPERATOR</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code>EXPRESSION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Operand node.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_expr_binary_operator_class"><a class="anchor" href="#_expr_binary_operator_class"></a>8.2.3.11. EXPR_BINARY_OPERATOR Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_BINARY_OPERATOR</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Binary operator expression node.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_OPERATOR</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code>EXPRESSION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Left operand node.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code>EXPRESSION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Right operand node.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>8.2.3.12. OPERATOR_DEF Class</h5>
+<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>9.2.2.18. OPERATOR_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2760,7 +2945,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_operator_def_builtin_class"><a class="anchor" href="#_operator_def_builtin_class"></a>8.2.3.13. OPERATOR_DEF_BUILTIN Class</h5>
+<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>9.2.2.19. EL_UNARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2770,66 +2955,35 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OPERATOR_DEF_BUILTIN</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_UNARY_OPERATOR</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Builtin operator pseudo-type. An implementation will typically use the 'identifer' attribute to determine which piece of internal code to execute to evaluate the operator.</p>
+<p>Unary operator expression node.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPERATOR_DEF</code>, <code>BUILTIN_OPERATORS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_OPERATOR</code></p></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Valid_operator</em></strong>: <code>op_table.has (name)</code></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_builtin_operators_class"><a class="anchor" href="#_builtin_operators_class"></a>8.2.3.14. BUILTIN_OPERATORS Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BUILTIN_OPERATORS</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Singleton accessor object for list of builtin operators.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>op_table</strong>: <code>Hash&lt;String, List&lt;String&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code>EL_EXPRESSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of built-in operators in the form of a keyed table of List&lt;String&gt;, where the latter represents one or more lexical symbols used for the operator, e.g. "+", and the key is the operator identifier, e.g. "plus".</p>
-</div>
-<div class="paragraph">
-<p>Implementations may choose to populate this table with all operators defined in the core specifications, or only partially, in which case operators not in the table are implemented using the closure/agent approach for externally defined operators.</p>
+<p>Operand node.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_leaf_class"><a class="anchor" href="#_expr_leaf_class"></a>8.2.3.15. EXPR_LEAF Class</h5>
+<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>9.2.2.20. EL_BINARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2839,7 +2993,52 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_LEAF (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_BINARY_OPERATOR</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Binary operator expression node.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_OPERATOR</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code>EL_EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Left operand node.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code>EL_EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Right operand node.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_leaf_class"><a class="anchor" href="#_el_leaf_class"></a>9.2.2.21. EL_LEAF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_LEAF (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2865,7 +3064,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_EXPRESSION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2874,7 +3073,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>Any</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The reference item from which the value of this node can be computed.</p>
 </div></div></td>
@@ -2883,7 +3082,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_literal_class"><a class="anchor" href="#_expr_literal_class"></a>8.2.3.16. EXPR_LITERAL Class</h5>
+<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>9.2.2.22. EL_LITERAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2893,7 +3092,7 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_LITERAL</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_LITERAL</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2903,7 +3102,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_LEAF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2913,7 +3112,7 @@ Not yet standardised.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>Any</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>A statically set constant value of a primitive type.</p>
 </div></div></td>
@@ -2922,7 +3121,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_variable_ref_class"><a class="anchor" href="#_expr_variable_ref_class"></a>8.2.3.17. EXPR_VARIABLE_REF Class</h5>
+<h5 id="_el_variable_class"><a class="anchor" href="#_el_variable_class"></a>9.2.2.23. EL_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2932,7 +3131,7 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_VARIABLE_REF</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_VARIABLE</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2942,7 +3141,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_LEAF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2952,7 +3151,7 @@ Not yet standardised.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>VARIABLE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EL_VARIABLE_DECLARATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The variable referred to.</p>
 </div></div></td>
@@ -2961,7 +3160,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_value_ref_class"><a class="anchor" href="#_expr_value_ref_class"></a>8.2.3.18. EXPR_VALUE_REF Class</h5>
+<h5 id="_el_bound_variable_class"><a class="anchor" href="#_el_bound_variable_class"></a>9.2.2.24. EL_BOUND_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2971,23 +3170,23 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_VALUE_REF (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_BOUND_VARIABLE</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent type of concrete types enabling access to values in a specific information structure. This type provides an extension point for specific syntaxes to connect a generic rule structure to a data source.</p>
+<p>Variable that is bound to an external entity defined in the data context.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_VARIABLE</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_function_class"><a class="anchor" href="#_expr_function_class"></a>8.2.3.19. EXPR_FUNCTION Class</h5>
+<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>9.2.2.25. EL_FUNCTION_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2997,7 +3196,7 @@ Not yet standardised.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_FUNCTION</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_FUNCTION_CALL</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3007,7 +3206,7 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_LEAF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3016,117 +3215,17 @@ Not yet standardised.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>List&lt;EXPRESSION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>List&lt;EL_EXPRESSION&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Arguments of this function, which can be from 0 to any number. Functions with no arguments are typically used to represent real world varying values like 'current time' and so on.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function_def</strong>: <code>FUNCTION_DEF</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_function_def_class"><a class="anchor" href="#_function_def_class"></a>8.2.3.20. FUNCTION_DEF Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>FUNCTION_DEF (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Ancestor type for types that define a function for use in the Rules evaluator.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EL_FUNCTION_DECLARATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unique identifier of this function within the Rules system.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_function_def_builtin_class"><a class="anchor" href="#_function_def_builtin_class"></a>8.2.3.21. FUNCTION_DEF_BUILTIN Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION_DEF_BUILTIN</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Builtin function pseudo-type. An implementation will typically use the 'identifer' attribute to determine which piece of internal code to execute to evaluate the function.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>FUNCTION_DEF</code>, <code>BUILTIN_FUNCTIONS</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Valid_function</em></strong>: <code>func_table.has (name)</code></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_builtin_functions_class"><a class="anchor" href="#_builtin_functions_class"></a>8.2.3.22. BUILTIN_FUNCTIONS Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BUILTIN_FUNCTIONS</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Singleton accessor object for list of builtin functions.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>func_table</strong>: <code>Hash&lt;String, List&lt;String&gt;&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of built-in functions in the form of a keyed table of List&lt;String&gt;, where the latter represents one or more lexical symbols used for the function, e.g. "max", and the key is the function identifier, e.g. "max".</p>
-</div>
-<div class="paragraph">
-<p>Implementations may choose to populate this table with all functions defined in the core specifications, or only partially, in which case functions not in the table are implemented using the closure/agent approach for externally defined functions.</p>
+<p>The reference item from which the value of this node can be computed.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3135,315 +3234,7 @@ Not yet standardised.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_extension_package"><a class="anchor" href="#_extension_package"></a>8.3. Extension Package</h3>
-<div class="paragraph">
-<p>The Extension package contains classes that provide extension points to the Expression formalism. These are of three kinds:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>value references;</p>
-</li>
-<li>
-<p>externally defined operators;</p>
-</li>
-<li>
-<p>externally defined functions.</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="_value_references"><a class="anchor" href="#_value_references"></a>8.3.1. Value References</h4>
-<div class="paragraph">
-<p>Value references are defined by creating descandants of the <code>EXPR_VALUE_REF</code> class. These typically contain a reference to a data object, or an identifier that can be resolved to a value via a resolver.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_operators_and_functions"><a class="anchor" href="#_operators_and_functions"></a>8.3.2. Operators and Functions</h4>
-<div class="paragraph">
-<p>Externally defined operators and functions are defined as the separate types <code>OPERATOR_DEF_EXTERNAL</code> and <code>FUNCTION_DEF_EXTERNAL</code> resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Expression language.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: this model in its current form treats functions and operators as separate, to allow some convenience in simple implementation of standard operators. But   Theoretically, operators are just 1-arg or 2-arg functions, and the extensions could be defined by treating them as functions. However operators also usually have a symbol form, whereas we are assuming a function&#8217;s symbol is just its identifier. Also, functions can in general have variable numbers of arguments, and complex implementations. Do we want to implement operators that way?</p>
-</div>
-<div class="paragraph">
-<p>The <code>OPERATOR_DEF_EXTERNAL</code> class inherits the <code><em>identifier</em></code> and <code><em>symbols</em></code> features from <code>OPERATOR_DEF</code>, and adds an <code><em>execution_agent</em></code>, which is a function object that can compute the operator, given appropriate arguments. The extention part of the UML model above shows how tihs facility can be used to define two operators that would normally be implemented as built-ins, <code>and</code> and <code>exists</code>.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: this is shown as being done with a class per operator, but in fact it only requires instances of <code>OPERATOR_DEF_EXTERNAL</code> which have the appropriate identifiers, symbols and avaluation agent. Should we just define it this way?</p>
-</div>
-<div class="paragraph">
-<p>The approach to adding custom functions is the same as with operators.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>8.3.3. Class Descriptions</h4>
-<div class="sect4">
-<h5 id="_operator_def_external_class"><a class="anchor" href="#_operator_def_external_class"></a>8.3.3.1. OPERATOR_DEF_EXTERNAL Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>OPERATOR_DEF_EXTERNAL (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Ancestor of concrete operator definition types. Adds an optional execution agent, typically implemented by closures / lambdas/ agents in languages supporting functional programming.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPERATOR_DEF</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;TUPLE,Any&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_op_def_example_class"><a class="anchor" href="#_op_def_example_class"></a>8.3.3.2. OP_DEF_EXAMPLE Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OP_DEF_EXAMPLE</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Example custom operator definition as a class, for an operator whose identifier is 'xxx' and for which the symbols "xxx" and "%" can be used, and with a two-argument numeric signature.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPERATOR_DEF_EXTERNAL</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;&#160;=&#160;"xxx", "%"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"xxx"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Numeric,Numeric&gt;,Numeric&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_op_def_and_class"><a class="anchor" href="#_op_def_and_class"></a>8.3.3.3. OP_DEF_AND Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OP_DEF_AND</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Illustrative class showing what the normally built-in logical 'and' operator looks like as an external definition.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPERATOR_DEF_EXTERNAL</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;&#160;=&#160;"and","∧"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"and"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Boolean,Boolean&gt;,Boolean&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_op_def_exists_class"><a class="anchor" href="#_op_def_exists_class"></a>8.3.3.4. OP_DEF_EXISTS Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OP_DEF_EXISTS</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Illustrative class showing what the normally built-in logical 'exists' operator looks like as an external definition.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPERATOR_DEF_EXTERNAL</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;&#160;=&#160;"exists", "∃"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"exists"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Any&gt;,Boolean&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_function_def_external_class"><a class="anchor" href="#_function_def_external_class"></a>8.3.3.5. FUNCTION_DEF_EXTERNAL Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>FUNCTION_DEF_EXTERNAL (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Ancestor class of externally defined function types.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>FUNCTION_DEF</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;TUPLE,Any&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_function_def_example_class"><a class="anchor" href="#_function_def_example_class"></a>8.3.3.6. FUNCTION_DEF_EXAMPLE Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION_DEF_EXAMPLE</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Example of an externally defined function of signature:</p>
-</div>
-<div class="paragraph">
-<p>func (v: Numeric): Numeric</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>FUNCTION_DEF_EXTERNAL</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String&#160;=&#160;"funny"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>evaluation_agent</strong>: <code>FUNCTION&lt;&lt;Numeric&gt;,Numeric&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_typing"><a class="anchor" href="#_typing"></a>8.4. Typing</h3>
+<h3 id="_typing"><a class="anchor" href="#_typing"></a>9.3. Typing</h3>
 <div class="paragraph">
 <p>The <code>expressions.types</code> package is shown below.</p>
 </div>
@@ -3457,9 +3248,9 @@ Not yet standardised.</p>
 <p>The type system of the Expression formalism is defined via the type <code>EXPR_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>8.4.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>9.3.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_expr_type_def_class"><a class="anchor" href="#_expr_type_def_class"></a>8.4.1.1. EXPR_TYPE_DEF Class</h5>
+<h5 id="_expr_type_def_class"><a class="anchor" href="#_expr_type_def_class"></a>9.3.1.1. EXPR_TYPE_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3500,7 +3291,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>8.4.1.2. TYPE_DEF_BOOLEAN Class</h5>
+<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>9.3.1.2. TYPE_DEF_BOOLEAN Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3543,7 +3334,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>8.4.1.3. TYPE_DEF_INTEGER Class</h5>
+<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>9.3.1.3. TYPE_DEF_INTEGER Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3586,7 +3377,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>8.4.1.4. TYPE_DEF_REAL Class</h5>
+<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>9.3.1.4. TYPE_DEF_REAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3629,7 +3420,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>8.4.1.5. TYPE_DEF_DATE Class</h5>
+<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>9.3.1.5. TYPE_DEF_DATE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3672,7 +3463,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>8.4.1.6. TYPE_DEF_DATE_TIME Class</h5>
+<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>9.3.1.6. TYPE_DEF_DATE_TIME Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3715,7 +3506,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>8.4.1.7. TYPE_DEF_TIME Class</h5>
+<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>9.3.1.7. TYPE_DEF_TIME Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3758,7 +3549,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>8.4.1.8. TYPE_DEF_DURATION Class</h5>
+<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>9.3.1.8. TYPE_DEF_DURATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3801,7 +3592,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>8.4.1.9. TYPE_DEF_STRING Class</h5>
+<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>9.3.1.9. TYPE_DEF_STRING Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3844,7 +3635,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>8.4.1.10. TYPE_DEF_URI Class</h5>
+<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>9.3.1.10. TYPE_DEF_URI Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3887,7 +3678,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>8.4.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
+<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>9.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3930,7 +3721,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>8.4.1.12. TYPE_DEF_OBJECT_REF Class</h5>
+<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>9.3.1.12. TYPE_DEF_OBJECT_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4366,7 +4157,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-12 11:32:04 BST
+Last updated 2018-07-18 22:23:06 BST
 </div>
 </div>
 </body>

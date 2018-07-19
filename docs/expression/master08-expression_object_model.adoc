@@ -1,5 +1,7 @@
 = The Expression Object Model
 
+NOTE: the model and description shown here is first draft only
+
 == Overview
 
 The `expression` package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the `expression` package and further specialise some of its types specifically intended for extension.
@@ -37,77 +39,37 @@ TBD: could potentially separate 'text symbols' and 'math symbols' to enable rend
 
 The `OPERATOR_DEF_BUILTIN` class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the statement evaluator, e.g. a case statement or similar that uses the implementation language native operators. 
 
-=== Other Statement Elements
-
-==== External Query
-
-An `EXTERNAL_QUERY` is a type of expression representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within expressions.
-
 === Class Descriptions
 
-include::{uml_export_dir}/classes/statement_set.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/statement.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/assertion.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/variable_declaration.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/assignment.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_value.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_text.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/external_query.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_declaration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_variable_declaration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_routine_declaration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_function_declaration.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_procedure_declaration.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/expression.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_operator.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_unary_operator.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_binary_operator.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_statement.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_assignment.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_procedure_call.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_choice_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_choice_branch.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_condition_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_condition_branch.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_decision_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_decision_branch.adoc[leveloffset=+1]
 
+include::{uml_export_dir}/classes/el_expression.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_operator.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/operator_def.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/operator_def_builtin.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/builtin_operators.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_unary_operator.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_binary_operator.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/expr_leaf.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_literal.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_variable_ref.adoc[leveloffset=+1]
-
-include::{uml_export_dir}/classes/expr_value_ref.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_function.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/function_def.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/function_def_builtin.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/builtin_functions.adoc[leveloffset=+1]
-
-== Extension Package
-
-The Extension package contains classes that provide extension points to the Expression formalism. These are of three kinds:
-
-* value references;
-* externally defined operators;
-* externally defined functions.
-
-=== Value References
-
-Value references are defined by creating descandants of the `EXPR_VALUE_REF` class. These typically contain a reference to a data object, or an identifier that can be resolved to a value via a resolver.
-
-=== Operators and Functions
-
-Externally defined operators and functions are defined as the separate types `OPERATOR_DEF_EXTERNAL` and `FUNCTION_DEF_EXTERNAL` resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Expression language.
-
-[.tbd]
-TBD: this model in its current form treats functions and operators as separate, to allow some convenience in simple implementation of standard operators. But   Theoretically, operators are just 1-arg or 2-arg functions, and the extensions could be defined by treating them as functions. However operators also usually have a symbol form, whereas we are assuming a function's symbol is just its identifier. Also, functions can in general have variable numbers of arguments, and complex implementations. Do we want to implement operators that way?
-
-The `OPERATOR_DEF_EXTERNAL` class inherits the `_identifier_` and `_symbols_` features from `OPERATOR_DEF`, and adds an `_execution_agent_`, which is a function object that can compute the operator, given appropriate arguments. The extention part of the UML model above shows how tihs facility can be used to define two operators that would normally be implemented as built-ins, `and` and `exists`.
-
-[.tbd]
-TBD: this is shown as being done with a class per operator, but in fact it only requires instances of `OPERATOR_DEF_EXTERNAL` which have the appropriate identifiers, symbols and avaluation agent. Should we just define it this way?
-
-The approach to adding custom functions is the same as with operators.
-
-=== Class Descriptions
-
-include::{uml_export_dir}/classes/operator_def_external.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/op_def_example.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/op_def_and.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/op_def_exists.adoc[leveloffset=+1]
-
-include::{uml_export_dir}/classes/function_def_external.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/function_def_example.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_leaf.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_literal.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_variable.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_bound_variable.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_function_call.adoc[leveloffset=+1]
 
 == Typing
 

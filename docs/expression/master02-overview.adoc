@@ -48,20 +48,27 @@ No assumption is made about whether the data context used is complete or faithfu
 
 == General Structure
 
-The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing `EL text`,  with a similar structure to an archetype. The key sections are `definition`, `terminology` and `context`. The `definition` section contains _statements_ and/or _rules_. These are made up of expressions containing _symbols_, which represent _variables_ and _constants_, and which are typed. Variables are either _bound variables_, indicated with a `$` character, and _local variables_. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.
+The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing `EL text` containing procedural elements,  with a similar structure to an archetype. The key sections of an EL text are `definition`, `terminology` and `context`. The `definition` section contains _statements_. These are made up of expressions containing _symbols_, which represent _variables_ and _constants_, and which are typed. Variables are either _bound variables_, indicated with a `$` character, and _local variables_. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.
 
 Mappings between bound variables and external entities are described by _bindings_ in the `data_context` section. For example, the expression `$heart_rate > 50` is an assertion about values found in some data - i.e. `$heart_rate` is a variable that is mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable's value is obtained from (e.g. some larger data entity such as a document or message, or via an API call), and whether it is an input or output variable. This provides clear semantics for statements in the expression text.
 
 Symbols are _names_ in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in the `terminology` section of an EL text, in the same way as for openEHR archetypes. For example, the symbol `heart_rate` of type `Integer` may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).
 
-Additionally, user-defined functions mentioned within the main text are bound to methods from external libraries in a `computing_context` section. 
+Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in the `computing_context` section. 
 
 In addition to these computable sections, various meta-data sections are added, including the `description` and `language` sections defined by the {openehr_resource}[openEHR Resource specification], and an identification line at the top. As with archetypes, the sections other than the `definition` are expressed in {openehr_odin}[openEHR ODIN syntax].
+
+Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the `import` keyword.
 
 The structure of a self-standing EL text is thus as follows:
 
 ----
 <identifier>
+
+import
+    <identifier>
+    <identifier>
+    ...
 
 language
     original_language = <...>
@@ -179,7 +186,7 @@ computing_context
     >
 ----
 
-WHen used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:
+When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:
 
 * including the definitions in the `rules` section;
 * adding the EL text `symbol_definitions` section to the archetype `terminology` section;
