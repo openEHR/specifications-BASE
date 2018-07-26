@@ -69,16 +69,16 @@
 <li><a href="#_defined_predicate">3.6.2. defined() Predicate</a></li>
 </ul>
 </li>
-<li><a href="#_a_id_language_complex_expressions_a_complex_expressions">3.7. <a id="language-complex-expressions"></a>Complex Expressions</a>
+<li><a href="#_complex_expressions">3.7. Complex Expressions</a>
 <ul class="sectlevel3">
-<li><a href="#_a_id_language_equality_a_equality_operator">3.7.1. <a id="language-equality"></a>Equality Operator</a></li>
-<li><a href="#_a_id_language_operators_a_primitive_operators">3.7.2. <a id="language-operators"></a>Primitive Operators</a>
+<li><a href="#_equality_operator">3.7.1. Equality Operator</a></li>
+<li><a href="#_primitive_operators">3.7.2. Primitive Operators</a>
 <ul class="sectlevel4">
 <li><a href="#_logical_negation">3.7.2.1. Logical Negation</a></li>
 <li><a href="#_precedence_and_parentheses">3.7.2.2. Precedence and Parentheses</a></li>
 </ul>
 </li>
-<li><a href="#_a_id_language_logical_quantifiers_a_collection_operators">3.7.3. <a id="language-logical-quantifiers"></a>Collection Operators</a></li>
+<li><a href="#_collection_operators">3.7.3. Collection Operators</a></li>
 </ul>
 </li>
 <li><a href="#_procedural_elements">3.8. Procedural Elements</a>
@@ -114,7 +114,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#_a_id_computing_context_a_computing_context">7. <a id="computing_context"></a>Computing Context</a></li>
+<li><a href="#_computing_context">7. Computing Context</a></li>
 <li><a href="#_module_structure">8. Module Structure</a>
 <ul class="sectlevel2">
 <li><a href="#_el_text_identification">8.1. EL Text Identification</a></li>
@@ -1259,7 +1259,7 @@ computing_context
 </div>
 </div>
 <div class="paragraph">
-<p>Functions are mapped to class methods in external libraries in the <a href="#computing_context">Computing Context</a> section of an EL text.</p>
+<p>Functions are mapped to class methods in external libraries in the <a href="#_computing_context">Computing Context</a> section of an EL text.</p>
 </div>
 <div class="sect4">
 <h5 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>3.5.4.1. Built-in Functions</h5>
@@ -1351,18 +1351,18 @@ computing_context
 </div>
 </div>
 <div class="sect2">
-<h3 id="_a_id_language_complex_expressions_a_complex_expressions"><a class="anchor" href="#_a_id_language_complex_expressions_a_complex_expressions"></a>3.7. <a id="language-complex-expressions"></a>Complex Expressions</h3>
+<h3 id="_complex_expressions"><a class="anchor" href="#_complex_expressions"></a>3.7. Complex Expressions</h3>
 <div class="paragraph">
 <p>Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.</p>
 </div>
 <div class="sect3">
-<h4 id="_a_id_language_equality_a_equality_operator"><a class="anchor" href="#_a_id_language_equality_a_equality_operator"></a>3.7.1. <a id="language-equality"></a>Equality Operator</h4>
+<h4 id="_equality_operator"><a class="anchor" href="#_equality_operator"></a>3.7.1. Equality Operator</h4>
 <div class="paragraph">
 <p>The equality operator <code>=</code> is special in EL as in most languages, and has two meanings. For all primitive types, the semantics are value comparison, while for container and other non-primitive types, the semantics are reference comparison.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_a_id_language_operators_a_primitive_operators"><a class="anchor" href="#_a_id_language_operators_a_primitive_operators"></a>3.7.2. <a id="language-operators"></a>Primitive Operators</h4>
+<h4 id="_primitive_operators"><a class="anchor" href="#_primitive_operators"></a>3.7.2. Primitive Operators</h4>
 <div class="paragraph">
 <p>Primitive operators in EL are the infix or prefix syntax form of various functions available on primitive types. For example, the operator <code>-</code> (minus) is defined on the class <code>Numeric</code> (an inheritance ancestor of the classes <code>Integer</code>, <code>Real</code> etc) as the following (using syntax from Java, TypeScript and similar languages):</p>
 </div>
@@ -1629,7 +1629,7 @@ computing_context
 </div>
 </div>
 <div class="sect3">
-<h4 id="_a_id_language_logical_quantifiers_a_collection_operators"><a class="anchor" href="#_a_id_language_logical_quantifiers_a_collection_operators"></a>3.7.3. <a id="language-logical-quantifiers"></a>Collection Operators</h4>
+<h4 id="_collection_operators"><a class="anchor" href="#_collection_operators"></a>3.7.3. Collection Operators</h4>
 <div class="paragraph">
 <p>A common need in an expression language featuring container types (i.e. sets, lists etc) is the need to perform basic reasoning over them. The two standard operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types, and are kinds of Boolean-returning expressions.</p>
 </div>
@@ -2152,7 +2152,7 @@ computing_context
 </div>
 </div>
 <div class="sect1">
-<h2 id="_a_id_computing_context_a_computing_context"><a class="anchor" href="#_a_id_computing_context_a_computing_context"></a>7. <a id="computing_context"></a>Computing Context</h2>
+<h2 id="_computing_context"><a class="anchor" href="#_computing_context"></a>7. Computing Context</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL text. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_context</code> section of a full EL text. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL text.</p>
@@ -2262,7 +2262,7 @@ the model and description shown here is first draft only
 <div class="sect3">
 <h4 id="_expressions"><a class="anchor" href="#_expressions"></a>9.2.1. Expressions</h4>
 <div class="paragraph">
-<p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
+<p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#_complex_expressions">Complex Expressions</a> sub-section in the Language section.</p>
 </div>
 <div class="paragraph">
 <p>In this model, 'functions' are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats functions as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.</p>

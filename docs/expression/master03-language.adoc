@@ -285,7 +285,7 @@ The following example shows a function declaration for a function `_tnm_major_nu
     is_luminal_A: Boolean := tnm_major_number (tnm_t) < 3 and tnm_major_number (tnm_n) < 2 and tnm_major_number (tnm_g) < 3
 ----
 
-Functions are mapped to class methods in external libraries in the <<computing_context, Computing Context>> section of an EL text.
+Functions are mapped to class methods in external libraries in the <<_computing_context, Computing Context>> section of an EL text.
 
 ==== Built-in Functions
 
@@ -355,15 +355,15 @@ To assert that a certain part of a larger data structure exists depending on val
     check ($is_smoker implies defined ($smoking_details))
 --------
 
-== [[language-complex-expressions]]Complex Expressions
+== Complex Expressions
 
 Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.
 
-=== [[language-equality]]Equality Operator
+=== Equality Operator
 
 The equality operator `=` is special in EL as in most languages, and has two meanings. For all primitive types, the semantics are value comparison, while for container and other non-primitive types, the semantics are reference comparison.
 
-=== [[language-operators]]Primitive Operators
+=== Primitive Operators
 
 Primitive operators in EL are the infix or prefix syntax form of various functions available on primitive types. For example, the operator `-` (minus) is defined on the class `Numeric` (an inheritance ancestor of the classes `Integer`, `Real` etc) as the following (using syntax from Java, TypeScript and similar languages):
 
@@ -457,7 +457,7 @@ The precedence of operators follows the order shown in the operator tables above
     at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
 --------
 
-=== [[language-logical-quantifiers]]Collection Operators
+=== Collection Operators
 
 A common need in an expression language featuring container types (i.e. sets, lists etc) is the need to perform basic reasoning over them. The two standard operators from predicate logic `there exists` (∃ operator) and `for all` (∀ operator) are defined in EL for the container types, and are kinds of Boolean-returning expressions.
 
