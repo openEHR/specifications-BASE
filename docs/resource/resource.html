@@ -483,7 +483,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code>Hash&lt;String,TRANSLATION_DETAILS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.</p>
+<p>List of details for each natural translation made of this resource, keyed by language code. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The <code><em>original_language</em></code> does not appear in this list.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -602,7 +602,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_last_translated</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Version of this resource last time it was translated into the language represented by this TRANSLATION_DETAILS object.</p>
+<p>Version of this resource last time it was translated into the language represented by this <code>TRANSLATION_DETAILS</code> object.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -751,7 +751,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Additional non language-senstive resource meta-data, as a list of name/value pairs.</p>
+<p>Additional non-language-sensitive resource meta-data, as a list of name/value pairs.</p>
 </div></div></td>
 </tr>
 <tr>
