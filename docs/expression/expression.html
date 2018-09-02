@@ -48,6 +48,7 @@
 <li><a href="#_primitive_types">3.3.1. Primitive Types</a></li>
 <li><a href="#_container_types">3.3.2. Container Types</a></li>
 <li><a href="#_interval_type">3.3.3. Interval Type</a></li>
+<li><a href="#_non_primitive_types">3.3.4. Non-primitive Types</a></li>
 </ul>
 </li>
 <li><a href="#_declarations">3.4. Declarations</a></li>
@@ -97,8 +98,7 @@
 </li>
 <li><a href="#_material_to_remove">4. Material to remove?</a>
 <ul class="sectlevel2">
-<li><a href="#_routines_as_objects">4.1. Routines as Objects</a></li>
-<li><a href="#_iteration">4.2. Iteration</a></li>
+<li><a href="#_iteration">4.1. Iteration</a></li>
 </ul>
 </li>
 <li><a href="#_terminology">5. Terminology</a></li>
@@ -289,10 +289,13 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.0</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><a href="https://openehr.atlassian.net/browse/SPECBASE-3">SPECBASE-3</a>. Major rewrite.</p>
+<p><a href="https://openehr.atlassian.net/browse/SPECBASE-3">SPECBASE-3</a>. Major rewrite. Added external model use;<br>
+ added <code>defined()</code> and <code>check()</code> predicates;<br>
+ refined quantifiers;<br>
+ added various kinds of binding.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>19 Jul 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>20 Aug 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1.0</p></td>
@@ -344,7 +347,7 @@
 <div class="sect2">
 <h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
 <div class="paragraph">
-<p>This document specifies the openEHR Expression Model (EOM) and an abstract syntax, denoted the openEHR Expression Language (oEL). The EOM defines the semantics of a first order predicate style logic that can be used to express assertions (for example in archetypes) and rulesfor example in decision support situations.</p>
+<p>This document specifies the openEHR Expression Object Model (EOM) and an abstract syntax, denoted the openEHR Expression Language (openEHR EL). The EOM defines the semantics of a first order predicate style logic that can be used to express assertions (e.g. in archetypes) and rules. e.g. in decision support situations.</p>
 </div>
 <div class="paragraph">
 <p>The intended audience includes:</p>
@@ -358,10 +361,7 @@
 <p>Academic groups using openEHR;</p>
 </li>
 <li>
-<p>Solution vendors;</p>
-</li>
-<li>
-<p>Medical informaticians and clinicians interested in health information.</p>
+<p>Solution vendors.</p>
 </li>
 </ul>
 </div>
@@ -384,7 +384,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="/releases/AM/latest/AOM2.html">Archetype Object Model 2 (AOM2)</a>.</p>
+<p>The <a href="/releases/AM/latest/AOM2.html">Archetype Object Model 2 (AOM2)</a>, Assertions section.</p>
 </li>
 <li>
 <p>The <a href="/releases/CDS/latest/GDL.html">Guideline Definition Language (GDL)</a>.</p>
@@ -422,7 +422,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The openEHR Expression Object Model (EOM) defines the semantics of all of the elements of computable expressions that are used in openEHR, and are likely to be used in healthcare and life sciences computing where rules and expressions are needed. The model is designed as an extensible core formalism suitable for use and extension in other formalisms (such as the openEHR Archetype formalism).</p>
+<p>The openEHR Expression Object Model (EOM) defines the semantics of all of the elements of computable expressions that are used in openEHR, and are likely to be used in healthcare and life sciences computing where rules and expressions are needed. The model is designed as an extensible core formalism suitable for use and extension in other formalisms.</p>
 </div>
 <div class="paragraph">
 <p>The openEHR Expression Language (EL) specified here is an abstract syntax counterpart to the Expression Object Model, and may be considered a 'default syntax'. Other syntaxes or syntax variants are certainly possible, and other serialisation methods are possible, such as object graph serialisation into XML, JSON, YAML etc. The EL is provided firstly as a way of specifying and explaining the semantics of the EOM, and secondly, as one way of actually authoring expressions and rules in textual form. This approach is the same as with any programming language, where the usual form for learning and programming is the abstract language form, while the computational form is an abstract syntax tree (AST) or similar.</p>
@@ -430,8 +430,12 @@
 <div class="paragraph">
 <p>Accordingly, the EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in JSON or use purely graphical visualisation.</p>
 </div>
+<div class="paragraph tbd">
+<p>TBD: possibly the following is no longer true.</p>
+</div>
 <div class="paragraph">
-<p>The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing. Extensions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.</p>
+<p>The formalism as defined here requires extensions for use, at a minimum to provide concrete value referencing.
+Extensions would also typically provide more operators, functions, leaf types and other features that are needed in specific circumstances.</p>
 </div>
 <div class="paragraph">
 <p>Key features of the formalism include:</p>
@@ -443,6 +447,9 @@
 </li>
 <li>
 <p>strong typing;</p>
+</li>
+<li>
+<p>the ability to use externally defined information models;</p>
 </li>
 <li>
 <p>standard logical operators including universal and existential quantification, as well as user-defined operators;</p>
@@ -517,19 +524,25 @@
 <div class="sect2">
 <h3 id="_general_structure"><a class="anchor" href="#_general_structure"></a>2.3. General Structure</h3>
 <div class="paragraph">
-<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing <code>EL text</code> containing procedural elements,  with a similar structure to an archetype. The key sections of an EL text are <code>definition</code>, <code>terminology</code> and <code>context</code>. The <code>definition</code> section contains <em>statements</em>. These are made up of expressions containing <em>symbols</em>, which represent <em>variables</em> and <em>constants</em>, and which are typed. Variables are either <em>bound variables</em>, indicated with a <code>$</code> character, and <em>local variables</em>. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.</p>
+<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing <code>EL text</code> containing procedural elements,  with a similar structure to an archetype.</p>
 </div>
 <div class="paragraph">
-<p>Mappings between bound variables and external entities are described by <em>bindings</em> in the <code>data_context</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is a variable that is mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call), and whether it is an input or output variable. This provides clear semantics for statements in the expression text.</p>
+<p>By default, EL statements and expressions may assume the <a href="/releases/BASE/latest/foundation_types.html">openEHR Foundation Types</a> (i.e. Boolean, Integer, String, date/time types etc). Other object models may be used by stating their identity in a <code>use_model</code> section.</p>
 </div>
 <div class="paragraph">
-<p>Symbols are <em>names</em> in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in the <code>terminology</code> section of an EL text, in the same way as for openEHR archetypes. For example, the symbol <code>heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
+<p>The core sections of an EL text are <code>input_context</code>, <code>output_context</code> and <code>definition</code>, which respectively declare input variables, output variables, and define statements. The input and output context sections may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains logic <em>statements</em>. Statements are made up of expressions containing <em>symbols</em>, which represent <em>variables</em> and <em>constants</em>, and which are typed. Variables are either <em>external variables</em> from the input or output contexts, indicated with a <code>$</code> character, or <em>local variables</em> declared within the <code>definition</code> section.</p>
 </div>
 <div class="paragraph">
-<p>Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in the <code>computing_context</code> section.</p>
+<p>Mappings between external variables and external entities are described by <em>bindings</em> in a <code>data_context</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is an external variable that may be mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call). This provides clear semantics for statements in the expression text that mention such variables.</p>
 </div>
 <div class="paragraph">
-<p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than the <code>definition</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
+<p>Symbols are <em>names</em> in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL text, in the same way as for openEHR archetypes. For example, the symbol <code>heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
+</div>
+<div class="paragraph">
+<p>Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in a <code>computing_context</code> section.</p>
+</div>
+<div class="paragraph">
+<p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than <code>input_context</code>, <code>definition</code>, and <code>output_context</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the <code>import</code> keyword.</p>
@@ -553,9 +566,17 @@ language
 description
     &lt;descriptive meta-data&gt;
 
+use_model
+    &lt;model ids&gt;
+
+input_context
+    &lt;declarations&gt;
+
+output_context
+    &lt;declarations&gt;
+
 definition
     &lt;statements&gt;
-    &lt;rules&gt;
 
 terminology
     symbol_definitions = &lt;
@@ -577,7 +598,7 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="adl"><span class="tok-err">openEHR-bmi.v1</span>
+<pre class="pygments highlight"><code data-lang="adl"><span class="tok-err">openEHR-EOM.bmi.v1</span>
 
 <span class="tok-gh">language</span>
     <span class="tok-nc">original_language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">en</span><span class="tok-p">]&gt;</span>
@@ -596,10 +617,16 @@ computing_context
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span>
 
-<span class="tok-gh">definition</span>
-    <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-nc">Real</span>
-    <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-nc">Real</span>
+<span class="tok-s">use_model</span>
+    <span class="tok-nc">org</span><span class="tok-err">.</span><span class="tok-nc">openehr</span><span class="tok-err">.</span><span class="tok-nc">rm</span>
 
+<span class="tok-s">input_context</span>
+    <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+
+<span class="tok-s">output_context</span>
+    <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+
+<span class="tok-gh">definition</span>
     <span class="tok-err">$</span><span class="tok-nc">bmi</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span> <span class="tok-p">/ </span><span class="tok-err">$</span><span class="tok-nc">height</span> <span class="tok-o">^</span> <span class="tok-mi">2</span>
 
 <span class="tok-gh">terminology</span>
@@ -646,20 +673,6 @@ computing_context
                 <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;out&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-s">computing_context</span>
-    <span class="tok-nc">library_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;onco_staging_lib&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-nc">connector</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;java8&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">library</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;onco_staging_lib.jar&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-nc">bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;tnm_major_number&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;TnmCalculator::tnmNumericVal&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;tnm_prefix&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;TnmCalculator::tnmPrefixVal&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
@@ -691,7 +704,7 @@ computing_context
 <p>This section describes the openEHR Expression Language (EL). In the various contexts where EL expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.</p>
 </div>
 <div class="paragraph">
-<p>Formally, an expression is any of the following value-returning entities:</p>
+<p>Formally, an openEHR EL expression is any of the following value-returning entities:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -728,7 +741,7 @@ computing_context
 </div>
 </li>
 <li>
-<p><em>complex expressions</em>:</p>
+<p><em>complex expressions</em> created from:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -746,6 +759,9 @@ computing_context
 </ul>
 </div>
 <div class="paragraph">
+<p>Each of these is described in detail in the following sections.</p>
+</div>
+<div class="paragraph">
 <p>EL is designed syntactically as a readable language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal built-in core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the <code>Date</code> type, or the <code>for_all</code> universal quantifier operator may be mapped to underlying methods such as <code>Date.<em>add</em>()</code> and <code>Container.<em>for_all</em>()</code>.</p>
 </div>
 <div class="paragraph">
@@ -755,7 +771,7 @@ computing_context
 <div class="sect2">
 <h3 id="_syntax_style"><a class="anchor" href="#_syntax_style"></a>3.2. Syntax style</h3>
 <div class="paragraph">
-<p>The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (<code>{}</code>). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to EL syntax such as the following.</p>
+<p>The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (<code>{}</code>). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to syntax such as the following.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -999,19 +1015,32 @@ computing_context
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_non_primitive_types"><a class="anchor" href="#_non_primitive_types"></a>3.3.4. Non-primitive Types</h4>
+<div class="paragraph">
+<p>Non-primitive types may be imported from formal model definitions specified in the <code>use_model</code> section of an EL text. Such models need to be specified in <a href="/releases/BASE/latest/bmm.html">openEHR BMM format</a>, or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.</p>
+</div>
+<div class="paragraph">
+<p>Access to interior elements of instances of non-primitive types is obtained using 'dot' notation, i.e. the standard way for object-oriented languages.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_declarations"><a class="anchor" href="#_declarations"></a>3.4. Declarations</h3>
 <div class="paragraph">
-<p>Symbolic references are declared in the form <code>name: Type</code>. Multiple variables may be declared on the same line. The following shows various declarations:</p>
+<p>Symbolic references are declared in the form <code>name: Type</code>. Multiple variables may be declared on the same line. External variables are declared in the <code>input_context</code> and <code>output_context</code> sections, while local variables are declared within the <code>definition</code> section. The following shows various declarations:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    date_of_birth: Date
+<pre>input_context
+    $date_of_birth: Date
+    $weight, $height: Real
+
+output_context
+    $bmi: Real
+
+definition
     age_in_years: Integer
-
-    weight, height, bmi: Real
-
     heart_rate_samples: List&lt;Real&gt;</pre>
 </div>
 </div>
@@ -1197,7 +1226,7 @@ computing_context
 <div class="listingblock">
 <div class="content">
 <pre>    $date_of_birth: Date                -- an external variable
-    age_in_years: Integer               -- an interval variable
+    age_in_years: Integer               -- an internal variable
 
     $weight, $height, bmi: Real         -- two external variables and an internal variable
 
@@ -1241,11 +1270,11 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    func current_date(): Date                            -- a function that obtains today's date
+<pre>    func current_date(): Date                      -- a function that obtains today's date
 
-    func bmi_metric (height, weight:Real): Real          -- a function that computes BMI from metric inputs
+    func bmi_metric (height, weight:Real): Real    -- a function that computes BMI from metric inputs
 
-    func sum (vals: List&lt;Real&gt;): Real                    -- a function that computes the sum of a list of Reals</pre>
+    func sum (vals: List&lt;Real&gt;): Real              -- a function that computes the sum of a list of Reals</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1255,7 +1284,9 @@ computing_context
 <div class="content">
 <pre>    func tnm_major_number (tnm_val: String): Integer
 
-    is_luminal_A: Boolean := tnm_major_number (tnm_t) &lt; 3 and tnm_major_number (tnm_n) &lt; 2 and tnm_major_number (tnm_g) &lt; 3</pre>
+    is_luminal_A: Boolean := tnm_major_number (tnm_t) &lt; 3 and
+                             tnm_major_number (tnm_n) &lt; 2 and
+                             tnm_major_number (tnm_g) &lt; 3</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1372,7 +1403,7 @@ computing_context
 </div>
 </div>
 <div class="paragraph">
-<p>This means that where the expressions <code>100 - 5</code> or <code>int_val_1 - int_val_2</code> are encountered in EL, what is really invoked is <code>Integer.<em>minus</em>()</code>.</p>
+<p>This means that where the expression <code>100 - 5</code> is encountered in EL, what is really invoked is <code>Integer.<em>minus</em>()</code>, i.e. <code>100.minus(5)</code>.</p>
 </div>
 <div class="paragraph">
 <p>The operators for Numeric and Boolean types supported in EL are shown below.</p>
@@ -1646,7 +1677,10 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $systolic_bp_samples: List&lt;Real&gt;
+<pre>input_context
+    $systolic_bp_samples: List&lt;Real&gt;
+
+definition
     Systolic_bp_threshold: Real = 160.0
 
     if there_exists v in $systolic_bp_samples : v &gt; Systolic_bp_threshold then
@@ -1667,7 +1701,10 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $systolic_bp_samples: List&lt;Real&gt;
+<pre>input_context
+    $systolic_bp_samples: List&lt;Real&gt;
+
+definition
     Systolic_bp_threshold: Real = 160.0
 
     if for_all v in $systolic_bp_samples : v &lt;= Systolic_bp_threshold then
@@ -1676,7 +1713,7 @@ computing_context
 </div>
 </div>
 <div class="paragraph">
-<p>The syntactic form of these two operators can be understood as a shorthand for the following underlying functions defined on the container types, available in most programming language libraries.</p>
+<p>The syntactic form of these two operators can be understood as a shorthand for the following underlying functions defined on the container types, available in most programming language libraries. The argument to both functions is a function object with signature <code>&lt;v:T&gt;: Boolean</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1697,7 +1734,7 @@ computing_context
 <div class="sect3">
 <h4 id="_assignment"><a class="anchor" href="#_assignment"></a>3.8.1. Assignment</h4>
 <div class="paragraph">
-<p>An assignment is kind of statement used to assign the value of an expression to a writable variable using the <code>:=</code> operator. An assignment may be made in a declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.</p>
+<p>An assignment is kind of statement used to assign the value of an expression to a writable variable using the <code>:=</code> operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1712,29 +1749,25 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $date_of_birth: Date                   -- bound to data context
-    age: Duration
+<pre>input_context
+    $date_of_birth: Date
 
-    age := current_date() - $date_of_birth</pre>
+definition
+    age: Duration
+    age := current_date() - $date_of_birth
+    ...</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_procedure_invocation"><a class="anchor" href="#_procedure_invocation"></a>3.8.2. Procedure Invocation</h4>
 <div class="paragraph">
-<p>EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries. Semantically however, they are quite different. A procedure is a routine with a signature of the form:</p>
+<p>EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries. Semantically however, they are quite different. A procedure is a routine with a signature of the form <code>&lt;T_arg1, T_arg2, &#8230;&#8203;.&gt;</code>, i.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    &lt;T_arg1, T_arg2, ....&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>I.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    &lt;Real&gt;                          -- a 1st-order procedure for the domain R
+<pre>    -- NB: not EL syntax
+    &lt;Real&gt;                          -- a 1st-order procedure for the domain R
     &lt;String, Integer&gt;               -- signature of a procedure taking a String and an Integer argument</pre>
 </div>
 </div>
@@ -1745,7 +1778,7 @@ computing_context
 <div class="content">
 <pre>    proc alert_user (message: String; priority: Integer)    -- a procedure that generates a user alert
 
-    if $systolic_blood_pressure &gt; 180.0 then
+    if $systolic_bp_meas &gt; 180.0 then
         alert_user ([dangerous_blood_pressure], 1)          -- call the procedure
     end</pre>
 </div>
@@ -1763,10 +1796,17 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if $systolic_blood_pressure &gt; 160.0 then
-        -- statements about high blood_pressure
-    elseif $systolic_blood_pressure &gt; 140.0 and $thyroid_t3 &gt; 200 then
-        -- statements about raised blood pressure and abnormal thyroid activity
+<pre>input_context
+    $systolic_bp_meas: Real     -- from instrument
+    $thyroid_t3: Real           -- from EHR
+
+definition
+    if $systolic_bp_meas &gt; 160.0 then
+        alert_user ([dangerous_blood_pressure], 1)
+
+    elseif $systolic_bp_meas &gt; 140.0 and $thyroid_t3 &gt; 200 then
+        inform_user ([raised_bp_and_abnormal_thyroid_activity], 2)
+
     else
         -- other cases
     end</pre>
@@ -1805,15 +1845,16 @@ computing_context
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    when $systolic_bp
-        matches |&gt;= 200.0| then
-            -- raise emergency alert
+<pre>input_context
+    $systolic_bp_meas: Real     -- from instrument
 
+definition
+    when $systolic_bp_meas
         matches |&gt;= 180.0| then
-            -- request nurse check
+            alert ([dangerous_blood_pressure], 0)
 
         matches |&gt;= 160.0| then
-            -- record 'high pressure'
+            alert ([high_blood_pressure], 1)
     end</pre>
 </div>
 </div>
@@ -1826,42 +1867,7 @@ computing_context
 <h2 id="_material_to_remove"><a class="anchor" href="#_material_to_remove"></a>4. Material to remove?</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_routines_as_objects"><a class="anchor" href="#_routines_as_objects"></a>4.1. Routines as Objects</h3>
-<div class="paragraph">
-<p>In EL, routine invocations are first-class entities, in a similar manner to functional programming languages. This enables two things:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>a routine may be used as an argument in another routine call;</p>
-</li>
-<li>
-<p>a routine invocation may be converted to other routine by the process known as <em>currying</em>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>An example of the first is shown below for the method <code><em>some()</em></code>, defined on the type <code>List&lt;T&gt;</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    $heart_rate_samples: List&lt;Real&gt;
-    Atrial_fibrillation_threshold: Real = 100.0
-
-    if $heart_rate_samples.some (
-        (v:Real): Boolean
-            do
-                Result := v &gt; Atrial_fibrillation_threshold
-            end
-        )
-    then
-        --
-    end</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_iteration"><a class="anchor" href="#_iteration"></a>4.2. Iteration</h3>
+<h3 id="_iteration"><a class="anchor" href="#_iteration"></a>4.1. Iteration</h3>
 <div class="paragraph">
 <p>Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container types, as follows.</p>
 </div>
@@ -1979,7 +1985,7 @@ computing_context
 <p>Since a binding represents a data mapping, the direction needs to be specified. This may be logically understood as <code>in</code>, <code>out</code> or <code>in_out</code>, indicating whether the variable is reading a value from the external world, writing a value to it, or may do both.</p>
 </div>
 <div class="paragraph">
-<p>In addition to binding target and direction, it is often important to state the <em>data quality</em>, typically at least <em>currency</em> i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a <code>WHERE</code> clause expression that references a relevant time-related meta-data item.</p>
+<p>For <code>in</code> and <code>in_out</code> variables, in addition to binding target, it is often important to state the <em>data quality</em>, typically at least <em>currency</em> i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a <code>WHERE</code> clause expression that references a relevant time-related meta-data item.</p>
 </div>
 <div class="paragraph">
 <p>Another aspect of data quality is when a bound variable is sampled from its external context with respect to the execution of rules or expressions mentioning it. The default is that it is sampled once at the start of execution of a rule set containing expressions that mention the variable, i.e. at the point of parsing the context definition. However if a rule set is repeatedly evaluated, some variables may require sampling in real time, whereas others might only need to be sampled once, or less frequently. For example, for a rule set that is executed every minute, patient vital signs variables usually need to be sampled each time, whereas a variable like patient weight need only be sampled once per day.</p>

@@ -4,7 +4,7 @@
 
 This section describes the openEHR Expression Language (EL). In the various contexts where EL expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.
 
-Formally, an expression is any of the following value-returning entities:
+Formally, an openEHR EL expression is any of the following value-returning entities:
 
 * _terminal entities_:
 ** _literals_;
@@ -14,10 +14,12 @@ Formally, an expression is any of the following value-returning entities:
 * _predicates_:
 ** _check() predicate_: special expression for asserting a truth value;
 ** _defined() predicate_: special expression for determing validity of external variable;
-* _complex expressions_:
+* _complex expressions_ created from:
 ** _equality operator_: equality operator;
 ** _primitive operators_: arithmetic operators, relational operators, boolean operators;
 ** _collection operators_: logical quantification operators.
+
+Each of these is described in detail in the following sections.
 
 EL is designed syntactically as a readable language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal built-in core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the `Date` type, or the `for_all` universal quantifier operator may be mapped to underlying methods such as `Date._add_()` and `Container._for_all_()`.
 
@@ -25,7 +27,7 @@ EL is not intended for writing functions or classes, rather it is designed as a 
 
 == Syntax style
 
-The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (`{}`). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to EL syntax such as the following.
+The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (`{}`). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to syntax such as the following.
 
 ----
     -- a universal quantifier expression
@@ -155,16 +157,26 @@ Various methods are defined for `Interval<T>`, as follows.
             -- True if this Interval contains other
 ----
 
+=== Non-primitive Types
+
+Non-primitive types may be imported from formal model definitions specified in the `use_model` section of an EL text. Such models need to be specified in {openehr_base_bmm}[openEHR BMM format], or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.
+
+Access to interior elements of instances of non-primitive types is obtained using 'dot' notation, i.e. the standard way for object-oriented languages.
+
 == Declarations
 
-Symbolic references are declared in the form `name: Type`. Multiple variables may be declared on the same line. The following shows various declarations:
+Symbolic references are declared in the form `name: Type`. Multiple variables may be declared on the same line. External variables are declared in the `input_context` and `output_context` sections, while local variables are declared within the `definition` section. The following shows various declarations:
 
 --------
-    date_of_birth: Date
-    age_in_years: Integer
-    
-    weight, height, bmi: Real
-    
+input_context
+    $date_of_birth: Date
+    $weight, $height: Real
+
+output_context
+    $bmi: Real
+
+definition
+    age_in_years: Integer    
     heart_rate_samples: List<Real>
 --------
 
@@ -236,7 +248,7 @@ Examples of declarations of both kinds are as follows.
 
 --------
     $date_of_birth: Date                -- an external variable
-    age_in_years: Integer               -- an interval variable
+    age_in_years: Integer               -- an internal variable
     
     $weight, $height, bmi: Real         -- two external variables and an internal variable
     
@@ -270,11 +282,11 @@ EL does not provide a way to programmatically define routines (i.e. it does not 
 Examples of function declarations:
 
 ----
-    func current_date(): Date                            -- a function that obtains today's date
+    func current_date(): Date                      -- a function that obtains today's date
     
-    func bmi_metric (height, weight:Real): Real          -- a function that computes BMI from metric inputs
+    func bmi_metric (height, weight:Real): Real    -- a function that computes BMI from metric inputs
     
-    func sum (vals: List<Real>): Real                    -- a function that computes the sum of a list of Reals
+    func sum (vals: List<Real>): Real              -- a function that computes the sum of a list of Reals
 ----
 
 The following example shows a function declaration for a function `_tnm_major_number_()` that extracts various elements of {wikipedia}/TNM_staging_system[Tumour/Node/Metastasis ('TNM')] cancer staging values, such as `'Tis'`, `'G3'` and so on, and uses them in a Boolean expression whose value is assigned to the variable `is_luminal_A`.
@@ -282,7 +294,9 @@ The following example shows a function declaration for a function `_tnm_major_nu
 ----
     func tnm_major_number (tnm_val: String): Integer
 
-    is_luminal_A: Boolean := tnm_major_number (tnm_t) < 3 and tnm_major_number (tnm_n) < 2 and tnm_major_number (tnm_g) < 3
+    is_luminal_A: Boolean := tnm_major_number (tnm_t) < 3 and 
+                             tnm_major_number (tnm_n) < 2 and 
+                             tnm_major_number (tnm_g) < 3
 ----
 
 Functions are mapped to class methods in external libraries in the <<_computing_context, Computing Context>> section of an EL text.
@@ -371,7 +385,7 @@ Primitive operators in EL are the infix or prefix syntax form of various functio
     function minus<T extends Numeric> (other: T): T
 ----
 
-This means that where the expressions `100 - 5` or `int_val_1 - int_val_2` are encountered in EL, what is really invoked is `Integer._minus_()`.
+This means that where the expression `100 - 5` is encountered in EL, what is really invoked is `Integer._minus_()`, i.e. `100.minus(5)`.
 
 The operators for Numeric and Boolean types supported in EL are shown below.
 
@@ -470,7 +484,10 @@ The syntax of `there exists` is as follows:
 Here, the `:` symbol is usually read in English as 'such that'. The expression may be used as in the following example:
 
 ----
+input_context
     $systolic_bp_samples: List<Real>
+    
+definition
     Systolic_bp_threshold: Real = 160.0
     
     if there_exists v in $systolic_bp_samples : v > Systolic_bp_threshold then
@@ -487,7 +504,10 @@ The `for_all` operator has similar syntax:
 Here, the `:` symbol is normally read as 'it holds that' A typical use is as follows:
 
 ----
+input_context
     $systolic_bp_samples: List<Real>
+    
+definition
     Systolic_bp_threshold: Real = 160.0
     
     if for_all v in $systolic_bp_samples : v <= Systolic_bp_threshold then
@@ -495,7 +515,7 @@ Here, the `:` symbol is normally read as 'it holds that' A typical use is as fol
     end
 ----
 
-The syntactic form of these two operators can be understood as a shorthand for the following underlying functions defined on the container types, available in most programming language libraries.
+The syntactic form of these two operators can be understood as a shorthand for the following underlying functions defined on the container types, available in most programming language libraries. The argument to both functions is a function object with signature `<v:T>: Boolean`.
 
 ----
     there_exists (test(v: T): Boolean): Boolean
@@ -511,7 +531,7 @@ There are two kinds of procedural construct in EL: _statements_ and _control str
 
 === Assignment
 
-An assignment is kind of statement used to assign the value of an expression to a writable variable using the `:=` operator. An assignment may be made in a declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.
+An assignment is kind of statement used to assign the value of an expression to a writable variable using the `:=` operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.
 
 --------
     speed_kmh: Real                             -- declaration
@@ -523,23 +543,21 @@ An assignment is kind of statement used to assign the value of an expression to 
 The following shows an assignment with an expression using a function and an external variable.
 
 ----
-    $date_of_birth: Date                   -- bound to data context
-    age: Duration
+input_context
+    $date_of_birth: Date
     
-    age := current_date() - $date_of_birth   
+definition
+    age: Duration
+    age := current_date() - $date_of_birth
+    ...
 ----
 
 === Procedure Invocation
 
-EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries. Semantically however, they are quite different. A procedure is a routine with a signature of the form:
+EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries. Semantically however, they are quite different. A procedure is a routine with a signature of the form `<T_arg1, T_arg2, ....>`, i.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:
 
 ----
-    <T_arg1, T_arg2, ....>
-----
-
-I.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:
-
-----
+    -- NB: not EL syntax
     <Real>                          -- a 1st-order procedure for the domain R
     <String, Integer>               -- signature of a procedure taking a String and an Integer argument
 ----
@@ -549,7 +567,7 @@ Procedures must be declared before use. This is done using the same syntax as fo
 ----
     proc alert_user (message: String; priority: Integer)    -- a procedure that generates a user alert
     
-    if $systolic_blood_pressure > 180.0 then
+    if $systolic_bp_meas > 180.0 then
         alert_user ([dangerous_blood_pressure], 1)          -- call the procedure
     end
 ----
@@ -563,10 +581,17 @@ Two control structures are provided in EL. They provide conditional logic struct
 In common with most programming languages, EL provides a standard 'if / then / elseif / else' structure, as follows:
 
 ----
-    if $systolic_blood_pressure > 160.0 then
-        -- statements about high blood_pressure
-    elseif $systolic_blood_pressure > 140.0 and $thyroid_t3 > 200 then
-        -- statements about raised blood pressure and abnormal thyroid activity
+input_context
+    $systolic_bp_meas: Real     -- from instrument
+    $thyroid_t3: Real           -- from EHR
+
+definition
+    if $systolic_bp_meas > 160.0 then
+        alert_user ([dangerous_blood_pressure], 1)
+        
+    elseif $systolic_bp_meas > 140.0 and $thyroid_t3 > 200 then
+        inform_user ([raised_bp_and_abnormal_thyroid_activity], 2)
+        
     else
         -- other cases
     end
@@ -598,43 +623,20 @@ the syntax is as follows.
 The syntax for the match intervals is the standard EL Interval type literal syntax. An example 'when / then' statement is as follows:
 
 --------
-    when $systolic_bp
-        matches |>= 200.0| then
-            -- raise emergency alert
+input_context
+    $systolic_bp_meas: Real     -- from instrument
 
+definition
+    when $systolic_bp_meas
         matches |>= 180.0| then
-            -- request nurse check
+            alert ([dangerous_blood_pressure], 0)
 
         matches |>= 160.0| then
-            -- record 'high pressure'
+            alert ([high_blood_pressure], 1)
     end
 --------
 
 = Material to remove?
-
-== Routines as Objects
-
-In EL, routine invocations are first-class entities, in a similar manner to functional programming languages. This enables two things:
-
-*  a routine may be used as an argument in another routine call;
-*  a routine invocation may be converted to other routine by the process known as _currying_.
-
-An example of the first is shown below for the method `_some()_`, defined on the type `List<T>`.
-
-----
-    $heart_rate_samples: List<Real>
-    Atrial_fibrillation_threshold: Real = 100.0
-    
-    if $heart_rate_samples.some (
-        (v:Real): Boolean
-            do
-                Result := v > Atrial_fibrillation_threshold 
-            end
-        )
-    then
-        --
-    end
-----
 
 == Iteration
 
