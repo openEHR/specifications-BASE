@@ -63,7 +63,7 @@ Mappings between external variables and external entities are described by _bind
 
 Symbols are _names_ in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a `terminology` section of an EL text, in the same way as for openEHR archetypes. For example, the symbol `heart_rate` of type `Integer` may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).
 
-Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in a `computing_context` section. 
+Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in a `computing_bindings` section. 
 
 In addition to these computable sections, various meta-data sections are added, including the `description` and `language` sections defined by the {openehr_resource}[openEHR Resource specification], and an identification line at the top. As with archetypes, the sections other than `input_context`, `definition`, and `output_context` are expressed in {openehr_odin}[openEHR ODIN syntax].
 
@@ -89,10 +89,10 @@ description
 use_model
     <model ids>
 
-input_context
-    <declarations>
-    
-output_context
+reference
+    <constant definitions>
+
+data_context
     <declarations>
     
 definition
@@ -106,10 +106,10 @@ terminology
         ...
     >
     
-data_context
+data_bindings
     <symbol bindings>
     
-computing_context
+computing_bindings
     <method bindings>
 ----
 
@@ -138,15 +138,13 @@ description
 
 use_model
     org.openehr.rm
-
-input_context
-    $body_weight, $height: Real
     
-output_context
-    $bmi: Real
+data_context
+    in body_weight, height: Real
+    out bmi: Real
     
 definition
-    $bmi := $body_weight / $height ^ 2
+    bmi := $body_weight / $height ^ 2
     
 terminology
     symbol_definitions = <
@@ -174,7 +172,7 @@ terminology
         >
     >
    
-data_context
+data_bindings
     content_bindings = <
         ["openEHR-EHR-OBSERVATION.body_measurements.v1"] = <
             ["body_weight"] = <
@@ -199,4 +197,4 @@ When used within other artefacts, EL expressions may be expressed as a merger of
 
 * including the definitions in the `rules` section;
 * adding the EL text `symbol_definitions` section to the archetype `terminology` section;
-* adding the `data_context` and `computing_context` as additional sections.
+* adding the `data_bindings` and `computing_bindings` as additional sections.

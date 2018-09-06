@@ -1,25 +1,23 @@
-= Data Context
+= Data Bindings
 
 Expressions in the openEHR Expression Language contain variables, which may be _bound_ to entities in a _data context_. Each binding connects a symbolic variable to a data source or target in the data context.
 
 == Binding Model
 
-The model of binding of a symbolic variable in an expression to an external entity varies, depending on specifics of system architecture. The taxonomy shown below illustrates the various forms of context that are assumed to exist. There are two essential types: _execution context_ and _content context_. The first corresponds to obtaining the required data item from the current execution context, either via a _system call_, of which concrete subtypes are _API call_ and _query_ (left side of the diagram), or _interactive_, i.e. via an application. 
+The model of binding of a symbolic variable in an expression to an external entity varies, depending on specifics of system architecture. The taxonomy shown below illustrates the various forms of context that are assumed to exist. There are two essential types: _execution context_ and _content context_. The first corresponds to obtaining the required data item from the current execution context, either via an _API call_, running a _query_, or _interactive_, i.e. via an application. 
 
 [.text-center]
 .Taxonomy of data binding
 image::diagrams/data_binding_taxonomy.svg[id=data_binding_taxonomy, align="center"]
 
-Since a binding represents a data mapping, the direction needs to be specified. This may be logically understood as `in`, `out` or `in_out`, indicating whether the variable is reading a value from the external world, writing a value to it, or may do both.
+For variables declared as `in` and `in_out` in the EL text, in addition to binding targets, it is may be important to state the _data quality_, typically at least _currency_ i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a `WHERE` clause expression that references a relevant time-related meta-data item.
 
-For `in` and `in_out` variables, in addition to binding target, it is often important to state the _data quality_, typically at least _currency_ i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a `WHERE` clause expression that references a relevant time-related meta-data item.
+Another aspect of data quality is _when_ a bound variable is sampled from its external context with respect to the execution of rules or expressions mentioning it. The default is that it is sampled once at the start of execution of a rule set containing expressions that mention the variable, i.e. at the point of parsing the context definition. However if a rule set is repeatedly evaluated, some variables may require sampling in real time, whereas others might only need to be sampled once, or less frequently. For example, for a rule set that is executed every minute, patient vital signs variables usually need to be sampled each time, whereas a variable like patient weight need only be sampled once per day.
 
-Another aspect of data quality is when a bound variable is sampled from its external context with respect to the execution of rules or expressions mentioning it. The default is that it is sampled once at the start of execution of a rule set containing expressions that mention the variable, i.e. at the point of parsing the context definition. However if a rule set is repeatedly evaluated, some variables may require sampling in real time, whereas others might only need to be sampled once, or less frequently. For example, for a rule set that is executed every minute, patient vital signs variables usually need to be sampled each time, whereas a variable like patient weight need only be sampled once per day.
-
-In a data context definition, bindings of the various concrete types are stated. Within each type, the individual variable bindings are expressed with repect to an _index context_, which varies depending on the binding type. The general structure of a data context definition is as follows.
+In a data context definition, bindings of the various concrete types are stated. Within each type, the individual variable bindings are expressed with repect to an _index context_, which varies depending on the binding type. The general structure of a data bindings definition is as follows.
 
 ----
-data_context
+data_bindings
     content_bindings
         index_context_id
             var_name 
@@ -50,18 +48,17 @@ Binding of a variable to a _content context_ is done by mapping the variable to 
 
 [source,odin]
 ----
-data_context
+data_bindings
     content_bindings = <
         ["openEHR-EHR-COMPOSITION.encounter.v1"] = <
             ["date_initial_onset"] = <
                 target = <"/data[id2]/items[id3]/value[id35]/value">
-                direction = <"in">
             >
         >
     >
 ----
 
-Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables `body_weight`, `height` and `body_mass_index`, of which the latter is an output variable. This means that it may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.
+Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables `$body_weight`, `$height` and `$body_mass_index` used in examples above. A writable (i.e. `out`) variable such as `$body_mass_index` may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.
 
 [source,odin]
 ----
@@ -70,17 +67,14 @@ data_context
         ["openEHR-EHR-OBSERVATION.body_measurements.v1"] = <
             ["body_weight"] = <
                 target = <"/data/events[id3]/data/items[id5]/value/magnitude">
-                direction = <"in">
             >
             ["height"] = <
                 target = <"/data/events[id3]/data/items[id6]/value/magnitude">
-                direction = <"in">
             >
         >
         ["openEHR-EHR-OBSERVATION.body_mass_index.v1"] = <
             ["body_mass_index"] = <
                 target = <"/data/events[id3]/data/items[id5]/value/magnitude">
-                direction = <"out">
             >
         >
     >
@@ -92,14 +86,16 @@ A binding to an API call is used when the required value can be obtained through
 
 [source,odin]
 ----
-data_context
+data_bindings
     api_bindings = <
         ["https://oncology.health.org/cdr/"] = <
             ["systolic_bp"] = <
                 call_name = <"vital_sign">,
-                parameters = <"$ehr_id", "systolic_pressure">,
+                parameters = <
+                    [1] = <"$ehr_id">
+                    [2] = <"systolic_pressure">
+                >,
                 currency = <P1h>
-                direction = <"in">
             >
         >
     >
@@ -118,12 +114,10 @@ data_context
     query_bindings = <
         ["https://oncology.health.org/cdr/"] = <
             ["systolic_bp"] = <
-                call_name = <"execute_stored_query">,
                 query_id = <"vital_signs_basic">,
                 parameters = <
                     ["$type"] = <"'systolic_pressure'">
                 >
-                direction = <"in">
             >
         >
     >
@@ -133,16 +127,14 @@ The following example shows how a Boolean variable `is_diabetic` is populated fr
 
 [source,odin]
 --------
-data_context
+data_bindings
     query_bindings = <
         ["https://oncology.health.org/cdr/"] = <
             ["is_diabetic"] = <
-                call_name = <"execute_stored_query">,
                 query_id = <"has_diagnosis">,
                 parameters = <
                     ["$dx_expr"] = <"'<<[snomed_ct::1234567]'">
                 >
-                direction = <"in">
             >
         >
     >
@@ -154,13 +146,12 @@ Rather than obtaining a data value from and API or query, it may be obtained int
 
 [source,odin]
 --------
-data_context
+data_bindings
     interactive_bindings = <
         ["default"] = <
             ["is_diabetic"] = <
                 visual_control_type = <"boolean">,
                 prompt = <"is_diabetic_prompt">,
-                direction = <"in">
             >
         >
     >

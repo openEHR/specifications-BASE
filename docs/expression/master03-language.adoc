@@ -163,23 +163,6 @@ Non-primitive types may be imported from formal model definitions specified in t
 
 Access to interior elements of instances of non-primitive types is obtained using 'dot' notation, i.e. the standard way for object-oriented languages.
 
-== Declarations
-
-Symbolic references are declared in the form `name: Type`. Multiple variables may be declared on the same line. External variables are declared in the `input_context` and `output_context` sections, while local variables are declared within the `definition` section. The following shows various declarations:
-
---------
-input_context
-    $date_of_birth: Date
-    $weight, $height: Real
-
-output_context
-    $bmi: Real
-
-definition
-    age_in_years: Integer    
-    heart_rate_samples: List<Real>
---------
-
 == Terminal Entities
 
 This section describes the various kinds of terminal entities that may appear in EL expressions.
@@ -231,31 +214,51 @@ Literal values are expressed in the {openehr_odin}#_primitive_types[ODIN syntax]
 
 === Constants
 
-Constants are defined via the use of the equality operator `=` in a type declaration, as follows.
+Constants are defined via the use of the equality operator `=` in type declarations in the `reference` section, as follows.
 
 --------
+reference
     Mph_to_kmh_factor: Real = 1.6
     Pounds_to_kg: Real = 0.4536
+    Safe_glucose_limits: Interval<Real> = |0.0..6.5|
 --------
 
-The result of the declaration is to defined the symbols `Mph_to_kmh_factor` and `Pounds_to_kg` as immutable constants.
+The result of the declaration is to define the symbols `Mph_to_kmh_factor` and `Pounds_to_kg` as immutable constants.
+
+Constants of complex types are declared using the ODIN syntax, for example:
+
+--------
+reference
+    Threshold_ogtt_glucose: DV_QUANTITY = <
+        magnitude = <6.5>
+        units = <"mmol/L">
+    >
+--------
+
+[.tbd]
+TBD: could also use archetype fragments here, as matching templates.
 
 === Variables
 
-Two types of variable are recognised in EL: internal and external. These are distinguished respectively by the naming style `name` and `$name`. An external variable is one that is mapped to an external entity, declared in the data context for the EL expression.
+Symbolic variables are declared in two forms. The syntax `name: Type` is used for local variables, which are declared in the `definition` section.
 
-Examples of declarations of both kinds are as follows.
+External vraiables are declared in the `data_context` section, using the syntax `in|out|in_out $name: Type`. The direction specifier indicates the intended use of the variable in the defnition, i.e. `in` = readable, `out` = writable, `in_out` = readable and writable.
+
+In both cases, multiple variables may be declared on the same line. The following shows various declarations:
 
 --------
-    $date_of_birth: Date                -- an external variable
-    age_in_years: Integer               -- an internal variable
-    
-    $weight, $height, bmi: Real         -- two external variables and an internal variable
-    
-    $heart_rate_samples: List<Real>     -- an external variable bound to a List of Real values
+data_context
+    in $date_of_birth: Date
+    in $weight, $height: Real
+    out $bmi: Real    
+    in bp_obs: OBSERVATION;
+
+definition
+    age_in_years: Integer    
+    heart_rate_samples: List<Real>
 --------
 
-Every external variable must have a counterpart in the EL data context to be valid.
+Every external variable must have a counterpart in the EL data context to be processable.
 
 === Functions
 
@@ -299,7 +302,7 @@ The following example shows a function declaration for a function `_tnm_major_nu
                              tnm_major_number (tnm_g) < 3
 ----
 
-Functions are mapped to class methods in external libraries in the <<_computing_context, Computing Context>> section of an EL text.
+Functions are mapped to class methods in external libraries in the <<_computing_bindings, Computing Bindings>> section of an EL text.
 
 ==== Built-in Functions
 
@@ -397,7 +400,7 @@ The operators for Numeric and Boolean types supported in EL are shown below.
                                
 4+^h|Arithmetic Operators - Numeric operands and result; descending precendence order
 
-|exp          | ^             |≥          |Expontentiation
+|exp          | ^             |^          |Exponentiation
 |times        | *             |*          |Multiplication
 |divide       | /             |/          |Division
 |mod          | %             |%          |Modulo (whole number) division
@@ -420,6 +423,10 @@ The operators for Numeric and Boolean types supported in EL are shown below.
 |or           |or 			|∨ 			|Logical disjunction, "p or q"
 |xor          |xor 			|⊻ 			 |Exclusive or, "only one of p or q"
 |implies      |implies 		|⇒ 			 |Material implication, "p implies q", or "if p then q"
+
+4+^h|Constraint Operators - Boolean result
+
+|matches      |matches 		|∈  		 |Set membership, as per {openehr_am_adl2}[openEHR ADL]
 
 |=================================================================
 
@@ -484,12 +491,13 @@ The syntax of `there exists` is as follows:
 Here, the `:` symbol is usually read in English as 'such that'. The expression may be used as in the following example:
 
 ----
-input_context
+reference
+    Systolic_bp_threshold: Real = 160.0
+
+data_context
     $systolic_bp_samples: List<Real>
     
 definition
-    Systolic_bp_threshold: Real = 160.0
-    
     if there_exists v in $systolic_bp_samples : v > Systolic_bp_threshold then
         -- statements
     end
@@ -504,12 +512,13 @@ The `for_all` operator has similar syntax:
 Here, the `:` symbol is normally read as 'it holds that' A typical use is as follows:
 
 ----
-input_context
-    $systolic_bp_samples: List<Real>
-    
-definition
+reference
     Systolic_bp_threshold: Real = 160.0
+
+data_context
+    in $systolic_bp_samples: List<Real>
     
+definition    
     if for_all v in $systolic_bp_samples : v <= Systolic_bp_threshold then
         -- statements
     end
@@ -534,6 +543,7 @@ There are two kinds of procedural construct in EL: _statements_ and _control str
 An assignment is kind of statement used to assign the value of an expression to a writable variable using the `:=` operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.
 
 --------
+definition
     speed_kmh: Real                             -- declaration
     speed_mph: Real := 35.0                     -- assignment in a declaration (not a constant)
         
@@ -543,8 +553,8 @@ An assignment is kind of statement used to assign the value of an expression to 
 The following shows an assignment with an expression using a function and an external variable.
 
 ----
-input_context
-    $date_of_birth: Date
+data_context
+    in $date_of_birth: Date
     
 definition
     age: Duration
@@ -581,9 +591,9 @@ Two control structures are provided in EL. They provide conditional logic struct
 In common with most programming languages, EL provides a standard 'if / then / elseif / else' structure, as follows:
 
 ----
-input_context
-    $systolic_bp_meas: Real     -- from instrument
-    $thyroid_t3: Real           -- from EHR
+data_context
+    in $systolic_bp_meas: Real     -- from instrument
+    in $thyroid_t3: Real           -- from EHR
 
 definition
     if $systolic_bp_meas > 160.0 then
@@ -623,8 +633,8 @@ the syntax is as follows.
 The syntax for the match intervals is the standard EL Interval type literal syntax. An example 'when / then' statement is as follows:
 
 --------
-input_context
-    $systolic_bp_meas: Real     -- from instrument
+data_context
+    in $systolic_bp_meas: Real     -- from instrument
 
 definition
     when $systolic_bp_meas

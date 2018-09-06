@@ -51,45 +51,44 @@
 <li><a href="#_non_primitive_types">3.3.4. Non-primitive Types</a></li>
 </ul>
 </li>
-<li><a href="#_declarations">3.4. Declarations</a></li>
-<li><a href="#_terminal_entities">3.5. Terminal Entities</a>
+<li><a href="#_terminal_entities">3.4. Terminal Entities</a>
 <ul class="sectlevel3">
-<li><a href="#_literals">3.5.1. Literals</a></li>
-<li><a href="#_constants">3.5.2. Constants</a></li>
-<li><a href="#_variables">3.5.3. Variables</a></li>
-<li><a href="#_functions">3.5.4. Functions</a>
+<li><a href="#_literals">3.4.1. Literals</a></li>
+<li><a href="#_constants">3.4.2. Constants</a></li>
+<li><a href="#_variables">3.4.3. Variables</a></li>
+<li><a href="#_functions">3.4.4. Functions</a>
 <ul class="sectlevel4">
-<li><a href="#_built_in_functions">3.5.4.1. Built-in Functions</a></li>
+<li><a href="#_built_in_functions">3.4.4.1. Built-in Functions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_predicates">3.6. Predicates</a>
+<li><a href="#_predicates">3.5. Predicates</a>
 <ul class="sectlevel3">
-<li><a href="#_check_predicate">3.6.1. check() Predicate</a></li>
-<li><a href="#_defined_predicate">3.6.2. defined() Predicate</a></li>
+<li><a href="#_check_predicate">3.5.1. check() Predicate</a></li>
+<li><a href="#_defined_predicate">3.5.2. defined() Predicate</a></li>
 </ul>
 </li>
-<li><a href="#_complex_expressions">3.7. Complex Expressions</a>
+<li><a href="#_complex_expressions">3.6. Complex Expressions</a>
 <ul class="sectlevel3">
-<li><a href="#_equality_operator">3.7.1. Equality Operator</a></li>
-<li><a href="#_primitive_operators">3.7.2. Primitive Operators</a>
+<li><a href="#_equality_operator">3.6.1. Equality Operator</a></li>
+<li><a href="#_primitive_operators">3.6.2. Primitive Operators</a>
 <ul class="sectlevel4">
-<li><a href="#_logical_negation">3.7.2.1. Logical Negation</a></li>
-<li><a href="#_precedence_and_parentheses">3.7.2.2. Precedence and Parentheses</a></li>
+<li><a href="#_logical_negation">3.6.2.1. Logical Negation</a></li>
+<li><a href="#_precedence_and_parentheses">3.6.2.2. Precedence and Parentheses</a></li>
 </ul>
 </li>
-<li><a href="#_collection_operators">3.7.3. Collection Operators</a></li>
+<li><a href="#_collection_operators">3.6.3. Collection Operators</a></li>
 </ul>
 </li>
-<li><a href="#_procedural_elements">3.8. Procedural Elements</a>
+<li><a href="#_procedural_elements">3.7. Procedural Elements</a>
 <ul class="sectlevel3">
-<li><a href="#_assignment">3.8.1. Assignment</a></li>
-<li><a href="#_procedure_invocation">3.8.2. Procedure Invocation</a></li>
-<li><a href="#_control_structures">3.8.3. Control Structures</a>
+<li><a href="#_assignment">3.7.1. Assignment</a></li>
+<li><a href="#_procedure_invocation">3.7.2. Procedure Invocation</a></li>
+<li><a href="#_control_structures">3.7.3. Control Structures</a>
 <ul class="sectlevel4">
-<li><a href="#_if_then">3.8.3.1. If / then</a></li>
-<li><a href="#_when_then">3.8.3.2. When / then</a></li>
+<li><a href="#_if_then">3.7.3.1. If / then</a></li>
+<li><a href="#_when_then">3.7.3.2. When / then</a></li>
 </ul>
 </li>
 </ul>
@@ -102,7 +101,7 @@
 </ul>
 </li>
 <li><a href="#_terminology">5. Terminology</a></li>
-<li><a href="#_data_context">6. Data Context</a>
+<li><a href="#_data_bindings">6. Data Bindings</a>
 <ul class="sectlevel2">
 <li><a href="#_binding_model">6.1. Binding Model</a>
 <ul class="sectlevel3">
@@ -114,7 +113,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#_computing_context">7. Computing Context</a></li>
+<li><a href="#_computing_bindings">7. Computing Bindings</a></li>
 <li><a href="#_module_structure">8. Module Structure</a>
 <ul class="sectlevel2">
 <li><a href="#_el_text_identification">8.1. EL Text Identification</a></li>
@@ -151,7 +150,7 @@
 <li><a href="#_el_leaf_class">9.2.2.21. EL_LEAF Class</a></li>
 <li><a href="#_el_literal_class">9.2.2.22. EL_LITERAL Class</a></li>
 <li><a href="#_el_variable_class">9.2.2.23. EL_VARIABLE Class</a></li>
-<li><a href="#_el_bound_variable_class">9.2.2.24. EL_BOUND_VARIABLE Class</a></li>
+<li><a href="#_el_external_variable_class">9.2.2.24. EL_EXTERNAL_VARIABLE Class</a></li>
 <li><a href="#_el_function_call_class">9.2.2.25. EL_FUNCTION_CALL Class</a></li>
 </ul>
 </li>
@@ -161,7 +160,7 @@
 <ul class="sectlevel3">
 <li><a href="#_class_descriptions_2">9.3.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_expr_type_def_class">9.3.1.1. EXPR_TYPE_DEF Class</a></li>
+<li><a href="#_el_type_def_class">9.3.1.1. EL_TYPE_DEF Class</a></li>
 <li><a href="#_type_def_boolean_class">9.3.1.2. TYPE_DEF_BOOLEAN Class</a></li>
 <li><a href="#_type_def_integer_class">9.3.1.3. TYPE_DEF_INTEGER Class</a></li>
 <li><a href="#_type_def_real_class">9.3.1.4. TYPE_DEF_REAL Class</a></li>
@@ -539,7 +538,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <p>Symbols are <em>names</em> in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL text, in the same way as for openEHR archetypes. For example, the symbol <code>heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
 </div>
 <div class="paragraph">
-<p>Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in a <code>computing_context</code> section.</p>
+<p>Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in a <code>computing_bindings</code> section.</p>
 </div>
 <div class="paragraph">
 <p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than <code>input_context</code>, <code>definition</code>, and <code>output_context</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
@@ -569,10 +568,10 @@ description
 use_model
     &lt;model ids&gt;
 
-input_context
-    &lt;declarations&gt;
+reference
+    &lt;constant definitions&gt;
 
-output_context
+data_context
     &lt;declarations&gt;
 
 definition
@@ -586,10 +585,10 @@ terminology
         ...
     &gt;
 
-data_context
+data_bindings
     &lt;symbol bindings&gt;
 
-computing_context
+computing_bindings
     &lt;method bindings&gt;</pre>
 </div>
 </div>
@@ -620,11 +619,9 @@ computing_context
 <span class="tok-s">use_model</span>
     <span class="tok-nc">org</span><span class="tok-err">.</span><span class="tok-nc">openehr</span><span class="tok-err">.</span><span class="tok-nc">rm</span>
 
-<span class="tok-s">input_context</span>
-    <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
-
-<span class="tok-s">output_context</span>
-    <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+<span class="tok-s">data_context</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+    <span class="tok-nc">out</span> <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
 
 <span class="tok-gh">definition</span>
     <span class="tok-err">$</span><span class="tok-nc">bmi</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span> <span class="tok-p">/ </span><span class="tok-err">$</span><span class="tok-nc">height</span> <span class="tok-o">^</span> <span class="tok-mi">2</span>
@@ -655,7 +652,7 @@ computing_context
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span>
 
-<span class="tok-s">data_context</span>
+<span class="tok-s">data_bindings</span>
     <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_measurements.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
@@ -688,7 +685,7 @@ computing_context
 <p>adding the EL text <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
 </li>
 <li>
-<p>adding the <code>data_context</code> and <code>computing_context</code> as additional sections.</p>
+<p>adding the <code>data_bindings</code> and <code>computing_bindings</code> as additional sections.</p>
 </li>
 </ul>
 </div>
@@ -1026,32 +1023,12 @@ computing_context
 </div>
 </div>
 <div class="sect2">
-<h3 id="_declarations"><a class="anchor" href="#_declarations"></a>3.4. Declarations</h3>
-<div class="paragraph">
-<p>Symbolic references are declared in the form <code>name: Type</code>. Multiple variables may be declared on the same line. External variables are declared in the <code>input_context</code> and <code>output_context</code> sections, while local variables are declared within the <code>definition</code> section. The following shows various declarations:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>input_context
-    $date_of_birth: Date
-    $weight, $height: Real
-
-output_context
-    $bmi: Real
-
-definition
-    age_in_years: Integer
-    heart_rate_samples: List&lt;Real&gt;</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_terminal_entities"><a class="anchor" href="#_terminal_entities"></a>3.5. Terminal Entities</h3>
+<h3 id="_terminal_entities"><a class="anchor" href="#_terminal_entities"></a>3.4. Terminal Entities</h3>
 <div class="paragraph">
 <p>This section describes the various kinds of terminal entities that may appear in EL expressions.</p>
 </div>
 <div class="sect3">
-<h4 id="_literals"><a class="anchor" href="#_literals"></a>3.5.1. Literals</h4>
+<h4 id="_literals"><a class="anchor" href="#_literals"></a>3.4.1. Literals</h4>
 <div class="paragraph">
 <p>Literal values are expressed in the <a href="/releases/BASE/latest/odin.html#_primitive_types">ODIN syntax</a>, with the exception of <code>List&lt;T&gt;</code> and <code>Set&lt;T&gt;</code> which are distinguished in EL with specific types of brackets.</p>
 </div>
@@ -1201,44 +1178,67 @@ definition
 </table>
 </div>
 <div class="sect3">
-<h4 id="_constants"><a class="anchor" href="#_constants"></a>3.5.2. Constants</h4>
+<h4 id="_constants"><a class="anchor" href="#_constants"></a>3.4.2. Constants</h4>
 <div class="paragraph">
-<p>Constants are defined via the use of the equality operator <code>=</code> in a type declaration, as follows.</p>
+<p>Constants are defined via the use of the equality operator <code>=</code> in type declarations in the <code>reference</code> section, as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    Mph_to_kmh_factor: Real = 1.6
-    Pounds_to_kg: Real = 0.4536</pre>
+<pre>reference
+    Mph_to_kmh_factor: Real = 1.6
+    Pounds_to_kg: Real = 0.4536
+    Safe_glucose_limits: Interval&lt;Real&gt; = |0.0..6.5|</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The result of the declaration is to defined the symbols <code>Mph_to_kmh_factor</code> and <code>Pounds_to_kg</code> as immutable constants.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_variables"><a class="anchor" href="#_variables"></a>3.5.3. Variables</h4>
-<div class="paragraph">
-<p>Two types of variable are recognised in EL: internal and external. These are distinguished respectively by the naming style <code>name</code> and <code>$name</code>. An external variable is one that is mapped to an external entity, declared in the data context for the EL expression.</p>
+<p>The result of the declaration is to define the symbols <code>Mph_to_kmh_factor</code> and <code>Pounds_to_kg</code> as immutable constants.</p>
 </div>
 <div class="paragraph">
-<p>Examples of declarations of both kinds are as follows.</p>
+<p>Constants of complex types are declared using the ODIN syntax, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $date_of_birth: Date                -- an external variable
-    age_in_years: Integer               -- an internal variable
-
-    $weight, $height, bmi: Real         -- two external variables and an internal variable
-
-    $heart_rate_samples: List&lt;Real&gt;     -- an external variable bound to a List of Real values</pre>
+<pre>reference
+    Threshold_ogtt_glucose: DV_QUANTITY = &lt;
+        magnitude = &lt;6.5&gt;
+        units = &lt;"mmol/L"&gt;
+    &gt;</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Every external variable must have a counterpart in the EL data context to be valid.</p>
+<div class="paragraph tbd">
+<p>TBD: could also use archetype fragments here, as matching templates.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_functions"><a class="anchor" href="#_functions"></a>3.5.4. Functions</h4>
+<h4 id="_variables"><a class="anchor" href="#_variables"></a>3.4.3. Variables</h4>
+<div class="paragraph">
+<p>Symbolic variables are declared in two forms. The syntax <code>name: Type</code> is used for local variables, which are declared in the <code>definition</code> section.</p>
+</div>
+<div class="paragraph">
+<p>External vraiables are declared in the <code>data_context</code> section, using the syntax <code>in|out|in_out $name: Type</code>. The direction specifier indicates the intended use of the variable in the defnition, i.e. <code>in</code> = readable, <code>out</code> = writable, <code>in_out</code> = readable and writable.</p>
+</div>
+<div class="paragraph">
+<p>In both cases, multiple variables may be declared on the same line. The following shows various declarations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>data_context
+    in $date_of_birth: Date
+    in $weight, $height: Real
+    out $bmi: Real
+    in bp_obs: OBSERVATION;
+
+definition
+    age_in_years: Integer
+    heart_rate_samples: List&lt;Real&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every external variable must have a counterpart in the EL data context to be processable.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_functions"><a class="anchor" href="#_functions"></a>3.4.4. Functions</h4>
 <div class="paragraph">
 <p>In EL, the function is the primary means to link expressions to implementations. Both functions and procedures are supported, and are collectively known as <em>routines</em>. However, from a semantic point of view, only functions, or more correctly function invocations, qualify as expression elements. Procedures do not have associated values, and are described in the section on procedural elements below.</p>
 </div>
@@ -1290,10 +1290,10 @@ definition
 </div>
 </div>
 <div class="paragraph">
-<p>Functions are mapped to class methods in external libraries in the <a href="#_computing_context">Computing Context</a> section of an EL text.</p>
+<p>Functions are mapped to class methods in external libraries in the <a href="#_computing_bindings">Computing Bindings</a> section of an EL text.</p>
 </div>
 <div class="sect4">
-<h5 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>3.5.4.1. Built-in Functions</h5>
+<h5 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>3.4.4.1. Built-in Functions</h5>
 <div class="paragraph">
 <p>Some basic functions are assumed to be provided in an EL environment, in order to enable EL expressions to be more standardised. These can be provided by the implementation using the above methods of declaration and external binding.</p>
 </div>
@@ -1321,9 +1321,9 @@ definition
 </div>
 </div>
 <div class="sect2">
-<h3 id="_predicates"><a class="anchor" href="#_predicates"></a>3.6. Predicates</h3>
+<h3 id="_predicates"><a class="anchor" href="#_predicates"></a>3.5. Predicates</h3>
 <div class="sect3">
-<h4 id="_check_predicate"><a class="anchor" href="#_check_predicate"></a>3.6.1. check() Predicate</h4>
+<h4 id="_check_predicate"><a class="anchor" href="#_check_predicate"></a>3.5.1. check() Predicate</h4>
 <div class="paragraph">
 <p>In various circumstances, exceptions may be generated by EL expression evaluation. This primarily occurs when the value of a bound variable is undefined. EL provides a way of controlling execution when exceptions may occur, using a <code>check</code> expression, as follows.</p>
 </div>
@@ -1350,7 +1350,7 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_defined_predicate"><a class="anchor" href="#_defined_predicate"></a>3.6.2. defined() Predicate</h4>
+<h4 id="_defined_predicate"><a class="anchor" href="#_defined_predicate"></a>3.5.2. defined() Predicate</h4>
 <div class="paragraph">
 <p>Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable <code>$body_weight</code> may be bound to a call that retrieves a patient weight from the EHR, via an appropriate API call. There is no guarantee that the value is available, so <code>$body_weight</code> may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. <code>0</code> for <code>Integer</code>) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, an explicit mechanism is needed to test for validity.</p>
 </div>
@@ -1382,18 +1382,18 @@ definition
 </div>
 </div>
 <div class="sect2">
-<h3 id="_complex_expressions"><a class="anchor" href="#_complex_expressions"></a>3.7. Complex Expressions</h3>
+<h3 id="_complex_expressions"><a class="anchor" href="#_complex_expressions"></a>3.6. Complex Expressions</h3>
 <div class="paragraph">
 <p>Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.</p>
 </div>
 <div class="sect3">
-<h4 id="_equality_operator"><a class="anchor" href="#_equality_operator"></a>3.7.1. Equality Operator</h4>
+<h4 id="_equality_operator"><a class="anchor" href="#_equality_operator"></a>3.6.1. Equality Operator</h4>
 <div class="paragraph">
 <p>The equality operator <code>=</code> is special in EL as in most languages, and has two meanings. For all primitive types, the semantics are value comparison, while for container and other non-primitive types, the semantics are reference comparison.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_primitive_operators"><a class="anchor" href="#_primitive_operators"></a>3.7.2. Primitive Operators</h4>
+<h4 id="_primitive_operators"><a class="anchor" href="#_primitive_operators"></a>3.6.2. Primitive Operators</h4>
 <div class="paragraph">
 <p>Primitive operators in EL are the infix or prefix syntax form of various functions available on primitive types. For example, the operator <code>-</code> (minus) is defined on the class <code>Numeric</code> (an inheritance ancestor of the classes <code>Integer</code>, <code>Real</code> etc) as the following (using syntax from Java, TypeScript and similar languages):</p>
 </div>
@@ -1642,13 +1642,13 @@ definition
 <p>Operator semantics that require further explanation are described below.</p>
 </div>
 <div class="sect4">
-<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>3.7.2.1. Logical Negation</h5>
+<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>3.6.2.1. Logical Negation</h5>
 <div class="paragraph">
 <p>All Boolean operators take Boolean operands and generate a Boolean result. The <code>not</code> operator can be applied as a prefix operator to all operators returning a Boolean result as well as a parenthesised Boolean expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.7.2.2. Precedence and Parentheses</h5>
+<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.6.2.2. Precedence and Parentheses</h5>
 <div class="paragraph">
 <p>The precedence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
 </div>
@@ -1660,7 +1660,7 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_collection_operators"><a class="anchor" href="#_collection_operators"></a>3.7.3. Collection Operators</h4>
+<h4 id="_collection_operators"><a class="anchor" href="#_collection_operators"></a>3.6.3. Collection Operators</h4>
 <div class="paragraph">
 <p>A common need in an expression language featuring container types (i.e. sets, lists etc) is the need to perform basic reasoning over them. The two standard operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types, and are kinds of Boolean-returning expressions.</p>
 </div>
@@ -1677,12 +1677,13 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>input_context
+<pre>reference
+    Systolic_bp_threshold: Real = 160.0
+
+data_context
     $systolic_bp_samples: List&lt;Real&gt;
 
 definition
-    Systolic_bp_threshold: Real = 160.0
-
     if there_exists v in $systolic_bp_samples : v &gt; Systolic_bp_threshold then
         -- statements
     end</pre>
@@ -1701,12 +1702,13 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>input_context
-    $systolic_bp_samples: List&lt;Real&gt;
-
-definition
+<pre>reference
     Systolic_bp_threshold: Real = 160.0
 
+data_context
+    in $systolic_bp_samples: List&lt;Real&gt;
+
+definition
     if for_all v in $systolic_bp_samples : v &lt;= Systolic_bp_threshold then
         -- statements
     end</pre>
@@ -1727,18 +1729,19 @@ definition
 </div>
 </div>
 <div class="sect2">
-<h3 id="_procedural_elements"><a class="anchor" href="#_procedural_elements"></a>3.8. Procedural Elements</h3>
+<h3 id="_procedural_elements"><a class="anchor" href="#_procedural_elements"></a>3.7. Procedural Elements</h3>
 <div class="paragraph">
 <p>There are two kinds of procedural construct in EL: <em>statements</em> and <em>control structures</em>. Neither is value-returning, in contrast to the functional elements of the language, rather they are state-changing.</p>
 </div>
 <div class="sect3">
-<h4 id="_assignment"><a class="anchor" href="#_assignment"></a>3.8.1. Assignment</h4>
+<h4 id="_assignment"><a class="anchor" href="#_assignment"></a>3.7.1. Assignment</h4>
 <div class="paragraph">
 <p>An assignment is kind of statement used to assign the value of an expression to a writable variable using the <code>:=</code> operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    speed_kmh: Real                             -- declaration
+<pre>definition
+    speed_kmh: Real                             -- declaration
     speed_mph: Real := 35.0                     -- assignment in a declaration (not a constant)
 
     speed_kmh := speed_mph * Mph_to_kmh_factor  -- assignment</pre>
@@ -1749,8 +1752,8 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>input_context
-    $date_of_birth: Date
+<pre>data_context
+    in $date_of_birth: Date
 
 definition
     age: Duration
@@ -1760,7 +1763,7 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_procedure_invocation"><a class="anchor" href="#_procedure_invocation"></a>3.8.2. Procedure Invocation</h4>
+<h4 id="_procedure_invocation"><a class="anchor" href="#_procedure_invocation"></a>3.7.2. Procedure Invocation</h4>
 <div class="paragraph">
 <p>EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries. Semantically however, they are quite different. A procedure is a routine with a signature of the form <code>&lt;T_arg1, T_arg2, &#8230;&#8203;.&gt;</code>, i.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:</p>
 </div>
@@ -1785,20 +1788,20 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_control_structures"><a class="anchor" href="#_control_structures"></a>3.8.3. Control Structures</h4>
+<h4 id="_control_structures"><a class="anchor" href="#_control_structures"></a>3.7.3. Control Structures</h4>
 <div class="paragraph">
 <p>Two control structures are provided in EL. They provide conditional logic structures from which statements (i.e. assignments and procedure calls) can be executed. Control structures may be nested in the usual way.</p>
 </div>
 <div class="sect4">
-<h5 id="_if_then"><a class="anchor" href="#_if_then"></a>3.8.3.1. If / then</h5>
+<h5 id="_if_then"><a class="anchor" href="#_if_then"></a>3.7.3.1. If / then</h5>
 <div class="paragraph">
 <p>In common with most programming languages, EL provides a standard 'if / then / elseif / else' structure, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>input_context
-    $systolic_bp_meas: Real     -- from instrument
-    $thyroid_t3: Real           -- from EHR
+<pre>data_context
+    in $systolic_bp_meas: Real     -- from instrument
+    in $thyroid_t3: Real           -- from EHR
 
 definition
     if $systolic_bp_meas &gt; 160.0 then
@@ -1817,7 +1820,7 @@ definition
 </div>
 </div>
 <div class="sect4">
-<h5 id="_when_then"><a class="anchor" href="#_when_then"></a>3.8.3.2. When / then</h5>
+<h5 id="_when_then"><a class="anchor" href="#_when_then"></a>3.7.3.2. When / then</h5>
 <div class="paragraph">
 <p>EL provides a <code>when / matches / then</code> statement that is roughly equivalent to 'case' or 'switch' statements in most other languages. The <code>when</code> part indicates a  value-returning expression (such as a variable reference), which may be of any type, while the <code>matches</code> parts define value intervals that are used to match the <code>when</code> value. The first branch matched is executed.</p>
 </div>
@@ -1845,8 +1848,8 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>input_context
-    $systolic_bp_meas: Real     -- from instrument
+<pre>data_context
+    in $systolic_bp_meas: Real     -- from instrument
 
 definition
     when $systolic_bp_meas
@@ -1965,7 +1968,7 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_context"><a class="anchor" href="#_data_context"></a>6. Data Context</h2>
+<h2 id="_data_bindings"><a class="anchor" href="#_data_bindings"></a>6. Data Bindings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Expressions in the openEHR Expression Language contain variables, which may be <em>bound</em> to entities in a <em>data context</em>. Each binding connects a symbolic variable to a data source or target in the data context.</p>
@@ -1973,7 +1976,7 @@ definition
 <div class="sect2">
 <h3 id="_binding_model"><a class="anchor" href="#_binding_model"></a>6.1. Binding Model</h3>
 <div class="paragraph">
-<p>The model of binding of a symbolic variable in an expression to an external entity varies, depending on specifics of system architecture. The taxonomy shown below illustrates the various forms of context that are assumed to exist. There are two essential types: <em>execution context</em> and <em>content context</em>. The first corresponds to obtaining the required data item from the current execution context, either via a <em>system call</em>, of which concrete subtypes are <em>API call</em> and <em>query</em> (left side of the diagram), or <em>interactive</em>, i.e. via an application.</p>
+<p>The model of binding of a symbolic variable in an expression to an external entity varies, depending on specifics of system architecture. The taxonomy shown below illustrates the various forms of context that are assumed to exist. There are two essential types: <em>execution context</em> and <em>content context</em>. The first corresponds to obtaining the required data item from the current execution context, either via an <em>API call</em>, running a <em>query</em>, or <em>interactive</em>, i.e. via an application.</p>
 </div>
 <div id="data_binding_taxonomy" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1982,20 +1985,17 @@ definition
 <div class="title">Figure 1. Taxonomy of data binding</div>
 </div>
 <div class="paragraph">
-<p>Since a binding represents a data mapping, the direction needs to be specified. This may be logically understood as <code>in</code>, <code>out</code> or <code>in_out</code>, indicating whether the variable is reading a value from the external world, writing a value to it, or may do both.</p>
+<p>For variables declared as <code>in</code> and <code>in_out</code> in the EL text, in addition to binding targets, it is may be important to state the <em>data quality</em>, typically at least <em>currency</em> i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a <code>WHERE</code> clause expression that references a relevant time-related meta-data item.</p>
 </div>
 <div class="paragraph">
-<p>For <code>in</code> and <code>in_out</code> variables, in addition to binding target, it is often important to state the <em>data quality</em>, typically at least <em>currency</em> i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a <code>WHERE</code> clause expression that references a relevant time-related meta-data item.</p>
+<p>Another aspect of data quality is <em>when</em> a bound variable is sampled from its external context with respect to the execution of rules or expressions mentioning it. The default is that it is sampled once at the start of execution of a rule set containing expressions that mention the variable, i.e. at the point of parsing the context definition. However if a rule set is repeatedly evaluated, some variables may require sampling in real time, whereas others might only need to be sampled once, or less frequently. For example, for a rule set that is executed every minute, patient vital signs variables usually need to be sampled each time, whereas a variable like patient weight need only be sampled once per day.</p>
 </div>
 <div class="paragraph">
-<p>Another aspect of data quality is when a bound variable is sampled from its external context with respect to the execution of rules or expressions mentioning it. The default is that it is sampled once at the start of execution of a rule set containing expressions that mention the variable, i.e. at the point of parsing the context definition. However if a rule set is repeatedly evaluated, some variables may require sampling in real time, whereas others might only need to be sampled once, or less frequently. For example, for a rule set that is executed every minute, patient vital signs variables usually need to be sampled each time, whereas a variable like patient weight need only be sampled once per day.</p>
-</div>
-<div class="paragraph">
-<p>In a data context definition, bindings of the various concrete types are stated. Within each type, the individual variable bindings are expressed with repect to an <em>index context</em>, which varies depending on the binding type. The general structure of a data context definition is as follows.</p>
+<p>In a data context definition, bindings of the various concrete types are stated. Within each type, the individual variable bindings are expressed with repect to an <em>index context</em>, which varies depending on the binding type. The general structure of a data bindings definition is as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>data_context
+<pre>data_bindings
     content_bindings
         index_context_id
             var_name
@@ -2029,19 +2029,18 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_context</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_bindings</span>
     <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-COMPOSITION.encounter.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;date_initial_onset&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                 <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data[id2]/items[id3]/value[id35]/value&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables <code>body_weight</code>, <code>height</code> and <code>body_mass_index</code>, of which the latter is an output variable. This means that it may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.</p>
+<p>Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables <code>$body_weight</code>, <code>$height</code> and <code>$body_mass_index</code> used in examples above. A writable (i.e. <code>out</code>) variable such as <code>$body_mass_index</code> may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2050,17 +2049,14 @@ definition
         <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_measurements.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                 <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                 <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id6]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_mass_index.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;body_mass_index&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                 <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;out&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
@@ -2074,14 +2070,16 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_context</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_bindings</span>
     <span class="tok-nc">api_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;systolic_bp&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                 <span class="tok-nc">call_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;vital_sign&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;$ehr_id&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;systolic_pressure&quot;</span><span class="tok-p">&gt;,</span>
+                <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;$ehr_id&quot;</span><span class="tok-p">&gt;</span>
+                    <span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;systolic_pressure&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;,</span>
                 <span class="tok-nc">currency</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-err">P</span><span class="tok-mi">1</span><span class="tok-nc">h</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
@@ -2102,12 +2100,10 @@ definition
     <span class="tok-nc">query_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;systolic_bp&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">call_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;execute_stored_query&quot;</span><span class="tok-p">&gt;,</span>
                 <span class="tok-nc">query_id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;vital_signs_basic&quot;</span><span class="tok-p">&gt;,</span>
                 <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                     <span class="tok-p">[</span><span class="tok-s">&quot;$type&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;&#39;systolic_pressure&#39;&quot;</span><span class="tok-p">&gt;</span>
                 <span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
@@ -2118,16 +2114,14 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_context</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_bindings</span>
     <span class="tok-nc">query_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;is_diabetic&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">call_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;execute_stored_query&quot;</span><span class="tok-p">&gt;,</span>
                 <span class="tok-nc">query_id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;has_diagnosis&quot;</span><span class="tok-p">&gt;,</span>
                 <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                     <span class="tok-p">[</span><span class="tok-s">&quot;$dx_expr&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;&#39;&lt;&lt;[snomed_ct::1234567]&#39;&quot;</span><span class="tok-p">&gt;</span>
                 <span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
@@ -2141,13 +2135,12 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_context</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">data_bindings</span>
     <span class="tok-nc">interactive_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;default&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-p">[</span><span class="tok-s">&quot;is_diabetic&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
                 <span class="tok-nc">visual_control_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;boolean&quot;</span><span class="tok-p">&gt;,</span>
                 <span class="tok-nc">prompt</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;is_diabetic_prompt&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
             <span class="tok-p">&gt;</span>
         <span class="tok-p">&gt;</span>
     <span class="tok-p">&gt;</span></code></pre>
@@ -2158,14 +2151,17 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_computing_context"><a class="anchor" href="#_computing_context"></a>7. Computing Context</h2>
+<h2 id="_computing_bindings"><a class="anchor" href="#_computing_bindings"></a>7. Computing Bindings</h2>
 <div class="sectionbody">
+<div class="paragraph tbd">
+<p>TBD: potentially do without this section altogether, and let implementations do their own thing. However, it requires that call signatures exactly match the declarations in the <code>definition</code> section.</p>
+</div>
 <div class="paragraph">
-<p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL text. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_context</code> section of a full EL text. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL text.</p>
+<p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL text. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_bindings</code> section of a full EL text. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL text.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">computing_context</span>
+<pre class="pygments highlight"><code data-lang="odin"><span class="tok-nc">computing_bindings</span>
     <span class="tok-nc">library_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
         <span class="tok-p">[</span><span class="tok-s">&quot;onco_staging_lib&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
             <span class="tok-nc">connector</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
@@ -2398,7 +2394,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EL_TYPE_DEF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
 </div></div></td>
@@ -2468,7 +2464,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EL_TYPE_DEF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
 </div></div></td>
@@ -2837,7 +2833,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>EL_TYPE_DEF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The primitive type of this node, which must be determined by redefinitions in concrete classes.</p>
 </div></div></td>
@@ -3166,7 +3162,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_bound_variable_class"><a class="anchor" href="#_el_bound_variable_class"></a>9.2.2.24. EL_BOUND_VARIABLE Class</h5>
+<h5 id="_el_external_variable_class"><a class="anchor" href="#_el_external_variable_class"></a>9.2.2.24. EL_EXTERNAL_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3176,7 +3172,7 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_BOUND_VARIABLE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_EXTERNAL_VARIABLE</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3187,6 +3183,16 @@ the model and description shown here is first draft only
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_VARIABLE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>direction</strong>: <code>EL_VARIABLE_DIRECTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
@@ -3256,7 +3262,7 @@ the model and description shown here is first draft only
 <div class="sect3">
 <h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>9.3.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_expr_type_def_class"><a class="anchor" href="#_expr_type_def_class"></a>9.3.1.1. EXPR_TYPE_DEF Class</h5>
+<h5 id="_el_type_def_class"><a class="anchor" href="#_el_type_def_class"></a>9.3.1.1. EL_TYPE_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3266,7 +3272,7 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXPR_TYPE_DEF (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_TYPE_DEF (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3317,7 +3323,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3360,7 +3366,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3403,7 +3409,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3446,7 +3452,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3489,7 +3495,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3532,7 +3538,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3575,7 +3581,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3618,7 +3624,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3661,7 +3667,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3704,7 +3710,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3747,7 +3753,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXPR_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TYPE_DEF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
