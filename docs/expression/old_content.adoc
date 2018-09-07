@@ -1,0 +1,33 @@
+= Material to remove?
+
+== Iteration
+
+Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container types, as follows.
+
+----
+    do_all (proc(v: T))
+            -- execute proc(v) for every v in container
+
+    do_if (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in container for which test(v) is True
+
+    do_while (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in container until test (v) returns False
+
+    do_until (proc(v: T); test(v: T): Boolean)
+            -- execute proc(v) for every v in container until test (v) returns True
+----
+
+Iteration over a range of integers can be performed using an `Interval<Integer>` literal, as follows:
+
+----
+    (|1..5|).do_all (
+        (v: Integer)
+            do
+                -- statements
+            end
+    )
+----
+
+[.tbd]
+TBD: more on how this works (it's defined on `Discrete_interval<T>`)

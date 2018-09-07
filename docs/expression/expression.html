@@ -35,11 +35,12 @@
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
 <li><a href="#_design_background">2.1. Design Background</a></li>
-<li><a href="#_execution_model">2.2. Execution Model</a></li>
-<li><a href="#_general_structure">2.3. General Structure</a></li>
+<li><a href="#_requirements">2.2. Requirements</a></li>
+<li><a href="#_design_paradigm">2.3. Design Paradigm</a></li>
+<li><a href="#_expressions_and_ontic_truth">2.4. Expressions and Ontic Truth</a></li>
 </ul>
 </li>
-<li><a href="#_the_expression_language">3. The Expression Language</a>
+<li><a href="#_el_basics">3. EL Basics</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_2">3.1. Overview</a></li>
 <li><a href="#_syntax_style">3.2. Syntax style</a></li>
@@ -48,130 +49,140 @@
 <li><a href="#_primitive_types">3.3.1. Primitive Types</a></li>
 <li><a href="#_container_types">3.3.2. Container Types</a></li>
 <li><a href="#_interval_type">3.3.3. Interval Type</a></li>
-<li><a href="#_non_primitive_types">3.3.4. Non-primitive Types</a></li>
-</ul>
-</li>
-<li><a href="#_terminal_entities">3.4. Terminal Entities</a>
-<ul class="sectlevel3">
-<li><a href="#_literals">3.4.1. Literals</a></li>
-<li><a href="#_constants">3.4.2. Constants</a></li>
-<li><a href="#_variables">3.4.3. Variables</a></li>
-<li><a href="#_functions">3.4.4. Functions</a>
-<ul class="sectlevel4">
-<li><a href="#_built_in_functions">3.4.4.1. Built-in Functions</a></li>
+<li><a href="#_complex_types">3.3.4. Complex Types</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_predicates">3.5. Predicates</a>
-<ul class="sectlevel3">
-<li><a href="#_check_predicate">3.5.1. check() Predicate</a></li>
-<li><a href="#_defined_predicate">3.5.2. defined() Predicate</a></li>
-</ul>
-</li>
-<li><a href="#_complex_expressions">3.6. Complex Expressions</a>
-<ul class="sectlevel3">
-<li><a href="#_equality_operator">3.6.1. Equality Operator</a></li>
-<li><a href="#_primitive_operators">3.6.2. Primitive Operators</a>
-<ul class="sectlevel4">
-<li><a href="#_logical_negation">3.6.2.1. Logical Negation</a></li>
-<li><a href="#_precedence_and_parentheses">3.6.2.2. Precedence and Parentheses</a></li>
-</ul>
-</li>
-<li><a href="#_collection_operators">3.6.3. Collection Operators</a></li>
-</ul>
-</li>
-<li><a href="#_procedural_elements">3.7. Procedural Elements</a>
-<ul class="sectlevel3">
-<li><a href="#_assignment">3.7.1. Assignment</a></li>
-<li><a href="#_procedure_invocation">3.7.2. Procedure Invocation</a></li>
-<li><a href="#_control_structures">3.7.3. Control Structures</a>
-<ul class="sectlevel4">
-<li><a href="#_if_then">3.7.3.1. If / then</a></li>
-<li><a href="#_when_then">3.7.3.2. When / then</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_material_to_remove">4. Material to remove?</a>
+<li><a href="#_el_expressions">4. EL Expressions</a>
 <ul class="sectlevel2">
-<li><a href="#_iteration">4.1. Iteration</a></li>
-</ul>
-</li>
-<li><a href="#_terminology">5. Terminology</a></li>
-<li><a href="#_data_bindings">6. Data Bindings</a>
-<ul class="sectlevel2">
-<li><a href="#_binding_model">6.1. Binding Model</a>
+<li><a href="#_overview_3">4.1. Overview</a></li>
+<li><a href="#_terminal_entities">4.2. Terminal Entities</a>
 <ul class="sectlevel3">
-<li><a href="#_content_binding">6.1.1. Content Binding</a></li>
-<li><a href="#_api_call_binding">6.1.2. API Call Binding</a></li>
-<li><a href="#_query_binding">6.1.3. Query Binding</a></li>
-<li><a href="#_interactive_binding">6.1.4. Interactive Binding</a></li>
+<li><a href="#_literals">4.2.1. Literals</a></li>
+<li><a href="#_constants">4.2.2. Constants</a></li>
+<li><a href="#_variables">4.2.3. Variables</a></li>
+<li><a href="#_function_calls">4.2.4. Function Calls</a></li>
+<li><a href="#_built_in_functions">4.2.5. Built-in Functions</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_computing_bindings">7. Computing Bindings</a></li>
-<li><a href="#_module_structure">8. Module Structure</a>
-<ul class="sectlevel2">
-<li><a href="#_el_text_identification">8.1. EL Text Identification</a></li>
-</ul>
-</li>
-<li><a href="#_the_expression_object_model">9. The Expression Object Model</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_3">9.1. Overview</a></li>
-<li><a href="#_core_package">9.2. Core Package</a>
+<li><a href="#_predicates">4.3. Predicates</a>
 <ul class="sectlevel3">
-<li><a href="#_expressions">9.2.1. Expressions</a></li>
-<li><a href="#_class_descriptions">9.2.2. Class Descriptions</a>
+<li><a href="#_check_predicate">4.3.1. check() Predicate</a></li>
+<li><a href="#_defined_predicate">4.3.2. defined() Predicate</a></li>
+</ul>
+</li>
+<li><a href="#_complex_expressions">4.4. Complex Expressions</a>
+<ul class="sectlevel3">
+<li><a href="#_equality_operator">4.4.1. Equality Operator</a></li>
+<li><a href="#_primitive_operators">4.4.2. Primitive Operators</a>
 <ul class="sectlevel4">
-<li><a href="#_el_text_class">9.2.2.1. EL_TEXT Class</a></li>
-<li><a href="#_el_declaration_class">9.2.2.2. EL_DECLARATION Class</a></li>
-<li><a href="#_el_variable_declaration_class">9.2.2.3. EL_VARIABLE_DECLARATION Class</a></li>
-<li><a href="#_el_routine_declaration_class">9.2.2.4. EL_ROUTINE_DECLARATION Class</a></li>
-<li><a href="#_el_function_declaration_class">9.2.2.5. EL_FUNCTION_DECLARATION Class</a></li>
-<li><a href="#_el_procedure_declaration_class">9.2.2.6. EL_PROCEDURE_DECLARATION Class</a></li>
-<li><a href="#_el_statement_class">9.2.2.7. EL_STATEMENT Class</a></li>
-<li><a href="#_el_assignment_class">9.2.2.8. EL_ASSIGNMENT Class</a></li>
-<li><a href="#_el_procedure_call_class">9.2.2.9. EL_PROCEDURE_CALL Class</a></li>
-<li><a href="#_el_choice_group_class">9.2.2.10. EL_CHOICE_GROUP Class</a></li>
-<li><a href="#_el_choice_branch_class">9.2.2.11. EL_CHOICE_BRANCH Class</a></li>
-<li><a href="#_el_condition_group_class">9.2.2.12. EL_CONDITION_GROUP Class</a></li>
-<li><a href="#_el_condition_branch_class">9.2.2.13. EL_CONDITION_BRANCH Class</a></li>
-<li><a href="#_el_decision_group_class">9.2.2.14. EL_DECISION_GROUP Class</a></li>
-<li><a href="#_el_decision_branch_class">9.2.2.15. EL_DECISION_BRANCH Class</a></li>
-<li><a href="#_el_expression_class">9.2.2.16. EL_EXPRESSION Class</a></li>
-<li><a href="#_el_operator_class">9.2.2.17. EL_OPERATOR Class</a></li>
-<li><a href="#_operator_def_class">9.2.2.18. OPERATOR_DEF Class</a></li>
-<li><a href="#_el_unary_operator_class">9.2.2.19. EL_UNARY_OPERATOR Class</a></li>
-<li><a href="#_el_binary_operator_class">9.2.2.20. EL_BINARY_OPERATOR Class</a></li>
-<li><a href="#_el_leaf_class">9.2.2.21. EL_LEAF Class</a></li>
-<li><a href="#_el_literal_class">9.2.2.22. EL_LITERAL Class</a></li>
-<li><a href="#_el_variable_class">9.2.2.23. EL_VARIABLE Class</a></li>
-<li><a href="#_el_external_variable_class">9.2.2.24. EL_EXTERNAL_VARIABLE Class</a></li>
-<li><a href="#_el_function_call_class">9.2.2.25. EL_FUNCTION_CALL Class</a></li>
+<li><a href="#_logical_negation">4.4.2.1. Logical Negation</a></li>
+<li><a href="#_precedence_and_parentheses">4.4.2.2. Precedence and Parentheses</a></li>
+</ul>
+</li>
+<li><a href="#_collection_operators">4.4.3. Collection Operators</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_typing">9.3. Typing</a>
+<li><a href="#_el_statements">5. EL Statements</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_4">5.1. Overview</a></li>
+<li><a href="#_declarations">5.2. Declarations</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_2">9.3.1. Class Descriptions</a>
+<li><a href="#_constants_2">5.2.1. Constants</a></li>
+<li><a href="#_variables_2">5.2.2. Variables</a></li>
+<li><a href="#_functions_and_procedures">5.2.3. Functions and Procedures</a></li>
+</ul>
+</li>
+<li><a href="#_assignment">5.3. Assignment</a></li>
+<li><a href="#_procedure_invocation">5.4. Procedure Invocation</a></li>
+<li><a href="#_control_structures">5.5. Control Structures</a>
+<ul class="sectlevel3">
+<li><a href="#_if_then">5.5.1. If / then</a></li>
+<li><a href="#_when_then">5.5.2. When / then</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_el_texts">6. EL Texts</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_5">6.1. Overview</a></li>
+</ul>
+</li>
+<li><a href="#_terminology">7. Terminology</a></li>
+<li><a href="#_data_bindings">8. Data Bindings</a>
+<ul class="sectlevel2">
+<li><a href="#_binding_model">8.1. Binding Model</a>
+<ul class="sectlevel3">
+<li><a href="#_content_binding">8.1.1. Content Binding</a></li>
+<li><a href="#_api_call_binding">8.1.2. API Call Binding</a></li>
+<li><a href="#_query_binding">8.1.3. Query Binding</a></li>
+<li><a href="#_interactive_binding">8.1.4. Interactive Binding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_computing_bindings">9. Computing Bindings</a></li>
+<li><a href="#_module_structure">10. Module Structure</a>
+<ul class="sectlevel2">
+<li><a href="#_el_text_identification">10.1. EL Text Identification</a></li>
+</ul>
+</li>
+<li><a href="#_the_expression_object_model">11. The Expression Object Model</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_6">11.1. Overview</a></li>
+<li><a href="#_core_package">11.2. Core Package</a>
+<ul class="sectlevel3">
+<li><a href="#_expressions">11.2.1. Expressions</a></li>
+<li><a href="#_class_descriptions">11.2.2. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_el_type_def_class">9.3.1.1. EL_TYPE_DEF Class</a></li>
-<li><a href="#_type_def_boolean_class">9.3.1.2. TYPE_DEF_BOOLEAN Class</a></li>
-<li><a href="#_type_def_integer_class">9.3.1.3. TYPE_DEF_INTEGER Class</a></li>
-<li><a href="#_type_def_real_class">9.3.1.4. TYPE_DEF_REAL Class</a></li>
-<li><a href="#_type_def_date_class">9.3.1.5. TYPE_DEF_DATE Class</a></li>
-<li><a href="#_type_def_date_time_class">9.3.1.6. TYPE_DEF_DATE_TIME Class</a></li>
-<li><a href="#_type_def_time_class">9.3.1.7. TYPE_DEF_TIME Class</a></li>
-<li><a href="#_type_def_duration_class">9.3.1.8. TYPE_DEF_DURATION Class</a></li>
-<li><a href="#_type_def_string_class">9.3.1.9. TYPE_DEF_STRING Class</a></li>
-<li><a href="#_type_def_uri_class">9.3.1.10. TYPE_DEF_URI Class</a></li>
-<li><a href="#_type_def_terminology_code_class">9.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
-<li><a href="#_type_def_object_ref_class">9.3.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
+<li><a href="#_el_text_class">11.2.2.1. EL_TEXT Class</a></li>
+<li><a href="#_el_declaration_class">11.2.2.2. EL_DECLARATION Class</a></li>
+<li><a href="#_el_variable_declaration_class">11.2.2.3. EL_VARIABLE_DECLARATION Class</a></li>
+<li><a href="#_el_routine_declaration_class">11.2.2.4. EL_ROUTINE_DECLARATION Class</a></li>
+<li><a href="#_el_function_declaration_class">11.2.2.5. EL_FUNCTION_DECLARATION Class</a></li>
+<li><a href="#_el_procedure_declaration_class">11.2.2.6. EL_PROCEDURE_DECLARATION Class</a></li>
+<li><a href="#_el_statement_class">11.2.2.7. EL_STATEMENT Class</a></li>
+<li><a href="#_el_assignment_class">11.2.2.8. EL_ASSIGNMENT Class</a></li>
+<li><a href="#_el_procedure_call_class">11.2.2.9. EL_PROCEDURE_CALL Class</a></li>
+<li><a href="#_el_choice_group_class">11.2.2.10. EL_CHOICE_GROUP Class</a></li>
+<li><a href="#_el_choice_branch_class">11.2.2.11. EL_CHOICE_BRANCH Class</a></li>
+<li><a href="#_el_condition_group_class">11.2.2.12. EL_CONDITION_GROUP Class</a></li>
+<li><a href="#_el_condition_branch_class">11.2.2.13. EL_CONDITION_BRANCH Class</a></li>
+<li><a href="#_el_decision_group_class">11.2.2.14. EL_DECISION_GROUP Class</a></li>
+<li><a href="#_el_decision_branch_class">11.2.2.15. EL_DECISION_BRANCH Class</a></li>
+<li><a href="#_el_expression_class">11.2.2.16. EL_EXPRESSION Class</a></li>
+<li><a href="#_el_operator_class">11.2.2.17. EL_OPERATOR Class</a></li>
+<li><a href="#_operator_def_class">11.2.2.18. OPERATOR_DEF Class</a></li>
+<li><a href="#_el_unary_operator_class">11.2.2.19. EL_UNARY_OPERATOR Class</a></li>
+<li><a href="#_el_binary_operator_class">11.2.2.20. EL_BINARY_OPERATOR Class</a></li>
+<li><a href="#_el_leaf_class">11.2.2.21. EL_LEAF Class</a></li>
+<li><a href="#_el_literal_class">11.2.2.22. EL_LITERAL Class</a></li>
+<li><a href="#_el_variable_class">11.2.2.23. EL_VARIABLE Class</a></li>
+<li><a href="#_el_external_variable_class">11.2.2.24. EL_EXTERNAL_VARIABLE Class</a></li>
+<li><a href="#_el_function_call_class">11.2.2.25. EL_FUNCTION_CALL Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_typing">11.3. Typing</a>
+<ul class="sectlevel3">
+<li><a href="#_class_descriptions_2">11.3.1. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_el_type_def_class">11.3.1.1. EL_TYPE_DEF Class</a></li>
+<li><a href="#_type_def_boolean_class">11.3.1.2. TYPE_DEF_BOOLEAN Class</a></li>
+<li><a href="#_type_def_integer_class">11.3.1.3. TYPE_DEF_INTEGER Class</a></li>
+<li><a href="#_type_def_real_class">11.3.1.4. TYPE_DEF_REAL Class</a></li>
+<li><a href="#_type_def_date_class">11.3.1.5. TYPE_DEF_DATE Class</a></li>
+<li><a href="#_type_def_date_time_class">11.3.1.6. TYPE_DEF_DATE_TIME Class</a></li>
+<li><a href="#_type_def_time_class">11.3.1.7. TYPE_DEF_TIME Class</a></li>
+<li><a href="#_type_def_duration_class">11.3.1.8. TYPE_DEF_DURATION Class</a></li>
+<li><a href="#_type_def_string_class">11.3.1.9. TYPE_DEF_STRING Class</a></li>
+<li><a href="#_type_def_uri_class">11.3.1.10. TYPE_DEF_URI Class</a></li>
+<li><a href="#_type_def_terminology_code_class">11.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
+<li><a href="#_type_def_object_ref_class">11.3.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
 </ul>
 </li>
 </ul>
@@ -294,7 +305,7 @@
  added various kinds of binding.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>20 Aug 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Sep 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1.0</p></td>
@@ -499,276 +510,100 @@ Extensions would also typically provide more operators, functions, leaf types an
 </ul>
 </div>
 <div class="paragraph">
-<p>Nevertheless, various elements of Arden and GELLO provided useful models for corresponding elements of the formalism described here.</p>
+<p>Nevertheless, various elements of Arden and GELLO provided useful inspiration for the formalism described here.</p>
 </div>
 <div class="paragraph">
 <p>Modern syntaxes that provide a more generic and minimal inspiration for the expression syntax described here include the <a href="https://www.w3.org/TR/xpath-31/">Xpath syntax</a>.</p>
 </div>
-<div class="paragraph">
-<p>The semantic requirements are for expressions including arithmetic, boolean, and relational operators, functions, quantifier operators, operator precedence, parentheses, constant values, and certain kinds of variables. However, there is no support in the core specification for procedural semantics or most of the other complexities of full-blown programming languages.</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_execution_model"><a class="anchor" href="#_execution_model"></a>2.2. Execution Model</h3>
+<h3 id="_requirements"><a class="anchor" href="#_requirements"></a>2.2. Requirements</h3>
 <div class="paragraph">
-<p>The assumed execution model of the Expression language is that an EL text is evaluated by an <em>evaluator</em> against a <em>data context</em>, which determines the truth values of the expression(s). The data context typically includes data services such as the EHR, patient demographics, laboratory systems and so on - anything that is available computationally via some service. The text may contain symbols representing internal variables and bound variables, the latter of which map to entities in the data context.</p>
-</div>
-<div class="paragraph">
-<p>An EL text is minimally a single assertion such as <code>systolic_pressure &gt; 0</code>, and more typically a set of <em>statements</em> or <em>rules</em> that generates output values or actions.</p>
+<p>The semantic requirements are for expressions including arithmetic, boolean, and relational operators, functions, logical quantifiers, operator precedence, constant values, and variables. However, there is no support in the core specification for procedural semantics or most of the other complexities of full-blown programming languages.</p>
 </div>
 <div class="paragraph">
-<p>No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the <em>expression universe</em> is technically speaking an 'open world' in the sense of the <a href="https://en.wikipedia.org/wiki//Open-world_assumption">open-world assumption</a>. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_general_structure"><a class="anchor" href="#_general_structure"></a>2.3. General Structure</h3>
-<div class="paragraph">
-<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing <code>EL text</code> containing procedural elements,  with a similar structure to an archetype.</p>
-</div>
-<div class="paragraph">
-<p>By default, EL statements and expressions may assume the <a href="/releases/BASE/latest/foundation_types.html">openEHR Foundation Types</a> (i.e. Boolean, Integer, String, date/time types etc). Other object models may be used by stating their identity in a <code>use_model</code> section.</p>
-</div>
-<div class="paragraph">
-<p>The core sections of an EL text are <code>input_context</code>, <code>output_context</code> and <code>definition</code>, which respectively declare input variables, output variables, and define statements. The input and output context sections may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains logic <em>statements</em>. Statements are made up of expressions containing <em>symbols</em>, which represent <em>variables</em> and <em>constants</em>, and which are typed. Variables are either <em>external variables</em> from the input or output contexts, indicated with a <code>$</code> character, or <em>local variables</em> declared within the <code>definition</code> section.</p>
-</div>
-<div class="paragraph">
-<p>Mappings between external variables and external entities are described by <em>bindings</em> in a <code>data_context</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is an external variable that may be mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call). This provides clear semantics for statements in the expression text that mention such variables.</p>
-</div>
-<div class="paragraph">
-<p>Symbols are <em>names</em> in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL text, in the same way as for openEHR archetypes. For example, the symbol <code>heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
-</div>
-<div class="paragraph">
-<p>Functions and procedures may be declared and invoked within the main text. These are bound to methods from external libraries in a <code>computing_bindings</code> section.</p>
-</div>
-<div class="paragraph">
-<p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than <code>input_context</code>, <code>definition</code>, and <code>output_context</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
-</div>
-<div class="paragraph">
-<p>Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the <code>import</code> keyword.</p>
-</div>
-<div class="paragraph">
-<p>The structure of a self-standing EL text is thus as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>&lt;identifier&gt;
-
-import
-    &lt;identifier&gt;
-    &lt;identifier&gt;
-    ...
-
-language
-    original_language = &lt;...&gt;
-    translations = &lt;...&gt;
-
-description
-    &lt;descriptive meta-data&gt;
-
-use_model
-    &lt;model ids&gt;
-
-reference
-    &lt;constant definitions&gt;
-
-data_context
-    &lt;declarations&gt;
-
-definition
-    &lt;statements&gt;
-
-terminology
-    symbol_definitions = &lt;
-        ["lang"] = &lt;
-            &lt;symbol definitions in lang&gt;
-        &gt;
-        ...
-    &gt;
-
-data_bindings
-    &lt;symbol bindings&gt;
-
-computing_bindings
-    &lt;method bindings&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="adl"><span class="tok-err">openEHR-EOM.bmi.v1</span>
-
-<span class="tok-gh">language</span>
-    <span class="tok-nc">original_language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">en</span><span class="tok-p">]&gt;</span>
-    <span class="tok-nc">translations</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-gh">description</span>
-    <span class="tok-nc">lifecycle_state</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;unmanaged&quot;</span><span class="tok-p">&gt;</span>
-    <span class="tok-nc">original_author</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-    <span class="tok-nc">details</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-    <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">pt</span><span class="tok-p">]&gt;</span>
-            <span class="tok-nc">purpose</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Cálculo do peso do corpo&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-nc">use</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;...&quot;</span><span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-s">use_model</span>
-    <span class="tok-nc">org</span><span class="tok-err">.</span><span class="tok-nc">openehr</span><span class="tok-err">.</span><span class="tok-nc">rm</span>
-
-<span class="tok-s">data_context</span>
-    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
-    <span class="tok-nc">out</span> <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
-
-<span class="tok-gh">definition</span>
-    <span class="tok-err">$</span><span class="tok-nc">bmi</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span> <span class="tok-p">/ </span><span class="tok-err">$</span><span class="tok-nc">height</span> <span class="tok-o">^</span> <span class="tok-mi">2</span>
-
-<span class="tok-gh">terminology</span>
-    <span class="tok-nc">symbol_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;en&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body weight&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;weight of subject body&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo do sujeito&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-s">data_bindings</span>
-    <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_measurements.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id6]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_mass_index.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_mass_index&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;out&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
+<p>In addition, there is a need to be able to provide:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>including the definitions in the <code>rules</code> section;</p>
+<p>multi-lingual translations for symbolic variables, in a similar way to the <a href="/releases/AM/latest/ADL2.html">openEHR Archetype Definition Language (ADL)</a>;</p>
 </li>
 <li>
-<p>adding the EL text <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
+<p>bindings that connect variables to external data sources;</p>
 </li>
 <li>
-<p>adding the <code>data_bindings</code> and <code>computing_bindings</code> as additional sections.</p>
+<p>an ability to use externally defined information models that supply types that may be used in EL statements.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_design_paradigm"><a class="anchor" href="#_design_paradigm"></a>2.3. Design Paradigm</h3>
+<div class="paragraph">
+<p>The assumed execution model of the Expression language is that EL statements are evaluated by an <em>evaluator</em> against a <em>data context</em>, which determines the truth values of the expression(s). The data context is the origin for some or all of the variables mentioned in the expressions, which may be read from and written to. It may concretely be a retrieved data structure, or data via an API call to the EHR, demographics, laboratory system etc.</p>
+</div>
+<div class="paragraph">
+<p>The data context may be specified in two ways. It may be visible within the artefact or computing context in which the EL statements appear, or it may be specified explicitly. In the first case, the EL instance is minimally a value-returning logical proposition such as <code>$systolic_pressure &gt; 0</code>. This is shown below.</p>
+</div>
+<div id="EL_design_structure_implicit" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/EL_design_structure-implicit.svg" alt="EL design structure implicit">
+</div>
+<div class="title">Figure 1. EL design structure - implicit context</div>
+</div>
+<div class="paragraph">
+<p>In the explicit form, an <em>EL text</em> consisting of multiple <em>statements</em> and an explicit context definition is used, as shown below.</p>
+</div>
+<div id="EL_design_structure_explicit" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/EL_design_structure-explicit.svg" alt="EL design structure explicit">
+</div>
+<div class="title">Figure 2. EL design structure - explicit context</div>
+</div>
+<div class="paragraph">
+<p>In both cases, the result of parsing into computable form for evaluation should result in an instance of the Expression Object Model (EOM).</p>
+</div>
+<div class="paragraph">
+<p>This specification first describes the elements of the EL expression syntax, then the EOM.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expressions_and_ontic_truth"><a class="anchor" href="#_expressions_and_ontic_truth"></a>2.4. Expressions and Ontic Truth</h3>
+<div class="paragraph">
+<p>No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the <em>expression universe</em> is technically speaking an 'open world' in the sense of the <a href="https://en.wikipedia.org/wiki//Open-world_assumption">open-world assumption</a>. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_expression_language"><a class="anchor" href="#_the_expression_language"></a>3. The Expression Language</h2>
+<h2 id="_el_basics"><a class="anchor" href="#_el_basics"></a>3. EL Basics</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>This section describes the openEHR Expression Language (EL). In the various contexts where EL expressions are used, the syntax provides a foundation for concrete  syntaxes supporting specific value-referencing mechanisms, as well as other types of rules, operands etc. The language consists of two types of construct: functional and procedural. The former includes all value-returning entities, including literals, constants, variable references, function invocations, and expressions constructed from them using operators, parentheses etc. The procedural elements include assignments, control structures and procedure invocations.</p>
+<p>The openEHR Expression Language (EL) syntax can be understood in a number of layers. The core of the syntax defines <em>expressions</em>, i.e. value-returning entities. Such expressions may be used in isolation within some larger context in an openEHR system (e.g. Plan or Guideline), with the connection of variables to real-world data being determined implicitly, as dscribed above.</p>
 </div>
 <div class="paragraph">
-<p>Formally, an openEHR EL expression is any of the following value-returning entities:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>terminal entities</em>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><em>literals</em>;</p>
-</li>
-<li>
-<p><em>constants</em>;</p>
-</li>
-<li>
-<p><em>symbolic variables</em>;</p>
-</li>
-<li>
-<p><em>function calls</em>;</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><em>predicates</em>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><em>check() predicate</em>: special expression for asserting a truth value;</p>
-</li>
-<li>
-<p><em>defined() predicate</em>: special expression for determing validity of external variable;</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><em>complex expressions</em> created from:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><em>equality operator</em>: equality operator;</p>
-</li>
-<li>
-<p><em>primitive operators</em>: arithmetic operators, relational operators, boolean operators;</p>
-</li>
-<li>
-<p><em>collection operators</em>: logical quantification operators.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>The next layer includes non-expression elements, allowing explicit declarations, assignments and control structures, including rules. Together with expressions, these are known as <em>statements</em>. A collection of such statements may be used within another context in the same way as for bare expressions.</p>
 </div>
 <div class="paragraph">
-<p>Each of these is described in detail in the following sections.</p>
+<p>The fullest form of EL syntax is an <em>EL Text</em> which provides all of the context, terminology, meta-data and so on, enabling the representation of fully-formed guidelines and other similar artefacts.</p>
 </div>
 <div class="paragraph">
-<p>EL is designed syntactically as a readable language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal built-in core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the <code>Date</code> type, or the <code>for_all</code> universal quantifier operator may be mapped to underlying methods such as <code>Date.<em>add</em>()</code> and <code>Container.<em>for_all</em>()</code>.</p>
+<p>These layers are shown below.</p>
 </div>
-<div class="paragraph">
-<p>EL is not intended for writing functions or classes, rather it is designed as a minimalist logic-based language in which expressions can be written, but whose programming is undertaken inside libraries in existing programming languages. Routine declarations in EL are the primary mechanism to connect external software libraries to the EL context. In EL, both functions and procedures are supported, and are collectively known as <em>routines</em>.</p>
+<div id="EL_language_structure" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/EL_language_structure.svg" alt="EL language structure">
+</div>
+<div class="title">Figure 3. EL language structure</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_syntax_style"><a class="anchor" href="#_syntax_style"></a>3.2. Syntax style</h3>
 <div class="paragraph">
-<p>The syntax style used here is of the Pascal variety, i.e. words rather than programming symbols such as braces (<code>{}</code>). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to syntax such as the following.</p>
+<p>The syntax style used in EL is of the Pascal variety, i.e. words rather than programming symbols such as braces (<code>{}</code>). The intention is to provide a syntax that is more easily readable to non-IT professionals as well as IT professionals, since it is likely that healthcare professionals will be among the principle authors of EL texts. This choice leads to syntax such as the following.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -838,7 +673,7 @@ computing_bindings
 </ul>
 </div>
 <div class="paragraph">
-<p>These types are described below.</p>
+<p>Complex types based on these types may also be used in EL.</p>
 </div>
 <div class="sect3">
 <h4 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>3.3.1. Primitive Types</h4>
@@ -958,10 +793,10 @@ computing_bindings
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $heart_rate_samples: List&lt;Real&gt;
+<pre>    heart_rrate_samples: List&lt;Real&gt;
     High_threshold: Real = 200.0
 
-    if $heart_rate_samples.has (High_threshold) then
+    if heart_rate_samples.has (High_threshold) then
         -- statements
     end</pre>
 </div>
@@ -1013,22 +848,94 @@ computing_bindings
 </div>
 </div>
 <div class="sect3">
-<h4 id="_non_primitive_types"><a class="anchor" href="#_non_primitive_types"></a>3.3.4. Non-primitive Types</h4>
+<h4 id="_complex_types"><a class="anchor" href="#_complex_types"></a>3.3.4. Complex Types</h4>
 <div class="paragraph">
-<p>Non-primitive types may be imported from formal model definitions specified in the <code>use_model</code> section of an EL text. Such models need to be specified in <a href="/releases/BASE/latest/bmm.html">openEHR BMM format</a>, or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.</p>
+<p>Complex types may be implicitly accessible, or explicitly imported from formal model definitions specified in the <code>use_model</code> section of an EL text. Such models need to be specified in <a href="/releases/BASE/latest/bmm.html">openEHR BMM format</a>, or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.</p>
 </div>
 <div class="paragraph">
 <p>Access to interior elements of instances of non-primitive types is obtained using 'dot' notation, i.e. the standard way for object-oriented languages.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_el_expressions"><a class="anchor" href="#_el_expressions"></a>4. EL Expressions</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_terminal_entities"><a class="anchor" href="#_terminal_entities"></a>3.4. Terminal Entities</h3>
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
+<div class="paragraph">
+<p>Formally, an openEHR EL expression is any of the following value-returning entities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>terminal entities</em>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>literals</em>;</p>
+</li>
+<li>
+<p><em>constants</em>;</p>
+</li>
+<li>
+<p><em>symbolic variables</em>;</p>
+</li>
+<li>
+<p><em>function calls</em>;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>predicates</em>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>check() predicate</em>: special expression for asserting a truth value;</p>
+</li>
+<li>
+<p><em>defined() predicate</em>: special expression for determing validity of external variable;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>complex expressions</em> created from:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>equality operator</em>: equality operator;</p>
+</li>
+<li>
+<p><em>primitive operators</em>: arithmetic operators, relational operators, boolean operators;</p>
+</li>
+<li>
+<p><em>collection operators</em>: logical quantification operators.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of these is described in detail in the following sub-sections.</p>
+</div>
+<div class="paragraph">
+<p>EL is designed syntactically as a readable language while being underpinned by fully class-based functional semantics, which are supplied either by a minimal built-in core, and mostly by bindings to external computing context. In this way, syntax elements such as the '+' operator for the <code>Date</code> type, or the <code>for_all</code> universal quantifier operator may be mapped to underlying methods such as <code>Date.<em>add</em>()</code> and <code>Container.<em>for_all</em>()</code>.</p>
+</div>
+<div class="paragraph">
+<p>EL is not intended for writing functions or classes, rather it is designed as a minimalist logic-based language in which expressions can be written, but whose programming is undertaken inside libraries in existing programming languages. Routine declarations in EL are the primary mechanism to connect external software libraries to the EL context. In EL, both functions and procedures are supported, and are collectively known as <em>routines</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_terminal_entities"><a class="anchor" href="#_terminal_entities"></a>4.2. Terminal Entities</h3>
 <div class="paragraph">
 <p>This section describes the various kinds of terminal entities that may appear in EL expressions.</p>
 </div>
 <div class="sect3">
-<h4 id="_literals"><a class="anchor" href="#_literals"></a>3.4.1. Literals</h4>
+<h4 id="_literals"><a class="anchor" href="#_literals"></a>4.2.1. Literals</h4>
 <div class="paragraph">
 <p>Literal values are expressed in the <a href="/releases/BASE/latest/odin.html#_primitive_types">ODIN syntax</a>, with the exception of <code>List&lt;T&gt;</code> and <code>Set&lt;T&gt;</code> which are distinguished in EL with specific types of brackets.</p>
 </div>
@@ -1176,126 +1083,66 @@ computing_bindings
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect3">
-<h4 id="_constants"><a class="anchor" href="#_constants"></a>3.4.2. Constants</h4>
 <div class="paragraph">
-<p>Constants are defined via the use of the equality operator <code>=</code> in type declarations in the <code>reference</code> section, as follows.</p>
+<p>Literal values may be used in EL expressions, as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>reference
-    Mph_to_kmh_factor: Real = 1.6
-    Pounds_to_kg: Real = 0.4536
-    Safe_glucose_limits: Interval&lt;Real&gt; = |0.0..6.5|</pre>
+<pre>    $kmh := 1.6 * $mph</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The result of the declaration is to define the symbols <code>Mph_to_kmh_factor</code> and <code>Pounds_to_kg</code> as immutable constants.</p>
-</div>
-<div class="paragraph">
-<p>Constants of complex types are declared using the ODIN syntax, for example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>reference
-    Threshold_ogtt_glucose: DV_QUANTITY = &lt;
-        magnitude = &lt;6.5&gt;
-        units = &lt;"mmol/L"&gt;
-    &gt;</pre>
-</div>
-</div>
-<div class="paragraph tbd">
-<p>TBD: could also use archetype fragments here, as matching templates.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_variables"><a class="anchor" href="#_variables"></a>3.4.3. Variables</h4>
+<h4 id="_constants"><a class="anchor" href="#_constants"></a>4.2.2. Constants</h4>
 <div class="paragraph">
-<p>Symbolic variables are declared in two forms. The syntax <code>name: Type</code> is used for local variables, which are declared in the <code>definition</code> section.</p>
-</div>
-<div class="paragraph">
-<p>External vraiables are declared in the <code>data_context</code> section, using the syntax <code>in|out|in_out $name: Type</code>. The direction specifier indicates the intended use of the variable in the defnition, i.e. <code>in</code> = readable, <code>out</code> = writable, <code>in_out</code> = readable and writable.</p>
-</div>
-<div class="paragraph">
-<p>In both cases, multiple variables may be declared on the same line. The following shows various declarations:</p>
+<p>Symbolic constants may be used in any EL expression. As with variables, constants are typed, and are either declared explicity in the EL text (see <a href="#_declarations">next section</a>), or assumed to be available in the execution environment. Constants are syntactically represented using labels of whch the first letter is capitalised, and may be of any type, including complex types. The following are EL statements using constants.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>data_context
-    in $date_of_birth: Date
-    in $weight, $height: Real
-    out $bmi: Real
-    in bp_obs: OBSERVATION;
-
-definition
-    age_in_years: Integer
-    heart_rate_samples: List&lt;Real&gt;</pre>
+<pre>    $kmh := Mph_to_kmh_factor * $mph
+    Safe_glucose_limits.has ($glucose_meas)</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Every external variable must have a counterpart in the EL data context to be processable.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_functions"><a class="anchor" href="#_functions"></a>3.4.4. Functions</h4>
+<h4 id="_variables"><a class="anchor" href="#_variables"></a>4.2.3. Variables</h4>
 <div class="paragraph">
-<p>In EL, the function is the primary means to link expressions to implementations. Both functions and procedures are supported, and are collectively known as <em>routines</em>. However, from a semantic point of view, only functions, or more correctly function invocations, qualify as expression elements. Procedures do not have associated values, and are described in the section on procedural elements below.</p>
+<p>Symbolic variables are of two types: local and external. Local variables are represented by plain names such as <code>is_smoker</code>, and are typically used as intermediate variables within a larger set of statements that generates some final value.</p>
 </div>
 <div class="paragraph">
-<p>In EL, a function is a routine that returns a result and is assumed to have no side-effects on previously declared entities. It has a signature of the form:</p>
+<p>External variables represent data entities in the operational data context, and are either assumed from elsewhere in the computational context, or else declared in a <code>data_context</code> section (see <a href="#_declarations">next section</a>).</p>
+</div>
+<div class="paragraph">
+<p>Typical expressions containing variables are as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    -- NB: not EL text
-    &lt;T_arg1, T_arg2, ....&gt;: T_result</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Typical examples of function signatures:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    -- NB: not EL text
-    : Date                          -- signature of a 0-order function like current_date()
-    &lt;Real, Real&gt;: Real              -- signature of a 2nd-order function like '*' for the domain R
-    &lt;Integer, Integer&gt;: Integer     -- signature of a 2nd-order function like 'add' for the domain I</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of <em>declaring routine signatures</em>, using the <code>func</code> keyword. This is similar to the declaration of methods in interface classes in languages like C# and Java.</p>
-</div>
-<div class="paragraph">
-<p>Examples of function declarations:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    func current_date(): Date                      -- a function that obtains today's date
+<pre>    $glucose &lt; 6.5                          -- an external variable
 
-    func bmi_metric (height, weight:Real): Real    -- a function that computes BMI from metric inputs
-
-    func sum (vals: List&lt;Real&gt;): Real              -- a function that computes the sum of a list of Reals</pre>
+    age := current_date() - $date_of_birth  -- age is a local variable</pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_function_calls"><a class="anchor" href="#_function_calls"></a>4.2.4. Function Calls</h4>
 <div class="paragraph">
-<p>The following example shows a function declaration for a function <code><em>tnm_major_number</em>()</code> that extracts various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on, and uses them in a Boolean expression whose value is assigned to the variable <code>is_luminal_A</code>.</p>
+<p>In EL expressions, computational functions may be used in the same way as programming languages. The following example shows a function declaration for a function <code><em>tnm_major_number</em>()</code> that extracts various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on, and uses them in a Boolean expression whose value is assigned to the variable <code>is_luminal_A</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    func tnm_major_number (tnm_val: String): Integer
-
-    is_luminal_A: Boolean := tnm_major_number (tnm_t) &lt; 3 and
-                             tnm_major_number (tnm_n) &lt; 2 and
-                             tnm_major_number (tnm_g) &lt; 3</pre>
+<pre>    is_luminal_A := tnm_major_number ($tnm_t) &lt; 3 and
+                     tnm_major_number ($tnm_n) &lt; 2 and
+                     tnm_major_number ($tnm_g) &lt; 3</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Functions are mapped to class methods in external libraries in the <a href="#_computing_bindings">Computing Bindings</a> section of an EL text.</p>
+<p>To be evaluated, function calls must be mappable to class methods in external libraries that are available at EL statement execution time.</p>
 </div>
-<div class="sect4">
-<h5 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>3.4.4.1. Built-in Functions</h5>
+</div>
+<div class="sect3">
+<h4 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>4.2.5. Built-in Functions</h4>
 <div class="paragraph">
-<p>Some basic functions are assumed to be provided in an EL environment, in order to enable EL expressions to be more standardised. These can be provided by the implementation using the above methods of declaration and external binding.</p>
+<p>Some common functions are assumed to be provided in an EL environment, in order to enable EL expressions to be more standardised. These can be provided by the implementation using the above methods of declaration and external binding.</p>
 </div>
 <div class="paragraph">
 <p>The built-in functions are listed below.</p>
@@ -1319,17 +1166,19 @@ definition
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_predicates"><a class="anchor" href="#_predicates"></a>3.5. Predicates</h3>
+<h3 id="_predicates"><a class="anchor" href="#_predicates"></a>4.3. Predicates</h3>
+<div class="paragraph">
+<p>EL predicates are special meta-operators that enable execution to be modified depending on the truth values and availability of referenced data items.</p>
+</div>
 <div class="sect3">
-<h4 id="_check_predicate"><a class="anchor" href="#_check_predicate"></a>3.5.1. check() Predicate</h4>
+<h4 id="_check_predicate"><a class="anchor" href="#_check_predicate"></a>4.3.1. check() Predicate</h4>
 <div class="paragraph">
 <p>In various circumstances, exceptions may be generated by EL expression evaluation. This primarily occurs when the value of a bound variable is undefined. EL provides a way of controlling execution when exceptions may occur, using a <code>check</code> expression, as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    check ($heart_rate &gt; 0.0)</pre>
+<pre>    check ($heart_rrate &gt; 0.0)</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1340,8 +1189,8 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if check ($heart_rate &gt; 0.0) then
-        -- statements mentioning $heart_rate
+<pre>    if check ($heart_rrate &gt; 0.0) then
+        -- statements mentioning $heart_rrate
     end</pre>
 </div>
 </div>
@@ -1350,50 +1199,50 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_defined_predicate"><a class="anchor" href="#_defined_predicate"></a>3.5.2. defined() Predicate</h4>
+<h4 id="_defined_predicate"><a class="anchor" href="#_defined_predicate"></a>4.3.2. defined() Predicate</h4>
 <div class="paragraph">
-<p>Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable <code>$body_weight</code> may be bound to a call that retrieves a patient weight from the EHR, via an appropriate API call. There is no guarantee that the value is available, so <code>$body_weight</code> may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. <code>0</code> for <code>Integer</code>) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, an explicit mechanism is needed to test for validity.</p>
+<p>Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable <code>body_weight</code> may be bound to a call that retrieves a patient weight from the EHR, via an appropriate API call. There is no guarantee that the value is available, so <code>body_weight</code> may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. <code>0</code> for <code>Integer</code>) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, an explicit mechanism is needed to test for validity.</p>
 </div>
 <div class="paragraph">
 <p>The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an <code>'undefined value'</code> exception is generated, indicating which variable could not be evaluated. To impose more control, the predicate <code>defined ()</code> can be used within a <code>check</code> statement to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if defined ($heart_rate) and defined ($blood_pressure) then
-        -- statements mentioning $heart_rate and $blood_pressure
+<pre>    if defined ($heart_rrate) and defined (blood_pressure) then
+        -- statements mentioning $heart_rrate and blood_pressure
     end
 
-    if check (defined ($heart_rate) and defined ($blood_pressure)) then  -- generates exception if False
-        -- statements mentioning $heart_rate and $blood_pressure
+    if check (defined ($heart_rrate) and defined (blood_pressure)) then  -- generates exception if False
+        -- statements mentioning $heart_rrate and blood_pressure
     end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Another difference between bound and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of a bound variable <code>$v</code>, is <code>$v</code> read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the <code><em>currency</em></code> property.</p>
+<p>Another difference between bound and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of a bound variable <code>v</code>, is <code>v</code> read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the <code><em>currency</em></code> property.</p>
 </div>
 <div class="paragraph">
 <p>To assert that a certain part of a larger data structure exists depending on values elsewhere (usually in the same structure, but not necessarily), the following construct can be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    check ($is_smoker implies defined ($smoking_details))</pre>
+<pre>    check (is_smoker implies defined (smoking_details))</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_complex_expressions"><a class="anchor" href="#_complex_expressions"></a>3.6. Complex Expressions</h3>
+<h3 id="_complex_expressions"><a class="anchor" href="#_complex_expressions"></a>4.4. Complex Expressions</h3>
 <div class="paragraph">
 <p>Complex expressions in EL consist of non-atomic value-returning expressions, in a familiar typed, operator-based syntax common to many programming languages and logics. In EL, the syntactic use of operators is understood as a shorthand for certain functions assumed to be available on certain types, and an EL implementation would map such operators to the appropriate methods in a class library.</p>
 </div>
 <div class="sect3">
-<h4 id="_equality_operator"><a class="anchor" href="#_equality_operator"></a>3.6.1. Equality Operator</h4>
+<h4 id="_equality_operator"><a class="anchor" href="#_equality_operator"></a>4.4.1. Equality Operator</h4>
 <div class="paragraph">
 <p>The equality operator <code>=</code> is special in EL as in most languages, and has two meanings. For all primitive types, the semantics are value comparison, while for container and other non-primitive types, the semantics are reference comparison.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_primitive_operators"><a class="anchor" href="#_primitive_operators"></a>3.6.2. Primitive Operators</h4>
+<h4 id="_primitive_operators"><a class="anchor" href="#_primitive_operators"></a>4.4.2. Primitive Operators</h4>
 <div class="paragraph">
 <p>Primitive operators in EL are the infix or prefix syntax form of various functions available on primitive types. For example, the operator <code>-</code> (minus) is defined on the class <code>Numeric</code> (an inheritance ancestor of the classes <code>Integer</code>, <code>Real</code> etc) as the following (using syntax from Java, TypeScript and similar languages):</p>
 </div>
@@ -1432,8 +1281,8 @@ definition
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">exp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">≥</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expontentiation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exponentiation</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">times</p></td>
@@ -1536,6 +1385,15 @@ definition
 <td class="tableblock halign-left valign-top"><p class="tableblock">implies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">⇒</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Material implication, "p implies q", or "if p then q"</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Constraint Operators - Boolean result</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matches</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">matches</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∈</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set membership, as per <a href="/releases/AM/latest/ADL2.html">openEHR ADL</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1642,25 +1500,25 @@ definition
 <p>Operator semantics that require further explanation are described below.</p>
 </div>
 <div class="sect4">
-<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>3.6.2.1. Logical Negation</h5>
+<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>4.4.2.1. Logical Negation</h5>
 <div class="paragraph">
 <p>All Boolean operators take Boolean operands and generate a Boolean result. The <code>not</code> operator can be applied as a prefix operator to all operators returning a Boolean result as well as a parenthesised Boolean expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.6.2.2. Precedence and Parentheses</h5>
+<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>4.4.2.2. Precedence and Parentheses</h5>
 <div class="paragraph">
 <p>The precedence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    at_risk := $weight &gt; 120 and ($is_smoker or $is_hypertensive)</pre>
+<pre>    at_risk := $systolic_bp &gt; 140 and ($is_smoker or $is_hypertensive)</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_collection_operators"><a class="anchor" href="#_collection_operators"></a>3.6.3. Collection Operators</h4>
+<h4 id="_collection_operators"><a class="anchor" href="#_collection_operators"></a>4.4.3. Collection Operators</h4>
 <div class="paragraph">
 <p>A common need in an expression language featuring container types (i.e. sets, lists etc) is the need to perform basic reasoning over them. The two standard operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types, and are kinds of Boolean-returning expressions.</p>
 </div>
@@ -1677,14 +1535,7 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>reference
-    Systolic_bp_threshold: Real = 160.0
-
-data_context
-    $systolic_bp_samples: List&lt;Real&gt;
-
-definition
-    if there_exists v in $systolic_bp_samples : v &gt; Systolic_bp_threshold then
+<pre>    if there_exists v in $systolic_bp_samples : v &gt; Systolic_bp_threshold then
         -- statements
     end</pre>
 </div>
@@ -1702,14 +1553,7 @@ definition
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>reference
-    Systolic_bp_threshold: Real = 160.0
-
-data_context
-    in $systolic_bp_samples: List&lt;Real&gt;
-
-definition
-    if for_all v in $systolic_bp_samples : v &lt;= Systolic_bp_threshold then
+<pre>    if for_all v in $systolic_bp_samples : v &lt;= Systolic_bp_threshold then
         -- statements
     end</pre>
 </div>
@@ -1728,15 +1572,192 @@ definition
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_el_statements"><a class="anchor" href="#_el_statements"></a>5. EL Statements</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_procedural_elements"><a class="anchor" href="#_procedural_elements"></a>3.7. Procedural Elements</h3>
+<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>There are two kinds of procedural construct in EL: <em>statements</em> and <em>control structures</em>. Neither is value-returning, in contrast to the functional elements of the language, rather they are state-changing.</p>
+<p>There are various kinds of non-expression statement in EL including <em>declarations</em>, <em>assignments</em> and <em>control structures</em>. None is value-returning, in contrast to the expression elements of the language. In order to represent these elements, a structure of EL statements consisting of several sections is assumed. The main statements occur in a <code>definition</code> section, while two other optional sections are added, enabling constants and external variable declarations respectively to be made.</p>
+</div>
+<div class="paragraph">
+<p>The logical structure of an EL structured text is thus as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>reference
+    &lt;declarations of constants&gt;
+
+data_context
+    &lt;declarations of external '$' variables&gt;
+
+definition
+    &lt;statements&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following subsections describe these elements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_declarations"><a class="anchor" href="#_declarations"></a>5.2. Declarations</h3>
+<div class="sect3">
+<h4 id="_constants_2"><a class="anchor" href="#_constants_2"></a>5.2.1. Constants</h4>
+<div class="paragraph">
+<p>Constants are defined via the use of the equality operator <code>=</code> in type declarations in the <code>reference</code> section, as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>reference
+    Mph_to_kmh_factor: Real = 1.6
+    Pounds_to_kg: Real = 0.4536
+    Safe_glucose_limits: Interval&lt;Real&gt; = |0.0..6.5|</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result of the declaration is to define the symbols <code>Mph_to_kmh_factor</code> and <code>Pounds_to_kg</code> as immutable constants.</p>
+</div>
+<div class="paragraph">
+<p>Constants of complex types are declared using the ODIN syntax, for example, the following manifest value of type <code>DV_QUANTITY</code> from the <a href="/releases/RM/latest/data_types.html">openEHR Data Types Model</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>reference
+    Threshold_ogtt_glucose: DV_QUANTITY = &lt;
+        magnitude = &lt;6.5&gt;
+        units = &lt;"mmol/L"&gt;
+    &gt;</pre>
+</div>
+</div>
+<div class="paragraph tbd">
+<p>TBD: could also use archetype fragments here, as matching templates.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_assignment"><a class="anchor" href="#_assignment"></a>3.7.1. Assignment</h4>
+<h4 id="_variables_2"><a class="anchor" href="#_variables_2"></a>5.2.2. Variables</h4>
 <div class="paragraph">
-<p>An assignment is kind of statement used to assign the value of an expression to a writable variable using the <code>:=</code> operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.</p>
+<p>Symbolic variables are declared in two forms. The syntax <code>name: Type</code> is used for local variables, which are declared in the <code>definition</code> section.</p>
+</div>
+<div class="paragraph">
+<p>External vraiables are declared in the <code>data_context</code> section, using the syntax <code>in|out|in_out name: Type</code>. The direction specifier indicates the intended use of the variable in the defnition, i.e. <code>in</code> = readable, <code>out</code> = writable, <code>in_out</code> = readable and writable.</p>
+</div>
+<div class="paragraph">
+<p>In both cases, multiple variables may be declared on the same line. The following shows various declarations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>data_context
+    in $date_of_birth: Date
+    in $weight, height: Real
+    out $bmi: Real
+    in $bp_obs: OBSERVATION;
+
+definition
+    age_in_years: Integer
+    heart_rate_samples: List&lt;Real&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every external variable must have a counterpart in the EL data context to be processable.</p>
+</div>
+<div class="paragraph">
+<p>With explicit declarations added, the earlier <code>there_exists</code> examples is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>reference
+    Systolic_bp_threshold: Real = 160.0
+
+data_context
+    $systolic_bp_samples: List&lt;Real&gt;
+
+definition
+    if there_exists v in $systolic_bp_samples : v &gt; Systolic_bp_threshold then
+        -- statements
+    end</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_functions_and_procedures"><a class="anchor" href="#_functions_and_procedures"></a>5.2.3. Functions and Procedures</h4>
+<div class="paragraph">
+<p>In EL, the functions and procedures are the primary means to make complex logic available to expressions. Both functions and procedures are supported, and are collectively known as <em>routines</em>.</p>
+</div>
+<div class="paragraph">
+<p>In EL, a function is a routine that returns a result and is assumed to have no side-effects on previously declared entities. It has a signature of the form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    -- NB: not EL syntax
+    &lt;T_arg1, T_arg2, ....&gt;: T_result</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Typical examples of function signatures:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    -- NB: not EL syntax
+    : Date                          -- signature of a 0-order function like current_date()
+    &lt;Real, Real&gt;: Real              -- signature of a 2nd-order function like '*' for the domain R
+    &lt;Integer, Integer&gt;: Integer     -- signature of a 2nd-order function like 'add' for the domain I</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of <em>declaring routine signatures</em>, using the <code>func</code> keyword. This is similar to the declaration of methods in interface classes in languages like C# and Java.</p>
+</div>
+<div class="paragraph">
+<p>Examples of function declarations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>definition
+    func current_date(): Date                        -- a function that obtains today's date
+    func bmi_metric (a_height, a_weight:Real): Real  -- a function that computes BMI from metric inputs
+    func sum (a_list: List&lt;Real&gt;): Real              -- a function that computes the sum of a list of Reals</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following example shows a function declaration for a function <code><em>tnm_major_number</em>()</code> that extracts various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on, and uses them in a Boolean expression whose value is assigned to the variable <code>is_luminal_A</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    func tnm_major_number (tnm_val: String): Integer
+
+    is_luminal_A: Boolean := tnm_major_number ($tnm_t) &lt; 3 and
+                             tnm_major_number ($tnm_n) &lt; 2 and
+                             tnm_major_number ($tnm_g) &lt; 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A procedure is a routine with a signature of the form <code>&lt;T_arg1, T_arg2, &#8230;&#8203;.&gt;</code>, i.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    -- NB: not EL syntax
+    &lt;Real&gt;                          -- a 1st-order procedure for the domain R
+    &lt;String, Integer&gt;               -- signature of a procedure taking a String and an Integer argument</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Procedures must be declared before use. This is done using the same syntax as for functions, as in the following example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    proc alert_user (message: String; priority: Integer)    -- a procedure that generates a user alert</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Functions and procedures are mapped to class methods in external libraries in the <a href="#_computing_bindings">Computing Bindings</a> section of an EL text.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assignment"><a class="anchor" href="#_assignment"></a>5.3. Assignment</h3>
+<div class="paragraph">
+<p>An assignment is a kind of statement used to assign the value of an expression to a writable variable using the <code>:=</code> operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1762,20 +1783,13 @@ definition
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_procedure_invocation"><a class="anchor" href="#_procedure_invocation"></a>3.7.2. Procedure Invocation</h4>
+<div class="sect2">
+<h3 id="_procedure_invocation"><a class="anchor" href="#_procedure_invocation"></a>5.4. Procedure Invocation</h3>
 <div class="paragraph">
-<p>EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries. Semantically however, they are quite different. A procedure is a routine with a signature of the form <code>&lt;T_arg1, T_arg2, &#8230;&#8203;.&gt;</code>, i.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    -- NB: not EL syntax
-    &lt;Real&gt;                          -- a 1st-order procedure for the domain R
-    &lt;String, Integer&gt;               -- signature of a procedure taking a String and an Integer argument</pre>
-</div>
+<p>EL supports the invocation of procedures in the same way as for functions. Computationally both are the same, being invocations of class methods or other functions defined in bound libraries.</p>
 </div>
 <div class="paragraph">
-<p>Procedures must be declared before use. This is done using the same syntax as for functions, as in the following example.</p>
+<p>The following shows a typical procedure declaration and invocation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1787,13 +1801,13 @@ definition
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_control_structures"><a class="anchor" href="#_control_structures"></a>3.7.3. Control Structures</h4>
+<div class="sect2">
+<h3 id="_control_structures"><a class="anchor" href="#_control_structures"></a>5.5. Control Structures</h3>
 <div class="paragraph">
 <p>Two control structures are provided in EL. They provide conditional logic structures from which statements (i.e. assignments and procedure calls) can be executed. Control structures may be nested in the usual way.</p>
 </div>
-<div class="sect4">
-<h5 id="_if_then"><a class="anchor" href="#_if_then"></a>3.7.3.1. If / then</h5>
+<div class="sect3">
+<h4 id="_if_then"><a class="anchor" href="#_if_then"></a>5.5.1. If / then</h4>
 <div class="paragraph">
 <p>In common with most programming languages, EL provides a standard 'if / then / elseif / else' structure, as follows:</p>
 </div>
@@ -1801,13 +1815,13 @@ definition
 <div class="content">
 <pre>data_context
     in $systolic_bp_meas: Real     -- from instrument
-    in $thyroid_t3: Real           -- from EHR
+    in thyroid_t3: Real            -- from EHR
 
 definition
     if $systolic_bp_meas &gt; 160.0 then
         alert_user ([dangerous_blood_pressure], 1)
 
-    elseif $systolic_bp_meas &gt; 140.0 and $thyroid_t3 &gt; 200 then
+    elseif $systolic_bp_meas &gt; 140.0 and thyroid_t3 &gt; 200 then
         inform_user ([raised_bp_and_abnormal_thyroid_activity], 2)
 
     else
@@ -1819,8 +1833,8 @@ definition
 <p>This structure is always evaluated in order.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_when_then"><a class="anchor" href="#_when_then"></a>3.7.3.2. When / then</h5>
+<div class="sect3">
+<h4 id="_when_then"><a class="anchor" href="#_when_then"></a>5.5.2. When / then</h4>
 <div class="paragraph">
 <p>EL provides a <code>when / matches / then</code> statement that is roughly equivalent to 'case' or 'switch' statements in most other languages. The <code>when</code> part indicates a  value-returning expression (such as a variable reference), which may be of any type, while the <code>matches</code> parts define value intervals that are used to match the <code>when</code> value. The first branch matched is executed.</p>
 </div>
@@ -1865,51 +1879,172 @@ definition
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="_material_to_remove"><a class="anchor" href="#_material_to_remove"></a>4. Material to remove?</h2>
+<h2 id="_el_texts"><a class="anchor" href="#_el_texts"></a>6. EL Texts</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_iteration"><a class="anchor" href="#_iteration"></a>4.1. Iteration</h3>
+<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>Iteration in EL is performed over container and interval objects, i.e. variables or manifest constants. The general approach is to use built-in iterators of the container types, as follows.</p>
+<p>The Expression Language may be used to write a self-standing <em>EL text</em> that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Object Model (EOM).</p>
+</div>
+<div class="paragraph">
+<p>The core sections of an EL text are expressed in the sections described above, i.e. <code>reference</code>, <code>data_context</code>, and <code>definition</code>. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains the main logic.</p>
+</div>
+<div class="paragraph">
+<p>The symbols used in statements are <em>names</em> in the fashion of any typical programming language, but are also considered <em>codes</em> to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL text, in the same way as for the <a href="/releases/AM/latest/docs/index">openEHR archetype formalism</a>. For example, the symbol <code>$heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
+</div>
+<div class="paragraph">
+<p>Mappings between external variables and external entities are described by <em>bindings</em> in a <code>data_bindings</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is an external variable that may be mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call). This provides clear semantics for statements in the expression text that mention such variables.</p>
+</div>
+<div class="paragraph">
+<p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than <code>use_model</code>, <code>reference</code>, <code>data_context</code>, and <code>definition</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the <code>import</code> keyword.</p>
+</div>
+<div class="paragraph">
+<p>The structure of a self-standing EL text is thus as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    do_all (proc(v: T))
-            -- execute proc(v) for every v in container
+<pre>&lt;identifier&gt;
 
-    do_if (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in container for which test(v) is True
+import
+    &lt;identifier&gt;
+    &lt;identifier&gt;
+    ...
 
-    do_while (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in container until test (v) returns False
+language
+    original_language = &lt;...&gt;
+    translations = &lt;...&gt;
 
-    do_until (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in container until test (v) returns True</pre>
+description
+    &lt;descriptive meta-data&gt;
+
+use_model
+    &lt;model ids&gt;
+
+reference
+    &lt;constant definitions&gt;
+
+data_context
+    &lt;declarations&gt;
+
+definition
+    &lt;statements&gt;
+
+terminology
+    &lt;symbol_definitions&gt;
+
+data_bindings
+    &lt;symbol bindings&gt;
+
+computing_bindings
+    &lt;method bindings&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Iteration over a range of integers can be performed using an <code>Interval&lt;Integer&gt;</code> literal, as follows:</p>
+<p>An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    (|1..5|).do_all (
-        (v: Integer)
-            do
-                -- statements
-            end
-    )</pre>
+<pre class="pygments highlight"><code data-lang="adl"><span class="tok-err">openEHR-EOM.bmi.v1</span>
+
+<span class="tok-gh">language</span>
+    <span class="tok-nc">original_language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">en</span><span class="tok-p">]&gt;</span>
+    <span class="tok-nc">translations</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
+    <span class="tok-p">&gt;</span>
+
+<span class="tok-gh">description</span>
+    <span class="tok-nc">lifecycle_state</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;unmanaged&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-nc">original_author</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
+    <span class="tok-nc">details</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+    <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">pt</span><span class="tok-p">]&gt;</span>
+            <span class="tok-nc">purpose</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Cálculo do peso do corpo&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-nc">use</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;...&quot;</span><span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
+
+<span class="tok-s">use_model</span>
+    <span class="tok-nc">org</span><span class="tok-err">.</span><span class="tok-nc">openehr</span><span class="tok-err">.</span><span class="tok-nc">rm</span>
+
+<span class="tok-s">data_context</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+    <span class="tok-nc">out</span> <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+
+<span class="tok-gh">definition</span>
+    <span class="tok-err">$</span><span class="tok-nc">bmi</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span> <span class="tok-p">/ </span><span class="tok-err">$</span><span class="tok-nc">height</span> <span class="tok-o">^</span> <span class="tok-mi">2</span>
+
+<span class="tok-gh">terminology</span>
+    <span class="tok-nc">symbol_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;en&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body weight&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;weight of subject body&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo do sujeito&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
+
+<span class="tok-s">data_bindings</span>
+    <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_measurements.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id6]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_mass_index.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;body_mass_index&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;out&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph tbd">
-<p>TBD: more on how this works (it&#8217;s defined on <code>Discrete_interval&lt;T&gt;</code>)</p>
+<div class="paragraph">
+<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>including the definitions in the <code>rules</code> section;</p>
+</li>
+<li>
+<p>adding the EL text <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
+</li>
+<li>
+<p>adding the <code>data_bindings</code> and <code>computing_bindings</code> as additional sections.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_terminology"><a class="anchor" href="#_terminology"></a>5. Terminology</h2>
+<h2 id="_terminology"><a class="anchor" href="#_terminology"></a>7. Terminology</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>An EL text may have a terminology defined for it, which enables natural language renderings of its symbols to be defined. This is done in exactly the same way as the definition of terms in <a href="/releases/AM/latest/ADL2.html#_terminology_section">ADL2</a> (semantics defined by AOM2). The only difference from terminology definition in openEHR archetypes is that instead of the code names being of the form <code>idN</code>, <code>atN</code> and <code>acN</code>, they are simply the symbolic variable names. Since symbolic variables are normally defined to be meaningful in their own right (i.e. in the same way as by programmers using typical programming languages), EL texts and expressions are readable in one language (just as say, Java library code published by Oracle) but additionally translatable for rendering purposes to any language for which there is a translation.</p>
@@ -1968,13 +2103,13 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_bindings"><a class="anchor" href="#_data_bindings"></a>6. Data Bindings</h2>
+<h2 id="_data_bindings"><a class="anchor" href="#_data_bindings"></a>8. Data Bindings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Expressions in the openEHR Expression Language contain variables, which may be <em>bound</em> to entities in a <em>data context</em>. Each binding connects a symbolic variable to a data source or target in the data context.</p>
 </div>
 <div class="sect2">
-<h3 id="_binding_model"><a class="anchor" href="#_binding_model"></a>6.1. Binding Model</h3>
+<h3 id="_binding_model"><a class="anchor" href="#_binding_model"></a>8.1. Binding Model</h3>
 <div class="paragraph">
 <p>The model of binding of a symbolic variable in an expression to an external entity varies, depending on specifics of system architecture. The taxonomy shown below illustrates the various forms of context that are assumed to exist. There are two essential types: <em>execution context</em> and <em>content context</em>. The first corresponds to obtaining the required data item from the current execution context, either via an <em>API call</em>, running a <em>query</em>, or <em>interactive</em>, i.e. via an application.</p>
 </div>
@@ -1982,7 +2117,7 @@ definition
 <div class="content">
 <img src="diagrams/data_binding_taxonomy.svg" alt="data binding taxonomy">
 </div>
-<div class="title">Figure 1. Taxonomy of data binding</div>
+<div class="title">Figure 4. Taxonomy of data binding</div>
 </div>
 <div class="paragraph">
 <p>For variables declared as <code>in</code> and <code>in_out</code> in the EL text, in addition to binding targets, it is may be important to state the <em>data quality</em>, typically at least <em>currency</em> i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a <code>WHERE</code> clause expression that references a relevant time-related meta-data item.</p>
@@ -2020,7 +2155,7 @@ definition
 <p>The <code>binding_definition</code> elements are data structures whose contents instantiate the model of each kind of binding. In the examples below, these are shown in <a href="/releases/BASE/latest/odin.html">ODIN syntax</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_content_binding"><a class="anchor" href="#_content_binding"></a>6.1.1. Content Binding</h4>
+<h4 id="_content_binding"><a class="anchor" href="#_content_binding"></a>8.1.1. Content Binding</h4>
 <div class="paragraph">
 <p>A content context corresponds to data assumed to be available within a larger data entity such as a document or other structure, being the result of a prior retrieval or data creation. In this case i.e. the variable is bound to a data item within the content structure, identified by a path or identifier.</p>
 </div>
@@ -2040,7 +2175,7 @@ definition
 </div>
 </div>
 <div class="paragraph">
-<p>Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables <code>$body_weight</code>, <code>$height</code> and <code>$body_mass_index</code> used in examples above. A writable (i.e. <code>out</code>) variable such as <code>$body_mass_index</code> may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.</p>
+<p>Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables <code>$body_weight</code>, <code>$height</code> and <code>$body_mass_index</code> used in examples above. A writable (i.e. <code>out</code>) variable such as <code>body_mass_index</code> may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2064,7 +2199,7 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_api_call_binding"><a class="anchor" href="#_api_call_binding"></a>6.1.2. API Call Binding</h4>
+<h4 id="_api_call_binding"><a class="anchor" href="#_api_call_binding"></a>8.1.2. API Call Binding</h4>
 <div class="paragraph">
 <p>A binding to an API call is used when the required value can be obtained through such a call in a defined interface. The following shows how the value for the variable <code>systolic_bp</code> is obtained from the API call <code>vital_sign ($ehr_id, "systolic_pressure")</code>, that must have been measured in the last 1 hour. In this case, the index context is the system identifier, <code><a href="https://oncology.health.org/cdr/" class="bare">https://oncology.health.org/cdr/</a></code> in the example.</p>
 </div>
@@ -2090,7 +2225,7 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_query_binding"><a class="anchor" href="#_query_binding"></a>6.1.3. Query Binding</h4>
+<h4 id="_query_binding"><a class="anchor" href="#_query_binding"></a>8.1.3. Query Binding</h4>
 <div class="paragraph">
 <p>A common special case of an API call is when the call is to executure a query, either stored or ad hoc. In this case, the API call name doesn&#8217;t change, and either an id (stored query case) or the text of a query is supplied. In this case, the <code>parameters</code> states the substitutable parameter values to be used in the query when executed, where each such value replaces a named parameter, assumed to be of the form <code>'$param'</code>, with a provided value.</p>
 </div>
@@ -2129,7 +2264,7 @@ definition
 </div>
 </div>
 <div class="sect3">
-<h4 id="_interactive_binding"><a class="anchor" href="#_interactive_binding"></a>6.1.4. Interactive Binding</h4>
+<h4 id="_interactive_binding"><a class="anchor" href="#_interactive_binding"></a>8.1.4. Interactive Binding</h4>
 <div class="paragraph">
 <p>Rather than obtaining a data value from and API or query, it may be obtained interactively. Various parameters may apply here, as shown in the following example. Here, the index context is an application name. The special name <code>"default"</code> means that the identity of the application or other interactive method is determined by the enclosing context, e.g. it may be the current application or a generic decision support UI.</p>
 </div>
@@ -2151,7 +2286,7 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_computing_bindings"><a class="anchor" href="#_computing_bindings"></a>7. Computing Bindings</h2>
+<h2 id="_computing_bindings"><a class="anchor" href="#_computing_bindings"></a>9. Computing Bindings</h2>
 <div class="sectionbody">
 <div class="paragraph tbd">
 <p>TBD: potentially do without this section altogether, and let implementations do their own thing. However, it requires that call signatures exactly match the declarations in the <code>definition</code> section.</p>
@@ -2198,13 +2333,13 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_module_structure"><a class="anchor" href="#_module_structure"></a>8. Module Structure</h2>
+<h2 id="_module_structure"><a class="anchor" href="#_module_structure"></a>10. Module Structure</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Expression Language supports inclusion of one EL text in another via the <code>import</code> keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL text to contain just the specific functionality for which it is authored.</p>
 </div>
 <div class="sect2">
-<h3 id="_el_text_identification"><a class="anchor" href="#_el_text_identification"></a>8.1. EL Text Identification</h3>
+<h3 id="_el_text_identification"><a class="anchor" href="#_el_text_identification"></a>10.1. EL Text Identification</h3>
 <div class="paragraph tbd">
 <p>TBD: xxxx</p>
 </div>
@@ -2212,7 +2347,7 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>9. The Expression Object Model</h2>
+<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>11. The Expression Object Model</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -2227,7 +2362,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect2">
-<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>9.1. Overview</h3>
+<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>11.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>expression</code> package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>expression</code> package and further specialise some of its types specifically intended for extension.</p>
 </div>
@@ -2238,11 +2373,11 @@ the model and description shown here is first draft only
 <div class="content">
 <img src="../UML/diagrams/BASE-expression_packages.svg" alt="BASE expression packages">
 </div>
-<div class="title">Figure 2. base.expression Package</div>
+<div class="title">Figure 5. base.expression Package</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>9.2. Core Package</h3>
+<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>11.2. Core Package</h3>
 <div class="paragraph">
 <p>The main <code>expression</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
 </div>
@@ -2250,7 +2385,7 @@ the model and description shown here is first draft only
 <div class="content">
 <img src="../UML/diagrams/BASE-expression.svg" alt="BASE expression">
 </div>
-<div class="title">Figure 3. base.expression.core Package</div>
+<div class="title">Figure 6. base.expression.core Package</div>
 </div>
 <div class="paragraph">
 <p>A group of statements to be used together is formally defined as one or more <code>STATEMENTs</code> in a <code>STATEMENT_SET</code>. There are three types of statements corresponding to the classes <code>ASSERTION</code>, <code>VARIABLE_DECLARATION</code> and <code>ASSIGNMENT</code>. Assertions consist of an expression tree structure that evaluates to a <code>Boolean</code> value. The root of the tree is a descendant of the class <code>EXPR_ITEM</code> that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named.</p>
@@ -2262,7 +2397,7 @@ the model and description shown here is first draft only
 <p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>EXPR_VALUE</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>9.2.1. Expressions</h4>
+<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>11.2.1. Expressions</h4>
 <div class="paragraph">
 <p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#_complex_expressions">Complex Expressions</a> sub-section in the Language section.</p>
 </div>
@@ -2280,9 +2415,9 @@ the model and description shown here is first draft only
 </div>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>9.2.2. Class Descriptions</h4>
+<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>11.2.2. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_text_class"><a class="anchor" href="#_el_text_class"></a>9.2.2.1. EL_TEXT Class</h5>
+<h5 id="_el_text_class"><a class="anchor" href="#_el_text_class"></a>11.2.2.1. EL_TEXT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2333,7 +2468,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_declaration_class"><a class="anchor" href="#_el_declaration_class"></a>9.2.2.2. EL_DECLARATION Class</h5>
+<h5 id="_el_declaration_class"><a class="anchor" href="#_el_declaration_class"></a>11.2.2.2. EL_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2365,7 +2500,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_variable_declaration_class"><a class="anchor" href="#_el_variable_declaration_class"></a>9.2.2.3. EL_VARIABLE_DECLARATION Class</h5>
+<h5 id="_el_variable_declaration_class"><a class="anchor" href="#_el_variable_declaration_class"></a>11.2.2.3. EL_VARIABLE_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2403,7 +2538,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_routine_declaration_class"><a class="anchor" href="#_el_routine_declaration_class"></a>9.2.2.4. EL_ROUTINE_DECLARATION Class</h5>
+<h5 id="_el_routine_declaration_class"><a class="anchor" href="#_el_routine_declaration_class"></a>11.2.2.4. EL_ROUTINE_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2437,7 +2572,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_function_declaration_class"><a class="anchor" href="#_el_function_declaration_class"></a>9.2.2.5. EL_FUNCTION_DECLARATION Class</h5>
+<h5 id="_el_function_declaration_class"><a class="anchor" href="#_el_function_declaration_class"></a>11.2.2.5. EL_FUNCTION_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2473,7 +2608,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_procedure_declaration_class"><a class="anchor" href="#_el_procedure_declaration_class"></a>9.2.2.6. EL_PROCEDURE_DECLARATION Class</h5>
+<h5 id="_el_procedure_declaration_class"><a class="anchor" href="#_el_procedure_declaration_class"></a>11.2.2.6. EL_PROCEDURE_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2497,7 +2632,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>9.2.2.7. EL_STATEMENT Class</h5>
+<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>11.2.2.7. EL_STATEMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2519,7 +2654,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>9.2.2.8. EL_ASSIGNMENT Class</h5>
+<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>11.2.2.8. EL_ASSIGNMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2564,7 +2699,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>9.2.2.9. EL_PROCEDURE_CALL Class</h5>
+<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>11.2.2.9. EL_PROCEDURE_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2598,7 +2733,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>9.2.2.10. EL_CHOICE_GROUP Class</h5>
+<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>11.2.2.10. EL_CHOICE_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2634,7 +2769,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>9.2.2.11. EL_CHOICE_BRANCH Class</h5>
+<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>11.2.2.11. EL_CHOICE_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2666,7 +2801,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>9.2.2.12. EL_CONDITION_GROUP Class</h5>
+<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>11.2.2.12. EL_CONDITION_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2703,7 +2838,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>9.2.2.13. EL_CONDITION_BRANCH Class</h5>
+<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>11.2.2.13. EL_CONDITION_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2739,7 +2874,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>9.2.2.14. EL_DECISION_GROUP Class</h5>
+<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>11.2.2.14. EL_DECISION_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2774,7 +2909,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>9.2.2.15. EL_DECISION_BRANCH Class</h5>
+<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>11.2.2.15. EL_DECISION_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2808,7 +2943,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>9.2.2.16. EL_EXPRESSION Class</h5>
+<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>11.2.2.16. EL_EXPRESSION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2849,7 +2984,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>9.2.2.17. EL_OPERATOR Class</h5>
+<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>11.2.2.17. EL_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2901,7 +3036,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>9.2.2.18. OPERATOR_DEF Class</h5>
+<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>11.2.2.18. OPERATOR_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2947,7 +3082,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>9.2.2.19. EL_UNARY_OPERATOR Class</h5>
+<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>11.2.2.19. EL_UNARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2985,7 +3120,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>9.2.2.20. EL_BINARY_OPERATOR Class</h5>
+<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>11.2.2.20. EL_BINARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3030,7 +3165,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_leaf_class"><a class="anchor" href="#_el_leaf_class"></a>9.2.2.21. EL_LEAF Class</h5>
+<h5 id="_el_leaf_class"><a class="anchor" href="#_el_leaf_class"></a>11.2.2.21. EL_LEAF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3084,7 +3219,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>9.2.2.22. EL_LITERAL Class</h5>
+<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>11.2.2.22. EL_LITERAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3123,7 +3258,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_variable_class"><a class="anchor" href="#_el_variable_class"></a>9.2.2.23. EL_VARIABLE Class</h5>
+<h5 id="_el_variable_class"><a class="anchor" href="#_el_variable_class"></a>11.2.2.23. EL_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3162,7 +3297,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_external_variable_class"><a class="anchor" href="#_el_external_variable_class"></a>9.2.2.24. EL_EXTERNAL_VARIABLE Class</h5>
+<h5 id="_el_external_variable_class"><a class="anchor" href="#_el_external_variable_class"></a>11.2.2.24. EL_EXTERNAL_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3198,7 +3333,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>9.2.2.25. EL_FUNCTION_CALL Class</h5>
+<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>11.2.2.25. EL_FUNCTION_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3246,7 +3381,7 @@ the model and description shown here is first draft only
 </div>
 </div>
 <div class="sect2">
-<h3 id="_typing"><a class="anchor" href="#_typing"></a>9.3. Typing</h3>
+<h3 id="_typing"><a class="anchor" href="#_typing"></a>11.3. Typing</h3>
 <div class="paragraph">
 <p>The <code>expressions.types</code> package is shown below.</p>
 </div>
@@ -3254,15 +3389,15 @@ the model and description shown here is first draft only
 <div class="content">
 <img src="../UML/diagrams/BASE-expression.types.svg" alt="BASE expression.types">
 </div>
-<div class="title">Figure 4. baes.expression.types Package</div>
+<div class="title">Figure 7. baes.expression.types Package</div>
 </div>
 <div class="paragraph">
 <p>The type system of the Expression formalism is defined via the type <code>EXPR_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>9.3.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>11.3.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_type_def_class"><a class="anchor" href="#_el_type_def_class"></a>9.3.1.1. EL_TYPE_DEF Class</h5>
+<h5 id="_el_type_def_class"><a class="anchor" href="#_el_type_def_class"></a>11.3.1.1. EL_TYPE_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3303,7 +3438,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>9.3.1.2. TYPE_DEF_BOOLEAN Class</h5>
+<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>11.3.1.2. TYPE_DEF_BOOLEAN Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3346,7 +3481,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>9.3.1.3. TYPE_DEF_INTEGER Class</h5>
+<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>11.3.1.3. TYPE_DEF_INTEGER Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3389,7 +3524,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>9.3.1.4. TYPE_DEF_REAL Class</h5>
+<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>11.3.1.4. TYPE_DEF_REAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3432,7 +3567,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>9.3.1.5. TYPE_DEF_DATE Class</h5>
+<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>11.3.1.5. TYPE_DEF_DATE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3475,7 +3610,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>9.3.1.6. TYPE_DEF_DATE_TIME Class</h5>
+<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>11.3.1.6. TYPE_DEF_DATE_TIME Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3518,7 +3653,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>9.3.1.7. TYPE_DEF_TIME Class</h5>
+<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>11.3.1.7. TYPE_DEF_TIME Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3561,7 +3696,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>9.3.1.8. TYPE_DEF_DURATION Class</h5>
+<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>11.3.1.8. TYPE_DEF_DURATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3604,7 +3739,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>9.3.1.9. TYPE_DEF_STRING Class</h5>
+<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>11.3.1.9. TYPE_DEF_STRING Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3647,7 +3782,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>9.3.1.10. TYPE_DEF_URI Class</h5>
+<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>11.3.1.10. TYPE_DEF_URI Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3690,7 +3825,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>9.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
+<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>11.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3733,7 +3868,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>9.3.1.12. TYPE_DEF_OBJECT_REF Class</h5>
+<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>11.3.1.12. TYPE_DEF_OBJECT_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4169,7 +4304,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-18 22:23:06 BST
+Last updated 2018-09-07 12:50:54 BST
 </div>
 </div>
 </body>

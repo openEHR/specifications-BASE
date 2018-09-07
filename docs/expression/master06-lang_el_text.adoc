@@ -1,0 +1,140 @@
+= EL Texts
+
+== Overview
+
+The Expression Language may be used to write a self-standing _EL text_ that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Object Model (EOM).
+
+The core sections of an EL text are expressed in the sections described above, i.e. `reference`, `data_context`, and `definition`. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the `definition` section, which contains the main logic.
+
+The symbols used in statements are _names_ in the fashion of any typical programming language, but are also considered _codes_ to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a `terminology` section of an EL text, in the same way as for the {openehr_am}[openEHR archetype formalism]. For example, the symbol `$heart_rate` of type `Integer` may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).
+
+Mappings between external variables and external entities are described by _bindings_ in a `data_bindings` section. For example, the expression `$heart_rate > 50` is an assertion about values found in some data - i.e. `$heart_rate` is an external variable that may be mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable's value is obtained from (e.g. some larger data entity such as a document or message, or via an API call). This provides clear semantics for statements in the expression text that mention such variables.
+
+In addition to these computable sections, various meta-data sections are added, including the `description` and `language` sections defined by the {openehr_resource}[openEHR Resource specification], and an identification line at the top. As with archetypes, the sections other than `use_model`, `reference`, `data_context`, and `definition` are expressed in {openehr_odin}[openEHR ODIN syntax].
+
+Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the `import` keyword.
+
+The structure of a self-standing EL text is thus as follows:
+
+----
+<identifier>
+
+import
+    <identifier>
+    <identifier>
+    ...
+
+language
+    original_language = <...>
+    translations = <...>	
+    
+description
+    <descriptive meta-data>
+    
+use_model
+    <model ids>
+
+reference
+    <constant definitions>
+
+data_context
+    <declarations>
+    
+definition
+    <statements>
+    
+terminology
+    <symbol_definitions>
+    
+data_bindings
+    <symbol bindings>
+    
+computing_bindings
+    <method bindings>
+----
+
+An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.
+
+[source,adl]
+----
+openEHR-EOM.bmi.v1
+
+language
+    original_language = <[ISO_639-1::en]>
+    translations = <
+        ["pt"] = <...>
+    >	
+    
+description
+    lifecycle_state = <"unmanaged">
+    original_author = <...>
+    details = <
+    ["pt"] = <
+        language = <[ISO_639-1::pt]>
+            purpose = <"Cálculo do peso do corpo">
+            use = <"...">
+        >
+    >
+
+use_model
+    org.openehr.rm
+    
+data_context
+    in $body_weight, $height: Real
+    out $bmi: Real
+    
+definition
+    $bmi := $body_weight / $height ^ 2
+    
+terminology
+    symbol_definitions = <
+        ["en"] = <
+            ["body_weight"] = <
+                text = <"body weight"> 
+                description = <"weight of subject body">
+            >
+            ["height"] = <...>
+            ["bmi"] = <
+                text = <"body mass index">
+                description = <"body mass index">
+            >
+        >
+        ["pt"] = <
+            ["body_weight"] = <
+                text = <"peso do corpo"> 
+                description = <"peso do corpo do sujeito">
+            >
+            ["height"] = <...>
+            ["bmi"] = <
+                text = <"índice de massa corporal">
+                description = <"índice de massa corporal">
+            >
+        >
+    >
+   
+data_bindings
+    content_bindings = <
+        ["openEHR-EHR-OBSERVATION.body_measurements.v1"] = <
+            ["body_weight"] = <
+                target = <"/data/events[id3]/data/items[id5]/value/magnitude">
+                direction = <"in">
+            >
+            ["height"] = <
+                target = <"/data/events[id3]/data/items[id6]/value/magnitude">
+                direction = <"in">
+            >
+        >
+        ["openEHR-EHR-OBSERVATION.body_mass_index.v1"] = <
+            ["body_mass_index"] = <
+                target = <"/data/events[id3]/data/items[id5]/value/magnitude">
+                direction = <"out">
+            >
+        >
+    >    
+----
+
+When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:
+
+* including the definitions in the `rules` section;
+* adding the EL text `symbol_definitions` section to the archetype `terminology` section;
+* adding the `data_bindings` and `computing_bindings` as additional sections.
