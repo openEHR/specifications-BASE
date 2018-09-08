@@ -289,13 +289,18 @@
 </li>
 <li><a href="#_references">References</a>
 <ul class="sectlevel2">
-<li><a href="#_publications">Publications</a></li>
-<li><a href="#_resources">Resources</a>
+<li><a href="#_publications_e_health">Publications - e-Health</a>
 <ul class="sectlevel3">
-<li><a href="#_general">General</a></li>
-<li><a href="#_e_health_standards">e-Health Standards</a></li>
-<li><a href="#_e_health_projects">e-Health Projects</a></li>
-<li><a href="#_general_standards">General Standards</a></li>
+<li><a href="#_articles_books">Articles, Books</a></li>
+<li><a href="#_standards">Standards</a></li>
+<li><a href="#_projects">Projects</a></li>
+</ul>
+</li>
+<li><a href="#_general_it_publications">General IT Publications</a>
+<ul class="sectlevel3">
+<li><a href="#_articles_books_2">Articles, Books</a></li>
+<li><a href="#_online_resources">Online Resources</a></li>
+<li><a href="#_standards_2">Standards</a></li>
 </ul>
 </li>
 </ul>
@@ -2282,7 +2287,7 @@ time, reason, and potentially other meta-data.</p>
 (i.e. for each Version of any logical item, such as medications list, encounter note etc.). The signature
 is created as a private-key encryption (e.g. RSA-1) of a hash (e.g. MD5) of a canonical representation
 (such as in schema-based XML) of the Version being committed. A likely candidate for defining the
-signature and digest strings in openEHR is the openPGP message format (<a href="#rfc_4880">IETF RFC 4880</a>), due to
+signature and digest strings in openEHR is the openPGP message format (<a href="http://www.ietf.org/rfc/rfc4880">IETF RFC4880</a>), due to
 being an open specification and self-describing. The use of RFC 4880 for the format does not imply
 the use of the PGP distributed certificate infrastructure, or indeed any certification infrastructure;
 openEHR is agnostic on this point. If no public key or equivalent infrastructure is available, the
@@ -2707,11 +2712,7 @@ openEHR, as follows:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers
-("UIDs") are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an
-instance of a subtype of the UID class, i.e. either an ISO OID or a IETF UUID (see
-<a href="#rfc_4122">[rfc_4122]</a>; also known as a GUID). In general UUIDs are favoured since they
-require no central assignment and can be generated on the spot. A versioned container can be then referenced
+<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID (<a href="http://www.ietf.org/rfc/rfc4122">IETF RFC4122</a>; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
 with an <code>OBJECT_REF</code> containing its identifier.</p>
 </div>
 <div class="paragraph">
@@ -3644,7 +3645,7 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 <div class="ulist">
 <ul>
 <li>
-<p>It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <a href="#rfc_3986">[rfc_3986]</a> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the <code>ehr</code> scheme corresponds to EHR content.</p>
+<p>It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <a href="http://www.ietf.org/rfc/rfc3986">IETF RFC3986</a> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the <code>ehr</code> scheme corresponds to EHR content.</p>
 </li>
 <li>
 <p>URIs described here refer to information items within <code>VERSION.<em>data</em></code>, i.e. to objects such as <code>COMPOSITION</code> or <code>FOLDER</code>;</p>
@@ -4320,7 +4321,7 @@ means of normative comparison of openEHR with other related specifications or sy
 <p>ISO 8601: Syntax for expressing dates and times (used in openEHR Quantity package)</p>
 </li>
 <li>
-<p><a href="#ucum">UCUM</a>: Unified Coding for Units of Measure (used by openEHR Quantity data type)</p>
+<p><a href="http://unitsofmeasure.org/ucum.html">Unified Coding for Units of Measure (UCUM)</a> (used by openEHR Quantity data type)</p>
 </li>
 <li>
 <p>HL7v3 GTS: General Timing Specification syntax (used by openEHR Time specification data types).</p>
@@ -4329,7 +4330,7 @@ means of normative comparison of openEHR with other related specifications or sy
 <p>some HL7v3 domain vocabularies are mapped to the openEHR terminology.</p>
 </li>
 <li>
-<p><a href="#rfc_4880">IETF RFC 4880</a> - openPGP.</p>
+<p><a href="http://www.ietf.org/rfc/rfc4880">IETF RFC4880</a> - openPGP.</p>
 </li>
 </ul>
 </div>
@@ -4442,15 +4443,11 @@ and also provides an expression of each of the abstract models in the ITS formal
 <h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h3>
+<h3 id="_publications_e_health"><a class="anchor" href="#_publications_e_health"></a>Publications - e-Health</h3>
+<div class="sect3">
+<h4 id="_articles_books"><a class="anchor" href="#_articles_books"></a>Articles, Books</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
-<li>
-<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
-</li>
-<li>
-<p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
-</li>
 <li>
 <p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
 </li>
@@ -4461,16 +4458,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 <p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
 </li>
 <li>
-<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
-</li>
-<li>
-<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
-</li>
-<li>
 <p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
-</li>
-<li>
-<p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
 </li>
 <li>
 <p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
@@ -4479,40 +4467,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 <p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
 </li>
 <li>
-<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
-</li>
-<li>
-<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
-</li>
-<li>
-<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
-</li>
-<li>
-<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
-</li>
-<li>
-<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
-</li>
-<li>
 <p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
-</li>
-<li>
-<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
-</li>
-<li>
-<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H, Ross J. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
-</li>
-<li>
-<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
-</li>
-<li>
-<p><a id="Martin"></a>[Martin] Martin P. <strong>Translations between UML, OWL, KIF and the WebKB-2 languages (For-Taxonomy, Frame-CG, Formalized English)</strong>. May/June 2003. Available at <a href="http://www.webkb.org/doc/model/comparisons.html" class="bare">http://www.webkb.org/doc/model/comparisons.html</a> as at Aug 2004.</p>
-</li>
-<li>
-<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
-</li>
-<li>
-<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
 </li>
 <li>
 <p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
@@ -4527,12 +4482,6 @@ and also provides an expression of each of the abstract models in the ITS formal
 <p><a id="Rector_1999"></a>[Rector_1999] Rector A L. <strong>Clinical terminology: why is it so hard?</strong> Methods Inf Med. 1999 Dec;38(4-5):239-52. Available at <a href="http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf" class="bare">http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf</a> .</p>
 </li>
 <li>
-<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
-</li>
-<li>
-<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
-</li>
-<li>
 <p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
 </li>
 <li>
@@ -4544,20 +4493,8 @@ and also provides an expression of each of the abstract models in the ITS formal
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
 <div class="sect3">
-<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<h4 id="_standards"><a class="anchor" href="#_standards"></a>Standards</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
@@ -4618,7 +4555,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 </div>
 <div class="sect3">
-<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<h4 id="_projects"><a class="anchor" href="#_projects"></a>Projects</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
@@ -4669,8 +4606,76 @@ and also provides an expression of each of the abstract models in the ITS formal
 </ol>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_general_it_publications"><a class="anchor" href="#_general_it_publications"></a>General IT Publications</h3>
 <div class="sect3">
-<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
+<h4 id="_articles_books_2"><a class="anchor" href="#_articles_books_2"></a>Articles, Books</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
+</li>
+<li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
+</li>
+<li>
+<p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
+</li>
+<li>
+<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
+</li>
+<li>
+<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
+</li>
+<li>
+<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
+</li>
+<li>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+</li>
+<li>
+<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
+</li>
+<li>
+<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H, Ross J. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
+<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
+</li>
+<li>
+<p><a id="Martin"></a>[Martin] Martin P. <strong>Translations between UML, OWL, KIF and the WebKB-2 languages (For-Taxonomy, Frame-CG, Formalized English)</strong>. May/June 2003. Available at <a href="http://www.webkb.org/doc/model/comparisons.html" class="bare">http://www.webkb.org/doc/model/comparisons.html</a> as at Aug 2004.</p>
+</li>
+<li>
+<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
+</li>
+<li>
+<p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+</li>
+<li>
+<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_online_resources"><a class="anchor" href="#_online_resources"></a>Online Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[<a id="cov_contra"></a>] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_standards_2"><a class="anchor" href="#_standards_2"></a>Standards</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
@@ -4691,39 +4696,6 @@ and also provides an expression of each of the abstract models in the ITS formal
 <li>
 <p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
 </li>
-<li>
-<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
-</li>
-<li>
-<p><a id="rfc_4880"></a>[rfc_4880] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
-</li>
-<li>
-<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
-</li>
-<li>
-<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
-</li>
-<li>
-<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
-</li>
-<li>
-<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
-</li>
-<li>
-<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
-</li>
-<li>
-<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
-</li>
-<li>
-<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
-</li>
-<li>
-<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
-</li>
-<li>
-<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
-</li>
 </ol>
 </div>
 </div>
@@ -4733,7 +4705,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-17 10:12:55 BST
+Last updated 2018-09-08 14:40:39 BST
 </div>
 </div>
 </body>

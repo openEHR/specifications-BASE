@@ -18,7 +18,7 @@ NOTE: Other than for working with particular tools designed to use BMM, BMM is n
 
 === UML
 
-One would expect that the IT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. UML 2.x and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. However the evolution of UML and XMI has not been toward a clear meta-model and language for each of its sub-languages (i.e. static class model, state machine, interaction diagram etc) but rather toward a single universal model of everything in which elements of all of its needs are confusingly buried. 
+One would expect that the IT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. {uml}[UML 2.x] and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. However the evolution of UML and XMI has not been toward a clear meta-model and language for each of its sub-languages (i.e. static class model, state machine, interaction diagram etc) but rather toward a single universal model of everything in which elements of all of its needs are confusingly buried. 
 
 The UML 2.x specifications are exceedingly complex: UML 2.1.2 was specified by two documents, 'Superstructure' (738pp) and 'Infrastructure' (224pp); the UML 2.5.1 specification is only slightly smaller at 796 pages (see the {uml}[OMG UML page] for current specifications). The XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability (recognised as a critical issue by OMG in 2015). Despite the complexity, there are significant holes in the UML meta-model, including: the notion of 'type' is not formalised and the meta-model of generic types and container properties is problematic and does not map well to object programming languages. The Design By Contract (DbC) concept (i.e. pre-, post-conditions, class invariants), crucial for proper specifications, is in theory supported via the use of OCL 2.0 constraints in class definitions, but OCL suffers from the underlying semantic weaknesses as UML.
 
@@ -38,7 +38,7 @@ NOTE: Other tools may well perform as well or better, and in any case, all tools
 
 === XML Schema
 
-For some, XML-schema represents a way of expressing object models, but it is not semantically suitable for this purpose, primarily due to its problematic non-object-oriented inheritance semantics, lack of generic classes, no representation of non-data members, and only marginal support for design by contract. It can be and is often used (including in openEHR) as a derivative serialisation representation.
+For some, {xml_schema}[XML-schema] represents a way of expressing object models, but it is not semantically suitable for this purpose, primarily due to its problematic non-object-oriented inheritance semantics, lack of generic classes, lack of representation of non-data members, and only marginal support for design by contract. It can be and is often used (including in openEHR) as a derivative serialisation representation.
 
 == Design Approach
 

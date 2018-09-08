@@ -13,13 +13,13 @@ ODIN files encoded in latin 1 (ISO-8859-1) or another variant of ISO-8859 - both
 For situations where binary UTF-8 cannot be supported, ASCII encoding of unicode characters above code-point 127 should only be done using the system supported by many programming languages today, namely `\u` escaped UTF-16. In this system, unicode codepoints are mapped to either:
 
 * `\uHHHH` - 4 hex digits which will be the same (possibly 0-filled on the left) as the unicode code-point number expressed in hexadecimal; this applies to unicode codepoints in the range `U+0000` - `U+FFFF` (the 'base multi-lingual plane', BMP);
-* `\uHHHHHHHH` - 8 hex digits to encode unicode code-points in the range U+10000 through `U+10FFFF` (non-BMP planes); the algorithm is described in <<rfc_2781>>.
+* `\uHHHHHHHH` - 8 hex digits to encode unicode code-points in the range U+10000 through `U+10FFFF` (non-BMP planes); the algorithm is described in {rfc2781}[IETF RFC 2781].
 
 It is not expected that the above approach will be commonly needed, and it may not be needed at all; it is preferable to find ways to ensure that native UTF-8 can be supported, since this reduces the burden for ODIN parser and tool implementers. The above guidance is therefore provided only to ensure a standard approach is used for ASCII-encoded unicode, if it becomes unavoidable.
 
 Thus, while the only officially designated encoding for ODIN and its constituent syntaxes is UTF-8, real software systems may be more tolerant. This document therefore specifies that any tool designed to process ODIN files need only support UTF-8; supporting other encodings is an optional extra. This could change in the future, if required by the ODIN user community.
 
-URIs, which have their own data type in ODIN, are handled in a specific way: all characters outside the 'unreserved set' defined by <<rfc_3986>> are 'percent-encoded'. The unreserved set is:
+URIs, which have their own data type in ODIN, are handled in a specific way: all characters outside the 'unreserved set' defined by {rfc3986}[IETF RFC 3986] are 'percent-encoded'. The unreserved set is:
 
 [source, antlr-java]
 --------

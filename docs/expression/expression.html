@@ -158,11 +158,13 @@
 <li><a href="#_operator_def_class">11.2.2.18. OPERATOR_DEF Class</a></li>
 <li><a href="#_el_unary_operator_class">11.2.2.19. EL_UNARY_OPERATOR Class</a></li>
 <li><a href="#_el_binary_operator_class">11.2.2.20. EL_BINARY_OPERATOR Class</a></li>
-<li><a href="#_el_leaf_class">11.2.2.21. EL_LEAF Class</a></li>
-<li><a href="#_el_literal_class">11.2.2.22. EL_LITERAL Class</a></li>
-<li><a href="#_el_variable_class">11.2.2.23. EL_VARIABLE Class</a></li>
-<li><a href="#_el_external_variable_class">11.2.2.24. EL_EXTERNAL_VARIABLE Class</a></li>
-<li><a href="#_el_function_call_class">11.2.2.25. EL_FUNCTION_CALL Class</a></li>
+</ul>
+</li>
+<li><a href="#_el_literal_class">11.2.3. EL_LITERAL Class</a>
+<ul class="sectlevel4">
+<li><a href="#_el_variable_class">11.2.3.1. EL_VARIABLE Class</a></li>
+<li><a href="#_el_external_variable_class">11.2.3.2. EL_EXTERNAL_VARIABLE Class</a></li>
+<li><a href="#_el_function_call_class">11.2.3.3. EL_FUNCTION_CALL Class</a></li>
 </ul>
 </li>
 </ul>
@@ -192,13 +194,18 @@
 <li><a href="#_syntax_specification">Appendix A: Syntax Specification</a></li>
 <li><a href="#_references">References</a>
 <ul class="sectlevel2">
-<li><a href="#_publications">Publications</a></li>
-<li><a href="#_resources">Resources</a>
+<li><a href="#_general_it_publications">General IT Publications</a>
 <ul class="sectlevel3">
-<li><a href="#_general">General</a></li>
-<li><a href="#_e_health_standards">e-Health Standards</a></li>
-<li><a href="#_e_health_projects">e-Health Projects</a></li>
-<li><a href="#_general_standards">General Standards</a></li>
+<li><a href="#_articles_books">Articles, Books</a></li>
+<li><a href="#_online_resources">Online Resources</a></li>
+<li><a href="#_standards">Standards</a></li>
+</ul>
+</li>
+<li><a href="#_publications_e_health">Publications - e-Health</a>
+<ul class="sectlevel3">
+<li><a href="#_articles_books_2">Articles, Books</a></li>
+<li><a href="#_standards_2">Standards</a></li>
+<li><a href="#_projects">Projects</a></li>
 </ul>
 </li>
 </ul>
@@ -726,7 +733,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Uri</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Uri in <a href="#uri_syntax">RFC3986 format</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uri in <a href="http://www.ietf.org/rfc/rfc3986">IETF RFC3986</a> format</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Terminology_code</code></p></td>
@@ -1001,7 +1008,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Uri</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://en.wikipedia.org/wiki/Everest" class="bare">https://en.wikipedia.org/wiki/Everest</a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Uri in <a href="#uri_syntax">RFC3986 format</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uri in <a href="http://www.ietf.org/rfc/rfc3986">IETF RFC3986</a> format</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Terminology_code</code></p></td>
@@ -3163,63 +3170,14 @@ the model and description shown here is first draft only
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Unresolved directive in master11-expression_object_model.adoc - include::../UML/classes/el_terminal.adoc[leveloffset=+1]
+:leveloffset: +1</p>
 </div>
-<div class="sect4">
-<h5 id="_el_leaf_class"><a class="anchor" href="#_el_leaf_class"></a>11.2.2.21. EL_LEAF Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_LEAF (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Expression tree leaf item representing one of:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>a manifest constant of any primitive type;</p>
-</li>
-<li>
-<p>a path referring to a value in the archetype;</p>
-</li>
-<li>
-<p>a constraint;</p>
-</li>
-<li>
-<p>a variable reference.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_EXPRESSION</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>Any</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The reference item from which the value of this node can be computed.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
 </div>
-<div class="sect4">
-<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>11.2.2.22. EL_LITERAL Class</h5>
+<div class="sect3">
+<h4 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>11.2.3. EL_LITERAL Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3256,9 +3214,8 @@ the model and description shown here is first draft only
 </tr>
 </tbody>
 </table>
-</div>
 <div class="sect4">
-<h5 id="_el_variable_class"><a class="anchor" href="#_el_variable_class"></a>11.2.2.23. EL_VARIABLE Class</h5>
+<h5 id="_el_variable_class"><a class="anchor" href="#_el_variable_class"></a>11.2.3.1. EL_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3297,7 +3254,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_external_variable_class"><a class="anchor" href="#_el_external_variable_class"></a>11.2.2.24. EL_EXTERNAL_VARIABLE Class</h5>
+<h5 id="_el_external_variable_class"><a class="anchor" href="#_el_external_variable_class"></a>11.2.3.2. EL_EXTERNAL_VARIABLE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3333,7 +3290,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>11.2.2.25. EL_FUNCTION_CALL Class</h5>
+<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>11.2.3.3. EL_FUNCTION_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4013,41 +3970,19 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 <h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h3>
+<h3 id="_general_it_publications"><a class="anchor" href="#_general_it_publications"></a>General IT Publications</h3>
+<div class="sect3">
+<h4 id="_articles_books"><a class="anchor" href="#_articles_books"></a>Articles, Books</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
 <p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
 </li>
 <li>
-<p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
-</li>
-<li>
-<p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
-</li>
-<li>
-<p><a id="Beale_2002"></a>[Beale_2002] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> Eleventh OOPSLA Workshop on Behavioral Semantics: Serving the Customer (Seattle, Washington, USA, November 4, 2002). Edited by Kenneth Baclawski and Haim Kilov. Northeastern University, Boston, 2002, pp. 16-32. Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf</a> .</p>
-</li>
-<li>
-<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
-</li>
-<li>
 <p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
 </li>
 <li>
-<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
-</li>
-<li>
-<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
-</li>
-<li>
 <p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
-</li>
-<li>
-<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
-</li>
-<li>
-<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
 </li>
 <li>
 <p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
@@ -4065,9 +4000,6 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 <p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
 </li>
 <li>
-<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
-</li>
-<li>
 <p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
 </li>
 <li>
@@ -4083,7 +4015,79 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 <p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
 </li>
 <li>
-<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
+<p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+</li>
+<li>
+<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_online_resources"><a class="anchor" href="#_online_resources"></a>Online Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[<a id="cov_contra"></a>] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_standards"><a class="anchor" href="#_standards"></a>Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publications_e_health"><a class="anchor" href="#_publications_e_health"></a>Publications - e-Health</h3>
+<div class="sect3">
+<h4 id="_articles_books_2"><a class="anchor" href="#_articles_books_2"></a>Articles, Books</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_2002"></a>[Beale_2002] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> Eleventh OOPSLA Workshop on Behavioral Semantics: Serving the Customer (Seattle, Washington, USA, November 4, 2002). Edited by Kenneth Baclawski and Haim Kilov. Northeastern University, Boston, 2002, pp. 16-32. Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
+</li>
+<li>
+<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
+</li>
+<li>
+<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
+</li>
+<li>
+<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
 </li>
 <li>
 <p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
@@ -4098,12 +4102,6 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 <p><a id="Rector_1999"></a>[Rector_1999] Rector A L. <strong>Clinical terminology: why is it so hard?</strong> Methods Inf Med. 1999 Dec;38(4-5):239-52. Available at <a href="http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf" class="bare">http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf</a> .</p>
 </li>
 <li>
-<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
-</li>
-<li>
-<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
-</li>
-<li>
 <p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
 </li>
 <li>
@@ -4115,20 +4113,8 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
 <div class="sect3">
-<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<h4 id="_standards_2"><a class="anchor" href="#_standards_2"></a>Standards</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
@@ -4189,7 +4175,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<h4 id="_projects"><a class="anchor" href="#_projects"></a>Projects</h4>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
@@ -4240,71 +4226,13 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
-</li>
-<li>
-<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
-</li>
-<li>
-<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
-</li>
-<li>
-<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
-</li>
-<li>
-<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
-</li>
-<li>
-<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
-</li>
-<li>
-<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
-</li>
-<li>
-<p><a id="rfc_4880"></a>[rfc_4880] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
-</li>
-<li>
-<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
-</li>
-<li>
-<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
-</li>
-<li>
-<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
-</li>
-<li>
-<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
-</li>
-<li>
-<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
-</li>
-<li>
-<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
-</li>
-<li>
-<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
-</li>
-<li>
-<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
-</li>
-<li>
-<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
-</li>
-</ol>
-</div>
-</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-07 12:50:54 BST
+Last updated 2018-09-08 14:02:23 BST
 </div>
 </div>
 </body>
