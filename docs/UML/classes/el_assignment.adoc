@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*EL_ASSIGNMENT*
 
 h|*Description*
-2+a|Abstract ancestor of types representing the assignment statement, which does not produce a value in the way that operators such as '=', 'and' etc do. An assignment associates a named variable with an expression.
+2+a|Statement type representing an assignment from a value-generating source to a writable entity, i.e. a variable reference.
 
 h|*Inherit*
 2+|`EL_STATEMENT`
@@ -16,7 +16,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*target*: `EL_VARIABLE`
+|*target*: `EL_VARIABLE_REF`
 a|The target variable on the notional left-hand side of this assignment.
 
 h|*1..1*

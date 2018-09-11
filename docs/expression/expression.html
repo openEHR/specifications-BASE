@@ -130,61 +130,77 @@
 <li><a href="#_el_text_identification">10.1. EL Text Identification</a></li>
 </ul>
 </li>
-<li><a href="#_the_expression_object_model">11. The Expression Object Model</a>
+<li><a href="#_the_expression_language_object_model">11. The Expression Language Object Model</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_6">11.1. Overview</a></li>
-<li><a href="#_core_package">11.2. Core Package</a>
+<li><a href="#_module_package">11.2. Module Package</a>
 <ul class="sectlevel3">
-<li><a href="#_expressions">11.2.1. Expressions</a></li>
-<li><a href="#_class_descriptions">11.2.2. Class Descriptions</a>
+<li><a href="#_class_descriptions">11.2.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_el_text_class">11.2.2.1. EL_TEXT Class</a></li>
-<li><a href="#_el_declaration_class">11.2.2.2. EL_DECLARATION Class</a></li>
-<li><a href="#_el_variable_declaration_class">11.2.2.3. EL_VARIABLE_DECLARATION Class</a></li>
-<li><a href="#_el_routine_declaration_class">11.2.2.4. EL_ROUTINE_DECLARATION Class</a></li>
-<li><a href="#_el_function_declaration_class">11.2.2.5. EL_FUNCTION_DECLARATION Class</a></li>
-<li><a href="#_el_procedure_declaration_class">11.2.2.6. EL_PROCEDURE_DECLARATION Class</a></li>
-<li><a href="#_el_statement_class">11.2.2.7. EL_STATEMENT Class</a></li>
-<li><a href="#_el_assignment_class">11.2.2.8. EL_ASSIGNMENT Class</a></li>
-<li><a href="#_el_procedure_call_class">11.2.2.9. EL_PROCEDURE_CALL Class</a></li>
-<li><a href="#_el_choice_group_class">11.2.2.10. EL_CHOICE_GROUP Class</a></li>
-<li><a href="#_el_choice_branch_class">11.2.2.11. EL_CHOICE_BRANCH Class</a></li>
-<li><a href="#_el_condition_group_class">11.2.2.12. EL_CONDITION_GROUP Class</a></li>
-<li><a href="#_el_condition_branch_class">11.2.2.13. EL_CONDITION_BRANCH Class</a></li>
-<li><a href="#_el_decision_group_class">11.2.2.14. EL_DECISION_GROUP Class</a></li>
-<li><a href="#_el_decision_branch_class">11.2.2.15. EL_DECISION_BRANCH Class</a></li>
-<li><a href="#_el_expression_class">11.2.2.16. EL_EXPRESSION Class</a></li>
-<li><a href="#_el_operator_class">11.2.2.17. EL_OPERATOR Class</a></li>
-<li><a href="#_operator_def_class">11.2.2.18. OPERATOR_DEF Class</a></li>
-<li><a href="#_el_unary_operator_class">11.2.2.19. EL_UNARY_OPERATOR Class</a></li>
-<li><a href="#_el_binary_operator_class">11.2.2.20. EL_BINARY_OPERATOR Class</a></li>
-</ul>
-</li>
-<li><a href="#_el_literal_class">11.2.3. EL_LITERAL Class</a>
-<ul class="sectlevel4">
-<li><a href="#_el_variable_class">11.2.3.1. EL_VARIABLE Class</a></li>
-<li><a href="#_el_external_variable_class">11.2.3.2. EL_EXTERNAL_VARIABLE Class</a></li>
-<li><a href="#_el_function_call_class">11.2.3.3. EL_FUNCTION_CALL Class</a></li>
+<li><a href="#_el_module_class">11.2.1.1. EL_MODULE Class</a></li>
+<li><a href="#_el_model_ref_class">11.2.1.2. EL_MODEL_REF Class</a></li>
+<li><a href="#_el_data_binding_class">11.2.1.3. EL_DATA_BINDING Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_typing">11.3. Typing</a>
+<li><a href="#_elom_core_statements_and_expressions">11.3. ELOM core: statements and expressions</a></li>
+<li><a href="#_statements">11.4. Statements</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_2">11.3.1. Class Descriptions</a>
+<li><a href="#_class_descriptions_2">11.4.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_el_type_def_class">11.3.1.1. EL_TYPE_DEF Class</a></li>
-<li><a href="#_type_def_boolean_class">11.3.1.2. TYPE_DEF_BOOLEAN Class</a></li>
-<li><a href="#_type_def_integer_class">11.3.1.3. TYPE_DEF_INTEGER Class</a></li>
-<li><a href="#_type_def_real_class">11.3.1.4. TYPE_DEF_REAL Class</a></li>
-<li><a href="#_type_def_date_class">11.3.1.5. TYPE_DEF_DATE Class</a></li>
-<li><a href="#_type_def_date_time_class">11.3.1.6. TYPE_DEF_DATE_TIME Class</a></li>
-<li><a href="#_type_def_time_class">11.3.1.7. TYPE_DEF_TIME Class</a></li>
-<li><a href="#_type_def_duration_class">11.3.1.8. TYPE_DEF_DURATION Class</a></li>
-<li><a href="#_type_def_string_class">11.3.1.9. TYPE_DEF_STRING Class</a></li>
-<li><a href="#_type_def_uri_class">11.3.1.10. TYPE_DEF_URI Class</a></li>
-<li><a href="#_type_def_terminology_code_class">11.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
-<li><a href="#_type_def_object_ref_class">11.3.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
+<li><a href="#_el_statement_class">11.4.1.1. EL_STATEMENT Class</a></li>
+<li><a href="#_el_assignment_class">11.4.1.2. EL_ASSIGNMENT Class</a></li>
+<li><a href="#_el_routine_call_class">11.4.1.3. EL_ROUTINE_CALL Class</a></li>
+<li><a href="#_el_procedure_call_class">11.4.1.4. EL_PROCEDURE_CALL Class</a></li>
+<li><a href="#_el_choice_group_class">11.4.1.5. EL_CHOICE_GROUP Class</a></li>
+<li><a href="#_el_choice_branch_class">11.4.1.6. EL_CHOICE_BRANCH Class</a></li>
+<li><a href="#_el_condition_group_class">11.4.1.7. EL_CONDITION_GROUP Class</a></li>
+<li><a href="#_el_condition_branch_class">11.4.1.8. EL_CONDITION_BRANCH Class</a></li>
+<li><a href="#_el_decision_group_class">11.4.1.9. EL_DECISION_GROUP Class</a></li>
+<li><a href="#_el_decision_branch_class">11.4.1.10. EL_DECISION_BRANCH Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_expressions">11.5. Expressions</a>
+<ul class="sectlevel3">
+<li><a href="#_class_descriptions_3">11.5.1. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_el_expression_class">11.5.1.1. EL_EXPRESSION Class</a></li>
+<li><a href="#_el_operator_class">11.5.1.2. EL_OPERATOR Class</a></li>
+<li><a href="#_el_unary_operator_class">11.5.1.3. EL_UNARY_OPERATOR Class</a></li>
+<li><a href="#_el_binary_operator_class">11.5.1.4. EL_BINARY_OPERATOR Class</a></li>
+<li><a href="#_el_terminal_class">11.5.1.5. EL_TERMINAL Class</a></li>
+<li><a href="#_el_variable_ref_class">11.5.1.6. EL_VARIABLE_REF Class</a></li>
+<li><a href="#_el_external_ref_class">11.5.1.7. EL_EXTERNAL_REF Class</a></li>
+<li><a href="#_el_local_ref_class">11.5.1.8. EL_LOCAL_REF Class</a></li>
+<li><a href="#_el_constant_ref_class">11.5.1.9. EL_CONSTANT_REF Class</a></li>
+<li><a href="#_el_function_call_class">11.5.1.10. EL_FUNCTION_CALL Class</a></li>
+<li><a href="#_el_literal_class">11.5.1.11. EL_LITERAL Class</a></li>
+<li><a href="#_el_predicate_class">11.5.1.12. EL_PREDICATE Class</a></li>
+<li><a href="#_el_check_class">11.5.1.13. EL_CHECK Class</a></li>
+<li><a href="#_el_defined_class">11.5.1.14. EL_DEFINED Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_typing">11.6. Typing</a>
+<ul class="sectlevel3">
+<li><a href="#_class_descriptions_4">11.6.1. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_el_type_def_class">11.6.1.1. EL_TYPE_DEF Class</a></li>
+<li><a href="#_type_def_boolean_class">11.6.1.2. TYPE_DEF_BOOLEAN Class</a></li>
+<li><a href="#_type_def_integer_class">11.6.1.3. TYPE_DEF_INTEGER Class</a></li>
+<li><a href="#_type_def_real_class">11.6.1.4. TYPE_DEF_REAL Class</a></li>
+<li><a href="#_type_def_date_class">11.6.1.5. TYPE_DEF_DATE Class</a></li>
+<li><a href="#_type_def_date_time_class">11.6.1.6. TYPE_DEF_DATE_TIME Class</a></li>
+<li><a href="#_type_def_time_class">11.6.1.7. TYPE_DEF_TIME Class</a></li>
+<li><a href="#_type_def_duration_class">11.6.1.8. TYPE_DEF_DURATION Class</a></li>
+<li><a href="#_type_def_string_class">11.6.1.9. TYPE_DEF_STRING Class</a></li>
+<li><a href="#_type_def_uri_class">11.6.1.10. TYPE_DEF_URI Class</a></li>
+<li><a href="#_type_def_terminology_code_class">11.6.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
+<li><a href="#_type_def_object_ref_class">11.6.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
 </ul>
 </li>
 </ul>
@@ -309,6 +325,7 @@
 <p><a href="https://openehr.atlassian.net/browse/SPECBASE-3">SPECBASE-3</a>. Major rewrite. Added external model use;<br>
  added <code>defined()</code> and <code>check()</code> predicates;<br>
  refined quantifiers;<br>
+ add BMM integration;<br>
  added various kinds of binding.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
@@ -569,7 +586,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <div class="title">Figure 2. EL design structure - explicit context</div>
 </div>
 <div class="paragraph">
-<p>In both cases, the result of parsing into computable form for evaluation should result in an instance of the Expression Object Model (EOM).</p>
+<p>In both cases, the result of parsing into computable form for evaluation must result in an instance of the Expression Object Model (EOM), which will include instances of BMM classes, as these are used to represent the definitions of which expression elements (function calls, variable references etc) are <em>uses</em>.</p>
 </div>
 <div class="paragraph">
 <p>This specification first describes the elements of the EL expression syntax, then the EOM.</p>
@@ -589,10 +606,10 @@ Extensions would also typically provide more operators, functions, leaf types an
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>The openEHR Expression Language (EL) syntax can be understood in a number of layers. The core of the syntax defines <em>expressions</em>, i.e. value-returning entities. Such expressions may be used in isolation within some larger context in an openEHR system (e.g. Plan or Guideline), with the connection of variables to real-world data being determined implicitly, as dscribed above.</p>
+<p>The openEHR Expression Language (EL) syntax is defined in a number of layers. The core of the language defines <em>expressions</em>, which are value-returning entities formed by reference or invocation of declared entities such as variables, functions and constants. Expressions may be used in isolation within some larger context in an openEHR system (e.g. Plan or Guideline), with the connection of variables to real-world data being determined implicitly, as described above.</p>
 </div>
 <div class="paragraph">
-<p>The next layer includes non-expression elements, allowing explicit declarations, assignments and control structures, including rules. Together with expressions, these are known as <em>statements</em>. A collection of such statements may be used within another context in the same way as for bare expressions.</p>
+<p>The next layer includes non-expression elements, allowing explicit declarations, assignments and control structures, including rules. These are known as <em>statements</em>. A collection of statements may be used within another context in the same way as bare expressions.</p>
 </div>
 <div class="paragraph">
 <p>The fullest form of EL syntax is an <em>EL Text</em> which provides all of the context, terminology, meta-data and so on, enabling the representation of fully-formed guidelines and other similar artefacts.</p>
@@ -1185,19 +1202,19 @@ Extensions would also typically provide more operators, functions, leaf types an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    check ($heart_rrate &gt; 0.0)</pre>
+<pre>    check ($heart_rate &gt; 0.0)</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The meaning of this statement is that if the condition evaluates to <code>False</code>, a <code>check violation</code> is generated, which may be handled by an exception handler.</p>
+<p>The meaning of this expression is that if the condition evaluates to <code>False</code>, a <code>check violation</code> is generated, which may be handled by an exception handler.</p>
 </div>
 <div class="paragraph">
 <p>The <code>check</code> instruction can be used in a conditional block to ensure certain conditions hold on entry to the block, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if check ($heart_rrate &gt; 0.0) then
-        -- statements mentioning $heart_rrate
+<pre>    if check ($heart_rate &gt; 0.0) then
+        -- statements mentioning $heart_rate
     end</pre>
 </div>
 </div>
@@ -2354,7 +2371,7 @@ computing_bindings
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>11. The Expression Object Model</h2>
+<h2 id="_the_expression_language_object_model"><a class="anchor" href="#_the_expression_language_object_model"></a>11. The Expression Language Object Model</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -2371,60 +2388,36 @@ the model and description shown here is first draft only
 <div class="sect2">
 <h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>11.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>expression</code> package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>expression</code> package and further specialise some of its types specifically intended for extension.</p>
+<p>The <code>org.openehr.base.elom</code> package defines the Expression Language Object Model (ELOM), a structural model of the openEHR Expression language. Its elements, including statements and expressions can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of a computable structure. Other openEHR models designed for a particular purpose may reuse the <code>elom</code> package and further specialise some of its types specifically intended for extension.</p>
 </div>
 <div class="paragraph">
-<p>The package structure of the <code>expression</code> package is shown below.</p>
+<p>The package structure of the <code>elom</code> package is shown below.</p>
 </div>
-<div id="expression_packages" class="imageblock text-center" style="text-align: center">
+<div id="elom_packages" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/BASE-expression_packages.svg" alt="BASE expression packages">
+<img src="../UML/diagrams/BASE-elom-packages.svg" alt="BASE elom packages" width="50%">
 </div>
-<div class="title">Figure 5. base.expression Package</div>
+<div class="title">Figure 5. base.elom Package</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>11.2. Core Package</h3>
+<h3 id="_module_package"><a class="anchor" href="#_module_package"></a>11.2. Module Package</h3>
 <div class="paragraph">
-<p>The main <code>expression</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
+<p>The top-level construct of the ELOM is the <code>EL_MODULE</code>, representing a standalone module of meta-data, model and module references, statements and bindings. It is shown below.</p>
 </div>
-<div id="expression_package" class="imageblock text-center" style="text-align: center">
+<div id="elom_module" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/BASE-expression.svg" alt="BASE expression">
+<img src="../UML/diagrams/BASE-elom.module.svg" alt="BASE elom.module" width="80%">
 </div>
-<div class="title">Figure 6. base.expression.core Package</div>
-</div>
-<div class="paragraph">
-<p>A group of statements to be used together is formally defined as one or more <code>STATEMENTs</code> in a <code>STATEMENT_SET</code>. There are three types of statements corresponding to the classes <code>ASSERTION</code>, <code>VARIABLE_DECLARATION</code> and <code>ASSIGNMENT</code>. Assertions consist of an expression tree structure that evaluates to a <code>Boolean</code> value. The root of the tree is a descendant of the class <code>EXPR_ITEM</code> that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named.</p>
-</div>
-<div class="paragraph">
-<p>A <code>VARIABLE_DECLARATION</code> enables a named variable to be declared with a type, which must be one of the descendants of <code>EXPR_DEF_TYPE</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>EXPR_VALUE</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>11.2.1. Expressions</h4>
-<div class="paragraph">
-<p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#_complex_expressions">Complex Expressions</a> sub-section in the Language section.</p>
-</div>
-<div class="paragraph">
-<p>In this model, 'functions' are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats functions as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.</p>
-</div>
-<div class="paragraph">
-<p>Operator semantics are defined by the class <code>OPERATOR_DEF</code>, which includes the two attributes <code><em>name</em></code> and <code><em>symbols</em></code> which define the name of the operator and its allowable symbols respectively.</p>
+<div class="title">Figure 6. base.elom.module Package</div>
 </div>
 <div class="paragraph tbd">
-<p>TBD: could potentially separate 'text symbols' and 'math symbols' to enable rendering in different ways.</p>
-</div>
-<div class="paragraph">
-<p>The <code>OPERATOR_DEF_BUILTIN</code> class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the statement evaluator, e.g. a case statement or similar that uses the implementation language native operators.</p>
-</div>
+<p>TBD: to be continued.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>11.2.2. Class Descriptions</h4>
+<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>11.2.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_text_class"><a class="anchor" href="#_el_text_class"></a>11.2.2.1. EL_TEXT Class</h5>
+<h5 id="_el_module_class"><a class="anchor" href="#_el_module_class"></a>11.2.1.1. EL_MODULE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2434,13 +2427,17 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_TEXT</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_MODULE</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A container for a specific set of statements intended to be used together.</p>
+<p>A container for a set of statements along with related BMM definitions, meta-data, terminology and bindings.</p>
 </div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>AUTHORED_RESOURCE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2456,7 +2453,47 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>declarations</strong>: <code>List&lt;EL_DECLARATION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>external_defs</strong>: <code>List&lt;BMM_PARAMETER&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>local_defs</strong>: <code>List&lt;BMM_LOCAL&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>constant_defs</strong>: <code>List&lt;BMM_CONSTANT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function_defs</strong>: <code>List&lt;BMM_FUNCTION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>procedure_defs</strong>: <code>List&lt;BMM_PROCEDURE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data_binding</strong>: <code>EL_DATA_BINDING</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>module_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>used_models</strong>: <code>List&lt;EL_MODEL_REF&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>imported_modules</strong>: <code>List&lt;EL_MODULE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -2475,7 +2512,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_declaration_class"><a class="anchor" href="#_el_declaration_class"></a>11.2.2.2. EL_DECLARATION Class</h5>
+<h5 id="_el_model_ref_class"><a class="anchor" href="#_el_model_ref_class"></a>11.2.1.2. EL_MODEL_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2485,49 +2522,13 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_DECLARATION (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name of the variable.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_el_variable_declaration_class"><a class="anchor" href="#_el_variable_declaration_class"></a>11.2.2.3. EL_VARIABLE_DECLARATION Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_VARIABLE_DECLARATION</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_MODEL_REF</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Definition of a named variable that can be used in an expression.</p>
+<p>A reference to an included BMM Model, providing types.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_DECLARATION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2536,50 +2537,14 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EL_TYPE_DEF</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_el_routine_declaration_class"><a class="anchor" href="#_el_routine_declaration_class"></a>11.2.2.4. EL_ROUTINE_DECLARATION Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_ROUTINE_DECLARATION (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_DECLARATION</code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>List&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model</strong>: <code>BMM_MODEL</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_function_declaration_class"><a class="anchor" href="#_el_function_declaration_class"></a>11.2.2.5. EL_FUNCTION_DECLARATION Class</h5>
+<h5 id="_el_data_binding_class"><a class="anchor" href="#_el_data_binding_class"></a>11.2.1.3. EL_DATA_BINDING Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2589,15 +2554,13 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_FUNCTION_DECLARATION</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_DATA_BINDING</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_ROUTINE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Data bindings structure for an EL Module.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2606,40 +2569,50 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>EL_TYPE_DEF</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Primitive type of the variable, enabling its use to be type-checked in expressions.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>content_bindings</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>api_bindings</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>query_bindings</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interactive_bindings</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_el_procedure_declaration_class"><a class="anchor" href="#_el_procedure_declaration_class"></a>11.2.2.6. EL_PROCEDURE_DECLARATION Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_PROCEDURE_DECLARATION</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_ROUTINE_DECLARATION</code></p></td>
-</tr>
-</tbody>
-</table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_elom_core_statements_and_expressions"><a class="anchor" href="#_elom_core_statements_and_expressions"></a>11.3. ELOM core: statements and expressions</h3>
+<div class="paragraph">
+<p>The core semantics of the ELOM are defined in the <code>expression</code> and <code>statement</code> packages, shown below.</p>
+</div>
+<div id="elom_core" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-elom-core.svg" alt="BASE elom core">
+</div>
+<div class="title">Figure 7. base.elom.expression and statement Packages</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_statements"><a class="anchor" href="#_statements"></a>11.4. Statements</h3>
+<div class="paragraph">
+<p>The statements part of EL is represented by the <code>EL_STATEMENT</code> class and descendants, which represent, respectively assignments, procedure calls, and decision structures (i.e. if/then and when/then).</p>
+</div>
+<div class="sect3">
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>11.4.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>11.2.2.7. EL_STATEMENT Class</h5>
+<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>11.4.1.1. EL_STATEMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2661,7 +2634,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>11.2.2.8. EL_ASSIGNMENT Class</h5>
+<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>11.4.1.2. EL_ASSIGNMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2676,7 +2649,7 @@ the model and description shown here is first draft only
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract ancestor of types representing the assignment statement, which does not produce a value in the way that operators such as '=', 'and' etc do. An assignment associates a named variable with an expression.</p>
+<p>Statement type representing an assignment from a value-generating source to a writable entity, i.e. a variable reference.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2690,7 +2663,7 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>EL_VARIABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>EL_VARIABLE_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The target variable on the notional left-hand side of this assignment.</p>
 </div></div></td>
@@ -2706,7 +2679,39 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>11.2.2.9. EL_PROCEDURE_CALL Class</h5>
+<h5 id="_el_routine_call_class"><a class="anchor" href="#_el_routine_call_class"></a>11.4.1.3. EL_ROUTINE_CALL Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_ROUTINE_CALL (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>Hash&lt;String,EL_EXPRESSION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Arguments of this function, which can be from 0 to any number. Functions with no arguments are typically used to represent real world varying values like 'current time' and so on.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>11.4.1.4. EL_PROCEDURE_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2720,11 +2725,13 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Statement type representing a call to</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_STATEMENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_STATEMENT</code>, <code>EL_ROUTINE_CALL</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2733,14 +2740,14 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EL_PROCEDURE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_PROCEDURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>11.2.2.10. EL_CHOICE_GROUP Class</h5>
+<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>11.4.1.5. EL_CHOICE_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2776,7 +2783,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>11.2.2.11. EL_CHOICE_BRANCH Class</h5>
+<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>11.4.1.6. EL_CHOICE_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2808,7 +2815,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>11.2.2.12. EL_CONDITION_GROUP Class</h5>
+<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>11.4.1.7. EL_CONDITION_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2839,13 +2846,15 @@ the model and description shown here is first draft only
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>EL_CONDITION_BRANCH</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The branches of the if/then decision structure.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>11.2.2.13. EL_CONDITION_BRANCH Class</h5>
+<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>11.4.1.8. EL_CONDITION_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2875,13 +2884,15 @@ the model and description shown here is first draft only
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>test</strong>: <code>EL_EXPRESSION</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The test expression to evaluate for this branch.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>11.2.2.14. EL_DECISION_GROUP Class</h5>
+<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>11.4.1.9. EL_DECISION_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2895,7 +2906,9 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Structural representation of a when/then statement.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -2916,7 +2929,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>11.2.2.15. EL_DECISION_BRANCH Class</h5>
+<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>11.4.1.10. EL_DECISION_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2930,7 +2943,9 @@ the model and description shown here is first draft only
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Representation of one branch of a when/then statement.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -2949,8 +2964,17 @@ the model and description shown here is first draft only
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expressions"><a class="anchor" href="#_expressions"></a>11.5. Expressions</h3>
+<div class="paragraph">
+<p>The expressions part of EL is represented by the <code>EL_EXPRESSION</code> class and descendants.</p>
+</div>
+<div class="sect3">
+<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>11.5.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>11.2.2.16. EL_EXPRESSION Class</h5>
+<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>11.5.1.1. EL_EXPRESSION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2969,13 +2993,25 @@ the model and description shown here is first draft only
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The reference item from which the value of this node can be computed.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>EL_TYPE_DEF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>BMM_TYPE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The primitive type of this node, which must be determined by redefinitions in concrete classes.</p>
 </div></div></td>
@@ -2991,7 +3027,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>11.2.2.17. EL_OPERATOR Class</h5>
+<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>11.5.1.2. EL_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3026,70 +3062,25 @@ the model and description shown here is first draft only
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator_def</strong>: <code>OPERATOR_DEF</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Operator definition.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of operator_def.symbols.</p>
+<p>The symbol actually used in the expression, or intended to be used for serialisation. Must be a member of <code>OPERATOR_DEF.<em>symbols</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_FUNCTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The reference item from which the value of this node can be computed.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>11.2.2.18. OPERATOR_DEF Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>OPERATOR_DEF (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract definition of an operator for use in the Rules evaluator.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifier</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unique identifier of this operator within the rules system.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong> (): <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>One or more symbols used to express the operator in textual form. This may include any unicode character.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>11.2.2.19. EL_UNARY_OPERATOR Class</h5>
+<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>11.5.1.3. EL_UNARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3127,7 +3118,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>11.2.2.20. EL_BINARY_OPERATOR Class</h5>
+<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>11.5.1.4. EL_BINARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3170,14 +3161,9 @@ the model and description shown here is first draft only
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>Unresolved directive in master11-expression_object_model.adoc - include::../UML/classes/el_terminal.adoc[leveloffset=+1]
-:leveloffset: +1</p>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>11.2.3. EL_LITERAL Class</h4>
+<div class="sect4">
+<h5 id="_el_terminal_class"><a class="anchor" href="#_el_terminal_class"></a>11.5.1.5. EL_TERMINAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3187,17 +3173,59 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_LITERAL</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_TERMINAL (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Literal value expression tree leaf item. This can represent a literal value of any primitive type included in the PRIMITIVE_TYPE enumeration.</p>
+<p>Expression tree leaf item representing one of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a manifest constant of any primitive type;</p>
+</li>
+<li>
+<p>a path referring to a value in the archetype;</p>
+</li>
+<li>
+<p>a constraint;</p>
+</li>
+<li>
+<p>a variable reference.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_EXPRESSION</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_variable_ref_class"><a class="anchor" href="#_el_variable_ref_class"></a>11.5.1.6. EL_VARIABLE_REF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_VARIABLE_REF (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract expression terminal item representing a reference to a declared variable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TERMINAL</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3207,15 +3235,16 @@ the model and description shown here is first draft only
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_VARIABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>A statically set constant value of a primitive type.</p>
+<p>The reference item from which the value of this node can be computed.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="sect4">
-<h5 id="_el_variable_class"><a class="anchor" href="#_el_variable_class"></a>11.2.3.1. EL_VARIABLE Class</h5>
+<h5 id="_el_external_ref_class"><a class="anchor" href="#_el_external_ref_class"></a>11.5.1.7. EL_EXTERNAL_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3225,17 +3254,15 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_VARIABLE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_EXTERNAL_REF</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Expression tree leaf item representing a reference to a declared variable.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_VARIABLE_REF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3245,16 +3272,16 @@ the model and description shown here is first draft only
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EL_VARIABLE_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_PARAMETER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The variable referred to.</p>
+<p>The reference item from which the value of this node can be computed.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_external_variable_class"><a class="anchor" href="#_el_external_variable_class"></a>11.2.3.2. EL_EXTERNAL_VARIABLE Class</h5>
+<h5 id="_el_local_ref_class"><a class="anchor" href="#_el_local_ref_class"></a>11.5.1.8. EL_LOCAL_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3264,17 +3291,17 @@ the model and description shown here is first draft only
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_EXTERNAL_VARIABLE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_LOCAL_REF</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Variable that is bound to an external entity defined in the data context.</p>
+<p>Type representing a reference to a local variable.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_VARIABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_VARIABLE_REF</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3282,15 +3309,57 @@ the model and description shown here is first draft only
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>direction</strong>: <code>EL_VARIABLE_DIRECTION</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_LOCAL</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The reference item from which the value of this node can be computed.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>11.2.3.3. EL_FUNCTION_CALL Class</h5>
+<h5 id="_el_constant_ref_class"><a class="anchor" href="#_el_constant_ref_class"></a>11.5.1.9. EL_CONSTANT_REF Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_CONSTANT_REF</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Expression leaf item representing a reference to a declared constant.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TERMINAL</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_CONSTANT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The reference item from which the value of this node can be computed.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>11.5.1.10. EL_FUNCTION_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3305,12 +3374,12 @@ the model and description shown here is first draft only
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Node representing a function with 0 or more arguments.</p>
+<p>Terminal element representing a function invocation with 0 or more arguments, keyed by name from the parameter list of the Function definition. This allows arguments to be left open, creating another <code>EL_FUNCTION_CALL</code> instance as a result.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_LEAF</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TERMINAL</code>, <code>EL_ROUTINE_CALL</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3318,16 +3387,9 @@ the model and description shown here is first draft only
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arguments</strong>: <code>List&lt;EL_EXPRESSION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Arguments of this function, which can be from 0 to any number. Functions with no arguments are typically used to represent real world varying values like 'current time' and so on.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EL_FUNCTION_DECLARATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>BMM_FUNCTION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The reference item from which the value of this node can be computed.</p>
 </div></div></td>
@@ -3335,26 +3397,154 @@ the model and description shown here is first draft only
 </tbody>
 </table>
 </div>
+<div class="sect4">
+<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>11.5.1.11. EL_LITERAL Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_LITERAL</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Literal value expression terminal item. This can represent a literal value of any Foundation type, or any type known in the included models.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_TERMINAL</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_predicate_class"><a class="anchor" href="#_el_predicate_class"></a>11.5.1.12. EL_PREDICATE Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EL_PREDICATE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Special purpose built-in functions of the EL formalism.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_EXPRESSION</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code>EL_EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_check_class"><a class="anchor" href="#_el_check_class"></a>11.5.1.13. EL_CHECK Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_CHECK</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A built-in predicate taking one expression argument, that determines whether it is true and if not, generates an exception.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_PREDICATE</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_defined_class"><a class="anchor" href="#_el_defined_class"></a>11.5.1.14. EL_DEFINED Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_DEFINED</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A built-in predicate taking one external variable reference argument, that returns true if the reference is resolvable, i.e. the external value is obtainable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_PREDICATE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code>EL_EXTERNAL_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_typing"><a class="anchor" href="#_typing"></a>11.3. Typing</h3>
+<h3 id="_typing"><a class="anchor" href="#_typing"></a>11.6. Typing</h3>
+<div class="paragraph tbd">
+<p>TBD: this section probably obsolete.</p>
+</div>
 <div class="paragraph">
 <p>The <code>expressions.types</code> package is shown below.</p>
 </div>
-<div id="expressions_types_package" class="imageblock text-center" style="text-align: center">
+<div id="elom_types_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/BASE-expression.types.svg" alt="BASE expression.types">
+<img src="../UML/diagrams/BASE-elom.types.svg" alt="BASE elom.types">
 </div>
-<div class="title">Figure 7. baes.expression.types Package</div>
+<div class="title">Figure 8. baes.elom.types Package</div>
 </div>
 <div class="paragraph">
 <p>The type system of the Expression formalism is defined via the type <code>EXPR_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>11.3.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>11.6.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_type_def_class"><a class="anchor" href="#_el_type_def_class"></a>11.3.1.1. EL_TYPE_DEF Class</h5>
+<h5 id="_el_type_def_class"><a class="anchor" href="#_el_type_def_class"></a>11.6.1.1. EL_TYPE_DEF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3395,7 +3585,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>11.3.1.2. TYPE_DEF_BOOLEAN Class</h5>
+<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>11.6.1.2. TYPE_DEF_BOOLEAN Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3438,7 +3628,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>11.3.1.3. TYPE_DEF_INTEGER Class</h5>
+<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>11.6.1.3. TYPE_DEF_INTEGER Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3481,7 +3671,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>11.3.1.4. TYPE_DEF_REAL Class</h5>
+<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>11.6.1.4. TYPE_DEF_REAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3524,7 +3714,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>11.3.1.5. TYPE_DEF_DATE Class</h5>
+<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>11.6.1.5. TYPE_DEF_DATE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3567,7 +3757,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>11.3.1.6. TYPE_DEF_DATE_TIME Class</h5>
+<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>11.6.1.6. TYPE_DEF_DATE_TIME Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3610,7 +3800,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>11.3.1.7. TYPE_DEF_TIME Class</h5>
+<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>11.6.1.7. TYPE_DEF_TIME Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3653,7 +3843,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>11.3.1.8. TYPE_DEF_DURATION Class</h5>
+<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>11.6.1.8. TYPE_DEF_DURATION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3696,7 +3886,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>11.3.1.9. TYPE_DEF_STRING Class</h5>
+<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>11.6.1.9. TYPE_DEF_STRING Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3739,7 +3929,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>11.3.1.10. TYPE_DEF_URI Class</h5>
+<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>11.6.1.10. TYPE_DEF_URI Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3782,7 +3972,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>11.3.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
+<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>11.6.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3825,7 +4015,7 @@ the model and description shown here is first draft only
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>11.3.1.12. TYPE_DEF_OBJECT_REF Class</h5>
+<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>11.6.1.12. TYPE_DEF_OBJECT_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">

@@ -9,15 +9,11 @@ h|*Description*
 2+a|Model of a property definition within a class definition of an object model. The generic parameter accommodates the possible meta-type variant descendants of `BMM_TYPE`.
 
 h|*Inherit*
-2+|`BMM_MODEL_ELEMENT`
+2+|`BMM_MODEL_ELEMENT`, `BMM_VARIABLE`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
-
-h|*1..1*
-|*name*: `String`
-a|Name of this property in the model.
 
 h|*0..1*
 |*is_mandatory*: `Boolean`
@@ -26,10 +22,6 @@ a|True if this property is mandatory in its class.
 h|*0..1*
 |*is_computed*: `Boolean`
 a|True if this property is computed rather than stored in objects of this class.
-
-h|*1..1*
-|*type*: `T`
-a|Formal type of this property.
 
 h|*0..1*
 |*is_im_runtime*: `Boolean`
@@ -42,6 +34,16 @@ a|True if this property was marked with info model `_im_infrastructure_` flag.
 h|*0..1*
 |*is_synthesised_generic*: `Boolean`
 a|True if this property was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
+
+h|*1..1 +
+(redefined)*
+|*type*: `T`
+a|Formal type of this property.
+
+h|*1..1 +
+(redefined)*
+|*scope*: `BMM_CLASS`
+a|
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

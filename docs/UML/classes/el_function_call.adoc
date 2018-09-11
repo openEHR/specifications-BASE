@@ -6,21 +6,17 @@ h|*Class*
 2+^h|*EL_FUNCTION_CALL*
 
 h|*Description*
-2+a|Node representing a function with 0 or more arguments.
+2+a|Terminal element representing a function invocation with 0 or more arguments, keyed by name from the parameter list of the Function definition. This allows arguments to be left open, creating another `EL_FUNCTION_CALL` instance as a result.
 
 h|*Inherit*
-2+|`EL_LEAF`
+2+|`EL_TERMINAL`, `EL_ROUTINE_CALL`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*0..1*
-|*arguments*: `List<EL_EXPRESSION>`
-a|Arguments of this function, which can be from 0 to any number. Functions with no arguments are typically used to represent real world varying values like 'current time' and so on.
-
 h|*1..1 +
 (redefined)*
-|*definition*: `EL_FUNCTION_DECLARATION`
+|*definition*: `BMM_FUNCTION`
 a|The reference item from which the value of this node can be computed.
 |===

@@ -19,11 +19,12 @@ h|*0..1*
 |*precedence_overridden*: `Boolean`
 a|True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
 
-h|*1..1*
-|*operator_def*: `OPERATOR_DEF`
-a|Operator definition.
-
 h|*0..1*
 |*symbol*: `String`
-a|The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of operator_def.symbols.
+a|The symbol actually used in the expression, or intended to be used for serialisation. Must be a member of `OPERATOR_DEF._symbols_`.
+
+h|*1..1 +
+(redefined)*
+|*definition*: `BMM_FUNCTION`
+a|The reference item from which the value of this node can be computed.
 |===
