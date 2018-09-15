@@ -8,16 +8,14 @@ h|*Class*
 h|*Description*
 2+a|Meta-type defining a class definition in an object model.
 
+Note that unlike UML, the `_name_` is just the root name, even if the class is generic. Use `_type_name()_` to obtain the qualified type name.
+
 h|*Inherit*
 2+|`BMM_ENTITY`, `BMM_MODEL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
-
-h|*1..1*
-|*name*: `String`
-a|Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic. Use `_type_name()_` to obtain the full type name.
 
 h|*0..1*
 |*ancestors*: `Hash<String,BMM_DEFINED_TYPE>`
@@ -48,7 +46,11 @@ h|*0..1*
 a|
 
 h|*0..1*
-|*routines*: `Hash<String,BMM_ROUTINE>`
+|*functions*: `Hash<String,BMM_FUNCTION>`
+a|
+
+h|*0..1*
+|*procedures*: `Hash<String,BMM_PROCEDURE>`
 a|
 h|*Functions*
 ^h|*Signature*
@@ -82,10 +84,6 @@ h|
 |*class_path* (): `String`
 a|Fully qualified class name, of form: `package.package.CLASS` with package path in lower-case and class in original case.
 
-h|
-|*flat_properties* (): `List<Hash<String, BMM_PROPERTY<BMM_TYPE>>>`
-a|List of all properties due to current and ancestor classes, keyed by property name.
-
 h|(effected)
 |*is_primitive* (): `Boolean`
 a|True if this class is designated a primitive type within the overall type system of the schema. Set from schema.
@@ -97,4 +95,16 @@ a|True if this class is abstract in its model. Value provided from an underlying
 h|(abstract)
 |*type* (): `BMM_DEFINED_TYPE`
 a|Generate a type object that represents the type of this class.
+
+h|
+|*features* (): `List<BMM_FORMAL_ELEMENT>`
+a|
+
+h|
+|*flat_features* (): `List<BMM_FORMAL_ELEMENT>`
+a|
+
+h|
+|*flat_properties* (): `List<Hash<String, BMM_PROPERTY<BMM_TYPE>>>`
+a|List of all properties due to current and ancestor classes, keyed by property name.
 |===

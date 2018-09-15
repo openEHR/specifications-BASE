@@ -6,9 +6,21 @@ h|*Class*
 2+^h|*BMM_CONSTANT*
 
 h|*Description*
-2+a|An immutable value-returning element.
+2+a|An immutable, static value-returning element scoped to a class.
 
 h|*Inherit*
-2+|`BMM_VALUE_RETURNING`
+2+|`BMM_EVALUABLE`
 
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*value*: `BMM_VALUE`
+a|The value of the constant.
+
+h|*1..1 +
+(redefined)*
+|*scope*: `BMM_CLASS`
+a|Owning class of this constant.
 |===

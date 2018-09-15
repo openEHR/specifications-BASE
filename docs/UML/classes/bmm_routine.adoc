@@ -6,7 +6,10 @@ h|*Class*
 2+^h|*_BMM_ROUTINE (abstract)_*
 
 h|*Description*
-2+a|
+2+a|A formal element with computational definition, scoped to a class.
+
+h|*Inherit*
+2+|`BMM_FORMAL_ELEMENT`
 
 h|*Attributes*
 ^h|*Signature*
@@ -14,11 +17,16 @@ h|*Attributes*
 
 h|*0..1*
 |*parameters*: `List<BMM_PARAMETER>`
-a|
+a|Formal parameters of the routine.
 
 h|*0..1*
 |*locals*: `List<BMM_LOCAL>`
-a|
+a|Local variables of the routine.
+
+h|*1..1 +
+(redefined)*
+|*scope*: `BMM_CLASS`
+a|Owning class of this routine.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

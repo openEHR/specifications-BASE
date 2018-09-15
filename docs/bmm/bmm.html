@@ -30,8 +30,14 @@
 <ul class="sectlevel2">
 <li><a href="#_purpose">1.1. Purpose</a></li>
 <li><a href="#_status">1.2. Status</a></li>
-<li><a href="#_a_note_on_language">1.3. A Note on Language</a></li>
-<li><a href="#_tooling">1.4. Tooling</a></li>
+<li><a href="#_previous_versions">1.3. Previous Versions</a>
+<ul class="sectlevel3">
+<li><a href="#_version_3_0_0">1.3.1. Version 3.0.0</a></li>
+<li><a href="#_version_3_1_0">1.3.2. Version 3.1.0</a></li>
+</ul>
+</li>
+<li><a href="#_a_note_on_language">1.4. A Note on Language</a></li>
+<li><a href="#_tooling">1.5. Tooling</a></li>
 </ul>
 </li>
 <li><a href="#_overview">2. Overview</a>
@@ -116,29 +122,60 @@
 <li><a href="#_classes">7. Classes</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_6">7.1. Overview</a></li>
-<li><a href="#_primitive_classes">7.2. Primitive Classes</a></li>
-<li><a href="#_enumeration_classes">7.3. Enumeration Classes</a></li>
-<li><a href="#_generic_classes">7.4. Generic Classes</a></li>
-<li><a href="#_properties">7.5. Properties</a></li>
-<li><a href="#_class_definitions_5">7.6. Class Definitions</a>
+<li><a href="#_enumeration_classes">7.2. Enumeration Classes</a></li>
+<li><a href="#_generic_classes">7.3. Generic Classes</a></li>
+<li><a href="#_primitive_classes">7.4. Primitive Classes</a></li>
+<li><a href="#_class_definitions_5">7.5. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_bmm_class_class">7.6.1. BMM_CLASS Class</a></li>
-<li><a href="#_bmm_simple_class_class">7.6.2. BMM_SIMPLE_CLASS Class</a></li>
-<li><a href="#_bmm_enumeration_class">7.6.3. BMM_ENUMERATION Class</a></li>
-<li><a href="#_bmm_enumeration_string_class">7.6.4. BMM_ENUMERATION_STRING Class</a></li>
-<li><a href="#_bmm_enumeration_integer_class">7.6.5. BMM_ENUMERATION_INTEGER Class</a></li>
-<li><a href="#_bmm_generic_class_class">7.6.6. BMM_GENERIC_CLASS Class</a></li>
-<li><a href="#_bmm_property_class">7.6.7. BMM_PROPERTY Class</a></li>
-<li><a href="#_bmm_container_property_class">7.6.8. BMM_CONTAINER_PROPERTY Class</a></li>
+<li><a href="#_bmm_class_class">7.5.1. BMM_CLASS Class</a></li>
+<li><a href="#_bmm_simple_class_class">7.5.2. BMM_SIMPLE_CLASS Class</a></li>
+<li><a href="#_bmm_enumeration_class">7.5.3. BMM_ENUMERATION Class</a></li>
+<li><a href="#_bmm_enumeration_string_class">7.5.4. BMM_ENUMERATION_STRING Class</a></li>
+<li><a href="#_bmm_enumeration_integer_class">7.5.5. BMM_ENUMERATION_INTEGER Class</a></li>
+<li><a href="#_bmm_generic_class_class">7.5.6. BMM_GENERIC_CLASS Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_model_semantics">8. Model Semantics</a>
+<li><a href="#_class_features">8. Class Features</a>
 <ul class="sectlevel2">
-<li><a href="#_simple_inheritance">8.1. Simple Inheritance</a></li>
-<li><a href="#_generic_inheritance">8.2. Generic Inheritance</a></li>
-<li><a href="#_multiple_inheritance">8.3. Multiple Inheritance</a></li>
+<li><a href="#_overview_7">8.1. Overview</a></li>
+<li><a href="#_scope_of_formal_elements">8.2. Scope of Formal Elements</a></li>
+<li><a href="#_nullability_optionality_and_void_safety">8.3. Nullability, Optionality and Void-safety</a></li>
+<li><a href="#_differential_and_flat_form">8.4. Differential and Flat Form</a></li>
+<li><a href="#_signatures">8.5. Signatures</a></li>
+<li><a href="#_constants">8.6. Constants</a></li>
+<li><a href="#_properties">8.7. Properties</a></li>
+<li><a href="#_functions_and_procedures">8.8. Functions and Procedures</a></li>
+<li><a href="#_variables_objects_and_values">8.9. Variables, Objects and Values</a></li>
+<li><a href="#_class_definitions_6">8.10. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_bmm_formal_element_class">8.10.1. BMM_FORMAL_ELEMENT Class</a></li>
+<li><a href="#_bmm_value_returning_class">8.10.2. BMM_VALUE_RETURNING Class</a></li>
+<li><a href="#_bmm_evaluable_class">8.10.3. BMM_EVALUABLE Class</a></li>
+<li><a href="#_bmm_value_class">8.10.4. BMM_VALUE Class</a></li>
+<li><a href="#_bmm_mutable_class">8.10.5. BMM_MUTABLE Class</a></li>
+<li><a href="#_bmm_property_class">8.10.6. BMM_PROPERTY Class</a></li>
+<li><a href="#_bmm_unitary_property_class">8.10.7. BMM_UNITARY_PROPERTY Class</a></li>
+<li><a href="#_bmm_container_property_class">8.10.8. BMM_CONTAINER_PROPERTY Class</a></li>
+<li><a href="#_bmm_constant_class">8.10.9. BMM_CONSTANT Class</a></li>
+<li><a href="#_bmm_variable_class">8.10.10. BMM_VARIABLE Class</a></li>
+<li><a href="#_bmm_routine_class">8.10.11. BMM_ROUTINE Class</a></li>
+<li><a href="#_bmm_function_class">8.10.12. BMM_FUNCTION Class</a></li>
+<li><a href="#_bmm_operator_class">8.10.13. BMM_OPERATOR Class</a></li>
+<li><a href="#_bmm_operator_position_enumeration">8.10.14. BMM_OPERATOR_POSITION Enumeration</a></li>
+<li><a href="#_bmm_procedure_class">8.10.15. BMM_PROCEDURE Class</a></li>
+<li><a href="#_bmm_parameter_class">8.10.16. BMM_PARAMETER Class</a></li>
+<li><a href="#_bmm_parameter_direction_enumeration">8.10.17. BMM_PARAMETER_DIRECTION Enumeration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_model_semantics">9. Model Semantics</a>
+<ul class="sectlevel2">
+<li><a href="#_simple_inheritance">9.1. Simple Inheritance</a></li>
+<li><a href="#_generic_inheritance">9.2. Generic Inheritance</a></li>
+<li><a href="#_multiple_inheritance">9.3. Multiple Inheritance</a></li>
 </ul>
 </li>
 <li><a href="#_references">References</a>
@@ -241,7 +278,16 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>3.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>3.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add feature elements <code>BMM_ROUTINE</code>, <code>BMM_VALUE_RETURNING</code> and descendants;<br>
+ Change <code>BMM_PROPERTY.<em>is_mandatory</em></code> to <code>BMM_MUTABLE.<em>is_nullable</em></code> (reversed Boolean sense);<br>
+ Made <code>BMM_PACKAGE_CONTAINER</code> abstract;<br>
+ Moved <code><em>name</em></code> to <code>BMM_MODEL_ELEMENT</code>, replacing <code><em>name</em></code> in <code>BMM_CLASS</code>, <code>BMM_PACKAGE</code>, <code>BMM_PROPERTY</code>, and <code><em>model_name</em></code> in <code>BMM_MODEL</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Sep 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Separate <code>P_BMM</code> model and syntax to BMM Persistence specification;<br>
  refactor / tighten class model:<br>
  rename <code>BMM_GENERIC_PARAMTER</code> to <code>BMM_PARAMETER_TYPE</code>;<br>
@@ -251,11 +297,11 @@
  redefine <code>BMM_CLASS.<em>ancestors</em></code> to be of type <code>BMM_DEFINED_TYPE</code>;<br>
  redefine <code>BMM_PARAMETER_TYPE.<em>conforms_to</em></code> to <code><em>type_constraint</em></code> of type <code>BMM_DEFINED_TYPE</code>;<br>
  correct <code>BMM_CLASS.<em>immediate_descendants</em></code> to be of type <code>List&lt;BMM_CLASS&gt;</code>;<br>
- rename <code>BMM_CLASIFIER</code> to <code>BMM_ENTITY</code>;<br>
+ rename <code>BMM_CLASSIFIER</code> to <code>BMM_ENTITY</code>;<br>
  Support generic types as class ancestors;<br>
  Remove archetype-related meta-data.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 May 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.2.2</p></td>
@@ -377,9 +423,36 @@
 <div class="paragraph">
 <p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/issues/?filter=11105">specifications issue tracker</a>.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Other than for working with particular tools designed to use BMM, BMM is not a required formalism for implementing openEHR, and other methods of accessing models computably may be used, including UML and software implementations of the openEHR Reference Model.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_a_note_on_language"><a class="anchor" href="#_a_note_on_language"></a>1.3. A Note on Language</h3>
+<h3 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a>1.3. Previous Versions</h3>
+<div class="sect3">
+<h4 id="_version_3_0_0"><a class="anchor" href="#_version_3_0_0"></a>1.3.1. Version 3.0.0</h4>
+<div class="paragraph">
+<p>This version made major changes to the <code>BMM_TYPE</code> hierarchy and semantics, enabling generic inheritance by generic and non-generic classes to be represented.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_version_3_1_0"><a class="anchor" href="#_version_3_1_0"></a>1.3.2. Version 3.1.0</h4>
+<div class="paragraph">
+<p>This version adds meta-classes for routines, variables and constants to the BMM, and makes some small adjustments to the existing model attributes and classes. The BMM remains compatible with P_BMM 2.x, i.e. any existing <code>.bmm</code> file can be parsed to create a v 3.1.0 BMM instance.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_note_on_language"><a class="anchor" href="#_a_note_on_language"></a>1.4. A Note on Language</h3>
 <div class="paragraph">
 <p>The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we have used the following terms:</p>
 </div>
@@ -413,7 +486,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_tooling"><a class="anchor" href="#_tooling"></a>1.4. Tooling</h3>
+<h3 id="_tooling"><a class="anchor" href="#_tooling"></a>1.5. Tooling</h3>
 <div class="paragraph">
 <p>The <a href="/downloads/ADLworkbench">openEHR ADL Workbench (AWB)</a> fully implements this specification, and provide a convenient way of illustrating BMM semantics. The screenshots used in this specification are all from the ADL Workbench. The tool is written in the Eiffel language, and is available as <a href="https://github.com/openEHR/adl-tools">open source on Github</a>. The BMM libraries can be found in the <a href="https://github.com/wolandscat/EOMF/tree/master/library/bmm">EOMF Github repository</a>.</p>
 </div>
@@ -443,18 +516,6 @@
 <div class="paragraph">
 <p>The BMM provides a standalone alternative to UML/XMI which correctly represents all types, including open and closed generic types, inheritance of generic types, and various other problems with UML. As a meta-model it is adapted to the task, i.e. representing entity types that can appear in object models, rather than the over-generalised semantics of the UML meta-model. This reduced scope, and the fact that it contains no diagram semantics enables its serial form to be very human-readable.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Other than for working with particular tools designed to use BMM, BMM is not a required formalism for implementing openEHR, and other methods of accessing models computably may be used, including UML and software implementations of the openEHR Reference Model.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_current_state_of_the_art"><a class="anchor" href="#_current_state_of_the_art"></a>2.2. Current State of the Art</h3>
@@ -464,7 +525,23 @@ Other than for working with particular tools designed to use BMM, BMM is not a r
 <p>One would expect that the IT industry would have fully computable representations of models and diagramming solved, but it is not yet the case. <a href="http://www.omg.org/spec/UML/">UML 2.x</a> and its associated serialisation format XMI 2.x should in theory mean that complete, interoperable machine expressions of object models would be available in all tools. However the evolution of UML and XMI has not been toward a clear meta-model and language for each of its sub-languages (i.e. static class model, state machine, interaction diagram etc) but rather toward a single universal model of everything in which elements of all of its needs are confusingly buried.</p>
 </div>
 <div class="paragraph">
-<p>The UML 2.x specifications are exceedingly complex: UML 2.1.2 was specified by two documents, 'Superstructure' (738pp) and 'Infrastructure' (224pp); the UML 2.5.1 specification is only slightly smaller at 796 pages (see the <a href="http://www.omg.org/spec/UML/">OMG UML page</a> for current specifications). The XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability (recognised as a critical issue by OMG in 2015). Despite the complexity, there are significant holes in the UML meta-model, including: the notion of 'type' is not formalised and the meta-model of generic types and container properties is problematic and does not map well to object programming languages. The Design By Contract (DbC) concept (i.e. pre-, post-conditions, class invariants), crucial for proper specifications, is in theory supported via the use of OCL 2.0 constraints in class definitions, but OCL suffers from the underlying semantic weaknesses as UML.</p>
+<p>The UML 2.x specifications are exceedingly complex: UML 2.1.2 was specified by two documents, 'Superstructure' (738pp) and 'Infrastructure' (224pp); the UML 2.5.1 specification is only slightly smaller at 796 pages (see the <a href="http://www.omg.org/spec/UML/">OMG UML page</a> for current specifications). The XMI 2.x specification is correspondingly complex, which seems to have so far prevented reliable tool interoperability (recognised as a critical issue by OMG in 2015). Despite the complexity, there are significant holes in the UML meta-model, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the composite or association nature of a class property only being known if it is represented as an association;</p>
+</li>
+<li>
+<p>the notion of type is not formalised;</p>
+</li>
+<li>
+<p>the meta-model of generic types and container properties is problematic and does not map well to object programming languages;</p>
+</li>
+<li>
+<p>the Design By Contract (DbC) concept (i.e. pre-, post-conditions, class invariants), crucial for proper specifications, is in theory supported via the use of OCL 2.0 constraints in class definitions, but OCL suffers from the same underlying semantic weaknesses as UML.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Experience with various UML tools (up till 2015) highlighted the following problems:</p>
@@ -492,7 +569,7 @@ Other than for working with particular tools designed to use BMM, BMM is not a r
 <p>Since 2015, the quality of UML tools has improved, and the XMI generated by some is more reliable. However, XMI generated by different tools is not the same for identical models, and some XMI importers offer numerous switches in order to process the XMI of another tool properly. XMI thus still needs to be processed with care.</p>
 </div>
 <div class="paragraph">
-<p>Nevertheless, a small number of tools, including MagicDraw (currently used for representing openEHR models for the specifications) and Rational Software Architect (RSA), appear to implement UML 2.5 faithfully. This means that despite the limitations of UML 2.5 (as noted above), models expressed in it can be mostly correctly interpreted and post-processed for purposes such as code generation.</p>
+<p>Nevertheless, a small number of tools, including MagicDraw (currently used for representing openEHR models for the specifications) and Rational Software Architect (RSA), appear to implement UML 2.5 faithfully. This means that despite the limitations of UML 2.5 (as noted above), models expressed in it can be mostly correctly interpreted and corrected by post-processing for purposes such as code generation and specifications publishing.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -517,10 +594,10 @@ Other tools may well perform as well or better, and in any case, all tools chang
 <div class="sect2">
 <h3 id="_design_approach"><a class="anchor" href="#_design_approach"></a>2.3. Design Approach</h3>
 <div class="paragraph">
-<p>The Basic Meta-Model supports the representation of object models in the ISO RM/ODP information point of view. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. The semantics of the model are heavily influenced by the formal approach to object-orientation described by Bertrand Meyer in Object-oriented Software Construction <a href="#Meyer_OOSC2">[Meyer_OOSC2]</a> and also the <a href="http://www.ecma-international.org/publications/standards/Ecma-367.htm">Eiffel language</a>, which is significantly better match to object modelling than the UML 2.x meta-model.</p>
+<p>The Basic Meta-Model supports the representation of object models in the ISO RM/ODP information and computational points of view, i.e. in programming terms, 'classes, properties and methods'. It is designed to enable both human authoring and machine extraction (e.g. from a UML tool or programming language classes) of textual schemas. The semantics of the model are heavily influenced by the formal approach to object-orientation described by Bertrand Meyer in Object-oriented Software Construction <a href="#Meyer_OOSC2">[Meyer_OOSC2]</a> and also the <a href="http://www.ecma-international.org/publications/standards/Ecma-367.htm">Eiffel language</a>, which is significantly better match to object modelling than the UML 2.x meta-model.</p>
 </div>
 <div class="paragraph">
-<p>Currently the BMM supports only the information point of view, i.e. no methods. It is oriented toward developing models of data. Tools that use the BMM can provide views of an object model expressed in BMM that are particularly useful to information modelling, such as 'closure' view show below. This is a computed reachability graph of a fully inheritance-flattened class and all properties, including recursive references.</p>
+<p>Until version 3.0.0, BMM supported only the information point of view, i.e. no methods. As of version 3.1.0, computed class features (functions and procedures) may also be included. Nevertheless, BMM is often used to express models of data. Tools that use the BMM can provide views of an object model expressed in BMM that are particularly useful to information modelling, such as 'closure' view show below. This is a computed reachability graph of a fully inheritance-flattened class and all properties, including recursive references.</p>
 </div>
 <div id="awb_class_closure" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -536,6 +613,9 @@ Other tools may well perform as well or better, and in any case, all tools chang
 <img src="images/archetype_rm.png" alt="archetype rm">
 </div>
 <div class="title">Figure 2. ADL archetype with BMM class properties</div>
+</div>
+<div class="paragraph">
+<p>Newer tools are able to include the computational features.</p>
 </div>
 </div>
 <div class="sect2">
@@ -590,7 +670,7 @@ Other tools may well perform as well or better, and in any case, all tools chang
 <div class="title">Note</div>
 </td>
 <td class="content">
-This package is considered informative within this specification, not normative.
+This package is considered informative within this specification.
 </td>
 </tr>
 </table>
@@ -1530,6 +1610,13 @@ a future version of BMM may define an option to import schemas using differing n
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of this model element.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -1550,7 +1637,7 @@ a future version of BMM may define an option to import schemas using differing n
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PACKAGE_CONTAINER</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_PACKAGE_CONTAINER (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1626,6 +1713,9 @@ a_path: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Abstraction of a package as a tree structure whose nodes can contain other packages and classes.</p>
+</div>
+<div class="paragraph">
+<p>The <code><em>name</em></code> may be qualified if it is a top-level package.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1636,13 +1726,6 @@ a_path: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name of this package. This name may be qualified if it is a top-level package.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
@@ -1706,13 +1789,6 @@ a_path: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code>Hash&lt;String,BMM_CLASS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>All classes in this schema, keyed by type name.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_name</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name of this model.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1894,16 +1970,16 @@ an_anc_type: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>The following UML diagram shows the semantically important part of the BMM, defining classes and types, known collectively as entities.</p>
+<p>The following UML diagram shows the BMM model of <em>classes</em> and <em>types</em>, collectively known as <em>entities</em>.</p>
 </div>
-<div id="core_package_main" class="imageblock text-center" style="text-align: center">
+<div id="core_entities" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="../UML/diagrams/BASE-bmm.core-main.svg" alt="BASE bmm.core main">
+<img src="../UML/diagrams/BASE-bmm.core-entities.svg" alt="BASE bmm.core entities">
 </div>
-<div class="title">Figure 9. base.bmm.core Package - Main</div>
+<div class="title">Figure 9. base.bmm.core Package - Entities</div>
 </div>
 <div class="paragraph">
-<p>The general structure of a BMM consists of a set of classes, whose properties are each typed by an instance of <code>BMM_TYPE</code>, as shown below. Structures specific to generic and container types are shown in relevant sections below.</p>
+<p>The general structure of a BMM consists of a set of classes, whose features (properties, routines) are each typed by an instance of <code>BMM_TYPE</code>. The following shows the typing of properties. Structures specific to generic and container types are shown in relevant sections below.</p>
 </div>
 <div id="bmm_entities" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2113,7 +2189,7 @@ an_anc_type: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>Types are used for three purposes in a BMM model:</p>
+<p>Types are understood as the <em>formal classifiers</em> of object instances in BMM, in both a static sense and dynamically, i.e. at execution time, when polymorphic attachment is possible. Types are defined indirectly via the definitions of classes and their constituent parts. Types are used for three purposes in a BMM model:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2912,51 +2988,35 @@ an_anc_type: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>7.1. Overview</h3>
 <div class="paragraph">
-<p>Class definitions are the core of any BMM model. BMM distinguishes between simple and generic class definitions via two descendants of <code>BMM_CLASS</code>, i.e. <code>BMM_SIMPLE_CLASS</code> and <code>BMM_GENERIC_CLASS</code>, with the first providing a concrete form of <code>BMM_CLASS</code> that applies to non-generic classes, and the latter defining the additional semantics of generic classes. The meta-type <code>BMM_ENUMERATION</code> is a specialisation of <code>BMM_SIMPLE_CLASS</code> used to represent enumeration classes in BMM models.</p>
+<p>This section describes the semantics of the <code>BMM_CLASS</code> meta-class, its sub-types, constituent parts and relationships. The parts of a class are collectively known as <em>features</em>, and consist of functions, procedures, constants and properties. The following UML illustrates classes and relationships to constituent feature meta-types. (Features are described in detail in the following section.)</p>
 </div>
-<div class="paragraph">
-<p>Class properties are defined using the generic class <code>BMM_PROPERTY &lt;T: BMM_TYPE&gt;</code>. The use of a generic meta-type provides a formal way of expressing the semantics of meta-types described in the section on types. The generic parameter is one of the following <code>BMM_TYPE</code> descendants:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>a <code>BMM_SIMPLE_TYPE</code> - corresponds to a simple type such as <code>Document</code>;</p>
-</li>
-<li>
-<p>a <code>BMM_GENERIC_TYPE</code> - a type generated by the use of a generic class with one or more filled type parameters, e.g. <code>Interval&lt;Time&gt;</code>, <code>Packet&lt;T,Payload&gt;</code>;</p>
-</li>
-<li>
-<p>a <code>BMM_CONTAINER_TYPE</code> - a type generated by the use of a linear container type such as <code>List&lt;T&gt;</code>, <code>Hash&lt;T,U&gt;</code> with actual generic parameters;</p>
-</li>
-<li>
-<p>a <code>BMM_PARAMETER_TYPE</code> - corresponds to a generic parameter type from the class type definition, e.g. <code>T</code>, <code>U</code> etc.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In modelling or programming terms, the properties of a class constitute the features it <em>introduces with respect to its inheritance parent(s)</em>. We can think of this list of properties as the <em>differential</em> set. A 'top-level' class with no declared inheritance ancestor is considered to inherit by default from the <code>Any</code> class, and its property set is relationally differential to the top class.</p>
-</div>
-<div class="paragraph">
-<p>In contrast, the <em>effective</em> set of properties for an instance at runtime is the result of evaluating these lists of properties down the inheritance hierarchy to obtain the <em>flat</em> set of properties. The features <em>properties</em> and <em>flat_properties</em> defined on <code>BMM_CLASS</code> provide access to these two lists for any class.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_primitive_classes"><a class="anchor" href="#_primitive_classes"></a>7.2. Primitive Classes</h3>
-<div class="paragraph">
-<p>As noted above, class definitions can be marked as being 'primitive' within a BMM model, enabling them to be visualised and queried as a separate group without otherwise impacting on the semantics of the entity in BMM meta-type system. The following shows part of a BMM model in which a number of classes are classified as primitive (shown in light and dark grey).</p>
-</div>
-<div id="awb_primitive_types" class="imageblock text-center" style="text-align: center">
+<div id="core_class" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="images/awb_primitive_types.png" alt="awb primitive types" width="50%">
+<img src="../UML/diagrams/BASE-bmm.core-class.svg" alt="BASE bmm.core class">
 </div>
-<div class="title">Figure 17. Primitive classes</div>
+<div class="title">Figure 17. base.bmm.core Package - Class</div>
 </div>
 <div class="paragraph">
-<p>Primitive classes are normal BMM classes, other than being marked primitive for convenience, and do not have different semantics.</p>
+<p>Class definitions are the <em>definitional</em> basis of a BMM model, i.e. they are the means of defining the types that are statically used in the model, and the dynamic types generated at runtime. Types are thus <em>derived</em> entities.</p>
+</div>
+<div class="paragraph">
+<p>BMM distinguishes between simple and generic class definitions via two descendants of <code>BMM_CLASS</code>, i.e. <code>BMM_SIMPLE_CLASS</code> and <code>BMM_GENERIC_CLASS</code>, with the first providing a concrete form of <code>BMM_CLASS</code> that applies to non-generic classes, and the latter defining the additional semantics of generic classes. The meta-type <code>BMM_ENUMERATION</code> is a specialisation of <code>BMM_SIMPLE_CLASS</code> used to represent enumeration classes in BMM models. The non-simple meta-types are further described below.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+not currently supported: export status; 'static' (non-instance dependent) methods; anchored types.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_enumeration_classes"><a class="anchor" href="#_enumeration_classes"></a>7.3. Enumeration Classes</h3>
+<h3 id="_enumeration_classes"><a class="anchor" href="#_enumeration_classes"></a>7.2. Enumeration Classes</h3>
 <div class="paragraph">
 <p>The enumeration meta-type adds a set of enumeration labels and optional <code>String</code> or <code>Integer</code> values, in the manner of contemporary languages such as Java and C#. This meta-type allows classes to be declared in a BMM to be enumerations without either having to manufacture a representation from simple class definitions, or having to replicate the representation of enumerations in some target language. The following screenshot shows how a BMM integer enumeration class appears within a BMM model.</p>
 </div>
@@ -2971,7 +3031,7 @@ an_anc_type: <code>String[1]</code><br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>7.4. Generic Classes</h3>
+<h3 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a>7.3. Generic Classes</h3>
 <div class="paragraph">
 <p>The generic class meta-type <code>BMM_GENERIC_CLASS</code> adds generic parameters to <code>BMM_CLASS</code>, enabling formal generic parameters to be represented. Each such parameter is expressed using an instance of <code>BMM_PARAMETER_TYPE</code> which names the parameter and optionally allows a type constraint to be associated with it, in the usual object-oriented fashion. In BMM, formal parameters have single-letter names, such as 'T', 'U' etc, following typical usage in programming languages. The following example shows a generic class <code>Interval&lt;T:Ordered&gt;</code>, which is a class <code>Interval</code> with one formal parameter <code>T</code> constrained to be of type <code>Ordered</code> or any descendant.</p>
 </div>
@@ -2983,40 +3043,24 @@ an_anc_type: <code>String[1]</code><br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_properties"><a class="anchor" href="#_properties"></a>7.5. Properties</h3>
+<h3 id="_primitive_classes"><a class="anchor" href="#_primitive_classes"></a>7.4. Primitive Classes</h3>
 <div class="paragraph">
-<p>Properties in BMM class definitions occur in two flavours, corresponding to the unitary and container type meta-types. The <code>BMM_PROPERTY&lt;T:BMM_TYPE&gt;</code> meta-type defines semantics common all properties, including <code><em>name</em></code> and <code><em>is_mandatory</em></code>, and <code><em>type</em></code>, a generically typed reference to the property type in a BMM model. Properties also include two other Boolean meta-data items, <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code>, which can be used to classify property values in a model according to use in runtime systems. These may be individually set, or both may be False. The three meaningful value settings are as follows:</p>
+<p>Any class definitions can be marked as being 'primitive' within a BMM model, enabling them to be visualised and queried as a separate group without otherwise impacting on the semantics of the entity in BMM meta-type system. The following shows part of a BMM model in which a number of classes are classified as primitive (shown in light and dark grey).</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>both False</em>: the value of the property is considered to be design-time constrainable;</p>
-</li>
-<li>
-<p><em>is IM runtime</em>: True if the property value is only knowable at runtime, as is typically the case for identifiers, dates etc;</p>
-</li>
-<li>
-<p><em>is infrastructure</em>: True if the property is not a user- or business-oriented property, but something required by software design, e.g instance identifier, meta-data etc.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Unitary properties in a BMM model are instances of the types <code>BMM_PROPERTY&lt;BMM_SIMPLE_TYPE&gt;</code> and so on. Container properties are instances of the type <code>BMM_CONTAINER_PROPERTY</code>, which inherits from <code>BMM_PROPERTY&lt;BMM_CONTAINER_TYPE&gt;</code>, in order to add the meta-data item <code><em>cardinality</em></code>, which enables the possible number of container elements to be constrained, corresponding to the multiplicities used at the end of UML associations.</p>
-</div>
-<div class="paragraph">
-<p>The following example shows a BMM class in a model whose flat properties have different settings of the <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code> meta-data flags: property names in black are neither; those in grey are IM runtime, and those in light grey are infrastructure properties.</p>
-</div>
-<div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
+<div id="awb_primitive_types" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="images/awb_class_properties.png" alt="awb class properties" width="50%">
+<img src="images/awb_primitive_types.png" alt="awb primitive types" width="50%">
 </div>
-<div class="title">Figure 20. BMM class - properties view</div>
+<div class="title">Figure 20. Primitive classes</div>
+</div>
+<div class="paragraph">
+<p>Primitive classes are normal BMM classes, other than being marked primitive for convenience, and do not have different semantics.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>7.6. Class Definitions</h3>
+<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>7.5. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_bmm_class_class"><a class="anchor" href="#_bmm_class_class"></a>7.6.1. BMM_CLASS Class</h4>
+<h4 id="_bmm_class_class"><a class="anchor" href="#_bmm_class_class"></a>7.5.1. BMM_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3032,6 +3076,9 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Meta-type defining a class definition in an object model.</p>
+</div>
+<div class="paragraph">
+<p>Note that unlike UML, the <code><em>name</em></code> is just the root name, even if the class is generic. Use <code><em>type_name()</em></code> to obtain the qualified type name.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3042,13 +3089,6 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic. Use <code><em>type_name()</em></code> to obtain the full type name.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
@@ -3099,7 +3139,12 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>routines</strong>: <code>Hash&lt;String,BMM_ROUTINE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>functions</strong>: <code>Hash&lt;String,BMM_FUNCTION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>procedures</strong>: <code>Hash&lt;String,BMM_PROCEDURE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -3157,13 +3202,6 @@ an_anc_type: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_properties</strong> (): <code>List&lt;Hash&lt;String, BMM_PROPERTY&lt;BMM_TYPE&gt;&gt;&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of all properties due to current and ancestor classes, keyed by property name.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -3184,11 +3222,28 @@ an_anc_type: <code>String[1]</code><br>
 <p>Generate a type object that represents the type of this class.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>features</strong> (): <code>List&lt;BMM_FORMAL_ELEMENT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_features</strong> (): <code>List&lt;BMM_FORMAL_ELEMENT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_properties</strong> (): <code>List&lt;Hash&lt;String, BMM_PROPERTY&lt;BMM_TYPE&gt;&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of all properties due to current and ancestor classes, keyed by property name.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_simple_class_class"><a class="anchor" href="#_bmm_simple_class_class"></a>7.6.2. BMM_SIMPLE_CLASS Class</h4>
+<h4 id="_bmm_simple_class_class"><a class="anchor" href="#_bmm_simple_class_class"></a>7.5.2. BMM_SIMPLE_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3233,7 +3288,7 @@ an_anc_type: <code>String[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_enumeration_class"><a class="anchor" href="#_bmm_enumeration_class"></a>7.6.3. BMM_ENUMERATION Class</h4>
+<h4 id="_bmm_enumeration_class"><a class="anchor" href="#_bmm_enumeration_class"></a>7.5.3. BMM_ENUMERATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3304,7 +3359,7 @@ an_anc_type: <code>String[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_enumeration_string_class"><a class="anchor" href="#_bmm_enumeration_string_class"></a>7.6.4. BMM_ENUMERATION_STRING Class</h4>
+<h4 id="_bmm_enumeration_string_class"><a class="anchor" href="#_bmm_enumeration_string_class"></a>7.5.4. BMM_ENUMERATION_STRING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3343,7 +3398,7 @@ an_anc_type: <code>String[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_enumeration_integer_class"><a class="anchor" href="#_bmm_enumeration_integer_class"></a>7.6.5. BMM_ENUMERATION_INTEGER Class</h4>
+<h4 id="_bmm_enumeration_integer_class"><a class="anchor" href="#_bmm_enumeration_integer_class"></a>7.5.5. BMM_ENUMERATION_INTEGER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3382,7 +3437,7 @@ an_anc_type: <code>String[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_generic_class_class"><a class="anchor" href="#_bmm_generic_class_class"></a>7.6.6. BMM_GENERIC_CLASS Class</h4>
+<h4 id="_bmm_generic_class_class"><a class="anchor" href="#_bmm_generic_class_class"></a>7.5.6. BMM_GENERIC_CLASS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3454,8 +3509,199 @@ a_name: <code>String[1]</code><br>
 </tbody>
 </table>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_class_features"><a class="anchor" href="#_class_features"></a>8. Class Features</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_7"><a class="anchor" href="#_overview_7"></a>8.1. Overview</h3>
+<div class="paragraph">
+<p>Within the definitions of each class in a BMM model are found the definitions of its <em>features</em>, consisting of <em>routines</em>, <em>properties</em> and <em>constants</em>. The overall meta-model of features, as well as the elements that occur within them, namely parameters and local variables is shown below, and described in this section.</p>
+</div>
+<div id="core_features" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/BASE-bmm.core-features.svg" alt="BASE bmm.core features">
+</div>
+<div class="title">Figure 21. base.bmm.core - Features</div>
+</div>
+<div class="paragraph">
+<p>The abstract classes in this model that define the taxonomy of types are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BMM_FORMAL_ELEMENT</code>: a formally defined element with a scope and signature;</p>
+</li>
+<li>
+<p><code>BMM_ROUTINE</code>: an element whose definition is a compututation;</p>
+</li>
+<li>
+<p><code>BMM_VALUE_RETURNING</code>: any element that has a value at execution time;</p>
+</li>
+<li>
+<p><code>BMM_EVALUABLE</code>: any element that can be evaluated at execution time to produce a value;</p>
+</li>
+<li>
+<p><code>BMM_MUTABLE</code>: a non-computed evaluable element whose value may be changed during execution;</p>
+</li>
+<li>
+<p><code>BMM_VARIABLE</code>: a mutable element whose scope is a routine.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Class features consist of the formal sub-parts of a class, namely:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>routines</em>: <em>procedures</em> and <em>functions</em>;</p>
+</li>
+<li>
+<p><em>properties</em>: mutable static definitions, described in detail in previous sections;</p>
+</li>
+<li>
+<p><em>constants</em>: immutable static definitions.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scope_of_formal_elements"><a class="anchor" href="#_scope_of_formal_elements"></a>8.2. Scope of Formal Elements</h3>
+<div class="paragraph">
+<p>All formally defined model elements (i.e. instances of the meta-type <code>BMM_FORMAL_ELEMENT</code>) have a <em>scope</em>, represented by the <code><em>scope</em></code> meta-attribute. The scope meta-type indicates the kind of model element within which the current element is scoped, and the value</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nullability_optionality_and_void_safety"><a class="anchor" href="#_nullability_optionality_and_void_safety"></a>8.3. Nullability, Optionality and Void-safety</h3>
+<div class="paragraph">
+<p>The <code><em>is_nullable</em></code> attribute of the meta-class <code>BMM_MUTABLE</code> indicates whether instances are optional or mandatory within their context, i.e. whether the value of the reference may be null (or 'void') at execution or persistence time. This flag maps on to the UML notion of optionality (i.e. whether a property or routine parameter has <code>[0..1]</code> existence) and also to the broader notion of void-safety.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_differential_and_flat_form"><a class="anchor" href="#_differential_and_flat_form"></a>8.4. Differential and Flat Form</h3>
+<div class="paragraph">
+<p>In modelling or programming terms, the features defined on a particular class within a model constitute the features it <em>introduces with respect to its inheritance parent(s)</em>. We can think of this list of features as the <em>differential</em> set. A 'top-level' class with no declared inheritance ancestor is considered to inherit by default from the <code>Any</code> class, and its feature set is relationally differential to the top class.</p>
+</div>
+<div class="paragraph">
+<p>In contrast, the <em>effective</em> set of features for an instance at runtime is the result of evaluating these lists of features down the inheritance hierarchy to obtain the <em>flat</em> set of features. The features <em>properties</em> and <em>flat_properties</em> defined on <code>BMM_CLASS</code> provide access to these two lists for any class.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_signatures"><a class="anchor" href="#_signatures"></a>8.5. Signatures</h3>
+<div class="paragraph">
+<p>All class features have formal signatures. The simplest type of signature is that of properties and constants, which may be expressed formally as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    : T_result</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This indicates that both meta-types have a return type, being the type of the value they are attached to at execution time.</p>
+</div>
+<div class="paragraph">
+<p>The two types of routines, i.e. functions and procedures include 0 or more formal parameters in their signatures, with functions also having a return type. The general form of routine signatures is thus as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    &lt;T_arg1, T_arg2, ....&gt;: T_result        -- Function
+    &lt;T_arg1, T_arg2, ....&gt;                  -- Procedure</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Typical examples of function signatures:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    : Date                          -- signature of a 0-order function like current_date()
+    &lt;Real, Real&gt;: Real              -- signature of a 2nd-order function like '*' for the domain R
+    &lt;Integer, Integer&gt;: Integer     -- signature of a 2nd-order function like 'add' for the domain I</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Typical procedure signatures include the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    &lt;Real&gt;                          -- a 1st-order procedure for the domain R
+    &lt;String, Integer&gt;               -- signature of a procedure taking a String and an Integer argument</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_constants"><a class="anchor" href="#_constants"></a>8.6. Constants</h3>
+<div class="paragraph">
+<p>Constant features in a class are represented by the BMM meta-class <code>BMM_CONSTANT</code>, which is an immutable descendant of <code>BMM_EVALUABLE</code>. A constant has a <code><em>value</em></code>, which may be of any type, including complex types. The <code><em>scope</em></code> of a constant is its enclosing class.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+computed complex constants not yet supported.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_properties"><a class="anchor" href="#_properties"></a>8.7. Properties</h3>
+<div class="paragraph">
+<p>Class properties are defined via the meta-class <code>BMM_PROPERTY</code>, and its two subtypes, <code>BMM_UNITARY_PROPERTY</code> and <code>BMM_CONTAINER_PROPERTY</code>, corresponding to the unitary and container type meta-types. The <code>BMM_PROPERTY</code> meta-type defines semantics common to all properties, including <code><em>type</em></code>, a reference to an instance of <code>BMM_TYPE</code> representing the class property type in the BMM model. Properties also include two other Boolean meta-data items, <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code>, which can be used to classify property values in a model according to use in runtime systems. These may be individually set, or both may be False. The three meaningful value settings are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>both False</em>: the value of the property is considered to be design-time constrainable;</p>
+</li>
+<li>
+<p><em>is IM runtime</em>: True if the property value is only knowable at runtime, as is typically the case for identifiers, dates etc;</p>
+</li>
+<li>
+<p><em>is infrastructure</em>: True if the property is not a user- or business-oriented property, but something required by software design, e.g instance identifier, meta-data etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Single-valued properties in a BMM model are instances of the type <code>BMM_UNITARY_PROPERTY</code>, and have as their <code><em>type</em></code> the meta-type <code>UNITARY_TYPE</code>. Container properties are instances of the type <code>BMM_CONTAINER_PROPERTY</code>, which adds the meta-attribute <code><em>cardinality</em></code>, enabling the possible number of container elements to be constrained (this corresponds to the multiplicities used at the end of UML associations).</p>
+</div>
+<div class="paragraph">
+<p>The following example shows a the flattened property view of a class <code>OBSERVATION</code> in a BMM model whose flat properties have different settings of the <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code> meta-data flags: property names in black are neither; those in grey are IM runtime, and those in light grey are infrastructure properties.</p>
+</div>
+<div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="images/awb_class_properties.png" alt="awb class properties" width="50%">
+</div>
+<div class="title">Figure 22. BMM class - properties view</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_functions_and_procedures"><a class="anchor" href="#_functions_and_procedures"></a>8.8. Functions and Procedures</h3>
+<div class="paragraph">
+<p>Functions and procedures are kinds of <em>routine</em>, which are computational features of a class. In BMM, they are represented, along with constituent parts, namely parameters and local variables by descendants of the class <code>BMM_FORMAL_ELEMENT</code>.</p>
+</div>
+<div class="paragraph">
+<p>The formal parameter definitions of both kinds of routines are represented by an ordered list of instances of the meta-class <code>BMM_PARAMETER</code>, which is understood as a kind of <em>variable</em> scoped to the owning routine. A formal parameter may optionally have the read/write direction defined, which indicates whether the variable contains an input value, should only be written to, or both, i.e. read then written to. The inherited <code><em>is_nullable</em></code> meta-attribute indicates whether each parameter is mandatory or not.</p>
+</div>
+<div class="paragraph">
+<p>An additional feature of the meta-model for functions is the notion of <em>operator</em>, which supports the representation of a function call in a formal expression as an operator symbol with one or two operands, in the typical form found in programming languages and first order logics. The BMM approach considers an operator as an optional addition to any function of <code><em>arity</em></code> 1 or 2 that may reasonably be represented in an abstract syntax using operator syntax. Operators thus support the use of expressions like <code>weight &gt; 90</code> to mean <code>weight.gt (90)</code>, where <code>weight</code> is of type <code>Real</code>, and the function <code>gt(other: Real)</code> is defined.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variables_objects_and_values"><a class="anchor" href="#_variables_objects_and_values"></a>8.9. Variables, Objects and Values</h3>
+<div class="paragraph">
+<p>At the finest level of detail of a model definition are what are typically thought of as (local) <em>variables</em> and (literal) <em>values</em>. These are represented by the classes <code>BMM_LOCAL</code> and <code>BMM_VALUE</code> respectively. Both variables and values have a <code><em>type</em></code>, with type being inferred for the latter from its value when parsed or otherwise created.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_6"><a class="anchor" href="#_class_definitions_6"></a>8.10. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_bmm_property_class"><a class="anchor" href="#_bmm_property_class"></a>7.6.7. BMM_PROPERTY Class</h4>
+<h4 id="_bmm_formal_element_class"><a class="anchor" href="#_bmm_formal_element_class"></a>8.10.1. BMM_FORMAL_ELEMENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3465,7 +3711,181 @@ a_name: <code>String[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PROPERTY</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_FORMAL_ELEMENT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A formal element of an enclosing entity, that has at least a name, and a signature.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code>BMM_MODEL_ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Model element within which this formal element is known.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>signature</strong> (): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Formal signature of this element, in the form <code>'name &lt;arg1_name: T_arg1, &#8230;&#8203;&gt;'</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_value_returning_class"><a class="anchor" href="#_bmm_value_returning_class"></a>8.10.2. BMM_VALUE_RETURNING Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_VALUE_RETURNING (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Any entity that represents or returns an instance value of a type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Declared or inferred static type of the entity.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_evaluable_class"><a class="anchor" href="#_bmm_evaluable_class"></a>8.10.3. BMM_EVALUABLE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_EVALUABLE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A formal feature that can be evaluated to return a value at execution time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_FORMAL_ELEMENT</code>, <code>BMM_VALUE_RETURNING</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_value_class"><a class="anchor" href="#_bmm_value_class"></a>8.10.4. BMM_VALUE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_VALUE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Instance value. In an abstract syntax, represented by a literal value.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_VALUE_RETURNING</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_mutable_class"><a class="anchor" href="#_bmm_mutable_class"></a>8.10.5. BMM_MUTABLE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_MUTABLE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A mutable value-returning entity, i.e. one whose value may change during computation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_EVALUABLE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_nullable</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this element can be null at execution time. May be interpreted as optionality in subtypes..</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_property_class"><a class="anchor" href="#_bmm_property_class"></a>8.10.6. BMM_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_PROPERTY (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3475,7 +3895,7 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code>, <code>BMM_VARIABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MUTABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3484,16 +3904,12 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this property is mandatory in its class.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this property is computed rather than stored in objects of this class.</p>
+</div>
+<div class="paragraph">
+<p>OBSOLETE.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3520,16 +3936,10 @@ a_name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Formal type of this property.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code>BMM_CLASS</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Owning class of this property.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3540,7 +3950,7 @@ a_name: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>existence</strong> (): <code>Multiplicity_interval</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Interval form of <code>0..1</code>, <code>1..1</code> etc, derived from <code><em>is_mandatory</em></code>.</p>
+<p>Interval form of <code>0..1</code>, <code>1..1</code> etc, derived from <code><em>is_nullable</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3554,7 +3964,44 @@ a_name: <code>String[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_bmm_container_property_class"><a class="anchor" href="#_bmm_container_property_class"></a>7.6.8. BMM_CONTAINER_PROPERTY Class</h4>
+<h4 id="_bmm_unitary_property_class"><a class="anchor" href="#_bmm_unitary_property_class"></a>8.10.7. BMM_UNITARY_PROPERTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_UNITARY_PROPERTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_PROPERTY</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>BMM_UNITARY_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Declared or inferred static type of the entity.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_container_property_class"><a class="anchor" href="#_bmm_container_property_class"></a>8.10.8. BMM_CONTAINER_PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3568,9 +4015,7 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Subtype of <code>BMM_PROPERTY</code> that represents a container type based on one of the inbuilt types <code>List&lt;T&gt;</code>, <code>Set&lt;T&gt;</code>, <code>Array&lt;T&gt;</code>.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -3592,7 +4037,9 @@ a_name: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>BMM_CONTAINER_TYPE</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Declared or inferred static type of the entity.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3609,14 +4056,401 @@ a_name: <code>String[1]</code><br>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_bmm_constant_class"><a class="anchor" href="#_bmm_constant_class"></a>8.10.9. BMM_CONSTANT Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_CONSTANT</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>An immutable, static value-returning element scoped to a class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_EVALUABLE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>BMM_VALUE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The value of the constant.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Owning class of this constant.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_variable_class"><a class="anchor" href="#_bmm_variable_class"></a>8.10.10. BMM_VARIABLE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_VARIABLE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A mutable entity whose scope is a routine.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MUTABLE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code>BMM_ROUTINE</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_routine_class"><a class="anchor" href="#_bmm_routine_class"></a>8.10.11. BMM_ROUTINE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_ROUTINE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A formal element with computational definition, scoped to a class.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_FORMAL_ELEMENT</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parameters</strong>: <code>List&lt;BMM_PARAMETER&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Formal parameters of the routine.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>locals</strong>: <code>List&lt;BMM_LOCAL&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Local variables of the routine.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Owning class of this routine.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>arity</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return number of arguments of this routine.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_function_class"><a class="anchor" href="#_bmm_function_class"></a>8.10.12. BMM_FUNCTION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_FUNCTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A formal element with signature of the form: <code>name ({arg:TArg}*):TResult</code>. A function is a computed (rather than data) element, generally assumed to be non-state-changing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ROUTINE</code>, <code>BMM_EVALUABLE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator_def</strong>: <code>BMM_OPERATOR</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional details enabling a function to be represented as an operator in a syntactic representation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Operator_validity</em></strong>: <code>operator_def /= Void implies arity = 1 or arity = 2</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_operator_class"><a class="anchor" href="#_bmm_operator_class"></a>8.10.13. BMM_OPERATOR Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_OPERATOR</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Definition of a symbolic operator associated with a function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>position</strong>: <code>BMM_OPERATOR_POSITION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Position of operator in syntactic representation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbols</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set of <code>String</code> symbols that may be used to represent this operator in a textual representation of a BMM model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Formal name of the operator, e.g. 'minus' etc.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_operator_position_enumeration"><a class="anchor" href="#_bmm_operator_position_enumeration"></a>8.10.14. BMM_OPERATOR_POSITION Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_OPERATOR_POSITION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Enumeration of possible position of operator in a syntactic representation for operators associated with 1- and 2- degree functions.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prefix</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Prefix operator position: operator comes before operand.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">infix</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Infix operator position: operator comes between left and right operands.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_procedure_class"><a class="anchor" href="#_bmm_procedure_class"></a>8.10.15. BMM_PROCEDURE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PROCEDURE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A formal element with signature of the form: <code>name ({arg:TArg}*)</code>. A procedure is a computed (rather than data) element, generally assumed to be state-changing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ROUTINE</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_parameter_class"><a class="anchor" href="#_bmm_parameter_class"></a>8.10.16. BMM_PARAMETER Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PARAMETER</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A routine parameter variable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_VARIABLE</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>direction</strong>: <code>BMM_PARAMETER_DIRECTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional read/write direction of the parameter. If none-supplied, the parameter is treated as <code>in</code>, i.e. readable.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_bmm_parameter_direction_enumeration"><a class="anchor" href="#_bmm_parameter_direction_enumeration"></a>8.10.17. BMM_PARAMETER_DIRECTION Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PARAMETER_DIRECTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Enumeration of parameter read/write direction values.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">out</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in_out</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_model_semantics"><a class="anchor" href="#_model_semantics"></a>8. Model Semantics</h2>
+<h2 id="_model_semantics"><a class="anchor" href="#_model_semantics"></a>9. Model Semantics</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_simple_inheritance"><a class="anchor" href="#_simple_inheritance"></a>8.1. Simple Inheritance</h3>
+<h3 id="_simple_inheritance"><a class="anchor" href="#_simple_inheritance"></a>9.1. Simple Inheritance</h3>
 <div class="paragraph">
 <p>The BMM supports single and multiple inheritance, although it does not distinguish between different types of inheritance relation as some programming languages do. Inheritance is formally defined to be between a class definition (an instance of <code>BMM_CLASS</code>) and a defined type, i.e. a <code>BMM_SIMPLE_TYPE</code> or <code>BMM_GENERIC_TYPE</code>. This is because the inheritance parents of a class may be any of:</p>
 </div>
@@ -3643,7 +4477,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_class_ancestors.png" alt="awb class ancestors" width="45%">
 </div>
-<div class="title">Figure 21. BMM class - ancestors view</div>
+<div class="title">Figure 23. BMM class - ancestors view</div>
 </div>
 <div class="paragraph">
 <p>The next screenshot shows the descendants view of one of the ancestor classes of the same class.</p>
@@ -3652,11 +4486,11 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_class_descendants.png" alt="awb class descendants" width="45%">
 </div>
-<div class="title">Figure 22. BMM class - descendants view</div>
+<div class="title">Figure 24. BMM class - descendants view</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_generic_inheritance"><a class="anchor" href="#_generic_inheritance"></a>8.2. Generic Inheritance</h3>
+<h3 id="_generic_inheritance"><a class="anchor" href="#_generic_inheritance"></a>9.2. Generic Inheritance</h3>
 <div class="paragraph">
 <p>Inheritance between generic classes works in the same way as for simple classes, with the additional semantics of formal parameter inheritance, which are as follows:</p>
 </div>
@@ -3677,7 +4511,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_generic_inheritance.png" alt="awb generic inheritance" width="70%">
 </div>
-<div class="title">Figure 23. Generic inheritance, open parameter</div>
+<div class="title">Figure 25. Generic inheritance, open parameter</div>
 </div>
 <div class="paragraph">
 <p>A simple class may also inherit from a closed generic type, with the parameters of the latter fixed to specific type(s), as shown in the following example.</p>
@@ -3686,7 +4520,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_generic_inheritance_closed.png" alt="awb generic inheritance closed" width="85%">
 </div>
-<div class="title">Figure 24. Generic inheritance, closed</div>
+<div class="title">Figure 26. Generic inheritance, closed</div>
 </div>
 <div class="paragraph">
 <p>The general case is that any number of formal generic parameters may be substituted or left open down the inheritance lineage, as shown by the variants in the following example.</p>
@@ -3695,11 +4529,11 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_generic_inheritance_mixed.png" alt="awb generic inheritance mixed" width="90%">
 </div>
-<div class="title">Figure 25. Generic inheritance, mixed open and closed</div>
+<div class="title">Figure 27. Generic inheritance, mixed open and closed</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multiple_inheritance"><a class="anchor" href="#_multiple_inheritance"></a>8.3. Multiple Inheritance</h3>
+<h3 id="_multiple_inheritance"><a class="anchor" href="#_multiple_inheritance"></a>9.3. Multiple Inheritance</h3>
 <div class="paragraph">
 <p>Multiple inheritance is typically used in the definition of classes that have a Liskov substitution inheritance relation as well as a re-use inheritance relation. The following shows a class <code>DV_INTERVAL&lt;T&gt;</code> multiply inheriting from <code>Interval&lt;T&gt;</code> and <code>DATA_VALUE</code>, where the latter is considered the substitutable type, and the former an interface re-use.</p>
 </div>
@@ -3707,7 +4541,7 @@ a_name: <code>String[1]</code><br>
 <div class="content">
 <img src="images/awb_multiple_inheritance.png" alt="awb multiple inheritance" width="45%">
 </div>
-<div class="title">Figure 26. Multiple inheritance</div>
+<div class="title">Figure 28. Multiple inheritance</div>
 </div>
 </div>
 </div>
@@ -3813,7 +4647,7 @@ a_name: <code>String[1]</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-08 13:50:42 BST
+Last updated 2018-09-14 18:10:47 BST
 </div>
 </div>
 </body>

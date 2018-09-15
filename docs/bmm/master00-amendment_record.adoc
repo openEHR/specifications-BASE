@@ -4,7 +4,16 @@
 |===
 |Issue|Details|Raiser|Completed
 
-|[[latest_issue]]3.0.0
+|[[latest_issue]]3.1.0
+|Add feature elements `BMM_ROUTINE`, `BMM_VALUE_RETURNING` and descendants; +
+ Change `BMM_PROPERTY._is_mandatory_` to `BMM_MUTABLE._is_nullable_` (reversed Boolean sense); +
+ Made `BMM_PACKAGE_CONTAINER` abstract; +
+ Moved `_name_` to `BMM_MODEL_ELEMENT`, replacing `_name_` in `BMM_CLASS`, `BMM_PACKAGE`, `BMM_PROPERTY`, and `_model_name_` in `BMM_MODEL`; +
+ Marked `BMM_PROPERTY._is_computed_` as obsolete (to be phased out).
+|T Beale
+|[[latest_issue_date]]15 Sep 2018
+
+|3.0.0
 |Separate `P_BMM` model and syntax to BMM Persistence specification; +
  refactor / tighten class model: +
  rename `BMM_GENERIC_PARAMTER` to `BMM_PARAMETER_TYPE`; +
@@ -14,11 +23,11 @@
  redefine `BMM_CLASS._ancestors_` to be of type `BMM_DEFINED_TYPE`; +
  redefine `BMM_PARAMETER_TYPE._conforms_to_` to `_type_constraint_` of type `BMM_DEFINED_TYPE`; +
  correct `BMM_CLASS._immediate_descendants_` to be of type `List<BMM_CLASS>`; +
- rename `BMM_CLASIFIER` to `BMM_ENTITY`; +
+ rename `BMM_CLASSIFIER` to `BMM_ENTITY`; +
  Support generic types as class ancestors; +
  Remove archetype-related meta-data.
 |T Beale
-|[[latest_issue_date]]12 May 2018
+|12 May 2018
 
 |2.2.2
 |Improve and update introductory text in the Overview section.
