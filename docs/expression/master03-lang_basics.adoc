@@ -151,3 +151,38 @@ Various methods are defined for `Interval<T>`, as follows.
 Complex types may be implicitly accessible, or explicitly imported from formal model definitions specified in the `use_model` section of an EL text. Such models need to be specified in {openehr_base_bmm}[openEHR BMM format], or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.
 
 Access to interior elements of instances of non-primitive types is obtained using 'dot' notation, i.e. the standard way for object-oriented languages.
+
+== Function and Procedure Calls
+
+In EL, the function and procedure calls are the primary means to make complex logic available to expressions. Both functions and procedures are supported, and are collectively known as _routines_, as per the {openehr_base_bmm}#_elements[openEHR Basic Meta-Model (BMM)].
+
+In EL, a function is a routine that returns a result and is assumed to have no side-effects on previously declared entities. It has a signature of the form:
+
+----
+    <T_arg1, T_arg2, ....>: T_result
+----
+
+Typical examples of function signatures:
+
+----
+    : Date                          -- signature of a 0-order function like current_date()
+    <Real, Real>: Real              -- signature of a 2nd-order function like '*' for the domain R
+    <Integer, Integer>: Integer     -- signature of a 2nd-order function like 'add' for the domain I
+----
+
+A procedure is a routine with a signature of the form:
+
+----
+    <T_arg1, T_arg2, ....>
+----
+
+This represents a call taking 0 or more arguments, with no return type. Typical procedure signatures include the following:
+
+----
+    <Real>                          -- a 1st-order procedure for the domain R
+    <String, Integer>               -- signature of a procedure taking a String and an Integer argument
+----
+
+EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of _declaring routine signatures_, using the `func` and `proc` keywords. This is similar to the declaration of methods in interface classes in languages like C# and Java.
+
+Functions and procedures are mapped to class methods in external libraries in the <<_computing_bindings, Computing Bindings>> section of an EL text.

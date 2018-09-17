@@ -12,21 +12,21 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|*0..1*
+|*uid*: `UUID`
+a|Unique identifier of the family of archetypes having the same interface identifier (same major version).
+
 h|*1..1*
 |*original_language*: `Terminology_code`
 a|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.
-
-h|*0..1*
-|*is_controlled*: `Boolean`
-a|True if this resource is under any kind of change control (even file copying), in which case revision history is created.
 
 h|*0..1*
 |*description*: `RESOURCE_DESCRIPTION`
 a|Description and lifecycle information of the resource.
 
 h|*0..1*
-|*uid*: `UUID`
-a|Unique identifier of the family of archetypes having the same interface identifier (same major version).
+|*is_controlled*: `Boolean`
+a|True if this resource is under any kind of change control (even file copying), in which case revision history is created.
 
 h|*0..1*
 |*annotations*: `RESOURCE_ANNOTATIONS`

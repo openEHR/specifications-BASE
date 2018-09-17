@@ -2,7 +2,7 @@
 
 == Overview
 
-The Expression Language may be used to write a self-standing _EL text_ that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Object Model (EOM).
+The Expression Language may be used to write a self-standing _EL text_ that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Language Object Model (ELOM).
 
 The core sections of an EL text are expressed in the sections described above, i.e. `reference`, `data_context`, and `definition`. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the `definition` section, which contains the main logic.
 
@@ -57,7 +57,7 @@ An example of an EL text representing the common clinical health measure 'BMI' (
 
 [source,adl]
 ----
-openEHR-EOM.bmi.v1
+openEHR-ELOM.bmi.v1
 
 language
     original_language = <[ISO_639-1::en]>

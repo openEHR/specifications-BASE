@@ -1,6 +1,4 @@
-= The Expression Language Object Model
-
-NOTE: the model and description shown here is first draft only
+= The Expression Language Object Model (ELOM)
 
 == Overview
 
@@ -12,51 +10,17 @@ The package structure of the `elom` package is shown below.
 .base.elom Package
 image::{uml_export_dir}/diagrams/BASE-elom-packages.svg[id=elom_packages, align="center", width="50%"]
 
-== Module Package
-
-The top-level construct of the ELOM is the `EL_MODULE`, representing a standalone module of meta-data, model and module references, statements and bindings. It is shown below.
-
-[.text-center]
-.base.elom.module Package
-image::{uml_export_dir}/diagrams/BASE-elom.module.svg[id=elom_module, align="center", width="80%"]
-
-[.tbd]
-TBD: to be continued.
-
-=== Class Descriptions
-
-include::{uml_export_dir}/classes/el_module.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_model_ref.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_data_binding.adoc[leveloffset=+1]
-
-== ELOM core: statements and expressions
-
-The core semantics of the ELOM are defined in the `expression` and `statement` packages, shown below.
-
-[.text-center]
-.base.elom.expression and statement Packages
-image::{uml_export_dir}/diagrams/BASE-elom-core.svg[id=elom_core, align="center"]
-
-== Statements
-
-The statements part of EL is represented by the `EL_STATEMENT` class and descendants, which represent, respectively assignments, procedure calls, and decision structures (i.e. if/then and when/then).
-
-=== Class Descriptions
-
-include::{uml_export_dir}/classes/el_statement.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_assignment.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_routine_call.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_procedure_call.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_choice_group.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_choice_branch.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_condition_group.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_condition_branch.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_decision_group.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_decision_branch.adoc[leveloffset=+1]
+The packages are described below in the same 'inside-out' order as the EL language description, corresponding to minimal to maximal use.
 
 == Expressions
 
-The expressions part of EL is represented by the `EL_EXPRESSION` class and descendants.
+The expressions part of EL is represented by the `EL_EXPRESSION` class and descendants, shown in the following UML.
+
+[.text-center]
+.base.elom.expression Package
+image::{uml_export_dir}/diagrams/BASE-elom.expression.svg[id=elom_expression, align="center"]
+
+One class, `EL_CONSTRAINT_EXPRESSION` is included as a hook for specialisation in other models. This class represents a constraint matching expression of the form `<expr> matches <constraint>`. The concrete representation of the constraint is not modelled here, and would be supplied by subtypes.
 
 === Class Descriptions
 
@@ -75,34 +39,43 @@ include::{uml_export_dir}/classes/el_function_call.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/el_literal.adoc[leveloffset=+1]
 
 include::{uml_export_dir}/classes/el_predicate.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/el_check.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_assertion.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/el_defined.adoc[leveloffset=+1]
 
-== Typing
+== Statements
 
-[.tbd]
-TBD: this section probably obsolete.
-
-The `expressions.types` package is shown below.
+The statements part of EL is represented by the `EL_STATEMENT` class and descendants, which represent, respectively assignments, procedure calls, assertions (check instructions) and decision structures (i.e. if/then and when/then).
 
 [.text-center]
-.baes.elom.types Package
-image::{uml_export_dir}/diagrams/BASE-elom.types.svg[id=elom_types_package, align="center"]
-
-The type system of the Expression formalism is defined via the type `EXPR_TYPE_DEF` and its descendants. All types have a `_type_name_` and a `_type_anchor_`, which is a variable of the coresponding primtive type from within the openEHR `base_types` package, i.e. `Integer`, `Real`, `String`, etc. The type anchor can be used for testing assignments within the implementation. A special type `TYPE_DEF_OBJECT` is included to enable a value reference (descendant of `EXPR_VALUE_REF`) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.
+.base.elom.statement Package
+image::{uml_export_dir}/diagrams/BASE-elom.statement.svg[id=elom_statement, align="center"]
 
 === Class Descriptions
 
-include::{uml_export_dir}/classes/el_type_def.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_boolean.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_integer.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_real.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_date.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_date_time.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_time.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_duration.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_string.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_uri.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_terminology_code.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/type_def_object_ref.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_statement.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_assignment.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_routine_call.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_procedure_call.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_choice_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_choice_branch.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_condition_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_condition_branch.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_decision_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_decision_branch.adoc[leveloffset=+1]
 
+== Module Package
+
+The top-level construct of the ELOM is the `EL_MODULE`, representing a standalone module of meta-data, model and module references, statements and bindings. It is shown below.
+
+[.text-center]
+.base.elom.module Package
+image::{uml_export_dir}/diagrams/BASE-elom.module.svg[id=elom_module, align="center", width="80%"]
+
+[.tbd]
+TBD: to be continued.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/el_module.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_model_ref.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/el_data_binding.adoc[leveloffset=+1]

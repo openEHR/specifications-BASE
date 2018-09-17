@@ -84,63 +84,6 @@ definition
     end
 ----
 
-=== Functions and Procedures
-
-In EL, the functions and procedures are the primary means to make complex logic available to expressions. Both functions and procedures are supported, and are collectively known as _routines_.
-
-In EL, a function is a routine that returns a result and is assumed to have no side-effects on previously declared entities. It has a signature of the form:
-
-----
-    -- NB: not EL syntax
-    <T_arg1, T_arg2, ....>: T_result
-----
-
-Typical examples of function signatures:
-
-----
-    -- NB: not EL syntax
-    : Date                          -- signature of a 0-order function like current_date()
-    <Real, Real>: Real              -- signature of a 2nd-order function like '*' for the domain R
-    <Integer, Integer>: Integer     -- signature of a 2nd-order function like 'add' for the domain I
-----
-
-EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of _declaring routine signatures_, using the `func` keyword. This is similar to the declaration of methods in interface classes in languages like C# and Java.
-
-Examples of function declarations:
-
-----
-definition
-    func current_date(): Date                        -- a function that obtains today's date
-    func bmi_metric (a_height, a_weight:Real): Real  -- a function that computes BMI from metric inputs
-    func sum (a_list: List<Real>): Real              -- a function that computes the sum of a list of Reals
-----
-
-The following example shows a function declaration for a function `_tnm_major_number_()` that extracts various elements of {wikipedia}/TNM_staging_system[Tumour/Node/Metastasis ('TNM')] cancer staging values, such as `'Tis'`, `'G3'` and so on, and uses them in a Boolean expression whose value is assigned to the variable `is_luminal_A`.
-
-----
-    func tnm_major_number (tnm_val: String): Integer
-
-    is_luminal_A: Boolean := tnm_major_number ($tnm_t) < 3 and 
-                             tnm_major_number ($tnm_n) < 2 and 
-                             tnm_major_number ($tnm_g) < 3
-----
-
-A procedure is a routine with a signature of the form `<T_arg1, T_arg2, ....>`, i.e. a call taking 0 or more arguments, with no return type. Typical signatures include the following:
-
-----
-    -- NB: not EL syntax
-    <Real>                          -- a 1st-order procedure for the domain R
-    <String, Integer>               -- signature of a procedure taking a String and an Integer argument
-----
-
-Procedures must be declared before use. This is done using the same syntax as for functions, as in the following example.
-
-----
-    proc alert_user (message: String; priority: Integer)    -- a procedure that generates a user alert
-----
-
-Functions and procedures are mapped to class methods in external libraries in the <<_computing_bindings, Computing Bindings>> section of an EL text.
-
 == Assignment
 
 An assignment is a kind of statement used to assign the value of an expression to a writable variable using the `:=` operator. An assignment may be made in a local variable declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.
@@ -181,7 +124,42 @@ The following shows a typical procedure declaration and invocation.
 
 == Control Structures
 
-Two control structures are provided in EL. They provide conditional logic structures from which statements (i.e. assignments and procedure calls) can be executed. Control structures may be nested in the usual way.
+A small number of control structures are provided in EL. They provide conditional logic structures from which statements (i.e. assignments and procedure calls) can be executed. Control structures may be nested in the usual way.
+
+=== Check / then
+
+EL provides a way of controlling execution when exceptions may occur, using a `check` statement, as follows.
+
+----
+    check $heart_rate > 0.0
+----
+
+The meaning of this is that if the condition evaluates to `False`, a _check violation_ is generated, which may be handled by an exception handler.
+
+The `check` instruction can be used in a block form to ensure certain conditions hold on entry to the block, as follows:
+
+----
+    check $heart_rate > 0.0 then
+        -- statements mentioning $heart_rate
+    end
+----
+
+Another typical use of `check` is to ensure a variable is defined before use in statements, as follows:
+
+----
+    check defined ($heart_rate > 0.0) then
+        -- statements mentioning $heart_rate
+    end
+----
+
+To assert that a certain part of a larger data structure exists depending on values elsewhere (usually in the same structure, but not necessarily), the following construct can be used:
+
+--------
+    check $is_smoker = True implies defined ($smoking_details)
+--------
+
+[.tbd]
+TBD describe exception handling.
 
 === If / then
 
