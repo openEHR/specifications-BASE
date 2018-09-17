@@ -145,7 +145,13 @@
 <li><a href="#_differential_and_flat_form">8.4. Differential and Flat Form</a></li>
 <li><a href="#_signatures">8.5. Signatures</a></li>
 <li><a href="#_constants">8.6. Constants</a></li>
-<li><a href="#_properties">8.7. Properties</a></li>
+<li><a href="#_properties">8.7. Properties</a>
+<ul class="sectlevel3">
+<li><a href="#_unitary_versus_container_properties">8.7.1. Unitary versus Container Properties</a></li>
+<li><a href="#_composition_versus_association">8.7.2. Composition versus Association</a></li>
+<li><a href="#_semantic_level">8.7.3. Semantic level</a></li>
+</ul>
+</li>
 <li><a href="#_functions_and_procedures">8.8. Functions and Procedures</a></li>
 <li><a href="#_variables_objects_and_values">8.9. Variables, Objects and Values</a></li>
 <li><a href="#_class_definitions_6">8.10. Class Definitions</a>
@@ -282,7 +288,9 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add feature elements <code>BMM_ROUTINE</code>, <code>BMM_VALUE_RETURNING</code> and descendants;<br>
  Change <code>BMM_PROPERTY.<em>is_mandatory</em></code> to <code>BMM_MUTABLE.<em>is_nullable</em></code> (reversed Boolean sense);<br>
  Made <code>BMM_PACKAGE_CONTAINER</code> abstract;<br>
- Moved <code><em>name</em></code> to <code>BMM_MODEL_ELEMENT</code>, replacing <code><em>name</em></code> in <code>BMM_CLASS</code>, <code>BMM_PACKAGE</code>, <code>BMM_PROPERTY</code>, and <code><em>model_name</em></code> in <code>BMM_MODEL</code>.</p></td>
+ Moved <code><em>name</em></code> to <code>BMM_MODEL_ELEMENT</code>, replacing <code><em>name</em></code> in <code>BMM_CLASS</code>, <code>BMM_PACKAGE</code>, <code>BMM_PROPERTY</code>, and <code><em>model_name</em></code> in <code>BMM_MODEL</code>;<br>
+ Marked <code>BMM_PROPERTY.<em>is_computed</em></code> as obsolete (to be phased out);<br>
+ Add <code>BMM_PROPERTY.<em>is_composition</em></code> to distinguish part/whole from associations.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Sep 2018</p></td>
 </tr>
@@ -530,7 +538,7 @@ Other than for working with particular tools designed to use BMM, BMM is not a r
 <div class="ulist">
 <ul>
 <li>
-<p>the composite or association nature of a class property only being known if it is represented as an association;</p>
+<p>the composite or association nature of a class property only being known if it is represented as an association, i.e. a line linking two classes on a UML diagram;</p>
 </li>
 <li>
 <p>the notion of type is not formalised;</p>
@@ -3652,7 +3660,27 @@ computed complex constants not yet supported.
 <div class="sect2">
 <h3 id="_properties"><a class="anchor" href="#_properties"></a>8.7. Properties</h3>
 <div class="paragraph">
-<p>Class properties are defined via the meta-class <code>BMM_PROPERTY</code>, and its two subtypes, <code>BMM_UNITARY_PROPERTY</code> and <code>BMM_CONTAINER_PROPERTY</code>, corresponding to the unitary and container type meta-types. The <code>BMM_PROPERTY</code> meta-type defines semantics common to all properties, including <code><em>type</em></code>, a reference to an instance of <code>BMM_TYPE</code> representing the class property type in the BMM model. Properties also include two other Boolean meta-data items, <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code>, which can be used to classify property values in a model according to use in runtime systems. These may be individually set, or both may be False. The three meaningful value settings are as follows:</p>
+<p>Class properties are defined via the meta-class <code>BMM_PROPERTY</code>, and its two subtypes, <code>BMM_UNITARY_PROPERTY</code> and <code>BMM_CONTAINER_PROPERTY</code>, corresponding to the unitary and container type meta-types. The <code>BMM_PROPERTY</code> meta-type defines semantics common to all properties, including <code><em>type</em></code>, a reference to an instance of <code>BMM_TYPE</code> representing the class property type in the BMM model.</p>
+</div>
+<div class="sect3">
+<h4 id="_unitary_versus_container_properties"><a class="anchor" href="#_unitary_versus_container_properties"></a>8.7.1. Unitary versus Container Properties</h4>
+<div class="paragraph">
+<p>Single-valued properties in a BMM model are instances of the type <code>BMM_UNITARY_PROPERTY</code>, and have as their <code><em>type</em></code> the meta-type <code>UNITARY_TYPE</code>. Container properties are instances of the type <code>BMM_CONTAINER_PROPERTY</code>, which adds the meta-attribute <code><em>cardinality</em></code>, enabling the possible number of container elements to be constrained (this corresponds to the multiplicities used at the end of UML associations).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_composition_versus_association"><a class="anchor" href="#_composition_versus_association"></a>8.7.2. Composition versus Association</h4>
+<div class="paragraph">
+<p>A property of an class is on its own a <em>relationship</em>. Depending on the property, it may represent a sub-part or an association. The notion of sub-part corresponds to the 'composition' association type in UML (which is however missing on properties for which no association, i.e. 'line' is defined) and 'cascade-delete' semantics in Entity Relationship (ER) models.</p>
+</div>
+<div class="paragraph">
+<p>This distinction is represented by the meta-attribute <code><em>is_composition</em></code> defined on <code>BMM_PROPERTY</code>, which is assumed by default to be <code>False</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_semantic_level"><a class="anchor" href="#_semantic_level"></a>8.7.3. Semantic level</h4>
+<div class="paragraph">
+<p>Properties also include two other Boolean meta-data items, <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code>, which can be used to classify property values in a model according to 'semantic level', which roughly corresponds to the continuum from domain-specific to infrastructure. These may be individually set, or both may be False. The three meaningful value settings are as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3668,9 +3696,6 @@ computed complex constants not yet supported.
 </ul>
 </div>
 <div class="paragraph">
-<p>Single-valued properties in a BMM model are instances of the type <code>BMM_UNITARY_PROPERTY</code>, and have as their <code><em>type</em></code> the meta-type <code>UNITARY_TYPE</code>. Container properties are instances of the type <code>BMM_CONTAINER_PROPERTY</code>, which adds the meta-attribute <code><em>cardinality</em></code>, enabling the possible number of container elements to be constrained (this corresponds to the multiplicities used at the end of UML associations).</p>
-</div>
-<div class="paragraph">
 <p>The following example shows a the flattened property view of a class <code>OBSERVATION</code> in a BMM model whose flat properties have different settings of the <code><em>is_im_runtime</em></code> and <code><em>is_im_infrastructure</em></code> meta-data flags: property names in black are neither; those in grey are IM runtime, and those in light grey are infrastructure properties.</p>
 </div>
 <div id="awb_class_properties" class="imageblock text-center" style="text-align: center">
@@ -3678,6 +3703,7 @@ computed complex constants not yet supported.
 <img src="images/awb_class_properties.png" alt="awb class properties" width="50%">
 </div>
 <div class="title">Figure 22. BMM class - properties view</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3890,7 +3916,7 @@ computed complex constants not yet supported.
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Model of a property definition within a class definition of an object model. The generic parameter accommodates the possible meta-type variant descendants of <code>BMM_TYPE</code>.</p>
+<p>Model of a property definition within a class definition of an object model. The <code><em>is_composition</em></code> meta-attribute indicates whether the property has sub-part or an association semantics with respect to the owning class.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3901,16 +3927,6 @@ computed complex constants not yet supported.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this property is computed rather than stored in objects of this class.</p>
-</div>
-<div class="paragraph">
-<p>OBSOLETE.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
@@ -3931,6 +3947,23 @@ computed complex constants not yet supported.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_synthesised_generic</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this property was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_composition</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property instance is a compositional sub-part of the owning class instance. Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if this property is computed rather than stored in objects of this class.</p>
+</div>
+<div class="paragraph">
+<p>OBSOLETE - to be phased out.</p>
 </div></div></td>
 </tr>
 <tr>
