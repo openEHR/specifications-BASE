@@ -151,6 +151,7 @@
 <li><a href="#_el_predicate_class">11.2.1.12. EL_PREDICATE Class</a></li>
 <li><a href="#_el_assertion_class">11.2.1.13. EL_ASSERTION Class</a></li>
 <li><a href="#_el_defined_class">11.2.1.14. EL_DEFINED Class</a></li>
+<li><a href="#_el_constraint_expression_class">11.2.1.15. EL_CONSTRAINT_EXPRESSION Class</a></li>
 </ul>
 </li>
 </ul>
@@ -2933,6 +2934,51 @@ computing_bindings
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code>EL_EXTERNAL_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_el_constraint_expression_class"><a class="anchor" href="#_el_constraint_expression_class"></a>11.2.1.15. EL_CONSTRAINT_EXPRESSION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EL_CONSTRAINT_EXPRESSION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Special kind of terminal element representing a constraint on values. Used with the 'matches' operator. Does not follow the ordinary model of binary operator, since the constraint is not itself a value-returning expression.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EL_EXPRESSION</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code>EL_EXPRESSION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Left operand node.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>constraint</strong>: <code>Any</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Right hand side of the constraint expression. Redefined in sub-types.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
