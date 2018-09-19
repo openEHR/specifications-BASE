@@ -106,7 +106,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#_el_texts">6. EL Texts</a>
+<li><a href="#_el_modules">6. EL Modules</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_5">6.1. Overview</a></li>
 </ul>
@@ -128,6 +128,8 @@
 <li><a href="#_module_structure">10. Module Structure</a>
 <ul class="sectlevel2">
 <li><a href="#_el_module_identification">10.1. EL Module Identification</a></li>
+<li><a href="#_module_import">10.2. Module import</a></li>
+<li><a href="#_module_specialisation">10.3. Module specialisation</a></li>
 </ul>
 </li>
 <li><a href="#_the_expression_language_object_model_elom">11. The Expression Language Object Model (ELOM)</a>
@@ -306,10 +308,11 @@
  added <code>defined()</code> and <code>check()</code> predicates;<br>
  refined quantifiers;<br>
  add BMM integration;<br>
- added various kinds of binding.</p>
+ added various kinds of binding;<br>
+ change 'EL Text' to 'EL Module' in most cases.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Sep 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>19 Sep 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1.0</p></td>
@@ -436,13 +439,13 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The openEHR Expression Object Model (EOM) defines the semantics of all of the elements of computable expressions that are used in openEHR, and are likely to be used in healthcare and life sciences computing where rules and expressions are needed. The model is designed as an extensible core formalism suitable for use and extension in other formalisms.</p>
+<p>The openEHR Expression Language Object Model (ELOM) defines the semantics of all of the elements of computable expressions that are used in openEHR, and are likely to be used in healthcare and life sciences computing where rules and expressions are needed. The model is designed as an extensible core formalism suitable for use and extension in other formalisms.</p>
 </div>
 <div class="paragraph">
-<p>The openEHR Expression Language (EL) specified here is an abstract syntax counterpart to the Expression Object Model, and may be considered a default syntax. Other syntaxes or syntax variants are certainly possible, and other serialisation methods are possible, such as object graph serialisation into XML, JSON, YAML etc. The EL is provided firstly as a way of specifying and explaining the semantics of the EOM, and secondly, as one way of actually authoring expressions and rules in textual form. This approach is the same as with any programming language, where the usual form for learning and programming is the abstract language form, while the computational form is an abstract syntax tree (AST) or similar.</p>
+<p>The openEHR Expression Language (EL) specified here is an abstract syntax counterpart to the Expression Language Object Model, and may be considered a default syntax. Other syntaxes or syntax variants are certainly possible, and other serialisation methods are possible, such as object graph serialisation into XML, JSON, YAML etc. The EL is provided firstly as a way of specifying and explaining the semantics of the ELOM, and secondly, as one way of actually authoring expressions and rules in textual form. This approach is the same as with any programming language, where the usual form for learning and programming is the abstract language form, while the computational form is an abstract syntax tree (AST) or similar.</p>
 </div>
 <div class="paragraph">
-<p>Accordingly, the EOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in JSON or use purely graphical visualisation.</p>
+<p>Accordingly, the ELOM should be considered the normative definition of the openEHR Expression formalism, and indeed not all implementations need support the language: they might for example only serialse in JSON or use purely graphical visualisation.</p>
 </div>
 <div class="paragraph tbd">
 <p>TBD: possibly the following is no longer true.</p>
@@ -557,7 +560,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <div class="title">Figure 1. EL design structure - implicit context</div>
 </div>
 <div class="paragraph">
-<p>In the explicit form, an <em>EL text</em> consisting of multiple <em>statements</em> and an explicit context definition is used, as shown below.</p>
+<p>In the explicit form, an <em>EL Module</em> consisting of multiple <em>statements</em> and an explicit context definition is used, as shown below.</p>
 </div>
 <div id="EL_design_structure_explicit" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -566,10 +569,10 @@ Extensions would also typically provide more operators, functions, leaf types an
 <div class="title">Figure 2. EL design structure - explicit context</div>
 </div>
 <div class="paragraph">
-<p>In both cases, the result of parsing into computable form for evaluation must result in an instance of the Expression Object Model (EOM), which will include instances of BMM classes, as these are used to represent the definitions of which expression elements (function calls, variable references etc) are <em>uses</em>.</p>
+<p>In both cases, the result of parsing into computable form for evaluation must result in an instance of the Expression Language Object Model (ELOM), which will include instances of BMM classes, as these are used to represent the definitions of which expression elements (function calls, variable references etc) are <em>uses</em>.</p>
 </div>
 <div class="paragraph">
-<p>This specification first describes the elements of the EL expression syntax, then the EOM.</p>
+<p>This specification first describes the elements of the EL expression syntax, then the ELOM.</p>
 </div>
 </div>
 <div class="sect2">
@@ -635,7 +638,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <p>Nevertheless, the style chosen here should not be regarded as fixed forever, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.</p>
 </div>
 <div class="paragraph">
-<p>The lexical style used is so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications. One reason for using snake-case may be to render EL texts more readable to the non-IT professional.</p>
+<p>The lexical style used is so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications. One reason for using snake-case may be to render EL Modules more readable to the non-IT professional.</p>
 </div>
 </div>
 <div class="sect2">
@@ -854,7 +857,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <div class="sect3">
 <h4 id="_complex_types"><a class="anchor" href="#_complex_types"></a>3.3.4. Complex Types</h4>
 <div class="paragraph">
-<p>Complex types may be implicitly accessible, or explicitly imported from formal model definitions specified in the <code>use_model</code> section of an EL text. Such models need to be specified in <a href="/releases/BASE/latest/bmm.html">openEHR BMM format</a>, or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.</p>
+<p>Complex types may be implicitly accessible, or explicitly imported from formal model definitions specified in the <code>use_model</code> section of an EL Module. Such models need to be specified in <a href="/releases/BASE/latest/bmm.html">openEHR BMM format</a>, or any functional equivalent. The types in models included in this way become available within the formalism in the same way as the foundation types, and may be used in declarations etc in the normal way.</p>
 </div>
 <div class="paragraph">
 <p>Access to interior elements of instances of non-primitive types is obtained using 'dot' notation, i.e. the standard way for object-oriented languages.</p>
@@ -905,7 +908,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <p>EL does not provide a way to programmatically define routines (i.e. it does not try to be a programming language), instead, it provides a way of <em>declaring routine signatures</em>, using the <code>func</code> and <code>proc</code> keywords. This is similar to the declaration of methods in interface classes in languages like C# and Java.</p>
 </div>
 <div class="paragraph">
-<p>Functions and procedures are mapped to class methods in external libraries in the <a href="#_computing_bindings">Computing Bindings</a> section of an EL text.</p>
+<p>Functions and procedures are mapped to class methods in external libraries in the <a href="#_computing_bindings">Computing Bindings</a> section of an EL Module.</p>
 </div>
 </div>
 </div>
@@ -1652,7 +1655,7 @@ definition
 <p>Symbolic variables are declared in two forms. The syntax <code>name: Type</code> is used for local variables, which are declared in the <code>definition</code> section.</p>
 </div>
 <div class="paragraph">
-<p>External vraiables are declared in the <code>data_context</code> section, using the syntax <code>in|out|in_out name: Type</code>. The direction specifier indicates the intended use of the variable in the defnition, i.e. <code>in</code> = readable, <code>out</code> = writable, <code>in_out</code> = readable and writable.</p>
+<p>External variables are declared in the <code>data_context</code> section, using the syntax <code>in|out|in_out name: Type</code>. The direction specifier indicates the intended use of the variable in the defnition, i.e. <code>in</code> = readable, <code>out</code> = writable, <code>in_out</code> = readable and writable.</p>
 </div>
 <div class="paragraph">
 <p>In both cases, multiple variables may be declared on the same line. The following shows various declarations:</p>
@@ -1798,13 +1801,13 @@ definition
 <div class="content">
 <pre>data_context
     in $systolic_bp_meas: Real     -- from instrument
-    in thyroid_t3: Real            -- from EHR
+    in $thyroid_t3: Real           -- from EHR
 
 definition
     if $systolic_bp_meas &gt; 160.0 then
         alert_user ([dangerous_blood_pressure], 1)
 
-    elseif $systolic_bp_meas &gt; 140.0 and thyroid_t3 &gt; 200 then
+    elseif $systolic_bp_meas &gt; 140.0 and $thyroid_t3 &gt; 200 then
         inform_user ([raised_bp_and_abnormal_thyroid_activity], 2)
 
     else
@@ -1863,18 +1866,18 @@ definition
 </div>
 </div>
 <div class="sect1">
-<h2 id="_el_texts"><a class="anchor" href="#_el_texts"></a>6. EL Texts</h2>
+<h2 id="_el_modules"><a class="anchor" href="#_el_modules"></a>6. EL Modules</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>The Expression Language may be used to write a self-standing <em>EL text</em> that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Language Object Model (ELOM).</p>
+<p>The Expression Language may be used to write a self-standing <em>EL Module</em> that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Language Object Model (ELOM).</p>
 </div>
 <div class="paragraph">
-<p>The core sections of an EL text are expressed in the sections described above, i.e. <code>reference</code>, <code>data_context</code>, and <code>definition</code>. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains the main logic.</p>
+<p>The core sections of an EL Module are expressed in the sections described above, i.e. <code>reference</code>, <code>data_context</code>, and <code>definition</code>. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains the main logic.</p>
 </div>
 <div class="paragraph">
-<p>The symbols used in statements are <em>names</em> in the fashion of any typical programming language, but are also considered <em>codes</em> to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL text, in the same way as for the <a href="/releases/AM/latest/docs/index">openEHR archetype formalism</a>. For example, the symbol <code>$heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
+<p>The symbols used in statements are <em>names</em> in the fashion of any typical programming language, but are also considered <em>codes</em> to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL Module, in the same way as for the <a href="/releases/AM/latest/docs/index">openEHR archetype formalism</a>. For example, the symbol <code>$heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
 </div>
 <div class="paragraph">
 <p>Mappings between external variables and external entities are described by <em>bindings</em> in a <code>data_bindings</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is an external variable that may be mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call). This provides clear semantics for statements in the expression text that mention such variables.</p>
@@ -1883,10 +1886,10 @@ definition
 <p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than <code>use_model</code>, <code>reference</code>, <code>data_context</code>, and <code>definition</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
 </div>
 <div class="paragraph">
-<p>Finally, EL texts can be defined modularly, uniquely identified, and included into other EL texts via the <code>import</code> keyword.</p>
+<p>Finally, EL Modules can be defined modularly, uniquely identified, and included into other EL Modules via the <code>import</code> keyword.</p>
 </div>
 <div class="paragraph">
-<p>The structure of a self-standing EL text is thus as follows:</p>
+<p>The structure of a self-standing EL Module is thus as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1927,7 +1930,7 @@ computing_bindings
 </div>
 </div>
 <div class="paragraph">
-<p>An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.</p>
+<p>An example of an EL Module representing the common clinical health measure 'BMI' (body mass index) is shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2008,7 +2011,7 @@ computing_bindings
 </div>
 </div>
 <div class="paragraph">
-<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
+<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL Module, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2016,7 +2019,7 @@ computing_bindings
 <p>including the definitions in the <code>rules</code> section;</p>
 </li>
 <li>
-<p>adding the EL text <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
+<p>adding the EL Module <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
 </li>
 <li>
 <p>adding the <code>data_bindings</code> and <code>computing_bindings</code> as additional sections.</p>
@@ -2319,13 +2322,26 @@ computing_bindings
 <h2 id="_module_structure"><a class="anchor" href="#_module_structure"></a>10. Module Structure</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Expression Language supports inclusion of one EL text in another via the <code>import</code> keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL text to contain just the specific functionality for which it is authored.</p>
+<p>The Expression Language supports inclusion of one EL Module in another via the <code>import</code> keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL Module to contain just the specific functionality for which it is authored.</p>
+</div>
+<div class="paragraph">
+<p>An EL Module may also be a specialisation of another, i.e. list it as a parent. This allows direct inheritance of definitions from the parent into the namespace of the module.</p>
 </div>
 <div class="sect2">
 <h3 id="_el_module_identification"><a class="anchor" href="#_el_module_identification"></a>10.1. EL Module Identification</h3>
 <div class="paragraph tbd">
 <p>TBD: xxxx</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_module_import"><a class="anchor" href="#_module_import"></a>10.2. Module import</h3>
+<div class="paragraph tbd">
+<p>TBD: really needed to have explicit import? Since a Module parser could easily find instances of qualified refs and just look for the other modules in the system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_module_specialisation"><a class="anchor" href="#_module_specialisation"></a>10.3. Module specialisation</h3>
+
 </div>
 </div>
 </div>
@@ -3916,7 +3932,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-08 14:02:23 BST
+Last updated 2018-09-19 12:13:35 BST
 </div>
 </div>
 </body>

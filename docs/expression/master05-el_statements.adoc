@@ -51,7 +51,7 @@ TBD: could also use archetype fragments here, as matching templates.
 
 Symbolic variables are declared in two forms. The syntax `name: Type` is used for local variables, which are declared in the `definition` section.
 
-External vraiables are declared in the `data_context` section, using the syntax `in|out|in_out name: Type`. The direction specifier indicates the intended use of the variable in the defnition, i.e. `in` = readable, `out` = writable, `in_out` = readable and writable.
+External variables are declared in the `data_context` section, using the syntax `in|out|in_out name: Type`. The direction specifier indicates the intended use of the variable in the defnition, i.e. `in` = readable, `out` = writable, `in_out` = readable and writable.
 
 In both cases, multiple variables may be declared on the same line. The following shows various declarations:
 
@@ -168,13 +168,13 @@ In common with most programming languages, EL provides a standard 'if / then / e
 ----
 data_context
     in $systolic_bp_meas: Real     -- from instrument
-    in thyroid_t3: Real            -- from EHR
+    in $thyroid_t3: Real           -- from EHR
 
 definition
     if $systolic_bp_meas > 160.0 then
         alert_user ([dangerous_blood_pressure], 1)
         
-    elseif $systolic_bp_meas > 140.0 and thyroid_t3 > 200 then
+    elseif $systolic_bp_meas > 140.0 and $thyroid_t3 > 200 then
         inform_user ([raised_bp_and_abnormal_thyroid_activity], 2)
         
     else

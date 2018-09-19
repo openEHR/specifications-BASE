@@ -1,9 +1,18 @@
 = Module Structure
 
-The Expression Language supports inclusion of one EL text in another via the `import` keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL text to contain just the specific functionality for which it is authored.
+The Expression Language supports inclusion of one EL Module in another via the `import` keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL Module to contain just the specific functionality for which it is authored.
+
+An EL Module may also be a specialisation of another, i.e. list it as a parent. This allows direct inheritance of definitions from the parent into the namespace of the module.
 
 == EL Module Identification
 
 [.tbd]
 TBD: xxxx
+
+== Module import
+
+[.tbd]
+TBD: really needed to have explicit import? Since a Module parser could easily find instances of qualified refs and just look for the other modules in the system.
+
+== Module specialisation
 
