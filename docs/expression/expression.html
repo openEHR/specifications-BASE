@@ -109,6 +109,11 @@
 <li><a href="#_el_modules">6. EL Modules</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_5">6.1. Overview</a></li>
+<li><a href="#_module_identification">6.2. Module Identification</a></li>
+<li><a href="#_module_import">6.3. Module Import</a></li>
+<li><a href="#_module_specialisation">6.4. Module Specialisation</a></li>
+<li><a href="#_modules_as_domain_function_definitions">6.5. Modules as Domain Function Definitions</a></li>
+<li><a href="#_example_breast_cancer_treatment">6.6. Example: Breast Cancer Treatment</a></li>
 </ul>
 </li>
 <li><a href="#_terminology">7. Terminology</a></li>
@@ -125,64 +130,57 @@
 </ul>
 </li>
 <li><a href="#_computing_bindings">9. Computing Bindings</a></li>
-<li><a href="#_module_structure">10. Module Structure</a>
+<li><a href="#_the_expression_language_object_model_elom">10. The Expression Language Object Model (ELOM)</a>
 <ul class="sectlevel2">
-<li><a href="#_el_module_identification">10.1. EL Module Identification</a></li>
-<li><a href="#_module_import">10.2. Module import</a></li>
-<li><a href="#_module_specialisation">10.3. Module specialisation</a></li>
-</ul>
-</li>
-<li><a href="#_the_expression_language_object_model_elom">11. The Expression Language Object Model (ELOM)</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_6">11.1. Overview</a></li>
-<li><a href="#_expressions">11.2. Expressions</a>
+<li><a href="#_overview_6">10.1. Overview</a></li>
+<li><a href="#_expressions">10.2. Expressions</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions">11.2.1. Class Descriptions</a>
+<li><a href="#_class_descriptions">10.2.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_el_expression_class">11.2.1.1. EL_EXPRESSION Class</a></li>
-<li><a href="#_el_operator_class">11.2.1.2. EL_OPERATOR Class</a></li>
-<li><a href="#_el_unary_operator_class">11.2.1.3. EL_UNARY_OPERATOR Class</a></li>
-<li><a href="#_el_binary_operator_class">11.2.1.4. EL_BINARY_OPERATOR Class</a></li>
-<li><a href="#_el_terminal_class">11.2.1.5. EL_TERMINAL Class</a></li>
-<li><a href="#_el_variable_ref_class">11.2.1.6. EL_VARIABLE_REF Class</a></li>
-<li><a href="#_el_external_ref_class">11.2.1.7. EL_EXTERNAL_REF Class</a></li>
-<li><a href="#_el_local_ref_class">11.2.1.8. EL_LOCAL_REF Class</a></li>
-<li><a href="#_el_constant_ref_class">11.2.1.9. EL_CONSTANT_REF Class</a></li>
-<li><a href="#_el_function_call_class">11.2.1.10. EL_FUNCTION_CALL Class</a></li>
-<li><a href="#_el_literal_class">11.2.1.11. EL_LITERAL Class</a></li>
-<li><a href="#_el_predicate_class">11.2.1.12. EL_PREDICATE Class</a></li>
-<li><a href="#_el_assertion_class">11.2.1.13. EL_ASSERTION Class</a></li>
-<li><a href="#_el_defined_class">11.2.1.14. EL_DEFINED Class</a></li>
-<li><a href="#_el_constraint_expression_class">11.2.1.15. EL_CONSTRAINT_EXPRESSION Class</a></li>
+<li><a href="#_el_expression_class">10.2.1.1. EL_EXPRESSION Class</a></li>
+<li><a href="#_el_operator_class">10.2.1.2. EL_OPERATOR Class</a></li>
+<li><a href="#_el_unary_operator_class">10.2.1.3. EL_UNARY_OPERATOR Class</a></li>
+<li><a href="#_el_binary_operator_class">10.2.1.4. EL_BINARY_OPERATOR Class</a></li>
+<li><a href="#_el_terminal_class">10.2.1.5. EL_TERMINAL Class</a></li>
+<li><a href="#_el_variable_ref_class">10.2.1.6. EL_VARIABLE_REF Class</a></li>
+<li><a href="#_el_external_ref_class">10.2.1.7. EL_EXTERNAL_REF Class</a></li>
+<li><a href="#_el_local_ref_class">10.2.1.8. EL_LOCAL_REF Class</a></li>
+<li><a href="#_el_constant_ref_class">10.2.1.9. EL_CONSTANT_REF Class</a></li>
+<li><a href="#_el_function_call_class">10.2.1.10. EL_FUNCTION_CALL Class</a></li>
+<li><a href="#_el_literal_class">10.2.1.11. EL_LITERAL Class</a></li>
+<li><a href="#_el_predicate_class">10.2.1.12. EL_PREDICATE Class</a></li>
+<li><a href="#_el_assertion_class">10.2.1.13. EL_ASSERTION Class</a></li>
+<li><a href="#_el_defined_class">10.2.1.14. EL_DEFINED Class</a></li>
+<li><a href="#_el_constraint_expression_class">10.2.1.15. EL_CONSTRAINT_EXPRESSION Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_statements">11.3. Statements</a>
+<li><a href="#_statements">10.3. Statements</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_2">11.3.1. Class Descriptions</a>
+<li><a href="#_class_descriptions_2">10.3.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_el_statement_class">11.3.1.1. EL_STATEMENT Class</a></li>
-<li><a href="#_el_assignment_class">11.3.1.2. EL_ASSIGNMENT Class</a></li>
-<li><a href="#_el_routine_call_class">11.3.1.3. EL_ROUTINE_CALL Class</a></li>
-<li><a href="#_el_procedure_call_class">11.3.1.4. EL_PROCEDURE_CALL Class</a></li>
-<li><a href="#_el_choice_group_class">11.3.1.5. EL_CHOICE_GROUP Class</a></li>
-<li><a href="#_el_choice_branch_class">11.3.1.6. EL_CHOICE_BRANCH Class</a></li>
-<li><a href="#_el_condition_group_class">11.3.1.7. EL_CONDITION_GROUP Class</a></li>
-<li><a href="#_el_condition_branch_class">11.3.1.8. EL_CONDITION_BRANCH Class</a></li>
-<li><a href="#_el_decision_group_class">11.3.1.9. EL_DECISION_GROUP Class</a></li>
-<li><a href="#_el_decision_branch_class">11.3.1.10. EL_DECISION_BRANCH Class</a></li>
+<li><a href="#_el_statement_class">10.3.1.1. EL_STATEMENT Class</a></li>
+<li><a href="#_el_assignment_class">10.3.1.2. EL_ASSIGNMENT Class</a></li>
+<li><a href="#_el_routine_call_class">10.3.1.3. EL_ROUTINE_CALL Class</a></li>
+<li><a href="#_el_procedure_call_class">10.3.1.4. EL_PROCEDURE_CALL Class</a></li>
+<li><a href="#_el_choice_group_class">10.3.1.5. EL_CHOICE_GROUP Class</a></li>
+<li><a href="#_el_choice_branch_class">10.3.1.6. EL_CHOICE_BRANCH Class</a></li>
+<li><a href="#_el_condition_group_class">10.3.1.7. EL_CONDITION_GROUP Class</a></li>
+<li><a href="#_el_condition_branch_class">10.3.1.8. EL_CONDITION_BRANCH Class</a></li>
+<li><a href="#_el_decision_group_class">10.3.1.9. EL_DECISION_GROUP Class</a></li>
+<li><a href="#_el_decision_branch_class">10.3.1.10. EL_DECISION_BRANCH Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_module_package">11.4. Module Package</a>
+<li><a href="#_module_package">10.4. Module Package</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_3">11.4.1. Class Descriptions</a>
+<li><a href="#_class_descriptions_3">10.4.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_el_module_class">11.4.1.1. EL_MODULE Class</a></li>
-<li><a href="#_el_model_ref_class">11.4.1.2. EL_MODEL_REF Class</a></li>
-<li><a href="#_el_data_binding_class">11.4.1.3. EL_DATA_BINDING Class</a></li>
+<li><a href="#_el_module_class">10.4.1.1. EL_MODULE Class</a></li>
+<li><a href="#_el_model_ref_class">10.4.1.2. EL_MODEL_REF Class</a></li>
+<li><a href="#_el_data_binding_class">10.4.1.3. EL_DATA_BINDING Class</a></li>
 </ul>
 </li>
 </ul>
@@ -595,7 +593,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <p>The next layer includes non-expression elements, allowing explicit declarations, assignments and control structures, including rules. These are known as <em>statements</em>. A collection of statements may be used within another context in the same way as bare expressions.</p>
 </div>
 <div class="paragraph">
-<p>The fullest form of EL syntax is an <em>EL Text</em> which provides all of the context, terminology, meta-data and so on, enabling the representation of fully-formed guidelines and other similar artefacts.</p>
+<p>The fullest form of EL syntax is an <em>EL Module</em> which provides all of the context, terminology, meta-data and so on, enabling the representation of fully-formed guidelines and other similar artefacts.</p>
 </div>
 <div class="paragraph">
 <p>These layers are shown below.</p>
@@ -635,7 +633,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <p>In the above, nearly all lexical elements are words, such as <code>if</code>, <code>in</code>, <code>when</code>, <code>then</code> and so on, leading to a more natural reading experience.</p>
 </div>
 <div class="paragraph">
-<p>Nevertheless, the style chosen here should not be regarded as fixed forever, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.</p>
+<p>The style chosen here should not be regarded as fixed, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.</p>
 </div>
 <div class="paragraph">
 <p>The lexical style used is so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications. One reason for using snake-case may be to render EL Modules more readable to the non-IT professional.</p>
@@ -1146,7 +1144,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <div class="sect3">
 <h4 id="_constants"><a class="anchor" href="#_constants"></a>4.2.2. Constants</h4>
 <div class="paragraph">
-<p>Symbolic constants may be used in any EL expression. As with variables, constants are typed, and are either declared explicity in the EL text (see <a href="#_declarations">next section</a>), or assumed to be available in the execution environment. Constants are syntactically represented using labels of whch the first letter is capitalised, and may be of any type, including complex types. The following are EL statements using constants.</p>
+<p>Symbolic constants may be used in any EL expression. As with variables, constants are typed, and are either declared explicitly in the EL text (see <a href="#_declarations">next section</a>), or assumed to be available in the execution environment. Constants are syntactically represented using labels of whch the first letter is capitalised, and may be of any type, including complex types. The following are EL statements using constants.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1168,16 +1166,16 @@ Extensions would also typically provide more operators, functions, leaf types an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $glucose &lt; 6.5                          -- an external variable
+<pre>    $glucose &lt; 6.5                          -- an external variable in a Boolean expression
 
-    age := current_date() - $date_of_birth  -- age is a local variable</pre>
+    age := current_date() - $date_of_birth  -- age is a local variable in an assignment statement</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_function_calls"><a class="anchor" href="#_function_calls"></a>4.2.4. Function Calls</h4>
 <div class="paragraph">
-<p>In EL expressions, computational functions may be called in the same way as programming languages. The following example shows a function declaration for a function <code><em>tnm_major_number</em>()</code> that extracts various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on, and uses them in a Boolean expression whose value is assigned to the variable <code>is_luminal_A</code>.</p>
+<p>In EL expressions, computational functions may be called in the same way as for typical programming languages. The following example shows a declaration for a function <code>tnm_major_number()</code> that extracts various elements of <a href="https://en.wikipedia.org/wiki//TNM_staging_system">Tumour/Node/Metastasis ('TNM')</a> cancer staging values, such as <code>'Tis'</code>, <code>'G3'</code> and so on, and uses them in a Boolean expression whose value is assigned to the variable <code>is_luminal_A</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1198,7 +1196,7 @@ Extensions would also typically provide more operators, functions, leaf types an
 <p>Some common functions are assumed to be provided in an EL environment, in order to enable EL expressions to be more standardised. These can be provided by the implementation using the above methods of declaration and external binding.</p>
 </div>
 <div class="paragraph">
-<p>The built-in functions are listed below.</p>
+<p>Some built-in functions are listed below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1234,13 +1232,13 @@ Extensions would also typically provide more operators, functions, leaf types an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if defined ($heart_rate) and defined (blood_pressure) then
-        -- statements mentioning $heart_rate and blood_pressure
+<pre>    if defined ($heart_rate) and defined ($blood_pressure) then
+        -- statements mentioning $heart_rate and $blood_pressure
     end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Another difference between external and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of an external variable <code>v</code>, is <code>v</code> read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the <code><em>currency</em></code> property.</p>
+<p>Another difference between external and local variables is when they are evaluated. In the execution of a larger EL Module containing multiple mentions of an external variable <code>$v</code>, is <code>$v</code> read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL Module using the <code><em>currency</em></code> property.</p>
 </div>
 </div>
 </div>
@@ -1666,7 +1664,7 @@ definition
     in $date_of_birth: Date
     in $weight, height: Real
     out $bmi: Real
-    in $bp_obs: OBSERVATION;
+    in $bp_obs: OBSERVATION
 
 definition
     age_in_years: Integer
@@ -1677,7 +1675,7 @@ definition
 <p>Every external variable must have a counterpart in the EL data context to be processable.</p>
 </div>
 <div class="paragraph">
-<p>With explicit declarations added, the earlier <code>there_exists</code> examples is as follows:</p>
+<p>With explicit declarations added, the earlier <code>there_exists</code> example is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1871,10 +1869,16 @@ definition
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>The Expression Language may be used to write a self-standing <em>EL Module</em> that in addition to the EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an archetype. Such a text constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Language Object Model (ELOM).</p>
+<p>The Expression Language may be used to write a self-standing, uniquely identified <em>EL Module</em> that in addition to EL statements, contains data context definitions, terminology and other meta-data, in a structure similar to an <a href="/releases/AM/latest/ADL2.html#_adl_archetype_definition_language">openEHR archetype</a>. An EL Module constitutes a sufficient input to a parser / generator to build a complete computational representation as an instance of the Expression Language Object Model (ELOM).</p>
 </div>
 <div class="paragraph">
-<p>The core sections of an EL Module are expressed in the sections described above, i.e. <code>reference</code>, <code>data_context</code>, and <code>definition</code>. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains the main logic.</p>
+<p>EL Modules may be related in two ways. One is via the <code>import</code> keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL Module to contain just the specific functionality for which it is authored.</p>
+</div>
+<div class="paragraph">
+<p>An EL Module may also be a specialisation of another, i.e. list it as a parent. This allows direct inheritance of definitions from the parent into the namespace of the module.</p>
+</div>
+<div class="paragraph">
+<p>The core sections of a Module are expressed in the sections described above, i.e. <code>reference</code>, <code>data_context</code>, <code>preconditions</code> and <code>definition</code>. The data context declarations may be thought of parameter lists of input and output variables from the external world (e.g. measured from a patient) for the <code>definition</code> section, which contains the main logic.</p>
 </div>
 <div class="paragraph">
 <p>The symbols used in statements are <em>names</em> in the fashion of any typical programming language, but are also considered <em>codes</em> to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in a <code>terminology</code> section of an EL Module, in the same way as for the <a href="/releases/AM/latest/docs/index">openEHR archetype formalism</a>. For example, the symbol <code>$heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
@@ -1886,18 +1890,15 @@ definition
 <p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="/releases/BASE/latest/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than <code>use_model</code>, <code>reference</code>, <code>data_context</code>, and <code>definition</code> are expressed in <a href="/releases/BASE/latest/odin.html">openEHR ODIN syntax</a>.</p>
 </div>
 <div class="paragraph">
-<p>Finally, EL Modules can be defined modularly, uniquely identified, and included into other EL Modules via the <code>import</code> keyword.</p>
-</div>
-<div class="paragraph">
 <p>The structure of a self-standing EL Module is thus as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&lt;identifier&gt;
+<pre>&lt;EL Module identifier&gt;
 
 import
-    &lt;identifier&gt;
-    &lt;identifier&gt;
+    &lt;EL Module identifier&gt; as &lt;alias&gt;
+    &lt;EL Module identifier&gt;
     ...
 
 language
@@ -1915,6 +1916,9 @@ reference
 
 data_context
     &lt;declarations&gt;
+
+preconditions
+    &lt;expressions&gt;
 
 definition
     &lt;statements&gt;
@@ -2010,21 +2014,224 @@ computing_bindings
     <span class="tok-p">&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL Module, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>including the definitions in the <code>rules</code> section;</p>
-</li>
-<li>
-<p>adding the EL Module <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
-</li>
-<li>
-<p>adding the <code>data_bindings</code> and <code>computing_bindings</code> as additional sections.</p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="_module_identification"><a class="anchor" href="#_module_identification"></a>6.2. Module Identification</h3>
+<div class="paragraph tbd">
+<p>TBD: xxxx</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_module_import"><a class="anchor" href="#_module_import"></a>6.3. Module Import</h3>
+<div class="paragraph">
+<p>Other EL Modules can be used by an EL Module, using the <code>import</code> keyword, optionally using an alias to establish a namespace.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: really needed to have explicit import? Since a Module parser could easily find instances of qualified refs and just look for the other modules in the system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_module_specialisation"><a class="anchor" href="#_module_specialisation"></a>6.4. Module Specialisation</h3>
+<div class="paragraph tbd">
+<p>TBD:</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modules_as_domain_function_definitions"><a class="anchor" href="#_modules_as_domain_function_definitions"></a>6.5. Modules as Domain Function Definitions</h3>
+<div class="paragraph">
+<p>Ignoring the meta-data, terminology and bindings, an EL Module consists of the following parts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>openEHR-ELOM.bmi.v1
+
+description
+    &lt;documentation&gt;
+
+data_context
+    in $body_weight, $height: Real
+    out $bmi: Real
+
+definition
+    $bmi := $body_weight / $height ^ 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above is semantically equivalent to a function in a typical programming language, such as the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java">    <span class="tok-cm">/*</span>
+<span class="tok-cm">     * &lt;documentation&gt;</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-n">Real</span> <span class="tok-nf">bmi</span> <span class="tok-o">(</span><span class="tok-n">Real</span> <span class="tok-n">body_weight</span><span class="tok-o">,</span> <span class="tok-n">Real</span> <span class="tok-n">height</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+        <span class="tok-k">return</span> <span class="tok-n">body_weight</span> <span class="tok-o">/</span> <span class="tok-n">height</span> <span class="tok-o">^</span> <span class="tok-mi">2</span><span class="tok-o">;</span>
+    <span class="tok-o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_breast_cancer_treatment"><a class="anchor" href="#_example_breast_cancer_treatment"></a>6.6. Example: Breast Cancer Treatment</h3>
+<div class="paragraph">
+<p>The following example is an EL Module representing a breast cancer treatment therapy selection guideline. It contains several external input variable, including <code>$cancer_diagnosis</code>, <code>$has_metastasis</code> etc which are assumed to be bound to either data context elements or query results.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="adl"><span class="tok-err">openEHR-ELOM.breast_cancer_treatment.v1</span>
+
+<span class="tok-gh">language</span>
+    <span class="tok-nc">original_language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">en</span><span class="tok-p">]&gt;</span>
+
+<span class="tok-gh">description</span>
+    <span class="tok-nc">lifecycle_state</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;unmanaged&quot;</span><span class="tok-p">&gt;</span>
+    <span class="tok-nc">original_author</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
+
+<span class="tok-s">use_model</span>
+    <span class="tok-nc">org</span><span class="tok-err">.</span><span class="tok-nc">openehr</span><span class="tok-err">.</span><span class="tok-nc">rm</span>
+
+<span class="tok-s">data_context</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">cancer_diagnosis</span><span class="tok-err">:</span> <span class="tok-err">T</span><span class="tok-nc">erminology_code</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">has_metastasis</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-err">:</span> <span class="tok-err">B</span><span class="tok-nc">oolean</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-l">ki67:</span><span class="tok-p"> </span><span class="tok-err">R</span><span class="tok-nc">eal</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">tnm_t</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">tnm_g</span><span class="tok-err">:</span> <span class="tok-err">S</span><span class="tok-nc">tring</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">has_dx_transmural_mi</span><span class="tok-err">:</span> <span class="tok-err">B</span><span class="tok-nc">oolean</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">ejection_fraction</span><span class="tok-err">:</span> <span class="tok-err">R</span><span class="tok-nc">eal</span>
+    <span class="tok-nc">in</span> <span class="tok-err">$</span><span class="tok-nc">hs_dx_hf_stage_2_4</span><span class="tok-err">:</span> <span class="tok-err">B</span><span class="tok-nc">oolean</span>
+    <span class="tok-nc">out</span> <span class="tok-err">$</span><span class="tok-l">recommendation:</span><span class="tok-p"> </span><span class="tok-err">S</span><span class="tok-nc">tring</span>
+
+<span class="tok-s">preconditions</span>
+    <span class="tok-err">$</span><span class="tok-nc">cancer_diagnosis</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-err">ICD_</span><span class="tok-mi">10</span><span class="tok-err">::C</span><span class="tok-mi">50</span><span class="tok-p">|</span><span class="tok-err">Breast</span> <span class="tok-err">cancer</span><span class="tok-p">|]</span>
+
+<span class="tok-gh">definition</span>
+    <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-nc">is_er_positive</span><span class="tok-p">,</span> <span class="tok-nc">is_pr_positive</span><span class="tok-p">,</span> <span class="tok-nc">is_her2_positive</span><span class="tok-err">:</span> <span class="tok-nc">Boolean</span><span class="tok-p">;</span> <span class="tok-nc">ki67_level</span><span class="tok-err">:</span> <span class="tok-nc">Real</span><span class="tok-p">)</span><span class="tok-err">:</span> <span class="tok-nc">Terminology_code</span>
+    <span class="tok-p">{</span>
+        <span class="tok-nc">if</span> <span class="tok-nc">is_er_positive</span> <span class="tok-kt">and not </span><span class="tok-nc">is_her2_positive</span> <span class="tok-kt">and </span><span class="tok-nc">ki67_level</span> <span class="tok-o">&lt;</span> <span class="tok-mf">0.20</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">return</span> <span class="tok-p">[</span>1111<span class="tok-p">|</span><span class="tok-s">luminal A</span><span class="tok-p">|]</span>
+
+        <span class="tok-c">-- Luminal B (HER2 negative)</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">is_er_positive</span> <span class="tok-kt">and not </span><span class="tok-nc">is_her2_positive</span> <span class="tok-kt">and </span><span class="tok-nc">ki67_level</span> <span class="tok-o">&gt;=</span> <span class="tok-mf">0.20</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">return</span> <span class="tok-p">[</span>2222<span class="tok-p">|</span><span class="tok-s">Luminal B (HER2 negative)</span><span class="tok-p">|]</span>
+
+        <span class="tok-c">-- Luminal B (HER2 positive)</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">is_er_positive</span> <span class="tok-kt">and </span><span class="tok-nc">is_her2_positive</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">return</span> <span class="tok-p">[</span>3333<span class="tok-p">|</span><span class="tok-s">Luminal B (HER2 positive)</span><span class="tok-p">|]</span>
+
+        <span class="tok-c">-- HER2</span>
+        <span class="tok-nc">elseif</span> <span class="tok-kt">not </span><span class="tok-nc">is_er_positive</span> <span class="tok-kt">and not </span><span class="tok-nc">is_pr_positive</span> <span class="tok-kt">and </span><span class="tok-nc">is_her2_positive</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">return</span> <span class="tok-p">[</span>4444<span class="tok-p">|</span><span class="tok-s">HER2</span><span class="tok-p">|]</span>
+
+        <span class="tok-c">-- Triple negative</span>
+        <span class="tok-nc">elseif</span> <span class="tok-kt">not </span><span class="tok-nc">is_er_positive</span> <span class="tok-kt">and not </span><span class="tok-nc">is_pr_positive</span> <span class="tok-kt">and not </span><span class="tok-nc">is_her2_positive</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">return</span> <span class="tok-p">[</span>55555<span class="tok-p">|</span><span class="tok-s">Triple negative</span><span class="tok-p">|]</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-nc">if</span> <span class="tok-err">$</span><span class="tok-nc">has_metastasis</span> <span class="tok-nc">then</span>
+        <span class="tok-c">-- Luminal A</span>
+        <span class="tok-nc">if</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>1111<span class="tok-p">|</span><span class="tok-s">luminal A</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+
+        <span class="tok-c">-- Luminal B (HER2 negative)</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>2222<span class="tok-p">|</span><span class="tok-s">Luminal B (HER2 negative)</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+
+        <span class="tok-c">-- Luminal B (HER2 positive)</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>3333<span class="tok-p">|</span><span class="tok-s">Luminal B (HER2 positive)</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+
+        <span class="tok-c">-- HER2 type</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>4444<span class="tok-p">|</span><span class="tok-s">HER2</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+
+        <span class="tok-c">-- Triple negative</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>55555<span class="tok-p">|</span><span class="tok-s">Triple negative</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+
+
+        <span class="tok-nc">end</span>
+    <span class="tok-nc">else</span>
+        <span class="tok-c">-- Luminal A</span>
+        <span class="tok-nc">if</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>1111<span class="tok-p">|</span><span class="tok-s">luminal A</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">if</span> <span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_t</span><span class="tok-p">)</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">&lt;</span> <span class="tok-mi">2</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_g</span><span class="tok-p">)</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span> <span class="tok-nc">then</span>
+                <span class="tok-err">$</span><span class="tok-nc">recommendation</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-nc">No_intervention_message</span>
+            <span class="tok-nc">else</span>
+                <span class="tok-c">-- consider contraindications to anthracyclines</span>
+                <span class="tok-nc">if</span> <span class="tok-err">$</span><span class="tok-nc">has_dx_transmural_mi</span> <span class="tok-kt">or </span><span class="tok-err">$</span><span class="tok-nc">ejection_fraction</span> <span class="tok-o">&lt;</span> <span class="tok-mf">0.4</span> <span class="tok-kt">or </span><span class="tok-err">$</span><span class="tok-nc">hs_dx_hf_stage_2_4</span> <span class="tok-nc">then</span>
+                    <span class="tok-err">$</span><span class="tok-nc">recommendation</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-nc">Recommend_cmf_message</span>
+                <span class="tok-nc">else</span>
+                    <span class="tok-nc">if</span> <span class="tok-err">$</span><span class="tok-nc">has_critical_cardio_pathology</span> <span class="tok-kt">or </span><span class="tok-err">$</span><span class="tok-nc">age</span> <span class="tok-o">&gt;</span> <span class="tok-mi">75</span> <span class="tok-nc">then</span>
+                        <span class="tok-err">$</span><span class="tok-nc">recommendation</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-nc">Recommend_apirubicin_cycloPosphamide_message</span>
+                    <span class="tok-nc">else</span>
+                        <span class="tok-err">$</span><span class="tok-nc">recommendation</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-nc">Recommend_ac_message</span>
+                    <span class="tok-nc">end</span>
+                <span class="tok-nc">end</span>
+            <span class="tok-nc">end</span>
+
+        <span class="tok-c">-- Luminal B (HER2 negative)</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>2222<span class="tok-p">|</span><span class="tok-s">Luminal B (HER2 negative)</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">if</span> <span class="tok-err">$</span><span class="tok-nc">tnm_t</span> <span class="tok-o">=</span> <span class="tok-s">&quot;1a&quot;</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">else</span>
+
+            <span class="tok-nc">end</span>
+
+        <span class="tok-c">-- Luminal B (HER2 positive)</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>3333<span class="tok-p">|</span><span class="tok-s">Luminal B (HER2 positive)</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">if</span> <span class="tok-err">$</span><span class="tok-nc">tnm_t</span> <span class="tok-o">=</span> <span class="tok-s">&quot;1a&quot;</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">elseif</span> <span class="tok-err">$</span><span class="tok-nc">tnm_t</span> <span class="tok-o">matches </span><span class="tok-p">{</span><span class="tok-s">&quot;T1b&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;T1c&quot;</span><span class="tok-p">}</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">elseif</span> <span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_t</span><span class="tok-p">)</span> <span class="tok-o">matches </span><span class="tok-p">{|</span><span class="tok-mi">2</span><span class="tok-p">..</span><span class="tok-mi">4</span><span class="tok-p">|}</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">else</span>
+
+            <span class="tok-nc">end</span>
+
+
+        <span class="tok-c">-- HER2 type</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>4444<span class="tok-p">|</span><span class="tok-s">HER2</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+            <span class="tok-nc">if</span> <span class="tok-err">$</span><span class="tok-nc">tnm_t</span> <span class="tok-o">=</span> <span class="tok-s">&quot;1a&quot;</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">elseif</span> <span class="tok-err">$</span><span class="tok-nc">tnm_t</span> <span class="tok-o">matches </span><span class="tok-p">{</span><span class="tok-s">&quot;T1b&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;T1c&quot;</span><span class="tok-p">}</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">elseif</span> <span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_t</span><span class="tok-p">)</span> <span class="tok-o">matches </span><span class="tok-p">{|</span><span class="tok-mi">2</span><span class="tok-p">..</span><span class="tok-mi">4</span><span class="tok-p">|}</span> <span class="tok-kt">and </span><span class="tok-nc">tnm_major_number</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">tnm_n</span><span class="tok-p">)</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-nc">then</span>
+
+            <span class="tok-nc">else</span>
+
+            <span class="tok-nc">end</span>
+
+        <span class="tok-c">-- Triple negative</span>
+        <span class="tok-nc">elseif</span> <span class="tok-nc">tumor_molecular_subtype</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">er_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">pr_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">her2_positive</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-nc">ki67</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">[</span>55555<span class="tok-p">|</span><span class="tok-s">Triple negative</span><span class="tok-p">|]</span> <span class="tok-nc">then</span>
+
+
+        <span class="tok-nc">end</span>
+
+        <span class="tok-nc">user_alert</span> <span class="tok-p">(</span><span class="tok-err">$</span><span class="tok-nc">recommendation</span><span class="tok-p">)</span>
+    <span class="tok-nc">end</span>
+
+<span class="tok-gh">terminology</span>
+    <span class="tok-nc">symbol_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;en&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;er_positive&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Oestrogen receptor positive&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Oestrogen receptor positive&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span>
+
+<span class="tok-s">data_bindings</span>
+    <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.cancer_investigation.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;er_positive&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-nc">query_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+        <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+            <span class="tok-p">[</span><span class="tok-s">&quot;has_dx_transmural_mi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                <span class="tok-nc">query_id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;dx_transmural_mi&quot;</span><span class="tok-p">&gt;,</span>
+                <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
+                    <span class="tok-p">[</span><span class="tok-s">&quot;$type&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;&#39;xxx&#39;&quot;</span><span class="tok-p">&gt;</span>
+                <span class="tok-p">&gt;</span>
+            <span class="tok-p">&gt;</span>
+        <span class="tok-p">&gt;</span>
+    <span class="tok-p">&gt;</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2033,7 +2240,7 @@ computing_bindings
 <h2 id="_terminology"><a class="anchor" href="#_terminology"></a>7. Terminology</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An EL text may have a terminology defined for it, which enables natural language renderings of its symbols to be defined. This is done in exactly the same way as the definition of terms in <a href="/releases/AM/latest/ADL2.html#_terminology_section">ADL2</a> (semantics defined by AOM2). The only difference from terminology definition in openEHR archetypes is that instead of the code names being of the form <code>idN</code>, <code>atN</code> and <code>acN</code>, they are simply the symbolic variable names. Since symbolic variables are normally defined to be meaningful in their own right (i.e. in the same way as by programmers using typical programming languages), EL texts and expressions are readable in one language (just as say, Java library code published by Oracle) but additionally translatable for rendering purposes to any language for which there is a translation.</p>
+<p>An EL Module may have a terminology defined for it, which enables natural language renderings of its symbols to be defined. This is done in exactly the same way as the definition of terms in <a href="/releases/AM/latest/ADL2.html#_terminology_section">ADL2</a> (semantics defined by AOM2). The only difference from terminology definition in openEHR archetypes is that instead of the code names being of the form <code>idN</code>, <code>atN</code> and <code>acN</code>, they are simply the symbolic variable names. Since symbolic variables are normally defined to be meaningful in their own right (i.e. in the same way as by programmers using typical programming languages), EL Modules and expressions are readable in one language (just as say, Java library code published by Oracle) but additionally translatable for rendering purposes to any language for which there is a translation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2278,7 +2485,7 @@ computing_bindings
 <p>TBD: potentially do without this section altogether, and let implementations do their own thing. However, it requires that call signatures exactly match the declarations in the <code>definition</code> section.</p>
 </div>
 <div class="paragraph">
-<p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL text. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_bindings</code> section of a full EL text. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL text.</p>
+<p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL Module. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_bindings</code> section of a full EL Module. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL Module.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2319,37 +2526,10 @@ computing_bindings
 </div>
 </div>
 <div class="sect1">
-<h2 id="_module_structure"><a class="anchor" href="#_module_structure"></a>10. Module Structure</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Expression Language supports inclusion of one EL Module in another via the <code>import</code> keyword. This is primarily used to re-use existing definitions, including symbolic constants, routine declarations and so on, thus enabling a new EL Module to contain just the specific functionality for which it is authored.</p>
-</div>
-<div class="paragraph">
-<p>An EL Module may also be a specialisation of another, i.e. list it as a parent. This allows direct inheritance of definitions from the parent into the namespace of the module.</p>
-</div>
-<div class="sect2">
-<h3 id="_el_module_identification"><a class="anchor" href="#_el_module_identification"></a>10.1. EL Module Identification</h3>
-<div class="paragraph tbd">
-<p>TBD: xxxx</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_module_import"><a class="anchor" href="#_module_import"></a>10.2. Module import</h3>
-<div class="paragraph tbd">
-<p>TBD: really needed to have explicit import? Since a Module parser could easily find instances of qualified refs and just look for the other modules in the system.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_module_specialisation"><a class="anchor" href="#_module_specialisation"></a>10.3. Module specialisation</h3>
-
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_expression_language_object_model_elom"><a class="anchor" href="#_the_expression_language_object_model_elom"></a>11. The Expression Language Object Model (ELOM)</h2>
+<h2 id="_the_expression_language_object_model_elom"><a class="anchor" href="#_the_expression_language_object_model_elom"></a>10. The Expression Language Object Model (ELOM)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>11.1. Overview</h3>
+<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>10.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>org.openehr.base.elom</code> package defines the Expression Language Object Model (ELOM), a structural model of the openEHR Expression language. Its elements, including statements and expressions can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of a computable structure. Other openEHR models designed for a particular purpose may reuse the <code>elom</code> package and further specialise some of its types specifically intended for extension.</p>
 </div>
@@ -2367,7 +2547,7 @@ computing_bindings
 </div>
 </div>
 <div class="sect2">
-<h3 id="_expressions"><a class="anchor" href="#_expressions"></a>11.2. Expressions</h3>
+<h3 id="_expressions"><a class="anchor" href="#_expressions"></a>10.2. Expressions</h3>
 <div class="paragraph">
 <p>The expressions part of EL is represented by the <code>EL_EXPRESSION</code> class and descendants, shown in the following UML.</p>
 </div>
@@ -2381,9 +2561,9 @@ computing_bindings
 <p>One class, <code>EL_CONSTRAINT_EXPRESSION</code> is included as a hook for specialisation in other models. This class represents a constraint matching expression of the form <code>&lt;expr&gt; matches &lt;constraint&gt;</code>. The concrete representation of the constraint is not modelled here, and would be supplied by subtypes.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>11.2.1. Class Descriptions</h4>
+<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>10.2.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>11.2.1.1. EL_EXPRESSION Class</h5>
+<h5 id="_el_expression_class"><a class="anchor" href="#_el_expression_class"></a>10.2.1.1. EL_EXPRESSION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2436,7 +2616,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>11.2.1.2. EL_OPERATOR Class</h5>
+<h5 id="_el_operator_class"><a class="anchor" href="#_el_operator_class"></a>10.2.1.2. EL_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2489,7 +2669,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>11.2.1.3. EL_UNARY_OPERATOR Class</h5>
+<h5 id="_el_unary_operator_class"><a class="anchor" href="#_el_unary_operator_class"></a>10.2.1.3. EL_UNARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2527,7 +2707,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>11.2.1.4. EL_BINARY_OPERATOR Class</h5>
+<h5 id="_el_binary_operator_class"><a class="anchor" href="#_el_binary_operator_class"></a>10.2.1.4. EL_BINARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2572,7 +2752,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_terminal_class"><a class="anchor" href="#_el_terminal_class"></a>11.2.1.5. EL_TERMINAL Class</h5>
+<h5 id="_el_terminal_class"><a class="anchor" href="#_el_terminal_class"></a>10.2.1.5. EL_TERMINAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2614,7 +2794,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_variable_ref_class"><a class="anchor" href="#_el_variable_ref_class"></a>11.2.1.6. EL_VARIABLE_REF Class</h5>
+<h5 id="_el_variable_ref_class"><a class="anchor" href="#_el_variable_ref_class"></a>10.2.1.6. EL_VARIABLE_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2653,7 +2833,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_external_ref_class"><a class="anchor" href="#_el_external_ref_class"></a>11.2.1.7. EL_EXTERNAL_REF Class</h5>
+<h5 id="_el_external_ref_class"><a class="anchor" href="#_el_external_ref_class"></a>10.2.1.7. EL_EXTERNAL_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2690,7 +2870,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_local_ref_class"><a class="anchor" href="#_el_local_ref_class"></a>11.2.1.8. EL_LOCAL_REF Class</h5>
+<h5 id="_el_local_ref_class"><a class="anchor" href="#_el_local_ref_class"></a>10.2.1.8. EL_LOCAL_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2729,7 +2909,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_constant_ref_class"><a class="anchor" href="#_el_constant_ref_class"></a>11.2.1.9. EL_CONSTANT_REF Class</h5>
+<h5 id="_el_constant_ref_class"><a class="anchor" href="#_el_constant_ref_class"></a>10.2.1.9. EL_CONSTANT_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2768,7 +2948,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>11.2.1.10. EL_FUNCTION_CALL Class</h5>
+<h5 id="_el_function_call_class"><a class="anchor" href="#_el_function_call_class"></a>10.2.1.10. EL_FUNCTION_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2807,7 +2987,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>11.2.1.11. EL_LITERAL Class</h5>
+<h5 id="_el_literal_class"><a class="anchor" href="#_el_literal_class"></a>10.2.1.11. EL_LITERAL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2846,7 +3026,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_predicate_class"><a class="anchor" href="#_el_predicate_class"></a>11.2.1.12. EL_PREDICATE Class</h5>
+<h5 id="_el_predicate_class"><a class="anchor" href="#_el_predicate_class"></a>10.2.1.12. EL_PREDICATE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2882,7 +3062,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_assertion_class"><a class="anchor" href="#_el_assertion_class"></a>11.2.1.13. EL_ASSERTION Class</h5>
+<h5 id="_el_assertion_class"><a class="anchor" href="#_el_assertion_class"></a>10.2.1.13. EL_ASSERTION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2918,7 +3098,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_defined_class"><a class="anchor" href="#_el_defined_class"></a>11.2.1.14. EL_DEFINED Class</h5>
+<h5 id="_el_defined_class"><a class="anchor" href="#_el_defined_class"></a>10.2.1.14. EL_DEFINED Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2955,7 +3135,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_constraint_expression_class"><a class="anchor" href="#_el_constraint_expression_class"></a>11.2.1.15. EL_CONSTRAINT_EXPRESSION Class</h5>
+<h5 id="_el_constraint_expression_class"><a class="anchor" href="#_el_constraint_expression_class"></a>10.2.1.15. EL_CONSTRAINT_EXPRESSION Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3002,7 +3182,7 @@ computing_bindings
 </div>
 </div>
 <div class="sect2">
-<h3 id="_statements"><a class="anchor" href="#_statements"></a>11.3. Statements</h3>
+<h3 id="_statements"><a class="anchor" href="#_statements"></a>10.3. Statements</h3>
 <div class="paragraph">
 <p>The statements part of EL is represented by the <code>EL_STATEMENT</code> class and descendants, which represent, respectively assignments, procedure calls, assertions (check instructions) and decision structures (i.e. if/then and when/then).</p>
 </div>
@@ -3013,9 +3193,9 @@ computing_bindings
 <div class="title">Figure 7. base.elom.statement Package</div>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>11.3.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>10.3.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>11.3.1.1. EL_STATEMENT Class</h5>
+<h5 id="_el_statement_class"><a class="anchor" href="#_el_statement_class"></a>10.3.1.1. EL_STATEMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3037,7 +3217,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>11.3.1.2. EL_ASSIGNMENT Class</h5>
+<h5 id="_el_assignment_class"><a class="anchor" href="#_el_assignment_class"></a>10.3.1.2. EL_ASSIGNMENT Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3082,7 +3262,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_routine_call_class"><a class="anchor" href="#_el_routine_call_class"></a>11.3.1.3. EL_ROUTINE_CALL Class</h5>
+<h5 id="_el_routine_call_class"><a class="anchor" href="#_el_routine_call_class"></a>10.3.1.3. EL_ROUTINE_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3114,7 +3294,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>11.3.1.4. EL_PROCEDURE_CALL Class</h5>
+<h5 id="_el_procedure_call_class"><a class="anchor" href="#_el_procedure_call_class"></a>10.3.1.4. EL_PROCEDURE_CALL Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3150,7 +3330,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>11.3.1.5. EL_CHOICE_GROUP Class</h5>
+<h5 id="_el_choice_group_class"><a class="anchor" href="#_el_choice_group_class"></a>10.3.1.5. EL_CHOICE_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3186,7 +3366,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>11.3.1.6. EL_CHOICE_BRANCH Class</h5>
+<h5 id="_el_choice_branch_class"><a class="anchor" href="#_el_choice_branch_class"></a>10.3.1.6. EL_CHOICE_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3218,7 +3398,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>11.3.1.7. EL_CONDITION_GROUP Class</h5>
+<h5 id="_el_condition_group_class"><a class="anchor" href="#_el_condition_group_class"></a>10.3.1.7. EL_CONDITION_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3257,7 +3437,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>11.3.1.8. EL_CONDITION_BRANCH Class</h5>
+<h5 id="_el_condition_branch_class"><a class="anchor" href="#_el_condition_branch_class"></a>10.3.1.8. EL_CONDITION_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3295,7 +3475,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>11.3.1.9. EL_DECISION_GROUP Class</h5>
+<h5 id="_el_decision_group_class"><a class="anchor" href="#_el_decision_group_class"></a>10.3.1.9. EL_DECISION_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3332,7 +3512,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>11.3.1.10. EL_DECISION_BRANCH Class</h5>
+<h5 id="_el_decision_branch_class"><a class="anchor" href="#_el_decision_branch_class"></a>10.3.1.10. EL_DECISION_BRANCH Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3372,7 +3552,7 @@ computing_bindings
 </div>
 </div>
 <div class="sect2">
-<h3 id="_module_package"><a class="anchor" href="#_module_package"></a>11.4. Module Package</h3>
+<h3 id="_module_package"><a class="anchor" href="#_module_package"></a>10.4. Module Package</h3>
 <div class="paragraph">
 <p>The top-level construct of the ELOM is the <code>EL_MODULE</code>, representing a standalone module of meta-data, model and module references, statements and bindings. It is shown below.</p>
 </div>
@@ -3386,9 +3566,9 @@ computing_bindings
 <p>TBD: to be continued.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>11.4.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>10.4.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_el_module_class"><a class="anchor" href="#_el_module_class"></a>11.4.1.1. EL_MODULE Class</h5>
+<h5 id="_el_module_class"><a class="anchor" href="#_el_module_class"></a>10.4.1.1. EL_MODULE Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3419,23 +3599,29 @@ computing_bindings
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>statements</strong>: <code>List&lt;EL_STATEMENT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The member statements of this statement set.</p>
+<p>The full set of statements in this module&#8217;s definition.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>external_defs</strong>: <code>List&lt;BMM_PARAMETER&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>External variable definitions.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>local_defs</strong>: <code>List&lt;BMM_LOCAL&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Local variable definitions.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>constant_defs</strong>: <code>List&lt;BMM_CONSTANT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Constant definitions.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
@@ -3450,7 +3636,9 @@ computing_bindings
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data_binding</strong>: <code>EL_DATA_BINDING</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Data bindings.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
@@ -3460,7 +3648,9 @@ computing_bindings
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>used_models</strong>: <code>List&lt;EL_MODEL_REF&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Externally defined BMM models used by this EL Module.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
@@ -3483,7 +3673,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_model_ref_class"><a class="anchor" href="#_el_model_ref_class"></a>11.4.1.2. EL_MODEL_REF Class</h5>
+<h5 id="_el_model_ref_class"><a class="anchor" href="#_el_model_ref_class"></a>10.4.1.2. EL_MODEL_REF Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3515,7 +3705,7 @@ computing_bindings
 </table>
 </div>
 <div class="sect4">
-<h5 id="_el_data_binding_class"><a class="anchor" href="#_el_data_binding_class"></a>11.4.1.3. EL_DATA_BINDING Class</h5>
+<h5 id="_el_data_binding_class"><a class="anchor" href="#_el_data_binding_class"></a>10.4.1.3. EL_DATA_BINDING Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3932,7 +4122,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-19 12:13:35 BST
+Last updated 2018-09-19 16:37:33 BST
 </div>
 </div>
 </body>

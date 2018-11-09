@@ -79,7 +79,7 @@ Literal values may be used in EL expressions, as follows.
 
 === Constants
 
-Symbolic constants may be used in any EL expression. As with variables, constants are typed, and are either declared explicity in the EL text (see <<_declarations, next section>>), or assumed to be available in the execution environment. Constants are syntactically represented using labels of whch the first letter is capitalised, and may be of any type, including complex types. The following are EL statements using constants.
+Symbolic constants may be used in any EL expression. As with variables, constants are typed, and are either declared explicitly in the EL text (see <<_declarations, next section>>), or assumed to be available in the execution environment. Constants are syntactically represented using labels of whch the first letter is capitalised, and may be of any type, including complex types. The following are EL statements using constants.
 
 --------
     $kmh := Mph_to_kmh_factor * $mph
@@ -95,14 +95,14 @@ External variables represent data entities in the operational data context, and 
 Typical expressions containing variables are as follows.
 
 ----
-    $glucose < 6.5                          -- an external variable
+    $glucose < 6.5                          -- an external variable in a Boolean expression
     
-    age := current_date() - $date_of_birth  -- age is a local variable
+    age := current_date() - $date_of_birth  -- age is a local variable in an assignment statement
 ----
 
 === Function Calls
 
-In EL expressions, computational functions may be called in the same way as programming languages. The following example shows a function declaration for a function `_tnm_major_number_()` that extracts various elements of {wikipedia}/TNM_staging_system[Tumour/Node/Metastasis ('TNM')] cancer staging values, such as `'Tis'`, `'G3'` and so on, and uses them in a Boolean expression whose value is assigned to the variable `is_luminal_A`.
+In EL expressions, computational functions may be called in the same way as for typical programming languages. The following example shows a declaration for a function `tnm_major_number()` that extracts various elements of {wikipedia}/TNM_staging_system[Tumour/Node/Metastasis ('TNM')] cancer staging values, such as `'Tis'`, `'G3'` and so on, and uses them in a Boolean expression whose value is assigned to the variable `is_luminal_A`.
 
 ----
     func tnm_major_number (tnm_val: String): Integer
@@ -118,7 +118,7 @@ To be evaluated, function calls must be mappable to class methods in external li
 
 Some common functions are assumed to be provided in an EL environment, in order to enable EL expressions to be more standardised. These can be provided by the implementation using the above methods of declaration and external binding.
 
-The built-in functions are listed below.
+Some built-in functions are listed below.
 
 ----
     current_date(): Date                   -- obtain today's date
@@ -146,12 +146,12 @@ Variables that are bound to entities in the data context function differently fr
 The approach used for EL is to allow external variables to be used freely, as for local variables, but if an external variable cannot be evaluated from the data context, an `'undefined value'` exception is generated, indicating which variable could not be evaluated. The `defined()` predicate provides a way of making an explicit check to avoid an exception, as follows.
 
 ----
-    if defined ($heart_rate) and defined (blood_pressure) then
-        -- statements mentioning $heart_rate and blood_pressure
+    if defined ($heart_rate) and defined ($blood_pressure) then
+        -- statements mentioning $heart_rate and $blood_pressure
     end
 ----
 
-Another difference between external and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of an external variable `v`, is `v` read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the `_currency_` property.
+Another difference between external and local variables is when they are evaluated. In the execution of a larger EL Module containing multiple mentions of an external variable `$v`, is `$v` read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL Module using the `_currency_` property.
 
 == Complex Expressions
 

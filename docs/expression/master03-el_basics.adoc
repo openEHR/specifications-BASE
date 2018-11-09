@@ -6,7 +6,7 @@ The openEHR Expression Language (EL) syntax is defined in a number of layers. Th
 
 The next layer includes non-expression elements, allowing explicit declarations, assignments and control structures, including rules. These are known as _statements_. A collection of statements may be used within another context in the same way as bare expressions.
 
-The fullest form of EL syntax is an _EL Text_ which provides all of the context, terminology, meta-data and so on, enabling the representation of fully-formed guidelines and other similar artefacts.
+The fullest form of EL syntax is an _EL Module_ which provides all of the context, terminology, meta-data and so on, enabling the representation of fully-formed guidelines and other similar artefacts.
 
 These layers are shown below.
 
@@ -38,7 +38,7 @@ The syntax style used in EL is of the Pascal variety, i.e. words rather than pro
 
 In the above, nearly all lexical elements are words, such as `if`, `in`, `when`, `then` and so on, leading to a more natural reading experience.
 
-Nevertheless, the style chosen here should not be regarded as fixed forever, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.
+The style chosen here should not be regarded as fixed, and indeed it is a relatively simple matter to create alternative 'syntax skins', such as one for developers used to C language syntax descendants such as Java, TypeScript and so on.
 
 The lexical style used is so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications. One reason for using snake-case may be to render EL Modules more readable to the non-IT professional.
 
@@ -94,7 +94,6 @@ The same container types as defined in the {openehr_foundation_types}#_structure
 | `Set<T>`              |Set of items of any primitive type; no order, unique membership
 | `Hash<K:Ordered, V>`  |Indexed linear container
 |=================================================================
-
 
 [.tbd]
 TBD: the following is functional style; we would need keywords to enable it in the EL syntax, e.g. `has` etc. Also, `has()` can be done via `there_exists()`.
