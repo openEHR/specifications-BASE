@@ -1,17 +1,17 @@
 = Overview
 
-The openEHR Foundation Types (`org.openehr.base.foundation_types` package) consists of generic foundational types assumed by and used throughout the openEHR components and specifications. The types described here are specified in order to establish the names and minimal semantics of typical standard classes, as used by all other openEHR specifications, and to provide a mapping point into implementation technologies. 
+The openEHR Foundation Types (`org.openehr.base.foundation_types` package) consists of generic low level types assumed by and used throughout the openEHR components and specifications. The types described here are specified in order to establish the names and minimal semantics of typical standard classes, as used by all other openEHR specifications, and to provide a mapping point into implementation technologies. 
 
 The set of types chosen here is based on a common set derived from various published sources, including:
 
-* ISO 8601 (2004) date/time specification;
-* Major interoperability formalisms, including OMG IDL, W3C XML-schema;
+* {ISO_8601}[ISO 8601 (2004) date/time standard];
+* Major interoperability formalisms, including {omg_idl}[OMG IDL], {xml_schema}[W3C XML-schema];
 * Major typed programming languages, including Java, C#, C++, etc.
 
 The package structure is illustrated below.
 
 [.text-center]
-.base.foundation_types Package
+.`base.foundation_types` Package
 image::{uml_export_dir}/diagrams/BASE-foundation_types-packages.svg[id=foundation_types_packages, align="center"]
 
 The `primitive_types`, `structures` and `time` packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.

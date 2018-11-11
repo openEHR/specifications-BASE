@@ -6,14 +6,34 @@ h|*Class*
 2+^h|*Iso8601_timezone*
 
 h|*Description*
-2+a|Represents a timezone as used in ISO 8601.
+2+a|ISO8601 timezone string, in format:
+
+* `Z &#124; ±hh[mm]`
+
+where:
+
+* `hh` is "00" - "23" (0-filled to two digits)
+* `mm` is "00" - "59" (0-filled to two digits)
+* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
 
 h|*Inherit*
-2+|`Iso8601_type`, `ITimezone`
+2+|`Iso8601_type`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
+
+h|
+|*hour* (): `Integer`
+a|Hour part of timezone - in the range 00 - 13.
+
+h|
+|*minute* (): `Integer`
+a|Minute part of timezone. Generally 00 or 30.
+
+h|
+|*sign* (): `Integer`
+a|Direction of timezone expresssed as +1 or -1.
 
 h|
 |*minute_unknown* (): `Boolean`
@@ -28,24 +48,12 @@ h|(effected)
 a|True if this time-zone uses ‘:’ separators.
 
 h|
-|*as_string* (): `String`
-a|ISO8601 timezone string, in format:
-
-* `Z &#124; ±hh[mm]`
-
-where:
-
-* `hh` is "00" - "23" (0-filled to two digits)
-* `mm` is "00" - "59" (0-filled to two digits)
-* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
-
-h|
 |*is_gmt* (): `Boolean`
 a|True if timezone is UTC, i.e. +0000.
 
 h|
-|*as_timezone* (): `Timezone`
-a|Convert to a native `Timezone`.
+|*as_string* (): `String`
+a|Return timezone string.
 
 h|*Invariants*
 2+a|*_Min_hour_valid_*: `sign = -1 implies hour > 0 and hour \<= Min_timezone_hour`

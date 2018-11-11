@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*Time_Definitions*
 
 h|*Description*
-2+a|Definitions for date/time classes. Note that the timezone limits are set by where the international dateline is. Thus, time in New Zealand is quoted using +12:00, not -12:00.
+2+a|Definitions for date/time classes. Note that the timezone limits are set by where the international dateline is. Thus, time in New Zealand is quoted using `+12:00`, not `-12:00`.
 
 h|*Constants*
 ^h|*Signature*
@@ -119,4 +119,79 @@ fs: `Double[1]` +
 ): `Boolean` +
 *_Post_*: `Result = fs >= 0.0 and fs < 1.0 .`
 a|True if fs >= 0.0 and fs < 1.0 .
+
+h|
+|*valid_iso8601_date* ( +
+s: `String[1]` +
+): `Boolean`
+a|String is a valid ISO 8601 date, i.e. takes the complete form:
+
+* `YYYY-MM-DD` (extended, preferred) or one of the partial forms `YYYY-MM` or `YYYY`
+* `YYYYMMDD` (compact) or a partial variant `YYYYMM`.
+
+Where:
+
+* `YYYY` is the string form of any positive number in the range `0000` - `9999` (zero-filled to four digits)
+* `MM` is `01` - `12` (zero-filled to two digits)
+* `DD` is `01` - `31` (zero-filled to two digits)
+
+The combinations of `YYYY`, `MM`, `DD` numbers must be correct with respect to the Gregorian calendar.
+
+h|
+|*valid_iso8601_time* ( +
+s: `String[1]` +
+): `Boolean`
+a|String is a valid ISO 8601 date, i.e. takes the form:
+
+* `hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]` (extended)
+* `hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]` (compact)
+* or one of the partial forms:
+** `hh:mm` (extended)
+** `hhmm` or `hh` (compact)
+
+with an additional optional timezone indicator of:
+
+* `Z` or`±hh[:mm]` (extended)  `±hh[mm]` (compact)
+
+Where:
+
+* `hh` is "00" - "23" (0-filled to two digits)
+* `mm` is "00" - "59" (0-filled to two digits)
+* `ss` is "00" - "60" (0-filled to two digits)
+* `[(,&#124;.)s+]` is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
+* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
+
+h|
+|*valid_iso8601_date_time* ( +
+s: `String[1]` +
+): `Boolean`
+a|String is a valid ISO 8601 date-time, i.e. takes the form:
+
+* `YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]` (extended)
+* `YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]` (compact)
+* or one of the partial forms:
+** `YYYY-MM-DDThh:mm` or `YYYY-MM-DDThh` (extended)
+** `YYYYMMDDThhmm` or `YYYYMMDDThh` (compact)
+
+h|
+|*valid_iso8601_duration* ( +
+s: `String[1]` +
+): `Boolean`
+a|String is a valid ISO 8601 duration, i.e. takes the form:
+
+* `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`
+
+Where each nn represents a number of years, months, etc. nnW represents a number of 7-day weeks.
+
+Note: allowing the `W` designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).
+
+.Parameters +
+[horizontal]
+`_s_`:: String is a valid ISO 8601 duration, i.e. takes the form:
+
+* `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`
+
+Where each `nn` represents a number of years, months, etc. `nnW` represents a number of 7- day weeks.
+
+NOTE: allowing the `W` designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).
 |===

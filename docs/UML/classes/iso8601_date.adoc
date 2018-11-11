@@ -6,43 +6,46 @@ h|*Class*
 2+^h|*Iso8601_date*
 
 h|*Description*
-2+a|Represents an ISO 8601 date, including partial and extended forms.
+2+a|Represents an ISO 8601 date, including partial and extended forms. Value may be:
+
+* `YYYY-MM-DD` (extended, preferred)
+* `YYYYMMDD` (compactd)
+* a partial invariant.
+
+See `Time_definitions._valid_iso8601_date()_` for validity.
 
 h|*Inherit*
-2+|`Iso8601_type`, `IDate`
+2+|`Iso8601_type`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
+|*year* (): `Integer`
+a|Year.
+
+h|
+|*month* (): `Integer` +
+*_Pre_*: `not month_unknown`
+a|Month in year.
+
+h|
+|*day* (): `Integer` +
+*_Pre_*: `not day_unknown`
+a|Day in month.
+
+h|
+|*timezone* (): `Iso8601_timezone`
+a|Timezone; may be Void.
+
+h|
 |*month_unknown* (): `Boolean`
-a|Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.
+a|Indicates whether month in year is unknown. If so, the date is of the form `"YYYY"`.
 
 h|
 |*day_unknown* (): `Boolean`
-a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.
-
-h|
-|*valid_iso8601_date* (): `Boolean`
-a|String is a valid ISO 8601 date, i.e. takes the complete form:
-
-* YYYYMMDD or the extended form:
-* YYYY-MM-DD or one of the partial forms:
-* YYYYMM
-* YYYY
-
-or the equivalent extended form:
-
-* YYYY-MM
-
-Where:
-
-* YYYY is the string form of any positive number in the range “0000” - “9999” (zero-filled to four digits)
-* MM is “01” - “12” (zero-filled to two digits)
-* DD is “01” - “31” (zero-filled to two digits)
-
-The combinations of YYYY, MM, DD numbers must be correct with respect to the Gregorian calendar.
+a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form `"YYYY-MM"` or `"YYYYMM"`.
 
 h|(effected)
 |*is_partial* (): `Boolean`
@@ -52,13 +55,9 @@ h|(effected)
 |*is_extended* (): `Boolean`
 a|True if this date uses `'-'` separators.
 
-h|(redefined)
-|*as_string* (): `String`
-a|ISO8601 string for date, in format `YYYYMMDD` or `YYYY-MM-DD`, or a partial invariant. See `_valid_iso8601_date()_` for validity.
-
 h|
-|*as_date* (): `Date`
-a|Convert to a native `Date`.
+|*as_string* (): `String`
+a|Return string value in extended format.
 
 h|*Invariants*
 2+a|*_Year_valid_*: `valid_year (year)`

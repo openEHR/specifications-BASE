@@ -6,19 +6,62 @@ h|*Class*
 2+^h|*Iso8601_date_time*
 
 h|*Description*
-2+a|Represents an ISO 8601 date/time, including partial and extended forms.
+2+a|Represents an ISO 8601 date/time, including partial and extended forms. Value may be:
+
+* `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` (extended, preferred) or
+* `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` (compact)
+* or a partial variant.
+
+See `_valid_iso8601_date_time()_` for validity.
 
 Note that this class includes 2 deviations from ISO 8601:2004:
 
 * for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard;
-* the time 24:00:00 is not allowed, since it would mean the date was really on the next day.
+* the time `24:00:00` is not allowed, since it would mean the date was really on the next day.
 
 h|*Inherit*
-2+|`Iso8601_type`, `IDate_time`
+2+|`Iso8601_type`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
+
+h|
+|*year* (): `Integer`
+a|Year.
+
+h|
+|*month* (): `Integer` +
+*_Pre_*: `not month_unknown`
+a|Month in year.
+
+h|
+|*day* (): `Integer` +
+*_Pre_*: `not day_unknown`
+a|Day in month.
+
+h|
+|*hour* (): `Integer` +
+*_Pre_*: `not hour_unknown`
+a|Hour in day.
+
+h|
+|*minute* (): `Integer` +
+*_Pre_*: `not minute_unknown`
+a|Minute in hour.
+
+h|
+|*second* (): `Integer` +
+*_Pre_*: `not second_unknown`
+a|Second in minute.
+
+h|
+|*fractional_second* (): `Real`
+a|Fractional seconds.
+
+h|
+|*timezone* (): `Iso8601_timezone`
+a|Timezone; may be Void.
 
 h|
 |*month_unknown* (): `Boolean`
@@ -40,30 +83,6 @@ h|
 |*is_decimal_sign_comma* (): `Boolean`
 a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
 
-h|
-|*valid_iso8601_date_time* ( +
-s: `String[1]` +
-): `Boolean`
-a|String is a valid ISO 8601 date-time, i.e. takes the form:
-
-* YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]
-
-or the extended form:
-
-* YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]
-
-or one of the partial forms:
-
-* YYYYMMDDThhmm
-* YYYYMMDDThh
-
-or the equivalent extended forms:
-
-* YYYY-MM-DDThh:mm
-* YYYY-MM-DDThh
-
-(meanings as in DV_DATE, DV_TIME) and the values in each field are valid.
-
 h|(effected)
 |*is_partial* (): `Boolean`
 a|True if this date time is partial, i.e. if seconds or more is missing.
@@ -73,24 +92,12 @@ h|(effected)
 a|True if this date/time uses ‘-’, ‘:’ separators.
 
 h|
-|*as_string* (): `String`
-a|ISO8601 string for date/time, in format:
-
-* `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]`
-
-or in extended format:
-
-* `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]`
-
-or a partial variant; see `_valid_iso8601_date_time()_` for validity.
-
-h|
 |*has_fractional_second* (): `Boolean`
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|
-|*as_date_time* (): `Date_time`
-a|Convert to a native `Date_time`.
+|*as_string* (): `String`
+a|Return the string value in extended format.
 
 h|*Invariants*
 2+a|*_Year_valid_*: `valid_year (year)`

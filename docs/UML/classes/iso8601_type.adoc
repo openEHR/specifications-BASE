@@ -9,7 +9,7 @@ h|*Description*
 2+a|Abstract ancestor type of ISO 8601 types, defining interface for 'extended' and 'partial' concepts from ISO 8601.
 
 h|*Inherit*
-2+|`Ordered`
+2+|`Temporal`, `Time_Definitions`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1*
 |*value*: `String`
-a|
+a|Representation of all descendants is a single String.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -28,5 +28,5 @@ a|True if this date time is partial, i.e. if trailing end (right hand) value(s) 
 
 h|(abstract)
 |*is_extended* (): `Boolean`
-a|True if this ISO8601 string is in the 'extended' form, i.e. uses ‘-’ and / or ‘:’ separators.
+a|True if this ISO8601 string is in the 'extended' form, i.e. uses ‘-’ and / or ‘:’ separators. This is the preferred format.
 |===

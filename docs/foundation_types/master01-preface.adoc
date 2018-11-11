@@ -35,12 +35,6 @@ This specification is based on the types orginally defined in the {openehr_rm_10
 
 The additional types `Point_interval` and `Proper_interval` have been added, to support the common need for a point value and a proper interval to be specified as substitutable types. The types `Multiplicity_interval` and `Cardinality` have been added, from the {openehr_am_aom2}[AOM2 specification].
 
-=== Date/Time types
-
-The date/time types have been adjusted to provide a fully coherent model that accounts for 'native' types and the ISO 8601-based types, whose representation is a `String`. This involved the addition of notional types `IDate`, `ITime` etc, which define pure interfaces to both native and ISO 8601 date/time types.
-
-In the original Support IM specification, only the ISO 8601 types were defined. The addition of so-called native types `Date`, `Time`, `Date_time` and `Duration` enables these types to be used in other specifications as standing for the native system types, for example in the {openehr_am_aom2}[AOM2 specification].
-
 === Functional meta-types
 
 A collection of meta-types representing routines, procedures and functions has been added, to support specifications that need to use these concepts. 
