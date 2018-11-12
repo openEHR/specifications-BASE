@@ -8,8 +8,8 @@
 <meta name="description" content="openEHR Architecture Overview">
 <meta name="keywords" content="EHR, openehr, architecture">
 <title>openEHR Architecture Overview</title>
-<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/AA_GLOBAL/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/AA_GLOBAL/latest/resources/css/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -315,7 +315,7 @@
 <div class="sectionbody">
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="/releases/AA_GLOBAL/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
 </div>
 </div>
 </div>
@@ -363,7 +363,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/releases/AA_GLOBAL/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
@@ -1339,14 +1339,11 @@ In Release 1.0.3 and earlier releases, the contents of the <code>base</code> pac
 <div class="paragraph">
 <p>The packages in the latter group are generic, and are used by all openEHR models, in all the outer packages. Together, they provide identification, access to knowledge resources, data types and structures, versioning semantics, and support for archetyping. The packages in the first group define the semantics of enterprise level health information types, including the EHR and demographics.</p>
 </div>
-<div id="rm_packages" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="https://www.openehr.org/releases/RM/latest/docs/UML/diagrams/RM-packages.svg" alt="RM packages">
-</div>
-<div class="title">Figure 12. Structure of <code>org.openehr.rm</code> package</div>
+<div class="paragraph">
+<p>image::{openehr_rm_uml}/diagrams/RM-packages.svg[id=rm_packages, align="center"]</p>
 </div>
 <div class="paragraph">
-<p>Each outer package in the figure <a href="#rm_packages">Structure of <code>org.openehr.rm</code> package</a> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference Model document), documenting an "information model" (IM). The package structure will normally be replicated in all ITS expressions,
+<p>Each outer package in the figure <a href="#rm_packages">[rm_packages]</a> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference Model document), documenting an "information model" (IM). The package structure will normally be replicated in all ITS expressions,
 e.g. XML schema, programming languages like Java, C# and Eiffel, and interoperability definitions like WSDL, IDL and .Net.</p>
 </div>
 <div class="sect3">
@@ -1540,7 +1537,7 @@ PIDS standard <a href="#Corbamed_PIDS">[Corbamed_PIDS]</a>.</p>
 <div class="content">
 <img src="diagrams/spec_component-am.svg" alt="spec component am">
 </div>
-<div class="title">Figure 13. AM Component of openEHR</div>
+<div class="title">Figure 12. AM Component of openEHR</div>
 </div>
 <div class="paragraph">
 <p>The openEHR <code>am</code> package contains the models necessary to describe the semantics of archetypes and templates, and their use within openEHR. There are currently two extant major versions of archetype technology in openEHR: 'ADL 1.4', the original version, and 'ADL 2', a more modern version, which is slowly being adopted. Both versions are maintained side by side, to enable implementers to work with the version(s) that suit their needs.</p>
@@ -1553,18 +1550,18 @@ PIDS standard <a href="#Corbamed_PIDS">[Corbamed_PIDS]</a>.</p>
 </div>
 <div id="aom_2_packages" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="https://www.openehr.org/releases/AM/latest/docs/UML/diagrams/AOM-packages.png" alt="AOM packages">
+<img src="link:/releases/AM/latest/docs/UML/diagrams/AOM-packages.png" alt="AOM packages">
 </div>
-<div class="title">Figure 14. Structure of the ADL 2 version <code>org.openehr.am</code> package</div>
+<div class="title">Figure 13. Structure of the ADL 2 version <code>org.openehr.am</code> package</div>
 </div>
 <div class="paragraph">
 <p>The package structure of the version 1.4 form of the AM is shown below.</p>
 </div>
 <div id="aom_14_packages" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="https://www.openehr.org/releases/AM/latest/docs/UML/AOM1.4/diagrams/AOM-packages.png" alt="AOM packages">
+<img src="link:/releases/AM/latest/docs/UML/AOM1.4/diagrams/AOM-packages.png" alt="AOM packages">
 </div>
-<div class="title">Figure 15. Structure of the ADL 1.4 <code>org.openehr.am</code> package</div>
+<div class="title">Figure 14. Structure of the ADL 1.4 <code>org.openehr.am</code> package</div>
 </div>
 <div class="paragraph">
 <p>Another key specification is the Archetype Identification specification, which defines semantics for archetype identifiers, versioning and life-cycle. The formal specifications may be found on the <a href="/releases/AM/latest/docs/index">Archetype Model index page</a>.</p>
@@ -1581,7 +1578,7 @@ will undoubtedly evolve over time, so this diagram should not be seen as definit
 <div class="content">
 <img src="diagrams/service_packages.png" alt="service packages" width="50%">
 </div>
-<div class="title">Figure 16. Structure of the <code>org.openehr.sm</code> package</div>
+<div class="title">Figure 15. Structure of the <code>org.openehr.sm</code> package</div>
 </div>
 <div class="sect3">
 <h4 id="_virtual_ehr_api"><a class="anchor" href="#_virtual_ehr_api"></a>5.6.1. Virtual EHR API</h4>
@@ -1636,7 +1633,7 @@ out in the environment.</p>
 <div class="content">
 <img src="diagrams/openehr_block_diagram.svg" alt="openEHR_packages_and_languages" width="75%">
 </div>
-<div class="title">Figure 17. openEHR Packages and Languages View</div>
+<div class="title">Figure 16. openEHR Packages and Languages View</div>
 </div>
 </div>
 </div>
@@ -1653,7 +1650,7 @@ out in the environment.</p>
 <div class="content">
 <img src="diagrams/minimal_openehr_system.png" alt="minimal_openehr_system" width="80%">
 </div>
-<div class="title">Figure 18. Minimal openEHR EHR System</div>
+<div class="title">Figure 17. Minimal openEHR EHR System</div>
 </div>
 <div class="paragraph">
 <p>The latter may be in the form of an existing PMI (patient master index) or other directory, or it may be
@@ -1748,7 +1745,7 @@ of the openEHR EHR is shown below.</p>
 <div class="content">
 <img src="diagrams/high_level_ehr_structure.png" alt="high_level_ehr_structure" width="70%">
 </div>
-<div class="title">Figure 19. High-level Structure of the openEHR EHR</div>
+<div class="title">Figure 18. High-level Structure of the openEHR EHR</div>
 </div>
 <div class="paragraph">
 <p>In this figure, the parts of the EHR are as follows:</p>
@@ -1788,7 +1785,7 @@ The 21 data types provide for all types of data needed for clinical and administ
 <div class="content">
 <img src="diagrams/composition_structure.png" alt="composition_structure" width="80%">
 </div>
-<div class="title">Figure 20. Elements of an openEHR Composition</div>
+<div class="title">Figure 19. Elements of an openEHR Composition</div>
 </div>
 </div>
 <div class="sect2">
@@ -1809,9 +1806,9 @@ Entries make up the vast majority of archetypes defined for the EHR.</p>
 </div>
 <div id="entry_model_simple" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="https://www.openehr.org/releases/RM/latest/docs/UML/diagrams/RM-composition.entry-simple.svg" alt="RM composition.entry simple" width="60%">
+<img src="link:/releases/RM/latest/docs/UML/diagrams/RM-composition.entry-simple.svg" alt="RM composition.entry simple" width="60%">
 </div>
-<div class="title">Figure 21. The openEHR Entry model (in EHR IM)</div>
+<div class="title">Figure 20. The openEHR Entry model (in EHR IM)</div>
 </div>
 <div class="paragraph">
 <p>The choice of these types is based on the clinical problem-solving process shown below.</p>
@@ -1820,7 +1817,7 @@ Entries make up the vast majority of archetypes defined for the EHR.</p>
 <div class="content">
 <img src="diagrams/clinical_investigator_process.png" alt="clinical_investigator_process" width="80%">
 </div>
-<div class="title">Figure 22. Relationship of information types to the investigation process</div>
+<div class="title">Figure 21. Relationship of information types to the investigation process</div>
 </div>
 <div class="paragraph">
 <p>This figure shows the cycle of information creation due to an iterative, problem solving process typical
@@ -1844,7 +1841,7 @@ designed to resolve the problem, and finally, executing the instructions (action
 <div class="content">
 <img src="diagrams/CIR_ontology.png" alt="CIR_ontology" width="80%">
 </div>
-<div class="title">Figure 23. Ontology of Recorded Information</div>
+<div class="title">Figure 22. Ontology of Recorded Information</div>
 </div>
 <div class="paragraph">
 <p>The key top-level categories are 'care information' and 'administrative information'. The former
@@ -1932,9 +1929,9 @@ environment.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="https://www.openehr.org/releases/RM/latest/docs/UML/diagrams/RM-InstructionStateMachine.svg" alt="instruction_state_machine">
+<img src="link:/releases/RM/latest/docs/UML/diagrams/RM-InstructionStateMachine.svg" alt="instruction_state_machine">
 </div>
-<div class="title">Figure 24. openEHR standard Instruction State Machine</div>
+<div class="title">Figure 23. openEHR standard Instruction State Machine</div>
 </div>
 </div>
 <div class="sect2">
@@ -1954,7 +1951,7 @@ Time is described in detail in the <a href="/releases/RM/latest/ehr.html#_time_i
 <div class="content">
 <img src="diagrams/time_in_the_ehr.png" alt="time_in_the_ehr" width="70%">
 </div>
-<div class="title">Figure 25. Time in the EHR</div>
+<div class="title">Figure 24. Time in the EHR</div>
 </div>
 </div>
 <div class="sect2">
@@ -2156,7 +2153,7 @@ way.</p>
 <div class="content">
 <img src="diagrams/security_features.png" alt="security_features" width="80%">
 </div>
-<div class="title">Figure 26. Security Features of the openEHR EHR</div>
+<div class="title">Figure 25. Security Features of the openEHR EHR</div>
 </div>
 </div>
 <div class="sect3">
@@ -2299,7 +2296,7 @@ shown in the following figure.</p>
 <div class="content">
 <img src="diagrams/version_signature.png" alt="version_signature" width="80%">
 </div>
-<div class="title">Figure 27. Version Signature</div>
+<div class="title">Figure 26. Version Signature</div>
 </div>
 <div class="paragraph">
 <p>The signing of data in a versioning system acts as an integrity check (the digest performs this function),
@@ -2387,7 +2384,7 @@ over time. A version-controlled top-level content structure is visualised below.
 <div class="content">
 <img src="diagrams/version_control_structures.png" alt="version_control_structures" width="80%">
 </div>
-<div class="title">Figure 28. Version Signature</div>
+<div class="title">Figure 27. Version Signature</div>
 </div>
 <div class="paragraph">
 <p>Versioning of single top-level structures is a necessary, but not sufficient requirement for a repository
@@ -2449,7 +2446,7 @@ abstraction is visualised as follows.</p>
 <div class="content">
 <img src="diagrams/controlled_repository.png" alt="controlled_repository" width="70%">
 </div>
-<div class="title">Figure 29. General Structure of a Controlled Repository</div>
+<div class="title">Figure 28. General Structure of a Controlled Repository</div>
 </div>
 </div>
 <div class="sect3">
@@ -2536,7 +2533,7 @@ kinds of changes that can occur to items affected in a Contribution are:</p>
 <div class="content">
 <img src="diagrams/contribution_deltas.png" alt="contribution_deltas" width="80%">
 </div>
-<div class="title">Figure 30. Contributions to the Repository (delta form)</div>
+<div class="title">Figure 29. Contributions to the Repository (delta form)</div>
 </div>
 <div class="paragraph">
 <p>This shows the effect of four Contributions (indicated by blue ovals on the left hand side) to a repository
@@ -2560,7 +2557,7 @@ versioning implementation may or may not generate deltas as a way of efficient s
 <div class="content">
 <img src="diagrams/contributions_non_delta.png" alt="contributions_non_delta" width="80%">
 </div>
-<div class="title">Figure 31. Contributions to the Repository (non-delta form)</div>
+<div class="title">Figure 30. Contributions to the Repository (non-delta form)</div>
 </div>
 <div class="paragraph">
 <p>For the purposes of openEHR, a Contribution is considered as being the set of Versions created or
@@ -2575,7 +2572,7 @@ attested at one time, as implied by the figure above.</p>
 <div class="content">
 <img src="diagrams/abstract_model_repository.png" alt="abstract_model_repository" width="60%">
 </div>
-<div class="title">Figure 32. Abstract Model of Change-controlled Repository</div>
+<div class="title">Figure 31. Abstract Model of Change-controlled Repository</div>
 </div>
 <div class="paragraph">
 <p>This consists of:</p>
@@ -2689,7 +2686,7 @@ distinction is illustrated in the following figure. Here we see two container ob
 <div class="content">
 <img src="diagrams/ids_and_references.png" alt="ids_and_references" width="50%">
 </div>
-<div class="title">Figure 33. XXX_IDs and XXX_REFs</div>
+<div class="title">Figure 32. XXX_IDs and XXX_REFs</div>
 </div>
 </div>
 <div class="sect3">
@@ -2757,7 +2754,7 @@ objects, and to reference them from the outside, respectively.</p>
 <div class="content">
 <img src="diagrams/object_referencing.png" alt="object_referencing" width="65%">
 </div>
-<div class="title">Figure 34. How to reference various levels of object</div>
+<div class="title">Figure 33. How to reference various levels of object</div>
 </div>
 </div>
 </div>
@@ -2911,7 +2908,7 @@ templates to data.</p>
 <div class="content">
 <img src="diagrams/archetypes_and_data.png" alt="archetypes_and_data" width="80%">
 </div>
-<div class="title">Figure 35. How Archetypes apply to Data</div>
+<div class="title">Figure 34. How Archetypes apply to Data</div>
 </div>
 </div>
 <div class="sect2">
@@ -2978,7 +2975,7 @@ are explained in detail under <a href="#_paths_and_locators">Paths and Locators<
 <div class="content">
 <img src="diagrams/archetype_paths.png" alt="archetype_paths">
 </div>
-<div class="title">Figure 36. Paths extracted from an archetype</div>
+<div class="title">Figure 35. Paths extracted from an archetype</div>
 </div>
 </div>
 <div class="sect2">
@@ -3063,7 +3060,7 @@ copies of the relevant archetypes.</p>
 <div class="content">
 <img src="diagrams/archetype_use.png" alt="archetype_use" width="80%">
 </div>
-<div class="title">Figure 37. Deployment of Archetypes and Templates</div>
+<div class="title">Figure 36. Deployment of Archetypes and Templates</div>
 </div>
 </div>
 <div class="sect3">
@@ -3103,7 +3100,7 @@ these identifiers (more details on this are in the next section).</p>
 <div class="content">
 <img src="diagrams/kernel.png" alt="kernel" width="80%">
 </div>
-<div class="title">Figure 38. Templated Archetypes at Runtime</div>
+<div class="title">Figure 37. Templated Archetypes at Runtime</div>
 </div>
 <div class="paragraph">
 <p>If data are later modified, they are brought into the kernel along with the relevant template and archetypes,
@@ -3993,7 +3990,7 @@ attribute value to be coded is "blood group phenotype".</p>
 <div class="content">
 <img src="diagrams/archetype_constraint_binding.png" alt="archetype_constraint_binding" width="80%">
 </div>
-<div class="title">Figure 39. Archetype Constraint Binding</div>
+<div class="title">Figure 38. Archetype Constraint Binding</div>
 </div>
 <div class="paragraph">
 <p>Currently there is no standard for such queries. This does not affect archetypes directly, since they
@@ -4088,7 +4085,7 @@ machine applications.</p>
 <div class="content">
 <img src="diagrams/system_architecture.png" alt="system_architecture" width="70%">
 </div>
-<div class="title">Figure 40. Basic Enterprise EHR System Architecture</div>
+<div class="title">Figure 39. Basic Enterprise EHR System Architecture</div>
 </div>
 <div class="paragraph">
 <p>The figure below illustrates an approximate mapping of major parts of the openEHR software architecture
@@ -4129,7 +4126,7 @@ of databases.</p>
 <div class="content">
 <img src="diagrams/software_arch_deployment.png" alt="software_arch_deployment" width="70%">
 </div>
-<div class="title">Figure 41. Mapping of software architecture to deployment architecture</div>
+<div class="title">Figure 40. Mapping of software architecture to deployment architecture</div>
 </div>
 </div>
 </div>
@@ -4225,7 +4222,7 @@ data into the openEHR environment.</p>
 <div class="content">
 <img src="diagrams/data_integration.png" alt="data_integration" width="80%">
 </div>
-<div class="title">Figure 42. Data Integration using openEHR</div>
+<div class="title">Figure 41. Data Integration using openEHR</div>
 </div>
 <div class="paragraph">
 <p>Firstly, data are converted from their original syntactic format into openEHR <code>COMPOSITION</code> / <code>SECTION</code> / <code>GENERIC_ENTRY</code> structures, shown in the openEHR integration switch. Most of the data will
@@ -4434,7 +4431,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 <div class="content">
 <img src="diagrams/implem_technologies.png" alt="implem_technologies" width="70%">
 </div>
-<div class="title">Figure 43. Implementation Technologies</div>
+<div class="title">Figure 42. Implementation Technologies</div>
 </div>
 </div>
 </div>
@@ -4705,7 +4702,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-08 14:40:39 BST
+Last updated 2018-11-12 13:36:59 GMT
 </div>
 </div>
 </body>
