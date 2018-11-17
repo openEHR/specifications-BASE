@@ -1,22 +1,22 @@
 = Overview
 
-This document provides an overview of the openEHR architecture. It commences with a description of the specification project, followed by an overview of the model structure and packages. Key global semantics including security, archetyping, identification, version and paths are then described. The relationship to published standards is indicated, and finally, the approach to building Implementation Technology Specifications (ITSs) is outlined.
+This document provides an overview of the openEHR architecture. It commences with a description of the specification project, followed by an overview of the model structure and packages. Key global semantics including security, archetyping, identification, version and paths are then described. The relationship to published standards is described, and finally, the approach to building implementations is outlined.
 
 == The openEHR Specification Program
 
-The openEHR Specification Program is responsible for developing the specifications of openEHR, from which the openEHR Health Computing Platform is implemented. The outputs of the program consist of a number of _components_, as shown in the diagram below, with each component consisting of one or more separate specifications. The components shown in blue on the left define the _openEHR platform architecture_, and are expressed in a combination of UML models and formal language specifications. They can be implmented using typical software engineering technologies. The formal artefacts (e.g. UML models, Antlr grammars etc) are published online for this purpose. 
+The {openehr_specification_program}[openEHR Specification Program] is responsible for developing the specifications of openEHR, from which the openEHR Health Computing Platform is implemented. The outputs of the program consist of a number of _components_, as shown in the diagram below, with each component consisting of one or more separate specifications
 
 [.text-center]
 .The openEHR Specification project
-image::diagrams/specification_project.png[id=specification_project, align="center", width=70%]
+image::diagrams/specification_project.svg[id=specification_project, align="center", width=70%]
 
-The remaining components define artefacts outside the openEHR platform architecture.
+The components on the left consist of abstract formal vocabulary, languages and UML models for various elements of the openEHR health computing platform. At the bottom is the {openehr_term_component}[Terminology (TERM) component], which contains formal artefacts representing openEHR's internal terminology, along with expressions of various ISO, IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format.
 
-On the lower right-hand side is the Terminology (TERM) component, which contains formal artefacts representing openEHR's internal terminology, along with expressions of various IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format.
+The remaining components on the left of the figure (BASE to SM) define the openEHR platform in a formal abstract form, using UML models and syntax specifications as needed. The components contain the bulk of the openEHR specifications.
 
-On the upper-right hand side in orange is the Impelementation Technology Specifications (ITS) component, which consists of concrete expressions of the formal specificaitons in the other components, in various programming, API and schema languages. The artefacts in this component provide the directly usable basis for building an implementation of the openEHR health computing platform, any one of its components, or client applications or tools.
+Some of these specifications (e.g. Antlr grammars) are directly usable in software development. Most of the formal models have concrete expressions in formalisms such as JSON, XML schema, openEHR BMM and REST APIs enabling their direct use in development. These are known as Implementation Technology Specifications (ITSs), and are collected in the {openehr_its_component}[ITS component] shown on the right. They constitute openEHR's _interoperability specifications_.
 
-The final component on the top right is the Conformance (CNF) component, containing a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.
+The {openehr_cnf_component}[CNF component] at the right top defines _conformance criteria_, and is primarily based on ITS artefacts such as REST APIs, XSDs etc. It includes a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.
 
 The specifications published by openEHR constitute the _primary reference for all openEHR semantics_. The presentation style is deliberately intended to be clear and semantically close to the _ideas_ being communicated. Accordingly, the specifications do not follow any particular programming language or idiom, but instead use  various formalisms and illustrations appropriate to each topic.
 

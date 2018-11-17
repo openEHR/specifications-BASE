@@ -98,25 +98,17 @@ summarised as:
 * Increasing targeted health initiatives known to be effective, based on patient criteria; and
 * Reduced hospitalisations and readmissions.
 
-One comprehensive statement of EHR requirements covering many of the above is the <<ISO_18308,ISO Technical
-Report 18308>> for which an {openehr_18308}[openEHR profile has been created]. The requirements summarised above
-are described in more detail in the {openehr_rm_ehr}[openEHR EHR Information Model specification].
+One comprehensive statement of EHR requirements covering many of the above is the <<ISO_18308,ISO Technical Report 18308>> for which an {openehr_18308}[openEHR profile has been created]. The requirements summarised above are described in more detail in the {openehr_rm_ehr}[openEHR EHR Information Model specification].
 
 == Deployment Environments
 
-Ultimately any software and information architecture only provides utility when deployed. The architecture
-of openEHR is designed to support the construction of a number of types of system. One of
-the most important, the integrated shared care health record is illustrated in the figure below.
+Ultimately any software and information architecture only provides utility when deployed. The architecture of openEHR is designed to support the construction of a number of types of system. One of the most important, the integrated shared care health record is illustrated in the figure below.
 
 [.text-center]
 .Community Shared-care Context
-image::diagrams/shared_ehr.png[id=shared_ehr, align="center", width=70%]
+image::diagrams/shared_ehr.svg[id=shared_ehr, align="center", width=70%]
 
-In this form, the openEHR services are added to the existing IT infrastructure to provide a shared,
-secure health record for patients that are seen by any number of health providers in their community
-context. openEHR-enabled systems can also be used to provide EMR/EPR functionality at provider
-locations. Overall, a number of important categories of system can be implemented using openEHR
-including the following:
+In this form, the openEHR services are added to the existing IT infrastructure to provide a shared, secure health record for patients that are seen by any number of health providers in their community context. openEHR-enabled systems can also be used to provide EMR/EPR functionality at provider locations. Overall, a number of important categories of system can be implemented using openEHR including the following:
 
 * shared-care community or regional health service EHRs;
 * summary EHRs at a national, state, province or similar level;
@@ -125,4 +117,6 @@ including the following:
 * consolidated and summary EHRs in federation environments;
 * legacy data purification and validation gateways;
 * web-based secure EHR systems for mobile patients.
+
+Systems containing health records in anonymised or pseudonymised form can also be implemented, since the openEHR architecture defines an EHR in which  demographic links (e.g. to national registry, or via national healthcare number) are optional. Where such links are used in the institutional EMR or shared EHR context, they can easily be removed in an anonymisation process.
 
