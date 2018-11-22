@@ -402,13 +402,19 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-21">SPECBASE-21</a>. Update Architecture Overview with new LANG component, and improved explanation of ITS.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>17 Nov 2018</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-78">SPECRM-78</a>: Improve documentation on 'plain text' EHR URIs.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-18">SPECBASE-18</a>. Update text in Common IM to latest openPGP specification.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17 May 2018</p></td>
@@ -3698,10 +3704,25 @@ ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 </div>
 </div>
 <div class="paragraph">
-<p>The possible values for <code>top_level_structure_locator</code> come from attribute names of the class <code>EHR</code>, visible in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#_ehr_package">ehr package</a>, namely <code><em>compositions</em></code>, <code><em>directory</em></code> etc.</p>
+<p>The possible values for <code>top_level_structure_locator</code> come from attribute names of the class <code>EHR</code>, visible in the <a href="/releases/RM/latest/ehr.html#<em>ehr_package">ehr package</a>, namely <code>_compositions</em></code>, <code><em>directory</em></code> etc.</p>
 </div>
 <div class="paragraph">
 <p>In this way, any object in any openEHR EHR is addressable via a URI. Within <code>ehr</code> space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type <code>DV_EHR_URI</code> is designed to carry URIs of this form, enabling URIs to be constructed for use within <code>LINKs</code> and elsewhere in the openEHR EHR.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc, are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See <a href="http://www.ietf.org/rfc/rfc3986">RFC-3986, Universal Resource Identifiers in WWW</a> by Tim Berners-Lee. See W3C document <a href="http://www.w3.org/Addressing">Naming and Addressing: URIs, URLs, &#8230;&#8203;</a> for a starting point on URIs.</p>
 </div>
 <div class="paragraph">
 <p>An <code>ehr:</code> URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with <code>ehr:</code> URIs are likely to be used, as well as more traditional <code>http://</code> style references. The subsections below describe how URIs of both kinds can be constructed.</p>
