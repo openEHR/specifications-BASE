@@ -243,10 +243,16 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-72">SPECRM-72</a>: Add guidance on date/time formatting, recommending extended ISO8601 format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Lah</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-15">SPECBASE-15</a>. Add foundation types specification to BASE component.<br>
  Rename <code>Aggregate</code> to <code>Container</code> to be more consistent with current languages and also openEHR BMM.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>19 Jul 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 Jul 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1806,8 +1812,17 @@ class names of the form <code>Iso8601_xxx</code> have been used here to clearly 
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>For reasons of readability in data, it is strongly recommended that the 'extended' form of date and time strings be used when writing and displaying data, rather than the compact form. An extended date has the form 'yyyy-mm-dd' rather than 'yyyymmdd', and an extended time has the form 'hh:mm:ss' rather than 'hhmmss'. Nevertheless, both forms should be supported so that openEHR-based systems that use 'straight-through' processing on legacy data that may be in the compact form remain conformant to the specifications.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+For reasons of readability in data, it is strongly recommended that the 'extended' form of date and time strings be used when writing and displaying data, rather than the compact form. An extended date has the form <code>yyyy-mm-dd</code> rather than <code>yyyymmdd</code>, and an extended time has the form <code>hh:mm:ss</code> rather than <code>hhmmss</code>. Nevertheless, both forms should be supported so that openEHR-based systems that use 'straight-through' processing on legacy data that may be in the compact form remain conformant to the specifications.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>ISO 8601 semantics not included in these types include:</p>
@@ -1855,7 +1870,7 @@ class names of the form <code>Iso8601_xxx</code> have been used here to clearly 
 </ul>
 </div>
 <div class="paragraph">
-<p>See <a href="#ISO_8601">[ISO_8601]</a> and the official ISO standard for ISO 8601 details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.</p>
+<p>See <a href="https://en.wikipedia.org/wiki//ISO_8601">ISO 8601</a> and the <a href="https://www.iso.org/iso-8601-date-and-time-format.html">official ISO 8601 standard</a> for details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.</p>
 </div>
 </div>
 <div class="sect2">
