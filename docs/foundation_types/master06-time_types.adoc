@@ -33,7 +33,7 @@ Deviations from the published standard include the following:
 ** in a typed object model, this deviation is more sensible anyway; the ISO 8601 rule is most likely a limitation of the purely syntactic means of expression. In real systems where a timestamp/date-time is specified in a screen form, it makes sense to allow it to be as partial as possible, rather than artifically restricted to only missing seconds and minutes.
 * the time `24:00:00` (or `240000`) is not allowed anywhere, whereas in ISO 8601:2004 it appears to be legal at least for pure times. This deviation is also appears to be used in HL7v2 and HL7v3 (where midnight is defined as the time `00:00:00`), and is preferable to the documented standard, since a date/time with time of `24:00:00` is really the next day, i.e. the date part is then incorrect.
 
-See {iso_8601}[ISO 8601] and the {iso8601_official}[official ISO 8601 standard] for details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.
+See {iso_8601}[ISO 8601] and the {iso_8601_official}[official ISO 8601 standard] for details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.
 
 == Derived Interval / Time Types
 

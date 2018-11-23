@@ -3,7 +3,7 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_Interval (abstract)_*
+2+^h|*Interval*
 
 h|*Description*
 2+a|Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
@@ -18,23 +18,33 @@ h|*Attributes*
 
 h|*0..1*
 |*lower*: `T`
-a|lower bound.
+a|Lower bound.
+lower bound.
+
+h|*0..1*
+|*upper*: `T`
+a|Upper bound.
+Upper bound.
 
 h|*1..1*
 |*lower_unbounded*: `boolean`
-a|lower boundary open (i.e. = -infinity)
+a|`lower` boundary open (i.e. = -infinity).
+lower boundary open (i.e. = -infinity)
 
 h|*1..1*
 |*upper_unbounded*: `boolean`
-a|upper boundary open (i.e. = +infinity)
+a|`upper` boundary open (i.e. = +infinity).
+upper boundary open (i.e. = +infinity)
 
 h|*1..1*
 |*lower_included*: `boolean`
-a|lower boundary value included in range if not lower_unbounded.
+a|`lower` boundary value included in range if not `lower_unbounded`.
+lower boundary value included in range if not lower_unbounded.
 
 h|*1..1*
 |*upper_included*: `boolean`
-a|upper boundary value included in range if not upper_unbounded.
+a|`upper` boundary value included in range if not `upper_unbounded`.
+upper boundary value included in range if not upper_unbounded.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -43,7 +53,8 @@ h|
 |*has* ( +
 e: `T[1]` +
 ): `boolean`
-a|True if (lower_unbounded or
+a|True if `(lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v \<= upper or v < upper)`.
+True if (lower_unbounded or
 ((lower_included and v >= lower) or
 v > lower)) and
 (upper_unbounded or
@@ -60,17 +71,13 @@ h|
 |*contains* ( +
 other: `Interval[1]` +
 ): `Boolean`
-a|True if current interval properly contains `other'? True if all points of `other' are inside the current interval.
+a|True if current interval properly contains `other`? True if all points of `other` are inside the current interval.
 
 h|(effected)
 |*is_equal* ( +
 other: `Any[1]` +
 ): `Boolean`
-a|True if current object's interval is semantically same as `other'.
-
-h|(abstract)
-|*upper* (): `T`
-a|
+a|True if current object's interval is semantically same as `other`.
 
 h|*Invariants*
 2+a|*_Lower_included_valid_*: `lower_unbounded implies not lower_included`

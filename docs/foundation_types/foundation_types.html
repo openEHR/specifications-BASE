@@ -1312,7 +1312,7 @@ v: <code>T[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Type representing a keyed table of values. T is the value type, and U the type of the keys.</p>
+<p>Type representing a keyed table of values. V is the value type, and K the type of the keys.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1382,7 +1382,7 @@ a_key: <code>K[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Interval (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Interval</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1404,35 +1404,48 @@ Interval of ordered items.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower</strong>: <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>lower bound.</p>
+<p>Lower bound.
+lower bound.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Upper bound.
+Upper bound.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>lower boundary open (i.e. = -infinity)</p>
+<p><code>lower</code> boundary open (i.e. = -infinity).
+lower boundary open (i.e. = -infinity)</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>upper boundary open (i.e. = +infinity)</p>
+<p><code>upper</code> boundary open (i.e. = +infinity).
+upper boundary open (i.e. = +infinity)</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>lower boundary value included in range if not lower_unbounded.</p>
+<p><code>lower</code> boundary value included in range if not <code>lower_unbounded</code>.
+lower boundary value included in range if not lower_unbounded.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>upper boundary value included in range if not upper_unbounded.</p>
+<p><code>upper</code> boundary value included in range if not <code>upper_unbounded</code>.
+upper boundary value included in range if not upper_unbounded.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1446,7 +1459,8 @@ Interval of ordered items.</p>
 e: <code>T[1]</code><br>
 ): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if (lower_unbounded or
+<p>True if <code>(lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code>.
+True if (lower_unbounded or
 lower_included and v &gt;= lower) or v &gt; lower and
 (upper_unbounded or
 upper_included and v &lt;= upper or v &lt; upper)</p>
@@ -1467,7 +1481,7 @@ other: <code>Interval[1]</code><br>
 other: <code>Interval[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if current interval properly contains `other'? True if all points of `other' are inside the current interval.</p>
+<p>True if current interval properly contains <code>other</code>? True if all points of <code>other</code> are inside the current interval.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1476,13 +1490,8 @@ other: <code>Interval[1]</code><br>
 other: <code>Any[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if current object&#8217;s interval is semantically same as `other'.</p>
+<p>True if current object&#8217;s interval is semantically same as <code>other</code>.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong> (): <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -1527,7 +1536,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Type representing an Interval that happens to be a point value. Provides an efficient representation that is substitutable for Interval&lt;T&gt; where needed.</p>
+<p>Type representing an Interval that happens to be a point value. Provides an efficient representation that is substitutable for <code>Interval&lt;T&gt;</code> where needed.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1572,14 +1581,10 @@ other: <code>Any[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong> (): <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Inv_point</em></strong>: <code>lower = upper</code></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1608,15 +1613,9 @@ other: <code>Any[1]</code><br>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Interval</code></p></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Upper bound.</p>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Inv_not_point</em></strong>: <code>lower /= upper</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1673,28 +1672,28 @@ other: <code>Any[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this interval imposes no constraints, i.e. is set to 0..*</p>
+<p>True if this interval imposes no constraints, i.e. is set to <code>0..*</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this interval expresses optionality, i.e. 0..1.</p>
+<p>True if this interval expresses optionality, i.e. <code>0..1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this interval expresses mandation, i.e. 1..1.</p>
+<p>True if this interval expresses mandation, i.e. <code>1..1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this interval is set to 0..0.</p>
+<p>True if this interval is set to <code>0..0</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1716,7 +1715,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Express constraints on the cardinality of container objects which are the values of multiply-valued attributes, including uniqueness and ordering, providing the means to state that a container acts like a logical list, set or bag. The cardinality cannot contradict the cardinality of the corresponding attribute within the relevant reference model.</p>
+<p>Express constraints on the cardinality of container objects which are the values of multiply-valued attributes, including uniqueness and ordering, providing the means to state that a container acts like a logical list, set or bag.</p>
 </div></div></td>
 </tr>
 <tr>
