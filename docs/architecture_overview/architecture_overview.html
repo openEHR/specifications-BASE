@@ -1678,6 +1678,23 @@ based knowledge services in the environment, which along with services for acces
 <div class="sect2">
 <h3 id="_the_ehr_system"><a class="anchor" href="#_the_ehr_system"></a>6.1. The EHR System</h3>
 <div class="paragraph">
+<p>The notion of a logical EHR <em>system</em> is central to the openEHR architecture. In openEHR, a system is understood as a distinct logical repository  corresponding to an organisational entity that is <em>legally responsible</em> for the management and governance of the healthcare data contained within. This may be a regional health service that serves multiple provider enterprises or a single provider enterprise such as a larger hospital. The 'system' is therefore in general distinct from specific applications and also from provider organisations, even if in some cases it happens to be owned by a single provider. It is also distinct from any underlying virtualisation infrastructure or cloud computing facility, which may house multiple logical EHR systems in a multi-tenant fashion. This is clear by comparing the legal responsibilities of the infrastructure provider, which are for <em>generic IT service management</em> to a procurer, which may be a healthcare data management entity. It is the latter that undertakes legal responsibility for the content, on behalf of one or more healthcare provider organisations.</p>
+</div>
+<div class="paragraph">
+<p>The technical criterion for identifying an EHR system is that it is the entity that assigns version identifiers within a repository.</p>
+</div>
+<div class="sect3">
+<h4 id="_system_identity"><a class="anchor" href="#_system_identity"></a>6.1.1. System Identity</h4>
+<div class="paragraph">
+<p>Within the openEHR architecture, a <code><em>system_id</em></code> attribute is recorded both within each patient EHR (<a href="/releases/RM/latest/ehr.html#_ehr_class"><code>EHR</code> class</a>), and also within the audit created with each commit of data to an EHR (<a href="/releases/RM/latest/common.html#_audit_details_class"><code>AUDIT_DETAILS</code> class</a>). It is also used in feeder system audits that record the origin of imported data (<a href="/releases/RM/latest/common.html#_feeder_audit_details_class"><code>FEEDER_AUDIT_DETAILS</code> class</a>). This identifier identifies the logical EHR system as described above, and may be of any form. Common forms include the reverse domain name and plain and structured string identifiers.</p>
+</div>
+<div class="paragraph">
+<p>The system identifier is <em>not assumed to be directly processable</em>, but may instead be used as a key, for example in a service maintaining location information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_information_architecture"><a class="anchor" href="#_information_architecture"></a>6.1.2. Information Architecture</h4>
+<div class="paragraph">
 <p>In informational terms, a minimal EHR system based on openEHR consists of an EHR repository, an archetype repository, terminology (if available), and demographic/identity information, as shown below.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
