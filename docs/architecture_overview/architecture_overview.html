@@ -104,12 +104,17 @@
 <li><a href="#_terminology_interface">5.7.4. Terminology Interface</a></li>
 </ul>
 </li>
-<li><a href="#_global_functional_view">5.8. Global Functional View</a></li>
+<li><a href="#_global_view">5.8. Global View</a></li>
 </ul>
 </li>
 <li><a href="#_design_of_the_openehr_ehr">6. Design of the openEHR EHR</a>
 <ul class="sectlevel2">
-<li><a href="#_the_ehr_system">6.1. The EHR System</a></li>
+<li><a href="#_the_ehr_system">6.1. The EHR System</a>
+<ul class="sectlevel3">
+<li><a href="#_system_identity">6.1.1. System Identity</a></li>
+<li><a href="#_information_architecture">6.1.2. Information Architecture</a></li>
+</ul>
+</li>
 <li><a href="#_top_level_information_structures">6.2. Top-level Information Structures</a></li>
 <li><a href="#_the_ehr">6.3. The EHR</a></li>
 <li><a href="#_entries_and_clinical_statements">6.4. Entries and Clinical Statements</a>
@@ -403,9 +408,16 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-21">SPECBASE-21</a>. Update Architecture Overview with new LANG component, and improved explanation of ITS.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-21">SPECBASE-21</a>. Update Architecture Overview with new LANG component, and improved explanation of ITS. Improve package structure description. Replace some diagrams.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>17 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-80">SPECRM-80</a>. Improve description of <code><em>system_id</em></code> field in <code>EHR</code>, <code>AUDIT_DETAILS</code> and <code>FEEDER_AUDIT_DETAILS</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -591,12 +603,6 @@
 </li>
 <li>
 <p>'Microsoft' and '.Net' are trademarks of the Microsoft Corporation</p>
-</li>
-<li>
-<p>'CORBA' is a trademark of the Object Management Group</p>
-</li>
-<li>
-<p>'LEGO' is a registered trademark of The LEGO Group.</p>
 </li>
 </ul>
 </div>
@@ -1058,33 +1064,57 @@ semantics.</p>
 <div class="sect2">
 <h3 id="_separation_of_responsibilities"><a class="anchor" href="#_separation_of_responsibilities"></a>4.2. Separation of Responsibilities</h3>
 <div class="paragraph">
-<p>A second key design paradigm used in openEHR is that of separation of responsibilities within the
-computing environment. Complex domains are only tractable if the functionality is first partitioned
-into broad areas of interest, i.e. into a 'system of systems' <a href="#Maier_2000">[Maier_2000]</a>. This principle has been understood in
-computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation',
-and has resulted in highly successful frameworks and standards, including the OMG’s
-CORBA specifications and the explosion of object-oriented languages, libraries and frameworks.
-Each area of functionality forms a focal point for a set of models formally describing that area, which,
-taken together usually correspond to a distinct information system or service.</p>
+<p>A second design paradigm used in openEHR is that of separation of responsibilities within the computing environment. Complex domains are only tractable if the functionality is first partitioned into broad areas of interest, i.e. into a 'system of systems' <a href="#Maier_2000">[Maier_2000]</a>. This principle has been understood in computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation', and was the driver for the explosion of object-oriented languages, libraries and frameworks.</p>
 </div>
 <div class="paragraph">
-<p>The following illustrates a notional health information environment containing numerous services, each
-denoted by a bubble. Typical connections are indicated by lines, and bubbles closer to the centre correspond
-to services closer to the core needs of clinical care delivery, such as the EHR, terminology,
-demographics/identification and medical reference data. Of the services shown on the diagram,
-openEHR currently provides specifications only for the more central ones, including EHR and Demographics.</p>
+<p>When applied to larger systems, such as that needed to run a hospital or regional health network, the modern form of the paradigm is Services Oriented Architecture (SOA), whereby the components of the system are coarse-grained services. In this approach, each area of functionality is formally modelled and implemented as a self-standing service with a defined interface.</p>
 </div>
-<div id="health_information_environment" class="imageblock text-center" style="text-align: center">
+<div class="paragraph">
+<p>The following diagram illustrates a healthcare services environment containing services at three <em>deployment levels</em>: provider organisation (hospital, clinic, etc); care network (e.g. regional health service, but also non-geopgraphical HMO); and national. These levels may be understood as relating to three perspectives of care (indicated by the larger grey text):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>healthcare delivery</em>: what happens at a provider enterprise, such as a clinic or hospital;</p>
+</li>
+<li>
+<p><em>continuity of care</em>: the passage of the patient through multiple clinics and encounters to achieve a care process designed to fulfill a goal;</p>
+</li>
+<li>
+<p><em>healthcare system</em>: the perspective of a national healthcare system, including public health, planning, quality reporting, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Within each of these deployment levels there are semantic categories corresponding to data, information, process (planning and logistics) and analytics. From left to right, the services are also classified according to what kind of entity they are concerned with: single patient, healthcare professional (HCP), provider enterprise, or knowledge. The diagram is only partially populated, and is not intended to be either complete or normative in any sense.</p>
+</div>
+<div id="health_services_environment" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/health_information_environment.png" alt="health information environment">
+<img src="diagrams/platform_landscape.svg" alt="platform landscape">
 </div>
-<div class="title">Figure 7. A Health Information Environment</div>
+<div class="title">Figure 7. A Health Services Environment</div>
 </div>
 <div class="paragraph">
-<p>Since there are standards available for some aspects of many services, such as terminology, image
-formats, messages, EHR Extracts, service-based interoperation, and numerous standards for details
-such as date/time formats and string encoding, the openEHR specifications often act as a mechanism
-to integrate existing standards.</p>
+<p>E-health services at the care network level are emerging, and in many geographies and health organisations, most of the services shown at this level are available only available within provider organisations.</p>
+</div>
+<div class="paragraph">
+<p>Services that openEHR is concerned with specifying (including adaptation of published <em>de jure</em> or other standards) are shown in colour, with other services and  applications (e.g. Terminology, patient portal) in grey. As can be seen, the scope of openEHR in terms of services is primarily as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>patient-centric services at the data and process levels in any deployment level;</p>
+</li>
+<li>
+<p>enterprise-centric services within a care network or provider organisation;</p>
+</li>
+<li>
+<p>knowledge services relating to models of content and process.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since there are standards available for some aspects of many services, such as terminology, imaging, messages, EHR Extracts, service-based interoperation, and numerous standards for details such as date/time formats and string encoding, the openEHR specifications sometimes act as a mechanism to adapt and integrate existing standards.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1263,7 +1293,7 @@ problem space, the latter almost always being more fine-grained.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-In Release 1.0.3 and earlier releases, the contents of the <code>base</code> package resided in the RM <code>support</code> paackage.
+In RM Release 1.0.3 and earlier releases, the contents of the <code>base</code> package resided in the RM <code>support</code> paackage.
 </td>
 </tr>
 </table>
@@ -1314,6 +1344,18 @@ In Release 1.0.3 and earlier releases, the contents of the <code>base</code> pac
 </div>
 <div class="sect2">
 <h3 id="_languages_component_lang"><a class="anchor" href="#_languages_component_lang"></a>5.4. Languages Component (LANG)</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Until BASE Release 1.1.0, the contents of the LANG component resided in the BASE component.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The Languages component contains specifications for a number of generic languages used in openEHR, as follows:</p>
 </div>
@@ -1659,15 +1701,15 @@ based knowledge services in the environment, which along with services for acces
 </div>
 </div>
 <div class="sect2">
-<h3 id="_global_functional_view"><a class="anchor" href="#_global_functional_view"></a>5.8. Global Functional View</h3>
+<h3 id="_global_view"><a class="anchor" href="#_global_view"></a>5.8. Global View</h3>
 <div class="paragraph">
-<p>The figure below shows a view of all key functional elements of the openEHR specifications, i.e. object models, languages and APIs. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements.</p>
+<p>The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CFN and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/openehr_block_diagram.svg" alt="openEHR_packages_and_languages" width="75%">
+<img src="diagrams/openehr_block_diagram_detailed.svg" alt="openEHR_packages_and_languages">
 </div>
-<div class="title">Figure 18. openEHR Packages and Languages View</div>
+<div class="title">Figure 18. openEHR Components and specifications - global view</div>
 </div>
 </div>
 </div>
@@ -1699,7 +1741,7 @@ based knowledge services in the environment, which along with services for acces
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/minimal_openehr_system.png" alt="minimal_openehr_system" width="80%">
+<img src="diagrams/minimal_openehr_system.png" alt="minimal_openehr_system" width="70%">
 </div>
 <div class="title">Figure 19. Minimal openEHR EHR System</div>
 </div>
@@ -1713,7 +1755,8 @@ EHR can be configured to include either no demographic or some identifying data.
 principles of openEHR is the complete separation of EHR and demographic information, such that an
 EHR taken in isolation contains little or no clue as to the identity of the patient it belongs to. The
 security benefits are described below. In more complete EHR systems, numerous other services (particularly
-security-related) would normally be deployed, as shown in figure <a href="#health_information_environment">A Health Information Environment</a>.</p>
+security-related) would normally be deployed, as shown in the figure <a href="#health_services_environment">A Health Services Environment</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1780,8 +1823,7 @@ EHR Extract
 </table>
 </div>
 <div class="paragraph">
-<p>All persistent openEHR EHR, demographic and related content is found within top-level information
-structures. Most of these are visible in the following figures.</p>
+<p>All persistent openEHR EHR, demographic and related content is found within top-level information structures. Most of these are visible in the following figures.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1866,7 +1908,7 @@ Entries make up the vast majority of archetypes defined for the EHR.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="/releases/RM/latest/docs/ehr/diagrams/clinical_investigator_recording_process.svg" alt="clinical_investigator_process" width="80%">
+<img src="/releases/RM/latest/docs/ehr/diagrams/clinical_investigator_recording_process.svg" alt="clinical_investigator_process" width="65%">
 </div>
 <div class="title">Figure 23. Relationship of information types to the investigation process</div>
 </div>
@@ -2495,7 +2537,7 @@ abstraction is visualised as follows.</p>
 </div>
 <div class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/controlled_repository.png" alt="controlled_repository" width="70%">
+<img src="diagrams/controlled_repository.png" alt="controlled_repository" width="55%">
 </div>
 <div class="title">Figure 30. General Structure of a Controlled Repository</div>
 </div>
@@ -4768,7 +4810,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-12 13:36:59 GMT
+Last updated 2018-11-23 11:52:16 GMT
 </div>
 </div>
 </body>

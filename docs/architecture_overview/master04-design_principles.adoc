@@ -107,29 +107,31 @@ semantics.
 
 == Separation of Responsibilities
 
-A second key design paradigm used in openEHR is that of separation of responsibilities within the
-computing environment. Complex domains are only tractable if the functionality is first partitioned
-into broad areas of interest, i.e. into a 'system of systems' <<Maier_2000>>. This principle has been understood in
-computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation',
-and has resulted in highly successful frameworks and standards, including the OMG’s
-CORBA specifications and the explosion of object-oriented languages, libraries and frameworks.
-Each area of functionality forms a focal point for a set of models formally describing that area, which,
-taken together usually correspond to a distinct information system or service.
+A second design paradigm used in openEHR is that of separation of responsibilities within the computing environment. Complex domains are only tractable if the functionality is first partitioned into broad areas of interest, i.e. into a 'system of systems' <<Maier_2000>>. This principle has been understood in computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation', and was the driver for the explosion of object-oriented languages, libraries and frameworks.
 
-The following illustrates a notional health information environment containing numerous services, each
-denoted by a bubble. Typical connections are indicated by lines, and bubbles closer to the centre correspond
-to services closer to the core needs of clinical care delivery, such as the EHR, terminology,
-demographics/identification and medical reference data. Of the services shown on the diagram,
-openEHR currently provides specifications only for the more central ones, including EHR and Demographics.
+When applied to larger systems, such as that needed to run a hospital or regional health network, the modern form of the paradigm is Services Oriented Architecture (SOA), whereby the components of the system are coarse-grained services. In this approach, each area of functionality is formally modelled and implemented as a self-standing service with a defined interface.
+
+The following diagram illustrates a healthcare services environment containing services at three _deployment levels_: provider organisation (hospital, clinic, etc); care network (e.g. regional health service, but also non-geopgraphical HMO); and national. These levels may be understood as relating to three perspectives of care (indicated by the larger grey text):
+
+* _healthcare delivery_: what happens at a provider enterprise, such as a clinic or hospital;
+* _continuity of care_: the passage of the patient through multiple clinics and encounters to achieve a care process designed to fulfill a goal;
+* _healthcare system_: the perspective of a national healthcare system, including public health, planning, quality reporting, etc.
+
+Within each of these deployment levels there are semantic categories corresponding to data, information, process (planning and logistics) and analytics. From left to right, the services are also classified according to what kind of entity they are concerned with: single patient, healthcare professional (HCP), provider enterprise, or knowledge. The diagram is only partially populated, and is not intended to be either complete or normative in any sense.
 
 [.text-center]
-.A Health Information Environment
-image::diagrams/health_information_environment.png[id=health_information_environment, align="center"]
+.A Health Services Environment
+image::diagrams/platform_landscape.svg[id=health_services_environment, align="center"]
 
-Since there are standards available for some aspects of many services, such as terminology, image
-formats, messages, EHR Extracts, service-based interoperation, and numerous standards for details
-such as date/time formats and string encoding, the openEHR specifications often act as a mechanism
-to integrate existing standards.
+E-health services at the care network level are emerging, and in many geographies and health organisations, most of the services shown at this level are available only available within provider organisations.
+
+Services that openEHR is concerned with specifying (including adaptation of published _de jure_ or other standards) are shown in colour, with other services and  applications (e.g. Terminology, patient portal) in grey. As can be seen, the scope of openEHR in terms of services is primarily as follows:
+
+* patient-centric services at the data and process levels in any deployment level;
+* enterprise-centric services within a care network or provider organisation;
+* knowledge services relating to models of content and process.
+
+Since there are standards available for some aspects of many services, such as terminology, imaging, messages, EHR Extracts, service-based interoperation, and numerous standards for details such as date/time formats and string encoding, the openEHR specifications sometimes act as a mechanism to adapt and integrate existing standards.
 
 == Separation of Viewpoints
 

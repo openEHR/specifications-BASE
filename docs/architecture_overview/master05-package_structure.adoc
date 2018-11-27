@@ -48,7 +48,7 @@ The `base` package defines identifiers, data types, data structures and various 
 .Structure of `org.openehr.base` package
 image::{uml_export_dir}/diagrams/BASE-packages.svg[id=base_packages, align="center"]
 
-NOTE: In Release 1.0.3 and earlier releases, the contents of the `base` package resided in the RM `support` paackage.
+NOTE: In RM Release 1.0.3 and earlier releases, the contents of the `base` package resided in the RM `support` paackage.
 
 The following sub-sections describe the BASE component specifications.
 
@@ -74,6 +74,8 @@ The {openehr_resource}[Resource Model specification] defines a generic 'authored
 The class is used via inheritance to provide types in other models with meta-data to enable instances to be managed as resources with appropriate meta-data.
 
 == Languages Component (LANG)
+
+NOTE: Until BASE Release 1.1.0, the contents of the LANG component resided in the BASE component.
 
 The Languages component contains specifications for a number of generic languages used in openEHR, as follows:
 
@@ -245,11 +247,11 @@ The Terminology Service service provides the means for all other services to acc
 division of responsibilities in a system-of-systems context, the Terminology Service abstracts the different underlying architectures of each terminology, allowing other services in the environment to access terms in a standard way. The Terminology Service is thus the gateway to all ontology- and terminology-
 based knowledge services in the environment, which along with services for accessing guidelines, drug data and other "reference data" enables inferencing and decision support to be carried out in the environment.
 
-== Global Functional View
+== Global View
 
-The figure below shows a view of all key functional elements of the openEHR specifications, i.e. object models, languages and APIs. This view abstracts away the components and top-level UML packages, providing a useful _aide memoire_ picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements.
+The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful _aide memoire_ picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CFN and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.
 
 [.text-center]
-.openEHR Packages and Languages View
-image::diagrams/openehr_block_diagram.svg["openEHR_packages_and_languages",align="center",width="75%"]
+.openEHR Components and specifications - global view
+image::diagrams/openehr_block_diagram_detailed.svg["openEHR_packages_and_languages",align="center"]
 

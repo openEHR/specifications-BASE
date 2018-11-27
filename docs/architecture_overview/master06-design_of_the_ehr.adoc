@@ -18,7 +18,7 @@ In informational terms, a minimal EHR system based on openEHR consists of an EHR
 
 [.text-center]
 .Minimal openEHR EHR System
-image::diagrams/minimal_openehr_system.png[minimal_openehr_system,align="center",width="80%"]
+image::diagrams/minimal_openehr_system.png[minimal_openehr_system,align="center",width="70%"]
 
 The latter may be in the form of an existing PMI (patient master index) or other directory, or it may be
 in the form of an openEHR demographic repository. An openEHR demographic repository can act as
@@ -29,7 +29,7 @@ EHR can be configured to include either no demographic or some identifying data.
 principles of openEHR is the complete separation of EHR and demographic information, such that an
 EHR taken in isolation contains little or no clue as to the identity of the patient it belongs to. The
 security benefits are described below. In more complete EHR systems, numerous other services (particularly
-security-related) would normally be deployed, as shown in figure <<health_information_environment>>.
+security-related) would normally be deployed, as shown in the figure <<health_services_environment>>.
 
 == Top-level Information Structures
 
@@ -49,8 +49,7 @@ Folder hierarchy:: act as directory structures in EHR, Demographic services (see
 Party:: various subtypes including `ACTOR`, `ROLE`, etc. representing a demographic entity with identity and contact details (see type `PARTY` and subtypes in Demographic IM);
 EHR Extract:: the transmission unit between EHR systems, containing a serialisation of EHR, demographic and other content (see type `EHR_EXTRACT` in EHR Extract IM).
 
-All persistent openEHR EHR, demographic and related content is found within top-level information
-structures. Most of these are visible in the following figures.
+All persistent openEHR EHR, demographic and related content is found within top-level information structures. Most of these are visible in the following figures.
 
 == The EHR
 
@@ -105,7 +104,7 @@ The choice of these types is based on the clinical problem-solving process shown
 
 [.text-center]
 .Relationship of information types to the investigation process
-image::{openehr_rm_releases_diags}/docs/ehr/diagrams/clinical_investigator_recording_process.svg[clinical_investigator_process,align="center",width="80%"]
+image::{openehr_rm_releases_diags}/docs/ehr/diagrams/clinical_investigator_recording_process.svg[clinical_investigator_process,align="center",width="65%"]
 
 This figure shows the cycle of information creation due to an iterative, problem solving process typical
 not just of clinical medicine but of science in general. The 'system' as a whole is made up of two
