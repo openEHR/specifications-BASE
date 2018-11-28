@@ -47,7 +47,7 @@ One of the key paradigms on which openEHR is based is known as _multi-level mode
 
 * _reference model (RM)_: a stable reference information model constitutes the first level of modelling;
 * _re-usable content element definitions_: formal definitions of clinical content data points and groups, in the form of {openehr_am}[_archetypes_];
-* _context-specific data set definitions_: formal definitions of use-case specific data sets used for forms, documents, messages etc, created by combining required elements of relevant archetypes. 
+* _context-specific data set definitions_: formal definitions of use-case specific data sets used for forms, documents, messages etc, created by combining required elements of relevant archetypes into openEHR {openehr_am_overview}#_templates[__templates__].
 
 Only the first level (the Reference Model) is implemented in software, significantly reducing the dependency of deployed systems and data on variable content definitions. The only other parts of the model universe implemented in software are highly stable languages/models of representation (shown at the bottom of the figure <<ontological_landscape>>). As a consequence, systems have the possibility of being far smaller and more maintainable than 'single-level' systems, in which all semantics are expressed in one model (typically a UML class model or DB schema). Archetype-based systems are also inherently self-adapting, since they are built to consume archetypes and templates as they are developed into the future.
 
