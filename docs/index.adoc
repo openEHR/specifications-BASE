@@ -13,8 +13,6 @@
 :keywords: base models
 :description: openEHR Base Models
 :sectanchors:
-:jira-roadmap: https://openehr.atlassian.net/projects/SPECBASE?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&status=unreleased
-:jira-hist-issues: https://openehr.atlassian.net/projects/SPEC?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&status=all
 
 include::{ref_dir}/docs/boilerplate/global_vars.adoc[]
 
@@ -30,17 +28,17 @@ image::openehr_block_diagram.svg["openEHR components",align="center",width="60%"
 
 // Use the following version for 'latest'
 ifeval::["{base_release}" == "latest"]
-:jira-issues: https://openehr.atlassian.net/issues/?filter=10723
 [.title-para]
-{jira-roadmap}[Roadmap] | {jira-issues}[Current Issues] | {jira-hist-issues}[Change History]
+{component_prs}[Open Issues^] | {component_roadmap}[Roadmap^] | {component_history}[Previous Releases^] 
+
 endif::[]
 
 // Use the following version for a named release
 ifeval::["{base_release}" != "latest"]
-:jira-pr-release: https://openehr.atlassian.net/projects/SPECPR/versions/10060
-:jira-cr-release: https://openehr.atlassian.net/projects/SPECBASE/versions/10860
+:base_prs_fixed: {component_prs_fixed}{base_release}/issues
+:base_crs_done: {component_crs_done}{base_release}/changes
 [.title-para]
-{jira-pr-release}[Problems Fixed] | {jira-cr-release}[Changes Implemented] | {jira-roadmap}[Roadmap] | {jira-hist-issues}[Change History]
+{base_prs_fixed}[Issues Fixed^] | {base_crs_done}[Changes Implemented^] | {component_roadmap}[Roadmap^] | {component_history}[Change History^]
 endif::[]
 
 == Specifications
@@ -79,4 +77,5 @@ endif::[]
 
 
 == Class Index
+
 include::UML/class_index.adoc[leveloffset=+1]

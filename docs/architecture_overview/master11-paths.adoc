@@ -156,7 +156,7 @@ with the openEHR equivalent being:
 
 ==== Using a Name-based Predicate
 
-If the `LOCATABLE._name_` value in certain data is known to be reliably populated with unique values across immediate siblings, the `name/value` term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following `OBSERVATION` archetype (expressed in {openehr_odin}[ODIN syntax]):
+If the `LOCATABLE._name_` value in certain data is known to be reliably populated with unique values across immediate siblings, the `name/value` term may be used as described above to form a uniquely identifying predicate for a node. Consider as an example the following `OBSERVATION` archetype (expressed in {openehr_odin}[ODIN syntax^]):
 
 [source, cadl]
 --------
@@ -206,7 +206,7 @@ The following path extracted from the archetype refers to the systolic blood pre
 
 The codes `[atnnnn]` at each node of the archetype become the `_archetype_node_id_` found in each node in the data.
 
-Now consider an `OBSERVATION` instance (expressed here in {openehr_odin}[ODIN syntax]), in which a history of two blood pressures has been recorded using this archetype:
+Now consider an `OBSERVATION` instance (expressed here in {openehr_odin}[ODIN syntax^]), in which a history of two blood pressures has been recorded using this archetype:
 
 [source, odin]
 --------
@@ -387,7 +387,7 @@ A dedicated type `DV_EHR_URI` is defined within the RM `data_types` package to c
 
 The following guiding principles have been used to inform the design of EHR URIs.
 
-* It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an {rfc3986}[IETF RFC3986] URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the `ehr` scheme corresponds to EHR content.
+* It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an {rfc3986}[IETF RFC3986^] URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the `ehr` scheme corresponds to EHR content.
 * URIs described here refer to information items within `VERSION._data_`, i.e. to objects such as `COMPOSITION` or `FOLDER`;
 * Versions are identified within URIs either via the relevant `VERSIONED_OBJECT._uid_` (i.e. a GUID)  or the `VERSION._uid_` (a 3-part `OBJECT_VERSION_ID`).
 
@@ -407,7 +407,7 @@ ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
 ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure 
                                       // a sub-item of a specific COMPOSITION, FOLDER etc
 ----
-The possible values for `top_level_structure_locator` come from attribute names of the class `EHR`, visible in the {openehr_rm_ehr}#_ehr_package[ehr package], namely `_compositions_`, `_directory_` etc.
+The possible values for `top_level_structure_locator` come from attribute names of the class `EHR`, visible in the {openehr_rm_ehr}#_ehr_package[ehr package^], namely `_compositions_`, `_directory_` etc.
 
 In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr` space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
 

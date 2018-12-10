@@ -3,7 +3,7 @@
 == Overview
 
 openEHR archetypes provide a powerful way to define the meaning of clinical and related data, and
-to connect, or "bind", data to recognised terminologies such as {loinc}[LOINC], {who_icd}[ICDx], {who_icpc}[ICPC], {snomed_ct}[SNOMED CT]
+to connect, or "bind", data to recognised terminologies such as {loinc}[LOINC^], {who_icd}[ICDx^], {who_icpc}[ICPC^], {snomed_ct}[SNOMED CT^]
 and the many other terminologies and vocabularies used in healthcare. Terminology is used in
 openEHR in the following ways:
 
@@ -26,8 +26,8 @@ terminology takes the more orthodox route in terminology design, and defines val
 using meaningless codes and rubrics. These attributes are always of type `DV_CODED_TEXT`; the code
 itself is contained within the defining_code attribute.
 
-The openEHR terminology is described in the {openehr_terminology}[openEHR Terminology specification], with computable
-expressions available at the {openehr_terminology_resources}[openEHR terminology page].
+The openEHR terminology is described in the {openehr_terminology}[openEHR Terminology specification^], with computable
+expressions available at the {openehr_terminology_resources}[openEHR terminology page^].
 
 == Archetype Internal Terminology
 
@@ -172,6 +172,7 @@ meaning is that the mapping always holds, no matter how many times the internal 
 the archetype.
 
 ==== Binding Terminology Value-sets to Archetypes
+
 An important requirement with respect to terminology is that of specifying value sets for attributes
 defined in archetypes. Sometimes value sets are defined locally within the archetype, because the
 terms are not available in published terminologies, and in any case may be too hard to define therein,

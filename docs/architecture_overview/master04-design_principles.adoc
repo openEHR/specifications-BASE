@@ -9,7 +9,7 @@ leads to better maintainability, extensibility, and flexible deployment.
 
 The most basic kind of distinction in any system of models is ontological, i.e. in the levels of abstraction
 of description of the real world. All models carry some kind of semantic content, but not all
-semantics are the same, or even of the same category. For example, some part of the {snomed_ct}[SNOMED CT]
+semantics are the same, or even of the same category. For example, some part of the {snomed_ct}[SNOMED CT^]
 terminology describes types of bacterial infection, sites in the body, and symptoms. An information
 model might specify a logical type Quantity. A content model might define the model of information
 collected in an ante-natal examination by a physician. These types of 'information' are qualitatively
@@ -46,8 +46,8 @@ systems.
 One of the key paradigms on which openEHR is based is known as _multi-level modelling_, originally described in <<Beale_2000>> as 'two-level modelling'. Under the multi-level approach, there are three levels of models required for a system:
 
 * _reference model (RM)_: a stable reference information model constitutes the first level of modelling;
-* _re-usable content element definitions_: formal definitions of clinical content data points and groups, in the form of {openehr_am}[_archetypes_];
-* _context-specific data set definitions_: formal definitions of use-case specific data sets used for forms, documents, messages etc, created by combining required elements of relevant archetypes into openEHR {openehr_am_overview}#_templates[__templates__].
+* _re-usable content element definitions_: formal definitions of clinical content data points and groups, in the form of {openehr_am}[_archetypes_^];
+* _context-specific data set definitions_: formal definitions of use-case specific data sets used for forms, documents, messages etc, created by combining required elements of relevant archetypes into openEHR {openehr_am_overview}#_templates[__templates__^].
 
 Only the first level (the Reference Model) is implemented in software, significantly reducing the dependency of deployed systems and data on variable content definitions. The only other parts of the model universe implemented in software are highly stable languages/models of representation (shown at the bottom of the figure <<ontological_landscape>>). As a consequence, systems have the possibility of being far smaller and more maintainable than 'single-level' systems, in which all semantics are expressed in one model (typically a UML class model or DB schema). Archetype-based systems are also inherently self-adapting, since they are built to consume archetypes and templates as they are developed into the future.
 
@@ -112,5 +112,5 @@ Computational:: concerned with the description of the system as a set of objects
 Engineering:: concerned with the mechanisms supporting system distribution.
 Technological:: concerned with the detail of the components from which the distributed system is constructed.
 
-The openEHR specifications accordingly include an information viewpoint - the openEHR Reference Model - and a computational viewpoint - the openEHR Service Model. The Engineering viewpoint corresponds to the {openehr_its_component}[openEHR Implementation Technology Specifications (ITS)], while the Technological viewpoint corresponds to the technologies and components used in an actual deployment. An important aspect of the division into viewpoints is that there is generally not a 1:1 relationship between model specifications in each viewpoint. For example, there might be a concept of 'health mandate' (an <<ISO_13940,ISO 13940>> Continuity of Care concept) in the enterprise viewpoint. In the information viewpoint, this might have become a model containing many classes. In the computational viewpoint, the information structures defined in the information viewpoint are likely to recur in multiple services, and there may or may not be a
+The openEHR specifications accordingly include an information viewpoint - the openEHR Reference Model - and a computational viewpoint - the openEHR Service Model. The Engineering viewpoint corresponds to the {openehr_its_component}[openEHR Implementation Technology Specifications (ITS)^], while the Technological viewpoint corresponds to the technologies and components used in an actual deployment. An important aspect of the division into viewpoints is that there is generally not a 1:1 relationship between model specifications in each viewpoint. For example, there might be a concept of 'health mandate' (an <<ISO_13940,ISO 13940>> Continuity of Care concept) in the enterprise viewpoint. In the information viewpoint, this might have become a model containing many classes. In the computational viewpoint, the information structures defined in the information viewpoint are likely to recur in multiple services, and there may or may not be a
 'health mandate' service. The granularity of services defined in the computational viewpoint corresponds most strongly to divisions of function in an enterprise or region, while the granularity of components in the information view points corresponds to the granularity of mental concepts in the problem space, the latter almost always being more fine-grained.

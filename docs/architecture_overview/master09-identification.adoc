@@ -57,7 +57,7 @@ openEHR, as follows:
 * _top-level content structures_: content structures such as `COMPOSITION`, `EHR_STATUS`, `EHR_ACCESS`, `PARTY` etc. are uniquely identified by the association of the identifier of their containing `VERSIONED_OBJECT` and the identifier of their containing `VERSION` within the container;
 * _internal nodes_: nodes within top-level structures are identified using paths.
 
-Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID ({rfc4122}[IETF RFC4122]; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
+Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID ({rfc4122}[IETF RFC4122^]; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
 with an `OBJECT_REF` containing its identifier.
 
 Versions of top-level structures are identified in a way that is guaranteed to work even in distributed
@@ -85,7 +85,7 @@ abbreviations to shorten paths in the most common cases. Paths are described in 
 To refer to an interior data node from outside a top-level structure, a combination of a Version locator
 and a path is required. This is formalised in the `LOCATABLE_REF` class in the `identification`
 package section of the Support IM. A Universal Resource Identifier (URI) form can also be used,
-defined by the {openehr_rm_data_types}#_uri_package[data type `DV_EHR_URI`]. This type provides a single string expression
+defined by the {openehr_rm_data_types}#_uri_package[data type `DV_EHR_URI`^]. This type provides a single string expression
 in the scheme-space "ehr:" which can be used to refer to an interior data node from anywhere (it can
 also be used to represent queries; see below). Any `LOCATABLE_REF` can be converted to a
 `DV_EHR_URI`, although not all `DV_EHR_URIs` are `LOCATABLE_REFs`.
