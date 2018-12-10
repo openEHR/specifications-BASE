@@ -30,7 +30,7 @@ These packages do not include the specifications for various languages (ADL, AQL
 
 [.text-center]
 .Consolidated Package Structure of openEHR
-image::diagrams/global_package_structure.svg[id=consolidated_package_structure, align="center", width=35%]
+image::{diagrams_uri}/global_package_structure.svg[id=consolidated_package_structure, align="center", width=35%]
 
 In the following sections, diagrams provide a visual association of the various specifications to the top-level UML packages, where it exists.
 
@@ -40,13 +40,13 @@ The correspondence between the openEHR BASE component specifications and the UML
 
 [.text-center]
 .BASE Component of openEHR
-image::diagrams/spec_component-base.svg[id=spec_component_base, align="center", width=75%]
+image::{diagrams_uri}/spec_component-base.svg[id=spec_component_base, align="center", width=75%]
 
 The `base` package defines identifiers, data types, data structures and various common design patterns that can be re-used ubiquitously in the `rm`, `am` and `sm` packages. The `base` packages are shown below.
 
 [.text-center]
 .Structure of `org.openehr.base` package
-image::{uml_export_dir}/diagrams/BASE-packages.svg[id=base_packages, align="center"]
+image::{uml_diagrams_uri}/BASE-packages.svg[id=base_packages, align="center"]
 
 NOTE: In RM Release 1.0.3 and earlier releases, the contents of the `base` package resided in the RM `support` paackage.
 
@@ -85,7 +85,7 @@ The Languages component contains specifications for a number of generic language
 
 [.text-center]
 .LANG Component of openEHR
-image::diagrams/spec_component-lang.svg[id=spec_component_lang, align="center", width=80%]
+image::{diagrams_uri}/spec_component-lang.svg[id=spec_component_lang, align="center", width=80%]
 
 === Basic Meta-Model (BMM)
 
@@ -109,7 +109,7 @@ The openEHR RM component is illustrated below. All of its specifications are UML
 
 [.text-center]
 .RM Component of openEHR
-image::diagrams/spec_component-rm.svg[id=spec_component_rm, align="center", width=70%]
+image::{diagrams_uri}/spec_component-rm.svg[id=spec_component_rm, align="center", width=70%]
 
 The figure below illustrates the `rm` package structure. The packages are in two categories: 
 
@@ -199,7 +199,7 @@ The openEHR AM component is illustrated below.
 
 [.text-center]
 .AM Component of openEHR
-image::diagrams/spec_component-am.svg[id=spec_component_am, align="center"]
+image::{diagrams_uri}/spec_component-am.svg[id=spec_component_am, align="center"]
 
 The openEHR `am` package contains the models necessary to describe the semantics of archetypes and templates, and their use within openEHR. There are currently two extant major versions of archetype technology in openEHR: 'ADL 1.4', the original version, and 'ADL 2', a more modern version, which is slowly being adopted. Both versions are maintained side by side, to enable implementers to work with the version(s) that suit their needs.
  
@@ -253,5 +253,5 @@ The figure below shows all of the openEHR specifications, i.e. object models, la
 
 [.text-center]
 .openEHR Components and specifications - global view
-image::diagrams/openehr_block_diagram_detailed.svg["openEHR_packages_and_languages",align="center"]
+image::{diagrams_uri}/openehr_block_diagram_detailed.svg["openEHR_packages_and_languages",align="center"]
 
