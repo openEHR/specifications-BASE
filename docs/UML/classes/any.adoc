@@ -1,0 +1,40 @@
+=== Any Class
+
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*_Any (abstract)_*
+
+h|*Description*
+2+a|Abstract supertype. Usually maps to a type like “Any” or “Object” in an object system. Defined here to provide the value and reference equality semantics.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|(abstract)
+|*is_equal* ( +
+other: `Any[1]` +
+): `Boolean`
+a|Value equality.
+
+h|
+|*infix =* ( +
+other: `Any[1]` +
+): `Boolean`
+a|.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+h|
+|*instance_of* ( +
+a_type: `String[1]` +
+): `Any`
+a|Create new instance of a type.
+
+h|
+|*type_of* ( +
+an_object: `Any[1]` +
+): `String`
+a|
+|===
