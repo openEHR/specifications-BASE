@@ -64,6 +64,7 @@ Here, predicate expressions are used optionally on those attributes defined in t
 The second limitation of basic paths is that they cannot locate objects based on other conditions, such as the object having a child node with a particular value. To address this, predicate expressions can be used to select an object on the basis of other conditions relative to the object, by including boolean expressions including paths, operators, values and parentheses. The syntax of predicate expressions used in openEHR is a subset of the Xpath syntax for predicates with a small number of short-cuts.
 
 ==== Archetype path Predicate
+
 The most important predicate uses the archetype_node_id value (inherited from `LOCATABLE`) to limit the items returned from a container, such as to certain `ELEMENTs` within a `CLUSTER`. The shortcut form allows the archetype code to be included on its own as the predicate, e.g. `[at0003]`. This shortcut corresponds to using an archetype path against the runtime data. A typical archetype-derived path is the following (applied to an Observation instance):
 
 ----

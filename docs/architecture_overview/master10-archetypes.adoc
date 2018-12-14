@@ -121,7 +121,7 @@ templates to data.
 
 [.text-center]
 .How Archetypes apply to Data
-image::{diagrams_uri}/archetypes_and_data.png[archetypes_and_data,align="center", width=80%]
+image::{diagrams_uri}/archetypes_and_data.png[id=archetypes_and_data,align="center", width=80%]
 
 == Archetype-enabling of Reference Model Data
 
@@ -144,8 +144,7 @@ defines the particular configuration of instances to create the desired composit
 instances beneath an `OBSERVATION` object; a 'problem/SOAP headings' archetype constrains `SECTION`
 objects forming a SOAP headings structure. In general, an archetyped data composition is any
 composition of data starting at a root node and continuing to its leaf nodes, at which point lower-level
-compositions, if they exist, begin. Each of the archetyped areas and its subordinate archetyped areas
-in figure <<archetypes_and_data>> is an archetyped data composition.
+compositions, if they exist, begin. Each of the archetyped areas and its subordinate archetyped areas in <<archetypes_and_data>> is an archetyped data composition.
 
 NOTE: care must be taken not to confuse the general term 'composition' with the specific use of this word in
 openEHR and CEN EN 13606, defined by the `COMPOSITION` class; the specific use is always indicated by
@@ -165,11 +164,11 @@ These paths serve to identify any node in a template or archetype, such as the '
 identifiers are embedded into data at runtime, archetype paths can be used to extract data nodes conforming
 to particular parts of archetypes, providing a very powerful basis for querying. Paths can also
 be constructed into data, using more complex predicates (still in the Xpath style). Paths in openEHR
-are explained in detail under <<_paths_and_locators,Paths and Locators>>.
+are explained in detail under <<_paths_and_locators>>.
 
 [.text-center]
 .Paths extracted from an archetype
-image::{diagrams_uri}/archetype_paths.png[archetype_paths,align="center"]
+image::{diagrams_uri}/archetype_paths.png[id=archetype_paths,align="center"]
 
 == Archetypes and Templates at Runtime
 
@@ -233,7 +232,7 @@ The deployment of archetypes, templates, and screen forms is shown below.
 
 [.text-center]
 .Deployment of Archetypes and Templates
-image::{diagrams_uri}/archetype_use.png[archetype_use,align="center", width=80%]
+image::{diagrams_uri}/archetype_use.png[id=archetype_use,align="center", width=80%]
 
 === Validation during Data Capture
 
@@ -267,7 +266,7 @@ these identifiers (more details on this are in the next section).
 
 [.text-center]
 .Templated Archetypes at Runtime
-image::{diagrams_uri}/kernel.png[kernel,align="center", width=80%]
+image::{diagrams_uri}/kernel.png[id=kernel,align="center", width=80%]
 
 If data are later modified, they are brought into the kernel along with the relevant template and archetypes,
 and the embedded node identifiers allow the kernel to continue to perform appropriate checking
