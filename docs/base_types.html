@@ -155,7 +155,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2018 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2019 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -199,9 +199,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-19" target="_blank" rel="noopener">SPECBASE-19</a>. Broaden <code>LOCATABLE_REF.<em>as_uri()</em></code> to allow URIs referring to any health data.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-6" target="_blank" rel="noopener">SPECPUB-6</a>. Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Nov 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27 Nov 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1702,7 +1708,20 @@ Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name 
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>A URI form of the reference, created by concatenating the following: <code>ehr://  + id.value +  /  + path</code>.</p>
+<p>A URI form of the reference, created by concatenating the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>scheme, e.g. <code>ehr:</code>, derived from <code><em>namespace</em></code></p>
+</li>
+<li>
+<p><code><em>id.value</em></code></p>
+</li>
+<li>
+<p><code>/</code> + <code><em>path</em></code>, where <code><em>path</em></code> is non-empty</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 </tbody>
