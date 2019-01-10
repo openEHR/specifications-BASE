@@ -148,7 +148,12 @@
 <li><a href="#_solutions_provided_by_openehr">7.3. Solutions Provided by openEHR</a>
 <ul class="sectlevel3">
 <li><a href="#_overview_4">7.3.1. Overview</a></li>
-<li><a href="#_security_policy">7.3.2. Security Policy</a></li>
+<li><a href="#_security_policy">7.3.2. Security Policy</a>
+<ul class="sectlevel4">
+<li><a href="#_general">7.3.2.1. General</a></li>
+<li><a href="#_access_control">7.3.2.2. Access Control</a></li>
+</ul>
+</li>
 <li><a href="#_integrity">7.3.3. Integrity</a>
 <ul class="sectlevel4">
 <li><a href="#_versioning">7.3.3.1. Versioning</a></li>
@@ -158,7 +163,7 @@
 <li><a href="#_anonymity">7.3.4. Anonymity</a></li>
 </ul>
 </li>
-<li><a href="#_access_control">7.4. Access Control</a>
+<li><a href="#_access_control_2">7.4. Access Control</a>
 <ul class="sectlevel3">
 <li><a href="#_overview_5">7.4.1. Overview</a></li>
 </ul>
@@ -2212,82 +2217,129 @@ way.</p>
 <div class="paragraph">
 <p>In and of itself, the openEHR EHR imposes only a minimal security policy profile which could be regarded as necessary, but generally not sufficient for a deployed system (i.e. other aspects would still need to be implemented in layers whose semantics are not defined in openEHR). The following policy principles are embodied in openEHR.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">General</dt>
-<dd>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Indelibility</dt>
-<dd>
+<div class="sect4">
+<h5 id="_general"><a class="anchor" href="#_general"></a>7.3.2.1. General</h5>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Indelibility
+</td>
+<td class="hdlist2">
 <p>health record information cannot be deleted; logical deletion is achieved by marking the data in such a way as to make it appear deleted (implemented in version control).</p>
-</dd>
-<dt class="hdlist1">Audit trailing</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Audit trailing
+</td>
+<td class="hdlist2">
 <p>All changes made to the EHR including content objects as well as the EHR status and access control objects are audit-trailed with user identity, time-stamp, reason, optionally digital signature and relevant version information; one exception is where the modifier is the patient, in which case, a symbolic identifier can be used (known as <code>PARTY_SELF</code> in openEHR; see next point).</p>
-</dd>
-<dt class="hdlist1">Anonymity</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Anonymity
+</td>
+<td class="hdlist2">
 <p>the content of the health record is separate from identifying demographic information. This can be configured such that theft of the EHR provides no direct clue to the identity of the owning patient (indirect clues are of course harder to control). Stealing an identified EHR involves theft of data from two servers, or even theft of two physical computers, depending on deployment configuration.</p>
-</dd>
-</dl>
+</td>
+</tr>
+</table>
 </div>
-</dd>
-<dt class="hdlist1">Access Control</dt>
-<dd>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Access list</dt>
-<dd>
+</div>
+<div class="sect4">
+<h5 id="_access_control"><a class="anchor" href="#_access_control"></a>7.3.2.2. Access Control</h5>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Access list
+</td>
+<td class="hdlist2">
 <p>the overriding principle of access control must be "relevance" both in terms of user identity (who is delivering care to the patient) and time (during the current episode of care, and for some reasonable, limited time afterward). An access control list can be defined for the EHR, indicating both identified individuals and categories, the latter of which might be role types, or particular staff groups.</p>
-</dd>
-<dt class="hdlist1">Access control of access settings</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Access control of access settings
+</td>
+<td class="hdlist2">
 <p>a gate-keeper controls access to the EHR access control settings. The gate-keeper is established at the time of EHR creation as being one of the identities known in the EHR, usually the patient for mentally competent adults, otherwise a parent, legal guardian, advocate or other responsible person. The gate-keeper determines who can make changes to the access control list. All changes to the list are audit-trailed as for normal data (achieved due to normal versioning).</p>
-</dd>
-<dt class="hdlist1">Privacy</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Privacy
+</td>
+<td class="hdlist2">
 <p>patients can mark Compositions in the EHR as having one of a number of levels of privacy. The definition of the privacy levels is not hard-wired in the openEHR models but rather is defined by standards or agreements within jurisdictions of use.</p>
-</dd>
-<dt class="hdlist1">Usability</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Usability
+</td>
+<td class="hdlist2">
 <p>The general mentality of access control setting is one of "sensible defaults" that work for most of the information in the EHR, most of the time. The defaults for the EHR can be set by the patient, defining access control behaviour for the majority of access decisions. Exceptions to the default policy are then added. This approach minimises the need to think about the security of every item in the EHR individually.</p>
-</dd>
-</dl>
-</div>
-</dd>
-</dl>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Other security policy principles that should be implemented in even a minimal EHR deployment but are not directly specified by openEHR include the following.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Access logging</dt>
-<dd>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Access logging
+</td>
+<td class="hdlist2">
 <p>read accesses by application users to EHR data should be logged in the EHR system. Currently openEHR does not specify models of such logs, but might do so in the future. Studies have shown that making users aware of the fact of access logging is an effective deterrent to inappropriate access (especially where other controls are not implemented). There are some proponents of the argument that even read-access logs should be made part of the content of the EHR proper; currently openEHR does not support this approach.</p>
-</dd>
-<dt class="hdlist1">Record demerging</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Record demerging
+</td>
+<td class="hdlist2">
 <p>when data for a patient is found to be in another patient’s EHR, the access logs for that EHR should be used to determine who has accessed that data, primarily to determine if subsequent clinical thinking (e.g. diagnoses, medication decisions) have been made based on wrong information.</p>
-</dd>
-<dt class="hdlist1">Record merging</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Record merging
+</td>
+<td class="hdlist2">
 <p>when more than one EHR is discovered for the same patient, and have to be merged into a single record, the access control lists have to be re-evaluated and merged by the patient and potentially relevant carers.</p>
-</dd>
-<dt class="hdlist1">Time-limitation of access</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Time-limitation of access
+</td>
+<td class="hdlist2">
 <p>mechanisms should be implemented that limit the time during which given health professionals can see the patient record. Usually, the outer limits are defined by the interval of the episode of care in an institution plus some further time to cover follow-up or outpatient care. Episode start and end are recorded in openEHR as instances of the <code>ADMIN_ENTRY</code> class, containing admission and discharge details.</p>
-</dd>
-<dt class="hdlist1">Non-repudiation</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Non-repudiation
+</td>
+<td class="hdlist2">
 <p>if digital signing of changes to the record is made mandatory, non-repudiation of content can be supported by an openEHR system. The digital signing of communications (EHR Extracts) is also supported in openEHR; coupled with logging of communication of Extracts, this can be used to guarantee non-repudiation of information passed between systems (cf. information passed between back-end and front-end applications of the same system).</p>
-</dd>
-<dt class="hdlist1">Certification</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Certification
+</td>
+<td class="hdlist2">
 <p>a mechanism should be provided to allow a level of trust to be formally associated with user signing keys.</p>
-</dd>
-</dl>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>A key feature of the policy is that it must scale to distributed environments in which health record
@@ -2397,7 +2449,7 @@ encrypt or protect by other security mechanisms.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_access_control"><a class="anchor" href="#_access_control"></a>7.4. Access Control</h3>
+<h3 id="_access_control_2"><a class="anchor" href="#_access_control_2"></a>7.4. Access Control</h3>
 <div class="sect3">
 <h4 id="_overview_5"><a class="anchor" href="#_overview_5"></a>7.4.1. Overview</h4>
 <div class="paragraph">
