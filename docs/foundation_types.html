@@ -77,11 +77,11 @@
 <li><a href="#_overview_3">4.1. Overview</a></li>
 <li><a href="#_class_definitions_3">4.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_container_class">4.2.1. Container Class</a></li>
-<li><a href="#_list_class">4.2.2. List Class</a></li>
-<li><a href="#_set_class">4.2.3. Set Class</a></li>
-<li><a href="#_array_class">4.2.4. Array Class</a></li>
-<li><a href="#_hash_class">4.2.5. Hash Class</a></li>
+<li><a href="#_container_t_class">4.2.1. Container&lt;T&gt; Class</a></li>
+<li><a href="#_list_t_class">4.2.2. List&lt;T&gt; Class</a></li>
+<li><a href="#_set_t_class">4.2.3. Set&lt;T&gt; Class</a></li>
+<li><a href="#_array_t_class">4.2.4. Array&lt;T&gt; Class</a></li>
+<li><a href="#_hash_k_v_class">4.2.5. Hash&lt;K,V&gt; Class</a></li>
 </ul>
 </li>
 </ul>
@@ -91,9 +91,9 @@
 <li><a href="#_overview_4">5.1. Overview</a></li>
 <li><a href="#_class_definitions_4">5.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_interval_class">5.2.1. Interval Class</a></li>
-<li><a href="#_point_interval_class">5.2.2. Point_interval Class</a></li>
-<li><a href="#_proper_interval_class">5.2.3. Proper_interval Class</a></li>
+<li><a href="#_interval_t_class">5.2.1. Interval&lt;T&gt; Class</a></li>
+<li><a href="#_point_interval_t_class">5.2.2. Point_interval&lt;T&gt; Class</a></li>
+<li><a href="#_proper_interval_t_class">5.2.3. Proper_interval&lt;T&gt; Class</a></li>
 <li><a href="#_multiplicity_interval_class">5.2.4. Multiplicity_interval Class</a></li>
 <li><a href="#_cardinality_class">5.2.5. Cardinality Class</a></li>
 </ul>
@@ -135,12 +135,12 @@
 <li><a href="#_overview_7">8.1. Overview</a>
 <ul class="sectlevel3">
 <li><a href="#_class_definitions_7">8.1.1. Class Definitions</a></li>
-<li><a href="#_routine_class">8.1.2. ROUTINE Class</a></li>
-<li><a href="#_function_class">8.1.3. FUNCTION Class</a></li>
-<li><a href="#_procedure_class">8.1.4. PROCEDURE Class</a></li>
+<li><a href="#_routine_args_class">8.1.2. ROUTINE&lt;ARGS&gt; Class</a></li>
+<li><a href="#_function_args_result_class">8.1.3. FUNCTION&lt;ARGS,RESULT&gt; Class</a></li>
+<li><a href="#_procedure_args_class">8.1.4. PROCEDURE&lt;ARGS&gt; Class</a></li>
 <li><a href="#_tuple_class">8.1.5. TUPLE Class</a></li>
-<li><a href="#_tuple1_class">8.1.6. TUPLE1 Class</a></li>
-<li><a href="#_tuple2_class">8.1.7. TUPLE2 Class</a></li>
+<li><a href="#_tuple1_a_class">8.1.6. TUPLE1&lt;A&gt; Class</a></li>
+<li><a href="#_tuple2_a_b_class">8.1.7. TUPLE2&lt;A,B&gt; Class</a></li>
 </ul>
 </li>
 </ul>
@@ -156,7 +156,7 @@
 <div class="sectionbody">
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="https://specifications.openehr.org/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
 </div>
 </div>
@@ -176,7 +176,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: BASE Release-1.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: BASE latest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -190,7 +190,7 @@
 </table>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="openehr_block_diagram.svg" alt="openEHR components" width="60%">
+<object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
 </div>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -338,7 +338,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.1.0/architecture_overview.html" target="_blank" rel="noopener">openEHR Architecture Overview</a>.</p>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/latest/architecture_overview.html" target="_blank" rel="noopener">openEHR Architecture Overview</a>.</p>
 </li>
 </ul>
 </div>
@@ -1144,7 +1144,7 @@ other: <code>Numeric[1]</code><br>
 <div class="sect2">
 <h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>4.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_container_class"><a class="anchor" href="#_container_class"></a>4.2.1. Container Class</h4>
+<h4 id="_container_t_class"><a class="anchor" href="#_container_t_class"></a>4.2.1. Container&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1154,7 +1154,7 @@ other: <code>Numeric[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Container (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Container&lt;T&gt; (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1198,7 +1198,7 @@ v: <code>T[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_list_class"><a class="anchor" href="#_list_class"></a>4.2.2. List Class</h4>
+<h4 id="_list_t_class"><a class="anchor" href="#_list_t_class"></a>4.2.2. List&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1208,7 +1208,7 @@ v: <code>T[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>List</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>List&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1255,7 +1255,7 @@ v: <code>T[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_set_class"><a class="anchor" href="#_set_class"></a>4.2.3. Set Class</h4>
+<h4 id="_set_t_class"><a class="anchor" href="#_set_t_class"></a>4.2.3. Set&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1265,7 +1265,7 @@ v: <code>T[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Set</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Set&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1281,7 +1281,7 @@ v: <code>T[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_array_class"><a class="anchor" href="#_array_class"></a>4.2.4. Array Class</h4>
+<h4 id="_array_t_class"><a class="anchor" href="#_array_t_class"></a>4.2.4. Array&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1291,7 +1291,7 @@ v: <code>T[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Array</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Array&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1307,7 +1307,7 @@ v: <code>T[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_hash_class"><a class="anchor" href="#_hash_class"></a>4.2.5. Hash Class</h4>
+<h4 id="_hash_k_v_class"><a class="anchor" href="#_hash_k_v_class"></a>4.2.5. Hash&lt;K,V&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1317,7 +1317,7 @@ v: <code>T[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Hash</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Hash&lt;K,V&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1382,7 +1382,7 @@ a_key: <code>K[1]</code><br>
 <div class="sect2">
 <h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>5.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_interval_class"><a class="anchor" href="#_interval_class"></a>5.2.1. Interval Class</h4>
+<h4 id="_interval_t_class"><a class="anchor" href="#_interval_t_class"></a>5.2.1. Interval&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1392,7 +1392,7 @@ a_key: <code>K[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Interval</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Interval&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1531,7 +1531,7 @@ other: <code>Any[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_interval_class"><a class="anchor" href="#_point_interval_class"></a>5.2.2. Point_interval Class</h4>
+<h4 id="_point_interval_t_class"><a class="anchor" href="#_point_interval_t_class"></a>5.2.2. Point_interval&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1541,7 +1541,7 @@ other: <code>Any[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Point_interval</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Point_interval&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1600,7 +1600,7 @@ other: <code>Any[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_proper_interval_class"><a class="anchor" href="#_proper_interval_class"></a>5.2.3. Proper_interval Class</h4>
+<h4 id="_proper_interval_t_class"><a class="anchor" href="#_proper_interval_t_class"></a>5.2.3. Proper_interval&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1610,7 +1610,7 @@ other: <code>Any[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Proper_interval</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Proper_interval&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3391,7 +3391,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 
 </div>
 <div class="sect3">
-<h4 id="_routine_class"><a class="anchor" href="#_routine_class"></a>8.1.2. ROUTINE Class</h4>
+<h4 id="_routine_args_class"><a class="anchor" href="#_routine_args_class"></a>8.1.2. ROUTINE&lt;ARGS&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3401,7 +3401,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ROUTINE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ROUTINE&lt;ARGS&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3413,7 +3413,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </table>
 </div>
 <div class="sect3">
-<h4 id="_function_class"><a class="anchor" href="#_function_class"></a>8.1.3. FUNCTION Class</h4>
+<h4 id="_function_args_result_class"><a class="anchor" href="#_function_args_result_class"></a>8.1.3. FUNCTION&lt;ARGS,RESULT&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3423,7 +3423,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FUNCTION&lt;ARGS,RESULT&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3439,7 +3439,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </table>
 </div>
 <div class="sect3">
-<h4 id="_procedure_class"><a class="anchor" href="#_procedure_class"></a>8.1.4. PROCEDURE Class</h4>
+<h4 id="_procedure_args_class"><a class="anchor" href="#_procedure_args_class"></a>8.1.4. PROCEDURE&lt;ARGS&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3449,7 +3449,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PROCEDURE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PROCEDURE&lt;ARGS&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3487,7 +3487,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </table>
 </div>
 <div class="sect3">
-<h4 id="_tuple1_class"><a class="anchor" href="#_tuple1_class"></a>8.1.6. TUPLE1 Class</h4>
+<h4 id="_tuple1_a_class"><a class="anchor" href="#_tuple1_a_class"></a>8.1.6. TUPLE1&lt;A&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3497,7 +3497,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE1</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE1&lt;A&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3513,7 +3513,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </table>
 </div>
 <div class="sect3">
-<h4 id="_tuple2_class"><a class="anchor" href="#_tuple2_class"></a>8.1.7. TUPLE2 Class</h4>
+<h4 id="_tuple2_a_b_class"><a class="anchor" href="#_tuple2_a_b_class"></a>8.1.7. TUPLE2&lt;A,B&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3523,7 +3523,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE2</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TUPLE2&lt;A,B&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>

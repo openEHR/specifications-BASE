@@ -331,7 +331,7 @@
 <div class="sectionbody">
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="https://specifications.openehr.org/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
 </div>
 </div>
@@ -351,7 +351,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: BASE Release-1.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: BASE latest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -736,7 +736,7 @@ to the two dimensions, scope, and kind of subject, as shown below.</p>
 </div>
 <div id="scope_of_openehr" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="architecture_overview/diagrams/scope_of_openehr.png" alt="scope of openehr" width="80%">
+<img src="architecture_overview/diagrams/scope_of_openehr.png" alt="scope of openehr" width="65%">
 </div>
 <div class="title">Figure 2. Structure of Requirements met by openEHR</div>
 </div>
@@ -1282,7 +1282,7 @@ In RM Release 1.0.3 and earlier releases, the contents of the <code>base</code> 
 <div class="sect3">
 <h4 id="_foundation_types"><a class="anchor" href="#_foundation_types"></a>5.3.1. Foundation Types</h4>
 <div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.1.0/foundation_types.html" target="_blank" rel="noopener">Foundation Types specification</a> provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the <code>foundations_types</code> package. This contains the special package <code>primitive_types</code>, which describes inbuilt types <em>assumed</em> by openEHR in external type systems. This provides a basis for determining mappings from openEHR to programming languages. For example such as <code>String.<em>is_empty</em></code> in openEHR might be mapped to <code>String.<em>empty()</em></code> in a programming environment.</p>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/latest/foundation_types.html" target="_blank" rel="noopener">Foundation Types specification</a> provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the <code>foundations_types</code> package. This contains the special package <code>primitive_types</code>, which describes inbuilt types <em>assumed</em> by openEHR in external type systems. This provides a basis for determining mappings from openEHR to programming languages. For example such as <code>String.<em>is_empty</em></code> in openEHR might be mapped to <code>String.<em>empty()</em></code> in a programming environment.</p>
 </div>
 <div class="paragraph">
 <p>Other foundation types include basic structures (<code>Array&lt;T&gt;</code>, <code>Hash&lt;K,V&gt;</code> etc), time types, and various types enabling functional concepts (principally lambda expressions) to be expressed in the openEHR specifications.</p>
@@ -1291,13 +1291,13 @@ In RM Release 1.0.3 and earlier releases, the contents of the <code>base</code> 
 <div class="sect3">
 <h4 id="_base_types"><a class="anchor" href="#_base_types"></a>5.3.2. Base Types</h4>
 <div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.1.0/base_types.html" target="_blank" rel="noopener">Base Types specification</a> defines generic openEHR types used in other openEHR components. It is comprised of the <code>definitions</code>, <code>identification</code>, <code>terminology</code> and  <code>measurement</code> sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.</p>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html" target="_blank" rel="noopener">Base Types specification</a> defines generic openEHR types used in other openEHR components. It is comprised of the <code>definitions</code>, <code>identification</code>, <code>terminology</code> and  <code>measurement</code> sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_resource_model"><a class="anchor" href="#_resource_model"></a>5.3.3. Resource Model</h4>
 <div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.1.0/resource.html" target="_blank" rel="noopener">Resource Model specification</a> defines a generic 'authored resource' class that carries meta-data relating to:</p>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/latest/resource.html" target="_blank" rel="noopener">Resource Model specification</a> defines a generic 'authored resource' class that carries meta-data relating to:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2391,7 +2391,7 @@ time, reason, and potentially other meta-data.</p>
 (i.e. for each Version of any logical item, such as medications list, encounter note etc.). The signature
 is created as a private-key encryption (e.g. RSA-1) of a hash (e.g. MD5) of a canonical representation
 (such as in schema-based XML) of the Version being committed. A likely candidate for defining the
-signature and digest strings in openEHR is the openPGP message format (<a href="http://www.ietf.org/rfc/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a>), due to
+signature and digest strings in openEHR is the openPGP message format (<a href="https://www.ietf.org/rfc/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a>), due to
 being an open specification and self-describing. The use of RFC 4880 for the format does not imply
 the use of the PGP distributed certificate infrastructure, or indeed any certification infrastructure;
 openEHR is agnostic on this point. If no public key or equivalent infrastructure is available, the
@@ -2816,7 +2816,7 @@ openEHR, as follows:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID (<a href="http://www.ietf.org/rfc/rfc4122" target="_blank" rel="noopener">IETF RFC4122</a>; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
+<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID (<a href="https://www.ietf.org/rfc/rfc4122" target="_blank" rel="noopener">IETF RFC4122</a>; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
 with an <code>OBJECT_REF</code> containing its identifier.</p>
 </div>
 <div class="paragraph">
@@ -3748,7 +3748,7 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 <div class="ulist">
 <ul>
 <li>
-<p>It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <a href="http://www.ietf.org/rfc/rfc3986" target="_blank" rel="noopener">IETF RFC3986</a> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the <code>ehr</code> scheme corresponds to EHR content.</p>
+<p>It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <a href="https://www.ietf.org/rfc/rfc3986" target="_blank" rel="noopener">IETF RFC3986</a> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the <code>ehr</code> scheme corresponds to EHR content.</p>
 </li>
 <li>
 <p>URIs described here refer to information items within <code>VERSION.<em>data</em></code>, i.e. to objects such as <code>COMPOSITION</code> or <code>FOLDER</code>;</p>
@@ -3794,7 +3794,7 @@ So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as s
 </table>
 </div>
 <div class="paragraph">
-<p>See <a href="http://www.ietf.org/rfc/rfc3986">RFC-3986, Universal Resource Identifiers in WWW</a> by Tim Berners-Lee. See W3C document <a href="http://www.w3.org/Addressing">Naming and Addressing: URIs, URLs, &#8230;&#8203;</a> for a starting point on URIs.</p>
+<p>See <a href="https://www.ietf.org/rfc/rfc3986">RFC-3986, Universal Resource Identifiers in WWW</a> by Tim Berners-Lee. See W3C document <a href="http://www.w3.org/Addressing">Naming and Addressing: URIs, URLs, &#8230;&#8203;</a> for a starting point on URIs.</p>
 </div>
 <div class="paragraph">
 <p>An <code>ehr:</code> URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with <code>ehr:</code> URIs are likely to be used, as well as more traditional <code>http://</code> style references. The subsections below describe how URIs of both kinds can be constructed.</p>
@@ -3914,7 +3914,7 @@ itself is contained within the defining_code attribute.</p>
 </div>
 <div class="paragraph">
 <p>The openEHR terminology is described in the <a href="https://specifications.openehr.org/releases/TERM/latest/SupportTerminology.html" target="_blank" rel="noopener">openEHR Terminology specification</a>, with computable
-expressions available at the <a href="https://github.com/openEHR/terminology" target="_blank" rel="noopener">openEHR terminology page</a>.</p>
+expressions available at the <a href="https://github.com/openEHR/terminology" target="_blank" rel="noopener">openEHR terminology Git repository</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4163,7 +4163,7 @@ subsumption hierarchy; other "adenocarcinoma" terms cannot be wrongly used in th
 searched for any "adenocarcinoma" term at the same path could reasonably be used to locate "previous
 diagnoses of adenocarcinoma", since this is the only use of the archetype. In a similar way, archetype
 path-based querying can be used to distinguish the other potential ambiguities described in
-the section on <a href="#Entries and clinical statements">[Entries and clinical statements]</a>.</p>
+the section on <a href="#_entries_and_clinical_statements">Section 6.4</a>.</p>
 </div>
 </div>
 </div>
@@ -4448,7 +4448,7 @@ means of normative comparison of openEHR with other related specifications or sy
 <p>some HL7v3 domain vocabularies are mapped to the openEHR terminology.</p>
 </li>
 <li>
-<p><a href="http://www.ietf.org/rfc/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a> - openPGP.</p>
+<p><a href="https://www.ietf.org/rfc/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a> - openPGP.</p>
 </li>
 </ul>
 </div>
