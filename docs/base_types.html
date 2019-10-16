@@ -160,7 +160,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -195,13 +195,25 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.?.? (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package; Improve explanatory text in section 'Identifying Versions within openEHR Versioned Containers' (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>);<br>
+corrected definition of <code>UID_BASED_ID.<em>has_extension()</em></code> to 'True if empty' rather than 'True if Void'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ M Polajnar,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Oct 2019</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-19" target="_blank" rel="noopener">SPECBASE-19</a>. Broaden <code>LOCATABLE_REF.<em>as_uri()</em></code> to allow URIs referring to any health data.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Jan 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -551,7 +563,7 @@ of Date/Time fields.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">released</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value representing a version which is 'released', i.e. is the definitive base version. Rendered with the build number as a string in the form <code>N.M.P</code> e.g. <code>2.0.1</code>.</p>
+<p>Value representing a version which is 'released', i.e. is the definitive base version. <code>N.M.P</code> e.g. <code>2.0.1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -873,18 +885,26 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>object_id: the identifier of the version container, in the form of an UID;</p>
+<p><code><em>object_id</em></code>: the identifier of the version container, in the form of a UID, typically a Guid;</p>
 </li>
 <li>
-<p>version_tree_id: the location in the version tree, as a 1- or 3-part numeric identifier, where the latter variant expresses branching; this is modelled using the <code>VERSION_TREE_ID</code> type;</p>
+<p><code><em>creating_system_id</em></code>: the identifier of the system in which this version was created, of type UID, typically a reverse domain identifier;</p>
 </li>
 <li>
-<p>creating_system_id: the identifier of the system in which this version was created, or type UID.</p>
+<p><code><em>version_tree_id</em></code>: the location in the version tree, as a 1- or 3-part numeric identifier, where the latter variant expresses branching; this is modelled using the <code>VERSION_TREE_ID</code> type.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Under this scheme, multiple versions in the same container all have the same value for <code><em>object_id</em></code>, while their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.</p>
+<p>The following provides a typical example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Under this scheme, multiple versions in the same container all have the same value for <code><em>object_id</em></code>, whilst their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.</p>
 </div>
 <div class="paragraph">
 <p>The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be GUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers, as recommended in [3] (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
@@ -981,8 +1001,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The value of the id.
-The value of the id.</p>
+<p>The value of the id.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1125,10 +1144,7 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract model of UID-based identifiers consisting of a root part and an optional extension;</p>
-</div>
-<div class="paragraph">
-<p>lexical form: <code>root '::' extension</code>.</p>
+<p>Abstract model of UID-based identifiers consisting of a root part and an optional extension; lexical form: <code>root '::' extension</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1158,7 +1174,7 @@ The value of the id.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if <code><em>extension</em> /= Void</code>.</p>
+<p>True if not <code><em>extension</em>.is_empty()</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1186,7 +1202,7 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Concrete type corresponding to hierarchical identifiers of the form defined by UID_BASED_ID.</p>
+<p>Concrete type corresponding to hierarchical identifiers of the form defined by <code>UID_BASED_ID</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1383,8 +1399,10 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Identifier for archetypes. Ideally these would identify globally unique archetypes.
-Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' number</code>.</p>
+<p>Identifier for archetypes. Ideally these would identify globally unique archetypes.</p>
+</div>
+<div class="paragraph">
+<p>Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' number</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1801,7 +1819,7 @@ Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 10:12:12 GMT
+Last updated 2018-12-14 07:12:12 -03
 </div>
 </div>
 </body>

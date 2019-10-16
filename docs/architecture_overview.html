@@ -375,7 +375,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -410,13 +410,24 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.?.? (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ M Polajnar,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Oct 2019</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-21" target="_blank" rel="noopener">SPECBASE-21</a>. Update Architecture Overview with new LANG component, and improved explanation of ITS. Improve package structure description. Replace some diagrams.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 Nov 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2816,17 +2827,11 @@ openEHR, as follows:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID (<a href="https://www.ietf.org/rfc/rfc4122" target="_blank" rel="noopener">IETF RFC4122</a>; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
-with an <code>OBJECT_REF</code> containing its identifier.</p>
+<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers (UIDs) are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the <code>UID</code> class, i.e. either an ISO OID or a UUID (<a href="https://www.ietf.org/rfc/rfc4122" target="_blank" rel="noopener">IETF RFC4122</a>; also known as a GUID). UUIDs are strongly preferred in openEHR since they require no central assignment and can be generated on the spot. A versioned container can be then referenced with an <code>OBJECT_REF</code> containing its identifier.</p>
 </div>
 <div class="paragraph">
-<p>Versions of top-level structures are identified in a way that is guaranteed to work even in distributed
-environments where copying, merging and subsequent modification occur. The full identification of a
-version of a top-level structure is the globally unique tuple consisting of the uid of the owning
-<code>VERSIONED_OBJECT</code>, and the two <code>VERSION</code> attributes <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code>. The
-creating_system_id attribute carries a unique identifier for the system where the content was first created;
-this may be a GUID, Oid or reverse internet identifier. The <code><em>version_tree_id</em></code> is a 1 or 3-part
-number string, such as "1" or for a branch, "1.2.1". A typical version identification tuple is as follows:</p>
+<p>Versions of top-level structures (i.e. objects of type  <code>VERSION&lt;X&gt;</code>, such as <code>VERSION&lt;COMPOSITION&gt;</code>) are identified in a way that is guaranteed to work even in distributed environments where copying, merging and subsequent modification occur. The full identification of a Version is the globally unique tuple consisting of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code>, and the two <code>VERSION</code> attributes <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code>. The
+<code><em>creating_system_id</em></code> attribute carries a unique identifier for the system where the content was first created; this may be a GUID, Oid or reverse internet identifier. The <code><em>version_tree_id</em></code> is a 1 or 3-part number string, such as <code>"1"</code> or for a branch, <code>"1.2.1"</code>. A typical version identification tuple is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2836,20 +2841,23 @@ au.gov.health.rdh.ehr1                  -- id of creating system
 </div>
 </div>
 <div class="paragraph">
-<p>This 3-part tuple is known as a "Version locator" and is defined by the class <code>OBJECT_VERSION_ID</code>
-in the support.identification package. A <code>VERSION</code> can be <em>referred to</em> using a normal
-<code>OBJECT_REF</code> that contains a copy of the version’s <code>OBJECT_VERSION_ID</code>. The openEHR version
-identification scheme is described in detail in the <code>change_control</code> package section of the Common IM.</p>
+<p>This 3-part tuple is known as a <em>version locator</em> and is defined by the class <code>OBJECT_VERSION_ID</code> in the <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_identification_package" target="_blank" rel="noopener"><code>identification</code> package section of the Base Types specification</a>. The openEHR version identification scheme is described in detail in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package" target="_blank" rel="noopener"><code>change_control</code> package section of the Common IM</a>.</p>
 </div>
 <div class="paragraph">
-<p>The last component of identification is the path, used to refer to an interior node of a top-level structure
-identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight
-abbreviations to shorten paths in the most common cases. Paths are described in detail below.
-To refer to an interior data node from outside a top-level structure, a combination of a Version locator
-and a path is required. This is formalised in the <code>LOCATABLE_REF</code> class in the <code>identification</code>
-package section of the Support IM. A Universal Resource Identifier (URI) form can also be used,
+<p>The contained top-level content item (i.e. a <code>COMPOSITION</code> etc) also has a <code><em>uid</em></code> attribute (inherited from <code>LOCATABLE</code>), and it is strongly recommended that this be populated with a copy of the <code>OBJECT_VERSION_ID</code> from the containing <code>VERSION&lt;X&gt;</code> object. This facilitates identifying versions from a naked content object e.g. returned in a query.</p>
+</div>
+<div class="paragraph">
+<p>A <code>VERSION</code> can be <em>referred to</em> using a normal <code>OBJECT_REF</code> that contains a copy of the version&#8217;s <code>OBJECT_VERSION_ID</code>.</p>
+</div>
+<div class="paragraph">
+<p>The last component of identification is the <em>path</em>, used to refer to an interior node of a top-level structure of some type <code>X</code> (e.g. <code>COMPOSITION</code>, <code>PARTY</code>, etc), the latter identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight abbreviations to shorten paths in the most common cases. Paths are described in detail below.</p>
+</div>
+<div class="paragraph">
+<p>To refer to an interior data node from outside a top-level structure, a combination of a  version locator
+and a path is required. This is formalised by the <code>LOCATABLE_REF</code> class, also in the <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_identification_package" target="_blank" rel="noopener"><code>identification</code>
+package section of the Base Types specification</a>. A Universal Resource Identifier (URI) form can also be used,
 defined by the <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_uri_package" target="_blank" rel="noopener">data type <code>DV_EHR_URI</code></a>. This type provides a single string expression
-in the scheme-space "ehr:" which can be used to refer to an interior data node from anywhere (it can
+in the scheme-space <code>ehr:</code> which can be used to refer to an interior data node from anywhere. (It can
 also be used to represent queries; see below). Any <code>LOCATABLE_REF</code> can be converted to a
 <code>DV_EHR_URI</code>, although not all <code>DV_EHR_URIs</code> are <code>LOCATABLE_REFs</code>.</p>
 </div>
@@ -2859,7 +2867,7 @@ objects, and to reference them from the outside, respectively.</p>
 </div>
 <div id="object_referencing" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="architecture_overview/diagrams/object_referencing.png" alt="object referencing" width="65%">
+<img src="architecture_overview/diagrams/object_referencing.svg" alt="object referencing">
 </div>
 <div class="title">Figure 35. How to reference various levels of object</div>
 </div>
@@ -4823,7 +4831,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 10:35:27 GMT
+Last updated 2018-12-14 07:35:27 -03
 </div>
 </div>
 </body>

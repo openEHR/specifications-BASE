@@ -135,11 +135,17 @@ Although there are anomalies in some published terminologies and between some ve
 
 The `OBJECT_VERSION_ID` defines the semantics of the scheme used in openEHR for identifying versions within a versioned container, and uses a three-part identifier, consisting of:
 
-* object_id: the identifier of the version container, in the form of an UID;
-* version_tree_id: the location in the version tree, as a 1- or 3-part numeric identifier, where the latter variant expresses branching; this is modelled using the `VERSION_TREE_ID` type;
-* creating_system_id: the identifier of the system in which this version was created, or type UID.
+* `_object_id_`: the identifier of the version container, in the form of a UID, typically a Guid;
+* `_creating_system_id_`: the identifier of the system in which this version was created, of type UID, typically a reverse domain identifier;
+* `_version_tree_id_`: the location in the version tree, as a 1- or 3-part numeric identifier, where the latter variant expresses branching; this is modelled using the `VERSION_TREE_ID` type.
 
-Under this scheme, multiple versions in the same container all have the same value for `_object_id_`, while their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.
+The following provides a typical example:
+
+----
+87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2
+----
+
+Under this scheme, multiple versions in the same container all have the same value for `_object_id_`, whilst their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.
 
 The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be GUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers, as recommended in [3] (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the {openehr_rm_common}#_change_control_package[Common IM, `change_control` package].
 

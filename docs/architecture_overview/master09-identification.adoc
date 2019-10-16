@@ -57,16 +57,10 @@ openEHR, as follows:
 * _top-level content structures_: content structures such as `COMPOSITION`, `EHR_STATUS`, `EHR_ACCESS`, `PARTY` etc. are uniquely identified by the association of the identifier of their containing `VERSIONED_OBJECT` and the identifier of their containing `VERSION` within the container;
 * _internal nodes_: nodes within top-level structures are identified using paths.
 
-Three kinds of identification are used respectively. For version containers, meaningless unique identifiers ("UIDs") are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an instance of a subtype of the UID class, i.e. either an ISO OID or a UUID ({rfc4122}[IETF RFC4122^]; also known as a GUID). In general UUIDs are favoured since they require no central assignment and can be generated on the spot. A versioned container can be then referenced
-with an `OBJECT_REF` containing its identifier.
+Three kinds of identification are used respectively. For version containers, meaningless unique identifiers (UIDs) are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an instance of a subtype of the `UID` class, i.e. either an ISO OID or a UUID ({rfc4122}[IETF RFC4122^]; also known as a GUID). UUIDs are strongly preferred in openEHR since they require no central assignment and can be generated on the spot. A versioned container can be then referenced with an `OBJECT_REF` containing its identifier.
 
-Versions of top-level structures are identified in a way that is guaranteed to work even in distributed
-environments where copying, merging and subsequent modification occur. The full identification of a
-version of a top-level structure is the globally unique tuple consisting of the uid of the owning
-`VERSIONED_OBJECT`, and the two `VERSION` attributes `_creating_system_id_` and `_version_tree_id_`. The
-creating_system_id attribute carries a unique identifier for the system where the content was first created;
-this may be a GUID, Oid or reverse internet identifier. The `_version_tree_id_` is a 1 or 3-part
-number string, such as "1" or for a branch, "1.2.1". A typical version identification tuple is as follows:
+Versions of top-level structures (i.e. objects of type  `VERSION<X>`, such as `VERSION<COMPOSITION>`) are identified in a way that is guaranteed to work even in distributed environments where copying, merging and subsequent modification occur. The full identification of a Version is the globally unique tuple consisting of the `_uid_` of the owning `VERSIONED_OBJECT`, and the two `VERSION` attributes `_creating_system_id_` and `_version_tree_id_`. The
+`_creating_system_id_` attribute carries a unique identifier for the system where the content was first created; this may be a GUID, Oid or reverse internet identifier. The `_version_tree_id_` is a 1 or 3-part number string, such as `"1"` or for a branch, `"1.2.1"`. A typical version identification tuple is as follows:
 
 ```
 F7C5C7B7-75DB-4b39-9A1E-C0BA9BFDBDEC    -- id of VERSIONED_COMPOSITION
@@ -74,19 +68,19 @@ au.gov.health.rdh.ehr1                  -- id of creating system
 2                                       -- current version
 ```
 
-This 3-part tuple is known as a "Version locator" and is defined by the class `OBJECT_VERSION_ID`
-in the support.identification package. A `VERSION` can be _referred to_ using a normal
-`OBJECT_REF` that contains a copy of the version’s `OBJECT_VERSION_ID`. The openEHR version
-identification scheme is described in detail in the `change_control` package section of the Common IM.
+This 3-part tuple is known as a _version locator_ and is defined by the class `OBJECT_VERSION_ID` in the {openehr_base_types}#_identification_package[`identification` package section of the Base Types specification^]. The openEHR version identification scheme is described in detail in the {openehr_rm_common}#_change_control_package[`change_control` package section of the Common IM^].
 
-The last component of identification is the path, used to refer to an interior node of a top-level structure
-identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight
-abbreviations to shorten paths in the most common cases. Paths are described in detail below.
-To refer to an interior data node from outside a top-level structure, a combination of a Version locator
-and a path is required. This is formalised in the `LOCATABLE_REF` class in the `identification`
-package section of the Support IM. A Universal Resource Identifier (URI) form can also be used,
+The contained top-level content item (i.e. a `COMPOSITION` etc) also has a `_uid_` attribute (inherited from `LOCATABLE`), and it is strongly recommended that this be populated with a copy of the `OBJECT_VERSION_ID` from the containing `VERSION<X>` object. This facilitates identifying versions from a naked content object e.g. returned in a query.
+
+A `VERSION` can be _referred to_ using a normal `OBJECT_REF` that contains a copy of the version's `OBJECT_VERSION_ID`.
+
+The last component of identification is the _path_, used to refer to an interior node of a top-level structure of some type `X` (e.g. `COMPOSITION`, `PARTY`, etc), the latter identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight abbreviations to shorten paths in the most common cases. Paths are described in detail below.
+
+To refer to an interior data node from outside a top-level structure, a combination of a  version locator
+and a path is required. This is formalised by the `LOCATABLE_REF` class, also in the {openehr_base_types}#_identification_package[`identification`
+package section of the Base Types specification^]. A Universal Resource Identifier (URI) form can also be used,
 defined by the {openehr_rm_data_types}#_uri_package[data type `DV_EHR_URI`^]. This type provides a single string expression
-in the scheme-space "ehr:" which can be used to refer to an interior data node from anywhere (it can
+in the scheme-space `ehr:` which can be used to refer to an interior data node from anywhere. (It can
 also be used to represent queries; see below). Any `LOCATABLE_REF` can be converted to a
 `DV_EHR_URI`, although not all `DV_EHR_URIs` are `LOCATABLE_REFs`.
 
@@ -95,4 +89,4 @@ objects, and to reference them from the outside, respectively.
 
 [.text-center]
 .How to reference various levels of object
-image::{diagrams_uri}/object_referencing.png[id=object_referencing,align="center", width=65%]
+image::{diagrams_uri}/object_referencing.svg[id=object_referencing,align="center"]

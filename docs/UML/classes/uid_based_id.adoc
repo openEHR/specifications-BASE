@@ -6,9 +6,7 @@ h|*Class*
 2+^h|*_UID_BASED_ID (abstract)_*
 
 h|*Description*
-2+a|Abstract model of UID-based identifiers consisting of a root part and an optional extension;
-
-lexical form: `root '::' extension`.
+2+a|Abstract model of UID-based identifiers consisting of a root part and an optional extension; lexical form: `root '::' extension`.
 
 h|*Inherit*
 2+|`OBJECT_ID`
@@ -27,7 +25,7 @@ a|Optional local identifier of the object within the context of the root identif
 
 h|
 |*has_extension* (): `Boolean`
-a|True if `_extension_ /= Void`.
+a|True if not `_extension_.is_empty()`.
 
 h|*Invariants*
 2+a|*_Has_extension_valid_*: `extension.is_empty xor has_extension`
