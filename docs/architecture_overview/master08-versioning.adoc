@@ -96,14 +96,9 @@ A typical sequence of changes to a repository is illustrated in the following fi
 
 [.text-center]
 .Contributions to the Repository (delta form)
-image::{diagrams_uri}/contribution_deltas.png[id=contribution_deltas, align="center", width=80%]
+image::{diagrams_uri}/ehr_contributions_deltas.svg[id=contribution_deltas, align="center", width=80%]
 
-This shows the effect of four Contributions (indicated by blue ovals on the left hand side) to a repository
-containing a number of CIs (the directory tree is not shown for the sake of simplicity). As each
-Contribution is made, the repository is changed in some way. The first brings into existing a new CI,
-and modifies three others (changes indicated by the ‘C’ triangles). The second Contribution causes
-the creation of a new CI only. The third causes a creation as well as two changes, while the fourth
-causes only a change. (Changes to the folder structure are not shown here).
+This shows the effect of five Contributions (left hand side) to a repository containing a number of CIs. As each Contribution is made, the repository is changed in some way. The first brings into existing a new CI, and modifies two others (changes indicated by the 'update' triangles). The second Contribution causes the creation of a new CI due to importing from a lab data feeder system. The third causes a creation as well as three changes, while the fourth causes an amendment to an existing CI.
 
 One nuance which should be pointed out is that in the figure above Contributions are shown as if they are
 literally a set of deltas, i.e. exactly the changes which occur to the record. Thus, the first Contribution
@@ -116,7 +111,7 @@ versioning implementation may or may not generate deltas as a way of efficient s
 
 [.text-center]
 .Contributions to the Repository (non-delta form)
-image::{diagrams_uri}/contributions_non_delta.png[id=contributions_non_delta, align="center", width=80%]
+image::{diagrams_uri}/ehr_contributions_non_deltas.svg[id=contributions_non_delta, align="center", width=80%]
 
 For the purposes of openEHR, a Contribution is considered as being the set of Versions created or
 attested at one time, as implied by the figure above.

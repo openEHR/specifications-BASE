@@ -60,7 +60,7 @@ of the openEHR EHR is shown below.
 
 [.text-center]
 .High-level Structure of the openEHR EHR
-image::{diagrams_uri}/high_level_ehr_structure.png[id=high_level_ehr_structure,align="center",width="70%"]
+image::{openehr_rm_ehr_diagrams}/high_level_ehr_structure.svg[id=high_level_ehr_structure,align="center"]
 
 In this figure, the parts of the EHR are as follows:
 
@@ -68,12 +68,9 @@ In this figure, the parts of the EHR are as follows:
 * _EHR_access (versioned)_: an object containing access control settings for the record;
 * _EHR_status (versioned)_: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;
 * _Directory (versioned)_: an optional hierarchical structure of Folders that can be used to logically organise Compositions;
+* _Folders (versioned)_: additional optional hierarchical folder structures that can be used to logically organise Compositions;
 * _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
 * _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
-
-The internal structure of the Composition along with the Directory object correspond closely to the
-levels in internationally agreed models of health information such as the CEN EN13606 and HL7
-CDA standards.
 
 The logical structure of a typical Composition is shown in more detail in the next figure. This shows various hierarchical levels from Composition to the data types are shown in a typical arrangement.
 The 21 data types provide for all types of data needed for clinical and administrative recording.
@@ -190,7 +187,7 @@ Time is described in detail in the {openehr_rm_ehr}#_time_in_the_ehr[EHR Informa
 
 [.text-center]
 .Time in the EHR
-image::{diagrams_uri}/time_in_the_ehr.png[id=time_in_the_ehr,align="center", width=70%]
+image::{openehr_rm_ehr_diagrams}/time_in_the_ehr.svg[id=time_in_the_ehr,align="center", width=70%]
 
 == Language
 
