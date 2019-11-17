@@ -42,7 +42,7 @@ indicated by the initial part of the path, and can be specified in two ways:
 
 In addition, the `//` notation from Xpath can be used to define a path pattern:
 
-* _path pattern_: path starts with or contains a the symbol '//' and is taken to be a pattern which can match any number of path segments in the data; the pattern is matched if an actual path can be found anywhere in the structure for which part of the path matches the path section before the `//` symbol, and a later section matches the section appearing after the `//`.
+* _path pattern_: path starts with or contains the symbol '//' and is taken to be a pattern which can match any number of path segments in the data; the pattern is matched if an actual path can be found anywhere in the structure for which part of the path matches the path section before the `//` symbol, and a later section matches the section appearing after the `//`.
 
 === Predicate Expressions
 
@@ -363,7 +363,7 @@ Each of these paths has an Xpath equivalent of the following form:
 /data/events[@archetype_node_id='at0006' and name/value='standing']/data/items[@archetype_node_id='at0004']/value/magnitude
 ----
 
-To achieve unique paths based on the `LOCATABLE._name_` attribute, a the system has to specifically ensure uniqueness of `_name_` of sibling nodes, e.g. by systematically being set to a copy of one or more other attribute values. For example, in an `EVENT` object, `_name_` could be a string copy of the `_time_` attribute.
+To achieve unique paths based on the `LOCATABLE._name_` attribute, the system has to specifically ensure uniqueness of `_name_` for sibling nodes, e.g. by systematically being set to a copy of one or more other attribute values. For example, in an `EVENT` object, `_name_` could be a string copy of the `_time_` attribute.
 
 In general, uniqueness of property values of sibling nodes is not required, and the only guaranteed unique paths are those based on positional predicates.
 
