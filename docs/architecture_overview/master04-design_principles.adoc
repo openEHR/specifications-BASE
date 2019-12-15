@@ -43,7 +43,7 @@ systems.
 
 === Multi-level Modelling and Archetypes
 
-One of the key paradigms on which openEHR is based is known as _multi-level modelling_, originally described in <<Beale_2000>> as 'two-level modelling'. Under the multi-level approach, there are three levels of models required for a system:
+One of the key paradigms on which openEHR is based is known as _multi-level modelling_, originally described in citenp:[Beale2000] as 'two-level modelling'. Under the multi-level approach, there are three levels of models required for a system:
 
 * _reference model (RM)_: a stable reference information model constitutes the first level of modelling;
 * _re-usable content element definitions_: formal definitions of clinical content data points and groups, in the form of {openehr_am}[_archetypes_^];
@@ -59,7 +59,7 @@ The use of archetyping in openEHR engenders new relationships between informatio
 .Archetype Meta-architecture
 image::{diagrams_uri}/archetype_meta_architecture.svg[id=archetype_meta_architecture, align="center", width=80%]
 
-In this figure, 'data' as we know it in normal information systems (shown on the bottom left) conforms in the usual way to an object model (top left). Systems engineered in the 'classic' way (i.e. all domain semantics are encoded somewhere in the software or database) are limited to this kind of architecture. With the use of multi-level modelling, runtime data now conform semantically to archetypes as well as concretely to the reference model. All archetypes are expressed in a generic {openehr_am_adl2}[Archetype Definition Language (ADL)], which is also ISO standard 13606-2.
+In this figure, 'data' as we know it in normal information systems (shown on the bottom left) conforms in the usual way to an object model (top left). Systems engineered in the 'classic' way (i.e. all domain semantics are encoded somewhere in the software or database) are limited to this kind of architecture. With the use of multi-level modelling, runtime data now conform semantically to archetypes as well as concretely to the reference model. All archetypes are expressed in a generic {openehr_am_adl2}[Archetype Definition Language (ADL)], which is the basis of {iso_13606-2}[ISO standard 13606-2].
 
 The details of how archetypes and templates work in openEHR are described in the <<_archetypes_and_templates>>.
 
@@ -75,7 +75,7 @@ Clearly applications cannot always be totally generic (although many data captur
 
 == Separation of Responsibilities
 
-A second design paradigm used in openEHR is that of separation of responsibilities within the computing environment. Complex domains are only tractable if the functionality is first partitioned into broad areas of interest, i.e. into a 'system of systems' <<Maier_2000>>. This principle has been understood in computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation', and was the driver for the explosion of object-oriented languages, libraries and frameworks.
+A second design paradigm used in openEHR is that of separation of responsibilities within the computing environment. Complex domains are only tractable if the functionality is first partitioned into broad areas of interest, i.e. into a 'system of systems' citenp:[Maier2000]. This principle has been understood in computer science for a long time under the rubrics 'low coupling', 'encapsulation' and 'componentisation', and was the driver for the explosion of object-oriented languages, libraries and frameworks.
 
 When applied to larger systems, such as that needed to run a hospital or regional health network, the modern form of the paradigm is Services Oriented Architecture (SOA), whereby the components of the system are coarse-grained services. In this approach, each area of functionality is formally modelled and implemented as a self-standing service with a defined interface.
 
@@ -112,5 +112,5 @@ Computational:: concerned with the description of the system as a set of objects
 Engineering:: concerned with the mechanisms supporting system distribution.
 Technological:: concerned with the detail of the components from which the distributed system is constructed.
 
-The openEHR specifications accordingly include an information viewpoint - the openEHR Reference Model - and a computational viewpoint - the openEHR Service Model. The Engineering viewpoint corresponds to the {openehr_its_component}[openEHR Implementation Technology Specifications (ITS)^], while the Technological viewpoint corresponds to the technologies and components used in an actual deployment. An important aspect of the division into viewpoints is that there is generally not a 1:1 relationship between model specifications in each viewpoint. For example, there might be a concept of 'health mandate' (an <<ISO_13940,ISO 13940>> Continuity of Care concept) in the enterprise viewpoint. In the information viewpoint, this might have become a model containing many classes. In the computational viewpoint, the information structures defined in the information viewpoint are likely to recur in multiple services, and there may or may not be a
+The openEHR specifications accordingly include an information viewpoint - the openEHR Reference Model - and a computational viewpoint - the openEHR Service Model. The Engineering viewpoint corresponds to the {openehr_its_component}[openEHR Implementation Technology Specifications (ITS)^], while the Technological viewpoint corresponds to the technologies and components used in an actual deployment. An important aspect of the division into viewpoints is that there is generally not a 1:1 relationship between model specifications in each viewpoint. For example, there might be a concept of 'health mandate' (see {iso_13940}[ISO 13940, Continuity of Care concepts]) in the enterprise viewpoint. In the information viewpoint, this might have become a model containing many classes. In the computational viewpoint, the information structures defined in the information viewpoint are likely to recur in multiple services, and there may or may not be a
 'health mandate' service. The granularity of services defined in the computational viewpoint corresponds most strongly to divisions of function in an enterprise or region, while the granularity of components in the information view points corresponds to the granularity of mental concepts in the problem space, the latter almost always being more fine-grained.

@@ -171,13 +171,13 @@ The Security Information Model defines the semantics of access control and priva
 
 ==== EHR Information Model
 
-The EHR IM includes the `ehr` and `composition` packages, and defines the containment and context semantics of the key concepts `EHR`, `COMPOSITION`, `SECTION`, and `ENTRY`. These classes are the major coarse-grained components of the EHR, and correspond directly to the classes of the same names in CEN EN13606:2005 and fairly closely to the "levels" of the same names in the HL7 Clinical Document Architecture (CDA) release 2.0.
+The EHR IM includes the `ehr` and `composition` packages, and defines the containment and context semantics of the key concepts `EHR`, `COMPOSITION`, `SECTION`, and `ENTRY`. These classes are the major coarse-grained components of the EHR, and correspond directly to the classes of the same names in {iso_13606-1}[ISO 13606-1:2005^] and fairly closely to the 'levels' of the same names in the {hl7_cda}[HL7 Clinical Document Architecture (CDA) release 2.0^].
 
 ==== EHR Extract Information Model
 
 The EHR Extract IM defines how an EHR extract is built from `COMPOSITIONs`, demographic, and
 access control information from the EHR. A number of Extract variations are supported, including
-"full openEHR", a simplified form for integration with CEN EN13606, and an openEHR/openEHR
+"full openEHR", a simplified form for integration with ISO 13606, and an openEHR/openEHR
 synchronisation Extract.
 
 ==== Integration Information Model
@@ -192,8 +192,7 @@ integration system. See <<Integrating openEHR with other Systems>> for more deta
 The demographic model defines generic concepts of `PARTY`, `ROLE` and related details such as contact
 addresses. The archetype model defines the semantics of constraint on `PARTYs`, allowing archetypes
 for any type of person, organisation, role and role relationship to be described. This approach provides
-a flexible way of including the arbitrary demographic attributes allowed in the OMG HDTF
-PIDS standard <<Corbamed_PIDS>>.
+a flexible way of including the arbitrary demographic attributes allowed in the {omg_pids}[OMG HDTF PIDS standard].
 
 == Archetype Model Component (AM)
 

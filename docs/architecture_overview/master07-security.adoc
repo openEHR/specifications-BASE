@@ -102,7 +102,7 @@ by the patient):
 A key principle with respect to the design of mechanisms supporting security, confidentiality and
 integrity has to be kept in mind: the likelihood of any given mode of targeted inappropriate access is
 proportional to the perceived value of the information and inversely proportional to the cost of access.
-To paraphrase Ross Anderson’s BMA paper <<Anderson_1996>> on health data security, for a given access, the perpretrator
+To paraphrase Ross Anderson’s BMA paper cite:[Anderson1996] on health data security, for a given access, the perpretrator
 will try to find the simplest, cheapest and quickest method, which is more likely to be bribery or
 burglary than James Bond-inspired technology. openEHR makes use of this principle by providing
 some relatively simple mechanisms that are cheap to implement but can make misuse quite difficult,
@@ -254,7 +254,7 @@ Access control is completely specified in an openEHR EHR in the `EHR_ACCESS` obj
 This object acts as a gateway for all information access, and any access decision must be made based
 on the policies and rules it contains.
 
-One of the problems with defining the semantics of the EHR Access object is that there is currently no published formal, proven model of access control for shared health information. Relevant standards include <<ISO_13606-4,ISO EN13606 part 4>>, the <<ISO_22600,ISO PMAC (Privilege Management and Access Control) standard>>. Undoubtedly experimental and even some limited production health information security implementations exist. In reality however, no large-scale shared EHR deployments exist, and so security solutions to date are still developmental.
+One of the problems with defining the semantics of the EHR Access object is that there is currently no published formal, proven model of access control for shared health information. Relevant standards include {iso_13606-4}[ISO 13606-4^], {iso_22600}[ISO PMAC (Privilege Management and Access Control) standard^]. Undoubtedly experimental and even some limited production health information security implementations exist. In reality however, no large-scale shared EHR deployments exist, and so security solutions to date are still developmental.
 
 The openEHR architecture is therefore designed to accommodate alternative models of access control,
 each defined by a subtype of the class `ACCESS_CONTROL_SETTING` (Security IM). This

@@ -84,7 +84,7 @@ image::{diagrams_uri}/composition_structure.png[id=composition_structure,align="
 === Entry Subtypes
 
 All clinical information created in the openEHR EHR is ultimately expressed in 'Entries'. An Entry
-is logically a single 'clinical statement', and may be a single short narrative phrase, but may also contain
+is logically a single _clinical statement_, and may be a single short narrative phrase, but may also contain
 a significant amount of data, e.g. an entire microbiology result, a psychiatric examination note, a
 complex medication order. In terms of actual content, the Entry classes are the most important in the
 openEHR EHR Information Model, since they define the semantics of all the 'hard' information in
@@ -97,14 +97,14 @@ The openEHR `ENTRY` classes are shown below. There are five concrete subtypes: `
 .The openEHR Entry model (in EHR IM)
 image::{openehr_rm_uml_diagrams}/RM-composition.entry-simple.svg[id=entry_model_simple, align="center",width="60%"]
 
-The choice of these types is based on the clinical problem-solving process shown below.
+The choice of these types is based on the clinical problem-solving process, described in citenp:[Beale_Heard2007] shown below.
 
 [.text-center]
 .Relationship of information types to the investigation process
 image::{openehr_rm_releases}/docs/ehr/diagrams/clinical_investigator_recording_process.svg[id=clinical_investigator_process,align="center",width="65%"]
 
 This figure shows the cycle of information creation due to an iterative, problem solving process typical
-not just of clinical medicine but of science in general. The 'system' as a whole is made up of two
+not just of clinical medicine but of science in general. The 'system' as a whole is considered to be made up of two
 parts: the 'patient system' and the 'clinical investigator system'. The latter consists of health carers,
 and may include the patient (at points in time when the patient performs observational or therapeutic
 activities), and is responsible for understanding the state of the patient system and delivering care to
@@ -112,11 +112,11 @@ it. A problem is solved by making observations, forming opinions (hypotheses), a
 actions (instructions) for next steps, which may be further investigation, or may be interventions
 designed to resolve the problem, and finally, executing the instructions (actions).
 
-This process model is a synthesis of Lawrence Weed's 'problem-oriented' method of EHR recording, and later related efforts, including the model of Rector, Nowlan & Kay <<Rector_1994>>, and the 'hypothetico-deductive' model of reasoning (see e.g. <<Elstein_1987>>). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process model used in openEHR is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion, nor even require all steps to be present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the openEHR Entry model does not impose a process model, it only provides the possible types of information that might occur.
+This process model is a synthesis of Lawrence Weed's 'problem-oriented' method of EHR recording, and later related efforts, including the model of Rector, Nowlan & Kay citenp:[Rector1994], and the 'hypothetico-deductive' model of reasoning (see e.g. citenp:[Elstein1978]). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process model used in openEHR is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion, nor even require all steps to be present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the openEHR Entry model does not impose a process model, it only provides the possible types of information that might occur.
 
 ==== Ontology of Entry Types
 
-In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the subtypes of Entry described above. There are many subtypes of each of these types, of which some are shown in the figure below.
+In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the subtypes of Entry described above. There are many subtypes of each of these types, of which some are shown in the figure below, reproduced from citenp:[Beale_Heard2007].
 
 [.text-center]
 .Ontology of Recorded Information
@@ -124,7 +124,7 @@ image::{diagrams_uri}/CIR_ontology.png[id=CIR_ontology,align="center",width="80%
 
 The key top-level categories are 'care information' and 'administrative information'. The former encompasses all statements that might be recorded at any point during the care process, and consists of the major sub-categories on which the Entry model is based, namely 'observation', 'opinion', 'instruction', and 'action' (a kind of observation) which themselves correspond to the past, present and future in time. The administrative information category covers information which is not generated by the care process proper, but relates to organising it, such as appointments and admissions. This information is not about care, but about the logistics of care delivery. Regardless of the diversity, each of the leaf-level categories shown in this figure is ultimately a sub-category of one of the types from the process model, and hence, of the subtypes of the openEHR Entry model.
 
-Correct representation of the categories from the ontology is enabled by using archetypes designed to express the information of interest (say a risk assessment) in terms of a particular Entry subtype (in this case, Evaluation). In a system where Entries are thus modelled, there will be no danger of incorrectly identifying the various kinds of Entries, as long as the Entry subtype, time, and certainty/negation are taken into account. Note that even if the ontology shown in <<CIR_ontology>> figure is not correct (undoubtedly it isn't), archetypes will be constructed to account for each improved idea of what such categories should really be.
+Correct representation of the categories from the ontology is enabled by using archetypes designed to express the information of interest (say a risk assessment) in terms of a particular Entry subtype (in this case, Evaluation). In a system where Entries are thus modelled, there will be no danger of incorrectly identifying the various kinds of Entries, as long as the Entry subtype, time, and certainty/negation are taken into account. Note that even if the ontology shown in <<CIR_ontology>> is not correct (undoubtedly it is not), archetypes will be constructed to account for each improved idea of what such categories should really be.
 
 ==== Clinical Statement Status and Negation
 

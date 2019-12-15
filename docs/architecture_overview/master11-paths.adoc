@@ -22,7 +22,7 @@ where they are used.
 
 Paths in openEHR are defined in an Xpath1-compatible syntax which is a superset of the path syntax
 described in the Archetype Definition Language (ADL). The syntax is designed to be easily mappable
-to <<Xpath,Xpath expressions>>, for use with openEHR-based XML.
+to {w3c_xpath}[W3C Xpath expressions^], for use with openEHR-based XML.
 
 The data path syntax used in locator expressions follows the general pattern of a path consisting of
 segments each consisting of an attribute name, and separated by the slash ('/') character, i.e.:
@@ -414,7 +414,7 @@ In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr
 
 NOTE: So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc, are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
 
-See {rfc3986}[RFC-3986, Universal Resource Identifiers in WWW] by Tim Berners-Lee. See W3C document {w3c_uri_addressing}[Naming and Addressing: URIs, URLs, ...] for a starting point on URIs. 
+See {rfc3986}[RFC-3986, Universal Resource Identifiers in WWW^] by Tim Berners-Lee. See W3C document {w3c_uri_addressing}[Naming and Addressing: URIs, URLs, ...^] for a starting point on URIs. 
 
 An `ehr:` URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with `ehr:` URIs are likely to be used, as well as more traditional `http://` style references. The subsections below describe how URIs of both kinds can be constructed.
 
