@@ -352,7 +352,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2019 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2020 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -396,9 +396,10 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form;<br>
+ <a href="https://specifications.openehr.org/tickets/SPECBASE-24" target="_blank" rel="noopener">SPECBASE-24</a>: Improve specifications block diagram and related explanations in sections 2 and 5.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Dec 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>18 Jan 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -680,25 +681,44 @@
 <div class="sect2">
 <h3 id="_the_openehr_specification_program"><a class="anchor" href="#_the_openehr_specification_program"></a>2.1. The openEHR Specification Program</h3>
 <div class="paragraph">
-<p>The <a href="https://www.openehr.org/programs/specification" target="_blank" rel="noopener">openEHR Specification Program</a> is responsible for developing the specifications of openEHR, from which the openEHR Health Computing Platform is implemented. The outputs of the program consist of a number of <em>components</em>, as shown in the diagram below, with each component consisting of one or more separate specifications.</p>
+<p>The <a href="https://www.openehr.org/programs/specification" target="_blank" rel="noopener">openEHR Specification Program</a> is responsible for developing the specifications of openEHR, from which the openEHR Health Computing Platform is implemented. The outputs of the program consist of a number of <em>components</em>, as shown in the diagram below, with each component (marked in blue) consisting of one or more separate specifications.</p>
 </div>
 <div id="specification_project" class="imageblock text-center text-center">
 <div class="content">
-<img src="architecture_overview/diagrams/specification_project.svg" alt="specification project" width="70%">
+<img src="architecture_overview/diagrams/openehr_block_diagram.svg" alt="openehr block diagram" width="70%">
 </div>
 <div class="title">Figure 1. The openEHR Specification project</div>
 </div>
 <div class="paragraph">
-<p>The components on the left consist of abstract formal vocabulary, languages and UML models for various elements of the openEHR health computing platform. At the bottom is the <a href="https://specifications.openehr.org/releases/TERM/latest/index" target="_blank" rel="noopener">Terminology (TERM) component</a>, which contains formal artefacts representing openEHR&#8217;s internal terminology, along with expressions of various ISO, IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format.</p>
+<p>The components in the left group contain the <em>abstract specifications</em> (also known as the 'Platform Independent Model' or PIM) and are divided into the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Foundation (BASE)</strong>: primitive types, definitions, identifiers, other basic types needed across openEHR;</p>
+</li>
+<li>
+<p><strong>Formalisms (LANG, AM, QUERY)</strong>: various generic formalisms, including BMM (Basic Meta-Model), (ADL (Archetype Definition Language) and AQL (Archetype Query Language);</p>
+</li>
+<li>
+<p><strong>Content (TERM, RM)</strong>: the models of primary content of the openEHR platform, including demographics, EHR; supporting openEHR Terminology (along with expressions of various ISO, IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format);</p>
+</li>
+<li>
+<p><strong>Process &amp; CDS (PROC, CDS)</strong>: clinical process and clinical decision support components, containing the Task Planning and GDL (Guideline Definition Language) specifications;</p>
+</li>
+<li>
+<p><strong>Platform Services</strong>: abstract formal APIs defining the interfaces to the openEHR platform.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The remaining components on the left of the figure (BASE to SM) define the openEHR platform in a formal abstract form, using UML models and syntax specifications as needed. The components contain the bulk of the openEHR specifications.</p>
+<p>Some of these specifications (e.g. Antlr grammars) are directly usable in software development. Most of the abstract specifications have concrete expressions in formalisms such as JSON, XML schema, openEHR BMM and REST APIs enabling their direct use in development. These are known as Implementation Technology Specifications (ITSs; also known as 'Platform-Specific Models' or PSMs), and are collected in the <a href="https://specifications.openehr.org/releases/ITS/latest/index" target="_blank" rel="noopener">ITS component</a> shown on the right. They also constitute openEHR&#8217;s <em>interoperability specifications</em>.</p>
 </div>
 <div class="paragraph">
-<p>Some of these specifications (e.g. Antlr grammars) are directly usable in software development. Most of the formal models have concrete expressions in formalisms such as JSON, XML schema, openEHR BMM and REST APIs enabling their direct use in development. These are known as Implementation Technology Specifications (ITSs), and are collected in the <a href="https://specifications.openehr.org/releases/ITS/latest/index" target="_blank" rel="noopener">ITS component</a> shown on the right. They constitute openEHR&#8217;s <em>interoperability specifications</em>.</p>
+<p>As implementation technologies change over time the ITS specifications will be replaced, while the main group of abstract specifications will generally only change in response to real-world requirements other than information technology.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/CNF/latest/index" target="_blank" rel="noopener">CNF component</a> at the right top defines <em>conformance criteria</em>, and is primarily based on ITS artefacts such as REST APIs, XSDs etc. It includes a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.</p>
+<p>The <a href="https://specifications.openehr.org/releases/CNF/latest/index" target="_blank" rel="noopener">CNF component</a> at the top defines <em>conformance criteria</em>, and is primarily based on ITS artefacts such as REST APIs, XSDs, but also upon AQL queries, archetypes and some other abstract artefacts. It includes a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.</p>
 </div>
 <div class="paragraph">
 <p>The specifications published by openEHR constitute the <em>primary reference for all openEHR semantics</em>. The presentation style is deliberately intended to be clear and semantically close to the <em>ideas</em> being communicated. Accordingly, the specifications do not follow any particular programming language or idiom, but instead use  various formalisms and illustrations appropriate to each topic.</p>
@@ -1231,7 +1251,7 @@ Technological
 <p>From the software engineering point of view, the consolidated structure of UML packages from the formal specifications that contain them is useful, and is illustrated below. The top-level packages include: <code>base</code>, <code>lang</code>, <code>rm</code>, <code>am</code>, <code>proc</code> and <code>sm</code>. All packages defining detailed models appear inside one of these outer packages, which are conceptually defined within the <code>org.openehr</code> namespace (also represented in UML as packages). In some implementation technologies (e.g. Java / Maven), the <code>org.openehr</code> namespace is formally used.</p>
 </div>
 <div class="paragraph">
-<p>These packages do not include the specifications for various languages (ADL, AQL, GDL, ODIN etc), identification systems, or downstream implementation technology specifictions (ITSs), which are included in the corresponding component or else in other components.</p>
+<p>These packages do not include the specifications for various languages (ADL, AQL, ODIN etc), identification systems, or downstream implementation technology specifications (ITSs), which are included in the corresponding component or else in other components.</p>
 </div>
 <div id="consolidated_package_structure" class="imageblock text-center text-center">
 <div class="content">
@@ -1682,7 +1702,7 @@ based knowledge services in the environment, which along with services for acces
 <div class="sect2">
 <h3 id="_global_view"><a class="anchor" href="#_global_view"></a>5.8. Global View</h3>
 <div class="paragraph">
-<p>The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CFN and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.</p>
+<p>The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CNF and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.</p>
 </div>
 <div class="imageblock text-center text-center">
 <div class="content">
