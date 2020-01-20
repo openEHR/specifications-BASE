@@ -26,7 +26,7 @@ The ITS component consists of concrete artefacts of various forms including:
 
 From the software engineering point of view, the consolidated structure of UML packages from the formal specifications that contain them is useful, and is illustrated below. The top-level packages include: `base`, `lang`, `rm`, `am`, `proc` and `sm`. All packages defining detailed models appear inside one of these outer packages, which are conceptually defined within the `org.openehr` namespace (also represented in UML as packages). In some implementation technologies (e.g. Java / Maven), the `org.openehr` namespace is formally used.
 
-These packages do not include the specifications for various languages (ADL, AQL, GDL, ODIN etc), identification systems, or downstream implementation technology specifictions (ITSs), which are included in the corresponding component or else in other components.
+These packages do not include the specifications for various languages (ADL, AQL, ODIN etc), identification systems, or downstream implementation technology specifications (ITSs), which are included in the corresponding component or else in other components.
 
 [.text-center]
 .Consolidated Package Structure of openEHR
@@ -250,7 +250,7 @@ based knowledge services in the environment, which along with services for acces
 
 == Global View
 
-The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful _aide memoire_ picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CFN and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.
+The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful _aide memoire_ picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CNF and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.
 
 [.text-center]
 .openEHR Components and specifications - global view
