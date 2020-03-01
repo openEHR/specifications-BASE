@@ -199,7 +199,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2017 - 2019 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2017 - 2020 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -239,13 +239,22 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.?.? (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-25" target="_blank" rel="noopener">SPECBASE-25</a>: Improve and correct function definitions in Foundation types.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>201 Mar 2020</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-72" target="_blank" rel="noopener">SPECRM-72</a>: Add guidance on date/time formatting, recommending extended ISO8601 format.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Lah</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Nov 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -357,7 +366,7 @@
 <div class="sect2">
 <h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
 <div class="paragraph">
-<p>Feedback may be provided on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org" target="_blank" rel="noopener">technical mailing list</a>.</p>
+<p>Feedback may be provided on the <a href="https://forums.openehr.org/c/specifications" target="_blank" rel="noopener">technical mailing list</a>.</p>
 </div>
 <div class="paragraph">
 <p>Issues may be raised on the <a href="https://specifications.openehr.org/components/BASE/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
@@ -479,16 +488,7 @@
 other: <code>Any[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Value equality.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
-other: <code>Any[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Reference equality.</p>
+<p>Value equality: return True if <code>this</code> and <code><em>other</em></code> are attached to objects defined to be equal.</p>
 </div>
 <div class="hdlist">
 <div class="title">Parameters<br></div>
@@ -498,7 +498,29 @@ other: <code>Any[1]</code><br>
 <code><em>other</em></code>
 </td>
 <td class="hdlist2">
-<p>Reference equality.</p>
+<p>Other object for comparison.</p>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> (<br>
+other: <code>Any[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Reference equality for reference types, value equality for value types.</p>
+</div>
+<div class="hdlist">
+<div class="title">Parameters<br></div>
+<table>
+<tr>
+<td class="hdlist1">
+<code><em>other</em></code>
+</td>
+<td class="hdlist2">
+<p>Other object for comparison.</p>
 </td>
 </tr>
 </table>
@@ -621,7 +643,7 @@ an_object: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Class representing minimal interface of standard Boolean type.</p>
+<p>Type representing minimal interface of built-in Boolean type.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -635,7 +657,7 @@ an_object: <code>Any[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conjunction</strong> (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or not other)</code><br>
@@ -646,7 +668,7 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix and_then</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>semistrict_conjunction</strong> (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or else not other)</code></p></td>
@@ -656,7 +678,7 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>disjunction</strong> (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and not other)</code><br>
@@ -668,7 +690,7 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix or_else</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>semistrict_disjunction</strong> (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and then not other)</code></p></td>
@@ -678,7 +700,7 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix xor</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclusive_disjunction</strong> (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_definition</em></strong>: <code>Result = self or other) and not (self and other</code></p></td>
@@ -688,13 +710,18 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix implies</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>implication</strong> (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_definition</em></strong>: <code>Result = (not self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean implication of `other' (semi-strict)</p>
 </div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negation</strong> (): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -733,7 +760,7 @@ other: <code>Boolean[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract notional parent class of ordered, types i.e. types on which the ‘&lt;‘ operator is defined.</p>
+<p>Abstract parent class of ordered types i.e. types on which the ‘&lt;‘ operator is defined.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -747,12 +774,49 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Arithmetic comparison. In conjunction with <code>=</code>, enables the definition of the operators <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code>. In real type systems, this operator might be defined on another class for comparability.</p>
+<p>Arithmetic value comparison. In conjunction with <code>=</code>, enables the definition of the related functions <code><em>greater_than</em>()</code> etc. This operator may be redefined in descendants.</p>
 </div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than_or_equal</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Inv_result</em></strong>: <code>not (other &lt; self)</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if Is current object less than or equal to <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Inv_result</em></strong>: <code>Result = (other &lt; self)</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if Is current object greater than <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than_or_equal</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Inv_result</em></strong>: <code>Result = (other &lt;= self)</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if Is current object greater than or equal to <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
 </table>
@@ -772,7 +836,9 @@ other: <code>Ordered[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Type representing minimal interface of built-in Character type.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -796,7 +862,9 @@ other: <code>Ordered[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Type representing minimal interface of built-in Octet type.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -821,7 +889,7 @@ other: <code>Ordered[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Strings of characters, as used to represent textual data in any natural or formal language.</p>
+<p>Type representing minimal interface of built-in String type, as used to represent textual data in any natural or formal language.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -832,15 +900,6 @@ other: <code>Ordered[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
-other: <code>String[1]</code><br>
-): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Concatenation operator - causes ‘other’ to be appended to this string.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -861,6 +920,24 @@ other: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_integer</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the integer corresponding to the integer value represented in this string.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>append</strong> (<br>
+other: <code>String[1]</code><br>
+): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Concatenation operator - causes ‘other’ to be appended to this string.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lexical comparison.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -906,7 +983,7 @@ other: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract notional parent class of numeric types, which are types which have various arithmetic and comparison operators defined.</p>
+<p>Abstract parent class of numeric types, which are types which have various arithmetic and comparison operators defined.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -920,29 +997,47 @@ other: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix *</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Product by `other'. Actual type of result depends on arithmetic balancing rules.</p>
+<p>Sum with <code><em>other</em></code> (commutative). Actual type of result depends on arithmetic balancing rules.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sum with `other' (commutative). Actual type of result depends on arithmetic balancing rules.</p>
+<p>Result of subtracting <code><em>other</em></code>. Actual type of result depends on arithmetic balancing rules.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix -</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Result of subtracting `other'. Actual type of result depends on arithmetic balancing rules.</p>
+<p>Product by <code><em>other</em></code>. Actual type of result depends on arithmetic balancing rules.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+other: <code>Numeric[1]</code><br>
+): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Divide by`<em>other</em>`. Actual type of result depends on arithmetic balancing rules.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+other: <code>Numeric[1]</code><br>
+): <code>Numeric</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Expontiation of this by <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -990,12 +1085,71 @@ other: <code>Numeric[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Class representing minimal interface of standard Integer type.</p>
+<p>Type representing minimal interface of built-in Integer type.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer addition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer subtraction.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer multiplication.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer division.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer exponentiation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modulo</strong> (<br>
+mod: <code>Integer[1]</code><br>
+): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return self modulo other.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1016,12 +1170,71 @@ other: <code>Numeric[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Class representing minimal interface of standard Integer64 type.</p>
+<p>Type representing minimal interface of built-in Integer64 type.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Integer64</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer addition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Integer64</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer subtraction.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Integer64</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer multiplication.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+other: <code>Integer[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer division.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer exponentiation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modulo</strong> (<br>
+mod: <code>Integer[1]</code><br>
+): <code>Integer64</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return self modulo other.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1061,6 +1274,51 @@ other: <code>Numeric[1]</code><br>
 <p>Return the greatest integer no greater than the value of this object.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>Real[1]</code><br>
+): <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Real number addition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>Real[1]</code><br>
+): <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Real number subtraction.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+other: <code>Real[1]</code><br>
+): <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Real number multiplication.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+other: <code>Real[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Real number division.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Real number exponentiation.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1079,7 +1337,9 @@ other: <code>Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Type used to represent double-precision decimal numbers. Corresponds to a double-precision floating point value in most languages.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -1188,9 +1448,27 @@ v: <code>T[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong> (): <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_empty</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if container is empty.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>there_exists</strong> (<br>
+test: <code>Operation[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Existential quantifier applied to container, using a Boolean-returning function agent (lambda) <code><em>test</em></code> taking one argument of type <code>T</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>for_all</strong> (<br>
+test: <code>Operation[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Universal quantifier applied to container, using a Boolean-returning function agent (lambda) <code><em>test</em></code> taking one argument of type <code>T</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1391,7 +1669,7 @@ a_key: <code>K[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Interval&lt;T&gt;</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Interval&lt;T&gt; (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1463,12 +1741,13 @@ upper boundary value included in range if not upper_unbounded.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code>boolean</code></p></td>
+): <code>boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code>(lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code>.
+<p>True if the value <code>e</code> is properly contained in this Interval.
 True if (lower_unbounded or
 lower_included and v &gt;= lower) or v &gt; lower and
 (upper_unbounded or
@@ -1476,21 +1755,21 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>intersects</strong> (<br>
 other: <code>Interval[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval.</p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of other is strictly inside the limits of this interval.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (<br>
 other: <code>Interval[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current interval properly contains <code>other</code>? True if all points of <code>other</code> are inside the current interval.</p>
+<p>True if current interval properly contains <code><em>other</em></code>? True if all points of <code><em>other</em></code> are inside the current interval.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1499,7 +1778,7 @@ other: <code>Interval[1]</code><br>
 other: <code>Any[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current object&#8217;s interval is semantically same as <code>other</code>.</p>
+<p>True if current object&#8217;s interval is semantically same as <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2452,6 +2731,33 @@ allowing the <code>W</code> designator in the same expression as other designato
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Add a duration to a date.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a duration from a date.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+a_date: <code>Iso8601_date[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of two dates.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
@@ -2617,6 +2923,33 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return string value in extended format.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Add a duration to a time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a duration from a time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+a_time: <code>Iso8601_time[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of two times.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2834,6 +3167,33 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Add a duration to a date/time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a duration from a date/time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+a_date_time: <code>Iso8601_date_time[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of two date/times.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
@@ -3032,6 +3392,42 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the duration string value.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+a_val: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Add a duration to a time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+a_val: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a duration from a time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+a_val: <code>Real[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Add a duration to a time.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+a_val: <code>Real[1]</code><br>
+): <code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a duration from a time.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3752,7 +4148,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-15 23:33:14 UTC
+Last updated 2020-02-08 17:54:34 UTC
 </div>
 </div>
 </body>

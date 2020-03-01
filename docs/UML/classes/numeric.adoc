@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*_Numeric (abstract)_*
 
 h|*Description*
-2+a|Abstract notional parent class of numeric types, which are types which have various arithmetic and comparison operators defined.
+2+a|Abstract parent class of numeric types, which are types which have various arithmetic and comparison operators defined.
 
 h|*Inherit*
 2+|`Any`
@@ -16,20 +16,32 @@ h|*Functions*
 ^h|*Meaning*
 
 h|(abstract)
-|*infix ** ( +
+|*add* ( +
 other: `Numeric[1]` +
 ): `Numeric`
-a|Product by `other'. Actual type of result depends on arithmetic balancing rules.
+a|Sum with `_other_` (commutative). Actual type of result depends on arithmetic balancing rules.
 
 h|(abstract)
-|*infix +* ( +
+|*subtract* ( +
 other: `Numeric[1]` +
 ): `Numeric`
-a|Sum with `other' (commutative). Actual type of result depends on arithmetic balancing rules.
+a|Result of subtracting `_other_`. Actual type of result depends on arithmetic balancing rules.
 
 h|(abstract)
-|*infix -* ( +
+|*multiply* ( +
 other: `Numeric[1]` +
 ): `Numeric`
-a|Result of subtracting `other'. Actual type of result depends on arithmetic balancing rules.
+a|Product by `_other_`. Actual type of result depends on arithmetic balancing rules.
+
+h|(abstract)
+|*divide* ( +
+other: `Numeric[1]` +
+): `Numeric`
+a|Divide by`_other_`. Actual type of result depends on arithmetic balancing rules.
+
+h|(abstract)
+|*exponent* ( +
+other: `Numeric[1]` +
+): `Numeric`
+a|Expontiation of this by `_other_`.
 |===

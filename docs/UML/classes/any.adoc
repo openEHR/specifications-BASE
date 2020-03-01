@@ -16,17 +16,21 @@ h|(abstract)
 |*is_equal* ( +
 other: `Any[1]` +
 ): `Boolean`
-a|Value equality.
-
-h|
-|*infix =* ( +
-other: `Any[1]` +
-): `Boolean`
-a|Reference equality.
+a|Value equality: return True if `this` and `_other_` are attached to objects defined to be equal.
 
 .Parameters +
 [horizontal]
-`_other_`:: Reference equality.
+`_other_`:: Other object for comparison.
+
+h|
+|*equal* ( +
+other: `Any[1]` +
+): `Boolean`
+a|Reference equality for reference types, value equality for value types.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
 
 h|
 |*instance_of* ( +

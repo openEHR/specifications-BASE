@@ -72,6 +72,24 @@ h|
 |*as_string* (): `String`
 a|Return string value in extended format.
 
+h|
+|*add* ( +
+a_diff: `Iso8601_duration[1]` +
+): `Iso8601_time`
+a|Add a duration to a time.
+
+h|
+|*subtract* ( +
+a_diff: `Iso8601_duration[1]` +
+): `Iso8601_time`
+a|Subtract a duration from a time.
+
+h|
+|*diff* ( +
+a_time: `Iso8601_time[1]` +
+): `Iso8601_duration`
+a|Difference of two times.
+
 h|*Invariants*
 2+a|*_Hour_valid_*: `valid_hour(hour, minute, second)`
 

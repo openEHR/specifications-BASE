@@ -26,6 +26,18 @@ h|(abstract)
 a|Number of items in container.
 
 h|(abstract)
-|*is_empty* (): `boolean`
+|*is_empty* (): `Boolean`
 a|True if container is empty.
+
+h|
+|*there_exists* ( +
+test: `Operation[1]` +
+): `Boolean`
+a|Existential quantifier applied to container, using a Boolean-returning function agent (lambda) `_test_` taking one argument of type `T`.
+
+h|
+|*for_all* ( +
+test: `Operation[1]` +
+): `Boolean`
+a|Universal quantifier applied to container, using a Boolean-returning function agent (lambda) `_test_` taking one argument of type `T`.
 |===

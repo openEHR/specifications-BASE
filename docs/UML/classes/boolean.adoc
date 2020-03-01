@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*Boolean*
 
 h|*Description*
-2+a|Class representing minimal interface of standard Boolean type.
+2+a|Type representing minimal interface of built-in Boolean type.
 
 h|*Inherit*
 2+|`Any`
@@ -16,7 +16,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*infix and* ( +
+|*conjunction* ( +
 other: `Boolean[1]` +
 ): `Boolean` +
 *_Post_de_Morgan_*: `Result = not (not self or not other)` +
@@ -24,14 +24,14 @@ other: `Boolean[1]` +
 a|Logical conjunction
 
 h|
-|*infix and_then* ( +
+|*semistrict_conjunction* ( +
 other: `Boolean[1]` +
 ): `Boolean` +
 *_Post_de_Morgan_*: `Result = not (not self or else not other)`
 a|Boolean semi-strict conjunction with other
 
 h|
-|*infix or* ( +
+|*disjunction* ( +
 other: `Boolean[1]` +
 ): `Boolean` +
 *_Post_de_Morgan_*: `Result = not (not self and not other)` +
@@ -40,25 +40,29 @@ other: `Boolean[1]` +
 a|Boolean disjunction with other.
 
 h|
-|*infix or_else* ( +
+|*semistrict_disjunction* ( +
 other: `Boolean[1]` +
 ): `Boolean` +
 *_Post_de_Morgan_*: `Result = not (not self and then not other)`
 a|Boolean semi-strict disjunction with `other'.
 
 h|
-|*infix xor* ( +
+|*exclusive_disjunction* ( +
 other: `Boolean[1]` +
 ): `Boolean` +
 *_Post_definition_*: `Result = ((self or other) and not (self and other))`
 a|Boolean exclusive or with `other'.
 
 h|
-|*infix implies* ( +
+|*implication* ( +
 other: `Boolean[1]` +
 ): `Boolean` +
 *_Post_definition_*: `Result = (not self or else other)`
 a|Boolean implication of `other' (semi-strict)
+
+h|
+|*negation* (): `Boolean`
+a|
 
 h|*Invariants*
 2+a|*_Involutive_negation_*: `is_equal (not (not self))`

@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*_Ordered (abstract)_*
 
 h|*Description*
-2+a|Abstract notional parent class of ordered, types i.e. types on which the ‘<‘ operator is defined.
+2+a|Abstract parent class of ordered types i.e. types on which the ‘<‘ operator is defined.
 
 h|*Inherit*
 2+|`Any`
@@ -16,8 +16,35 @@ h|*Functions*
 ^h|*Meaning*
 
 h|(abstract)
-|*infix <* ( +
+|*less_than* ( +
 other: `Ordered[1]` +
 ): `Boolean`
-a|Arithmetic comparison. In conjunction with `=`, enables the definition of the operators `>`, `>=`, `\<=`, `<>`. In real type systems, this operator might be defined on another class for comparability.
+a|Arithmetic value comparison. In conjunction with `=`, enables the definition of the related functions `_greater_than_()` etc. This operator may be redefined in descendants.
+
+h|
+|*less_than_or_equal* ( +
+other: `Ordered[1]` +
+): `Boolean` +
+*_Inv_result_*: `not (other < self)`
+a|True if Is current object less than or equal to `_other_`.
+
+h|
+|*greater_than* ( +
+other: `Ordered[1]` +
+): `Boolean` +
+*_Inv_result_*: `Result = (other < self)`
+a|True if Is current object greater than `_other_`.
+
+h|
+|*greater_than_or_equal* ( +
+other: `Ordered[1]` +
+): `Boolean` +
+*_Inv_result_*: `Result = (other \<= self)`
+a|True if Is current object greater than or equal to `_other_`.
+
+h|
+|*not_equal* ( +
+other: `Ordered[1]` +
+): `Boolean`
+a|
 |===
