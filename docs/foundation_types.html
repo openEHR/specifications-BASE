@@ -40,11 +40,12 @@
 </li>
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
-<li><a href="#_the_any_class">2.1. The Any Class</a></li>
-<li><a href="#_openehr_leaf_types">2.2. openEHR Leaf Types</a></li>
-<li><a href="#_class_definitions">2.3. Class Definitions</a>
+<li><a href="#_operators">2.1. Operators</a></li>
+<li><a href="#_the_any_class">2.2. The Any Class</a></li>
+<li><a href="#_openehr_leaf_types">2.3. openEHR Leaf Types</a></li>
+<li><a href="#_class_definitions">2.4. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_any_class">2.3.1. Any Class</a></li>
+<li><a href="#_any_class">2.4.1. Any Class</a></li>
 </ul>
 </li>
 </ul>
@@ -239,13 +240,13 @@
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.?.? (unreleased)</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0 (unreleased)</strong></p></th>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-25" target="_blank" rel="noopener">SPECBASE-25</a>: Improve and correct function definitions in Foundation types.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>201 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Mar 2020</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
@@ -433,19 +434,57 @@
 <p>The <code>functional</code> package includes types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.</p>
 </div>
 <div class="paragraph">
-<p>The types are described in this specification are typically of two kinds: <em>built-in types</em>, which are those built in to a type system of the development language, and <em>library types</em>, which are assumed to be available in a (class) library defined in the formalism. Thus, the type <code>Boolean</code> is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter too much - whether <code>String</code> is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience.</p>
+<p>The types are described in this specification are typically of two kinds: <em>built-in types</em>, which are those built in to a type system of the development language, and <em>library types</em>, which are assumed to be available in a (class) library defined in the formalism. Thus, the type <code>Boolean</code> is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter greatly - whether <code>String</code> is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience. The built-in types are indicated in the UML with the <code>«Value_type»</code> stereotype.</p>
 </div>
 <div class="paragraph">
-<p>The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains <em>only the assumptions required for the given type to be used in the openEHR Reference Model</em> - <strong>it is not by any means a complete interface definition</strong>. The name and semantics of any function used here for an assumed type <strong>might not be identical</strong> to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed <code>Set&lt;T&gt;</code> type defined below has an operation <code>has (item: T): Boolean</code> which is used throughout the openEHR specifications, Java has the method <code>contains()</code> on its <code>Set&lt;T&gt;</code> class. In a Java implementation, the <code>contains()</code> method should then be used throughout the openEHR classes as expressed in Java, in place of the <code>has ()</code> method.</p>
+<p>The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains <em>only the assumptions required for the given type to be used in the openEHR type system</em> - <strong>it is not by any means a complete interface definition</strong>. The name and semantics of any function used here for an assumed type <strong>might not be identical</strong> to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed <code>Set&lt;T&gt;</code> type defined below has an operation <code>has (item: T): Boolean</code> which is used throughout the openEHR specifications, Java has the method <code>contains()</code> on its <code>Set&lt;T&gt;</code> class. In a Java implementation, the <code>contains()</code> method should then be used throughout the openEHR classes as expressed in Java, in place of the <code>has ()</code> method.</p>
 </div>
 <div class="sect2">
-<h3 id="_the_any_class"><a class="anchor" href="#_the_any_class"></a>2.1. The Any Class</h3>
+<h3 id="_operators"><a class="anchor" href="#_operators"></a>2.1. Operators</h3>
 <div class="paragraph">
-<p>Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type <code>Any</code>, which defines a bare minimum of operators, and stands for the real <code>Any</code> or <code>Object</code> type found in real technologies.</p>
+<p>Some operations have symbolic or textual operator equivalents defined, in order to support parsing of textual form of expressions. Two categories of operator are supported via two stereotypes that add a list of Strings to an operation, enabling standard operators, and optionally, symbolic operators to be associated with a function. These are as follows.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>«ops»</code>: default operator(s) for an operation, assumed to be expressible in normal text, for exmaple <code>'='</code> for <code><em>equal</em>()</code>;</p>
+</li>
+<li>
+<p><code>«sym_ops»</code>: additional symbolic operators typically defined for mathematical and logical operations, e.g. <code>'∀'</code> for <code>Container.<em>for_all</em>()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The main utility of such operators is to enable function signature-matching from parsed expressions. For example, the expression <code>a_date_time - P1Y</code> (subtract a time period of 1 year from a date/time) has the signature <code>&lt;[Iso8601_duration], ?&gt;</code>, equivalent to a function of the form <code>func (dur: Iso8601_duration): ?</code> defined on the type <code>Iso8601_date_time</code> (i.e. the return type is unknown until the function definition can be inferred). The correct function can be found on the latter type by searching for a function with the operator <code>'-'</code> and taking a single <code>Iso8601_duration</code> argument. In this specification, this turns out to be the <code>Iso8601_duration.<em>subtract</em>()</code> operation.</p>
+</div>
+<div class="paragraph">
+<p>The operators provided by this means are not intended to prevent other kinds of operators being associated with functions defined on types in the openEHR specifications, rather they provide a minimal set for common operations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_openehr_leaf_types"><a class="anchor" href="#_openehr_leaf_types"></a>2.2. openEHR Leaf Types</h3>
+<h3 id="_the_any_class"><a class="anchor" href="#_the_any_class"></a>2.2. The Any Class</h3>
+<div class="paragraph">
+<p>Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type <code>Any</code>, which defines a bare minimum of operations, and stands for the real <code>Any</code> or <code>Object</code> type found in real technologies.</p>
+</div>
+<div class="paragraph">
+<p>The primary operations specified are those for equality, i.e.:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>equal</em>(other: Any): Boolean</code>: return <code>True</code> if this and <code><em>other</em></code> are equal in value for value types, and for reference types, if they refer to the same object;</p>
+</li>
+<li>
+<p><code><em>is_equal</em>(other: Any): Boolean</code>: return <code>True</code> if this and <code><em>other</em></code> are equal in value; typically redefined in descendants.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In these specifications, the <code><em>equal</em>()</code> operation is normally rendered using its operator, i.e. the <code>'='</code> sign, while <code><em>is_equal</em>()</code> is always specified as a function call.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_openehr_leaf_types"><a class="anchor" href="#_openehr_leaf_types"></a>2.3. openEHR Leaf Types</h3>
 <div class="paragraph">
 <p>The sections below provide formal definitions of all the foundation types used in openEHR. A subset of these can be understood as terminal or leaf types, typically used as terminal value types in other information models. The following diagram provides an <em>aide memoire</em> for the leaf types.</p>
 </div>
@@ -457,9 +496,9 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>2.3. Class Definitions</h3>
+<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>2.4. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_any_class"><a class="anchor" href="#_any_class"></a>2.3.1. Any Class</h4>
+<h4 id="_any_class"><a class="anchor" href="#_any_class"></a>2.4.1. Any Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -488,7 +527,7 @@
 other: <code>Any[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Value equality: return True if <code>this</code> and <code><em>other</em></code> are attached to objects defined to be equal.</p>
+<p>Value equality: return True if <code>this</code> and <code><em>other</em></code> are attached to objects considered to be equal in value.</p>
 </div>
 <div class="hdlist">
 <div class="title">Parameters<br></div>
@@ -542,6 +581,15 @@ an_object: <code>Any[1]</code><br>
 ): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in "Interval&lt;Time&gt;".</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -663,7 +711,7 @@ other: <code>Boolean[1]</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or not other)</code><br>
 <strong><em>Post_commutative</em></strong>: <code>Result = (other and self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Logical conjunction</p>
+<p>Logical conjunction of this with <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -673,7 +721,7 @@ other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or else not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Boolean semi-strict conjunction with other</p>
+<p>Boolean semi-strict conjunction with <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -685,7 +733,7 @@ other: <code>Boolean[1]</code><br>
 <strong><em>Post_commutative</em></strong>: <code>Result = (other or Current)</code><br>
 <strong><em>Post_consistent_with_semi_strict</em></strong>: <code>Result implies (self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Boolean disjunction with other.</p>
+<p>Boolean disjunction with <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -695,7 +743,7 @@ other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and then not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Boolean semi-strict disjunction with `other'.</p>
+<p>Boolean semi-strict disjunction with <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -705,7 +753,7 @@ other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_definition</em></strong>: <code>Result = self or other) and not (self and other</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Boolean exclusive or with `other'.</p>
+<p>Boolean exclusive or with <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -715,13 +763,15 @@ other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post_definition</em></strong>: <code>Result = (not self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Boolean implication of `other' (semi-strict)</p>
+<p>Boolean implication of <code><em>other</em></code> (semi-strict)</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negation</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Boolean negation of the current value.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -788,7 +838,7 @@ other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Inv_result</em></strong>: <code>not (other &lt; self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if Is current object less than or equal to <code><em>other</em></code>.</p>
+<p>True if current object less than or equal to <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -798,7 +848,7 @@ other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Inv_result</em></strong>: <code>Result = (other &lt; self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if Is current object greater than <code><em>other</em></code>.</p>
+<p>True if current object greater than <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -808,15 +858,8 @@ other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Inv_result</em></strong>: <code>Result = (other &lt;= self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if Is current object greater than or equal to <code><em>other</em></code>.</p>
+<p>True if current object greater than or equal to <code><em>other</em></code>.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> (<br>
-other: <code>Ordered[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
 </table>
@@ -928,7 +971,7 @@ other: <code>Ordered[1]</code><br>
 other: <code>String[1]</code><br>
 ): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Concatenation operator - causes ‘other’ to be appended to this string.</p>
+<p>Concatenation operator - causes <code><em>other</em></code> to be appended to this string.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -958,7 +1001,9 @@ other: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A kind of String constrained to obey the syntax of RFC 3986.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -1059,7 +1104,7 @@ other: <code>Numeric[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract notional parent class of ordered, numeric types, which are types with ‘&lt;‘ and arithmetic operators defined.</p>
+<p>Abstract notional parent class of ordered, numeric types, which are types with both the <code><em>less_than</em>()</code> and arithmetic functions defined.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3992,21 +4037,21 @@ a_val: <code>Real[1]</code><br>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">logical True/False values.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">`boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">32-bit integers.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">`decimal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimal</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Int32</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">64-bit integers.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">`decimal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimal</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Long</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Int64</code></p></td>
 </tr>

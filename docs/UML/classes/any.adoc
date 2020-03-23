@@ -16,7 +16,7 @@ h|(abstract)
 |*is_equal* ( +
 other: `Any[1]` +
 ): `Boolean`
-a|Value equality: return True if `this` and `_other_` are attached to objects defined to be equal.
+a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value.
 
 .Parameters +
 [horizontal]
@@ -43,4 +43,10 @@ h|
 an_object: `Any[1]` +
 ): `String`
 a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>".
+
+h|
+|*not_equal* ( +
+other: `Ordered[1]` +
+): `Boolean`
+a|True if current object not equal to `_other_`. Returns not `_equal_()`.
 |===
