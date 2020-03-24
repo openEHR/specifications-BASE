@@ -63,19 +63,31 @@ h|
 |*add* ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
-a|Add a duration to a date.
+a|Arithmetic addition of a duration to a date.
 
 h|
 |*subtract* ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
-a|Subtract a duration from a date.
+a|Arithmetic subtraction of a duration from a date.
 
 h|
 |*diff* ( +
 a_date: `Iso8601_date[1]` +
 ): `Iso8601_duration`
 a|Difference of two dates.
+
+h|
+|*add_nominal* ( +
+a_diff: `Iso8601_duration[1]` +
+): `Iso8601_date`
+a|Addition of nominal duration represented by `_a_diff_`. For example, a duration of `'P1Y'` means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, `'P1M'` is understood here as a nominal month, the addition of which will result in the same date in the following month, or one or two days less where the following month is shorter.
+
+h|
+|*subtract_nominal* ( +
+a_diff: `Iso8601_duration[1]` +
+): `Iso8601_date`
+a|Subtraction of nominal duration represented by `_a_diff_`. See `_add_nominal_()` for semantics.
 
 h|*Invariants*
 2+a|*_Year_valid_*: `valid_year (year)`

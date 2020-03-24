@@ -105,16 +105,17 @@
 <li><a href="#_overview_5">6.1. Overview</a></li>
 <li><a href="#_primitive_time_types">6.2. Primitive Time Types</a></li>
 <li><a href="#_derived_interval_time_types">6.3. Derived Interval / Time Types</a></li>
-<li><a href="#_class_definitions_5">6.4. Class Definitions</a>
+<li><a href="#_computational_functions">6.4. Computational Functions</a></li>
+<li><a href="#_class_definitions_5">6.5. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_time_definitions_class">6.4.1. Time_Definitions Class</a></li>
-<li><a href="#_temporal_class">6.4.2. Temporal Class</a></li>
-<li><a href="#_iso8601_type_class">6.4.3. Iso8601_type Class</a></li>
-<li><a href="#_iso8601_date_class">6.4.4. Iso8601_date Class</a></li>
-<li><a href="#_iso8601_time_class">6.4.5. Iso8601_time Class</a></li>
-<li><a href="#_iso8601_date_time_class">6.4.6. Iso8601_date_time Class</a></li>
-<li><a href="#_iso8601_duration_class">6.4.7. Iso8601_duration Class</a></li>
-<li><a href="#_iso8601_timezone_class">6.4.8. Iso8601_timezone Class</a></li>
+<li><a href="#_time_definitions_class">6.5.1. Time_Definitions Class</a></li>
+<li><a href="#_temporal_class">6.5.2. Temporal Class</a></li>
+<li><a href="#_iso8601_type_class">6.5.3. Iso8601_type Class</a></li>
+<li><a href="#_iso8601_date_class">6.5.4. Iso8601_date Class</a></li>
+<li><a href="#_iso8601_time_class">6.5.5. Iso8601_time Class</a></li>
+<li><a href="#_iso8601_date_time_class">6.5.6. Iso8601_date_time Class</a></li>
+<li><a href="#_iso8601_duration_class">6.5.7. Iso8601_duration Class</a></li>
+<li><a href="#_iso8601_timezone_class">6.5.8. Iso8601_timezone Class</a></li>
 </ul>
 </li>
 </ul>
@@ -244,9 +245,9 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-25" target="_blank" rel="noopener">SPECBASE-25</a>: Improve and correct function definitions in Foundation types.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-25" target="_blank" rel="noopener">SPECBASE-25</a>: Improve and correct function definitions in Foundation types. Add 'nominal' computation functions to <code>Iso8601_date</code> and <code>Iso8601_date_time</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>24 Mar 2020</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
@@ -408,7 +409,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank" rel="noopener">ISO 8601 (2004) date/time standard</a>;</p>
+<p><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank" rel="noopener">ISO 8601 (2019) date/time standard</a>;</p>
 </li>
 <li>
 <p>Major interoperability formalisms, including <a href="https://www.omg.org/spec/IDL/">OMG IDL</a>, {xml_schema}[W3C XML-schema^];</p>
@@ -2232,9 +2233,37 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>6.4. Class Definitions</h3>
+<h3 id="_computational_functions"><a class="anchor" href="#_computational_functions"></a>6.4. Computational Functions</h3>
+<div class="paragraph">
+<p>A number of computational functions are defined in the interfaces of the concrete types, of two kinds:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>arithmetic</em>: <code><em>add</em>()</code>, <code><em>subtract</em>()</code>, etc;</p>
+</li>
+<li>
+<p><em>nominal</em>: <code><em>add_nominal</em>()</code>, <code><em>subtract_nominal</em>()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first kind are computed using internal machine representation, and only treat the ISO 8601 representation as a serial format. Most of the functions are implemented by standard date/time computation library functions, however those that take an <code>Iso8601_duration</code> deserve further explanation.</p>
+</div>
+<div class="paragraph">
+<p>The ISO 8601 durations <code>'P1Y'</code> (one year) and <code>'P1M'</code> (one month) represent calendar periods whose durations vary over time. They may therefore be understood either as precise accepted values, e.g. via an accepted rule such as used in finance or astronomy like 'one year = 365.24 days', or they may be understood in their informal linguistic sense. Accordingly, the 'addition' and 'subtraction' of either a 'year' or a 'month' maybe be understood in both the precise arithmetic way - e.g. 'add exactly 365.24 days to this date') - or in the everyday sense typically used for bill renewals, mortgage payments etc, where adding <code>'P1Y'</code> or <code>'P1M'</code> means advancing to the same date in the following year or month respectively (with typical adjustments made for leap years and shorter months, as used in banking). The 'arithmetic' functions mentioned above are provided for the former case, and the 'nominal' functions for the latter.</p>
+</div>
+<div class="paragraph">
+<p>In a similar way, the addition of a period of one day (<code>'P1D'</code>), although itself a regular quantity can be understood in both the arithmetic and nominal forms depending on how the timezone is processed. The arithmetic addition or subtraction of <code>P1D</code> thus results in the addition of exactly 24h of time to a date or time, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition or subtraction will always result in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.</p>
+</div>
+<div class="paragraph">
+<p>The arithmetic functions have standard operators such as <code>'+'</code>, <code>'-'</code> associated with them, while the nominal functions have the operators <code>'++'</code> and <code>'--'</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>6.5. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>6.4.1. Time_Definitions Class</h4>
+<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>6.5.1. Time_Definitions Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2356,7 +2385,7 @@ y: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post</em></strong>: <code>Result = y &gt;= 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code>y &gt; 0</code>.</p>
+<p>True if <code>y &gt;= 0</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2618,7 +2647,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 </table>
 </div>
 <div class="sect3">
-<h4 id="_temporal_class"><a class="anchor" href="#_temporal_class"></a>6.4.2. Temporal Class</h4>
+<h4 id="_temporal_class"><a class="anchor" href="#_temporal_class"></a>6.5.2. Temporal Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2644,7 +2673,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>6.4.3. Iso8601_type Class</h4>
+<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>6.5.3. Iso8601_type Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2701,7 +2730,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>6.4.4. Iso8601_date Class</h4>
+<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>6.5.4. Iso8601_date Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2815,7 +2844,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a duration to a date.</p>
+<p>Arithmetic addition of a duration to a date.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2824,7 +2853,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a duration from a date.</p>
+<p>Arithmetic subtraction of a duration from a date.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2834,6 +2863,24 @@ a_date: <code>Iso8601_date[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Difference of two dates.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_nominal</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Addition of nominal duration represented by <code><em>a_diff</em></code>. For example, a duration of <code>'P1Y'</code> means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, <code>'P1M'</code> is understood here as a nominal month, the addition of which will result in the same date in the following month, or one or two days less where the following month is shorter.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract_nominal</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtraction of nominal duration represented by <code><em>a_diff</em></code>. See <code><em>add_nominal</em>()</code> for semantics.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2864,7 +2911,7 @@ a_date: <code>Iso8601_date[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>6.4.5. Iso8601_time Class</h4>
+<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>6.5.5. Iso8601_time Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2973,7 +3020,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
+<p>True if this time has a decimal part indicated by <code>','</code> (comma) rather than <code>'.'</code> (period).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2987,7 +3034,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this time uses ‘-’, ‘:’ separators.</p>
+<p>True if this time uses <code>'-'</code>, <code>':'</code> separators.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3010,7 +3057,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a duration to a time.</p>
+<p>Arithmetic addition of a duration to a time.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3019,7 +3066,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a duration from a time.</p>
+<p>Arithmetic subtraction of a duration from a time.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3065,7 +3112,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>6.4.6. Iso8601_date_time Class</h4>
+<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>6.5.6. Iso8601_date_time Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3214,7 +3261,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
+<p>True if this time has a decimal part indicated by <code>','</code> (comma) rather than <code>'.'</code> (period).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3228,7 +3275,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this date/time uses ‘-’, ‘:’ separators.</p>
+<p>True if this date/time uses <code>'-'</code>, <code>':'</code> separators.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3251,7 +3298,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a duration to a date/time.</p>
+<p>Arithmetic addition of a duration to a date/time.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3260,7 +3307,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a duration from a date/time.</p>
+<p>Arithmetic subtraction of a duration from a date/time.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3270,6 +3317,24 @@ a_date_time: <code>Iso8601_date_time[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Difference of two date/times.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_nominal</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Addition of nominal duration represented by <code><em>a_diff</em></code>. See <code>Iso8601_date.<em>add_nominal</em>()</code> for semantics.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract_nominal</strong> (<br>
+a_diff: <code>Iso8601_duration[1]</code><br>
+): <code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtraction of nominal duration represented by <code><em>a_diff</em></code>. See <code><em>add_nominal</em>()</code> for semantics.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3348,7 +3413,7 @@ a_date_time: <code>Iso8601_date_time[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>6.4.7. Iso8601_duration Class</h4>
+<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>6.5.7. Iso8601_duration Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3561,7 +3626,7 @@ a_val: <code>Real[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>6.4.8. Iso8601_timezone Class</h4>
+<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>6.5.8. Iso8601_timezone Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">

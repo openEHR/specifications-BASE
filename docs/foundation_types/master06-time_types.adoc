@@ -43,6 +43,21 @@ A number of useful types may be generated from the Date/time classes and the Int
 .Useful time interval types
 image::{uml_diagrams_uri}/BASE-foundation_types.time-intervals.svg[id=foundation_types_time_intervals, align="center"]
 
+== Computational Functions
+
+A number of computational functions are defined in the interfaces of the concrete types, of two kinds:
+
+* _arithmetic_: `_add_()`, `_subtract_()`, etc;
+* _nominal_: `_add_nominal_()`, `_subtract_nominal_()`.
+
+The first kind are computed using internal machine representation, and only treat the ISO 8601 representation as a serial format. Most of the functions are implemented by standard date/time computation library functions, however those that take an `Iso8601_duration` deserve further explanation.
+
+The ISO 8601 durations `'P1Y'` (one year) and `'P1M'` (one month) represent calendar periods whose durations vary over time. They may therefore be understood either as precise accepted values, e.g. via an accepted rule such as used in finance or astronomy like 'one year = 365.24 days', or they may be understood in their informal linguistic sense. Accordingly, the 'addition' and 'subtraction' of either a 'year' or a 'month' maybe be understood in both the precise arithmetic way - e.g. 'add exactly 365.24 days to this date') - or in the everyday sense typically used for bill renewals, mortgage payments etc, where adding `'P1Y'` or `'P1M'` means advancing to the same date in the following year or month respectively (with typical adjustments made for leap years and shorter months, as used in banking). The 'arithmetic' functions mentioned above are provided for the former case, and the 'nominal' functions for the latter.
+
+In a similar way, the addition of a period of one day (`'P1D'`), although itself a regular quantity can be understood in both the arithmetic and nominal forms depending on how the timezone is processed. The arithmetic addition or subtraction of `P1D` thus results in the addition of exactly 24h of time to a date or time, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition or subtraction will always result in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.
+
+The arithmetic functions have standard operators such as `'+'`, `'-'` associated with them, while the nominal functions have the operators `'++'` and `'--'`.
+
 == Class Definitions
 
 include::{uml_export_dir}/classes/time_definitions.adoc[]
