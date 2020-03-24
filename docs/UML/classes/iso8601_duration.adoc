@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*Iso8601_duration*
 
 h|*Description*
-2+a|Represents an ISO 8601 duration, which may have multiple parts from years down to seconds. Value is in format:
+2+a|Represents an ISO 8601 duration, which may have multiple parts from years down to seconds. The `_value_` attribute is a String in the format:
 
 * `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`
 
@@ -17,53 +17,53 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*seconds* (): `Integer`
-a|Number of seconds.
-
-h|
-|*fractional_seconds* (): `Real`
-a|Fractional seconds.
-
-h|
-|*is_decimal_sign_comma* (): `Boolean`
-a|True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
+h|(effected)
+|*is_extended* (): `Boolean`
+a|Returns True.
 
 h|(effected)
 |*is_partial* (): `Boolean`
 a|Returns False.
 
-h|(effected)
-|*is_extended* (): `Boolean`
-a|Returns True.
+h|
+|*years* (): `Integer`
+a|Number of years in the `_value_`, i.e. the number preceding the `Y` in the YMD part, if one exists.
 
 h|
 |*months* (): `Integer`
-a|Number of months.
+a|Number of months in the `_value_`, i.e. the value preceding the `M` in the YMD part, if one exists.
 
 h|
-|*years* (): `Integer`
-a|Number of years of nominal 365-day length.
+|*days* (): `Integer`
+a|Number of days in the `_value_`, i.e. the number preceding the `D` in the YMD part, if one exists.
+
+h|
+|*hours* (): `Integer`
+a|Number of hours in the `_value_`, i.e. the number preceding the `H` in the HMS part, if one exists.
+
+h|
+|*minutes* (): `Integer`
+a|Number of minutes in the `_value_`, i.e. the number preceding the `M` in the HMS part, if one exists.
+
+h|
+|*seconds* (): `Integer`
+a|Number of seconds in the `_value_`, i.e. the integer number preceding the `S` in the HMS part, if one exists.
+
+h|
+|*fractional_seconds* (): `Real`
+a|Fractional seconds in the `_value_`, i.e. the decimal part of the number preceding the `S` in the HMS part, if one exists.
 
 h|
 |*weeks* (): `Integer`
-a|Number of 7 day weeks.
+a|Number of weeks in the `_value_`, i.e. the value preceding the `W`, if one exists.
+
+h|
+|*is_decimal_sign_comma* (): `Boolean`
+a|True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
 
 h|
 |*to_seconds* (): `Real`
 a|Total number of seconds equivalent (including fractional) of entire duration.
-
-h|
-|*minutes* (): `Integer`
-a|Number of 60 second minutes.
-
-h|
-|*hours* (): `Integer`
-a|Number of 60 minute hours.
-
-h|
-|*days* (): `Integer`
-a|Number of 24 hour days.
 
 h|
 |*as_string* (): `String`
@@ -73,25 +73,25 @@ h|
 |*add* ( +
 a_val: `Iso8601_duration[1]` +
 ): `Iso8601_duration`
-a|Add a duration to a time.
+a|Add a duration to a duration.
 
 h|
 |*subtract* ( +
 a_val: `Iso8601_duration[1]` +
 ): `Iso8601_duration`
-a|Subtract a duration from a time.
+a|Subtract a duration from a duration.
 
 h|
 |*multiply* ( +
 a_val: `Real[1]` +
 ): `Iso8601_duration`
-a|Add a duration to a time.
+a|Multiply a duration by a number.
 
 h|
 |*divide* ( +
 a_val: `Real[1]` +
 ): `Iso8601_duration`
-a|Subtract a duration from a time.
+a|Divide a duration by a number.
 
 h|*Invariants*
 2+a|*_Years_valid_*: `years >= 0`
