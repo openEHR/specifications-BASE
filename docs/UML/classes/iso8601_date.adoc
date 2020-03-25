@@ -23,17 +23,17 @@ h|*Functions*
 
 h|
 |*year* (): `Integer`
-a|Year.
+a|Extract the year part of the date as an Integer.
 
 h|
 |*month* (): `Integer` +
 *_Pre_*: `not month_unknown`
-a|Month in year.
+a|Extract the month part of the date as an Integer, or return 0 if not present.
 
 h|
 |*day* (): `Integer` +
 *_Pre_*: `not day_unknown`
-a|Day in month.
+a|Extract the day part of the date as an Integer, or return 0 if not present.
 
 h|
 |*timezone* (): `Iso8601_timezone`
@@ -81,7 +81,11 @@ h|
 |*add_nominal* ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
-a|Addition of nominal duration represented by `_a_diff_`. For example, a duration of `'P1Y'` means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, `'P1M'` is understood here as a nominal month, the addition of which will result in the same date in the following month, or one or two days less where the following month is shorter.
+a|Addition of nominal duration represented by `_a_diff_`. For example, a duration of `'P1Y'` means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, `'P1M'` is understood here as a nominal month, the addition of which will result in one of:
+
+* the same date in the following month, or;
+* one or two days less where the following month is shorter, or;
+* in the case of adding a month to the date 31 Jan, the result will be 28 Feb, i.e. three less.
 
 h|
 |*subtract_nominal* ( +

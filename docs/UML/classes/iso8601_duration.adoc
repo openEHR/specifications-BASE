@@ -27,31 +27,31 @@ a|Returns False.
 
 h|
 |*years* (): `Integer`
-a|Number of years in the `_value_`, i.e. the number preceding the `Y` in the YMD part, if one exists.
+a|Number of years in the `_value_`, i.e. the number preceding the `'Y'` in the `'YMD'` part, if one exists.
 
 h|
 |*months* (): `Integer`
-a|Number of months in the `_value_`, i.e. the value preceding the `M` in the YMD part, if one exists.
+a|Number of months in the `_value_`, i.e. the value preceding the `'M'` in the `'YMD'` part, if one exists.
 
 h|
 |*days* (): `Integer`
-a|Number of days in the `_value_`, i.e. the number preceding the `D` in the YMD part, if one exists.
+a|Number of days in the `_value_`, i.e. the number preceding the `'D'` in the `'YMD'` part, if one exists.
 
 h|
 |*hours* (): `Integer`
-a|Number of hours in the `_value_`, i.e. the number preceding the `H` in the HMS part, if one exists.
+a|Number of hours in the `_value_`, i.e. the number preceding the `'H'` in the `'HMS'` part, if one exists.
 
 h|
 |*minutes* (): `Integer`
-a|Number of minutes in the `_value_`, i.e. the number preceding the `M` in the HMS part, if one exists.
+a|Number of minutes in the `_value_`, i.e. the number preceding the `'M'` in the `'HMS'` part, if one exists.
 
 h|
 |*seconds* (): `Integer`
-a|Number of seconds in the `_value_`, i.e. the integer number preceding the `S` in the HMS part, if one exists.
+a|Number of seconds in the `_value_`, i.e. the integer number preceding the `'S'` in the `'HMS'` part, if one exists.
 
 h|
 |*fractional_seconds* (): `Real`
-a|Fractional seconds in the `_value_`, i.e. the decimal part of the number preceding the `S` in the HMS part, if one exists.
+a|Fractional seconds in the `_value_`, i.e. the decimal part of the number preceding the `'S'` in the `'HMS'` part, if one exists.
 
 h|
 |*weeks* (): `Integer`
@@ -73,25 +73,25 @@ h|
 |*add* ( +
 a_val: `Iso8601_duration[1]` +
 ): `Iso8601_duration`
-a|Add a duration to a duration.
+a|Arithmetic addition of a duration to a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
 h|
 |*subtract* ( +
 a_val: `Iso8601_duration[1]` +
 ): `Iso8601_duration`
-a|Subtract a duration from a duration.
+a|Arithmetic subtraction of a duration from a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
 h|
 |*multiply* ( +
 a_val: `Real[1]` +
 ): `Iso8601_duration`
-a|Multiply a duration by a number.
+a|Arithmetic multiplication a duration by a number.
 
 h|
 |*divide* ( +
 a_val: `Real[1]` +
 ): `Iso8601_duration`
-a|Divide a duration by a number.
+a|Arithmetic division of a duration by a number.
 
 h|*Invariants*
 2+a|*_Years_valid_*: `years >= 0`

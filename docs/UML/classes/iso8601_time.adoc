@@ -25,20 +25,20 @@ h|*Functions*
 
 h|
 |*hour* (): `Integer`
-a|Hour in day, in 24-hour time.
+a|Extract the hour part of the date/time as an Integer.
 
 h|
 |*minute* (): `Integer`
-a|Minute in hour.
+a|Extract the minute part of the time as an Integer, or return 0 if not present.
 
 h|
 |*second* (): `Integer`
-a|Second in minute.
+a|Extract the integral seconds part of the time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.
 
 h|
 |*fractional_second* (): `Real` +
 *_Pre_*: `not second_unknown`
-a|Fractional seconds.
+a|Extract the fractional seconds part of the time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.
 
 h|
 |*timezone* (): `Iso8601_timezone`

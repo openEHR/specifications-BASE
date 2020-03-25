@@ -247,14 +247,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-25" target="_blank" rel="noopener">SPECBASE-25</a>: Improve and correct function definitions in Foundation types. Add 'nominal' computation functions to <code>Iso8601_date</code> and <code>Iso8601_date_time</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>24 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>25 Mar 2020</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-72" target="_blank" rel="noopener">SPECRM-72</a>: Add guidance on date/time formatting, recommending extended ISO8601 format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-72" target="_blank" rel="noopener">SPECRM-72</a>: Add guidance on date/time formatting, recommending extended ISO 8601 format.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Lah</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">22 Nov 2018</p></td>
 </tr>
@@ -2235,29 +2235,29 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 <div class="sect2">
 <h3 id="_computational_functions"><a class="anchor" href="#_computational_functions"></a>6.4. Computational Functions</h3>
 <div class="paragraph">
-<p>A number of computational functions are defined in the interfaces of the concrete types, of two kinds:</p>
+<p>A number of computational functions are defined in the interfaces of the concrete data/time types, of two kinds:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><em>arithmetic</em>: <code><em>add</em>()</code>, <code><em>subtract</em>()</code>, etc;</p>
+<p><em>definite</em>: computed according to the usual numeric rules for arithmetic, in which all values are treated as <em>definite</em>, i.e. exact and invariant;</p>
 </li>
 <li>
-<p><em>nominal</em>: <code><em>add_nominal</em>()</code>, <code><em>subtract_nominal</em>()</code>.</p>
+<p><em>nominal</em>: computed using commonly accepted rules of 'everyday' calendrical time, in which 'year' and 'month' are understood to be variable periods.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The first kind are computed using internal machine representation, and only treat the ISO 8601 representation as a serial format. Most of the functions are implemented by standard date/time computation library functions, however those that take an <code>Iso8601_duration</code> deserve further explanation.</p>
+<p>Most of the functions defined on the date/time types are of the definite kind. The exception is functions involving <code>Iso8601_duration</code> values, which take both definite and nominal forms. The definite forms are named using the standard names <code><em>add</em>()</code>, <code><em>subtract</em>()</code> etc, while the nominal versions have names of the form <code><em>xxx_nominal</em>()</code>, e.g. <code><em>add_nominal</em>()</code> etc.</p>
 </div>
 <div class="paragraph">
-<p>The ISO 8601 durations <code>'P1Y'</code> (one year) and <code>'P1M'</code> (one month) represent calendar periods whose durations vary over time. They may therefore be understood either as precise accepted values, e.g. via an accepted rule such as used in finance or astronomy like 'one year = 365.24 days', or they may be understood in their informal linguistic sense. Accordingly, the 'addition' and 'subtraction' of either a 'year' or a 'month' maybe be understood in both the precise arithmetic way - e.g. 'add exactly 365.24 days to this date') - or in the everyday sense typically used for bill renewals, mortgage payments etc, where adding <code>'P1Y'</code> or <code>'P1M'</code> means advancing to the same date in the following year or month respectively (with typical adjustments made for leap years and shorter months, as used in banking). The 'arithmetic' functions mentioned above are provided for the former case, and the 'nominal' functions for the latter.</p>
+<p>An example of an operation having both forms is addition for the type <code>Iso8601_date</code>. The definite operation is called <code><em>add</em>()</code> and treats the <code>Iso8601_duration</code> argument as an exact amount, based on constant values for length of year and month, defined by <code>Time_definitions.<em>Average_days_in_month</em></code> and <code>Time_definitions.<em>Average_days_in_year</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>In a similar way, the addition of a period of one day (<code>'P1D'</code>), although itself a regular quantity can be understood in both the arithmetic and nominal forms depending on how the timezone is processed. The arithmetic addition or subtraction of <code>P1D</code> thus results in the addition of exactly 24h of time to a date or time, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition or subtraction will always result in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.</p>
+<p>The nominal form of the operation is <code><em>add_nominal</em>()</code>, and is computed according to 'everyday' rules, i.e. in which the phrase 'a year from now' means the same date next year (with occasional slight adjustment), and 'in a month' means the same date next month (or possibly a day or more earlier due to next month being shorter). In a similar way, the addition of a period of one day (<code>'P1D'</code>), although itself a regular quantity is computed differently to the definite form: in the definite form, addition of <code>P1D</code> results in the addition of exactly 24h of time to the date, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition results in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.</p>
 </div>
 <div class="paragraph">
-<p>The arithmetic functions have standard operators such as <code>'+'</code>, <code>'-'</code> associated with them, while the nominal functions have the operators <code>'++'</code> and <code>'--'</code>.</p>
+<p>The definite functions have standard operators such as <code>'+'</code>, <code>'-'</code>, etc associated with them, while the nominal functions have the operators <code>'++'</code>, <code>'--'</code>, etc.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2309,7 +2309,7 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_month</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Average_days_in_month</strong>: <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Used for conversions of durations containing months to days and / or seconds.</p>
 </div></div></td>
@@ -2330,6 +2330,13 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Average_days_in_year</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Used for conversions of durations containing years to days and / or seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_leap_year</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Calendar days in a standard leap year, i.e. 366.</p>
@@ -2340,13 +2347,6 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_days_in_year</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Maximum number of days in a year, i.e. accounting for leap years.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_year</strong>: <code>Real</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Used for conversions of durations containing years to days and / or seconds.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2371,6 +2371,20 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_timezone_hour</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Maximum hour value of a timezone according to ISO 8601.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_month</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Used for conversions of durations containing months to days and / or seconds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_year</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Used for conversions of durations containing years to days and / or seconds.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2777,7 +2791,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Year.</p>
+<p>Extract the year part of the date as an Integer.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2785,7 +2799,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Month in year.</p>
+<p>Extract the month part of the date as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2793,7 +2807,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Day in month.</p>
+<p>Extract the day part of the date as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2871,7 +2885,20 @@ a_date: <code>Iso8601_date[1]</code><br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Addition of nominal duration represented by <code><em>a_diff</em></code>. For example, a duration of <code>'P1Y'</code> means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, <code>'P1M'</code> is understood here as a nominal month, the addition of which will result in the same date in the following month, or one or two days less where the following month is shorter.</p>
+<p>Addition of nominal duration represented by <code><em>a_diff</em></code>. For example, a duration of <code>'P1Y'</code> means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, <code>'P1M'</code> is understood here as a nominal month, the addition of which will result in one of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the same date in the following month, or;</p>
+</li>
+<li>
+<p>one or two days less where the following month is shorter, or;</p>
+</li>
+<li>
+<p>in the case of adding a month to the date 31 Jan, the result will be 28 Feb, i.e. three less.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -2970,21 +2997,21 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Hour in day, in 24-hour time.</p>
+<p>Extract the hour part of the date/time as an Integer.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Minute in hour.</p>
+<p>Extract the minute part of the time as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Second in minute.</p>
+<p>Extract the integral seconds part of the time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2992,7 +3019,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong> (): <code>Real</code><br>
 <strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Fractional seconds.</p>
+<p>Extract the fractional seconds part of the time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3172,7 +3199,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Year.</p>
+<p>Extract the year part of the date as an Integer.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3180,7 +3207,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Month in year.</p>
+<p>Extract the month part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3188,7 +3215,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Day in month.</p>
+<p>Extract the day part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3196,7 +3223,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not hour_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Hour in day.</p>
+<p>Extract the hour part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3204,7 +3231,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not minute_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Minute in hour.</p>
+<p>Extract the minute part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3212,14 +3239,14 @@ a_time: <code>Iso8601_time[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong> (): <code>Integer</code><br>
 <strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Second in minute.</p>
+<p>Extract the integral seconds part of the date/time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Fractional seconds.</p>
+<p>Extract the fractional seconds part of the date/time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3465,49 +3492,49 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of years in the <code><em>value</em></code>, i.e. the number preceding the <code>Y</code> in the YMD part, if one exists.</p>
+<p>Number of years in the <code><em>value</em></code>, i.e. the number preceding the <code>'Y'</code> in the <code>'YMD'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of months in the <code><em>value</em></code>, i.e. the value preceding the <code>M</code> in the YMD part, if one exists.</p>
+<p>Number of months in the <code><em>value</em></code>, i.e. the value preceding the <code>'M'</code> in the <code>'YMD'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of days in the <code><em>value</em></code>, i.e. the number preceding the <code>D</code> in the YMD part, if one exists.</p>
+<p>Number of days in the <code><em>value</em></code>, i.e. the number preceding the <code>'D'</code> in the <code>'YMD'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of hours in the <code><em>value</em></code>, i.e. the number preceding the <code>H</code> in the HMS part, if one exists.</p>
+<p>Number of hours in the <code><em>value</em></code>, i.e. the number preceding the <code>'H'</code> in the <code>'HMS'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of minutes in the <code><em>value</em></code>, i.e. the number preceding the <code>M</code> in the HMS part, if one exists.</p>
+<p>Number of minutes in the <code><em>value</em></code>, i.e. the number preceding the <code>'M'</code> in the <code>'HMS'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>seconds</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of seconds in the <code><em>value</em></code>, i.e. the integer number preceding the <code>S</code> in the HMS part, if one exists.</p>
+<p>Number of seconds in the <code><em>value</em></code>, i.e. the integer number preceding the <code>'S'</code> in the <code>'HMS'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_seconds</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Fractional seconds in the <code><em>value</em></code>, i.e. the decimal part of the number preceding the <code>S</code> in the HMS part, if one exists.</p>
+<p>Fractional seconds in the <code><em>value</em></code>, i.e. the decimal part of the number preceding the <code>'S'</code> in the <code>'HMS'</code> part, if one exists.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3544,7 +3571,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 a_val: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a duration to a duration.</p>
+<p>Arithmetic addition of a duration to a duration, via conversion to seconds, using <code>Time_definitions.<em>Average_days_in_year</em></code> and <code>Time_definitions.<em>Average_days_in_month</em></code></p>
 </div></div></td>
 </tr>
 <tr>
@@ -3553,7 +3580,7 @@ a_val: <code>Iso8601_duration[1]</code><br>
 a_val: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a duration from a duration.</p>
+<p>Arithmetic subtraction of a duration from a duration, via conversion to seconds, using <code>Time_definitions.<em>Average_days_in_year</em></code> and <code>Time_definitions.<em>Average_days_in_month</em></code></p>
 </div></div></td>
 </tr>
 <tr>
@@ -3562,7 +3589,7 @@ a_val: <code>Iso8601_duration[1]</code><br>
 a_val: <code>Real[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Multiply a duration by a number.</p>
+<p>Arithmetic multiplication a duration by a number.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3571,7 +3598,7 @@ a_val: <code>Real[1]</code><br>
 a_val: <code>Real[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Divide a duration by a number.</p>
+<p>Arithmetic division of a duration by a number.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3680,14 +3707,14 @@ a_val: <code>Real[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Hour part of timezone - in the range 00 - 13.</p>
+<p>Extract the hour part of timezone, as an Integer in the range <code>00 - 13</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Minute part of timezone. Generally 00 or 30.</p>
+<p>Extract the hour part of timezone, as an Integer, usually either 0 or 30.</p>
 </div></div></td>
 </tr>
 <tr>
