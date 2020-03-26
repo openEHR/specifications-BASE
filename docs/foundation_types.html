@@ -2737,7 +2737,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_extended</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this ISO8601 string is in the 'extended' form, i.e. uses ‘-’ and / or ‘:’ separators. This is the preferred format.</p>
+<p>True if this ISO8601 string is in the 'extended' form, i.e. uses <code>'-'</code> and / or <code>':'</code> separators. This is the preferred format.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2885,7 +2885,7 @@ a_date: <code>Iso8601_date[1]</code><br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Addition of nominal duration represented by <code><em>a_diff</em></code>. For example, a duration of <code>'P1Y'</code> means advance to the same date next year, with the exception of a data of 29 February, to which the addition of a nominal year will result in 28 February of the following year. Similarly, <code>'P1M'</code> is understood here as a nominal month, the addition of which will result in one of:</p>
+<p>Addition of nominal duration represented by <code><em>a_diff</em></code>. For example, a duration of <code>'P1Y'</code> means advance to the same date next year, with the exception of the date 29 February in a leap year, to which the addition of a nominal year will result in 28 February of the following year. Similarly, <code>'P1M'</code> is understood here as a nominal month, the addition of which will result in one of:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2896,7 +2896,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 <p>one or two days less where the following month is shorter, or;</p>
 </li>
 <li>
-<p>in the case of adding a month to the date 31 Jan, the result will be 28 Feb, i.e. three less.</p>
+<p>in the case of adding a month to the date 31 Jan, the result will be 28 Feb in a non-leap year (i.e. three less) and 29 Feb in a leap year (i.e. two less).</p>
 </li>
 </ul>
 </div></div></td>
