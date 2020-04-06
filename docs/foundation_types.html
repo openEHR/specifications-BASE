@@ -710,8 +710,8 @@ other: <code>Ordered[1]</code><br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or not other)</code><br>
-<strong><em>Post_commutative</em></strong>: <code>Result = (other and self)</code></p></td>
+<em>Post_de_Morgan</em>: <code>Result = not (not self or not other)</code><br>
+<em>Post_commutative</em>: <code>Result = (other and self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Logical conjunction of this with <code><em>other</em></code>.</p>
 </div></div></td>
@@ -722,7 +722,7 @@ other: <code>Boolean[1]</code><br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or else not other)</code></p></td>
+<em>Post_de_Morgan</em>: <code>Result = not (not self or else not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean semi-strict conjunction with <code><em>other</em></code>.</p>
 </div></div></td>
@@ -733,9 +733,9 @@ other: <code>Boolean[1]</code><br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and not other)</code><br>
-<strong><em>Post_commutative</em></strong>: <code>Result = (other or Current)</code><br>
-<strong><em>Post_consistent_with_semi_strict</em></strong>: <code>Result implies (self or else other)</code></p></td>
+<em>Post_de_Morgan</em>: <code>Result = not (not self and not other)</code><br>
+<em>Post_commutative</em>: <code>Result = (other or Current)</code><br>
+<em>Post_consistent_with_semi_strict</em>: <code>Result implies (self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean disjunction with <code><em>other</em></code>.</p>
 </div></div></td>
@@ -746,7 +746,7 @@ other: <code>Boolean[1]</code><br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and then not other)</code></p></td>
+<em>Post_de_Morgan</em>: <code>Result = not (not self and then not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean semi-strict disjunction with <code><em>other</em></code>.</p>
 </div></div></td>
@@ -757,7 +757,7 @@ other: <code>Boolean[1]</code><br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_definition</em></strong>: <code>Result = self or other) and not (self and other</code></p></td>
+<em>Post_definition</em>: <code>Result = self or other) and not (self and other</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean exclusive or with <code><em>other</em></code>.</p>
 </div></div></td>
@@ -768,7 +768,7 @@ other: <code>Boolean[1]</code><br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_definition</em></strong>: <code>Result = (not self or else other)</code></p></td>
+<em>Post_definition</em>: <code>Result = (not self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean implication of <code><em>other</em></code> (semi-strict)</p>
 </div></div></td>
@@ -783,19 +783,19 @@ other: <code>Boolean[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Involutive_negation</em></strong>: <code>is_equal (not (not self))</code></p>
+<p><em>Involutive_negation</em>: <code>is_equal (not (not self))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Non_contradiction</em></strong>: <code>not (self and (not self))</code></p>
+<p><em>Non_contradiction</em>: <code>not (self and (not self))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Completeness</em></strong>: <code>self or else (not self)</code></p>
+<p><em>Completeness</em>: <code>self or else (not self)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -844,7 +844,7 @@ other: <code>Ordered[1]</code><br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_result</em></strong>: <code>not (other &lt; self)</code></p></td>
+<em>Post_result</em>: <code>not (other &lt; self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object less than or equal to <code><em>other</em></code>.</p>
 </div></div></td>
@@ -855,7 +855,7 @@ other: <code>Ordered[1]</code><br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_result</em></strong>: <code>Result = (other &lt; self)</code></p></td>
+<em>Post_result</em>: <code>Result = (other &lt; self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object greater than <code><em>other</em></code>.</p>
 </div></div></td>
@@ -866,7 +866,7 @@ other: <code>Ordered[1]</code><br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post_result</em></strong>: <code>Result = (other &lt;= self)</code></p></td>
+<em>Post_result</em>: <code>Result = (other &lt;= self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object greater than or equal to <code><em>other</em></code>.</p>
 </div></div></td>
@@ -1631,13 +1631,13 @@ test: <code>Operation[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>First_validity</em></strong>: <code>not is_empty implies first /= Void</code></p>
+<p><em>First_validity</em>: <code>not is_empty implies first /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Last_validity</em></strong>: <code>not is_empty implies last /= Void</code></p>
+<p><em>Last_validity</em>: <code>not is_empty implies last /= Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1872,7 +1872,7 @@ upper boundary value included in range if not upper_unbounded.</p>
 e: <code>T[1]</code><br>
 ): <code>boolean</code><br>
 <br>
-<strong><em>Post_result</em></strong>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code></p></td>
+<em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.
 True if (lower_unbounded or
@@ -1911,25 +1911,25 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Lower_included_valid</em></strong>: <code>lower_unbounded implies not lower_included</code></p>
+<p><em>Lower_included_valid</em>: <code>lower_unbounded implies not lower_included</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Upper_included_valid</em></strong>: <code>upper_unbounded implies not upper_included</code></p>
+<p><em>Upper_included_valid</em>: <code>upper_unbounded implies not upper_included</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Limits_consistent</em></strong>: <code>(not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</code></p>
+<p><em>Limits_consistent</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Limits_comparable</em></strong>: <code>(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</code></p>
+<p><em>Limits_comparable</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2002,7 +2002,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_point</em></strong>: <code>lower = upper</code></p>
+<p><em>Inv_point</em>: <code>lower = upper</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2034,7 +2034,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_not_point</em></strong>: <code>lower /= upper</code></p>
+<p><em>Inv_not_point</em>: <code>lower /= upper</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2471,7 +2471,7 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 y: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = y &gt;= 0</code></p></td>
+<em>Post</em>: <code>Result = y &gt;= 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>y &gt;= 0</code>.</p>
 </div></div></td>
@@ -2482,7 +2482,7 @@ y: <code>Integer[1]</code><br>
 m: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = m &gt;= 1 and m &lt;= Months_in_year</code></p></td>
+<em>Post</em>: <code>Result = m &gt;= 1 and m &lt;= Months_in_year</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>m &gt;= 1 and m &lt;= months_in_year</code>.</p>
 </div></div></td>
@@ -2495,7 +2495,7 @@ m: <code>Integer[1]</code>,<br>
 d: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</code></p></td>
+<em>Post</em>: <code>Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>d &gt;= 1 and d &lt;= days_in_month (m, y)</code>.</p>
 </div></div></td>
@@ -2508,7 +2508,7 @@ m: <code>Integer[1]</code>,<br>
 s: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code></p></td>
+<em>Post</em>: <code>Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>(h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code> .</p>
 </div></div></td>
@@ -2519,7 +2519,7 @@ s: <code>Integer[1]</code><br>
 m: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = m &gt;= 0 and m &lt; Minutes_in_hour</code></p></td>
+<em>Post</em>: <code>Result = m &gt;= 0 and m &lt; Minutes_in_hour</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>m &gt;= 0 and m &lt; Minutes_in_hour</code>.</p>
 </div></div></td>
@@ -2530,7 +2530,7 @@ m: <code>Integer[1]</code><br>
 s: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = s &gt;= 0 and s &lt; Seconds_in_minute</code></p></td>
+<em>Post</em>: <code>Result = s &gt;= 0 and s &lt; Seconds_in_minute</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>s &gt;= 0 and s &lt; Seconds_in_minute</code> .</p>
 </div></div></td>
@@ -2541,7 +2541,7 @@ s: <code>Integer[1]</code><br>
 fs: <code>Double[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = fs &gt;= 0.0 and fs &lt; 1.0</code></p></td>
+<em>Post</em>: <code>Result = fs &gt;= 0.0 and fs &lt; 1.0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>fs &gt;= 0.0</code> and <code>fs &lt; 1.0</code> .</p>
 </div></div></td>
@@ -2878,7 +2878,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
+<em>Pre</em>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the month part of the date as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -2887,7 +2887,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
+<em>Pre</em>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the day part of the date as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -2995,25 +2995,25 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
+<p><em>Year_valid</em>: <code>valid_year (year)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Month_valid</em></strong>: <code>not month_unknown implies valid_month (month)</code></p>
+<p><em>Month_valid</em>: <code>not month_unknown implies valid_month (month)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Day_valid</em></strong>: <code>not day_unknown implies valid_day (year, month, day)</code></p>
+<p><em>Day_valid</em>: <code>not day_unknown implies valid_day (year, month, day)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity</em></strong>: <code>month_unknown implies day_unknown</code></p>
+<p><em>Partial_validity</em>: <code>month_unknown implies day_unknown</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3100,7 +3100,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong> (): <code>Real</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
+<em>Pre</em>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the fractional seconds part of the time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.</p>
 </div></div></td>
@@ -3191,31 +3191,31 @@ a_time: <code>Iso8601_time[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Hour_valid</em></strong>: <code>valid_hour(hour, minute, second)</code></p>
+<p><em>Hour_valid</em>: <code>valid_hour(hour, minute, second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute (minute)</code></p>
+<p><em>Minute_valid</em>: <code>not minute_unknown implies valid_minute (minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Second_valid</em></strong>: <code>not second_unknown implies valid_second (second)</code></p>
+<p><em>Second_valid</em>: <code>not second_unknown implies valid_second (second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: <code>has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</code></p>
+<p><em>Fractional_second_valid</em>: <code>has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity</em></strong>: <code>minute_unknown implies second_unknown</code></p>
+<p><em>Partial_validity</em>: <code>minute_unknown implies second_unknown</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3289,7 +3289,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
+<em>Pre</em>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the month part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -3298,7 +3298,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
+<em>Pre</em>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the day part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -3307,7 +3307,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not hour_unknown</code></p></td>
+<em>Pre</em>: <code>not hour_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the hour part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -3316,7 +3316,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not minute_unknown</code></p></td>
+<em>Pre</em>: <code>not minute_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the minute part of the date/time as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -3325,7 +3325,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong> (): <code>Integer</code><br>
 <br>
-<strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
+<em>Pre</em>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the integral seconds part of the date/time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.</p>
 </div></div></td>
@@ -3455,73 +3455,73 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Year_valid</em></strong>: <code>valid_year (year)</code></p>
+<p><em>Year_valid</em>: <code>valid_year (year)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Month_valid</em></strong>: <code>valid_month (month)</code></p>
+<p><em>Month_valid</em>: <code>valid_month (month)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Day_valid</em></strong>: <code>valid_day(year, month, day)</code></p>
+<p><em>Day_valid</em>: <code>valid_day(year, month, day)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Hour_valid</em></strong>: <code>valid_hour (hour, minute, second)</code></p>
+<p><em>Hour_valid</em>: <code>valid_hour (hour, minute, second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute(minute)</code></p>
+<p><em>Minute_valid</em>: <code>not minute_unknown implies valid_minute(minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Second_valid</em></strong>: <code>not second_unknown implies valid_second (second)</code></p>
+<p><em>Second_valid</em>: <code>not second_unknown implies valid_second (second)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: <code>has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</code></p>
+<p><em>Fractional_second_valid</em>: <code>has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity_year</em></strong>: <code>not month_unknown</code></p>
+<p><em>Partial_validity_year</em>: <code>not month_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity_month</em></strong>: <code>not month_unknown</code></p>
+<p><em>Partial_validity_month</em>: <code>not month_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity_day</em></strong>: <code>not day_unknown</code></p>
+<p><em>Partial_validity_day</em>: <code>not day_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity_hour</em></strong>: <code>not hour_unknown</code></p>
+<p><em>Partial_validity_hour</em>: <code>not hour_unknown</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Partial_validity_minute</em></strong>: <code>minute_unknown implies second_unknown</code></p>
+<p><em>Partial_validity_minute</em>: <code>minute_unknown implies second_unknown</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3692,49 +3692,49 @@ a_val: <code>Real[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Years_valid</em></strong>: <code>years &gt;= 0</code></p>
+<p><em>Years_valid</em>: <code>years &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Months_valid</em></strong>: <code>months &gt;= 0</code></p>
+<p><em>Months_valid</em>: <code>months &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Weeks_valid</em></strong>: <code>weeks &gt;= 0</code></p>
+<p><em>Weeks_valid</em>: <code>weeks &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Days_valid</em></strong>: <code>days &gt;= 0</code></p>
+<p><em>Days_valid</em>: <code>days &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Hours_valid</em></strong>: <code>hours &gt;= 0</code></p>
+<p><em>Hours_valid</em>: <code>hours &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Minutes_valid</em></strong>: <code>minutes &gt;= 0</code></p>
+<p><em>Minutes_valid</em>: <code>minutes &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Seconds_valid</em></strong>: <code>seconds &gt;= 0</code></p>
+<p><em>Seconds_valid</em>: <code>seconds &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Fractional_second_valid</em></strong>: <code>fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</code></p>
+<p><em>Fractional_second_valid</em>: <code>fractional_second &gt;= 0.0 and fractional_second &lt; 1.0</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3850,25 +3850,25 @@ a_val: <code>Real[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Min_hour_valid</em></strong>: <code>sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</code></p>
+<p><em>Min_hour_valid</em>: <code>sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Max_hour_valid</em></strong>: <code>sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</code></p>
+<p><em>Max_hour_valid</em>: <code>sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Minute_valid</em></strong>: <code>not minute_unknown implies valid_minute (minute)</code></p>
+<p><em>Minute_valid</em>: <code>not minute_unknown implies valid_minute (minute)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Sign_valid</em></strong>: <code>sign = 1 or sign = -1</code></p>
+<p><em>Sign_valid</em>: <code>sign = 1 or sign = -1</code></p>
 </div></div></td>
 </tr>
 </tbody>

@@ -38,23 +38,23 @@ h|
 a|Version of the branch; numbering starts at 1.
 
 h|*Invariants*
-2+a|*_Value_valid_*: `not value.is_empty`
+2+a|_Value_valid_: `not value.is_empty`
 
 h|
-2+a|*_Trunk_version_valid_*: `trunk_version /= Void and then trunk_version.is_integer and then trunk_version.as_integer >= 1`
+2+a|_Trunk_version_valid_: `trunk_version /= Void and then trunk_version.is_integer and then trunk_version.as_integer >= 1`
 
 h|
-2+a|*_Branch_number_valid_*: `branch_number /= Void implies branch_number.is_integer and then branch_number.as_integer >= 1`
+2+a|_Branch_number_valid_: `branch_number /= Void implies branch_number.is_integer and then branch_number.as_integer >= 1`
 
 h|
-2+a|*_Branch_version_valid_*: `branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer >= 1`
+2+a|_Branch_version_valid_: `branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer >= 1`
 
 h|
-2+a|*_Branch_validity_*: `(branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )`
+2+a|_Branch_validity_: `(branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )`
 
 h|
-2+a|*_Is_branch_validity_*: `is_branch xor branch_number = Void`
+2+a|_Is_branch_validity_: `is_branch xor branch_number = Void`
 
 h|
-2+a|*_Is_first_validity_*: `not is_first xor trunk_version.is_equal(“1”)`
+2+a|_Is_first_validity_: `not is_first xor trunk_version.is_equal(“1”)`
 |===

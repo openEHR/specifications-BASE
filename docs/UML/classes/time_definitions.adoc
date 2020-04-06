@@ -80,7 +80,7 @@ h|
 y: `Integer[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = y >= 0`
+_Post_: `Result = y >= 0`
 a|True if `y >= 0`.
 
 h|
@@ -88,7 +88,7 @@ h|
 m: `Integer[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = m >= 1 and m \<= Months_in_year`
+_Post_: `Result = m >= 1 and m \<= Months_in_year`
 a|True if `m >= 1 and m \<= months_in_year`.
 
 h|
@@ -98,7 +98,7 @@ m: `Integer[1]`, +
 d: `Integer[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = d >= 1 and d \<= days_in_month (m, y)`
+_Post_: `Result = d >= 1 and d \<= days_in_month (m, y)`
 a|True if `d >= 1 and d \<= days_in_month (m, y)`.
 
 h|
@@ -108,7 +108,7 @@ m: `Integer[1]`, +
 s: `Integer[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)`
+_Post_: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)`
 a|True if `(h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)` .
 
 h|
@@ -116,7 +116,7 @@ h|
 m: `Integer[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = m >= 0 and m < Minutes_in_hour`
+_Post_: `Result = m >= 0 and m < Minutes_in_hour`
 a|True if `m >= 0 and m < Minutes_in_hour`.
 
 h|
@@ -124,7 +124,7 @@ h|
 s: `Integer[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = s >= 0 and s < Seconds_in_minute`
+_Post_: `Result = s >= 0 and s < Seconds_in_minute`
 a|True if `s >= 0 and s < Seconds_in_minute` .
 
 h|
@@ -132,7 +132,7 @@ h|
 fs: `Double[1]` +
 ): `Boolean` +
  +
-*_Post_*: `Result = fs >= 0.0 and fs < 1.0`
+_Post_: `Result = fs >= 0.0 and fs < 1.0`
 a|True if `fs >= 0.0` and `fs < 1.0` .
 
 h|

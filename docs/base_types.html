@@ -1218,7 +1218,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>not value.empty</code></p>
+<p><em>Value_valid</em>: <code>not value.empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1391,7 +1391,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Has_extension_valid</em></strong>: <code>extension.is_empty xor has_extension</code></p>
+<p><em>Has_extension_valid</em>: <code>extension.is_empty xor has_extension</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1552,43 +1552,43 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>not value.is_empty</code></p>
+<p><em>Value_valid</em>: <code>not value.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Trunk_version_valid</em></strong>: <code>trunk_version /= Void and then trunk_version.is_integer and then trunk_version.as_integer &gt;= 1</code></p>
+<p><em>Trunk_version_valid</em>: <code>trunk_version /= Void and then trunk_version.is_integer and then trunk_version.as_integer &gt;= 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Branch_number_valid</em></strong>: <code>branch_number /= Void implies branch_number.is_integer and then branch_number.as_integer &gt;= 1</code></p>
+<p><em>Branch_number_valid</em>: <code>branch_number /= Void implies branch_number.is_integer and then branch_number.as_integer &gt;= 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Branch_version_valid</em></strong>: <code>branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer &gt;= 1</code></p>
+<p><em>Branch_version_valid</em>: <code>branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer &gt;= 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Branch_validity</em></strong>: <code>(branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )</code></p>
+<p><em>Branch_validity</em>: <code>(branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Is_branch_validity</em></strong>: <code>is_branch xor branch_number = Void</code></p>
+<p><em>Is_branch_validity</em>: <code>is_branch xor branch_number = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Is_first_validity</em></strong>: <code>not is_first xor trunk_version.is_equal(“1”)</code></p>
+<p><em>Is_first_validity</em>: <code>not is_first xor trunk_version.is_equal(“1”)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1879,7 +1879,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Type_validity</em></strong>: <code>type.is_equal(“PERSON”) or type.is_equal(“ORGANISATION”) or type.is_equal(“GROUP”) or type.is_equal(“AGENT”)or type.is_equal(“ROLE”) or type.is_equal(“PARTY”) or type.is_equal(“ACTOR”)</code></p>
+<p><em>Type_validity</em>: <code>type.is_equal(“PERSON”) or type.is_equal(“ORGANISATION”) or type.is_equal(“GROUP”) or type.is_equal(“AGENT”)or type.is_equal(“ROLE”) or type.is_equal(“PARTY”) or type.is_equal(“ACTOR”)</code></p>
 </div></div></td>
 </tr>
 </tbody>

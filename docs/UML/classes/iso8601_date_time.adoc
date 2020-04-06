@@ -33,31 +33,31 @@ a|Extract the year part of the date as an Integer.
 h|
 |*month* (): `Integer` +
  +
-*_Pre_*: `not month_unknown`
+_Pre_: `not month_unknown`
 a|Extract the month part of the date/time as an Integer, or return 0 if not present.
 
 h|
 |*day* (): `Integer` +
  +
-*_Pre_*: `not day_unknown`
+_Pre_: `not day_unknown`
 a|Extract the day part of the date/time as an Integer, or return 0 if not present.
 
 h|
 |*hour* (): `Integer` +
  +
-*_Pre_*: `not hour_unknown`
+_Pre_: `not hour_unknown`
 a|Extract the hour part of the date/time as an Integer, or return 0 if not present.
 
 h|
 |*minute* (): `Integer` +
  +
-*_Pre_*: `not minute_unknown`
+_Pre_: `not minute_unknown`
 a|Extract the minute part of the date/time as an Integer, or return 0 if not present.
 
 h|
 |*second* (): `Integer` +
  +
-*_Pre_*: `not second_unknown`
+_Pre_: `not second_unknown`
 a|Extract the integral seconds part of the date/time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.
 
 h|
@@ -135,38 +135,38 @@ a_diff: `Iso8601_duration[1]` +
 a|Subtraction of nominal duration represented by `_a_diff_`. See `_add_nominal_()` for semantics.
 
 h|*Invariants*
-2+a|*_Year_valid_*: `valid_year (year)`
+2+a|_Year_valid_: `valid_year (year)`
 
 h|
-2+a|*_Month_valid_*: `valid_month (month)`
+2+a|_Month_valid_: `valid_month (month)`
 
 h|
-2+a|*_Day_valid_*: `valid_day(year, month, day)`
+2+a|_Day_valid_: `valid_day(year, month, day)`
 
 h|
-2+a|*_Hour_valid_*: `valid_hour (hour, minute, second)`
+2+a|_Hour_valid_: `valid_hour (hour, minute, second)`
 
 h|
-2+a|*_Minute_valid_*: `not minute_unknown implies valid_minute(minute)`
+2+a|_Minute_valid_: `not minute_unknown implies valid_minute(minute)`
 
 h|
-2+a|*_Second_valid_*: `not second_unknown implies valid_second (second)`
+2+a|_Second_valid_: `not second_unknown implies valid_second (second)`
 
 h|
-2+a|*_Fractional_second_valid_*: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
+2+a|_Fractional_second_valid_: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
 
 h|
-2+a|*_Partial_validity_year_*: `not month_unknown`
+2+a|_Partial_validity_year_: `not month_unknown`
 
 h|
-2+a|*_Partial_validity_month_*: `not month_unknown`
+2+a|_Partial_validity_month_: `not month_unknown`
 
 h|
-2+a|*_Partial_validity_day_*: `not day_unknown`
+2+a|_Partial_validity_day_: `not day_unknown`
 
 h|
-2+a|*_Partial_validity_hour_*: `not hour_unknown`
+2+a|_Partial_validity_hour_: `not hour_unknown`
 
 h|
-2+a|*_Partial_validity_minute_*: `minute_unknown implies second_unknown`
+2+a|_Partial_validity_minute_: `minute_unknown implies second_unknown`
 |===

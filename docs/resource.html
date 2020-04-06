@@ -507,7 +507,7 @@
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code>String</code><br>
 <br>
-<strong><em>Post</em></strong>: <code>Result = revision_history.most_recent_version</code></p></td>
+<em>Post</em>: <code>Result = revision_history.most_recent_version</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p>
 </div></div></td>
@@ -522,38 +522,38 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Original_language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (original_language.as_string)</code></p>
+<p><em>Original_language_valid</em>: <code>code_set (Code_set_id_languages).has_code (original_language.as_string)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Current_revision_valid</em></strong>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal ("(uncontrolled)")</code></p>
+<p><em>Current_revision_valid</em>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal ("(uncontrolled)")</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Translations_valid</em></strong>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code></p>
+<p><em>Translations_valid</em>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Description_valid</em></strong>: <code>translations /= Void implies (description.details.for_all (d &#124;
+<p><em>Description_valid</em>: <code>translations /= Void implies (description.details.for_all (d &#124;
 translations.has_key (d.language.code_string)))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Languages_available_valid</em></strong>: <code>languages_available.has (original_language)</code></p>
+<p><em>Languages_available_valid</em>: <code>languages_available.has (original_language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Revision_history_valid</em></strong>: <code>is_controlled xor revision_history = Void</code></p>
+<p><em>Revision_history_valid</em>: <code>is_controlled xor revision_history = Void</code></p>
 </div></div></td>
 </tr>
 </tbody>

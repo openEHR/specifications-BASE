@@ -28,13 +28,13 @@ a|Extract the year part of the date as an Integer.
 h|
 |*month* (): `Integer` +
  +
-*_Pre_*: `not month_unknown`
+_Pre_: `not month_unknown`
 a|Extract the month part of the date as an Integer, or return 0 if not present.
 
 h|
 |*day* (): `Integer` +
  +
-*_Pre_*: `not day_unknown`
+_Pre_: `not day_unknown`
 a|Extract the day part of the date as an Integer, or return 0 if not present.
 
 h|
@@ -96,14 +96,14 @@ a_diff: `Iso8601_duration[1]` +
 a|Subtraction of nominal duration represented by `_a_diff_`. See `_add_nominal_()` for semantics.
 
 h|*Invariants*
-2+a|*_Year_valid_*: `valid_year (year)`
+2+a|_Year_valid_: `valid_year (year)`
 
 h|
-2+a|*_Month_valid_*: `not month_unknown implies valid_month (month)`
+2+a|_Month_valid_: `not month_unknown implies valid_month (month)`
 
 h|
-2+a|*_Day_valid_*: `not day_unknown implies valid_day (year, month, day)`
+2+a|_Day_valid_: `not day_unknown implies valid_day (year, month, day)`
 
 h|
-2+a|*_Partial_validity_*: `month_unknown implies day_unknown`
+2+a|_Partial_validity_: `month_unknown implies day_unknown`
 |===
