@@ -27,11 +27,13 @@ a|Extract the year part of the date as an Integer.
 
 h|
 |*month* (): `Integer` +
+ +
 *_Pre_*: `not month_unknown`
 a|Extract the month part of the date as an Integer, or return 0 if not present.
 
 h|
 |*day* (): `Integer` +
+ +
 *_Pre_*: `not day_unknown`
 a|Extract the day part of the date as an Integer, or return 0 if not present.
 
@@ -60,25 +62,25 @@ h|
 a|Return string value in extended format.
 
 h|
-|*add* ( +
+|*add* _alias_ "+" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Arithmetic addition of a duration to a date.
 
 h|
-|*subtract* ( +
+|*subtract* _alias_ "-" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Arithmetic subtraction of a duration from a date.
 
 h|
-|*diff* ( +
+|*diff* _alias_ "-" ( +
 a_date: `Iso8601_date[1]` +
 ): `Iso8601_duration`
 a|Difference of two dates.
 
 h|
-|*add_nominal* ( +
+|*add_nominal* _alias_ "++" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Addition of nominal duration represented by `_a_diff_`. For example, a duration of `'P1Y'` means advance to the same date next year, with the exception of the date 29 February in a leap year, to which the addition of a nominal year will result in 28 February of the following year. Similarly, `'P1M'` is understood here as a nominal month, the addition of which will result in one of:
@@ -88,7 +90,7 @@ a|Addition of nominal duration represented by `_a_diff_`. For example, a duratio
 * in the case of adding a month to the date 31 Jan, the result will be 28 Feb in a non-leap year (i.e. three less) and 29 Feb in a leap year (i.e. two less).
 
 h|
-|*subtract_nominal* ( +
+|*subtract_nominal* _alias_ "--" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Subtraction of nominal duration represented by `_a_diff_`. See `_add_nominal_()` for semantics.

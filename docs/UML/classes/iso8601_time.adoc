@@ -37,6 +37,7 @@ a|Extract the integral seconds part of the time (i.e. prior to any decimal sign)
 
 h|
 |*fractional_second* (): `Real` +
+ +
 *_Pre_*: `not second_unknown`
 a|Extract the fractional seconds part of the time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.
 
@@ -73,19 +74,19 @@ h|
 a|Return string value in extended format.
 
 h|
-|*add* ( +
+|*add* _alias_ "+" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_time`
 a|Arithmetic addition of a duration to a time.
 
 h|
-|*subtract* ( +
+|*subtract* _alias_ "-" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_time`
 a|Arithmetic subtraction of a duration from a time.
 
 h|
-|*diff* ( +
+|*diff* _alias_ "-" ( +
 a_time: `Iso8601_time[1]` +
 ): `Iso8601_duration`
 a|Difference of two times.

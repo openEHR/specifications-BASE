@@ -465,7 +465,7 @@
 <div class="sect2">
 <h3 id="_the_any_class"><a class="anchor" href="#_the_any_class"></a>2.2. The Any Class</h3>
 <div class="paragraph">
-<p>Within all object-oriented and most other modern programming and modelling environment exists an ultimate ancestor type to which all others conform. In this specification, we assume the type <code>Any</code>, which defines a bare minimum of operations, and stands for the real <code>Any</code> or <code>Object</code> type found in real technologies.</p>
+<p>Within all object-oriented and most other modern programming and modelling environments exists an ultimate ancestor type to which all others conform. In this specification, we assume the type <code>Any</code>, which defines a bare minimum of operations, and stands for the real <code>Any</code> or <code>Object</code> type found in real technologies.</p>
 </div>
 <div class="paragraph">
 <p>The primary operations specified are those for equality, i.e.:</p>
@@ -546,7 +546,7 @@ other: <code>Any[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
 other: <code>Any[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -586,7 +586,7 @@ an_object: <code>Any[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -706,9 +706,10 @@ other: <code>Ordered[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conjunction</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conjunction</strong> <em>alias</em> "and", "∧", "&amp;" (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or not other)</code><br>
 <strong><em>Post_commutative</em></strong>: <code>Result = (other and self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -717,9 +718,10 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>semistrict_conjunction</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>semistrict_conjunction</strong> <em>alias</em> "and then", "&amp;&amp;" (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self or else not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean semi-strict conjunction with <code><em>other</em></code>.</p>
@@ -727,9 +729,10 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>disjunction</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>disjunction</strong> <em>alias</em> "or", "∨", "&#124;" (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and not other)</code><br>
 <strong><em>Post_commutative</em></strong>: <code>Result = (other or Current)</code><br>
 <strong><em>Post_consistent_with_semi_strict</em></strong>: <code>Result implies (self or else other)</code></p></td>
@@ -739,9 +742,10 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>semistrict_disjunction</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>semistrict_disjunction</strong> <em>alias</em> "or else", "&#124;&#124;" (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post_de_Morgan</em></strong>: <code>Result = not (not self and then not other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean semi-strict disjunction with <code><em>other</em></code>.</p>
@@ -749,9 +753,10 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclusive_disjunction</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclusive_disjunction</strong> <em>alias</em> "xor", "⊻" (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post_definition</em></strong>: <code>Result = self or other) and not (self and other</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean exclusive or with <code><em>other</em></code>.</p>
@@ -759,9 +764,10 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>implication</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>implication</strong> <em>alias</em> "implies", "⇒" (<br>
 other: <code>Boolean[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post_definition</em></strong>: <code>Result = (not self or else other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean implication of <code><em>other</em></code> (semi-strict)</p>
@@ -769,7 +775,7 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negation</strong> (): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negation</strong> <em>alias</em> "not", "¬", "!" (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean negation of the current value.</p>
 </div></div></td>
@@ -825,7 +831,7 @@ other: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -834,30 +840,33 @@ other: <code>Ordered[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than_or_equal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than_or_equal</strong> <em>alias</em> "&lt;=", "≤" (<br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Inv_result</em></strong>: <code>not (other &lt; self)</code></p></td>
+<br>
+<strong><em>Post_result</em></strong>: <code>not (other &lt; self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object less than or equal to <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than</strong> <em>alias</em> "&gt;" (<br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Inv_result</em></strong>: <code>Result = (other &lt; self)</code></p></td>
+<br>
+<strong><em>Post_result</em></strong>: <code>Result = (other &lt; self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object greater than <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than_or_equal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than_or_equal</strong> <em>alias</em> "&gt;=", "≥" (<br>
 other: <code>Ordered[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Inv_result</em></strong>: <code>Result = (other &lt;= self)</code></p></td>
+<br>
+<strong><em>Post_result</em></strong>: <code>Result = (other &lt;= self)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object greater than or equal to <code><em>other</em></code>.</p>
 </div></div></td>
@@ -968,7 +977,7 @@ other: <code>Ordered[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>append</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>append</strong> <em>alias</em> "+" (<br>
 other: <code>String[1]</code><br>
 ): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -977,7 +986,7 @@ other: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1043,7 +1052,7 @@ other: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1052,7 +1061,7 @@ other: <code>Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1061,7 +1070,7 @@ other: <code>Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1070,7 +1079,7 @@ other: <code>Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> <em>alias</em> "/" (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1079,7 +1088,7 @@ other: <code>Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> <em>alias</em> "^" (<br>
 other: <code>Numeric[1]</code><br>
 ): <code>Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1145,7 +1154,7 @@ other: <code>Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1154,7 +1163,7 @@ other: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1163,7 +1172,7 @@ other: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1172,7 +1181,7 @@ other: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> <em>alias</em> "/" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1181,7 +1190,7 @@ other: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> <em>alias</em> "^" (<br>
 other: <code>Double[1]</code><br>
 ): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1190,7 +1199,7 @@ other: <code>Double[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modulo</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modulo</strong> <em>alias</em> "mod", "\\" (<br>
 mod: <code>Integer[1]</code><br>
 ): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1230,56 +1239,56 @@ mod: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Integer addition.</p>
+<p>Large integer addition.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Integer subtraction.</p>
+<p>Large integer subtraction.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Integer multiplication.</p>
+<p>Large integer multiplication.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> <em>alias</em> "/" (<br>
 other: <code>Integer[1]</code><br>
 ): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Integer division.</p>
+<p>Large integer division.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> <em>alias</em> "^" (<br>
 other: <code>Double[1]</code><br>
 ): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Integer exponentiation.</p>
+<p>Large integer exponentiation.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modulo</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>modulo</strong> <em>alias</em> "mod", "\\" (<br>
 mod: <code>Integer[1]</code><br>
 ): <code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Return self modulo other.</p>
+<p>Large integer modulus.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1322,7 +1331,7 @@ mod: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>Real[1]</code><br>
 ): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1331,7 +1340,7 @@ other: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>Real[1]</code><br>
 ): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1340,7 +1349,7 @@ other: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 other: <code>Real[1]</code><br>
 ): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1349,7 +1358,7 @@ other: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> <em>alias</em> "/" (<br>
 other: <code>Real[1]</code><br>
 ): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1358,7 +1367,7 @@ other: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> <em>alias</em> "^" (<br>
 other: <code>Double[1]</code><br>
 ): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1390,6 +1399,63 @@ other: <code>Double[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Ordered_Numeric</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>floor</strong> (): <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return the greatest integer no greater than the value of this object.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Double-precision real number addition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Double-precision real number subtraction.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Double-precision real number multiplication.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> <em>alias</em> "/" (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Double-precision real number division.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exponent</strong> <em>alias</em> "^" (<br>
+other: <code>Double[1]</code><br>
+): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Double-precision real number exponentiation.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1501,7 +1567,7 @@ v: <code>T[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>there_exists</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>there_exists</strong> <em>alias</em> "there exists", "∃" (<br>
 test: <code>Operation[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1510,7 +1576,7 @@ test: <code>Operation[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>for_all</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>for_all</strong> <em>alias</em> "for all", "∀" (<br>
 test: <code>Operation[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1633,11 +1699,11 @@ test: <code>Operation[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> <em>alias</em> "[]" (<br>
 a_key: <code>Integer[1]</code><br>
 ): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Return item for key  a_key'.</p>
+<p>Return item for key  <code><em>a_key</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1677,16 +1743,16 @@ a_key: <code>Integer[1]</code><br>
 a_key: <code>K[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Test for membership of a key.</p>
+<p>Test for presence of <code><em>a_key</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong> <em>alias</em> "[]" (<br>
 a_key: <code>K[1]</code><br>
 ): <code>V</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Return item for key  a_key'.</p>
+<p>Return item for key <code><em>a_key</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1805,6 +1871,7 @@ upper boundary value included in range if not upper_unbounded.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
 e: <code>T[1]</code><br>
 ): <code>boolean</code><br>
+<br>
 <strong><em>Post_result</em></strong>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.
@@ -1899,33 +1966,37 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>boolean<br>
+{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>lower boundary open (i.e. = -infinity)</p>
+<p>Lower boundary open (i.e. = -infinity).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>boolean<br>
+{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>upper boundary open (i.e. = +infinity)</p>
+<p>Upper boundary open (i.e. = +infinity).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>boolean<br>
+{default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>lower boundary value included in range if not lower_unbounded.</p>
+<p>Lower boundary value included in range if not <code><em>lower_unbounded</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>boolean<br>
+{default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>upper boundary value included in range if not upper_unbounded.</p>
+<p>Upper boundary value included in range if not <code><em>upper_unbounded</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2288,56 +2359,56 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Seconds_in_minute</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Seconds_in_minute</strong>: <code>Integer&#160;=&#160;60</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of seconds in a minute, defined to be 60.</p>
+<p>Number of seconds in a minute.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Minutes_in_hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Minutes_in_hour</strong>: <code>Integer&#160;=&#160;60</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of minutes in an hour, defined to be 60.</p>
+<p>Number of minutes in an hour.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hours_in_day</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hours_in_day</strong>: <code>Integer&#160;=&#160;24</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of clock hours in a day, i.e. 24.0.</p>
+<p>Number of clock hours in a day, i.e. 24.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Average_days_in_month</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Average_days_in_month</strong>: <code>Real&#160;=&#160;30.42</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Used for conversions of durations containing months to days and / or seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_days_in_month</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_days_in_month</strong>: <code>Integer&#160;=&#160;31</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Maximum number of days in any month, i.e. 31.</p>
+<p>Maximum number of days in any month.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_year</strong>: <code>Integer&#160;=&#160;365</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Calendar days in a normal year, i.e. 365.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Average_days_in_year</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Average_days_in_year</strong>: <code>Real&#160;=&#160;365.24</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Used for conversions of durations containing years to days and / or seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_leap_year</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_leap_year</strong>: <code>Integer&#160;=&#160;366</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Calendar days in a standard leap year, i.e. 366.</p>
 </div></div></td>
@@ -2351,38 +2422,40 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_week</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Days_in_week</strong>: <code>Integer&#160;=&#160;7</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Number of days in a week.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Months_in_year</strong>: <code>Integer&#160;=&#160;12</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Months_in_year</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Min_timezone_hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Min_timezone_hour</strong>: <code>Integer&#160;=&#160;12</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Minimum hour value of a timezone  according to ISO 8601 (note that the -ve sign is supplied in the <code>ISO8601_TIMEZONE</code> class).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_timezone_hour</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max_timezone_hour</strong>: <code>Integer&#160;=&#160;13</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Maximum hour value of a timezone according to ISO 8601.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_month</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_month</strong>: <code>Real&#160;=&#160;30.42</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Used for conversions of durations containing months to days and / or seconds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_year</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Nominal_days_in_year</strong>: <code>Real&#160;=&#160;365.24</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Used for conversions of durations containing years to days and / or seconds.</p>
 </div></div></td>
@@ -2397,6 +2470,7 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_year</strong> (<br>
 y: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post</em></strong>: <code>Result = y &gt;= 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>y &gt;= 0</code>.</p>
@@ -2407,6 +2481,7 @@ y: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_month</strong> (<br>
 m: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post</em></strong>: <code>Result = m &gt;= 1 and m &lt;= Months_in_year</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>m &gt;= 1 and m &lt;= months_in_year</code>.</p>
@@ -2419,6 +2494,7 @@ y: <code>Integer[1]</code>,<br>
 m: <code>Integer[1]</code>,<br>
 d: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post</em></strong>: <code>Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>d &gt;= 1 and d &lt;= days_in_month (m, y)</code>.</p>
@@ -2431,6 +2507,7 @@ h: <code>Integer[1]</code>,<br>
 m: <code>Integer[1]</code>,<br>
 s: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post</em></strong>: <code>Result = (h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>(h &gt;= 0 and h &lt; Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)</code> .</p>
@@ -2441,6 +2518,7 @@ s: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_minute</strong> (<br>
 m: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post</em></strong>: <code>Result = m &gt;= 0 and m &lt; Minutes_in_hour</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>m &gt;= 0 and m &lt; Minutes_in_hour</code>.</p>
@@ -2451,6 +2529,7 @@ m: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_second</strong> (<br>
 s: <code>Integer[1]</code><br>
 ): <code>Boolean</code><br>
+<br>
 <strong><em>Post</em></strong>: <code>Result = s &gt;= 0 and s &lt; Seconds_in_minute</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>s &gt;= 0 and s &lt; Seconds_in_minute</code> .</p>
@@ -2461,7 +2540,8 @@ s: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_fractional_second</strong> (<br>
 fs: <code>Double[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>Result = fs &gt;= 0.0 and fs &lt; 1.0 .</code></p></td>
+<br>
+<strong><em>Post</em></strong>: <code>Result = fs &gt;= 0.0 and fs &lt; 1.0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code>fs &gt;= 0.0</code> and <code>fs &lt; 1.0</code> .</p>
 </div></div></td>
@@ -2797,6 +2877,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the month part of the date as an Integer, or return 0 if not present.</p>
@@ -2805,6 +2886,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the day part of the date as an Integer, or return 0 if not present.</p>
@@ -2854,7 +2936,7 @@ allowing the <code>W</code> designator in the same expression as other designato
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -2863,7 +2945,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -2872,7 +2954,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 a_date: <code>Iso8601_date[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -2881,7 +2963,7 @@ a_date: <code>Iso8601_date[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_nominal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_nominal</strong> <em>alias</em> "++" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -2903,7 +2985,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract_nominal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract_nominal</strong> <em>alias</em> "--" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3017,6 +3099,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong> (): <code>Real</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the fractional seconds part of the time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.</p>
@@ -3080,7 +3163,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time <
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3089,7 +3172,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3098,7 +3181,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 a_time: <code>Iso8601_time[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3205,6 +3288,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not month_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the month part of the date/time as an Integer, or return 0 if not present.</p>
@@ -3213,6 +3297,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not day_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the day part of the date/time as an Integer, or return 0 if not present.</p>
@@ -3221,6 +3306,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not hour_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the hour part of the date/time as an Integer, or return 0 if not present.</p>
@@ -3229,6 +3315,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not minute_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the minute part of the date/time as an Integer, or return 0 if not present.</p>
@@ -3237,6 +3324,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong> (): <code>Integer</code><br>
+<br>
 <strong><em>Pre</em></strong>: <code>not second_unknown</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extract the integral seconds part of the date/time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.</p>
@@ -3321,7 +3409,7 @@ a_time: <code>Iso8601_time[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3330,7 +3418,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3339,7 +3427,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 a_date_time: <code>Iso8601_date_time[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3348,7 +3436,7 @@ a_date_time: <code>Iso8601_date_time[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_nominal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_nominal</strong> <em>alias</em> "++" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3357,7 +3445,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract_nominal</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract_nominal</strong> <em>alias</em> "--" (<br>
 a_diff: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_date</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3567,7 +3655,7 @@ a_diff: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_val: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3576,7 +3664,7 @@ a_val: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_val: <code>Iso8601_duration[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3585,7 +3673,7 @@ a_val: <code>Iso8601_duration[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 a_val: <code>Real[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3594,7 +3682,7 @@ a_val: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>divide</strong> <em>alias</em> "/" (<br>
 a_val: <code>Real[1]</code><br>
 ): <code>Iso8601_duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3749,7 +3837,7 @@ a_val: <code>Real[1]</code><br>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if timezone is UTC, i.e. +0000.</p>
+<p>True if timezone is UTC, i.e. <code>+0000</code>.</p>
 </div></div></td>
 </tr>
 <tr>

@@ -16,52 +16,58 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*conjunction* ( +
+|*conjunction* _alias_ "and", "∧", "&" ( +
 other: `Boolean[1]` +
 ): `Boolean` +
+ +
 *_Post_de_Morgan_*: `Result = not (not self or not other)` +
 *_Post_commutative_*: `Result = (other and self)`
 a|Logical conjunction of this with `_other_`.
 
 h|
-|*semistrict_conjunction* ( +
+|*semistrict_conjunction* _alias_ "and then", "&&" ( +
 other: `Boolean[1]` +
 ): `Boolean` +
+ +
 *_Post_de_Morgan_*: `Result = not (not self or else not other)`
 a|Boolean semi-strict conjunction with `_other_`.
 
 h|
-|*disjunction* ( +
+|*disjunction* _alias_ "or", "∨", "&#124;" ( +
 other: `Boolean[1]` +
 ): `Boolean` +
+ +
 *_Post_de_Morgan_*: `Result = not (not self and not other)` +
 *_Post_commutative_*: `Result = (other or Current)` +
 *_Post_consistent_with_semi_strict_*: `Result implies (self or else other)`
 a|Boolean disjunction with `_other_`.
 
 h|
-|*semistrict_disjunction* ( +
+|*semistrict_disjunction* _alias_ "or else", "&#124;&#124;" ( +
 other: `Boolean[1]` +
 ): `Boolean` +
+ +
 *_Post_de_Morgan_*: `Result = not (not self and then not other)`
 a|Boolean semi-strict disjunction with `_other_`.
 
 h|
-|*exclusive_disjunction* ( +
+|*exclusive_disjunction* _alias_ "xor", "⊻" ( +
 other: `Boolean[1]` +
 ): `Boolean` +
+ +
 *_Post_definition_*: `Result = ((self or other) and not (self and other))`
 a|Boolean exclusive or with `_other_`.
 
 h|
-|*implication* ( +
+|*implication* _alias_ "implies", "⇒" ( +
 other: `Boolean[1]` +
 ): `Boolean` +
+ +
 *_Post_definition_*: `Result = (not self or else other)`
 a|Boolean implication of `_other_` (semi-strict)
 
 h|
-|*negation* (): `Boolean`
+|*negation* _alias_ "not", "¬", "!" (): `Boolean`
 a|Boolean negation of the current value.
 
 h|*Invariants*

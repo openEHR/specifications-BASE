@@ -17,23 +17,27 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*lower_unbounded*: `boolean`
-a|lower boundary open (i.e. = -infinity)
+|*lower_unbounded*: `boolean +
+{default{nbsp}={nbsp}false}`
+a|Lower boundary open (i.e. = -infinity).
 
 h|*1..1 +
 (redefined)*
-|*upper_unbounded*: `boolean`
-a|upper boundary open (i.e. = +infinity)
+|*upper_unbounded*: `boolean +
+{default{nbsp}={nbsp}false}`
+a|Upper boundary open (i.e. = +infinity).
 
 h|*1..1 +
 (redefined)*
-|*lower_included*: `boolean`
-a|lower boundary value included in range if not lower_unbounded.
+|*lower_included*: `boolean +
+{default{nbsp}={nbsp}true}`
+a|Lower boundary value included in range if not `_lower_unbounded_`.
 
 h|*1..1 +
 (redefined)*
-|*upper_included*: `boolean`
-a|upper boundary value included in range if not upper_unbounded.
+|*upper_included*: `boolean +
+{default{nbsp}={nbsp}true}`
+a|Upper boundary value included in range if not `_upper_unbounded_`.
 
 h|*Invariants*
 2+a|*_Inv_point_*: `lower = upper`

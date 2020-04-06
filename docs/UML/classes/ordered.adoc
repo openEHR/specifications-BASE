@@ -16,29 +16,32 @@ h|*Functions*
 ^h|*Meaning*
 
 h|(abstract)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `Ordered[1]` +
 ): `Boolean`
 a|Arithmetic value comparison. In conjunction with `=`, enables the definition of the related functions `_greater_than_()` etc. This operator may be redefined in descendants.
 
 h|
-|*less_than_or_equal* ( +
+|*less_than_or_equal* _alias_ "\<=", "≤" ( +
 other: `Ordered[1]` +
 ): `Boolean` +
-*_Inv_result_*: `not (other < self)`
+ +
+*_Post_result_*: `not (other < self)`
 a|True if current object less than or equal to `_other_`.
 
 h|
-|*greater_than* ( +
+|*greater_than* _alias_ ">" ( +
 other: `Ordered[1]` +
 ): `Boolean` +
-*_Inv_result_*: `Result = (other < self)`
+ +
+*_Post_result_*: `Result = (other < self)`
 a|True if current object greater than `_other_`.
 
 h|
-|*greater_than_or_equal* ( +
+|*greater_than_or_equal* _alias_ ">=", "≥" ( +
 other: `Ordered[1]` +
 ): `Boolean` +
-*_Inv_result_*: `Result = (other \<= self)`
+ +
+*_Post_result_*: `Result = (other \<= self)`
 a|True if current object greater than or equal to `_other_`.
 |===
