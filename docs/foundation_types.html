@@ -514,7 +514,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract supertype. Usually maps to a type like Any or Object in an object-oriented technology. Defined here to provide value and reference equality semantics.</p>
+<p>Abstract ancestor class for all other classes. Usually maps to a type like <code>Any</code> or <code>Object</code> in an object-oriented technology. Defined here to provide value and reference equality semantics.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -817,7 +817,7 @@ other: <code>Boolean[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract parent class of ordered types i.e. types on which the ‘&lt;‘ operator is defined.</p>
+<p>Abstract parent class of ordered types i.e. types on which the '&lt;' operator is defined.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1831,7 +1831,7 @@ Upper bound.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>lower</code> boundary open (i.e. = -infinity).
 lower boundary open (i.e. = -infinity)</p>
@@ -1839,7 +1839,7 @@ lower boundary open (i.e. = -infinity)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>upper</code> boundary open (i.e. = +infinity).
 upper boundary open (i.e. = +infinity)</p>
@@ -1847,7 +1847,7 @@ upper boundary open (i.e. = +infinity)</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>lower</code> boundary value included in range if not <code>lower_unbounded</code>.
 lower boundary value included in range if not lower_unbounded.</p>
@@ -1855,7 +1855,7 @@ lower boundary value included in range if not lower_unbounded.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>upper</code> boundary value included in range if not <code>upper_unbounded</code>.
 upper boundary value included in range if not upper_unbounded.</p>
@@ -1870,7 +1870,7 @@ upper boundary value included in range if not upper_unbounded.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code>boolean</code><br>
+): <code>Boolean</code><br>
 <br>
 <em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1966,7 +1966,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>boolean<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code>Boolean<br>
 {default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower boundary open (i.e. = -infinity).</p>
@@ -1975,7 +1975,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>boolean<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code>Boolean<br>
 {default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper boundary open (i.e. = +infinity).</p>
@@ -1984,7 +1984,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>boolean<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code>Boolean<br>
 {default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower boundary value included in range if not <code><em>lower_unbounded</em></code>.</p>
@@ -1993,7 +1993,7 @@ other: <code>Any[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>boolean<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code>Boolean<br>
 {default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper boundary value included in range if not <code><em>upper_unbounded</em></code>.</p>

@@ -27,22 +27,22 @@ a|Upper bound.
 Upper bound.
 
 h|*1..1*
-|*lower_unbounded*: `boolean`
+|*lower_unbounded*: `Boolean`
 a|`lower` boundary open (i.e. = -infinity).
 lower boundary open (i.e. = -infinity)
 
 h|*1..1*
-|*upper_unbounded*: `boolean`
+|*upper_unbounded*: `Boolean`
 a|`upper` boundary open (i.e. = +infinity).
 upper boundary open (i.e. = +infinity)
 
 h|*1..1*
-|*lower_included*: `boolean`
+|*lower_included*: `Boolean`
 a|`lower` boundary value included in range if not `lower_unbounded`.
 lower boundary value included in range if not lower_unbounded.
 
 h|*1..1*
-|*upper_included*: `boolean`
+|*upper_included*: `Boolean`
 a|`upper` boundary value included in range if not `upper_unbounded`.
 upper boundary value included in range if not upper_unbounded.
 h|*Functions*
@@ -52,7 +52,7 @@ h|*Functions*
 h|(abstract)
 |*has* ( +
 e: `T[1]` +
-): `boolean` +
+): `Boolean` +
  +
 _Post_result_: `Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v \<= upper or v < upper)`
 a|True if the value `e` is properly contained in this Interval.
