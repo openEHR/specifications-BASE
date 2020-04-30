@@ -48,4 +48,34 @@ h|(effected)
 other: `Double[1]` +
 ): `Double`
 a|Real number exponentiation.
+
+h|(effected)
+|*less_than* _alias_ "<" ( +
+other: `Real[1]` +
+): `Boolean`
+a|Returns True if current Real is less than `_other_`.
+
+h|(effected)
+|*negative* _alias_ "-" (): `Real`
+a|Generate negative of current Real value.
+
+h|(effected)
+|*is_equal* ( +
+other: `Real[1]` +
+): `Boolean`
+a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+h|(redefined)
+|*equal* _alias_ "=", "==" ( +
+other: `Real[1]` +
+): `Boolean`
+a|Reference equality for reference types, value equality for value types.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
 |===

@@ -50,4 +50,34 @@ h|
 mod: `Integer[1]` +
 ): `Integer64`
 a|Large integer modulus.
+
+h|(effected)
+|*less_than* _alias_ "<" ( +
+other: `Integer64[1]` +
+): `Boolean`
+a|Returns True if current Integer is less than `_other_`.
+
+h|(effected)
+|*negative* _alias_ "-" (): `Integer64`
+a|Generate negative of current Integer value.
+
+h|(effected)
+|*is_equal* ( +
+other: `Integer64[1]` +
+): `Boolean`
+a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+h|(redefined)
+|*equal* _alias_ "=", "==" ( +
+other: `Integer64[1]` +
+): `Boolean`
+a|Reference equality for reference types, value equality for value types.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
 |===

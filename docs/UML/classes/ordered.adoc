@@ -19,7 +19,9 @@ h|(abstract)
 |*less_than* _alias_ "<" ( +
 other: `Ordered[1]` +
 ): `Boolean`
-a|Arithmetic value comparison. In conjunction with `=`, enables the definition of the related functions `_greater_than_()` etc. This operator may be redefined in descendants.
+a|Arithmetic value comparison. Returns True if current object is less than `_other_`. This operator is effected and/or redefined in descendants to provide the appropriate ordering semantics for concrete types.
+
+In conjunction with `=`, enables the definition of the related functions `_greater_than_()` etc.
 
 h|
 |*less_than_or_equal* _alias_ "\<=", "≤" ( +

@@ -10,6 +10,8 @@ h|*Description*
 
 * `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`
 
+NOTE: two deviations from ISO 8601 are supported, the first, to allow a negative sign, and the second allowing the 'W' designator to be mixed with other designators.
+
 h|*Inherit*
 2+|`Iso8601_type`
 
@@ -63,7 +65,7 @@ a|True if this time has a decimal part indicated by ',' (comma) rather than '.' 
 
 h|
 |*to_seconds* (): `Real`
-a|Total number of seconds equivalent (including fractional) of entire duration.
+a|Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `Time_definitions` are used to compute the result.
 
 h|
 |*as_string* (): `String`
@@ -92,6 +94,10 @@ h|
 a_val: `Real[1]` +
 ): `Iso8601_duration`
 a|Arithmetic division of a duration by a number.
+
+h|
+|*negative* _alias_ "-" (): `Iso8601_duration`
+a|Generate negative of current duration value.
 
 h|*Invariants*
 2+a|_Years_valid_: `years >= 0`
