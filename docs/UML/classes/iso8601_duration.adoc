@@ -19,83 +19,85 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_extended* (): `Boolean`
 a|Returns True.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_partial* (): `Boolean`
 a|Returns False.
 
-h|
+h|*1..1*
 |*years* (): `Integer`
 a|Number of years in the `_value_`, i.e. the number preceding the `'Y'` in the `'YMD'` part, if one exists.
 
-h|
+h|*1..1*
 |*months* (): `Integer`
 a|Number of months in the `_value_`, i.e. the value preceding the `'M'` in the `'YMD'` part, if one exists.
 
-h|
+h|*1..1*
 |*days* (): `Integer`
 a|Number of days in the `_value_`, i.e. the number preceding the `'D'` in the `'YMD'` part, if one exists.
 
-h|
+h|*1..1*
 |*hours* (): `Integer`
 a|Number of hours in the `_value_`, i.e. the number preceding the `'H'` in the `'HMS'` part, if one exists.
 
-h|
+h|*1..1*
 |*minutes* (): `Integer`
 a|Number of minutes in the `_value_`, i.e. the number preceding the `'M'` in the `'HMS'` part, if one exists.
 
-h|
+h|*1..1*
 |*seconds* (): `Integer`
 a|Number of seconds in the `_value_`, i.e. the integer number preceding the `'S'` in the `'HMS'` part, if one exists.
 
-h|
+h|*1..1*
 |*fractional_seconds* (): `Real`
 a|Fractional seconds in the `_value_`, i.e. the decimal part of the number preceding the `'S'` in the `'HMS'` part, if one exists.
 
-h|
+h|*1..1*
 |*weeks* (): `Integer`
 a|Number of weeks in the `_value_`, i.e. the value preceding the `W`, if one exists.
 
-h|
+h|*1..1*
 |*is_decimal_sign_comma* (): `Boolean`
 a|True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
 
-h|
+h|*1..1*
 |*to_seconds* (): `Real`
 a|Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `Time_definitions` are used to compute the result.
 
-h|
+h|*1..1*
 |*as_string* (): `String`
 a|Return the duration string value.
 
-h|
+h|*1..1*
 |*add* _alias_ "+" ( +
 a_val: `Iso8601_duration[1]` +
 ): `Iso8601_duration`
 a|Arithmetic addition of a duration to a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
-h|
+h|*1..1*
 |*subtract* _alias_ "-" ( +
 a_val: `Iso8601_duration[1]` +
 ): `Iso8601_duration`
 a|Arithmetic subtraction of a duration from a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
-h|
+h|*1..1*
 |*multiply* _alias_ "&#42;" ( +
 a_val: `Real[1]` +
 ): `Iso8601_duration`
 a|Arithmetic multiplication a duration by a number.
 
-h|
+h|*1..1*
 |*divide* _alias_ "/" ( +
 a_val: `Real[1]` +
 ): `Iso8601_duration`
 a|Arithmetic division of a duration by a number.
 
-h|
+h|*1..1*
 |*negative* _alias_ "-" (): `Iso8601_duration`
 a|Generate negative of current duration value.
 

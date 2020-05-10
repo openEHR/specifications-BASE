@@ -15,41 +15,44 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*has* ( +
 v: `T[1]` +
 ): `Boolean`
 a|Test for membership of a value.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*count* (): `Integer`
 a|Number of items in container.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*is_empty* (): `Boolean`
 a|True if container is empty.
 
-h|
+h|*1..1*
 |*there_exists* _alias_ "there exists", "∃" ( +
 test: `Operation[1]` +
 ): `Boolean`
-a|Existential quantifier applied to container, using a Boolean-returning function agent (lambda) `_test_` taking one argument of type `T`.
+a|Existential quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.
 
-h|
+h|*1..1*
 |*for_all* _alias_ "for all", "∀" ( +
 test: `Operation[1]` +
 ): `Boolean`
-a|Universal quantifier applied to container, using a Boolean-returning function agent (lambda) `_test_` taking one argument of type `T`.
+a|Universal quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.
 
-h|
+h|*0..1*
 |*matching* ( +
 test: `Operation[1]` +
 ): `List<T>`
-a|Return a List all items matching the predicate function `_test_` which has signature `_test_(v:T): Boolean`. If no matches, an empty List is returned.
+a|Return a List all items matching the predicate function `_test_` which has signature `(v:T): Boolean`. If no matches, an empty List is returned.
 
-h|
+h|*0..1*
 |*select* ( +
 test: `Operation[1]` +
 ): `T`
-a|Return first item matching the predicate function `_test_` which has signature `_test_(v:T): Boolean`, or Void if no match.
+a|Return first item matching the predicate function `_test_` which has signature `(v:T): Boolean`, or Void if no match.
 |===

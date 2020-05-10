@@ -75,7 +75,7 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*valid_year* ( +
 y: `Integer[1]` +
 ): `Boolean` +
@@ -83,7 +83,7 @@ y: `Integer[1]` +
 _Post_: `Result = y >= 0`
 a|True if `y >= 0`.
 
-h|
+h|*1..1*
 |*valid_month* ( +
 m: `Integer[1]` +
 ): `Boolean` +
@@ -91,7 +91,7 @@ m: `Integer[1]` +
 _Post_: `Result = m >= 1 and m \<= Months_in_year`
 a|True if `m >= 1 and m \<= months_in_year`.
 
-h|
+h|*1..1*
 |*valid_day* ( +
 y: `Integer[1]`, +
 m: `Integer[1]`, +
@@ -101,7 +101,7 @@ d: `Integer[1]` +
 _Post_: `Result = d >= 1 and d \<= days_in_month (m, y)`
 a|True if `d >= 1 and d \<= days_in_month (m, y)`.
 
-h|
+h|*1..1*
 |*valid_hour* ( +
 h: `Integer[1]`, +
 m: `Integer[1]`, +
@@ -111,7 +111,7 @@ s: `Integer[1]` +
 _Post_: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)`
 a|True if `(h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)` .
 
-h|
+h|*1..1*
 |*valid_minute* ( +
 m: `Integer[1]` +
 ): `Boolean` +
@@ -119,7 +119,7 @@ m: `Integer[1]` +
 _Post_: `Result = m >= 0 and m < Minutes_in_hour`
 a|True if `m >= 0 and m < Minutes_in_hour`.
 
-h|
+h|*1..1*
 |*valid_second* ( +
 s: `Integer[1]` +
 ): `Boolean` +
@@ -127,7 +127,7 @@ s: `Integer[1]` +
 _Post_: `Result = s >= 0 and s < Seconds_in_minute`
 a|True if `s >= 0 and s < Seconds_in_minute` .
 
-h|
+h|*1..1*
 |*valid_fractional_second* ( +
 fs: `Double[1]` +
 ): `Boolean` +
@@ -135,7 +135,7 @@ fs: `Double[1]` +
 _Post_: `Result = fs >= 0.0 and fs < 1.0`
 a|True if `fs >= 0.0` and `fs < 1.0` .
 
-h|
+h|*1..1*
 |*valid_iso8601_date* ( +
 s: `String[1]` +
 ): `Boolean`
@@ -152,7 +152,7 @@ Where:
 
 The combinations of `YYYY`, `MM`, `DD` numbers must be correct with respect to the Gregorian calendar.
 
-h|
+h|*1..1*
 |*valid_iso8601_time* ( +
 s: `String[1]` +
 ): `Boolean`
@@ -176,7 +176,7 @@ Where:
 * `[(,&#124;.)s+]` is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
 * `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
 
-h|
+h|*1..1*
 |*valid_iso8601_date_time* ( +
 s: `String[1]` +
 ): `Boolean`
@@ -188,7 +188,7 @@ a|String is a valid ISO 8601 date-time, i.e. takes the form:
 ** `YYYY-MM-DDThh:mm` or `YYYY-MM-DDThh` (extended)
 ** `YYYYMMDDThhmm` or `YYYYMMDDThh` (compact)
 
-h|
+h|*1..1*
 |*valid_iso8601_duration* ( +
 s: `String[1]` +
 ): `Boolean`

@@ -49,7 +49,8 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*has* ( +
 e: `T[1]` +
 ): `Boolean` +
@@ -63,19 +64,22 @@ v > lower)) and
 ((upper_included and v \<= upper or v
 < upper)))
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*intersects* ( +
 other: `Interval[1]` +
 ): `Boolean`
 a|True if there is any overlap between intervals represented by Current and `_other_`. True if at least one limit of other is strictly inside the limits of this interval.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*contains* ( +
 other: `Interval[1]` +
 ): `Boolean`
 a|True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_equal* ( +
 other: `Any[1]` +
 ): `Boolean`

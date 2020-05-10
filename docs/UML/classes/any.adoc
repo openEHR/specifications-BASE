@@ -12,7 +12,8 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*is_equal* ( +
 other: `Any[1]` +
 ): `Boolean`
@@ -22,7 +23,7 @@ a|Value equality: return True if `this` and `_other_` are attached to objects co
 [horizontal]
 `_other_`:: Other object for comparison.
 
-h|
+h|*1..1*
 |*equal* _alias_ "=", "==" ( +
 other: `Any[1]` +
 ): `Boolean`
@@ -32,19 +33,19 @@ a|Reference equality for reference types, value equality for value types.
 [horizontal]
 `_other_`:: Other object for comparison.
 
-h|
+h|*1..1*
 |*instance_of* ( +
 a_type: `String[1]` +
 ): `Any`
 a|Create new instance of a type.
 
-h|
+h|*1..1*
 |*type_of* ( +
 an_object: `Any[1]` +
 ): `String`
 a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`.
 
-h|
+h|*1..1*
 |*not_equal* _alias_ "!=", "≠" ( +
 other: `Ordered[1]` +
 ): `Boolean`

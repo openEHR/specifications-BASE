@@ -26,109 +26,111 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*year* (): `Integer`
 a|Extract the year part of the date as an Integer.
 
-h|
+h|*1..1*
 |*month* (): `Integer` +
  +
 _Pre_: `not month_unknown`
 a|Extract the month part of the date/time as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*day* (): `Integer` +
  +
 _Pre_: `not day_unknown`
 a|Extract the day part of the date/time as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*hour* (): `Integer` +
  +
 _Pre_: `not hour_unknown`
 a|Extract the hour part of the date/time as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*minute* (): `Integer` +
  +
 _Pre_: `not minute_unknown`
 a|Extract the minute part of the date/time as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*second* (): `Integer` +
  +
 _Pre_: `not second_unknown`
 a|Extract the integral seconds part of the date/time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*fractional_second* (): `Real`
 a|Extract the fractional seconds part of the date/time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.
 
-h|
+h|*1..1*
 |*timezone* (): `Iso8601_timezone`
 a|Timezone; may be Void.
 
-h|
+h|*1..1*
 |*month_unknown* (): `Boolean`
 a|Indicates whether month in year is unknown.
 
-h|
+h|*1..1*
 |*day_unknown* (): `Boolean`
 a|Indicates whether day in month is unknown.
 
-h|
+h|*1..1*
 |*minute_unknown* (): `Boolean`
 a|Indicates whether minute in hour is known.
 
-h|
+h|*1..1*
 |*second_unknown* (): `Boolean`
 a|Indicates whether minute in hour is known.
 
-h|
+h|*1..1*
 |*is_decimal_sign_comma* (): `Boolean`
 a|True if this time has a decimal part indicated by `','` (comma) rather than `'.'` (period).
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_partial* (): `Boolean`
 a|True if this date time is partial, i.e. if seconds or more is missing.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_extended* (): `Boolean`
 a|True if this date/time uses `'-'`, `':'` separators.
 
-h|
+h|*1..1*
 |*has_fractional_second* (): `Boolean`
 a|True if the `_fractional_second_` part is significant (i.e. even if = 0.0).
 
-h|
+h|*1..1*
 |*as_string* (): `String`
 a|Return the string value in extended format.
 
-h|
+h|*1..1*
 |*add* _alias_ "+" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date_time`
 a|Arithmetic addition of a duration to a date/time.
 
-h|
+h|*1..1*
 |*subtract* _alias_ "-" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date_time`
 a|Arithmetic subtraction of a duration from a date/time.
 
-h|
+h|*1..1*
 |*diff* _alias_ "-" ( +
 a_date_time: `Iso8601_date_time[1]` +
 ): `Iso8601_duration`
 a|Difference of two date/times.
 
-h|
+h|*1..1*
 |*add_nominal* _alias_ "++" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Addition of nominal duration represented by `_a_diff_`. See `Iso8601_date._add_nominal_()` for semantics.
 
-h|
+h|*1..1*
 |*subtract_nominal* _alias_ "--" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`

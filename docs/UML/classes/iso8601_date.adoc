@@ -21,65 +21,67 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*year* (): `Integer`
 a|Extract the year part of the date as an Integer.
 
-h|
+h|*1..1*
 |*month* (): `Integer` +
  +
 _Pre_: `not month_unknown`
 a|Extract the month part of the date as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*day* (): `Integer` +
  +
 _Pre_: `not day_unknown`
 a|Extract the day part of the date as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*timezone* (): `Iso8601_timezone`
 a|Timezone; may be Void.
 
-h|
+h|*1..1*
 |*month_unknown* (): `Boolean`
 a|Indicates whether month in year is unknown. If so, the date is of the form `"YYYY"`.
 
-h|
+h|*1..1*
 |*day_unknown* (): `Boolean`
 a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form `"YYYY-MM"` or `"YYYYMM"`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_partial* (): `Boolean`
 a|True if this date is partial, i.e. if days or more is missing.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_extended* (): `Boolean`
 a|True if this date uses `'-'` separators.
 
-h|
+h|*1..1*
 |*as_string* (): `String`
 a|Return string value in extended format.
 
-h|
+h|*1..1*
 |*add* _alias_ "+" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Arithmetic addition of a duration to a date.
 
-h|
+h|*1..1*
 |*subtract* _alias_ "-" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
 a|Arithmetic subtraction of a duration from a date.
 
-h|
+h|*1..1*
 |*diff* _alias_ "-" ( +
 a_date: `Iso8601_date[1]` +
 ): `Iso8601_duration`
 a|Difference of two dates.
 
-h|
+h|*1..1*
 |*add_nominal* _alias_ "++" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`
@@ -89,7 +91,7 @@ a|Addition of nominal duration represented by `_a_diff_`. For example, a duratio
 * one or two days less where the following month is shorter, or;
 * in the case of adding a month to the date 31 Jan, the result will be 28 Feb in a non-leap year (i.e. three less) and 29 Feb in a leap year (i.e. two less).
 
-h|
+h|*1..1*
 |*subtract_nominal* _alias_ "--" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_date`

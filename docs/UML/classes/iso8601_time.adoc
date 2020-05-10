@@ -23,69 +23,71 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*hour* (): `Integer`
 a|Extract the hour part of the date/time as an Integer.
 
-h|
+h|*1..1*
 |*minute* (): `Integer`
 a|Extract the minute part of the time as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*second* (): `Integer`
 a|Extract the integral seconds part of the time (i.e. prior to any decimal sign) as an Integer, or return 0 if not present.
 
-h|
+h|*1..1*
 |*fractional_second* (): `Real` +
  +
 _Pre_: `not second_unknown`
 a|Extract the fractional seconds part of the time (i.e. following to any decimal sign) as a Real, or return 0.0 if not present.
 
-h|
+h|*1..1*
 |*timezone* (): `Iso8601_timezone`
 a|Timezone; may be Void.
 
-h|
+h|*1..1*
 |*minute_unknown* (): `Boolean`
 a|Indicates whether minute is unknown. If so, the time is of the form “hh”.
 
-h|
+h|*1..1*
 |*second_unknown* (): `Boolean`
 a|Indicates whether second is unknown. If so and month is known, the time is of the form `"hh:mm"` or `"hhmm"`.
 
-h|
+h|*1..1*
 |*is_decimal_sign_comma* (): `Boolean`
 a|True if this time has a decimal part indicated by `','` (comma) rather than `'.'` (period).
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_partial* (): `Boolean`
 a|True if this time is partial, i.e. if seconds or more is missing.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_extended* (): `Boolean`
 a|True if this time uses `'-'`, `':'` separators.
 
-h|
+h|*1..1*
 |*has_fractional_second* (): `Boolean`
 a|True if the `_fractional_second_` part is significant (i.e. even if = 0.0).
 
-h|
+h|*1..1*
 |*as_string* (): `String`
 a|Return string value in extended format.
 
-h|
+h|*1..1*
 |*add* _alias_ "+" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_time`
 a|Arithmetic addition of a duration to a time.
 
-h|
+h|*1..1*
 |*subtract* _alias_ "-" ( +
 a_diff: `Iso8601_duration[1]` +
 ): `Iso8601_time`
 a|Arithmetic subtraction of a duration from a time.
 
-h|
+h|*1..1*
 |*diff* _alias_ "-" ( +
 a_time: `Iso8601_time[1]` +
 ): `Iso8601_duration`
