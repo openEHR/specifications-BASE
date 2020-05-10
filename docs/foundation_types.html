@@ -1833,6 +1833,24 @@ test: <code>Operation[1]</code><br>
 <p>Universal quantifier applied to container, using a Boolean-returning function agent (lambda) <code><em>test</em></code> taking one argument of type <code>T</code>.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>matching</strong> (<br>
+test: <code>Operation[1]</code><br>
+): <code>List&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return a List all items matching the predicate function <code><em>test</em></code> which has signature <code><em>test</em>(v:T): Boolean</code>. If no matches, an empty List is returned.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>select</strong> (<br>
+test: <code>Operation[1]</code><br>
+): <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return first item matching the predicate function <code><em>test</em></code> which has signature <code><em>test</em>(v:T): Boolean</code>, or Void if no match.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>

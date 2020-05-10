@@ -40,4 +40,16 @@ h|
 test: `Operation[1]` +
 ): `Boolean`
 a|Universal quantifier applied to container, using a Boolean-returning function agent (lambda) `_test_` taking one argument of type `T`.
+
+h|
+|*matching* ( +
+test: `Operation[1]` +
+): `List<T>`
+a|Return a List all items matching the predicate function `_test_` which has signature `_test_(v:T): Boolean`. If no matches, an empty List is returned.
+
+h|
+|*select* ( +
+test: `Operation[1]` +
+): `T`
+a|Return first item matching the predicate function `_test_` which has signature `_test_(v:T): Boolean`, or Void if no match.
 |===
