@@ -9,34 +9,40 @@ h|*Description*
 2+a|Type representing minimal interface of built-in String type, as used to represent textual data in any natural or formal language.
 
 h|*Inherit*
-2+|`Ordered`
+2+|`<<_ordered_class,Ordered>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_empty* (): `Boolean`
+|*is_empty* (): `<<_boolean_class,Boolean>>`
 a|True if string is empty, i.e. equal to "".
 
 h|*1..1*
-|*is_integer* (): `Boolean`
+|*is_integer* (): `<<_boolean_class,Boolean>>`
 a|True if string can be parsed as an integer.
 
 h|*1..1*
-|*as_integer* (): `Integer`
+|*as_integer* (): `<<_integer_class,Integer>>`
 a|Return the integer corresponding to the integer value represented in this string.
 
 h|*1..1*
-|*append* _alias_ "+" ( +
-other: `String[1]` +
-): `String`
+|*append* __alias__ "+" ( +
+other: `<<_string_class,String>>[1]` +
+): `<<_string_class,String>>`
 a|Concatenation operator - causes `_other_` to be appended to this string.
 
 h|*1..1 +
 (effected)*
-|*less_than* _alias_ "<" ( +
-other: `String[1]` +
-): `Boolean`
+|*less_than* __alias__ "<" ( +
+other: `<<_string_class,String>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|Lexical comparison of string content based on ordering in relevant character set.
+
+h|*1..1*
+|*contains* ( +
+other: `<<_string_class,String>>[1]` +
+): `<<_boolean_class,Boolean>>`
+a|Return True if this String contains `_other_` (case-sensitive).
 |===

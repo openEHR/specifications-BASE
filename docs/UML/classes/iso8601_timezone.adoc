@@ -17,55 +17,55 @@ where:
 * `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
 
 h|*Inherit*
-2+|`Iso8601_type`
+2+|`<<_iso8601_type_class,Iso8601_type>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*hour* (): `Integer`
+|*hour* (): `<<_integer_class,Integer>>`
 a|Extract the hour part of timezone, as an Integer in the range `00 - 13`.
 
 h|*1..1*
-|*minute* (): `Integer`
+|*minute* (): `<<_integer_class,Integer>>`
 a|Extract the hour part of timezone, as an Integer, usually either 0 or 30.
 
 h|*1..1*
-|*sign* (): `Integer`
+|*sign* (): `<<_integer_class,Integer>>`
 a|Direction of timezone expresssed as +1 or -1.
 
 h|*1..1*
-|*minute_unknown* (): `Boolean`
+|*minute_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether minute part known.
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `Boolean`
+|*is_partial* (): `<<_boolean_class,Boolean>>`
 a|True if this time zone is partial, i.e. if minutes is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `Boolean`
+|*is_extended* (): `<<_boolean_class,Boolean>>`
 a|True if this time-zone uses ‘:’ separators.
 
 h|*1..1*
-|*is_gmt* (): `Boolean`
+|*is_gmt* (): `<<_boolean_class,Boolean>>`
 a|True if timezone is UTC, i.e. `+0000`.
 
 h|*1..1*
-|*as_string* (): `String`
+|*as_string* (): `<<_string_class,String>>`
 a|Return timezone string.
 
 h|*Invariants*
-2+a|_Min_hour_valid_: `sign = -1 implies hour > 0 and hour \<= Min_timezone_hour`
+2+a|__Min_hour_valid__: `sign = -1 implies hour > 0 and hour \<= Min_timezone_hour`
 
 h|
-2+a|_Max_hour_valid_: `sign = 1 implies hour > 0 and hour \<= Max_timezone_hour`
+2+a|__Max_hour_valid__: `sign = 1 implies hour > 0 and hour \<= Max_timezone_hour`
 
 h|
-2+a|_Minute_valid_: `not minute_unknown implies valid_minute (minute)`
+2+a|__Minute_valid__: `not minute_unknown implies valid_minute (minute)`
 
 h|
-2+a|_Sign_valid_: `sign = 1 or sign = -1`
+2+a|__Sign_valid__: `sign = 1 or sign = -1`
 |===

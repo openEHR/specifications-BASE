@@ -11,37 +11,37 @@ h|*Description*
 Lexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' number`.
 
 h|*Inherit*
-2+|`OBJECT_ID`
+2+|`<<_object_id_class,OBJECT_ID>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*qualified_rm_entity* (): `String`
+|*qualified_rm_entity* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Globally qualified reference model entity, e.g.  `openehr-EHR-OBSERVATION`.
 
 h|*1..1*
-|*domain_concept* (): `String`
+|*domain_concept* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Name of the concept represented by this archetype, including specialisation, e.g. `Biochemistry_result-cholesterol`.
 
 h|*1..1*
-|*rm_originator* (): `String`
+|*rm_originator* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Organisation originating the reference model on which this archetype is based, e.g. openehr,  cen,  hl7 .
 
 h|*1..1*
-|*rm_name* (): `String`
+|*rm_name* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Name of the reference model, e.g. rim,  ehr_rm,  en13606 .
 
 h|*1..1*
-|*rm_entity* (): `String`
+|*rm_entity* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR,  folder ,  composition ,  section ,  entry .
 
 h|*1..1*
-|*specialisation* (): `String`
+|*specialisation* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.  cholesterol .
 
 h|*1..1*
-|*version_id* (): `String`
+|*version_id* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Version of this archetype.
 |===

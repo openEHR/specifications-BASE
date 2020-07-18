@@ -9,7 +9,7 @@ h|*Description*
 2+a|Type representing an Interval that happens to be a point value. Provides an efficient representation that is substitutable for `Interval<T>` where needed.
 
 h|*Inherit*
-2+|`Interval`
+2+|`<<_interval_class,Interval>>`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,28 +17,28 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*lower_unbounded*: `Boolean +
+|*lower_unbounded*: `<<_boolean_class,Boolean>> +
 {default{nbsp}={nbsp}false}`
 a|Lower boundary open (i.e. = -infinity).
 
 h|*1..1 +
 (redefined)*
-|*upper_unbounded*: `Boolean +
+|*upper_unbounded*: `<<_boolean_class,Boolean>> +
 {default{nbsp}={nbsp}false}`
 a|Upper boundary open (i.e. = +infinity).
 
 h|*1..1 +
 (redefined)*
-|*lower_included*: `Boolean +
+|*lower_included*: `<<_boolean_class,Boolean>> +
 {default{nbsp}={nbsp}true}`
 a|Lower boundary value included in range if not `_lower_unbounded_`.
 
 h|*1..1 +
 (redefined)*
-|*upper_included*: `Boolean +
+|*upper_included*: `<<_boolean_class,Boolean>> +
 {default{nbsp}={nbsp}true}`
 a|Upper boundary value included in range if not `_upper_unbounded_`.
 
 h|*Invariants*
-2+a|_Inv_point_: `lower = upper`
+2+a|__Inv_point__: `lower = upper`
 |===

@@ -9,7 +9,7 @@ h|*Description*
 2+a|Type representing minimal interface of built-in Integer type.
 
 h|*Inherit*
-2+|`Ordered_Numeric`
+2+|`<<_ordered_numeric_class,Ordered_Numeric>>`
 
 h|*Functions*
 ^h|*Signature*
@@ -17,62 +17,62 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*add* _alias_ "+" ( +
-other: `Integer[1]` +
-): `Integer`
+|*add* __alias__ "+" ( +
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_integer_class,Integer>>`
 a|Integer addition.
 
 h|*1..1 +
 (effected)*
-|*subtract* _alias_ "-" ( +
-other: `Integer[1]` +
-): `Integer`
+|*subtract* __alias__ "-" ( +
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_integer_class,Integer>>`
 a|Integer subtraction.
 
 h|*1..1 +
 (effected)*
-|*multiply* _alias_ "&#42;" ( +
-other: `Integer[1]` +
-): `Integer`
+|*multiply* __alias__ "&#42;" ( +
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_integer_class,Integer>>`
 a|Integer multiplication.
 
 h|*1..1 +
 (effected)*
-|*divide* _alias_ "/" ( +
-other: `Integer[1]` +
-): `Double`
+|*divide* __alias__ "/" ( +
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_double_class,Double>>`
 a|Integer division.
 
 h|*1..1 +
 (effected)*
-|*exponent* _alias_ "^" ( +
-other: `Double[1]` +
-): `Double`
+|*exponent* __alias__ "^" ( +
+other: `<<_double_class,Double>>[1]` +
+): `<<_double_class,Double>>`
 a|Integer exponentiation.
 
 h|*1..1*
-|*modulo* _alias_ "mod", "\\" ( +
-mod: `Integer[1]` +
-): `Integer`
+|*modulo* __alias__ "mod", "\\" ( +
+mod: `<<_integer_class,Integer>>[1]` +
+): `<<_integer_class,Integer>>`
 a|Return self modulo other.
 
 h|*1..1 +
 (effected)*
-|*less_than* _alias_ "<" ( +
-other: `Integer[1]` +
-): `Boolean`
+|*less_than* __alias__ "<" ( +
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|Returns True if current Integer is less than `_other_`.
 
 h|*1..1 +
 (effected)*
-|*negative* _alias_ "-" (): `Integer`
+|*negative* __alias__ "-" (): `<<_integer_class,Integer>>`
 a|Generate negative of current Integer value.
 
 h|*1..1 +
 (effected)*
 |*is_equal* ( +
-other: `Integer[1]` +
-): `Boolean`
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value.
 
 .Parameters +
@@ -81,9 +81,9 @@ a|Value equality: return True if `this` and `_other_` are attached to objects co
 
 h|*1..1 +
 (redefined)*
-|*equal* _alias_ "=", "==" ( +
-other: `Integer[1]` +
-): `Boolean`
+|*equal* __alias__ "=", "==" ( +
+other: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|Reference equality for reference types, value equality for value types.
 
 .Parameters +

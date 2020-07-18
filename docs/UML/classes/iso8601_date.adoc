@@ -15,76 +15,76 @@ h|*Description*
 See `Time_definitions._valid_iso8601_date()_` for validity.
 
 h|*Inherit*
-2+|`Iso8601_type`
+2+|`<<_iso8601_type_class,Iso8601_type>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*year* (): `Integer`
+|*year* (): `<<_integer_class,Integer>>`
 a|Extract the year part of the date as an Integer.
 
 h|*1..1*
-|*month* (): `Integer` +
+|*month* (): `<<_integer_class,Integer>>` +
  +
-_Pre_: `not month_unknown`
+__Pre__: `not month_unknown`
 a|Extract the month part of the date as an Integer, or return 0 if not present.
 
 h|*1..1*
-|*day* (): `Integer` +
+|*day* (): `<<_integer_class,Integer>>` +
  +
-_Pre_: `not day_unknown`
+__Pre__: `not day_unknown`
 a|Extract the day part of the date as an Integer, or return 0 if not present.
 
 h|*1..1*
-|*timezone* (): `Iso8601_timezone`
+|*timezone* (): `<<_iso8601_timezone_class,Iso8601_timezone>>`
 a|Timezone; may be Void.
 
 h|*1..1*
-|*month_unknown* (): `Boolean`
+|*month_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether month in year is unknown. If so, the date is of the form `"YYYY"`.
 
 h|*1..1*
-|*day_unknown* (): `Boolean`
+|*day_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form `"YYYY-MM"` or `"YYYYMM"`.
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `Boolean`
+|*is_partial* (): `<<_boolean_class,Boolean>>`
 a|True if this date is partial, i.e. if days or more is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `Boolean`
+|*is_extended* (): `<<_boolean_class,Boolean>>`
 a|True if this date uses `'-'` separators.
 
 h|*1..1*
-|*as_string* (): `String`
+|*as_string* (): `<<_string_class,String>>`
 a|Return string value in extended format.
 
 h|*1..1*
-|*add* _alias_ "+" ( +
-a_diff: `Iso8601_duration[1]` +
-): `Iso8601_date`
+|*add* __alias__ "+" ( +
+a_diff: `<<_iso8601_duration_class,Iso8601_duration>>[1]` +
+): `<<_iso8601_date_class,Iso8601_date>>`
 a|Arithmetic addition of a duration to a date.
 
 h|*1..1*
-|*subtract* _alias_ "-" ( +
-a_diff: `Iso8601_duration[1]` +
-): `Iso8601_date`
+|*subtract* __alias__ "-" ( +
+a_diff: `<<_iso8601_duration_class,Iso8601_duration>>[1]` +
+): `<<_iso8601_date_class,Iso8601_date>>`
 a|Arithmetic subtraction of a duration from a date.
 
 h|*1..1*
-|*diff* _alias_ "-" ( +
-a_date: `Iso8601_date[1]` +
-): `Iso8601_duration`
+|*diff* __alias__ "-" ( +
+a_date: `<<_iso8601_date_class,Iso8601_date>>[1]` +
+): `<<_iso8601_duration_class,Iso8601_duration>>`
 a|Difference of two dates.
 
 h|*1..1*
-|*add_nominal* _alias_ "++" ( +
-a_diff: `Iso8601_duration[1]` +
-): `Iso8601_date`
+|*add_nominal* __alias__ "++" ( +
+a_diff: `<<_iso8601_duration_class,Iso8601_duration>>[1]` +
+): `<<_iso8601_date_class,Iso8601_date>>`
 a|Addition of nominal duration represented by `_a_diff_`. For example, a duration of `'P1Y'` means advance to the same date next year, with the exception of the date 29 February in a leap year, to which the addition of a nominal year will result in 28 February of the following year. Similarly, `'P1M'` is understood here as a nominal month, the addition of which will result in one of:
 
 * the same date in the following month, or;
@@ -92,20 +92,20 @@ a|Addition of nominal duration represented by `_a_diff_`. For example, a duratio
 * in the case of adding a month to the date 31 Jan, the result will be 28 Feb in a non-leap year (i.e. three less) and 29 Feb in a leap year (i.e. two less).
 
 h|*1..1*
-|*subtract_nominal* _alias_ "--" ( +
-a_diff: `Iso8601_duration[1]` +
-): `Iso8601_date`
+|*subtract_nominal* __alias__ "--" ( +
+a_diff: `<<_iso8601_duration_class,Iso8601_duration>>[1]` +
+): `<<_iso8601_date_class,Iso8601_date>>`
 a|Subtraction of nominal duration represented by `_a_diff_`. See `_add_nominal_()` for semantics.
 
 h|*Invariants*
-2+a|_Year_valid_: `valid_year (year)`
+2+a|__Year_valid__: `valid_year (year)`
 
 h|
-2+a|_Month_valid_: `not month_unknown implies valid_month (month)`
+2+a|__Month_valid__: `not month_unknown implies valid_month (month)`
 
 h|
-2+a|_Day_valid_: `not day_unknown implies valid_day (year, month, day)`
+2+a|__Day_valid__: `not day_unknown implies valid_day (year, month, day)`
 
 h|
-2+a|_Partial_validity_: `month_unknown implies day_unknown`
+2+a|__Partial_validity__: `month_unknown implies day_unknown`
 |===

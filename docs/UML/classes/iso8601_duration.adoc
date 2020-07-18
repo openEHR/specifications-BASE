@@ -13,7 +13,7 @@ h|*Description*
 NOTE: two deviations from ISO 8601 are supported, the first, to allow a negative sign, and the second allowing the 'W' designator to be mixed with other designators.
 
 h|*Inherit*
-2+|`Iso8601_type`
+2+|`<<_iso8601_type_class,Iso8601_type>>`
 
 h|*Functions*
 ^h|*Signature*
@@ -21,107 +21,107 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `Boolean`
+|*is_extended* (): `<<_boolean_class,Boolean>>`
 a|Returns True.
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `Boolean`
+|*is_partial* (): `<<_boolean_class,Boolean>>`
 a|Returns False.
 
 h|*1..1*
-|*years* (): `Integer`
+|*years* (): `<<_integer_class,Integer>>`
 a|Number of years in the `_value_`, i.e. the number preceding the `'Y'` in the `'YMD'` part, if one exists.
 
 h|*1..1*
-|*months* (): `Integer`
+|*months* (): `<<_integer_class,Integer>>`
 a|Number of months in the `_value_`, i.e. the value preceding the `'M'` in the `'YMD'` part, if one exists.
 
 h|*1..1*
-|*days* (): `Integer`
+|*days* (): `<<_integer_class,Integer>>`
 a|Number of days in the `_value_`, i.e. the number preceding the `'D'` in the `'YMD'` part, if one exists.
 
 h|*1..1*
-|*hours* (): `Integer`
+|*hours* (): `<<_integer_class,Integer>>`
 a|Number of hours in the `_value_`, i.e. the number preceding the `'H'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*minutes* (): `Integer`
+|*minutes* (): `<<_integer_class,Integer>>`
 a|Number of minutes in the `_value_`, i.e. the number preceding the `'M'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*seconds* (): `Integer`
+|*seconds* (): `<<_integer_class,Integer>>`
 a|Number of seconds in the `_value_`, i.e. the integer number preceding the `'S'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*fractional_seconds* (): `Real`
+|*fractional_seconds* (): `<<_real_class,Real>>`
 a|Fractional seconds in the `_value_`, i.e. the decimal part of the number preceding the `'S'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*weeks* (): `Integer`
+|*weeks* (): `<<_integer_class,Integer>>`
 a|Number of weeks in the `_value_`, i.e. the value preceding the `W`, if one exists.
 
 h|*1..1*
-|*is_decimal_sign_comma* (): `Boolean`
+|*is_decimal_sign_comma* (): `<<_boolean_class,Boolean>>`
 a|True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
 
 h|*1..1*
-|*to_seconds* (): `Real`
+|*to_seconds* (): `<<_real_class,Real>>`
 a|Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `Time_definitions` are used to compute the result.
 
 h|*1..1*
-|*as_string* (): `String`
+|*as_string* (): `<<_string_class,String>>`
 a|Return the duration string value.
 
 h|*1..1*
-|*add* _alias_ "+" ( +
-a_val: `Iso8601_duration[1]` +
-): `Iso8601_duration`
+|*add* __alias__ "+" ( +
+a_val: `<<_iso8601_duration_class,Iso8601_duration>>[1]` +
+): `<<_iso8601_duration_class,Iso8601_duration>>`
 a|Arithmetic addition of a duration to a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
 h|*1..1*
-|*subtract* _alias_ "-" ( +
-a_val: `Iso8601_duration[1]` +
-): `Iso8601_duration`
+|*subtract* __alias__ "-" ( +
+a_val: `<<_iso8601_duration_class,Iso8601_duration>>[1]` +
+): `<<_iso8601_duration_class,Iso8601_duration>>`
 a|Arithmetic subtraction of a duration from a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
 h|*1..1*
-|*multiply* _alias_ "&#42;" ( +
-a_val: `Real[1]` +
-): `Iso8601_duration`
+|*multiply* __alias__ "&#42;" ( +
+a_val: `<<_real_class,Real>>[1]` +
+): `<<_iso8601_duration_class,Iso8601_duration>>`
 a|Arithmetic multiplication a duration by a number.
 
 h|*1..1*
-|*divide* _alias_ "/" ( +
-a_val: `Real[1]` +
-): `Iso8601_duration`
+|*divide* __alias__ "/" ( +
+a_val: `<<_real_class,Real>>[1]` +
+): `<<_iso8601_duration_class,Iso8601_duration>>`
 a|Arithmetic division of a duration by a number.
 
 h|*1..1*
-|*negative* _alias_ "-" (): `Iso8601_duration`
+|*negative* __alias__ "-" (): `<<_iso8601_duration_class,Iso8601_duration>>`
 a|Generate negative of current duration value.
 
 h|*Invariants*
-2+a|_Years_valid_: `years >= 0`
+2+a|__Years_valid__: `years >= 0`
 
 h|
-2+a|_Months_valid_: `months >= 0`
+2+a|__Months_valid__: `months >= 0`
 
 h|
-2+a|_Weeks_valid_: `weeks >= 0`
+2+a|__Weeks_valid__: `weeks >= 0`
 
 h|
-2+a|_Days_valid_: `days >= 0`
+2+a|__Days_valid__: `days >= 0`
 
 h|
-2+a|_Hours_valid_: `hours >= 0`
+2+a|__Hours_valid__: `hours >= 0`
 
 h|
-2+a|_Minutes_valid_: `minutes >= 0`
+2+a|__Minutes_valid__: `minutes >= 0`
 
 h|
-2+a|_Seconds_valid_: `seconds >= 0`
+2+a|__Seconds_valid__: `seconds >= 0`
 
 h|
-2+a|_Fractional_second_valid_: `fractional_second >= 0.0 and fractional_second < 1.0`
+2+a|__Fractional_second_valid__: `fractional_second >= 0.0 and fractional_second < 1.0`
 |===
