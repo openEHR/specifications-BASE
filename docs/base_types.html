@@ -210,10 +210,19 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.?.? (unreleased)</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-27" target="_blank" rel="noopener">SPECBASE-27</a>. Correct <code>OBJECT_REF.<em>namespace</em></code> regex so that it is legal.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Smolka,<br>
+ S Iancu,<br>
+ M Polajnar,<br>
+ D Bosca</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>25 Aug 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-26" target="_blank" rel="noopener">SPECBASE-26</a>. Add Built-in classes and functions for use in AQL, EL; added <code>builtins</code> package.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Mar 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1831,9 +1840,12 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code>"unknown"</code></p>
 </li>
 <li>
-<p>a string matching the regex <code>[a-zA-Z][a-zA-Z0-9_-:/&amp;+?]*</code></p>
+<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=+-]*</code>.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Note that the first two are just special values of the regex, and will be matched by it.</p>
 </div></div></td>
 </tr>
 <tr>
