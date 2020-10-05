@@ -147,10 +147,19 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.8.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-23" target="_blank" rel="noopener">SPECBASE-23</a>: Add <code><em>other_contributors</em></code> to <code>TRANSLATION_DETAILS</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>05 Oct 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-6" target="_blank" rel="noopener">SPECPUB-6</a>: Correct spelling error in <code>TRANSLATION_DETAILS.<em>accreditation</em></code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Garde</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>13 Nov 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 Nov 2019</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.1.0</strong></p></th>
@@ -594,14 +603,14 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>, <a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Translator name and other demographic details.</p>
+<p>Primary translator name and other demographic details.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accreditation</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Accreditation of translator, usually a national translator&#8217;s registration or association membership id.</p>
+<p>Accreditation of primary translator or group, usually a national translator&#8217;s registration or association membership id.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -616,6 +625,13 @@ translations.has_key (d.language.code_string)))</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_last_translated</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of this resource last time it was translated into the language represented by this <code>TRANSLATION_DETAILS</code> object.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_contributors</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Additional contributors to this translation, each listed in "name &lt;email&gt;"  form.</p>
 </div></div></td>
 </tr>
 </tbody>

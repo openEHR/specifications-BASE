@@ -18,11 +18,11 @@ a|Language of the translation, coded using ISO 639-1 (2 character) language code
 
 h|*1..1*
 |*author*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^], link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
-a|Translator name and other demographic details.
+a|Primary translator name and other demographic details.
 
 h|*0..1*
 |*accreditation*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
-a|Accreditation of translator, usually a national translator's registration or association membership id.
+a|Accreditation of primary translator or group, usually a national translator's registration or association membership id.
 
 h|*0..1*
 |*other_details*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^], link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
@@ -31,4 +31,8 @@ a|Any other meta-data.
 h|*0..1*
 |*version_last_translated*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Version of this resource last time it was translated into the language represented by this `TRANSLATION_DETAILS` object.
+
+h|*0..1*
+|*other_contributors*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
+a|Additional contributors to this translation, each listed in "name <email>"  form.
 |===
