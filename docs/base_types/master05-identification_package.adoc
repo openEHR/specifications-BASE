@@ -224,17 +224,16 @@ The identifiers defined above are defined in their string form by the following 
 (* According to IETF http://tools.ietf.org/html/rfc1034[RFC 1034] and  *)
 (* http://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by       *)
 (* http://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),          *)
-(* the syntax of a domain name follows the grammar:                    *)            
+(* and relaxation of https://tools.ietf.org/html/rfc1123[RFC 1123]     *)
+(* The syntax of a domain name follows the grammar below. Slightly     *)
+(* reduced for the purpose here, plus allows underscores.              *)
 
-domain      = subdomain | ' ' ;
-subdomain   = label | subdomain, '.', label ;
-label       = letter [ [ ldh-str ] let-dig ] ;
-ldh-str     = let-dig-hyp | let-dig-hyp, ldh-str ;
-let-dig-hyp = let-dig | '-' ;
-let-dig     = letter | digit ;
+internet_id      = subdomain ;
+subdomain        = label | subdomain, '.', label ;
+label            = alphanum | alphanum-ext-str, alphanum ;
 
-(* --------------------------- INTERNET_ID --------------------------- *)
-internet_id = root [ '::' extension ] ;
+(* --------------------------- UID_BASED_ID --------------------------- *)
+uid_based_id = root [ '::' extension ] ;
 root        = uid ;
 extension   = ? any string ? ; (* any string *)
 
@@ -269,13 +268,22 @@ version-id          = 'v', non-zero-digit, [ number ] ;                     (* n
 terminology_id = name-str, [ '(', name-str, ')' ] ;
 
 (* -------------------------- generic rules -------------------------- *)
+alphanum     = letter | digit ;
 name-str     = letter, { letter | digit | '_' | '-' | '/' | '+' } ;
 alphanum-str = letter, { letter | digit | '_' } ;
-letter       = 'a' | .. | 'z' | 'A' | .. | 'Z' ;
+alphanum-ext-str = letter, { letter | digit | '_' | '-' } ;
+letter       = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
+               | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N'
+               | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U'
+               | 'V' | 'W' | 'X' | 'Y' | 'Z' | 'a' | 'b'
+               | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i'
+               | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p'
+               | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w'
+               | 'x' | 'y' | 'z' ;
 
 number         = digit, { digit } ;
 hex-number     = hex-digit, { hex-digit } ;
-digit          = '0' | nz_digit ;
-non-zero-digit = '1' | .. | '9' ;
-hex-digit      = '0' | .. | 'A' | .. | 'F' .. | 'a' | .. | 'f' ;
+digit          = '0' | non-zero-digit ;
+non-zero-digit = '1' | '2' | '3' | '4' | '5' | '6' | '7'| '8' | '9' ;
+hex-digit      = digit | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' ;
 --------
