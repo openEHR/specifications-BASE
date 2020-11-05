@@ -212,8 +212,9 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-28" target="_blank" rel="noopener">SPECBASE-28</a>. Fix <code>internet_id</code> and <code>uid_based_id</code> confusion in syntax definition.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Oct 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde,<br>
+ S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>05 Nov 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1111,7 +1112,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code><em>object_id</em></code>: the identifier of the version container, in the form of a UID, typically a Guid;</p>
+<p><code><em>object_id</em></code>: the identifier of the version container, in the form of a UID, typically a UUID;</p>
 </li>
 <li>
 <p><code><em>creating_system_id</em></code>: the identifier of the system in which this version was created, of type UID, typically a reverse domain identifier;</p>
@@ -1133,7 +1134,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p>Under this scheme, multiple versions in the same container all have the same value for <code><em>object_id</em></code>, whilst their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.</p>
 </div>
 <div class="paragraph">
-<p>The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be GUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
+<p>The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1982,22 +1983,27 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span></span><span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
+<pre class="pygments highlight"><code data-lang="ebnf"><span></span><span class="tok-cm">(* ------------------------- UID, OID, UUID -------------------------- *)</span>
+<span class="tok-k">uid     </span><span class="tok-o">=</span> <span class="tok-k">iso_oid </span><span class="tok-p">|</span> <span class="tok-k">uuid </span><span class="tok-p">|</span> <span class="tok-k">internet_id </span><span class="tok-p">;</span>
+<span class="tok-k">iso_oid </span><span class="tok-o">=</span> <span class="tok-k">number</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-s1">&#39;.&#39;</span><span class="tok-p">,</span> <span class="tok-k">number </span><span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">uuid    </span><span class="tok-o">=</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number </span><span class="tok-p">;</span>
+
+<span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
 <span class="tok-cm">(* According to IETF http://tools.ietf.org/html/rfc1034[RFC 1034] and  *)</span>
 <span class="tok-cm">(* http://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by       *)</span>
 <span class="tok-cm">(* http://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),          *)</span>
 <span class="tok-cm">(* and relaxation of https://tools.ietf.org/html/rfc1123[RFC 1123]     *)</span>
 <span class="tok-cm">(* The syntax of a domain name follows the grammar below. Slightly     *)</span>
 <span class="tok-cm">(* reduced for the purpose here, plus allows underscores.              *)</span>
-
 <span class="tok-k">internet_id      </span><span class="tok-o">=</span> <span class="tok-k">subdomain </span><span class="tok-p">;</span>
 <span class="tok-k">subdomain        </span><span class="tok-o">=</span> <span class="tok-k">label </span><span class="tok-p">|</span> <span class="tok-k">subdomain</span><span class="tok-p">,</span> <span class="tok-s1">&#39;.&#39;</span><span class="tok-p">,</span> <span class="tok-k">label </span><span class="tok-p">;</span>
 <span class="tok-k">label            </span><span class="tok-o">=</span> <span class="tok-k">alphanum </span><span class="tok-p">|</span> <span class="tok-k">alphanum-ext-str</span><span class="tok-p">,</span> <span class="tok-k">alphanum </span><span class="tok-p">;</span>
 
-<span class="tok-cm">(* --------------------------- UID_BASED_ID --------------------------- *)</span>
-<span class="tok-k">uid_based_id </span><span class="tok-o">=</span> <span class="tok-k">root </span><span class="tok-p">[</span> <span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">extension </span><span class="tok-p">]</span> <span class="tok-p">;</span>
-<span class="tok-k">root        </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span>
-<span class="tok-k">extension   </span><span class="tok-o">=</span> <span class="tok-ni">? any string ?</span> <span class="tok-p">;</span> <span class="tok-cm">(* any string *)</span>
+<span class="tok-cm">(* -------------------- HIER_BASED_ID, UID_BASED_ID ------------------ *)</span>
+<span class="tok-k">hier_object_id </span><span class="tok-o">=</span> <span class="tok-k">uid_based_id </span><span class="tok-p">;</span>
+<span class="tok-k">uid_based_id   </span><span class="tok-o">=</span> <span class="tok-k">root </span><span class="tok-p">[</span> <span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">extension </span><span class="tok-p">]</span> <span class="tok-p">;</span>
+<span class="tok-k">root           </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span>
+<span class="tok-k">extension      </span><span class="tok-o">=</span> <span class="tok-ni">? any string ?</span> <span class="tok-p">;</span> <span class="tok-cm">(* any string *)</span>
 
 <span class="tok-cm">(* ------------------------- OBJECT_VERSION_ID ----------------------- *)</span>
 <span class="tok-k">object_version_id  </span><span class="tok-o">=</span> <span class="tok-k">object_id </span><span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">creating_system_id </span><span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">version_tree_id </span><span class="tok-p">;</span>
@@ -2009,11 +2015,6 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <span class="tok-k">trunk_version   </span><span class="tok-o">=</span> <span class="tok-k">number </span><span class="tok-p">;</span>
 <span class="tok-k">branch_number   </span><span class="tok-o">=</span> <span class="tok-k">number </span><span class="tok-p">;</span>
 <span class="tok-k">branch_version  </span><span class="tok-o">=</span> <span class="tok-k">number </span><span class="tok-p">;</span>
-
-<span class="tok-cm">(* ------------------------- UID, OID, GUID -------------------------- *)</span>
-<span class="tok-k">uid     </span><span class="tok-o">=</span> <span class="tok-k">iso_oid </span><span class="tok-p">|</span> <span class="tok-k">guid </span><span class="tok-p">;</span>
-<span class="tok-k">iso_oid </span><span class="tok-o">=</span> <span class="tok-k">number</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-s1">&#39;.&#39;</span><span class="tok-p">,</span> <span class="tok-k">number </span><span class="tok-p">}</span> <span class="tok-p">;</span>
-<span class="tok-k">guid    </span><span class="tok-o">=</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number </span><span class="tok-p">;</span>
 
 <span class="tok-cm">(* -------------------------- ARCHETYPE_ID --------------------------- *)</span>
 <span class="tok-k">archetype_id        </span><span class="tok-o">=</span> <span class="tok-k">qualified_rm_entity </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">domain_concept </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">version_id </span><span class="tok-p">;</span>
@@ -2035,13 +2036,13 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <span class="tok-k">alphanum-str </span><span class="tok-o">=</span> <span class="tok-k">letter</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">letter </span><span class="tok-p">|</span> <span class="tok-k">digit </span><span class="tok-p">|</span> <span class="tok-s1">&#39;_&#39;</span> <span class="tok-p">}</span> <span class="tok-p">;</span>
 <span class="tok-k">alphanum-ext-str </span><span class="tok-o">=</span> <span class="tok-k">letter</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">letter </span><span class="tok-p">|</span> <span class="tok-k">digit </span><span class="tok-p">|</span> <span class="tok-s1">&#39;_&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;-&#39;</span> <span class="tok-p">}</span> <span class="tok-p">;</span>
 <span class="tok-k">letter       </span><span class="tok-o">=</span> <span class="tok-s1">&#39;A&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;B&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;C&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;D&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;E&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;F&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;G&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;H&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;I&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;J&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;K&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;L&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;M&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;N&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;O&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;P&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;Q&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;R&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;S&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;T&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;U&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;V&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;W&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;X&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;Y&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;Z&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;a&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;b&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;c&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;d&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;e&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;f&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;g&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;h&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;i&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;j&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;k&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;l&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;m&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;n&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;o&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;p&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;q&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;r&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;s&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;t&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;u&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;v&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;w&#39;</span>
-               <span class="tok-p">|</span> <span class="tok-s1">&#39;x&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;y&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;z&#39;</span> <span class="tok-p">;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;H&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;I&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;J&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;K&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;L&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;M&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;N&#39;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;O&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;P&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;Q&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;R&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;S&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;T&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;U&#39;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;V&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;W&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;X&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;Y&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;Z&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;a&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;b&#39;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;c&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;d&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;e&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;f&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;g&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;h&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;i&#39;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;j&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;k&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;l&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;m&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;n&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;o&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;p&#39;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;q&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;r&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;s&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;t&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;u&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;v&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;w&#39;</span>
+             <span class="tok-p">|</span> <span class="tok-s1">&#39;x&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;y&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;z&#39;</span> <span class="tok-p">;</span>
 
 <span class="tok-k">number         </span><span class="tok-o">=</span> <span class="tok-k">digit</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">digit </span><span class="tok-p">}</span> <span class="tok-p">;</span>
 <span class="tok-k">hex-number     </span><span class="tok-o">=</span> <span class="tok-k">hex-digit</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">hex-digit </span><span class="tok-p">}</span> <span class="tok-p">;</span>
