@@ -953,6 +953,18 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 <div class="paragraph">
 <p>Three kinds of types are defined in this package. The abstract UID type and its subtypes correspond to permanent, computationally reliable, primitive identifiers. Such identifiers are regarded as 'primitive' because they are treated as having no further internal structure, in the sense that part of such an identifier is not in general meaningful. The three subtypes <code>UUID</code>, <code>ISO_OID</code> and <code>INTERNET_ID</code> all have these properties, and are commonly accepted ways of uniquely identifying entities in computer systems. In openEHR (and generally in health informatics) they are usually used as parts of other identifiers.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+UUIDs are also commonly known as GUIDs, which may be used as a synonym within implementations.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>A consequence of the string representation approach used in these classes is that to set an attribute of type UID from a string value, as would be done when reading from a database, deserialising from XML or another text form, a piece of code that inspects the string structure has to be used in order to decide which of the subtypes of <code>UID</code> it is. This is a safe thing to do, since all three subtypes have mutually exclusive string patterns, and can easily be distinguished.</p>
 </div>
@@ -1135,7 +1147,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p>Under this scheme, multiple versions in the same container all have the same value for <code><em>object_id</em></code>, whilst their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.</p>
 </div>
 <div class="paragraph">
-<p>The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
+<p>The requirements on the <code><em>creating_system_id</em></code> part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1147,7 +1159,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="sect4">
 <h5 id="_hierarchical_identifiers"><a class="anchor" href="#_hierarchical_identifiers"></a>5.3.2.7. Hierarchical Identifiers</h5>
 <div class="paragraph">
-<p>The <code>HIER_OBJECT_ID</code> type is defined to support hierarchical identifiers, often based on ISO Oids or other similar machine-readable and -resolvable schemes.</p>
+<p>The <code>HIER_OBJECT_ID</code> type is defined to support hierarchical identifiers, often based on UUIDs or other similar machine-readable and -resolvable schemes.</p>
 </div>
 </div>
 <div class="sect4">

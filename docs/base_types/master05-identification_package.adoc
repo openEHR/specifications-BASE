@@ -68,6 +68,8 @@ A key design decision has been to choose a string representation for all identif
 
 Three kinds of types are defined in this package. The abstract UID type and its subtypes correspond to permanent, computationally reliable, primitive identifiers. Such identifiers are regarded as 'primitive' because they are treated as having no further internal structure, in the sense that part of such an identifier is not in general meaningful. The three subtypes `UUID`, `ISO_OID` and `INTERNET_ID` all have these properties, and are commonly accepted ways of uniquely identifying entities in computer systems. In openEHR (and generally in health informatics) they are usually used as parts of other identifiers.
 
+NOTE: UUIDs are also commonly known as GUIDs, which may be used as a synonym within implementations.
+
 A consequence of the string representation approach used in these classes is that to set an attribute of type UID from a string value, as would be done when reading from a database, deserialising from XML or another text form, a piece of code that inspects the string structure has to be used in order to decide which of the subtypes of `UID` it is. This is a safe thing to do, since all three subtypes have mutually exclusive string patterns, and can easily be distinguished.
 
 === Composite Identifiers
@@ -147,7 +149,7 @@ The following provides a typical example:
 
 Under this scheme, multiple versions in the same container all have the same value for `_object_id_`, whilst their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.
 
-The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the {openehr_rm_common}#_change_control_package[Common IM, `change_control` package].
+The requirements on the `_creating_system_id_` part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the {openehr_rm_common}#_change_control_package[Common IM, `change_control` package].
 
 ==== Generic and External Identifiers
 
@@ -155,7 +157,7 @@ The `GENERIC_ID` type provides for identifiers of schemes other than defined con
 
 ==== Hierarchical Identifiers
 
-The `HIER_OBJECT_ID` type is defined to support hierarchical identifiers, often based on ISO Oids or other similar machine-readable and -resolvable schemes.
+The `HIER_OBJECT_ID` type is defined to support hierarchical identifiers, often based on UUIDs or other similar machine-readable and -resolvable schemes.
 
 ==== Composite Identifiers and Case
 
