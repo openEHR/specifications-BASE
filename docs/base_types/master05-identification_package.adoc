@@ -214,6 +214,7 @@ include::{uml_export_dir}/classes/party_ref.adoc[]
 
 include::{uml_export_dir}/classes/locatable_ref.adoc[]
 
+[[_syntaxes]]
 == Syntaxes
 
 The identifiers defined above are defined in their string form by the following EBNF grammar rules.
@@ -238,37 +239,37 @@ label            = alphanum | alphanum-ext-str, alphanum ;
 
 (* -------------------- HIER_BASED_ID, UID_BASED_ID ------------------ *)
 hier_object_id = uid_based_id ;
-uid_based_id   = root [ '::' extension ] ;
+uid_based_id   = root, [ '::', extension ] ;
 root           = uid ;
 extension      = ? any string ? ; (* any string *)
 
 (* ------------------------- OBJECT_VERSION_ID ----------------------- *)
-object_version_id  = object_id '::' creating_system_id '::' version_tree_id ;
+object_version_id  = object_id, '::', creating_system_id, '::', version_tree_id ;
 object_id          = uid ;
 creating_system_id = uid ;
 
 (* ------------------------- VERSION_TREE_ID ------------------------- *)
-version_tree_id = trunk_version [ '.' branch_number '.' branch_version ] ;
+version_tree_id = trunk_version, [ '.', branch_number, '.', branch_version ] ;
 trunk_version   = number ;
 branch_number   = number ;
 branch_version  = number ;
 
 (* -------------------------- ARCHETYPE_ID --------------------------- *)
-archetype_id        = qualified_rm_entity '.' domain_concept '.' version_id ;
-qualified-rm-entity = rm_originator '-' rm_name '-' rm_entity ;
+archetype_id        = qualified_rm_entity, '.', domain_concept, '.', version_id ;
+qualified-rm-entity = rm_originator, '-', rm_name, '-', rm_entity ;
 rm-originator       = alphanum-str ;     (* id of org originating the RM on which this archetype is based *)
 rm-name             = alphanum-str ;                      (* id of the RM on which the archetype is based *)
 rm-entity           = alphanum-str ;                                       (* ontological level in the RM *)
-domain-concept      = concept-name { '-' specialisation } ; 
+domain-concept      = concept-name, { '-', specialisation } ; 
 concept-name        = alphanum-str ;
 specialisation      = alphanum-str ;
-version-id          = 'v', non-zero-digit, [ number ] ;                     (* numeric version identifier *)
+version-id          = 'v', ( '0' | non-zero-digit, [ number ] ) ;            (* numeric version identifier *)
 
 (* ------------------------- TERMINOLOGY_ID -------------------------- *)
 terminology_id = name-str, [ '(', name-str, ')' ] ;
 
 (* -------------------------- generic rules -------------------------- *)
-alphanum     = letter | digit ;
+alphanum     = letter, | digit ;
 name-str     = letter, { letter | digit | '_' | '-' | '/' | '+' } ;
 alphanum-str = letter, { letter | digit | '_' } ;
 alphanum-ext-str = letter, { letter | digit | '_' | '-' } ;
