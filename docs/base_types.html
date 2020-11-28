@@ -210,12 +210,18 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0 (unreleased)</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-26" target="_blank" rel="noopener">SPECBASE-26</a>. Add Built-in classes and functions for use in AQL, EL; added <code>builtins</code> package.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Nov 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-28" target="_blank" rel="noopener">SPECBASE-28</a>. Fix <code>internet_id</code> and <code>uid_based_id</code> confusion in <a href="#_syntaxes">syntax definition</a>;<br>
  <a href="https://specifications.openehr.org/tickets/SPECBASE-29" target="_blank" rel="noopener">SPECBASE-29</a>. Fix version-id syntax issue in <code>ARCHETYPE_ID</code> <a href="#_syntaxes">syntax definition</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Garde,<br>
  S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>05 Nov 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05 Nov 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -225,12 +231,6 @@
  M Polajnar,<br>
  D Bosca</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">25 Aug 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-26" target="_blank" rel="noopener">SPECBASE-26</a>. Add Built-in classes and functions for use in AQL, EL; added <code>builtins</code> package.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">01 Mar 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -402,7 +402,7 @@ corrected definition of <code>UID_BASED_ID.<em>has_extension()</em></code> to 'T
 </div>
 <div id="base_definition_types" class="imageblock text-center text-center">
 <div class="content">
-<img src="UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions">
+<img src="UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions" width="65%">
 </div>
 <div class="title">Figure 2. base.base_types.definitions package</div>
 </div>
@@ -636,7 +636,7 @@ of Date/Time fields.</p>
 </div>
 <div id="base_builtins" class="imageblock text-center text-center">
 <div class="content">
-<img src="UML/diagrams/BASE-base_types.builtins.svg" alt="BASE base types.builtins">
+<img src="UML/diagrams/BASE-base_types.builtins.svg" alt="BASE base types.builtins" width="100%">
 </div>
 <div class="title">Figure 3. base.base_types.builtins Package</div>
 </div>
@@ -690,7 +690,7 @@ of Date/Time fields.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_zone</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_iso8601_timezone_class" target="_blank" rel="noopener">Iso8601_timezone</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time_zone</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_iso8601_timezone_class" target="_blank" rel="noopener">Iso8601_timezone</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the timezone of the current locale.</p>
 </div></div></td>
@@ -776,6 +776,15 @@ vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_clas
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>avg</strong> (<br>
+vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_class">Container<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_numeric_class">Numeric</sup></a>&gt;[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">Double</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Synonym for <code><em>mean()</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong> (<br>
 vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_class">Container<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_numeric_class">Numeric</sup></a>&gt;[1]</code><br>
 ): <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a></code></p></td>
@@ -799,6 +808,15 @@ vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_clas
 ): <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Minimum of a container of values.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong> (<br>
+vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_class">Container<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_numeric_class">Numeric</sup></a>&gt;[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return the number of items in <code><em>vals</em></code>, i.e. <code><em>vals.count</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
