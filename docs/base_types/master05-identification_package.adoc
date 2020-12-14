@@ -271,7 +271,7 @@ version-id          = 'v', ( '0' | non-zero-digit, [ number ] ) ;            (* 
 terminology_id = name-str, [ '(', name-str, ')' ] ;
 
 (* -------------------------- generic rules -------------------------- *)
-alphanum     = letter, | digit ;
+alphanum     = letter | digit ;
 name-str     = letter, { letter | digit | '_' | '-' | '/' | '+' } ;
 alphanum-str = letter, { letter | digit | '_' } ;
 alphanum-ext-str = letter, { letter | digit | '_' | '-' } ;
