@@ -6,7 +6,7 @@ In informational terms, a minimal EHR system based on openEHR consists of an EHR
 
 [.text-center]
 .Minimal openEHR EHR System
-image::diagrams/minimal_openehr_system.png[minimal_openehr_system,align="center",width="80%"]
+image::{diagrams_uri}/minimal_openehr_system.png[minimal_openehr_system,align="center",width="80%"]
 
 The latter may be in the form of an existing PMI (patient master index) or other directory, or it may be
 in the form of an openEHR demographic repository. An openEHR demographic repository can act as
@@ -49,7 +49,7 @@ of the openEHR EHR is shown below.
 
 [.text-center]
 .High-level Structure of the openEHR EHR
-image::diagrams/high_level_ehr_structure.png[high_level_ehr_structure,align="center",width="70%"]
+image::{diagrams_uri}/high_level_ehr_structure.png[high_level_ehr_structure,align="center",width="70%"]
 
 In this figure, the parts of the EHR are as follows:
 
@@ -69,7 +69,7 @@ The 21 data types provide for all types of data needed for clinical and administ
 
 [.text-center]
 .Elements of an openEHR Composition
-image::diagrams/composition_structure.png[composition_structure,align="center",width="80%"]
+image::{diagrams_uri}/composition_structure.png[composition_structure,align="center",width="80%"]
 
 == Entries and Clinical Statements
 
@@ -89,11 +89,11 @@ The openEHR `ENTRY` classes are shown below. There are five concrete subtypes: `
 .The openEHR Entry model (in EHR IM)
 image::{rm_uml_export_dir}/diagrams/RM-composition.entry-simple.svg[id=entry_model_simple, align="center",width="60%"]
 
-The choice of these types is based on the clinical problem-solving process shown below.
+The choice of these types is based on the clinical problem-solving process, described in citenp:[Beale_Heard2007] shown below.
 
 [.text-center]
 .Relationship of information types to the investigation process
-image::diagrams/clinical_investigator_process.png[clinical_investigator_process,align="center",width="80%"]
+image::{diagrams_uri}/clinical_investigator_process.png[clinical_investigator_process,align="center",width="80%"]
 
 This figure shows the cycle of information creation due to an iterative, problem solving process typical
 not just of clinical medicine but of science in general. The 'system' as a whole is made up of two
@@ -104,15 +104,15 @@ it. A problem is solved by making observations, forming opinions (hypotheses), a
 actions (instructions) for next steps, which may be further investigation, or may be interventions
 designed to resolve the problem, and finally, executing the instructions (actions).
 
-This process model is a synthesis of Lawrence Weed's 'problem-oriented' method of EHR recording, and later related efforts, including the model of Rector, Nowlan & Kay <<Rector_1994>>, and the 'hypothetico-deductive' model of reasoning (see e.g. <<Elstein_1987>>). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process model used in openEHR is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion, nor even require all steps to be present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the openEHR Entry model does not impose a process model, it only provides the possible types of information that might occur.
+This process model is a synthesis of Lawrence Weed's 'problem-oriented' method of EHR recording, and later related efforts, including the model of Rector, citenp:[Rector1994], and the 'hypothetico-deductive' model of reasoning (see e.g. citenp:[Elstein1978]). However hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process model used in openEHR is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion, nor even require all steps to be present while iterating (e.g. GPs often prescribe without making a firm diagnosis). Consequently, the openEHR Entry model does not impose a process model, it only provides the possible types of information that might occur.
 
 ==== Ontology of Entry Types
 
-In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the subtypes of Entry described above. There are many subtypes of each of these types, of which some are shown in the figure below.
+In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the subtypes of Entry described above. There are many subtypes of each of these types, of which some are shown in the figure below, reproduced from citenp:[Beale_Heard2007].
 
 [.text-center]
 .Ontology of Recorded Information
-image::diagrams/CIR_ontology.png[CIR_ontology,align="center",width="80%"]
+image::{diagrams_uri}/CIR_ontology.png[CIR_ontology,align="center",width="80%"]
 
 The key top-level categories are 'care information' and 'administrative information'. The former
 encompasses all statements that might be recorded at any point during the care process, and consists
@@ -178,7 +178,7 @@ environment.
 
 [.text-center]
 .openEHR standard Instruction State Machine
-image::{rm_uml_export_dir}/diagrams/RM-InstructionStateMachine.svg[instruction_state_machine,align="center"]
+image::{diagrams_uri}/instruction_state_machine.png[instruction_state_machine,align="center"]
 
 == Time in the EHR
 
@@ -194,7 +194,7 @@ Time is described in detail in the {openehr_rm_ehr}#_time_in_the_ehr[EHR Informa
 
 [.text-center]
 .Time in the EHR
-image::diagrams/time_in_the_ehr.png[time_in_the_ehr,align="center", width=70%]
+image::{diagrams_uri}/time_in_the_ehr.png[time_in_the_ehr,align="center", width=70%]
 
 == Language
 

@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="openEHR Base Types specification">
 <meta name="keywords" content="openehr, identifiers, types">
-<title>openEHR Base Types specification</title>
-<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
+<title>Base Types</title>
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#_openehr_base_types_specification">openEHR Base Types specification</a>
+<li><a href="#_base_types">Base Types</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
 <li><a href="#_acknowledgements">Acknowledgements</a>
@@ -30,7 +29,8 @@
 <li><a href="#_purpose">1.1. Purpose</a></li>
 <li><a href="#_related_documents">1.2. Related Documents</a></li>
 <li><a href="#_status">1.3. Status</a></li>
-<li><a href="#_previous_versions">1.4. Previous Versions</a></li>
+<li><a href="#_feedback">1.4. Feedback</a></li>
+<li><a href="#_previous_versions">1.5. Previous Versions</a></li>
 </ul>
 </li>
 <li><a href="#_overview">2. Overview</a></li>
@@ -119,29 +119,29 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
 </div>
 </div>
 </div>
-<h1 id="_openehr_base_types_specification" class="sect0">openEHR Base Types specification</h1>
+<h1 id="_base_types" class="sect0"><a class="anchor" href="#_base_types"></a>Base Types</h1>
 <div class="openblock partintro">
 <div class="content">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all fit-content spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="/programs/specification/">openEHR Specification Program</a></th>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="https://www.openehr.org/programs/specification" target="_blank" rel="noopener">openEHR Specification Program</a></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: BASE Release-1.0.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -153,42 +153,42 @@
 </tr>
 </tbody>
 </table>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="60%">
+<object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
 </div>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2018 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2021 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="https://specifications.openehr.org/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
- Web: <a href="/">www.openehr.org</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://specifications.openehr.org/components/BASE/open_issues" target="_blank" rel="noopener">Problem Reports</a><br>
+ Web: <a href="https://specifications.openehr.org" target="_blank" rel="noopener">specifications.openEHR.org</a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amendment_record">Amendment Record</h2>
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a>Amendment Record</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 54.5454%;">
@@ -209,40 +209,40 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-6">SPECPUB-6</a>. Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-6">SPECPUB-6</a>. Correct UML package nesting and paths in documents; insert <code>base</code> parent package.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Nov 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECBASE-7">SPECBASE-7</a>. Add Base Types specification to BASE component.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-7">SPECBASE-7</a>. Add Base Types specification to BASE component.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">02 Sep 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Writing; split out from Foundation Types. Taken from <a href="/releases/RM/Release-1.0.3/support.html">openEHR RM Release 1.0.3 Support Model</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Writing; split out from Foundation Types. Taken from <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html">openEHR RM Release 1.0.3 Support Model</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">17 Aug 2017</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The Amendment history relevant to the original content in this specification can be found <a href="/releases/RM/Release-1.0.3/support.html#_amendment_record">here</a> (<a href="/releases/RM/latest/support.html#_amendment_record">a fully hyper-linked version</a> may be found on the working baseline).</p>
+<p>The Amendment history relevant to the original content in this specification can be found <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html#_amendment_record">here</a> (<a href="https://specifications.openehr.org/releases/RM/latest/support.html#_amendment_record">a fully hyper-linked version</a> may be found on the working baseline).</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acknowledgements">Acknowledgements</h2>
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a>Acknowledgements</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_contributors">Contributors</h3>
+<h3 id="_contributors"><a class="anchor" href="#_contributors"></a>Contributors</h3>
 <div class="paragraph">
 <p>This specification has benefited from formal and informal input from the openEHR and wider health informatics community.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_trademarks">Trademarks</h3>
+<h3 id="_trademarks"><a class="anchor" href="#_trademarks"></a>Trademarks</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -270,7 +270,7 @@
 <p>Standards bodies producing health informatics standards;</p>
 </li>
 <li>
-<p>Research groups using openEHR, ISO 13606, archetypes and related technologies;</p>
+<p>Research groups using openEHR, <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606</a>, archetypes and related technologies;</p>
 </li>
 <li>
 <p>The open source healthcare community;</p>
@@ -289,7 +289,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="/releases/BASE/latest/architecture_overview.html">openEHR Architecture Overview</a>.</p>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/architecture_overview.html" target="_blank" rel="noopener">openEHR Architecture Overview</a>.</p>
 </li>
 </ul>
 </div>
@@ -297,7 +297,7 @@
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>This specification is in the STABLE state. The development version of this document can be found at <a href="/releases/BASE/latest/base_types.html">www.openehr.org/releases/BASE/latest/base_types.html</a>.</p>
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/base_types.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/BASE/Release-1.0.4/base_types.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -305,14 +305,23 @@
 <div class="paragraph tbd">
 <p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
 <div class="paragraph">
-<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/issues/?filter=11105">specifications issue tracker</a>.</p>
+<p>Feedback may be provided on the <a href="https://discourse.openehr.org/c/specifications" target="_blank" rel="noopener">technical mailing list</a>.</p>
+</div>
+<div class="paragraph">
+<p>Issues may be raised on the <a href="https://specifications.openehr.org/components/BASE/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
+</div>
+<div class="paragraph">
+<p>To see changes made due to previously reported issues, see the <a href="https://specifications.openehr.org/components/BASE/history" target="_blank" rel="noopener">BASE component Change Request tracker</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a>1.4. Previous Versions</h3>
+<h3 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a>1.5. Previous Versions</h3>
 <div class="paragraph">
-<p>This specification is based on the types orginally defined in the <a href="/releases/RM/Release-1.0.3/support.html">openEHR Support Information Model from Release 1.0.3 of the Reference Model</a>. Some changes have been made as follows.</p>
+<p>This specification is based on the types orginally defined in the <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html" target="_blank" rel="noopener">openEHR Support Information Model from Release 1.0.3 of the Reference Model</a>.</p>
 </div>
 </div>
 </div>
@@ -326,9 +335,9 @@
 <div class="paragraph">
 <p>The package structure is illustrated below.</p>
 </div>
-<div id="base_types_packages" class="imageblock text-center" style="text-align: center">
+<div id="base_types_packages" class="imageblock text-center text-center">
 <div class="content">
-<img src="../UML/diagrams/BASE-base_types-packages.svg" alt="BASE base types packages">
+<img src="UML/diagrams/BASE-base_types-packages.svg" alt="BASE base types packages">
 </div>
 <div class="title">Figure 1. base.base_types Package</div>
 </div>
@@ -342,9 +351,9 @@
 <div class="paragraph">
 <p>The <code>base_types.definitions</code> package shown below defines symbolic definitions used by the openEHR models.</p>
 </div>
-<div id="base_definition_types" class="imageblock text-center" style="text-align: center">
+<div id="base_definition_types" class="imageblock text-center text-center">
 <div class="content">
-<img src="../UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions">
+<img src="UML/diagrams/BASE-base_types.definitions.svg" alt="BASE base types.definitions">
 </div>
 <div class="title">Figure 2. base.base_types.definitions package</div>
 </div>
@@ -353,7 +362,7 @@
 <h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>3.2. Class Definitions</h3>
 <div class="sect3">
 <h4 id="_basic_definitions_class"><a class="anchor" href="#_basic_definitions_class"></a>3.2.1. BASIC_DEFINITIONS Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -366,7 +375,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines globally used constant values.</p>
 </div></div></td>
 </tr>
@@ -378,38 +387,38 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR</strong>: <code>char&#160;=&#160;'\015'</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Carriage return character.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LF</strong>: <code>char&#160;=&#160;'\012'</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Line feed character.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Any_type</strong>: <code>String&#160;=&#160;"Any"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code>String&#160;=&#160;".&#42;"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Default_encoding</strong>: <code>String&#160;=&#160;"UTF-8"</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_openehr_definitions_class"><a class="anchor" href="#_openehr_definitions_class"></a>3.2.2. OPENEHR_DEFINITIONS Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -422,7 +431,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Inheritance class to provide access to constants defined in other packages.</p>
 </div></div></td>
 </tr>
@@ -438,7 +447,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Local_terminology_id</strong>: <code>String&#160;=&#160;"local"</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype</p>
 </div></div></td>
 </tr>
@@ -447,7 +456,7 @@
 </div>
 <div class="sect3">
 <h4 id="_validity_kind_enumeration"><a class="anchor" href="#_validity_kind_enumeration"></a>3.2.3. VALIDITY_KIND Enumeration</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -460,7 +469,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>An enumeration of three values that may commonly occur in constraint models.</p>
 </div>
 <div class="paragraph">
@@ -476,21 +485,21 @@ of Date/Time fields.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mandatory</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Constant to indicate mandatory presence of something.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Constant to indicate optional presence of something.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prohibited</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Constant to indicate disallowed presence of something.</p>
 </div></div></td>
 </tr>
@@ -499,7 +508,7 @@ of Date/Time fields.</p>
 </div>
 <div class="sect3">
 <h4 id="_version_status_enumeration"><a class="anchor" href="#_version_status_enumeration"></a>3.2.4. VERSION_STATUS Enumeration</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -512,7 +521,7 @@ of Date/Time fields.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Status of a versioned artefact, as one of a number of possible values: uncontrolled, prerelease, release, build.</p>
 </div></div></td>
 </tr>
@@ -524,35 +533,35 @@ of Date/Time fields.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alpha</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value representing a version which is 'unstable', i.e. contains an unknown size of change with respect to its base version. Rendered with the build number as a string in the form <code>N.M.P-alpha.B</code> e.g. <code>2.0.1-alpha.154</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value representing a version which is 'beta', i.e. contains an unknown but reducing size of change with respect to its base version. Rendered with the build number as a string in the form <code>N.M.P-beta.B</code> e.g. <code>2.0.1-beta.154</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">release_candidate</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value representing a version which is 'release candidate', i.e. contains only patch-level changes on the base version. Rendered as a string as <code>N.M.P-rc.B</code> e.g. <code>2.0.1-rc.27</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">released</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value representing a version which is 'released', i.e. is the definitive base version. Rendered with the build number as a string in the form <code>N.M.P</code> e.g. <code>2.0.1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">build</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value representing a version which is a build of the current base release. Rendered with the build number as a string in the form <code>N.M.P+B</code> e.g. <code>2.0.1+33</code>.</p>
 </div></div></td>
 </tr>
@@ -570,9 +579,9 @@ of Date/Time fields.</p>
 <div class="paragraph">
 <p>The <code>BASE.base_types.identification</code> package describes a model of references and identifiers for information entities and is illustrated below.</p>
 </div>
-<div id="base_identification_types" class="imageblock text-center" style="text-align: center">
+<div id="base_identification_types" class="imageblock text-center text-center">
 <div class="content">
-<img src="../UML/diagrams/BASE-base_types.identification.svg" alt="BASE base types.identification">
+<img src="UML/diagrams/BASE-base_types.identification.svg" alt="BASE base types.identification">
 </div>
 <div class="title">Figure 3. base.base_types.identification Package</div>
 </div>
@@ -659,7 +668,7 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 <div class="sect3">
 <h4 id="_identification_of_versions"><a class="anchor" href="#_identification_of_versions"></a>4.2.3. Identification of Versions</h4>
 <div class="paragraph">
-<p>The notion of 'versioning' applies only to informational entities, i.e. distinct instances of content each representing a snapshot of some logical entity. Where such instances are stored and managed in versioned containers within a versioning system of some kind, explicit identification of the versions is required. The requirements are discussed in detail in the <a href="/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
+<p>The notion of 'versioning' applies only to informational entities, i.e. distinct instances of content each representing a snapshot of some logical entity. Where such instances are stored and managed in versioned containers within a versioning system of some kind, explicit identification of the versions is required. The requirements are discussed in detail in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
 </div>
 <div class="paragraph">
 <p>They can be summarised as follows:</p>
@@ -717,7 +726,7 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 <div class="paragraph">
 <p>The <code>OBJECT_ID</code> type and its hierarchy of subtypes define all of the identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO Oids etc) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the <code>HIER_OBJECT_ID</code> type are used both by openEHR and many other organisations.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -781,7 +790,7 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 </ul>
 </div>
 <div class="paragraph">
-<p>The three outer sections are delimited by '.' characters, while the parts of the first section are delimited by <code>-</code> characters. As with any multi-axial identifier, the underlying principle of an archetype identifier is that all parts of the identifier must be able to be considered immutable. This means that no variable characteristic of an archetype (e.g. accrediting authority, which might change due to later accreditation by another authority, or may be multiple) can be included in its identifier. The explicit inclusion of version as part of the identifier means that two 'versions' of an archetype are actually two distinct archetypes. (The rules for archetype versions, revisions and other variants are given in the <a href="/releases/AM/latest/Identification.html">openEHR Archetype Identification specification</a>.)</p>
+<p>The three outer sections are delimited by '.' characters, while the parts of the first section are delimited by <code>-</code> characters. As with any multi-axial identifier, the underlying principle of an archetype identifier is that all parts of the identifier must be able to be considered immutable. This means that no variable characteristic of an archetype (e.g. accrediting authority, which might change due to later accreditation by another authority, or may be multiple) can be included in its identifier. The explicit inclusion of version as part of the identifier means that two 'versions' of an archetype are actually two distinct archetypes. (The rules for archetype versions, revisions and other variants are given in the <a href="https://specifications.openehr.org/releases/AM/latest/Identification.html">openEHR Archetype Identification specification</a>.)</p>
 </div>
 <div class="paragraph">
 <p>Examples of archetype identifiers include:</p>
@@ -803,7 +812,7 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 </ul>
 </div>
 <div class="paragraph">
-<p>The grammar of archetype identifiers is given below in <a href="#_syntaxes">Syntaxes</a>.</p>
+<p>The grammar of archetype identifiers is given below in <a href="#_syntaxes">Section 4.5</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -834,7 +843,7 @@ some archetype authoring tools have historically allowed a nonconforming version
 </ul>
 </div>
 <div class="paragraph">
-<p>Currently the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the <a href="https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html#">US National Library of Medicine UMLS identifiers for included terminologies</a>.</p>
+<p>Currently the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the <a href="https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html">US National Library of Medicine UMLS identifiers for included terminologies</a>.</p>
 </div>
 <div class="paragraph">
 <p>The scheme defined by the <code>TERMINOLOGY_ID</code> class provides for the situation where major 'versions' of a terminology such as the World Health Organisation&#8217;s 'ICD10' and 'ICD10AM' (AM = 'Australian modifications') can accommodate a finer grain of versioning or revisioning, e.g.:</p>
@@ -882,7 +891,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p>Under this scheme, multiple versions in the same container all have the same value for <code><em>object_id</em></code>, while their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.</p>
 </div>
 <div class="paragraph">
-<p>The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be GUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers, as recommended in [3] (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
+<p>The requirements on the third part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be GUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers, as recommended in [3] (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM, <code>change_control</code> package</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -950,7 +959,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.4. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_uid_class"><a class="anchor" href="#_uid_class"></a>4.4.1. UID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -963,7 +972,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract parent of classes representing unique identifiers which identify information entities in a durable way. UIDs only ever identify one IE in time or space and are never re-used.</p>
 </div></div></td>
 </tr>
@@ -975,14 +984,14 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id.
 The value of the id.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Value_valid</em></strong>: <code>not value.empty</code></p>
 </div></div></td>
 </tr>
@@ -991,7 +1000,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_iso_oid_class"><a class="anchor" href="#_iso_oid_class"></a>4.4.2. ISO_OID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1004,7 +1013,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Model of ISO&#8217;s Object Identifier (oid) as defined by the standard ISO/IEC 8824. Oids are formed from integers separated by dots. Each non-leaf node in an Oid starting from the left corresponds to an assigning authority, and identifies that authority&#8217;s namespace, inside which the remaining part of the identifier is locally unique.</p>
 </div></div></td>
 </tr>
@@ -1017,7 +1026,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_uuid_class"><a class="anchor" href="#_uuid_class"></a>4.4.3. UUID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1030,7 +1039,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Model of the DCE Universal Unique Identifier or UUID which takes the form of hexadecimal integers separated by hyphens, following the pattern 8-4-4-4-12 as defined by the Open Group, CDE 1.1 Remote Procedure Call specification, Appendix A. Also known as a GUID.</p>
 </div></div></td>
 </tr>
@@ -1043,7 +1052,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_internet_id_class"><a class="anchor" href="#_internet_id_class"></a>4.4.4. INTERNET_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1056,7 +1065,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Model of a reverse internet domain, as used to uniquely identify an internet domain. In the form of a dot-separated string in the reverse order of a domain name, specified by IETF RFC 1034 (<a href="http://www.ietf.org/rfc/rfc1034.txt" class="bare">http://www.ietf.org/rfc/rfc1034.txt</a>).</p>
 </div></div></td>
 </tr>
@@ -1069,7 +1078,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_object_id_class"><a class="anchor" href="#_object_id_class"></a>4.4.5. OBJECT_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1082,7 +1091,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Ancestor class of identifiers of informational objects. Ids may be completely meaningless, in which case their only job is to refer to something, or may carry some information to do with the identified object.</p>
 </div>
 <div class="paragraph">
@@ -1097,7 +1106,7 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.</p>
 </div></div></td>
 </tr>
@@ -1106,7 +1115,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_uid_based_id_class"><a class="anchor" href="#_uid_based_id_class"></a>4.4.6. UID_BASED_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1119,7 +1128,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract model of UID-based identifiers consisting of a root part and an optional extension;</p>
 </div>
 <div class="paragraph">
@@ -1138,27 +1147,27 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code>UID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first  ::' separator if any, or else any empty String.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if extension /= Void.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Has_extension_valid</em></strong>: <code>extension.is_empty xor has_extension</code></p>
 </div></div></td>
 </tr>
@@ -1167,7 +1176,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_hier_object_id_class"><a class="anchor" href="#_hier_object_id_class"></a>4.4.7. HIER_OBJECT_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1180,7 +1189,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Concrete type corresponding to hierarchical identifiers of the form defined by UID_BASED_ID.</p>
 </div></div></td>
 </tr>
@@ -1193,7 +1202,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_object_version_id_class"><a class="anchor" href="#_object_version_id_class"></a>4.4.8. OBJECT_VERSION_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1206,7 +1215,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Globally unique identifier for one version of a versioned object; lexical form: <code>object_id  '::' creating_system_id  '::' version_tree_id</code>.</p>
 </div></div></td>
 </tr>
@@ -1222,28 +1231,28 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>object_id</strong> (): <code>UID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier for logical object of which this identifier identifies one version; normally the object_id will be the unique identifier of the version container containing the version referred to by this OBJECT_VERSION_ID instance.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_tree_id</strong> (): <code>VERSION_TREE_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Tree identifier of this version with respect to other versions in the same version tree, as either 1 or 3 part dot-separated numbers, e.g.  1 ,  2.1.4 .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creating_system_id</strong> (): <code>UID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of the system that created the Version corresponding to this Object version id.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch.</p>
 </div></div></td>
 </tr>
@@ -1252,7 +1261,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_version_tree_id_class"><a class="anchor" href="#_version_tree_id_class"></a>4.4.9. VERSION_TREE_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1265,7 +1274,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Version tree identifier for one version. Lexical form:</p>
 </div>
 <div class="paragraph">
@@ -1280,7 +1289,7 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String form of this identifier.</p>
 </div></div></td>
 </tr>
@@ -1292,70 +1301,70 @@ The value of the id.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Trunk version number; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch, i.e. has branch_number and branch_version parts.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Number of branch from the trunk point; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of the branch; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Value_valid</em></strong>: <code>not value.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Trunk_version_valid</em></strong>: <code>trunk_version /= Void and then trunk_version.is_integer and then trunk_version.as_integer &gt;= 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Branch_number_valid</em></strong>: <code>branch_number /= Void implies branch_number.is_integer and then branch_number.as_integer &gt;= 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Branch_version_valid</em></strong>: <code>branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer &gt;= 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Branch_validity</em></strong>: <code>(branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Is_branch_validity</em></strong>: <code>is_branch xor branch_number = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Is_first_validity</em></strong>: <code>not is_first xor trunk_version.is_equal(“1”)</code></p>
 </div></div></td>
 </tr>
@@ -1364,7 +1373,7 @@ The value of the id.</p>
 </div>
 <div class="sect3">
 <h4 id="_archetype_id_class"><a class="anchor" href="#_archetype_id_class"></a>4.4.10. ARCHETYPE_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1377,7 +1386,7 @@ The value of the id.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Identifier for archetypes. Ideally these would identify globally unique archetypes.
 Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' number</code>.</p>
 </div></div></td>
@@ -1394,14 +1403,14 @@ Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name 
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_entity</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally qualified reference model entity, e.g.  openehr-composition-OBSERVATION.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>domain_concept</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the concept represented by this archetype, including specialisation, e.g.
 Biochemistry_result-cholesterol .</p>
 </div></div></td>
@@ -1409,7 +1418,7 @@ Biochemistry_result-cholesterol .</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_originator</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Organisation originating the reference model on which this archetype is based, e.g.
 openehr ,  cen ,  hl7 .</p>
 </div></div></td>
@@ -1417,28 +1426,28 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_name</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the reference model, e.g. rim,  ehr_rm,  en13606 .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_entity</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR,  folder ,  composition ,  section ,  entry .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specialisation</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.  cholesterol .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of this archetype.</p>
 </div></div></td>
 </tr>
@@ -1447,7 +1456,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_template_id_class"><a class="anchor" href="#_template_id_class"></a>4.4.11. TEMPLATE_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1460,7 +1469,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Identifier for templates. Lexical form to be determined.</p>
 </div></div></td>
 </tr>
@@ -1473,7 +1482,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_terminology_id_class"><a class="anchor" href="#_terminology_id_class"></a>4.4.12. TERMINOLOGY_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1486,7 +1495,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service, e.g.  SNOMED-CT . A terminology is assumed to be in a particular language, which must be explicitly specified.</p>
 </div>
 <div class="paragraph">
@@ -1508,14 +1517,14 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of this terminology, if versioning supported, else the empty string.</p>
 </div></div></td>
 </tr>
@@ -1524,7 +1533,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_generic_id_class"><a class="anchor" href="#_generic_id_class"></a>4.4.13. GENERIC_ID Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1537,7 +1546,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Generic identifier type for identifiers whose format is otherwise unknown to openEHR. Includes an attribute for naming the identification scheme (which may well be local).</p>
 </div></div></td>
 </tr>
@@ -1553,7 +1562,7 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the scheme to which this identifier conforms. Ideally this name will be recognisable globally but realistically it may be a local ad hoc scheme whose name is not controlled or standardised in any way.</p>
 </div></div></td>
 </tr>
@@ -1562,7 +1571,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_object_ref_class"><a class="anchor" href="#_object_ref_class"></a>4.4.14. OBJECT_REF Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1575,7 +1584,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Class describing a reference to another object, which may exist locally or be maintained outside the current namespace, e.g. in another service. Services are usually external, e.g. available in a LAN (including on the same host) or the internet via Corba, SOAP, or some other distributed protocol. However, in small systems they may be part of the same executable as the data containing the Id.</p>
 </div></div></td>
 </tr>
@@ -1587,7 +1596,7 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for the namespace are:</p>
 </div>
 <div class="ulist">
@@ -1607,14 +1616,14 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g.  PARTY ,  PERSON ,  GUIDELINE  etc. These class names are from the relevant reference model. The type name  ANY  can be used to indicate that any type is accepted (e.g. if the type is unknown).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally unique id of an object, regardless of where it is stored.</p>
 </div></div></td>
 </tr>
@@ -1623,7 +1632,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_party_ref_class"><a class="anchor" href="#_party_ref_class"></a>4.4.15. PARTY_REF Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1636,7 +1645,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Identifier for parties in a demographic or identity service. There are typically a number of subtypes of the PARTY class, including PERSON, ORGANISATION, etc. Abstract supertypes are allowed if the referenced object is of a type not known by the current implementation of this class (in other words, if the demographic model is changed by the addition of a new PARTY or ACTOR subtypes, valid PARTY_REFs can still be constructed to them).</p>
 </div></div></td>
 </tr>
@@ -1646,7 +1655,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Type_validity</em></strong>: <code>type.is_equal(“PERSON”) or type.is_equal(“ORGANISATION”) or type.is_equal(“GROUP”) or type.is_equal(“AGENT”)or type.is_equal(“ROLE”) or type.is_equal(“PARTY”) or type.is_equal(“ACTOR”)</code></p>
 </div></div></td>
 </tr>
@@ -1655,7 +1664,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_locatable_ref_class"><a class="anchor" href="#_locatable_ref_class"></a>4.4.16. LOCATABLE_REF Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1668,7 +1677,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Purpose Reference to a LOCATABLE instance inside the top-level content structure inside a VERSION&lt;T&gt;; the path attribute is applied to the object that VERSION.data points to.</p>
 </div></div></td>
 </tr>
@@ -1684,7 +1693,7 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The path to an instance in question, as an absolute path with respect to the object found at VERSION.data. An empty path means that the object referred to by id being specified.</p>
 </div></div></td>
 </tr>
@@ -1692,7 +1701,7 @@ openehr ,  cen ,  hl7 .</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>UID_BASED_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The identifier of the Version.</p>
 </div></div></td>
 </tr>
@@ -1704,7 +1713,7 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A URI form of the reference, created by concatenating the following: <code>ehr://  + id.value +  /  + path</code>.</p>
 </div></div></td>
 </tr>
@@ -1719,7 +1728,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
+<pre class="pygments highlight"><code data-lang="ebnf"><span></span><span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
 <span class="tok-cm">(* According to IETF http://tools.ietf.org/html/rfc1034[RFC 1034] and  *)</span>
 <span class="tok-cm">(* http://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by       *)</span>
 <span class="tok-cm">(* http://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),          *)</span>
@@ -1806,9 +1815,9 @@ openehr ,  cen ,  hl7 .</p>
 </li>
 </ul>
 </div>
-<div id="base_types_terminology_types" class="imageblock text-center" style="text-align: center">
+<div id="base_types_terminology_types" class="imageblock text-center text-center">
 <div class="content">
-<img src="../UML/diagrams/BASE-base_types.terminology.svg" alt="BASE base types.terminology">
+<img src="UML/diagrams/BASE-base_types.terminology.svg" alt="BASE base types.terminology">
 </div>
 <div class="title">Figure 4. base.base_types.terminology package</div>
 </div>
@@ -1817,7 +1826,7 @@ openehr ,  cen ,  hl7 .</p>
 <h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>5.2. Class Definitions</h3>
 <div class="sect3">
 <h4 id="_terminology_term_class"><a class="anchor" href="#_terminology_term_class"></a>5.2.1. Terminology_term Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1830,7 +1839,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Leaf type representing a term from a terminology, which consists of the term text and the code, i.e. a concept reference.</p>
 </div></div></td>
 </tr>
@@ -1846,14 +1855,14 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong>: <code>Terminology_code</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Refrence to the terminology concept formally representing this term.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>text</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Text of term.</p>
 </div></div></td>
 </tr>
@@ -1862,7 +1871,7 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div class="sect3">
 <h4 id="_terminology_code_class"><a class="anchor" href="#_terminology_code_class"></a>5.2.2. Terminology_code Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1875,7 +1884,7 @@ openehr ,  cen ,  hl7 .</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logically primitive type representing a reference to a terminology concept, in the form of a terminology identifier, optional version, and a code or code string from the terminology.</p>
 </div></div></td>
 </tr>
@@ -1891,28 +1900,28 @@ openehr ,  cen ,  hl7 .</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The archetype environment namespace identifier used to identify a terminology. Typically a value like "snomed_ct" that is mapped elsewhere to the full URI identifying the terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_version</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional string value representing terminology version, typically a date or dotted numeric.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A terminology code or post-coordinated code expression, if supported by the terminology. The code may refer to a single term, a value set consisting of multiple terms, or some other entity representable within the terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code>Uri</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The URI reference that may be used as a concrete key into a notional terminology service for queries that can obtain the term text, definition, and other associated elements.</p>
 </div></div></td>
 </tr>
@@ -1925,8 +1934,9 @@ openehr ,  cen ,  hl7 .</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-29 23:54:30 GMT
+Last updated 2021-01-18 14:57:58 UTC
 </div>
 </div>
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </body>
 </html>

@@ -1,36 +1,21 @@
 //
 // ============================================ Asciidoc HEADER =============================================
 //
-:doctype: book
-:source-highlighter: pygments
-//:pygments-style: murphy
-//:toc: macro
-:toc: left
-:toclevels: 4
-:pagenums:
-:sectnums!:
-:sectnumlevels: 4
-// git rid of PDF 'Chapter' labs on level 1 headings
-:chapter-label:
-:copyright_year: 2003
-//
-// HTML-only attributes
-//
-:linkcss:
-:keywords: data, notation, JSON, syntax
-:description: Object Data Instance Notation (ODIN) specification
-:spec_status: STABLE
+include::{ref_dir}/docs/boilerplate/book_style_settings.adoc[]
+include::manifest_vars.adoc[]
+include::{ref_dir}/docs/boilerplate/global_vars.adoc[]
 
 //
 // ============================================ Asciidoc PREAMBLE =============================================
 //
 
-image::/releases/BASE/latest/resources/images/openehr_logo_large.png["openEHR logo",align="center"]
+image::{openehr_logo}["openEHR logo",align="center"]
 
-= Object Data Instance Notation (ODIN)
+= {spec_title}
 
-include::{base_dir}/docs_common/boilerplate/short_front_block.adoc[]
-include::{base_dir}/docs_common/references/openehr_resources.adoc[]
+include::{ref_dir}/docs/boilerplate/full_front_block.adoc[]
+include::{ref_dir}/docs/references/reference_definitions.adoc[]
+
 
 //
 // ============================================= Asciidoc BODY ===============================================
@@ -102,6 +87,5 @@ include::masterAppB-syntax_spec.adoc[leveloffset=+1]
 
 :sectnums!:
 == References
-include::{base_dir}/docs_common/references/publications.adoc[leveloffset=+1]
-include::{base_dir}/docs_common/references/resources.adoc[leveloffset=+1]
+bibliography::[]
 

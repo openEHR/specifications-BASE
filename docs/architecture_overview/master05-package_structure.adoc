@@ -28,7 +28,7 @@ These packages do not include the specifications for various languages (ADL, AQL
 
 [.text-center]
 .Consolidated Package Structure of openEHR
-image::diagrams/global_package_structure.svg[id=consolidated_package_structure, align="center", width=35%]
+image::{diagrams_uri}/global_package_structure.svg[id=consolidated_package_structure, align="center", width=35%]
 
 In the following sections, diagrams provide a visual association of the various specifications to the top-level UML packages, where it exists.
 
@@ -38,13 +38,13 @@ The openEHR BASE component is illustrated below. On the right-hand side specific
 
 [.text-center]
 .BASE Component of openEHR
-image::diagrams/spec_component-base.svg[id=spec_component_base, align="center", width=60%]
+image::{diagrams_uri}/spec_component-base.svg[id=spec_component_base, align="center", width=60%]
 
 The `base` package defines identifiers, data types, data structures and various common design patterns that can be re-used ubiquitously in the `rm`, `am` and `sm` packages. The `base` packages are shown below.
 
 [.text-center]
 .Structure of `org.openehr.base` package
-image::{uml_export_dir}/diagrams/BASE-packages.svg[id=base_packages, align="center"]
+image::{uml_diagrams_uri}/BASE-packages.svg[id=base_packages, align="center"]
 
 NOTE: In Release 1.0.3 and earlier releases, the contents of the `base` package resided in the RM `support` paackage.
 
@@ -73,7 +73,7 @@ The class is used via inheritance to provide types in other models with meta-dat
 
 === Basic Meta-Model (BMM)
 
-The {openehr_base_bmm}[BMM specification] defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML's XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile  . BMM models can be expressed in the {openehr_odin}[ODIN syntax] or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the {openehr_awb}[openEHR ADL Workbench] and some of the openEHR tooling software.
+The {openehr_bmm}[BMM specification^] defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML's XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the {openehr_odin}[ODIN syntax^] or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the {openehr_awb}[openEHR ADL Workbench^] and some of the openEHR tooling software.
 
 The BMM is primarily intended to reduce complexity for tools that consume reference model definitions, but is not the only way to implement such tools. Similar tools can be based directly on the openEHR published UML models, as long as typing, template types and qualified attributes are properly handled. Another alternative means of working with models is via software library implementations of the relevant models (openEHR Reference Model etc).
 
@@ -89,7 +89,7 @@ The openEHR RM component is illustrated below. All of its specifications are UML
 
 [.text-center]
 .RM Component of openEHR
-image::diagrams/spec_component-rm.svg[id=spec_component_rm, align="center", width=50%]
+image::{diagrams_uri}/spec_component-rm.svg[id=spec_component_rm, align="center", width=50%]
 
 The figure below illustrates the `rm` package structure. The packages are in two categories: 
 
@@ -100,7 +100,7 @@ The packages in the latter group are generic, and are used by all openEHR models
 
 [.text-center]
 .Structure of `org.openehr.rm` package
-image::{rm_uml_export_dir}/diagrams/RM-packages.svg[id=rm_packages, align="center"]
+image::{openehr_rm_uml_diagrams}/RM-packages.svg[id=rm_packages, align="center"]
 
 Each outer package in the figure <<rm_packages>> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference Model document), documenting an "information model" (IM). The package structure will normally be replicated in all ITS expressions, 
 e.g. XML schema, programming languages like Java, C# and Eiffel, and interoperability definitions like WSDL, IDL and .Net.
@@ -128,6 +128,7 @@ TIME_specification:: types for specifying times in teh future, mainly used in me
 Uri:: Unique Resource Identifiers.
 
 ==== Data Structures Information Model
+
 In most openEHR information models, generic data structures are used for expressing content whose
 particular structure will be defined by archetypes. The generic structures are as follows.
 
@@ -171,8 +172,7 @@ integration system. See <<Integrating openEHR with other Systems>> for more deta
 The demographic model defines generic concepts of `PARTY`, `ROLE` and related details such as contact
 addresses. The archetype model defines the semantics of constraint on `PARTYs`, allowing archetypes
 for any type of person, organisation, role and role relationship to be described. This approach provides
-a flexible way of including the arbitrary demographic attributes allowed in the OMG HDTF
-PIDS standard <<Corbamed_PIDS>>.
+a flexible way of including the arbitrary demographic attributes allowed in the {omg_pids}[OMG HDTF PIDS standard].
 
 == Archetype Model Component (AM)
 
@@ -180,7 +180,7 @@ The openEHR AM component is illustrated below.
 
 [.text-center]
 .AM Component of openEHR
-image::diagrams/spec_component-am.svg[id=spec_component_am, align="center"]
+image::{diagrams_uri}/spec_component-am.svg[id=spec_component_am, align="center"]
 
 The openEHR `am` package contains the models necessary to describe the semantics of archetypes and templates, and their use within openEHR. There are currently two extant major versions of archetype technology in openEHR: 'ADL 1.4', the original version, and 'ADL 2', a more modern version, which is slowly being adopted. Both versions are maintained side by side, to enable implementers to work with the version(s) that suit their needs.
 
@@ -190,25 +190,23 @@ The package structure of the version 2 form of the AM is shown below.
 
 [.text-center]
 .Structure of the ADL 2 version `org.openehr.am` package
-image::{am_uml_export_dir}/diagrams/AOM-packages.png[id=aom_2_packages, align="center"]
+image::{openehr_am_uml_diagrams}/AM-packages.svg[id=aom_2_packages, align="center"]
 
 The package structure of the version 1.4 form of the AM is shown below.
 
 [.text-center]
 .Structure of the ADL 1.4 `org.openehr.am` package
-image::{am_uml_export_dir}/AOM1.4/diagrams/AOM-packages.png[id=aom_14_packages, align="center"]
+image::{openehr_am14_uml_diagrams}/AM-packages.svg[id=aom_14_packages, align="center"]
 
-Another key specification is the Archetype Identification specification, which defines semantics for archetype identifiers, versioning and life-cycle. The formal specifications may be found on the {openehr_am}[Archetype Model index page].
+Another key specification is the Archetype Identification specification, which defines semantics for archetype identifiers, versioning and life-cycle. The formal specifications may be found on the {openehr_am}[Archetype Model index page^].
 
 == Service Model (SM)
 
-The openEHR service model includes definitions of basic services in the health information environment,
-centred around the EHR. It is illustrated in the figure below. The set of services actually included
-will undoubtedly evolve over time, so this diagram should not be seen as definitive.
+The openEHR service model includes definitions of basic services in the health information environment, centred around the EHR. It is illustrated in the figure below. The set of services actually included is evolving over time.
 
 [.text-center]
 .Structure of the `org.openehr.sm` package
-image::diagrams/service_packages.png[id=service_packages, align="center", width=50%]
+image::{openehr_sm_uml_diagrams}/SM-platform-packages.svg[id=service_packages, align="center", width=50%]
 
 === Virtual EHR API
 
@@ -249,5 +247,5 @@ The figure below shows a view of all key functional elements of the openEHR spec
 
 [.text-center]
 .openEHR Packages and Languages View
-image::diagrams/openehr_block_diagram.png["openEHR_packages_and_languages",align="center",width="75%"]
+image::{diagrams_uri}/openehr_block_diagram_detailed.png["openEHR_packages_and_languages",align="center",width="75%"]
 

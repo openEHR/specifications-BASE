@@ -8,7 +8,7 @@ The package structure of the `expression` package is shown below.
 
 [.text-center]
 .base.expression Package
-image::{uml_export_dir}/diagrams/BASE-expression_packages.svg[id=expression_packages, align="center"]
+image::{uml_diagrams_uri}/BASE-expression_packages.svg[id=expression_packages, align="center"]
 
 == Core Package
 
@@ -16,7 +16,7 @@ The main `expression` packages `core` and `extension` are illustrated below.
 
 [.text-center]
 .base.expression.core Package
-image::{uml_export_dir}/diagrams/BASE-expression.svg[id=expression_package, align="center"]
+image::{uml_diagrams_uri}/BASE-expression.svg[id=expression_package, align="center"]
 
 A group of statements to be used together is formally defined as one or more `STATEMENTs` in a `STATEMENT_SET`. There are three types of statements corresponding to the classes `ASSERTION`, `VARIABLE_DECLARATION` and `ASSIGNMENT`. Assertions consist of an expression tree structure that evaluates to a `Boolean` value. The root of the tree is a descendant of the class `EXPR_ITEM` that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named. 
 
@@ -115,7 +115,7 @@ The `expressions.types` package is shown below.
 
 [.text-center]
 .baes.expression.types Package
-image::{uml_export_dir}/diagrams/BASE-expression.types.svg[id=expressions_types_package, align="center"]
+image::{uml_diagrams_uri}/BASE-expression.types.svg[id=expressions_types_package, align="center"]
 
 The type system of the Expression formalism is defined via the type `EXPR_TYPE_DEF` and its descendants. All types have a `_type_name_` and a `_type_anchor_`, which is a variable of the coresponding primtive type from within the openEHR `base_types` package, i.e. `Integer`, `Real`, `String`, etc. The type anchor can be used for testing assignments within the implementation. A special type `TYPE_DEF_OBJECT` is included to enable a value reference (descendant of `EXPR_VALUE_REF`) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.
 

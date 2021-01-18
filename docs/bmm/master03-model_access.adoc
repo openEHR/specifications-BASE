@@ -8,7 +8,7 @@ The `model_access` package provides an interface for the application to load BMM
 
 [.text-center]
 .base.bmm.model_access Package
-image::{uml_export_dir}/diagrams/BASE-bmm.model_access.svg[id=model_access_package, align="center"]
+image::{uml_diagrams_uri}/BASE-bmm.model_access.svg[id=model_access_package, align="center"]
 
 More than one format for representing serialised BMM models is possible, each having its load, validation and error-reporting logic. The common elements of the load, validate and convert logic are defined by the non format-specific classes in the package, with specific forms of the classes `BMM_SCHEMA_DESCRIPTOR` and `BMM_SCHEMA` required for each concrete format. The package above shows the relevant classes for the `P_BMM` version 2.x format, which is normally saved in `.bmm` files. Other formats may be saved in files with different extensions.
 
