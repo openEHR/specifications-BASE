@@ -34,54 +34,11 @@ In the following sections, diagrams provide a visual association of the various 
 
 == Base Component (BASE)
 
-The openEHR BASE component is illustrated below. On the right-hand side specifications are shown, of which three are based on UML models. These packages fall within the top-level `org.openehr.base` UML package, as shown on the left side of the figure.
+The openEHR BASE component contains a number of foundational sub-components, including the {openehr_overview}[openEHR Architecture Overview^], the ODIN language, and a basic Expression Language.
 
-[.text-center]
-.BASE Component of openEHR
-image::{diagrams_uri}/spec_component-base.svg[id=spec_component_base, align="center", width=60%]
+The {openehr_odin}[ODIN syntax^] is used to implement faithful machine serialisation and deserialisation of in-memory object graphs, and is a rough equivalent of JSON, YAML and some kinds of XML. It provides more leaf types than any of these, and also supports in-built typing (required to properly represent dynamic binding of polymorphic attributes) and Xpath-like paths.
 
-The `base` package defines identifiers, data types, data structures and various common design patterns that can be re-used ubiquitously in the `rm`, `am` and `sm` packages. The `base` packages are shown below.
-
-[.text-center]
-.Structure of `org.openehr.base` package
-image::{uml_diagrams_uri}/BASE-packages.svg[id=base_packages, align="center"]
-
-NOTE: In Release 1.0.3 and earlier releases, the contents of the `base` package resided in the RM `support` paackage.
-
-The following sub-sections describe the BASE component specifications.
-
-=== Foundation Types
-
-The {openehr_foundation_types}[Foundation Types specification] provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the `foundations_types` package. This contains the special package `primitive_types`, which describes inbuilt types _assumed_ by openEHR in external type systems. This provides a basis for determining mappings from openEHR to programming languages. For example such as `String._is_empty_` in openEHR might be mapped to `String._empty()_` in a programming environment.
-
-Other foundation types include basic structures (`Array<T>`, `Hash<K,V>` etc), time types, and various types enabling functional concepts (principally lambda expressions) to be expressed in the openEHR specifications.
-
-=== Base Types
-
-The {openehr_base_types}[Base Types specification] defines generic openEHR types used in other openEHR components. It is comprised of the `definitions`, `identification`, `terminology` and  `measurement` sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.
-
-=== Resource Model
-
-The {openehr_resource}[Resource Model specification] defines a generic 'authored resource' class that carries meta-data relating to:
-
-* authorship;
-* copyright, licences and other related meta-data;
-* languages and translations;
-* annotations.
-
-The class is used via inheritance to provide types in other models with meta-data to enable instances to be managed as resources with appropriate meta-data.
-
-=== Basic Meta-Model (BMM)
-
-The {openehr_bmm}[BMM specification^] defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML's XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the {openehr_odin}[ODIN syntax^] or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the {openehr_awb}[openEHR ADL Workbench^] and some of the openEHR tooling software.
-
-The BMM is primarily intended to reduce complexity for tools that consume reference model definitions, but is not the only way to implement such tools. Similar tools can be based directly on the openEHR published UML models, as long as typing, template types and qualified attributes are properly handled. Another alternative means of working with models is via software library implementations of the relevant models (openEHR Reference Model etc).
-
-Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.
-
-=== Object Data Instance Notation (ODIN)
-
-The {openehr_odin}[ODIN syntax] is used to implement faithful machine serialisation and deserialisation of in-memory object graphs, and is a rough equivalent of JSON, YAML and some kinds of XML. It provides more leaf types than any of these, and also supports in-built typing (required to properly represent dynamic binding of polymorphic attributes) and Xpath-like paths.
+The {openehr_expression}[Expression Language^] formalises expressions that appear in various openEHR specifications, including archetype rules and AQL.
 
 == Reference Model Component (RM)
 

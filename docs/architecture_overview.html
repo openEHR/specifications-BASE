@@ -64,15 +64,7 @@
 <ul class="sectlevel2">
 <li><a href="#_overview_3">5.1. Overview</a></li>
 <li><a href="#_consolidated_package_structure">5.2. Consolidated Package Structure</a></li>
-<li><a href="#_base_component_base">5.3. Base Component (BASE)</a>
-<ul class="sectlevel3">
-<li><a href="#_foundation_types">5.3.1. Foundation Types</a></li>
-<li><a href="#_base_types">5.3.2. Base Types</a></li>
-<li><a href="#_resource_model">5.3.3. Resource Model</a></li>
-<li><a href="#_basic_meta_model_bmm">5.3.4. Basic Meta-Model (BMM)</a></li>
-<li><a href="#_object_data_instance_notation_odin">5.3.5. Object Data Instance Notation (ODIN)</a></li>
-</ul>
-</li>
+<li><a href="#_base_component_base">5.3. Base Component (BASE)</a></li>
 <li><a href="#_reference_model_component_rm">5.4. Reference Model Component (RM)</a>
 <ul class="sectlevel3">
 <li><a href="#_package_overview">5.4.1. Package Overview</a>
@@ -377,33 +369,15 @@
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.1.0</strong></p></th>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-18">SPECBASE-18</a>. Update text in Common IM to latest openPGP specification.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>17 May 2018</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.
- Section 5.3.4: Added text indicating BMM usage and alternatives.
- Section 11.2.4.2: Added JSON format version of example.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall,
- S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">09 Nov 2017</p></td>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.4</strong></p></th>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-15">SPECBASE-15</a>. Add Foundation Types specification to BASE;<br>
- <a href="https://specifications.openehr.org/tickets/SPECBASE-7">SPECBASE-7</a>. Add Base Types specification to BASE.<br>
- <a href="https://specifications.openehr.org/tickets/SPECBASE-16">SPECBASE-16</a>. Update Architecture Overview with current high-level elements.<br>
- Section 2: Updated overview diagram and description to be based on 'components' as per current specifications program;<br>
- Section 5: Updated package diagrams to exported diags from BASE, RM, AM, SM UML components;<br>
- Section 7.4.1: small updates to statements to make them more current; fixed some references to ISO standards.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">09 Sep 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a><a href="https://specifications.openehr.org/tickets/SPECBASE-33">SPECBASE-33</a>. Retrospectively release interim form of Expression Language.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+ P Bos,<br>
+ D Bosca</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Jan 2021</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
@@ -1232,95 +1206,13 @@ problem space, the latter almost always being more fine-grained.</p>
 <div class="sect2">
 <h3 id="_base_component_base"><a class="anchor" href="#_base_component_base"></a>5.3. Base Component (BASE)</h3>
 <div class="paragraph">
-<p>The openEHR BASE component is illustrated below. On the right-hand side specifications are shown, of which three are based on UML models. These packages fall within the top-level <code>org.openehr.base</code> UML package, as shown on the left side of the figure.</p>
-</div>
-<div id="spec_component_base" class="imageblock text-center text-center">
-<div class="content">
-<img src="architecture_overview/diagrams/spec_component-base.svg" alt="spec component base" width="60%">
-</div>
-<div class="title">Figure 9. BASE Component of openEHR</div>
+<p>The openEHR BASE component contains a number of foundational sub-components, including the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/architecture_overview.html" target="_blank" rel="noopener">openEHR Architecture Overview</a>, the ODIN language, and a basic Expression Language.</p>
 </div>
 <div class="paragraph">
-<p>The <code>base</code> package defines identifiers, data types, data structures and various common design patterns that can be re-used ubiquitously in the <code>rm</code>, <code>am</code> and <code>sm</code> packages. The <code>base</code> packages are shown below.</p>
-</div>
-<div id="base_packages" class="imageblock text-center text-center">
-<div class="content">
-<img src="UML/diagrams/BASE-packages.svg" alt="BASE packages">
-</div>
-<div class="title">Figure 10. Structure of <code>org.openehr.base</code> package</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-In Release 1.0.3 and earlier releases, the contents of the <code>base</code> package resided in the RM <code>support</code> paackage.
-</td>
-</tr>
-</table>
+<p>The <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">ODIN syntax</a> is used to implement faithful machine serialisation and deserialisation of in-memory object graphs, and is a rough equivalent of JSON, YAML and some kinds of XML. It provides more leaf types than any of these, and also supports in-built typing (required to properly represent dynamic binding of polymorphic attributes) and Xpath-like paths.</p>
 </div>
 <div class="paragraph">
-<p>The following sub-sections describe the BASE component specifications.</p>
-</div>
-<div class="sect3">
-<h4 id="_foundation_types"><a class="anchor" href="#_foundation_types"></a>5.3.1. Foundation Types</h4>
-<div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html">Foundation Types specification</a> provides a guide for integrating openEHR models proper into the type systems of implementation technologies. It is specified by the <code>foundations_types</code> package. This contains the special package <code>primitive_types</code>, which describes inbuilt types <em>assumed</em> by openEHR in external type systems. This provides a basis for determining mappings from openEHR to programming languages. For example such as <code>String.<em>is_empty</em></code> in openEHR might be mapped to <code>String.<em>empty()</em></code> in a programming environment.</p>
-</div>
-<div class="paragraph">
-<p>Other foundation types include basic structures (<code>Array&lt;T&gt;</code>, <code>Hash&lt;K,V&gt;</code> etc), time types, and various types enabling functional concepts (principally lambda expressions) to be expressed in the openEHR specifications.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_base_types"><a class="anchor" href="#_base_types"></a>5.3.2. Base Types</h4>
-<div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/base_types.html">Base Types specification</a> defines generic openEHR types used in other openEHR components. It is comprised of the <code>definitions</code>, <code>identification</code>, <code>terminology</code> and  <code>measurement</code> sub-packages. The semantics defined in these packages allow all other models to use identifiers and to have access to knowledge services like terminology and other reference data.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_resource_model"><a class="anchor" href="#_resource_model"></a>5.3.3. Resource Model</h4>
-<div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/resource.html">Resource Model specification</a> defines a generic 'authored resource' class that carries meta-data relating to:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>authorship;</p>
-</li>
-<li>
-<p>copyright, licences and other related meta-data;</p>
-</li>
-<li>
-<p>languages and translations;</p>
-</li>
-<li>
-<p>annotations.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The class is used via inheritance to provide types in other models with meta-data to enable instances to be managed as resources with appropriate meta-data.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_basic_meta_model_bmm"><a class="anchor" href="#_basic_meta_model_bmm"></a>5.3.4. Basic Meta-Model (BMM)</h4>
-<div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/LANG/latest/bmm.html" target="_blank" rel="noopener">BMM specification</a> defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML&#8217;s XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">ODIN syntax</a> or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the <a href="https://www.openehr.org/downloads/ADLworkbench" target="_blank" rel="noopener">openEHR ADL Workbench</a> and some of the openEHR tooling software.</p>
-</div>
-<div class="paragraph">
-<p>The BMM is primarily intended to reduce complexity for tools that consume reference model definitions, but is not the only way to implement such tools. Similar tools can be based directly on the openEHR published UML models, as long as typing, template types and qualified attributes are properly handled. Another alternative means of working with models is via software library implementations of the relevant models (openEHR Reference Model etc).</p>
-</div>
-<div class="paragraph">
-<p>Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_object_data_instance_notation_odin"><a class="anchor" href="#_object_data_instance_notation_odin"></a>5.3.5. Object Data Instance Notation (ODIN)</h4>
-<div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html">ODIN syntax</a> is used to implement faithful machine serialisation and deserialisation of in-memory object graphs, and is a rough equivalent of JSON, YAML and some kinds of XML. It provides more leaf types than any of these, and also supports in-built typing (required to properly represent dynamic binding of polymorphic attributes) and Xpath-like paths.</p>
-</div>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/expression.html" target="_blank" rel="noopener">Expression Language</a> formalises expressions that appear in various openEHR specifications, including archetype rules and AQL.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1332,7 +1224,7 @@ In Release 1.0.3 and earlier releases, the contents of the <code>base</code> pac
 <div class="content">
 <img src="architecture_overview/diagrams/spec_component-rm.svg" alt="spec component rm" width="50%">
 </div>
-<div class="title">Figure 11. RM Component of openEHR</div>
+<div class="title">Figure 9. RM Component of openEHR</div>
 </div>
 <div class="paragraph">
 <p>The figure below illustrates the <code>rm</code> package structure. The packages are in two categories:</p>
@@ -1354,10 +1246,10 @@ In Release 1.0.3 and earlier releases, the contents of the <code>base</code> pac
 <div class="content">
 <img src="https://specifications.openehr.org/releases/RM/latest/UML/diagrams/RM-packages.svg" alt="RM packages">
 </div>
-<div class="title">Figure 12. Structure of <code>org.openehr.rm</code> package</div>
+<div class="title">Figure 10. Structure of <code>org.openehr.rm</code> package</div>
 </div>
 <div class="paragraph">
-<p>Each outer package in the figure <a href="#rm_packages">Figure 12</a> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference Model document), documenting an "information model" (IM). The package structure will normally be replicated in all ITS expressions,
+<p>Each outer package in the figure <a href="#rm_packages">Figure 10</a> corresponds to one openEHR specification document (with the exception of the EHR and Composition packages, which are both described in the EHR Reference Model document), documenting an "information model" (IM). The package structure will normally be replicated in all ITS expressions,
 e.g. XML schema, programming languages like Java, C# and Eiffel, and interoperability definitions like WSDL, IDL and .Net.</p>
 </div>
 <div class="sect3">
@@ -1550,7 +1442,7 @@ a flexible way of including the arbitrary demographic attributes allowed in the 
 <div class="content">
 <img src="architecture_overview/diagrams/spec_component-am.svg" alt="spec component am">
 </div>
-<div class="title">Figure 13. AM Component of openEHR</div>
+<div class="title">Figure 11. AM Component of openEHR</div>
 </div>
 <div class="paragraph">
 <p>The openEHR <code>am</code> package contains the models necessary to describe the semantics of archetypes and templates, and their use within openEHR. There are currently two extant major versions of archetype technology in openEHR: 'ADL 1.4', the original version, and 'ADL 2', a more modern version, which is slowly being adopted. Both versions are maintained side by side, to enable implementers to work with the version(s) that suit their needs.</p>
@@ -1565,7 +1457,7 @@ a flexible way of including the arbitrary demographic attributes allowed in the 
 <div class="content">
 <img src="https://specifications.openehr.org/releases/AM/latest/UML/diagrams/AM-packages.svg" alt="AM packages">
 </div>
-<div class="title">Figure 14. Structure of the ADL 2 version <code>org.openehr.am</code> package</div>
+<div class="title">Figure 12. Structure of the ADL 2 version <code>org.openehr.am</code> package</div>
 </div>
 <div class="paragraph">
 <p>The package structure of the version 1.4 form of the AM is shown below.</p>
@@ -1574,7 +1466,7 @@ a flexible way of including the arbitrary demographic attributes allowed in the 
 <div class="content">
 <img src="https://specifications.openehr.org/releases/AM/latest/UML/AOM1.4/diagrams/AM-packages.svg" alt="AM packages">
 </div>
-<div class="title">Figure 15. Structure of the ADL 1.4 <code>org.openehr.am</code> package</div>
+<div class="title">Figure 13. Structure of the ADL 1.4 <code>org.openehr.am</code> package</div>
 </div>
 <div class="paragraph">
 <p>Another key specification is the Archetype Identification specification, which defines semantics for archetype identifiers, versioning and life-cycle. The formal specifications may be found on the <a href="https://specifications.openehr.org/releases/AM/latest/index" target="_blank" rel="noopener">Archetype Model index page</a>.</p>
@@ -1589,7 +1481,7 @@ a flexible way of including the arbitrary demographic attributes allowed in the 
 <div class="content">
 <img src="https://specifications.openehr.org/releases/SM/latest/UML/diagrams/SM-platform-packages.svg" alt="SM platform packages" width="50%">
 </div>
-<div class="title">Figure 16. Structure of the <code>org.openehr.sm</code> package</div>
+<div class="title">Figure 14. Structure of the <code>org.openehr.sm</code> package</div>
 </div>
 <div class="sect3">
 <h4 id="_virtual_ehr_api"><a class="anchor" href="#_virtual_ehr_api"></a>5.6.1. Virtual EHR API</h4>
@@ -1644,7 +1536,7 @@ out in the environment.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/openehr_block_diagram_detailed.png" alt="openEHR_packages_and_languages" width="75%">
 </div>
-<div class="title">Figure 17. openEHR Packages and Languages View</div>
+<div class="title">Figure 15. openEHR Packages and Languages View</div>
 </div>
 </div>
 </div>
@@ -1661,7 +1553,7 @@ out in the environment.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/minimal_openehr_system.png" alt="minimal_openehr_system" width="80%">
 </div>
-<div class="title">Figure 18. Minimal openEHR EHR System</div>
+<div class="title">Figure 16. Minimal openEHR EHR System</div>
 </div>
 <div class="paragraph">
 <p>The latter may be in the form of an existing PMI (patient master index) or other directory, or it may be
@@ -1756,7 +1648,7 @@ of the openEHR EHR is shown below.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/high_level_ehr_structure.png" alt="high_level_ehr_structure" width="70%">
 </div>
-<div class="title">Figure 19. High-level Structure of the openEHR EHR</div>
+<div class="title">Figure 17. High-level Structure of the openEHR EHR</div>
 </div>
 <div class="paragraph">
 <p>In this figure, the parts of the EHR are as follows:</p>
@@ -1796,7 +1688,7 @@ The 21 data types provide for all types of data needed for clinical and administ
 <div class="content">
 <img src="architecture_overview/diagrams/composition_structure.png" alt="composition_structure" width="80%">
 </div>
-<div class="title">Figure 20. Elements of an openEHR Composition</div>
+<div class="title">Figure 18. Elements of an openEHR Composition</div>
 </div>
 </div>
 <div class="sect2">
@@ -1819,7 +1711,7 @@ Entries make up the vast majority of archetypes defined for the EHR.</p>
 <div class="content">
 <img src="{rm_uml_export_dir}/diagrams/RM-composition.entry-simple.svg" alt="RM composition.entry simple" width="60%">
 </div>
-<div class="title">Figure 21. The openEHR Entry model (in EHR IM)</div>
+<div class="title">Figure 19. The openEHR Entry model (in EHR IM)</div>
 </div>
 <div class="paragraph">
 <p>The choice of these types is based on the clinical problem-solving process, described in <a href="#Beale_Heard2007">Beale &amp; Heard (2007)</a> shown below.</p>
@@ -1828,7 +1720,7 @@ Entries make up the vast majority of archetypes defined for the EHR.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/clinical_investigator_process.png" alt="clinical_investigator_process" width="80%">
 </div>
-<div class="title">Figure 22. Relationship of information types to the investigation process</div>
+<div class="title">Figure 20. Relationship of information types to the investigation process</div>
 </div>
 <div class="paragraph">
 <p>This figure shows the cycle of information creation due to an iterative, problem solving process typical
@@ -1852,7 +1744,7 @@ designed to resolve the problem, and finally, executing the instructions (action
 <div class="content">
 <img src="architecture_overview/diagrams/CIR_ontology.png" alt="CIR_ontology" width="80%">
 </div>
-<div class="title">Figure 23. Ontology of Recorded Information</div>
+<div class="title">Figure 21. Ontology of Recorded Information</div>
 </div>
 <div class="paragraph">
 <p>The key top-level categories are 'care information' and 'administrative information'. The former
@@ -1942,7 +1834,7 @@ environment.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/instruction_state_machine.png" alt="instruction_state_machine">
 </div>
-<div class="title">Figure 24. openEHR standard Instruction State Machine</div>
+<div class="title">Figure 22. openEHR standard Instruction State Machine</div>
 </div>
 </div>
 <div class="sect2">
@@ -1962,7 +1854,7 @@ Time is described in detail in the <a href="https://specifications.openehr.org/r
 <div class="content">
 <img src="architecture_overview/diagrams/time_in_the_ehr.png" alt="time_in_the_ehr" width="70%">
 </div>
-<div class="title">Figure 25. Time in the EHR</div>
+<div class="title">Figure 23. Time in the EHR</div>
 </div>
 </div>
 <div class="sect2">
@@ -2164,7 +2056,7 @@ way.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/security_features.png" alt="security_features" width="80%">
 </div>
-<div class="title">Figure 26. Security Features of the openEHR EHR</div>
+<div class="title">Figure 24. Security Features of the openEHR EHR</div>
 </div>
 </div>
 <div class="sect3">
@@ -2307,7 +2199,7 @@ shown in the following figure.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/version_signature.png" alt="version_signature" width="80%">
 </div>
-<div class="title">Figure 27. Version Signature</div>
+<div class="title">Figure 25. Version Signature</div>
 </div>
 <div class="paragraph">
 <p>The signing of data in a versioning system acts as an integrity check (the digest performs this function),
@@ -2395,7 +2287,7 @@ over time. A version-controlled top-level content structure is visualised below.
 <div class="content">
 <img src="architecture_overview/diagrams/version_control_structures.png" alt="version_control_structures" width="80%">
 </div>
-<div class="title">Figure 28. Version Signature</div>
+<div class="title">Figure 26. Version Signature</div>
 </div>
 <div class="paragraph">
 <p>Versioning of single top-level structures is a necessary, but not sufficient requirement for a repository
@@ -2457,7 +2349,7 @@ abstraction is visualised as follows.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/controlled_repository.png" alt="controlled_repository" width="70%">
 </div>
-<div class="title">Figure 29. General Structure of a Controlled Repository</div>
+<div class="title">Figure 27. General Structure of a Controlled Repository</div>
 </div>
 </div>
 <div class="sect3">
@@ -2544,7 +2436,7 @@ kinds of changes that can occur to items affected in a Contribution are:</p>
 <div class="content">
 <img src="architecture_overview/diagrams/contribution_deltas.png" alt="contribution_deltas" width="80%">
 </div>
-<div class="title">Figure 30. Contributions to the Repository (delta form)</div>
+<div class="title">Figure 28. Contributions to the Repository (delta form)</div>
 </div>
 <div class="paragraph">
 <p>This shows the effect of four Contributions (indicated by blue ovals on the left hand side) to a repository
@@ -2568,7 +2460,7 @@ versioning implementation may or may not generate deltas as a way of efficient s
 <div class="content">
 <img src="architecture_overview/diagrams/contributions_non_delta.png" alt="contributions_non_delta" width="80%">
 </div>
-<div class="title">Figure 31. Contributions to the Repository (non-delta form)</div>
+<div class="title">Figure 29. Contributions to the Repository (non-delta form)</div>
 </div>
 <div class="paragraph">
 <p>For the purposes of openEHR, a Contribution is considered as being the set of Versions created or
@@ -2583,7 +2475,7 @@ attested at one time, as implied by the figure above.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/abstract_model_repository.png" alt="abstract_model_repository" width="60%">
 </div>
-<div class="title">Figure 32. Abstract Model of Change-controlled Repository</div>
+<div class="title">Figure 30. Abstract Model of Change-controlled Repository</div>
 </div>
 <div class="paragraph">
 <p>This consists of:</p>
@@ -2697,7 +2589,7 @@ distinction is illustrated in the following figure. Here we see two container ob
 <div class="content">
 <img src="architecture_overview/diagrams/ids_and_references.png" alt="ids_and_references" width="50%">
 </div>
-<div class="title">Figure 33. XXX_IDs and XXX_REFs</div>
+<div class="title">Figure 31. XXX_IDs and XXX_REFs</div>
 </div>
 </div>
 <div class="sect3">
@@ -2769,7 +2661,7 @@ objects, and to reference them from the outside, respectively.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/object_referencing.png" alt="object_referencing" width="65%">
 </div>
-<div class="title">Figure 34. How to reference various levels of object</div>
+<div class="title">Figure 32. How to reference various levels of object</div>
 </div>
 </div>
 </div>
@@ -2923,7 +2815,7 @@ templates to data.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/archetypes_and_data.png" alt="archetypes_and_data" width="80%">
 </div>
-<div class="title">Figure 35. How Archetypes apply to Data</div>
+<div class="title">Figure 33. How Archetypes apply to Data</div>
 </div>
 </div>
 <div class="sect2">
@@ -2990,7 +2882,7 @@ are explained in detail under Paths and Locators on page 57.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/archetype_paths.png" alt="archetype_paths">
 </div>
-<div class="title">Figure 36. Paths extracted from an archetype</div>
+<div class="title">Figure 34. Paths extracted from an archetype</div>
 </div>
 </div>
 <div class="sect2">
@@ -3075,7 +2967,7 @@ copies of the relevant archetypes.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/archetype_use.png" alt="archetype_use" width="80%">
 </div>
-<div class="title">Figure 37. Deployment of Archetypes and Templates</div>
+<div class="title">Figure 35. Deployment of Archetypes and Templates</div>
 </div>
 </div>
 <div class="sect3">
@@ -3115,7 +3007,7 @@ these identifiers (more details on this are in the next section).</p>
 <div class="content">
 <img src="architecture_overview/diagrams/kernel.png" alt="kernel" width="80%">
 </div>
-<div class="title">Figure 38. Templated Archetypes at Runtime</div>
+<div class="title">Figure 36. Templated Archetypes at Runtime</div>
 </div>
 <div class="paragraph">
 <p>If data are later modified, they are brought into the kernel along with the relevant template and archetypes,
@@ -4005,7 +3897,7 @@ attribute value to be coded is "blood group phenotype".</p>
 <div class="content">
 <img src="architecture_overview/diagrams/archetype_constraint_binding.png" alt="archetype_constraint_binding" width="80%">
 </div>
-<div class="title">Figure 39. Archetype Constraint Binding</div>
+<div class="title">Figure 37. Archetype Constraint Binding</div>
 </div>
 <div class="paragraph">
 <p>Currently there is no standard for such queries. This does not affect archetypes directly, since they
@@ -4100,7 +3992,7 @@ machine applications.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/system_architecture.png" alt="system_architecture" width="70%">
 </div>
-<div class="title">Figure 40. Basic Enterprise EHR System Architecture</div>
+<div class="title">Figure 38. Basic Enterprise EHR System Architecture</div>
 </div>
 <div class="paragraph">
 <p>The figure below illustrates an approximate mapping of major parts of the openEHR software architecture
@@ -4141,7 +4033,7 @@ of databases.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/software_arch_deployment.png" alt="software_arch_deployment" width="70%">
 </div>
-<div class="title">Figure 41. Mapping of software architecture to deployment architecture</div>
+<div class="title">Figure 39. Mapping of software architecture to deployment architecture</div>
 </div>
 </div>
 </div>
@@ -4237,7 +4129,7 @@ data into the openEHR environment.</p>
 <div class="content">
 <img src="architecture_overview/diagrams/data_integration.png" alt="data_integration" width="80%">
 </div>
-<div class="title">Figure 42. Data Integration using openEHR</div>
+<div class="title">Figure 40. Data Integration using openEHR</div>
 </div>
 <div class="paragraph">
 <p>Firstly, data are converted from their original syntactic format into openEHR <code>COMPOSITION</code> / <code>SECTION</code> / <code>GENERIC_ENTRY</code> structures, shown in the openEHR integration switch. Most of the data will
@@ -4446,7 +4338,7 @@ and also provides an expression of each of the abstract models in the ITS formal
 <div class="content">
 <img src="architecture_overview/diagrams/implem_technologies.png" alt="implem_technologies" width="70%">
 </div>
-<div class="title">Figure 43. Implementation Technologies</div>
+<div class="title">Figure 41. Implementation Technologies</div>
 </div>
 </div>
 </div>
