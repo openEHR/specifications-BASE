@@ -352,7 +352,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2020 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2021 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -2407,7 +2407,7 @@ time, reason, and potentially other meta-data.</p>
 (i.e. for each Version of any logical item, such as medications list, encounter note etc.). The signature
 is created as a private-key encryption (e.g. RSA-1) of a hash (e.g. MD5) of a canonical representation
 (such as in schema-based XML) of the Version being committed. A likely candidate for defining the
-signature and digest strings in openEHR is the openPGP message format (<a href="https://www.ietf.org/rfc/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a>), due to
+signature and digest strings in openEHR is the openPGP message format (<a href="https://tools.ietf.org/html/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a>), due to
 being an open specification and self-describing. The use of RFC 4880 for the format does not imply
 the use of the PGP distributed certificate infrastructure, or indeed any certification infrastructure;
 openEHR is agnostic on this point. If no public key or equivalent infrastructure is available, the
@@ -2659,7 +2659,7 @@ kinds of changes that can occur to items affected in a Contribution are:</p>
 <div class="title">Figure 31. Contributions to the Repository (delta form)</div>
 </div>
 <div class="paragraph">
-<p>This shows the effect of five Contributions (left hand side) to a repository containing a number of CIs. As each Contribution is made, the repository is changed in some way. The first brings into existing a new CI, and modifies two others (changes indicated by the 'update' triangles). The second Contribution causes the creation of a new CI due to importing from a lab data feeder system. The third causes a creation as well as three changes, while the fourth causes an amendment to an existing CI.</p>
+<p>This shows the effect of four Contributions (left hand side) to a repository containing a number of CIs. As each Contribution is made, the repository is changed in some way. The first brings into existing a new CI, and modifies two others (changes indicated by the 'update' triangles). The second Contribution causes the creation of a new CI due to importing from a lab data feeder system. The third causes a creation as well as three changes, while the fourth causes an amendment to an existing CI.</p>
 </div>
 <div class="paragraph">
 <p>One nuance which should be pointed out is that in the figure above Contributions are shown as if they are
@@ -2827,7 +2827,7 @@ openEHR, as follows:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers (UIDs) are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the <code>UID</code> class, i.e. either an ISO OID or a UUID (<a href="https://www.ietf.org/rfc/rfc4122" target="_blank" rel="noopener">IETF RFC4122</a>; also known as a GUID). UUIDs are strongly preferred in openEHR since they require no central assignment and can be generated on the spot. A versioned container can be then referenced with an <code>OBJECT_REF</code> containing its identifier.</p>
+<p>Three kinds of identification are used respectively. For version containers, meaningless unique identifiers (UIDs) are used. In most cases, the type <code>HIER_OBJECT_ID</code> will be used, which contains an instance of a subtype of the <code>UID</code> class, i.e. either an ISO OID or a UUID (<a href="https://tools.ietf.org/html/rfc4122" target="_blank" rel="noopener">IETF RFC4122</a>; also known as a GUID). UUIDs are strongly preferred in openEHR since they require no central assignment and can be generated on the spot. A versioned container can be then referenced with an <code>OBJECT_REF</code> containing its identifier.</p>
 </div>
 <div class="paragraph">
 <p>Versions of top-level structures (i.e. objects of type  <code>VERSION&lt;X&gt;</code>, such as <code>VERSION&lt;COMPOSITION&gt;</code>) are identified in a way that is guaranteed to work even in distributed environments where copying, merging and subsequent modification occur. The full identification of a Version is the globally unique tuple consisting of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code>, and the two <code>VERSION</code> attributes <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code>. The
@@ -3756,7 +3756,7 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 <div class="ulist">
 <ul>
 <li>
-<p>It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <a href="https://www.ietf.org/rfc/rfc3986" target="_blank" rel="noopener">IETF RFC3986</a> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the <code>ehr</code> scheme corresponds to EHR content.</p>
+<p>It is assumed that one URI 'scheme' (i.e. what precedes the ':' in an <a href="https://tools.ietf.org/html/rfc3986" target="_blank" rel="noopener">IETF RFC3986</a> URI) is used for each major category of data, i.e. EHR, demographics, etc. Thus, the <code>ehr</code> scheme corresponds to EHR content.</p>
 </li>
 <li>
 <p>URIs described here refer to information items within <code>VERSION.<em>data</em></code>, i.e. to objects such as <code>COMPOSITION</code> or <code>FOLDER</code>;</p>
@@ -3802,7 +3802,7 @@ So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as s
 </table>
 </div>
 <div class="paragraph">
-<p>See <a href="https://www.ietf.org/rfc/rfc3986" target="_blank" rel="noopener">RFC-3986, Universal Resource Identifiers in WWW</a> by Tim Berners-Lee. See W3C document <a href="http://www.w3.org/Addressing" target="_blank" rel="noopener">Naming and Addressing: URIs, URLs, &#8230;&#8203;</a> for a starting point on URIs.</p>
+<p>See <a href="https://tools.ietf.org/html/rfc3986" target="_blank" rel="noopener">RFC-3986, Universal Resource Identifiers in WWW</a> by Tim Berners-Lee. See W3C document <a href="http://www.w3.org/Addressing" target="_blank" rel="noopener">Naming and Addressing: URIs, URLs, &#8230;&#8203;</a> for a starting point on URIs.</p>
 </div>
 <div class="paragraph">
 <p>An <code>ehr:</code> URI implies the availability of a name resolution mechanism in ehr-space, similar to the DNS, which provides such services for http-, ftp- and other well-known URI schemes. Until such services are established, ad hoc means of dealing with <code>ehr:</code> URIs are likely to be used, as well as more traditional <code>http://</code> style references. The subsections below describe how URIs of both kinds can be constructed.</p>
@@ -4456,7 +4456,7 @@ means of normative comparison of openEHR with other related specifications or sy
 <p>some HL7v3 domain vocabularies are mapped to the openEHR terminology.</p>
 </li>
 <li>
-<p><a href="https://www.ietf.org/rfc/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a> - openPGP.</p>
+<p><a href="https://tools.ietf.org/html/rfc4880" target="_blank" rel="noopener">IETF RFC4880</a> - openPGP.</p>
 </li>
 </ul>
 </div>
