@@ -56,6 +56,8 @@
 <li><a href="#_env_interface">4.2.1. Env Interface</a></li>
 <li><a href="#_locale_interface">4.2.2. Locale Interface</a></li>
 <li><a href="#_statistical_evaluator_interface">4.2.3. Statistical_evaluator Interface</a></li>
+<li><a href="#_math_interface">4.2.4. Math Interface</a></li>
+<li><a href="#_quantity_converter_interface">4.2.5. Quantity_converter Interface</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +169,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2020 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2021 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -817,6 +819,108 @@ vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_clas
 ): <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the number of items in <code><em>vals</em></code>, i.e. <code><em>vals.count</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>std_dev</strong> (<br>
+vals: <code><a href="/releases/BASE/latest/foundation_types.html#_container_class">Container<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_numeric_class">Numeric</sup></a>&gt;[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">Double</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Compute standard deviation of a container of values.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_math_interface"><a class="anchor" href="#_math_interface"></a>4.2.4. Math Interface</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Interface</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Math</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Mathematical computation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ln</strong> (<br>
+v: <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">Double</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Compute natural log of v.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>log</strong> (<br>
+v: <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">Double</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Compute base 10 log of v.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sin</strong> (<br>
+(v: <code><a href="/releases/BASE/latest/foundation_types.html#_numeric_class" target="_blank" rel="noopener">Numeric</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">Double</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Compute sin(v).</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_quantity_converter_interface"><a class="anchor" href="#_quantity_converter_interface"></a>4.2.5. Quantity_converter Interface</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Interface</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Quantity_converter</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Quantity conversion.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>convert_value</strong> (<br>
+value: <code><a href="/releases/BASE/latest/foundation_types.html#_real_class" target="_blank" rel="noopener">Real</a>[1]</code>,<br>
+from_units: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+to_units: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+property: <code><a href="/releases/BASE/latest/foundation_types.html#_terminology_code_class" target="_blank" rel="noopener">Terminology_code</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_real_class" target="_blank" rel="noopener">Real</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Convert <code><em>value</em></code> of physical property type (e.g. 'pressure' etc) from one units to another.</p>
 </div></div></td>
 </tr>
 </tbody>
