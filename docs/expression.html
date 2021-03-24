@@ -355,7 +355,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/architecture_overview.html">openEHR Architecture Overview</a>.</p>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/architecture_overview.html" target="_blank" rel="noopener">openEHR Architecture Overview</a>.</p>
 </li>
 </ul>
 </div>
@@ -365,10 +365,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://specifications.openehr.org/releases/AM/latest/AOM2.html">Archetype Object Model 2 (AOM2)</a>.</p>
+<p>The <a href="https://specifications.openehr.org/releases/AM/latest/AOM2.html" target="_blank" rel="noopener">Archetype Object Model 2 (AOM2)</a>.</p>
 </li>
 <li>
-<p>The <a href="https://specifications.openehr.org/releases/CDS/latest/GDL.html">Guideline Definition Language (GDL)</a>.</p>
+<p>The <a href="https://specifications.openehr.org/releases/CDS/latest/GDL.html" target="_blank" rel="noopener">Guideline Definition Language (GDL)</a>.</p>
 </li>
 </ul>
 </div>
@@ -379,7 +379,7 @@
 <p>The contents of this specification were separated out from the <a href="https://specifications.openehr.org/releases/AM/latest/AOM2.html">AOM2 specification</a> in order to provide a common model of expressions and rules structures for AOM, GDL and other specifications requiring it.</p>
 </div>
 <div class="paragraph">
-<p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/expression.html">www.openehr.org/releases/RM/latest/expression.html</a>.</p>
+<p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/LANG/latest/expression_language.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/LANG/latest/expression_language.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -1346,7 +1346,7 @@ e.g.
 <div class="sect4">
 <h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.6.2.2. Precedence and Parentheses</h5>
 <div class="paragraph">
-<p>The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
+<p>The precedence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1494,6 +1494,18 @@ e.g.
 <div class="sect1">
 <h2 id="_data_context"><a class="anchor" href="#_data_context"></a>5. Data Context</h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This section is informative only, and intended as a guide to possible implementation.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Expressions in the openEHR Expression Language contain variables, which may be <em>bound</em> to entities in a <em>data context</em>. Each binding connects a symbolic variable to a data source or target in the data context.</p>
 </div>
@@ -1687,6 +1699,18 @@ e.g.
 <div class="sect1">
 <h2 id="_computing_context"><a class="anchor" href="#_computing_context"></a>6. Computing Context</h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This section is informative only, and intended as a guide to possible implementation.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL text. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_context</code> section of a full EL text. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL text.</p>
 </div>
@@ -3535,20 +3559,8 @@ Not yet standardised.</p>
 <h2 id="_syntax_specification"><a class="anchor" href="#_syntax_specification"></a>Appendix A: Syntax Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The grammar and lexical specification for the standard Expression syntax is shown below in ANTLR4 form.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-this is still the old ADL grammar - the Antlr4 file has to be upgraded.
- 
-</td>
-</tr>
-</table>
+<p>The grammar and lexical specification for the standard Expression syntax is shown below in ANTLR4 form.
+ </p>
 </div>
 <div class="listingblock">
 <div class="content">
