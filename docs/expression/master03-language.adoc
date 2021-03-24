@@ -74,10 +74,10 @@ The above types each have an assumed interface consisting of functions and proce
     has (v: T): Boolean
             -- True container contains v
 
-    all (test(v: T): Boolean): Boolean
+    for_all (test(v: T): Boolean): Boolean
             -- True if for every v in container, test (v) is True
 
-    some (test(v: T): Boolean): Boolean
+    there_exists (test(v: T): Boolean): Boolean
             -- True if there is any v in container for which test (v) is True
             
     do_all (proc(v: T))
@@ -132,7 +132,7 @@ The same `Interval` type as defined in the {openehr_foundation_types}#_interval[
 
 Automatic type promotion from `Interval<Integer>` to `Interval<Real>` applies to all integer and real values and expressions, in the same fashion as most programming languages.
 
-Various methods are defined for `Interval<T>`, as follows.
+Various methods are assumed for `Interval<T>`, as follows.
 
 ----
     has (v: T): Boolean
@@ -208,7 +208,8 @@ To assert that a certain part of a larger data structure exists, the following c
     check $is_smoker implies defined ($smoking_details) end
 --------
 
-== [[language-expressions]]Expressions
+[[language-expressions]]
+== Expressions
 
 Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:
 
@@ -279,7 +280,8 @@ The built-in functions are listed below.
 
 |=================================================================
 
-=== [[language-operators]]Operators
+[[language-operators]]
+=== Operators
 
 Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Expression parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows expressions to be expressed in a more compact and less language-independent way.
 
@@ -331,4 +333,65 @@ The precendence of operators follows the order shown in the operator tables abov
     at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
 --------
 
+== Container Operators
+
+The two standard quantification operators from predicate logic `there exists` (∃ operator) and `for all` (∀ operator) are defined in EL for the container types found in the {openehr_foundation_types}[openEHR Foundation Types^].
+
+The textual syntax of `there exists` is as follows:
+
+----
+    there_exists v in container_var | <Boolean expression mentioning v> 
+----
+
+Here, the `|` symbol is usually read in English as 'such that'. The symbolic equivalent may also be used:
+
+----
+    ∃ v : container_var | <Boolean expression mentioning v>
+----
+
+The above may also be expressed in EL as its functional equivalent:
+
+[source,kotlin]
+----
+    list_of_reals: List<Real>
+    
+    |
+    | an expression that will return true if list_of_reals
+    | contains a value greater than 140.0
+    |
+    list_of_reals.there_exists (
+        agent (v: Real): Boolean {
+            v > 140.0
+        }
+    )
+----
+
+The `for_all` operator has similar textual syntax:
+
+----
+    for_all v in container_var | <Boolean expression mentioning v>
+----
+
+Here, the `|` symbol is normally read in English as as 'it holds that'. The symbolic equivalent may also be used:
+
+----
+    ∀ v : container_var | <Boolean expression mentioning v>
+----
+
+The above may also be expressed in EL as its functional equivalent:
+
+[source,kotlin]
+----
+    list_of_reals: List<Real>
+    
+    |
+    | an expression that will return true if list_of_reals
+    | consists of values all greater than 140.0
+    |
+    list_of_reals.for_all (
+        agent (v: Real): Boolean {
+            v > 140.0
+        }
+    )
+----
 

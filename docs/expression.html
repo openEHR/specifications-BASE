@@ -58,14 +58,14 @@
 </ul>
 </li>
 <li><a href="#_bound_variables_evaluation_and_validity">3.5. Bound Variables, Evaluation and Validity</a></li>
-<li><a href="#_expressions">3.6. Expressions</a>
+<li><a href="#language-expressions">3.6. Expressions</a>
 <ul class="sectlevel3">
 <li><a href="#_functions">3.6.1. Functions</a>
 <ul class="sectlevel4">
 <li><a href="#_built_in_functions">3.6.1.1. Built-in Functions</a></li>
 </ul>
 </li>
-<li><a href="#_operators">3.6.2. Operators</a>
+<li><a href="#language-operators">3.6.2. Operators</a>
 <ul class="sectlevel4">
 <li><a href="#_logical_negation">3.6.2.1. Logical Negation</a></li>
 <li><a href="#_precedence_and_parentheses">3.6.2.2. Precedence and Parentheses</a></li>
@@ -73,6 +73,7 @@
 </li>
 </ul>
 </li>
+<li><a href="#_container_operators">3.7. Container Operators</a></li>
 </ul>
 </li>
 <li><a href="#_terminology">4. Terminology</a></li>
@@ -94,7 +95,7 @@
 <li><a href="#_overview_3">7.1. Overview</a></li>
 <li><a href="#_core_package">7.2. Core Package</a>
 <ul class="sectlevel3">
-<li><a href="#_expressions_2">7.2.1. Expressions</a></li>
+<li><a href="#_expressions">7.2.1. Expressions</a></li>
 <li><a href="#_other_statement_elements">7.2.2. Other Statement Elements</a>
 <ul class="sectlevel4">
 <li><a href="#_external_query">7.2.2.1. External Query</a></li>
@@ -829,10 +830,10 @@ computing_context
 <pre>    has (v: T): Boolean
             -- True container contains v
 
-    all (test(v: T): Boolean): Boolean
+    for_all (test(v: T): Boolean): Boolean
             -- True if for every v in container, test (v) is True
 
-    some (test(v: T): Boolean): Boolean
+    there_exists (test(v: T): Boolean): Boolean
             -- True if there is any v in container for which test (v) is True
 
     do_all (proc(v: T))
@@ -943,7 +944,7 @@ computing_context
 <p>Automatic type promotion from <code>Interval&lt;Integer&gt;</code> to <code>Interval&lt;Real&gt;</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
 </div>
 <div class="paragraph">
-<p>Various methods are defined for <code>Interval&lt;T&gt;</code>, as follows.</p>
+<p>Various methods are assumed for <code>Interval&lt;T&gt;</code>, as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1042,7 +1043,7 @@ computing_context
 </div>
 </div>
 <div class="sect2">
-<h3 id="_expressions"><a class="anchor" href="#_expressions"></a>3.6. <a id="language-expressions"></a>Expressions</h3>
+<h3 id="language-expressions"><a class="anchor" href="#language-expressions"></a>3.6. Expressions</h3>
 <div class="paragraph">
 <p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:</p>
 </div>
@@ -1198,7 +1199,7 @@ e.g.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_operators"><a class="anchor" href="#_operators"></a>3.6.2. <a id="language-operators"></a>Operators</h4>
+<h4 id="language-operators"><a class="anchor" href="#language-operators"></a>3.6.2. Operators</h4>
 <div class="paragraph">
 <p>Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Expression parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows expressions to be expressed in a more compact and less language-independent way.</p>
 </div>
@@ -1352,6 +1353,80 @@ e.g.
 <pre>    at_risk := $weight &gt; 120 and ($is_smoker or $is_hypertensive)</pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_container_operators"><a class="anchor" href="#_container_operators"></a>3.7. Container Operators</h3>
+<div class="paragraph">
+<p>The two standard quantification operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types found in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html" target="_blank" rel="noopener">openEHR Foundation Types</a>.</p>
+</div>
+<div class="paragraph">
+<p>The textual syntax of <code>there exists</code> is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    there_exists v in container_var | &lt;Boolean expression mentioning v&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the <code>|</code> symbol is usually read in English as 'such that'. The symbolic equivalent may also be used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    ∃ v : container_var | &lt;Boolean expression mentioning v&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above may also be expressed in EL as its functional equivalent:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="kotlin"><span></span>    <span class="tok-n">list_of_reals</span><span class="tok-p">:</span> <span class="tok-n">List</span><span class="tok-p">&lt;</span><span class="tok-n">Real</span><span class="tok-p">&gt;</span>
+
+    <span class="tok-p">|</span>
+    <span class="tok-p">|</span> <span class="tok-n">an</span> <span class="tok-n">expression</span> <span class="tok-n">that</span> <span class="tok-n">will</span> <span class="tok-k">return</span> <span class="tok-k">true</span> <span class="tok-k">if</span> <span class="tok-n">list_of_reals</span>
+    <span class="tok-p">|</span> <span class="tok-n">contains</span> <span class="tok-n">a</span> <span class="tok-n">value</span> <span class="tok-n">greater</span> <span class="tok-n">than</span> <span class="tok-m">140.0</span>
+    <span class="tok-p">|</span>
+    <span class="tok-n">list_of_reals</span><span class="tok-p">.</span><span class="tok-n">there_exists</span> <span class="tok-p">(</span>
+        <span class="tok-n">agent</span> <span class="tok-p">(</span><span class="tok-n">v</span><span class="tok-p">:</span> <span class="tok-n">Real</span><span class="tok-p">):</span> <span class="tok-n">Boolean</span> <span class="tok-p">{</span>
+            <span class="tok-n">v</span> <span class="tok-p">&gt;</span> <span class="tok-m">140.0</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>for_all</code> operator has similar textual syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    for_all v in container_var | &lt;Boolean expression mentioning v&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the <code>|</code> symbol is normally read in English as as 'it holds that'. The symbolic equivalent may also be used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    ∀ v : container_var | &lt;Boolean expression mentioning v&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above may also be expressed in EL as its functional equivalent:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="kotlin"><span></span>    <span class="tok-n">list_of_reals</span><span class="tok-p">:</span> <span class="tok-n">List</span><span class="tok-p">&lt;</span><span class="tok-n">Real</span><span class="tok-p">&gt;</span>
+
+    <span class="tok-p">|</span>
+    <span class="tok-p">|</span> <span class="tok-n">an</span> <span class="tok-n">expression</span> <span class="tok-n">that</span> <span class="tok-n">will</span> <span class="tok-k">return</span> <span class="tok-k">true</span> <span class="tok-k">if</span> <span class="tok-n">list_of_reals</span>
+    <span class="tok-p">|</span> <span class="tok-n">consists</span> <span class="tok-n">of</span> <span class="tok-n">values</span> <span class="tok-n">all</span> <span class="tok-n">greater</span> <span class="tok-n">than</span> <span class="tok-m">140.0</span>
+    <span class="tok-p">|</span>
+    <span class="tok-n">list_of_reals</span><span class="tok-p">.</span><span class="tok-n">for_all</span> <span class="tok-p">(</span>
+        <span class="tok-n">agent</span> <span class="tok-p">(</span><span class="tok-n">v</span><span class="tok-p">:</span> <span class="tok-n">Real</span><span class="tok-p">):</span> <span class="tok-n">Boolean</span> <span class="tok-p">{</span>
+            <span class="tok-n">v</span> <span class="tok-p">&gt;</span> <span class="tok-m">140.0</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1692,7 +1767,7 @@ e.g.
 <p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>EXPR_VALUE</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_expressions_2"><a class="anchor" href="#_expressions_2"></a>7.2.1. Expressions</h4>
+<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>7.2.1. Expressions</h4>
 <div class="paragraph">
 <p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
 </div>
@@ -3488,32 +3563,59 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 
 <span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">base_expressions</span><span class="tok-p">;</span><span class="tok-w"></span>
 
+
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">//  ============== Parser rules ==============</span><span class="tok-w"></span>
+<span class="tok-c">// General expressions</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
-<span class="tok-nl">assertion</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">identifier</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">expression</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">simple_expression</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">for_all_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">exists_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">simple_expression</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// Universal and existential quantifier</span><span class="tok-w"></span>
+
+<span class="tok-nl">for_all_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_FOR_ALL</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-no">SYM_IN</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">there_exists_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_THERE_EXISTS</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-no">SYM_IN</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
 <span class="tok-c">// Expressions evaluating to boolean values</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
-<span class="tok-nl">boolean_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-nv">boolean_binop</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-nl">boolean_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_AND</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_XOR</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_OR</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_IMPLIES</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
+<span class="tok-c">// basic boolean expression elements</span><span class="tok-w"></span>
+
 <span class="tok-nl">boolean_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-nv">boolean_literal</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">instance_ref</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_relop_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">relational_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">comparison_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">constraint_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_EXISTS</span><span class="tok-w"> </span><span class="tok-nv">mapped_data_ref</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NOT</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">boolean_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_AND</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_XOR</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_OR</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_IMPLIES</span><span class="tok-w"></span>
+<span class="tok-nl">constraint_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">mapped_data_ref</span><span class="tok-w"> </span><span class="tok-no">SYM_MATCHES</span><span class="tok-w"> </span><span class="tok-s">&#39;{&#39;</span><span class="tok-w"> </span><span class="tok-nv">c_primitive_object</span><span class="tok-w"> </span><span class="tok-s">&#39;}&#39;</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-nl">boolean_literal</span><span class="tok-p">:</span><span class="tok-w"></span>
@@ -3522,38 +3624,83 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// Expressions evaluating to arithmetic values</span><span class="tok-w"></span>
+<span class="tok-c">// Comparison expression between any operand</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
-<span class="tok-nl">arithmetic_relop_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-nv">relational_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">arithmetic_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">integer_value</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">real_value</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-nl">comparison_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">simple_expression</span><span class="tok-w"> </span><span class="tok-nv">equality_binop</span><span class="tok-w"> </span><span class="tok-nv">simple_expression</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">arithmetic_arith_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_arith_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;^&#39;</span><span class="tok-err">&lt;</span><span class="tok-nv">assoc</span><span class="tok-o">=</span><span class="tok-nv">right</span><span class="tok-err">&gt;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Relational expressions of arithmetic operands</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-nl">relational_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">relational_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">equality_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_EQ</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NE</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-nl">relational_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-no">SYM_EQ</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NE</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">equality_binop</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GT</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LT</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LE</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GE</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">arithmetic_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Expressions evaluating to arithmetic values</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-nl">arithmetic_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-err">&lt;</span><span class="tok-nv">assoc</span><span class="tok-o">=</span><span class="tok-nv">right</span><span class="tok-err">&gt;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;^&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">mult_op</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">add_op</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">arithmetic_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">integer_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">real_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">instance_ref</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">mult_op</span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;*&#39;</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">add_op</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// instances references: data references, variables, and function calls.</span><span class="tok-w"></span>
+<span class="tok-c">// TODO: Currently treat ADL paths as &#39;mapped&#39; data references;</span><span class="tok-w"></span>
+<span class="tok-c">// which is ambiguous, since an ADL path may match multiple runtime objects</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-nl">instance_ref</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">value_ref</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">function_call</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">value_ref</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">mapped_data_ref</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">variable_id</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">mapped_data_ref</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ADL_PATH</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">variable_id</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">function_call</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-o">)*</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 </div>
@@ -3578,7 +3725,7 @@ this is still the old ADL grammar - the Antlr4 file has to be upgraded.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-18 16:18:57 UTC
+Last updated 2021-03-24 15:49:06 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
