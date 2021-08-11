@@ -3038,60 +3038,76 @@ Not yet standardised.</p>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
 <span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">base_expressions</span><span class="tok-p">;</span><span class="tok-w"></span>
-
+<span class="tok-nl">import</span><span class="tok-w"> </span><span class="tok-err">cadl_primitives</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nl">odin_values</span><span class="tok-err">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// General expressions</span><span class="tok-w"></span>
+<span class="tok-c">//  ======================= Top-level _objects ========================</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
-<span class="tok-nl">expression</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">simple_expression</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">for_all_expr</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">exists_expr</span><span class="tok-w"></span>
+<span class="tok-err">statement_block</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">statement</span><span class="tok-o">+</span><span class="tok-w"> </span><span class="tok-no">EOF</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// ------------------------- statements ---------------------------</span><span class="tok-w"></span>
+<span class="tok-nl">statement</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">declaration</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">assignment</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">assertion</span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">declaration</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">variable_declaration</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">constant_declaration</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">simple_expression</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-nl">variable_declaration</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">local_variable</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-nv">type_id</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-no">SYM_ASSIGNMENT</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">constant_declaration</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">constant_name</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-nv">type_id</span><span class="tok-w">  </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-no">SYM_EQ</span><span class="tok-w"> </span><span class="tok-nv">primitive_object</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">assignment</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">binding</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">local_assignment</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// The following is the means of binding a data context path to a local variable</span><span class="tok-w"></span>
+<span class="tok-c">// TODO: remove this rule when proper external bindings are supported</span><span class="tok-w"></span>
+<span class="tok-nl">binding</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">local_variable</span><span class="tok-w"> </span><span class="tok-no">SYM_ASSIGNMENT</span><span class="tok-w"> </span><span class="tok-nv">bound_path</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">local_assignment</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">local_variable</span><span class="tok-w"> </span><span class="tok-no">SYM_ASSIGNMENT</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">assertion</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// -------------------------- _expressions --------------------------</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-nl">expression</span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-c">// Universal and existential quantifier</span><span class="tok-w"></span>
-
-<span class="tok-nl">for_all_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-no">SYM_FOR_ALL</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-no">SYM_IN</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">there_exists_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-no">SYM_THERE_EXISTS</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-no">SYM_IN</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
-
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// Expressions evaluating to boolean values</span><span class="tok-w"></span>
+<span class="tok-c">// _expressions evaluating to boolean values, using standard precedence</span><span class="tok-w"></span>
+<span class="tok-c">// The equality_binop ones are not strictly necessary, but allow the use</span><span class="tok-w"></span>
+<span class="tok-c">// of boolean_leaf = true, which some people like</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
-
 <span class="tok-nl">boolean_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_AND</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_XOR</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_OR</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_IMPLIES</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_NOT</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_AND</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_XOR</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_OR</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-no">SYM_IMPLIES</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"> </span><span class="tok-nv">equality_binop</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-c">// basic boolean expression elements</span><span class="tok-w"></span>
-
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Atomic Boolean-valued expression elements</span><span class="tok-w"></span>
+<span class="tok-c">// TODO: SYM_EXISTS alternative to be replaced by defined() predicate</span><span class="tok-w"></span>
 <span class="tok-nl">boolean_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-nv">boolean_literal</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">instance_ref</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">for_all_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">there_exists_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_EXISTS</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">bound_path</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">sub_path_local_variable</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">relational_expr</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">comparison_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">equality_expr</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">constraint_expr</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_EXISTS</span><span class="tok-w"> </span><span class="tok-nv">mapped_data_ref</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NOT</span><span class="tok-w"> </span><span class="tok-nv">boolean_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">constraint_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">mapped_data_ref</span><span class="tok-w"> </span><span class="tok-no">SYM_MATCHES</span><span class="tok-w"> </span><span class="tok-s">&#39;{&#39;</span><span class="tok-w"> </span><span class="tok-nv">c_primitive_object</span><span class="tok-w"> </span><span class="tok-s">&#39;}&#39;</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-nl">boolean_literal</span><span class="tok-p">:</span><span class="tok-w"></span>
@@ -3100,83 +3116,136 @@ Not yet standardised.</p>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// Comparison expression between any operand</span><span class="tok-w"></span>
+<span class="tok-c">//  Universal and existential quantifier</span><span class="tok-w"></span>
+<span class="tok-c">// TODO: &#39;in&#39; probably isn&#39;t needed in the long term</span><span class="tok-w"></span>
+<span class="tok-nl">for_all_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">SYM_FOR_ALL</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;in&#39;</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">there_exists_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">SYM_THERE_EXISTS</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;:&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;in&#39;</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-nv">boolean_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// Constraint expressions</span><span class="tok-w"></span>
+<span class="tok-c">// This provides a way of using one operator (matches) to compare a</span><span class="tok-w"></span>
+<span class="tok-c">// value (LHS) with a value range (RHS). As per ADL, the value range</span><span class="tok-w"></span>
+<span class="tok-c">// for ordered types like Integer, Date etc may be a single value,</span><span class="tok-w"></span>
+<span class="tok-c">// a list of values, or a list of intervals, and in future, potentially</span><span class="tok-w"></span>
+<span class="tok-c">// other comparators, including functions (e.g. divisible_by_N).</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
-
-<span class="tok-nl">comparison_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">simple_expression</span><span class="tok-w"> </span><span class="tok-nv">equality_binop</span><span class="tok-w"> </span><span class="tok-nv">simple_expression</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
-
+<span class="tok-c">// For non-ordered types like String and Terminology_code, the RHS</span><span class="tok-w"></span>
+<span class="tok-c">// is in other forms, e.g. regex for Strings.</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// Relational expressions of arithmetic operands</span><span class="tok-w"></span>
-<span class="tok-c">//</span><span class="tok-w"></span>
-
-<span class="tok-nl">relational_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">relational_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">equality_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-no">SYM_EQ</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NE</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">relational_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">equality_binop</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GT</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LT</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LE</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GE</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-c">// The matches operator can be used to generate a Boolean value that</span><span class="tok-w"></span>
+<span class="tok-c">// may be used within an expression like any other Boolean (hence it</span><span class="tok-w"></span>
+<span class="tok-c">// is a booleanLeaf).</span><span class="tok-w"></span>
+<span class="tok-c">// TODO: non-primitive objects might be supported on the RHS in future.</span><span class="tok-w"></span>
+<span class="tok-nl">constraint_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-no">SYM_MATCHES</span><span class="tok-w"> </span><span class="tok-s">&#39;{&#39;</span><span class="tok-w"> </span><span class="tok-nv">c_inline_primitive_object</span><span class="tok-w"> </span><span class="tok-s">&#39;}&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// Expressions evaluating to arithmetic values</span><span class="tok-w"></span>
+<span class="tok-c">// _expressions evaluating to arithmetic values, using standard precedence</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
-
 <span class="tok-nl">arithmetic_expr</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-err">&lt;</span><span class="tok-nv">assoc</span><span class="tok-o">=</span><span class="tok-nv">right</span><span class="tok-err">&gt;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;^&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">mult_op</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">add_op</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-err">&lt;</span><span class="tok-nv">assoc</span><span class="tok-o">=</span><span class="tok-nv">right</span><span class="tok-err">&gt;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;^&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;*&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;%&#39;</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_leaf</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-nl">arithmetic_leaf</span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-nv">integer_value</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">real_value</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">instance_ref</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">date_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">date_time_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">time_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">duration_value</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">value_ref</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">mult_op</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;*&#39;</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Equality expression between any arithmetic value; precedence is</span><span class="tok-w"></span>
+<span class="tok-c">// lowest, so only needed between leaves, since () will be needed for</span><span class="tok-w"></span>
+<span class="tok-c">// larger expressions anyway</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-nl">equality_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">equality_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">equality_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_EQ</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_NE</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">add_op</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// Relational expressions of arithmetic operands generating Boolean values</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-nl">relational_expr</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-nv">relational_binop</span><span class="tok-w"> </span><span class="tok-nv">arithmetic_expr</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">relational_binop</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-no">SYM_GT</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LT</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LE</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GE</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-c">//</span><span class="tok-w"></span>
 <span class="tok-c">// instances references: data references, variables, and function calls.</span><span class="tok-w"></span>
-<span class="tok-c">// TODO: Currently treat ADL paths as &#39;mapped&#39; data references;</span><span class="tok-w"></span>
-<span class="tok-c">// which is ambiguous, since an ADL path may match multiple runtime objects</span><span class="tok-w"></span>
+<span class="tok-c">// TODO: Remove bound_path from this rule when external binding supported</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-nl">value_ref</span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-w">      </span><span class="tok-nv">function_call</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">bound_path</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">sub_path_local_variable</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">local_variable</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">constant_name</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">local_variable</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// TODO: change to [] form, e.g.     book_list [{title.contains(&quot;Quixote&quot;)}]</span><span class="tok-w"></span>
+<span class="tok-nl">sub_path_local_variable</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_WITH_PATH</span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// TODO: Remove this rule when external binding supported</span><span class="tok-w"></span>
+<span class="tok-nl">bound_path</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ADL_PATH</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">constant_name</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">function_call</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-nv">function_args</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">function_args</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-w"> </span><span class="tok-o">)*</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">type_id</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-nv">type_id</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">type_id</span><span class="tok-w"> </span><span class="tok-o">)*</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// ---------- Lexer definitions ----------</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
-<span class="tok-nl">instance_ref</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">value_ref</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">function_call</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-c">// ---------- lines and comments ----------</span><span class="tok-w"></span>
+<span class="tok-nl">CMT_LINE</span><span class="tok-w">   </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;--&#39;</span><span class="tok-w"> </span><span class="tok-o">.*?</span><span class="tok-w"> </span><span class="tok-no">EOL</span><span class="tok-w"> </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">skip</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w">             </span><span class="tok-c">// increment line count</span><span class="tok-w"></span>
+<span class="tok-nl">EOL</span><span class="tok-w">        </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;\r&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-s">&#39;\n&#39;</span><span class="tok-w">   </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">channel</span><span class="tok-o">(</span><span class="tok-no">HIDDEN</span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w">  </span><span class="tok-c">// increment line count</span><span class="tok-w"></span>
+<span class="tok-nl">WS</span><span class="tok-w">         </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span> <span class="tok-err">\</span><span class="tok-n">t</span><span class="tok-err">\</span><span class="tok-n">r</span><span class="tok-p">]</span><span class="tok-o">+</span><span class="tok-w">     </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">channel</span><span class="tok-o">(</span><span class="tok-no">HIDDEN</span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">value_ref</span><span class="tok-p">:</span><span class="tok-w"></span>
-<span class="tok-w">      </span><span class="tok-nv">mapped_data_ref</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">variable_id</span><span class="tok-w"></span>
-<span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-c">// --------- symbols ----------</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_ASSIGNMENT</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;:=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;::=&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">mapped_data_ref</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ADL_PATH</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_NE</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;/=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;!=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;≠&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_EQ</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;=&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_GT</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_LT</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_LE</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;≤&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_GE</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;≥&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">variable_id</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_THEN</span><span class="tok-w">     </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Tt</span><span class="tok-p">][</span><span class="tok-n">Hh</span><span class="tok-p">][</span><span class="tok-n">Ee</span><span class="tok-p">][</span><span class="tok-n">Nn</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_AND</span><span class="tok-w">      </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Aa</span><span class="tok-p">][</span><span class="tok-n">Nn</span><span class="tok-p">][</span><span class="tok-n">Dd</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;∧&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_OR</span><span class="tok-w">       </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Oo</span><span class="tok-p">][</span><span class="tok-n">Rr</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;∨&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_XOR</span><span class="tok-w">      </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Xx</span><span class="tok-p">][</span><span class="tok-n">Oo</span><span class="tok-p">][</span><span class="tok-n">Rr</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_NOT</span><span class="tok-w">      </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Nn</span><span class="tok-p">][</span><span class="tok-n">Oo</span><span class="tok-p">][</span><span class="tok-n">Tt</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;!&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;~&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;¬&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_IMPLIES</span><span class="tok-w">  </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Ii</span><span class="tok-p">][</span><span class="tok-n">Mm</span><span class="tok-p">][</span><span class="tok-n">Pp</span><span class="tok-p">][</span><span class="tok-n">Ll</span><span class="tok-p">][</span><span class="tok-n">Ii</span><span class="tok-p">][</span><span class="tok-n">Ee</span><span class="tok-p">][</span><span class="tok-n">Ss</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;⇒&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_FOR_ALL</span><span class="tok-w">  </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;for_all&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;∀&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_THERE_EXISTS</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;there_exists&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;∃&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_EXISTS</span><span class="tok-w">   </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;exists&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_MATCHES</span><span class="tok-w">  </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Mm</span><span class="tok-p">][</span><span class="tok-n">Aa</span><span class="tok-p">][</span><span class="tok-n">Tt</span><span class="tok-p">][</span><span class="tok-n">Cc</span><span class="tok-p">][</span><span class="tok-n">Hh</span><span class="tok-p">][</span><span class="tok-n">Ee</span><span class="tok-p">][</span><span class="tok-n">Ss</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-p">[</span><span class="tok-n">Ii</span><span class="tok-p">][</span><span class="tok-n">Ss</span><span class="tok-p">]</span><span class="tok-s">&#39;_&#39;</span><span class="tok-p">[</span><span class="tok-n">Ii</span><span class="tok-p">][</span><span class="tok-n">Nn</span><span class="tok-p">]</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;∈&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">function_call</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-s">&#39;(&#39;</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">expression</span><span class="tok-o">)*</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-s">&#39;)&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+<span class="tok-c">// TODO: remove when [] path predicates supported</span><span class="tok-w"></span>
+<span class="tok-nl">VARIABLE_WITH_PATH</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">VARIABLE_ID</span><span class="tok-w"> </span><span class="tok-no">ADL_ABSOLUTE_PATH</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">VARIABLE_ID</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;$&#39;</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 </div>

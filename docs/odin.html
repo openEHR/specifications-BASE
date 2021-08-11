@@ -1907,11 +1907,12 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="antlr-java"><span></span><span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">//	description: Antlr4 grammar for Object Data Instance Notation (ODIN)</span><span class="tok-w"></span>
-<span class="tok-c">//	author:      Thomas Beale &lt;thomas.beale@openehr.org&gt;</span><span class="tok-w"></span>
-<span class="tok-c">//	support:     openEHR Specifications PR tracker &lt;https://openehr.atlassian.net/projects/SPECPR/issues&gt;</span><span class="tok-w"></span>
-<span class="tok-c">//	copyright:   Copyright (c) 2015 openEHR Foundation</span><span class="tok-w"></span>
-<span class="tok-c">//	license:     Apache 2.0 License &lt;http://www.apache.org/licenses/LICENSE-2.0.html&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// description: Antlr4 grammar for Object Data Instance Notation (ODIN)</span><span class="tok-w"></span>
+<span class="tok-c">// author:      Thomas Beale &lt;thomas.beale@openehr.org&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// contributors:Pieter Bos &lt;pieter.bos@nedap.com&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// support:     openEHR Specifications PR tracker &lt;https://openehr.atlassian.net/projects/SPECPR/issues&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// copyright:   Copyright (c) 2015- openEHR Foundation &lt;http://www.openEHR.org&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// license:     Apache 2.0 License &lt;http://www.apache.org/licenses/LICENSE-2.0.html&gt;</span><span class="tok-w"></span>
 <span class="tok-c">//</span><span class="tok-w"></span>
 
 <span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">odin</span><span class="tok-p">;</span><span class="tok-w"></span>
@@ -1928,7 +1929,9 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 
 <span class="tok-nl">attr_vals</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-nv">attr_val</span><span class="tok-w"> </span><span class="tok-s">&#39;;&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-o">)+</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">attr_val</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">rm_attribute_id</span><span class="tok-w"> </span><span class="tok-s">&#39;=&#39;</span><span class="tok-w"> </span><span class="tok-nv">object_block</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">attr_val</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">odin_object_key</span><span class="tok-w"> </span><span class="tok-s">&#39;=&#39;</span><span class="tok-w"> </span><span class="tok-nv">object_block</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">odin_object_key</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UNDERSCORE_ID</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">rm_attribute_id</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-nl">object_block</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-nv">object_value_block</span><span class="tok-w"></span>
@@ -1947,9 +1950,42 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">date_time_value</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-c">// ------ leaf types ------</span><span class="tok-w"></span>
+<span class="tok-nl">object_reference_block</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-nv">odin_path_list</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">primitive_object</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"></span>
+<span class="tok-nl">odin_path_list</span><span class="tok-w">  </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">odin_path</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">odin_path</span><span class="tok-w"> </span><span class="tok-o">)+</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LIST_CONTINUE</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">odin_path</span><span class="tok-w">       </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">ADL_PATH</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">rm_type_id</span><span class="tok-w">      </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-nv">rm_type_id</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">rm_type_id</span><span class="tok-w"> </span><span class="tok-o">)*</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">rm_attribute_id</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// ---------- whitespace &amp; comments ----------</span><span class="tok-w"></span>
+
+<span class="tok-nl">WS</span><span class="tok-w">         </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span> <span class="tok-err">\</span><span class="tok-n">t</span><span class="tok-err">\</span><span class="tok-n">r</span><span class="tok-p">]</span><span class="tok-o">+</span><span class="tok-w">  </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">channel</span><span class="tok-o">(</span><span class="tok-no">HIDDEN</span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">LINE</span><span class="tok-w">       </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;\r&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-no">EOL</span><span class="tok-w">  </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">channel</span><span class="tok-o">(</span><span class="tok-no">HIDDEN</span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w">  </span><span class="tok-c">// increment line count</span><span class="tok-w"></span>
+<span class="tok-nl">CMT_LINE</span><span class="tok-w">   </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;--&#39;</span><span class="tok-w"> </span><span class="tok-o">.*?</span><span class="tok-w"> </span><span class="tok-s">&#39;\r&#39;</span><span class="tok-o">?</span><span class="tok-w"> </span><span class="tok-no">EOL</span><span class="tok-w">  </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">skip</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w">   </span><span class="tok-c">// (increment line count)</span><span class="tok-w"></span>
+<span class="tok-k">fragment</span><span class="tok-w"> </span><span class="tok-nl">EOL</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;\n&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following grammar defines ODIN terminal value syntax, and can be imported by any parser needing the ODIN values.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="antlr-java"><span></span><span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// grammar defining ODIN terminal value types, including atoms, lists and intervals</span><span class="tok-w"></span>
+<span class="tok-c">// author:      Pieter Bos &lt;pieter.bos@nedap.com&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// support:     openEHR Specifications PR tracker &lt;https://openehr.atlassian.net/projects/SPECPR/issues&gt;</span><span class="tok-w"></span>
+<span class="tok-c">// copyright:   Copyright (c) 2018- openEHR Foundation &lt;http://www.openEHR.org&gt;</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">odin_values</span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">import</span><span class="tok-w"> </span><span class="tok-err">base_lexer;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// ========================= Parser ============================</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-err">primitive_object</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"></span>
 <span class="tok-w">      </span><span class="tok-nv">primitive_value</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">primitive_list_value</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">primitive_interval_value</span><span class="tok-w"></span>
@@ -1991,28 +2027,7 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 <span class="tok-w">    </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">duration_interval_value</span><span class="tok-w"></span>
 <span class="tok-w">    </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">object_reference_block</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-nv">odin_path_list</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">odin_path_list</span><span class="tok-w">     </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">odin_path</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">odin_path</span><span class="tok-w"> </span><span class="tok-o">)+</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LIST_CONTINUE</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">odin_path</span><span class="tok-w">          </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;/&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-nv">key_id</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following grammar defines ODIN terminal value syntax, and can be imported by any parser needing the ODIN values.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="antlr-java"><span></span><span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// grammar defining ODIN terminal value types, including atoms, lists and intervals</span><span class="tok-w"></span>
-<span class="tok-c">// author:      Pieter Bos &lt;pieter.bos@nedap.com&gt;</span><span class="tok-w"></span>
-<span class="tok-c">// support:     openEHR Specifications PR tracker &lt;https://openehr.atlassian.net/projects/SPECPR/issues&gt;</span><span class="tok-w"></span>
-<span class="tok-c">// copyright:   Copyright (c) 2018- openEHR Foundation &lt;http://www.openEHR.org&gt;</span><span class="tok-w"></span>
-<span class="tok-c">//</span><span class="tok-w"></span>
-
-<span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">odin_values</span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">import</span><span class="tok-w"> </span><span class="tok-err">base_patterns;</span><span class="tok-w"></span>
-
-<span class="tok-err">string_value</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">STRING</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">string_value</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">STRING</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 <span class="tok-nl">string_list_value</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-nv">string_value</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">string_value</span><span class="tok-w"> </span><span class="tok-o">)+</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-no">SYM_LIST_CONTINUE</span><span class="tok-w"> </span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
 <span class="tok-nl">integer_value</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-no">INTEGER</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
@@ -2080,7 +2095,33 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 
 <span class="tok-nl">uri_value</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">URI</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 
-<span class="tok-nl">relop</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">SYM_GT</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LT</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LE</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GE</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+<span class="tok-nl">relop</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">SYM_GT</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LT</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_LE</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">SYM_GE</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">//</span><span class="tok-w"></span>
+<span class="tok-c">// ========================= Lexer ============================</span><span class="tok-w"></span>
+<span class="tok-c">//</span><span class="tok-w"></span>
+
+<span class="tok-c">// ------ get rid of whitespace inside lists and intervals ------</span><span class="tok-w"></span>
+<span class="tok-nl">WS</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-p">[</span> <span class="tok-err">\</span><span class="tok-n">t</span><span class="tok-err">\</span><span class="tok-n">r</span><span class="tok-p">]</span><span class="tok-o">+</span><span class="tok-w">     </span><span class="tok-o">-&gt;</span><span class="tok-w"> </span><span class="tok-nv">channel</span><span class="tok-o">(</span><span class="tok-no">HIDDEN</span><span class="tok-o">)</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// -------------------- symbols for lists ------------------------</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_LIST_CONTINUE</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;...&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_COMMA</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-c">// ------------------ symbols for intervals ----------------------</span><span class="tok-w"></span>
+
+<span class="tok-nl">SYM_LE</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;≤&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_GE</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;=&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;≥&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_GT</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_LT</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_PLUS</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;+&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_MINUS</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;-&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_PLUS_OR_MINUS</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;+/-&#39;</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-s">&#39;±&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_PERCENT</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;%&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_CARAT</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;^&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+
+<span class="tok-nl">SYM_IVL_DELIM</span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;|&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="tok-nl">SYM_IVL_SEP</span><span class="tok-w">  </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-s">&#39;..&#39;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2088,22 +2129,7 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="antlr-java"><span></span><span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">//  General purpose patterns used in all openEHR parser and lexer tools</span><span class="tok-w"></span>
-<span class="tok-c">//</span><span class="tok-w"></span>
-
-<span class="tok-k">grammar</span><span class="tok-w"> </span><span class="tok-nc">base_patterns</span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">import</span><span class="tok-w"> </span><span class="tok-err">base_lexer;</span><span class="tok-w"></span>
-
-<span class="tok-c">//</span><span class="tok-w"></span>
-<span class="tok-c">// -------------------------- Parse Rules --------------------------</span><span class="tok-w"></span>
-<span class="tok-c">//</span><span class="tok-w"></span>
-
-<span class="tok-err">rm_type_id</span><span class="tok-w">      </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;&lt;&#39;</span><span class="tok-w"> </span><span class="tok-nv">rm_type_id</span><span class="tok-w"> </span><span class="tok-o">(</span><span class="tok-w"> </span><span class="tok-s">&#39;,&#39;</span><span class="tok-w"> </span><span class="tok-nv">rm_type_id</span><span class="tok-w"> </span><span class="tok-o">)*</span><span class="tok-w"> </span><span class="tok-s">&#39;&gt;&#39;</span><span class="tok-w"> </span><span class="tok-o">)?</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">rm_attribute_id</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="tok-nl">identifier</span><span class="tok-w">   </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ALPHA_UC_ID</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">ALPHA_LC_ID</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-
-<span class="tok-nl">archetype_ref</span><span class="tok-w"> </span><span class="tok-p">:</span><span class="tok-w"> </span><span class="tok-no">ARCHETYPE_HRID</span><span class="tok-w"> </span><span class="tok-o">|</span><span class="tok-w"> </span><span class="tok-no">ARCHETYPE_REF</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span></code></pre>
+<pre class="pygments highlight"><code data-lang="antlr-java"><span></span><span class="tok-nl">Unresolved</span><span class="tok-w"> </span><span class="tok-err">directive</span><span class="tok-w"> </span><span class="tok-err">in</span><span class="tok-w"> </span><span class="tok-err">masterAppB-syntax_spec.adoc</span><span class="tok-w"> </span><span class="tok-err">-</span><span class="tok-w"> </span><span class="tok-err">include</span><span class="tok-p">::</span><span class="tok-err">/</span><span class="tok-nv">home</span><span class="tok-err">/</span><span class="tok-nv">thomas</span><span class="tok-err">/</span><span class="tok-nv">openEHR</span><span class="tok-err">-</span><span class="tok-nv">specifications</span><span class="tok-err">-</span><span class="tok-nv">fix2</span><span class="tok-err">/</span><span class="tok-nv">adl</span><span class="tok-err">-</span><span class="tok-nv">antlr</span><span class="tok-err">/</span><span class="tok-nv">src</span><span class="tok-err">/</span><span class="tok-nv">main</span><span class="tok-err">/</span><span class="tok-nv">antlr</span><span class="tok-c">//adl2/base_patterns.g4[]</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 </div>
@@ -2117,7 +2143,7 @@ items[@archetype_node_id = &#39;at0001&#39;]    -- the member of &#39;items&#39;
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-24 15:49:06 UTC
+Last updated 2021-07-22 14:07:24 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
