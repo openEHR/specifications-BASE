@@ -70,11 +70,11 @@
 <ul class="sectlevel4">
 <li><a href="#_logical_negation">3.7.2.1. Logical Negation</a></li>
 <li><a href="#_precedence_and_parentheses">3.7.2.2. Precedence and Parentheses</a></li>
+<li><a href="#_container_operators">3.7.2.3. Container Operators</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_container_operators">3.8. Container Operators</a></li>
 </ul>
 </li>
 <li><a href="#_the_expression_object_model">4. The Expression Object Model</a>
@@ -187,7 +187,7 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: BASE Release-1.0.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: DEVELOPMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: TRIAL</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
@@ -366,7 +366,7 @@
 <p>The contents of this specification were separated out from the <a href="https://specifications.openehr.org/releases/AM/latest/AOM2.html">AOM2 specification</a> in order to provide a common model of expressions and rules structures for AOM, GDL and other specifications requiring it.</p>
 </div>
 <div class="paragraph">
-<p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/LANG/latest/expression_language.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/LANG/latest/expression_language.html</a>.</p>
+<p>This specification is in the TRIAL state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/LANG/latest/expression_language.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/LANG/latest/expression_language.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -825,35 +825,22 @@
 <div class="sect2">
 <h3 id="language-expressions"><a class="anchor" href="#language-expressions"></a>3.7. Expressions</h3>
 <div class="paragraph">
-<p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:</p>
+<p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><em>terminal entities</em>:</p>
+<p>terminal entities_;</p>
+</li>
+<li>
+<p>non-terminal entities;</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>symbolic variables</em>;</p>
+<p>operators;</p>
 </li>
 <li>
-<p><em>constants</em>;</p>
-</li>
-<li>
-<p><em>literals</em>: values are of any primitive type, and are expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html">ODIN syntax</a>. Examples are shown above under <a href="#_typing">Section 3.3</a>;</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><em>non-terminal entities</em>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><em>operators</em>: arithmetic operators, relational operators, boolean operators, quantification operators;</p>
-</li>
-<li>
-<p><em>functions</em>: built-in functions and user-defined functions.</p>
+<p>functions.</p>
 </li>
 </ul>
 </div>
@@ -867,6 +854,9 @@
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>literals</p>
+</li>
 <li>
 <p>variable</p>
 </li>
@@ -1171,10 +1161,8 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_container_operators"><a class="anchor" href="#_container_operators"></a>3.8. Container Operators</h3>
+<div class="sect4">
+<h5 id="_container_operators"><a class="anchor" href="#_container_operators"></a>3.7.2.3. Container Operators</h5>
 <div class="paragraph">
 <p>The two standard quantification operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types found in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html" target="_blank" rel="noopener">openEHR Foundation Types</a>.</p>
 </div>
@@ -1212,6 +1200,8 @@
 </div>
 <div class="paragraph">
 <p>For both operators, the <code>:</code> symbol may be replaced by the keyword <code>in</code>.</p>
+</div>
+</div>
 </div>
 </div>
 </div>

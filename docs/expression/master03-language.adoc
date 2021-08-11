@@ -164,20 +164,18 @@ To assert that a certain part of a larger data structure exists, the following a
 [[language-expressions]]
 == Expressions
 
-Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:
+Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is one of the following:
 
-* _terminal entities_:
-** _symbolic variables_;
-** _constants_;
-** _literals_: values are of any primitive type, and are expressed in the {openehr_odin}[ODIN syntax]. Examples are shown above under <<Typing>>;
-* _non-terminal entities_:
-** _operators_: arithmetic operators, relational operators, boolean operators, quantification operators;
-** _functions_: built-in functions and user-defined functions.
+* terminal entities_;
+* non-terminal entities;
+** operators;
+** functions.
 
 === Terminal Entities
 
 Terminal entities in EL are any of the following:
 
+* literals
 * variable
 * variable with sub-path
 * constant
@@ -302,7 +300,7 @@ The precendence of operators follows the order shown in the operator tables abov
     $at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
 --------
 
-== Container Operators
+==== Container Operators
 
 The two standard quantification operators from predicate logic `there exists` (∃ operator) and `for all` (∀ operator) are defined in EL for the container types found in the {openehr_foundation_types}[openEHR Foundation Types^].
 
