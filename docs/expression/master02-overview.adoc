@@ -15,7 +15,7 @@ Key features of the formalism include:
 * standard logical operators including universal and existential quantification, as well as user-defined operators;
 * standard arithmetic and relational comparison operators, enabling the use of numerics;
 * parentheses for overridding operator precedence;
-* functions, including built-ins like `current_date`, standard functions like `max()` as well as user-defined functions.
+* functions, including built-ins like `current_date`, standard functions such as `max()` defined on primitive types, as well as the ability to use external functions.
 
 For reasons of comprehensibility and explanation, the Expression Language is defined first in this specification.
 
@@ -34,145 +34,8 @@ The semantic requirements are for expressions including arithmetic, boolean, and
 
 The assumed execution model of the Expression language is that an EL text is evaluated by an _evaluator_ against a _data context_, which determines the truth values of the expression(s). The data context typically includes data services such as the EHR, patient demographics, laboratory systems and so on - anything that is available computationally via some service. The text may contain symbols representing internal variables and bound variables, the latter of which map to entities in the data context.
 
-An EL text is minimally a single assertion such as `systolic_pressure > 0`, and more typically a set of _statements_ or _rules_ that generates output values or actions.
-
 No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the _expression universe_ is technically speaking an 'open world' in the sense of the {wikipedia_open_world_assumption}[open-world assumption]. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.
 
 == General Structure
 
-The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing `EL text`,  with a similar structure to an archetype. The key sections are `definition`, `terminology` and `context`. The `definition` section contains _statements_ and/or _rules_. These are made up of expressions containing _symbols_, which represent _variables_ and _constants_, and which are typed. Variables are either _bound variables_, indicated with a `$` character, and _local variables_. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.
-
-Mappings between bound variables and external entities are described by _bindings_ in the `data_context` section. For example, the expression `$heart_rate > 50` is an assertion about values found in some data - i.e. `$heart_rate` is a variable that is mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable's value is obtained from (e.g. some larger data entity such as a document or message, or via an API call), and whether it is an input or output variable. This provides clear semantics for statements in the expression text.
-
-Symbols are _names_ in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in the `terminology` section of an EL text, in the same way as for openEHR archetypes. For example, the symbol `heart_rate` of type `Integer` may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).
-
-Additionally, user-defined functions mentioned within the main text are bound to methods from external libraries in a `computing_context` section. 
-
-In addition to these computable sections, various meta-data sections are added, including the `description` and `language` sections defined by the {openehr_resource}[openEHR Resource specification], and an identification line at the top. As with archetypes, the sections other than the `definition` are expressed in {openehr_odin}[openEHR ODIN syntax].
-
-The structure of a self-standing EL text is thus as follows:
-
-----
-<identifier>
-
-language
-    original_language = <...>
-    translations = <...>	
-    
-description
-    <descriptive meta-data>
-    
-definition
-    <statements>
-    <rules>
-    
-terminology
-    symbol_definitions = <
-        ["lang"] = <
-            <symbol definitions in lang>
-        >
-        ...
-    >
-    
-data_context
-    <symbol bindings>
-    
-computing_context
-    <method bindings>
-----
-
-An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.
-
-[source,adl]
-----
-openEHR-bmi.v1
-
-language
-    original_language = <[ISO_639-1::en]>
-    translations = <
-        ["pt"] = <...>
-    >	
-    
-description
-    lifecycle_state = <"unmanaged">
-    original_author = <...>
-    details = <
-    ["pt"] = <
-        language = <[ISO_639-1::pt]>
-            purpose = <"Cálculo do peso do corpo">
-            use = <"...">
-        >
-    >
-
-definition
-    $body_weight, $height: Real
-    $bmi: Real
-    
-    $bmi := $body_weight / $height ^ 2
-    
-terminology
-    symbol_definitions = <
-        ["en"] = <
-            ["body_weight"] = <
-                text = <"body weight"> 
-                description = <"weight of subject body">
-            >
-            ["height"] = <...>
-            ["bmi"] = <
-                text = <"body mass index">
-                description = <"body mass index">
-            >
-        >
-        ["pt"] = <
-            ["body_weight"] = <
-                text = <"peso do corpo"> 
-                description = <"peso do corpo do sujeito">
-            >
-            ["height"] = <...>
-            ["bmi"] = <
-                text = <"índice de massa corporal">
-                description = <"índice de massa corporal">
-            >
-        >
-    >
-   
-data_context
-    content_bindings = <
-        ["openEHR-EHR-OBSERVATION.body_measurements.v1"] = <
-            ["body_weight"] = <
-                target = <"/data/events[id3]/data/items[id5]/value/magnitude">
-                direction = <"in">
-            >
-            ["height"] = <
-                target = <"/data/events[id3]/data/items[id6]/value/magnitude">
-                direction = <"in">
-            >
-        >
-        ["openEHR-EHR-OBSERVATION.body_mass_index.v1"] = <
-            ["body_mass_index"] = <
-                target = <"/data/events[id3]/data/items[id5]/value/magnitude">
-                direction = <"out">
-            >
-        >
-    >
-    
-computing_context
-    library_bindings = <
-        ["onco_staging_lib"] = <
-            connector = <
-                language = <"java8">
-                library = <"onco_staging_lib.jar">
-            >
-            bindings = <
-                ["tnm_major_number"] = <"TnmCalculator::tnmNumericVal">
-                ["tnm_prefix"] = <"TnmCalculator::tnmPrefixVal">
-            >
-        >
-    >
-----
-
-When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:
-
-* including the definitions in the `rules` section;
-* adding the EL text `symbol_definitions` section to the archetype `terminology` section;
-* adding the `data_context` and `computing_context` as additional sections.
+The Expression Language may be used to write single Boolean-valued expressions within another computational context, and in future, a multi-section self-standing `EL text` with a similar structure to an archetype. Expressions may be _declarations_, _assignments_ or _assertions_. These are made up of expressions containing _symbols_ which represent typed _variables_ and _constants_. Variables are either _bound_ or _local_, and are defined using `$` names, e.g. `$heart_rate` as used in shell script and some other programming languages. A bound variable is mapped to a field in the data context. In the current version of the language, this is achieved by assignment statements that either assign a path in the data context to a symbolic variable (reading) or the reverse (writing back). In this sense, 'assignment' can be understood as _associating_ a data context path with a named variable.

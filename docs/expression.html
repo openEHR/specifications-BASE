@@ -43,124 +43,111 @@
 <ul class="sectlevel2">
 <li><a href="#_overview_2">3.1. Overview</a></li>
 <li><a href="#_syntax_style">3.2. Syntax style</a></li>
-<li><a href="#_typing_and_literals">3.3. Typing and Literals</a>
+<li><a href="#_typing">3.3. Typing</a></li>
+<li><a href="#_literals">3.4. Literals</a>
 <ul class="sectlevel3">
-<li><a href="#_primitive_types">3.3.1. Primitive Types</a></li>
-<li><a href="#_container_types">3.3.2. Container Types</a></li>
-<li><a href="#_interval_type">3.3.3. Interval Type</a></li>
+<li><a href="#_primitive_types">3.4.1. Primitive Types</a></li>
+<li><a href="#_container_types">3.4.2. Container Types</a></li>
+<li><a href="#_interval_type">3.4.3. Interval Type</a></li>
 </ul>
 </li>
-<li><a href="#_basic_structures">3.4. Basic Structures</a>
+<li><a href="#_statements">3.5. Statements</a>
 <ul class="sectlevel3">
-<li><a href="#_declarations">3.4.1. Declarations</a></li>
-<li><a href="#_constants">3.4.2. Constants</a></li>
-<li><a href="#_assignment">3.4.3. Assignment</a></li>
+<li><a href="#_declarations">3.5.1. Declarations</a></li>
+<li><a href="#_constants">3.5.2. Constants</a></li>
+<li><a href="#_assignment">3.5.3. Assignment</a></li>
 </ul>
 </li>
-<li><a href="#_bound_variables_evaluation_and_validity">3.5. Bound Variables, Evaluation and Validity</a></li>
-<li><a href="#language-expressions">3.6. Expressions</a>
+<li><a href="#_bound_variables_evaluation_and_validity">3.6. Bound Variables, Evaluation and Validity</a></li>
+<li><a href="#language-expressions">3.7. Expressions</a>
 <ul class="sectlevel3">
-<li><a href="#_functions">3.6.1. Functions</a>
+<li><a href="#_terminal_entities">3.7.1. Terminal Entities</a>
 <ul class="sectlevel4">
-<li><a href="#_built_in_functions">3.6.1.1. Built-in Functions</a></li>
+<li><a href="#_functions">3.7.1.1. Functions</a></li>
 </ul>
 </li>
-<li><a href="#language-operators">3.6.2. Operators</a>
+<li><a href="#language-operators">3.7.2. Operators</a>
 <ul class="sectlevel4">
-<li><a href="#_logical_negation">3.6.2.1. Logical Negation</a></li>
-<li><a href="#_precedence_and_parentheses">3.6.2.2. Precedence and Parentheses</a></li>
+<li><a href="#_logical_negation">3.7.2.1. Logical Negation</a></li>
+<li><a href="#_precedence_and_parentheses">3.7.2.2. Precedence and Parentheses</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_container_operators">3.7. Container Operators</a></li>
+<li><a href="#_container_operators">3.8. Container Operators</a></li>
 </ul>
 </li>
-<li><a href="#_terminology">4. Terminology</a></li>
-<li><a href="#_data_context">5. Data Context</a>
+<li><a href="#_the_expression_object_model">4. The Expression Object Model</a>
 <ul class="sectlevel2">
-<li><a href="#_binding_model">5.1. Binding Model</a>
+<li><a href="#_overview_3">4.1. Overview</a></li>
+<li><a href="#_core_package">4.2. Core Package</a>
 <ul class="sectlevel3">
-<li><a href="#_content_binding">5.1.1. Content Binding</a></li>
-<li><a href="#_api_call_binding">5.1.2. API Call Binding</a></li>
-<li><a href="#_query_binding">5.1.3. Query Binding</a></li>
-<li><a href="#_interactive_binding">5.1.4. Interactive Binding</a></li>
+<li><a href="#_expressions">4.2.1. Expressions</a></li>
+<li><a href="#_other_statement_elements">4.2.2. Other Statement Elements</a>
+<ul class="sectlevel4">
+<li><a href="#_external_query">4.2.2.1. External Query</a></li>
+</ul>
+</li>
+<li><a href="#_class_descriptions">4.2.3. Class Descriptions</a>
+<ul class="sectlevel4">
+<li><a href="#_statement_set_class">4.2.3.1. STATEMENT_SET Class</a></li>
+<li><a href="#_statement_class">4.2.3.2. STATEMENT Class</a></li>
+<li><a href="#_assertion_class">4.2.3.3. ASSERTION Class</a></li>
+<li><a href="#_variable_declaration_class">4.2.3.4. VARIABLE_DECLARATION Class</a></li>
+<li><a href="#_assignment_class">4.2.3.5. ASSIGNMENT Class</a></li>
+<li><a href="#_expr_value_class">4.2.3.6. EXPR_VALUE Class</a></li>
+<li><a href="#_external_query_class">4.2.3.7. EXTERNAL_QUERY Class</a></li>
+<li><a href="#_expression_class">4.2.3.8. EXPRESSION Class</a></li>
+<li><a href="#_expr_operator_class">4.2.3.9. EXPR_OPERATOR Class</a></li>
+<li><a href="#_expr_unary_operator_class">4.2.3.10. EXPR_UNARY_OPERATOR Class</a></li>
+<li><a href="#_expr_binary_operator_class">4.2.3.11. EXPR_BINARY_OPERATOR Class</a></li>
+<li><a href="#_operator_def_class">4.2.3.12. OPERATOR_DEF Class</a></li>
+<li><a href="#_operator_def_builtin_class">4.2.3.13. OPERATOR_DEF_BUILTIN Class</a></li>
+<li><a href="#_builtin_operators_class">4.2.3.14. BUILTIN_OPERATORS Class</a></li>
+<li><a href="#_expr_leaf_class">4.2.3.15. EXPR_LEAF Class</a></li>
+<li><a href="#_expr_literal_class">4.2.3.16. EXPR_LITERAL Class</a></li>
+<li><a href="#_expr_variable_ref_class">4.2.3.17. EXPR_VARIABLE_REF Class</a></li>
+<li><a href="#_expr_value_ref_class">4.2.3.18. EXPR_VALUE_REF Class</a></li>
+<li><a href="#_expr_function_class">4.2.3.19. EXPR_FUNCTION Class</a></li>
+<li><a href="#_function_def_class">4.2.3.20. FUNCTION_DEF Class</a></li>
+<li><a href="#_function_def_builtin_class">4.2.3.21. FUNCTION_DEF_BUILTIN Class</a></li>
+<li><a href="#_builtin_functions_class">4.2.3.22. BUILTIN_FUNCTIONS Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_computing_context">6. Computing Context</a></li>
-<li><a href="#_the_expression_object_model">7. The Expression Object Model</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_3">7.1. Overview</a></li>
-<li><a href="#_core_package">7.2. Core Package</a>
+<li><a href="#_extension_package">4.3. Extension Package</a>
 <ul class="sectlevel3">
-<li><a href="#_expressions">7.2.1. Expressions</a></li>
-<li><a href="#_other_statement_elements">7.2.2. Other Statement Elements</a>
+<li><a href="#_value_references">4.3.1. Value References</a></li>
+<li><a href="#_operators_and_functions">4.3.2. Operators and Functions</a></li>
+<li><a href="#_class_descriptions_2">4.3.3. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_external_query">7.2.2.1. External Query</a></li>
-</ul>
-</li>
-<li><a href="#_class_descriptions">7.2.3. Class Descriptions</a>
-<ul class="sectlevel4">
-<li><a href="#_statement_set_class">7.2.3.1. STATEMENT_SET Class</a></li>
-<li><a href="#_statement_class">7.2.3.2. STATEMENT Class</a></li>
-<li><a href="#_assertion_class">7.2.3.3. ASSERTION Class</a></li>
-<li><a href="#_variable_declaration_class">7.2.3.4. VARIABLE_DECLARATION Class</a></li>
-<li><a href="#_assignment_class">7.2.3.5. ASSIGNMENT Class</a></li>
-<li><a href="#_expr_value_class">7.2.3.6. EXPR_VALUE Class</a></li>
-<li><a href="#_external_query_class">7.2.3.7. EXTERNAL_QUERY Class</a></li>
-<li><a href="#_expression_class">7.2.3.8. EXPRESSION Class</a></li>
-<li><a href="#_expr_operator_class">7.2.3.9. EXPR_OPERATOR Class</a></li>
-<li><a href="#_expr_unary_operator_class">7.2.3.10. EXPR_UNARY_OPERATOR Class</a></li>
-<li><a href="#_expr_binary_operator_class">7.2.3.11. EXPR_BINARY_OPERATOR Class</a></li>
-<li><a href="#_operator_def_class">7.2.3.12. OPERATOR_DEF Class</a></li>
-<li><a href="#_operator_def_builtin_class">7.2.3.13. OPERATOR_DEF_BUILTIN Class</a></li>
-<li><a href="#_builtin_operators_class">7.2.3.14. BUILTIN_OPERATORS Class</a></li>
-<li><a href="#_expr_leaf_class">7.2.3.15. EXPR_LEAF Class</a></li>
-<li><a href="#_expr_literal_class">7.2.3.16. EXPR_LITERAL Class</a></li>
-<li><a href="#_expr_variable_ref_class">7.2.3.17. EXPR_VARIABLE_REF Class</a></li>
-<li><a href="#_expr_value_ref_class">7.2.3.18. EXPR_VALUE_REF Class</a></li>
-<li><a href="#_expr_function_class">7.2.3.19. EXPR_FUNCTION Class</a></li>
-<li><a href="#_function_def_class">7.2.3.20. FUNCTION_DEF Class</a></li>
-<li><a href="#_function_def_builtin_class">7.2.3.21. FUNCTION_DEF_BUILTIN Class</a></li>
-<li><a href="#_builtin_functions_class">7.2.3.22. BUILTIN_FUNCTIONS Class</a></li>
+<li><a href="#_operator_def_external_class">4.3.3.1. OPERATOR_DEF_EXTERNAL Class</a></li>
+<li><a href="#_op_def_example_class">4.3.3.2. OP_DEF_EXAMPLE Class</a></li>
+<li><a href="#_op_def_and_class">4.3.3.3. OP_DEF_AND Class</a></li>
+<li><a href="#_op_def_exists_class">4.3.3.4. OP_DEF_EXISTS Class</a></li>
+<li><a href="#_function_def_external_class">4.3.3.5. FUNCTION_DEF_EXTERNAL Class</a></li>
+<li><a href="#_function_def_example_class">4.3.3.6. FUNCTION_DEF_EXAMPLE Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_extension_package">7.3. Extension Package</a>
+<li><a href="#_typing_2">4.4. Typing</a>
 <ul class="sectlevel3">
-<li><a href="#_value_references">7.3.1. Value References</a></li>
-<li><a href="#_operators_and_functions">7.3.2. Operators and Functions</a></li>
-<li><a href="#_class_descriptions_2">7.3.3. Class Descriptions</a>
+<li><a href="#_class_descriptions_3">4.4.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_operator_def_external_class">7.3.3.1. OPERATOR_DEF_EXTERNAL Class</a></li>
-<li><a href="#_op_def_example_class">7.3.3.2. OP_DEF_EXAMPLE Class</a></li>
-<li><a href="#_op_def_and_class">7.3.3.3. OP_DEF_AND Class</a></li>
-<li><a href="#_op_def_exists_class">7.3.3.4. OP_DEF_EXISTS Class</a></li>
-<li><a href="#_function_def_external_class">7.3.3.5. FUNCTION_DEF_EXTERNAL Class</a></li>
-<li><a href="#_function_def_example_class">7.3.3.6. FUNCTION_DEF_EXAMPLE Class</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_typing">7.4. Typing</a>
-<ul class="sectlevel3">
-<li><a href="#_class_descriptions_3">7.4.1. Class Descriptions</a>
-<ul class="sectlevel4">
-<li><a href="#_expr_type_def_class">7.4.1.1. EXPR_TYPE_DEF Class</a></li>
-<li><a href="#_type_def_boolean_class">7.4.1.2. TYPE_DEF_BOOLEAN Class</a></li>
-<li><a href="#_type_def_integer_class">7.4.1.3. TYPE_DEF_INTEGER Class</a></li>
-<li><a href="#_type_def_real_class">7.4.1.4. TYPE_DEF_REAL Class</a></li>
-<li><a href="#_type_def_date_class">7.4.1.5. TYPE_DEF_DATE Class</a></li>
-<li><a href="#_type_def_date_time_class">7.4.1.6. TYPE_DEF_DATE_TIME Class</a></li>
-<li><a href="#_type_def_time_class">7.4.1.7. TYPE_DEF_TIME Class</a></li>
-<li><a href="#_type_def_duration_class">7.4.1.8. TYPE_DEF_DURATION Class</a></li>
-<li><a href="#_type_def_string_class">7.4.1.9. TYPE_DEF_STRING Class</a></li>
-<li><a href="#_type_def_uri_class">7.4.1.10. TYPE_DEF_URI Class</a></li>
-<li><a href="#_type_def_terminology_code_class">7.4.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
-<li><a href="#_type_def_object_ref_class">7.4.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
+<li><a href="#_expr_type_def_class">4.4.1.1. EXPR_TYPE_DEF Class</a></li>
+<li><a href="#_type_def_boolean_class">4.4.1.2. TYPE_DEF_BOOLEAN Class</a></li>
+<li><a href="#_type_def_integer_class">4.4.1.3. TYPE_DEF_INTEGER Class</a></li>
+<li><a href="#_type_def_real_class">4.4.1.4. TYPE_DEF_REAL Class</a></li>
+<li><a href="#_type_def_date_class">4.4.1.5. TYPE_DEF_DATE Class</a></li>
+<li><a href="#_type_def_date_time_class">4.4.1.6. TYPE_DEF_DATE_TIME Class</a></li>
+<li><a href="#_type_def_time_class">4.4.1.7. TYPE_DEF_TIME Class</a></li>
+<li><a href="#_type_def_duration_class">4.4.1.8. TYPE_DEF_DURATION Class</a></li>
+<li><a href="#_type_def_string_class">4.4.1.9. TYPE_DEF_STRING Class</a></li>
+<li><a href="#_type_def_uri_class">4.4.1.10. TYPE_DEF_URI Class</a></li>
+<li><a href="#_type_def_terminology_code_class">4.4.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</a></li>
+<li><a href="#_type_def_object_ref_class">4.4.1.12. TYPE_DEF_OBJECT_REF Class</a></li>
 </ul>
 </li>
 </ul>
@@ -273,7 +260,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  P Bos,<br>
  D Bosca</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Jan 2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>11 Aug 2021</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1.0</p></td>
@@ -444,7 +431,7 @@
 <p>parentheses for overridding operator precedence;</p>
 </li>
 <li>
-<p>functions, including built-ins like <code>current_date</code>, standard functions like <code>max()</code> as well as user-defined functions.</p>
+<p>functions, including built-ins like <code>current_date</code>, standard functions such as <code>max()</code> defined on primitive types, as well as the ability to use external functions.</p>
 </li>
 </ul>
 </div>
@@ -479,168 +466,13 @@
 <p>The assumed execution model of the Expression language is that an EL text is evaluated by an <em>evaluator</em> against a <em>data context</em>, which determines the truth values of the expression(s). The data context typically includes data services such as the EHR, patient demographics, laboratory systems and so on - anything that is available computationally via some service. The text may contain symbols representing internal variables and bound variables, the latter of which map to entities in the data context.</p>
 </div>
 <div class="paragraph">
-<p>An EL text is minimally a single assertion such as <code>systolic_pressure &gt; 0</code>, and more typically a set of <em>statements</em> or <em>rules</em> that generates output values or actions.</p>
-</div>
-<div class="paragraph">
 <p>No assumption is made about whether the data context used is complete or faithful to reality. Consequently, the <em>expression universe</em> is technically speaking an 'open world' in the sense of the <a href="https://en.wikipedia.org/wiki/Open-world_assumption">open-world assumption</a>. However, higher-level applications or components (or users) may have sufficient knowledge about the data as to be able to treat it in a closed world fashion, for example to treat absence of X as negation of X.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_general_structure"><a class="anchor" href="#_general_structure"></a>2.3. General Structure</h3>
 <div class="paragraph">
-<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, or a multi-section self-standing <code>EL text</code>,  with a similar structure to an archetype. The key sections are <code>definition</code>, <code>terminology</code> and <code>context</code>. The <code>definition</code> section contains <em>statements</em> and/or <em>rules</em>. These are made up of expressions containing <em>symbols</em>, which represent <em>variables</em> and <em>constants</em>, and which are typed. Variables are either <em>bound variables</em>, indicated with a <code>$</code> character, and <em>local variables</em>. A bound variable is mapped to an entity in the data context, enabling it to be used to read from or write to the external world.</p>
-</div>
-<div class="paragraph">
-<p>Mappings between bound variables and external entities are described by <em>bindings</em> in the <code>data_context</code> section. For example, the expression <code>$heart_rate &gt; 50</code> is an assertion about values found in some data - i.e. <code>$heart_rate</code> is a variable that is mapped to an entity representing an actual heart rate measurement. Each data binding states where a variable&#8217;s value is obtained from (e.g. some larger data entity such as a document or message, or via an API call), and whether it is an input or output variable. This provides clear semantics for statements in the expression text.</p>
-</div>
-<div class="paragraph">
-<p>Symbols are <em>names</em> in the fashion of any typical programming language, but are also considered 'codes' to which linguistic definitions can be attached for use in the UI and other human-consumable renderings (e.g. documents). This is done in the <code>terminology</code> section of an EL text, in the same way as for openEHR archetypes. For example, the symbol <code>heart_rate</code> of type <code>Integer</code> may have the linguistic definitions "heart rate" (English) and "frequência cardíaca" (Portuguese).</p>
-</div>
-<div class="paragraph">
-<p>Additionally, user-defined functions mentioned within the main text are bound to methods from external libraries in a <code>computing_context</code> section.</p>
-</div>
-<div class="paragraph">
-<p>In addition to these computable sections, various meta-data sections are added, including the <code>description</code> and <code>language</code> sections defined by the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/resource.html">openEHR Resource specification</a>, and an identification line at the top. As with archetypes, the sections other than the <code>definition</code> are expressed in <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html">openEHR ODIN syntax</a>.</p>
-</div>
-<div class="paragraph">
-<p>The structure of a self-standing EL text is thus as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>&lt;identifier&gt;
-
-language
-    original_language = &lt;...&gt;
-    translations = &lt;...&gt;
-
-description
-    &lt;descriptive meta-data&gt;
-
-definition
-    &lt;statements&gt;
-    &lt;rules&gt;
-
-terminology
-    symbol_definitions = &lt;
-        ["lang"] = &lt;
-            &lt;symbol definitions in lang&gt;
-        &gt;
-        ...
-    &gt;
-
-data_context
-    &lt;symbol bindings&gt;
-
-computing_context
-    &lt;method bindings&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>An example of an EL text representing the common clinical health measure 'BMI' (body mass index) is shown below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="adl"><span></span><span class="tok-err">openEHR-bmi.v1</span>
-
-<span class="tok-gh">language</span>
-    <span class="tok-nc">original_language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">en</span><span class="tok-p">]&gt;</span>
-    <span class="tok-nc">translations</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-gh">description</span>
-    <span class="tok-nc">lifecycle_state</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;unmanaged&quot;</span><span class="tok-p">&gt;</span>
-    <span class="tok-nc">original_author</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-    <span class="tok-nc">details</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-    <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">pt</span><span class="tok-p">]&gt;</span>
-            <span class="tok-nc">purpose</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Cálculo do peso do corpo&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-nc">use</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;...&quot;</span><span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-gh">definition</span>
-    <span class="tok-err">$</span><span class="tok-nc">body_weight</span><span class="tok-p">,</span> <span class="tok-err">$</span><span class="tok-l">height:</span><span class="tok-p"> </span><span class="tok-nc">Real</span>
-    <span class="tok-err">$</span><span class="tok-l">bmi:</span><span class="tok-p"> </span><span class="tok-nc">Real</span>
-
-    <span class="tok-err">$</span><span class="tok-nc">bmi</span> <span class="tok-err">:</span><span class="tok-o">=</span> <span class="tok-err">$</span><span class="tok-nc">body_weight</span> <span class="tok-p">/ </span><span class="tok-err">$</span><span class="tok-nc">height</span> <span class="tok-o">^</span> <span class="tok-mi">2</span>
-
-<span class="tok-gh">terminology</span>
-    <span class="tok-nc">symbol_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;en&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body weight&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;weight of subject body&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo do sujeito&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-s">data_context</span>
-    <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_measurements.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id6]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_mass_index.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_mass_index&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;out&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-s">computing_context</span>
-    <span class="tok-nc">library_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;onco_staging_lib&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-nc">connector</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;java8&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">library</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;onco_staging_lib.jar&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-nc">bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;tnm_major_number&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;TnmCalculator::tnmNumericVal&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;tnm_prefix&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;TnmCalculator::tnmPrefixVal&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When used within other artefacts, EL expressions may be expressed as a merger of sections normally found in a self-standing EL text, and those of the enclosing structure. For example, EL definitions may be embedded in openEHR archetypes or templates by:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>including the definitions in the <code>rules</code> section;</p>
-</li>
-<li>
-<p>adding the EL text <code>symbol_definitions</code> section to the archetype <code>terminology</code> section;</p>
-</li>
-<li>
-<p>adding the <code>data_context</code> and <code>computing_context</code> as additional sections.</p>
-</li>
-</ul>
+<p>The Expression Language may be used to write single Boolean-valued expressions within another computational context, and in future, a multi-section self-standing <code>EL text</code> with a similar structure to an archetype. Expressions may be <em>declarations</em>, <em>assignments</em> or <em>assertions</em>. These are made up of expressions containing <em>symbols</em> which represent typed <em>variables</em> and <em>constants</em>. Variables are either <em>bound</em> or <em>local</em>, and are defined using <code>$</code> names, e.g. <code>$heart_rate</code> as used in shell script and some other programming languages. A bound variable is mapped to a field in the data context. In the current version of the language, this is achieved by assignment statements that either assign a path in the data context to a symbolic variable (reading) or the reverse (writing back). In this sense, 'assignment' can be understood as <em>associating</em> a data context path with a named variable.</p>
 </div>
 </div>
 </div>
@@ -661,9 +493,9 @@ computing_context
 </div>
 </div>
 <div class="sect2">
-<h3 id="_typing_and_literals"><a class="anchor" href="#_typing_and_literals"></a>3.3. Typing and Literals</h3>
+<h3 id="_typing"><a class="anchor" href="#_typing"></a>3.3. Typing</h3>
 <div class="paragraph">
-<p>The Expression language is fully typed. The type system is the same as that used in other openEHR components, and supports the same set of basic types, namely:</p>
+<p>The Expression language is fully typed. The type system is the same as that used in other openEHR components, and supports the same set of basic types as described in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html" target="_blank" rel="noopener">openEHR Foundation Types Specification</a>, namely:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -698,13 +530,13 @@ computing_context
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>These types are described below.</p>
 </div>
+<div class="sect2">
+<h3 id="_literals"><a class="anchor" href="#_literals"></a>3.4. Literals</h3>
 <div class="sect3">
-<h4 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>3.3.1. Primitive Types</h4>
+<h4 id="_primitive_types"><a class="anchor" href="#_primitive_types"></a>3.4.1. Primitive Types</h4>
 <div class="paragraph">
-<p>The primitive types are shown below, along with typical literal values, which are expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html#_primitive_types">ODIN syntax</a>.</p>
+<p>The primitive types are shown below, along with typical literal values, which are expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html#_primitive_types" target="_blank" rel="noopener">ODIN syntax</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -781,9 +613,9 @@ computing_context
 </div>
 </div>
 <div class="sect3">
-<h4 id="_container_types"><a class="anchor" href="#_container_types"></a>3.3.2. Container Types</h4>
+<h4 id="_container_types"><a class="anchor" href="#_container_types"></a>3.4.2. Container Types</h4>
 <div class="paragraph">
-<p>The same container types as defined in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html#_structure_types">BASE Foundation Types specification</a> are supported in EL, as follows.</p>
+<p>The same container types as defined in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html#_structure_types" target="_blank" rel="noopener">Foundation Types specification</a> are supported in EL, as follows.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -823,56 +655,22 @@ computing_context
 </tbody>
 </table>
 <div class="paragraph">
-<p>The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following.</p>
+<p>The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following methods that may be accessed in EL via the syntactic operators <code>for_all</code> and <code>there_exists</code> described below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    has (v: T): Boolean
-            -- True container contains v
-
-    for_all (test(v: T): Boolean): Boolean
+<pre>    for_all (test(v: T): Boolean): Boolean
             -- True if for every v in container, test (v) is True
 
     there_exists (test(v: T): Boolean): Boolean
-            -- True if there is any v in container for which test (v) is True
-
-    do_all (proc(v: T))
-            -- execute proc(v) for every v in interval
-
-    do_if (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval for which test(v) is True
-
-    do_while (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns False
-
-    do_until (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns True</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Any such method may be accessed in the usual way, using dot notation, i.e. as shown below for the method <code>some()</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    $heart_rate_samples: List&lt;Real&gt;
-    Atrial_fibrillation_threshold: Real = 100.0
-
-    if $heart_rate_samples.some (
-        (v:Real): Boolean
-            do
-                Result := v &gt; Atrial_fibrillation_threshold
-            end
-        )
-    then
-        --
-    end</pre>
+            -- True if there is any v in container for which test (v) is True</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_interval_type"><a class="anchor" href="#_interval_type"></a>3.3.3. Interval Type</h4>
+<h4 id="_interval_type"><a class="anchor" href="#_interval_type"></a>3.4.3. Interval Type</h4>
 <div class="paragraph">
-<p>The same <code>Interval</code> type as defined in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html#_interval">BASE Foundation Types specification</a> is supported in EL, as follows. Literal interval values take the same form as in <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html#_intervals_of_ordered_primitive_types">ODIN</a>.</p>
+<p>The same <code>Interval</code> type as defined in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html#_interval">Foundation Types specification</a> is supported in EL, as follows. Literal interval values take the same form as in <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html#_intervals_of_ordered_primitive_types">ODIN</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -943,38 +741,31 @@ computing_context
 <div class="paragraph">
 <p>Automatic type promotion from <code>Interval&lt;Integer&gt;</code> to <code>Interval&lt;Real&gt;</code> applies to all integer and real values and expressions, in the same fashion as most programming languages.</p>
 </div>
-<div class="paragraph">
-<p>Various methods are assumed for <code>Interval&lt;T&gt;</code>, as follows.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>    has (v: T): Boolean
-            -- True if for Interval contains v
-
-    overlaps (other: like Current): Boolean
-            -- True if this Interval overlaps other
-
-    contains (other: like Current): Boolean
-            -- True if this Interval contains other</pre>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_basic_structures"><a class="anchor" href="#_basic_structures"></a>3.4. Basic Structures</h3>
-<div class="sect3">
-<h4 id="_declarations"><a class="anchor" href="#_declarations"></a>3.4.1. Declarations</h4>
+<h3 id="_statements"><a class="anchor" href="#_statements"></a>3.5. Statements</h3>
 <div class="paragraph">
-<p>Variables may be declared within a statement set, consisting of a name of the form <code>var_name</code> for a local variable, and <code>$var_name</code> for a bound variable, and a type. Multiple variables may be declared on the same line. The following shows various declarations:</p>
+<p>An EL text consists of statements, each of which may be a declaration, an assignment or an assertion.</p>
+</div>
+<div class="sect3">
+<h4 id="_declarations"><a class="anchor" href="#_declarations"></a>3.5.1. Declarations</h4>
+<div class="paragraph">
+<p>Variables are declared with a formal type. Bound variables additionally include an assignment to a path within an assumed data context, which may be understood as performing the binding. Local variable declaratoins may include an assignment to an expression result, in the manner of common programming languages.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    date_of_birth: Date                     -- local variable
-    age_in_years: Integer                   -- local variable
+<pre>    -- local variable, primitive type
+    $date_of_birth: Date
 
-    $weight, $height, $bmi: Real            -- 3 bound variables
+    -- local variable, container type
+    $heart_rate_history: List&lt;Real&gt;
 
-    $heart_rate_samples: List&lt;Real&gt;         -- container type</pre>
+    -- local variable with assignment
+    $age_in_years: Integer := current_date() - $date_of_birth
+
+    -- a bound variable
+    $weight: Quantity := /data[id3]/events[id4]/data[id2]/items[id5]/value</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -982,68 +773,57 @@ computing_context
 </div>
 </div>
 <div class="sect3">
-<h4 id="_constants"><a class="anchor" href="#_constants"></a>3.4.2. Constants</h4>
+<h4 id="_constants"><a class="anchor" href="#_constants"></a>3.5.2. Constants</h4>
 <div class="paragraph">
-<p>Constants are defined via the use of the equality operator <code>=</code> in a declaration, as follows.</p>
+<p>Constants are defined via the use of the equality operator <code>=</code> in a declaration and a literal value, as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>    Mph_to_kmh_factor: Real = 1.6
-    Pounds_to_kg: Real = 0.4536</pre>
+    Pounds_to_kg: Real = 0.4536
+    Systolic_normal_range: Interval&lt;Integer&gt; = |105..135|</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The result of the declaration is to defined the symbols <code>Mph_to_kmh_factor</code> and <code>Pounds_to_kg</code> as immutable constants.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_assignment"><a class="anchor" href="#_assignment"></a>3.4.3. Assignment</h4>
+<h4 id="_assignment"><a class="anchor" href="#_assignment"></a>3.5.3. Assignment</h4>
 <div class="paragraph">
 <p>An assignment to a writable variable is expressed using the <code>:=</code> operator. An assignment may be made in a declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    speed_kmh: Real                             -- declaration
-    speed_mph: Real := 35.0                     -- assignment in a declaration (not a constant)
+<pre>    $speed_kmh: Real                             -- declaration
+    $speed_mph: Real := 35.0                     -- assignment in a declaration (not a constant)
 
-    speed_kmh := speed_mph * Mph_to_kmh_factor  -- assignment</pre>
+    $speed_kmh := $speed_mph * Mph_to_kmh_factor  -- assignment</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_bound_variables_evaluation_and_validity"><a class="anchor" href="#_bound_variables_evaluation_and_validity"></a>3.5. Bound Variables, Evaluation and Validity</h3>
+<h3 id="_bound_variables_evaluation_and_validity"><a class="anchor" href="#_bound_variables_evaluation_and_validity"></a>3.6. Bound Variables, Evaluation and Validity</h3>
 <div class="paragraph">
 <p>Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable <code>$body_weight</code> may be bound to a call that retrieves a patient heart rate from the EHR, via an appropriate API call. There is no guarantee that the value is available, so <code>$body_weight</code> may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. <code>0</code> for <code>Integer</code>) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, we want something like an exception to occur.</p>
 </div>
 <div class="paragraph">
-<p>The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an <code>'undefined value'</code> exception should be generated, indicating which variable could not be evaluated. To impose more control, the predicate <code>defined ()</code> can be used within a <code>if()</code> or <code>check()</code> block to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:</p>
+<p>The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an <code>'undefined value'</code> exception should be generated, indicating which variable could not be evaluated. To impose more control, the predicate <code>exists ()</code> can be used within an expression or assertion to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    if defined ($heart_rate) and defined ($blood_pressure) then
-        -- statements mentioning $heart_rate and $blood_pressure
-    end
-
-    check defined ($heart_rate) and defined ($blood_pressure) then  -- generates exception is False
-        -- statements mentioning $heart_rate and $blood_pressure
-    end</pre>
+<pre>    Check_vs_vars: exists $heart_rate and exists $blood_pressure</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Another difference between bound and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of a bound variable <code>v</code>, is <code>v</code> read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the <code>currency</code> attribute.</p>
-</div>
-<div class="paragraph">
-<p>To assert that a certain part of a larger data structure exists, the following construct can be used.</p>
+<p>To assert that a certain part of a larger data structure exists, the following assertion can be used.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    check $is_smoker implies defined ($smoking_details) end</pre>
+<pre>    Smoker_details_recorded: $is_smoker implies exists $smoking_details</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="language-expressions"><a class="anchor" href="#language-expressions"></a>3.6. Expressions</h3>
+<h3 id="language-expressions"><a class="anchor" href="#language-expressions"></a>3.7. Expressions</h3>
 <div class="paragraph">
 <p>Expressions constitute the main part of the Expressions language, and consist of a familiar typed, operator-based syntax common to many programming languages and logics. Formally, an expression is any of the following entities:</p>
 </div>
@@ -1060,7 +840,7 @@ computing_context
 <p><em>constants</em>;</p>
 </li>
 <li>
-<p><em>literals</em>: values are of any primitive type, and are expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html">ODIN syntax</a>. Examples are shown above under <a href="#_typing">Section 7.4</a>;</p>
+<p><em>literals</em>: values are of any primitive type, and are expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html">ODIN syntax</a>. Examples are shown above under <a href="#_typing">Section 3.3</a>;</p>
 </li>
 </ul>
 </div>
@@ -1080,46 +860,74 @@ computing_context
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>The terminal entity types have already been described above. This section describes operators and functions.</p>
-</div>
 <div class="sect3">
-<h4 id="_functions"><a class="anchor" href="#_functions"></a>3.6.1. Functions</h4>
+<h4 id="_terminal_entities"><a class="anchor" href="#_terminal_entities"></a>3.7.1. Terminal Entities</h4>
 <div class="paragraph">
-<p>All functions are considered to have a formal type signature of the form:</p>
+<p>Terminal entities in EL are any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>variable</p>
+</li>
+<li>
+<p>variable with sub-path</p>
+</li>
+<li>
+<p>constant</p>
+</li>
+<li>
+<p>function call</p>
+</li>
+<li>
+<p>raw path</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use of variables, constants and function calls is the same as in common languages, using the following syntax.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    &lt;T_arg1, T_arg2, ....&gt;: T_result
+<pre>    -- expression containing a variable and function call
+    current_date() - $date_of_birth
 
-e.g.
-
-    : Date                          -- signature of a 0-order function like current_date
-    &lt;Real, Real&gt;: Real              -- signature of a 2nd-order function like '*' for the domain R
-    &lt;Integer, Integer&gt;: Integer     -- signature of a 2nd-order function like 'add' for the domain I</pre>
+    -- expression containing a variable and a constant
+    $speed_mph * Mph_to_kmh_factor</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that 0-order functions do not require parentheses when called.</p>
+<p>Variables that are bound to paths may be used to generate a reference to a sub-element, using an Xpath-like approach, as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    $event: List&lt;Event&gt; := /data[id2]/events[id3]
+
+    Check_field_vals: $event/data[id4]/items[id7]/value/magnitude =
+        $event/data[id4]/items[id5]/value/magnitude - $event/data[id4]/items[id6]/value/magnitude</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>All functions that take <code>Real</code> argument will take <code>Integer</code> arguments and automatically promote them to <code>Real</code> in the usual fashion.</p>
+<p>In the above, the construction <code>$event/data[id4]/items[id7]/value/magnitude</code> references an element in the data context whose location is given by the path to which $event is bound, i.e. <code>/data[id2]/events[id3]</code>, concatenated with the subordinate path, giving a resulting path of <code>/data[id2]/events[id3]/data[id4]/items[id7]/value/magnitude</code>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, in the current version of EL, raw paths may be used directly as variables. This is primarily to allow UI expression building tools that work based on the path map of a data context (e.g. an openEHR archetype) to generate expressions directly using paths rather than introducing variables.</p>
 </div>
 <div class="sect4">
-<h5 id="_built_in_functions"><a class="anchor" href="#_built_in_functions"></a>3.6.1.1. Built-in Functions</h5>
+<h5 id="_functions"><a class="anchor" href="#_functions"></a>3.7.1.1. Functions</h5>
 <div class="paragraph">
 <p>Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. A simple example is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    $date_of_birth: Date                   -- bound to data context
-    age: Duration
+<pre>    $date_of_birth: Date
+    $age: Duration
 
-    age := current_date - $date_of_birth</pre>
+    $age := current_date() - $date_of_birth</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This uses the built-in 0-order function <code>current_date</code> to compute a person&#8217;s age in the standard way. The typing is based on the operator <code>-</code> (subtract) being defined on the type <code>Date</code> as the following:</p>
+<p>This uses the built-in function <code>current_date()</code> to compute a person&#8217;s age in the standard way. The typing is based on the operator <code>-</code> (subtract) in the type <code>Date</code> having the following signature, as defined in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html#_iso8601_date_class" target="_blank" rel="noopener">openEHR Foundation Types Specification</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1128,7 +936,7 @@ e.g.
 </div>
 </div>
 <div class="paragraph">
-<p>The built-in functions are listed below.</p>
+<p>The built-in functions are formally defined in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/base_types.html" target="_blank" rel="noopener">openEHR Base Types Specification</a>. Some common ones are listed below.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1151,21 +959,27 @@ e.g.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">current_date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">current_date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>current_date()</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">:Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Current date</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">current_time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">current_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>current_time()</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">:Time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Current time</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">current_date_time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">current_date_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>current_date_time()</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">:Date_time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Curent date time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current_time_zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>current_time_zone()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:Time_zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Curent time zone</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">Degree N functions (N arguments)</p></th>
@@ -1196,10 +1010,13 @@ e.g.
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Any other functions that are used need to be mapped by the EL engine to implementations with matching signatures.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="language-operators"><a class="anchor" href="#language-operators"></a>3.6.2. Operators</h4>
+<h4 id="language-operators"><a class="anchor" href="#language-operators"></a>3.7.2. Operators</h4>
 <div class="paragraph">
 <p>Expressions can include arithmetic, relational and boolean operators, plus the existential and universal quantifiers. The full operator set is shown below, along with textual and symbolic renderings. The latter are just standard Unicode symbols. Expression parsers should ideally support these symbols as operator equivalents in addition to the textual form, since it allows expressions to be expressed in a more compact and less language-independent way.</p>
 </div>
@@ -1227,7 +1044,7 @@ e.g.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">exp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">≥</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expontentiation</p></td>
 </tr>
 <tr>
@@ -1338,26 +1155,26 @@ e.g.
 <p>Operator semantics that require further explanation are described below.</p>
 </div>
 <div class="sect4">
-<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>3.6.2.1. Logical Negation</h5>
+<h5 id="_logical_negation"><a class="anchor" href="#_logical_negation"></a>3.7.2.1. Logical Negation</h5>
 <div class="paragraph">
 <p>All Boolean operators take Boolean operands and generate a Boolean result. The <code>not</code> operator can be applied as a prefix operator to all operators returning a Boolean result as well as a parenthesised Boolean expression.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.6.2.2. Precedence and Parentheses</h5>
+<h5 id="_precedence_and_parentheses"><a class="anchor" href="#_precedence_and_parentheses"></a>3.7.2.2. Precedence and Parentheses</h5>
 <div class="paragraph">
-<p>The precedence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
+<p>The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    at_risk := $weight &gt; 120 and ($is_smoker or $is_hypertensive)</pre>
+<pre>    $at_risk := $weight &gt; 120 and ($is_smoker or $is_hypertensive)</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_container_operators"><a class="anchor" href="#_container_operators"></a>3.7. Container Operators</h3>
+<h3 id="_container_operators"><a class="anchor" href="#_container_operators"></a>3.8. Container Operators</h3>
 <div class="paragraph">
 <p>The two standard quantification operators from predicate logic <code>there exists</code> (∃ operator) and <code>for all</code> (∀ operator) are defined in EL for the container types found in the <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/foundation_types.html" target="_blank" rel="noopener">openEHR Foundation Types</a>.</p>
 </div>
@@ -1366,7 +1183,7 @@ e.g.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    there_exists v in container_var | &lt;Boolean expression mentioning v&gt;</pre>
+<pre>    there_exists v : container_var | &lt;Boolean expression mentioning v&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1378,29 +1195,11 @@ e.g.
 </div>
 </div>
 <div class="paragraph">
-<p>The above may also be expressed in EL as its functional equivalent:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="kotlin"><span></span>    <span class="tok-n">list_of_reals</span><span class="tok-p">:</span> <span class="tok-n">List</span><span class="tok-p">&lt;</span><span class="tok-n">Real</span><span class="tok-p">&gt;</span>
-
-    <span class="tok-p">|</span>
-    <span class="tok-p">|</span> <span class="tok-n">an</span> <span class="tok-n">expression</span> <span class="tok-n">that</span> <span class="tok-n">will</span> <span class="tok-k">return</span> <span class="tok-k">true</span> <span class="tok-k">if</span> <span class="tok-n">list_of_reals</span>
-    <span class="tok-p">|</span> <span class="tok-n">contains</span> <span class="tok-n">a</span> <span class="tok-n">value</span> <span class="tok-n">greater</span> <span class="tok-n">than</span> <span class="tok-m">140.0</span>
-    <span class="tok-p">|</span>
-    <span class="tok-n">list_of_reals</span><span class="tok-p">.</span><span class="tok-n">there_exists</span> <span class="tok-p">(</span>
-        <span class="tok-n">agent</span> <span class="tok-p">(</span><span class="tok-n">v</span><span class="tok-p">:</span> <span class="tok-n">Real</span><span class="tok-p">):</span> <span class="tok-n">Boolean</span> <span class="tok-p">{</span>
-            <span class="tok-n">v</span> <span class="tok-p">&gt;</span> <span class="tok-m">140.0</span>
-        <span class="tok-p">}</span>
-    <span class="tok-p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
 <p>The <code>for_all</code> operator has similar textual syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    for_all v in container_var | &lt;Boolean expression mentioning v&gt;</pre>
+<pre>    for_all v : container_var | &lt;Boolean expression mentioning v&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1412,351 +1211,16 @@ e.g.
 </div>
 </div>
 <div class="paragraph">
-<p>The above may also be expressed in EL as its functional equivalent:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="kotlin"><span></span>    <span class="tok-n">list_of_reals</span><span class="tok-p">:</span> <span class="tok-n">List</span><span class="tok-p">&lt;</span><span class="tok-n">Real</span><span class="tok-p">&gt;</span>
-
-    <span class="tok-p">|</span>
-    <span class="tok-p">|</span> <span class="tok-n">an</span> <span class="tok-n">expression</span> <span class="tok-n">that</span> <span class="tok-n">will</span> <span class="tok-k">return</span> <span class="tok-k">true</span> <span class="tok-k">if</span> <span class="tok-n">list_of_reals</span>
-    <span class="tok-p">|</span> <span class="tok-n">consists</span> <span class="tok-n">of</span> <span class="tok-n">values</span> <span class="tok-n">all</span> <span class="tok-n">greater</span> <span class="tok-n">than</span> <span class="tok-m">140.0</span>
-    <span class="tok-p">|</span>
-    <span class="tok-n">list_of_reals</span><span class="tok-p">.</span><span class="tok-n">for_all</span> <span class="tok-p">(</span>
-        <span class="tok-n">agent</span> <span class="tok-p">(</span><span class="tok-n">v</span><span class="tok-p">:</span> <span class="tok-n">Real</span><span class="tok-p">):</span> <span class="tok-n">Boolean</span> <span class="tok-p">{</span>
-            <span class="tok-n">v</span> <span class="tok-p">&gt;</span> <span class="tok-m">140.0</span>
-        <span class="tok-p">}</span>
-    <span class="tok-p">)</span></code></pre>
-</div>
+<p>For both operators, the <code>:</code> symbol may be replaced by the keyword <code>in</code>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_terminology"><a class="anchor" href="#_terminology"></a>4. Terminology</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>An EL text may have a terminology defined for it, which enables natural language renderings of its symbols to be defined. This is done in exactly the same way as the definition of terms in <a href="https://specifications.openehr.org/releases/AM/latest/ADL2.html#_terminology_section">ADL2</a> (semantics defined by AOM2). The only difference from terminology definition in openEHR archetypes is that instead of the code names being of the form <code>idN</code>, <code>atN</code> and <code>acN</code>, they are simply the symbolic variable names. Since symbolic variables are normally defined to be meaningful in their own right (i.e. in the same way as by programmers using typical programming languages), EL texts and expressions are readable in one language (just as say, Java library code published by Oracle) but additionally translatable for rendering purposes to any language for which there is a translation.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="adl"><span></span><span class="tok-err">openEHR-bmi.v1</span>
-
-<span class="tok-gh">language</span>
-    <span class="tok-nc">original_language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">en</span><span class="tok-p">]&gt;</span>
-    <span class="tok-nc">translations</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;pt-br&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;[</span><span class="tok-nd">ISO_639-1</span><span class="tok-p">::</span><span class="tok-nd">pt-br</span><span class="tok-p">]&gt;</span>
-            <span class="tok-nc">author</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;name&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Jussara Rözsch&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;organisation&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;OpenEHR  Foundation&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;email&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;jussara.macedo@gmail.com&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-nc">accreditation</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Medical Doctor, Psychiarist, ...&quot;</span><span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span>
-
-<span class="tok-gh">description</span>
-    <span class="tok-p">...</span>
-
-<span class="tok-gh">definition</span>
-    <span class="tok-p">...</span>
-
-<span class="tok-gh">terminology</span>
-    <span class="tok-nc">symbol_definitions</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;en&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body weight&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;weight of subject body&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;body mass index&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;pt&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;peso do corpo do sujeito&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;...&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;bmi&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">text</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">description</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;índice de massa corporal&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_data_context"><a class="anchor" href="#_data_context"></a>5. Data Context</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-This section is informative only, and intended as a guide to possible implementation.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Expressions in the openEHR Expression Language contain variables, which may be <em>bound</em> to entities in a <em>data context</em>. Each binding connects a symbolic variable to a data source or target in the data context.</p>
-</div>
-<div class="sect2">
-<h3 id="_binding_model"><a class="anchor" href="#_binding_model"></a>5.1. Binding Model</h3>
-<div class="paragraph">
-<p>The model of binding of a symbolic variable in an expression to an external entity varies, depending on specifics of system architecture. The taxonomy shown below illustrates the various forms of context that are assumed to exist. There are two essential types: <em>execution context</em> and <em>content context</em>. The first corresponds to obtaining the required data item from the current execution context, either via a <em>system call</em>, of which concrete subtypes are <em>API call</em> and <em>query</em> (left side of the diagram), or <em>interactive</em>, i.e. via an application.</p>
-</div>
-<div id="data_binding_taxonomy" class="imageblock text-center text-center">
-<div class="content">
-<img src="expression/diagrams/data_binding_taxonomy.svg" alt="data binding taxonomy">
-</div>
-<div class="title">Figure 1. Taxonomy of data binding</div>
-</div>
-<div class="paragraph">
-<p>Since a binding represents a data mapping, the direction needs to be specified. This may be logically understood as <code>in</code>, <code>out</code> or <code>in_out</code>, indicating whether the variable is reading a value from the external world, writing a value to it, or may do both.</p>
-</div>
-<div class="paragraph">
-<p>In addition to binding target and direction, it is often important to state the <em>data quality</em>, typically at least <em>currency</em> i.e. how recent the data must be to be valid. In the various types of binding, data quality may be specified in different ways. For example, for the content context type, data currency of the data is assumed (i.e. not stated). In the API call case, it may be explicitly specified, whilst in the query case, it will normally be specified within the query e.g. by means of a <code>WHERE</code> clause expression that references a relevant time-related meta-data item.</p>
-</div>
-<div class="paragraph">
-<p>Another aspect of data quality is when a bound variable is sampled from its external context with respect to the execution of rules or expressions mentioning it. The default is that it is sampled once at the start of execution of a rule set containing expressions that mention the variable, i.e. at the point of parsing the context definition. However if a rule set is repeatedly evaluated, some variables may require sampling in real time, whereas others might only need to be sampled once, or less frequently. For example, for a rule set that is executed every minute, patient vital signs variables usually need to be sampled each time, whereas a variable like patient weight need only be sampled once per day.</p>
-</div>
-<div class="paragraph">
-<p>In a data context definition, bindings of the various concrete types are stated. Within each type, the individual variable bindings are expressed with repect to an <em>index context</em>, which varies depending on the binding type. The general structure of a data context definition is as follows.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>data_context
-    content_bindings
-        index_context_id
-            var_name
-                binding_definition
-            var_name
-                binding_definition
-    api_bindings
-        index_context_id
-            var_name
-                binding_definition
-    query_bindings
-        index_context_id
-            var_name
-                binding_definition
-    interactive_bindings
-        index_context_id
-            var_name
-                binding_definition</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>binding_definition</code> elements are data structures whose contents instantiate the model of each kind of binding. In the examples below, these are shown in <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html">ODIN syntax</a>.</p>
-</div>
-<div class="sect3">
-<h4 id="_content_binding"><a class="anchor" href="#_content_binding"></a>5.1.1. Content Binding</h4>
-<div class="paragraph">
-<p>A content context corresponds to data assumed to be available within a larger data entity such as a document or other structure, being the result of a prior retrieval or data creation. In this case i.e. the variable is bound to a data item within the content structure, identified by a path or identifier.</p>
-</div>
-<div class="paragraph">
-<p>Binding of a variable to a <em>content context</em> is done by mapping the variable to an item within the context, such as an openEHR archetype or template, as shown below.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">data_context</span>
-    <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-COMPOSITION.encounter.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;date_initial_onset&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data[id2]/items[id3]/value[id35]/value&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Both input (i.e. 'read') and output (i.e. 'write') variables can be mapped, as per the following that shows the mappings of the variables <code>body_weight</code>, <code>height</code> and <code>body_mass_index</code>, of which the latter is an output variable. This means that it may be assigned to, and that part of the processing of such an assignment statement may be to write the result into the binding target.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">data_context</span>
-    <span class="tok-nc">content_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_measurements.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_weight&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;height&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id6]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;openEHR-EHR-OBSERVATION.body_mass_index.v1&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;body_mass_index&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">target</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;/data/events[id3]/data/items[id5]/value/magnitude&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;out&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_api_call_binding"><a class="anchor" href="#_api_call_binding"></a>5.1.2. API Call Binding</h4>
-<div class="paragraph">
-<p>A binding to an API call is used when the required value can be obtained through such a call in a defined interface. The following shows how the value for the variable <code>systolic_bp</code> is obtained from the API call <code>vital_sign ($ehr_id, "systolic_pressure")</code>, that must have been measured in the last 1 hour. In this case, the index context is the system identifier, <code><a href="https://oncology.health.org/cdr/" class="bare">https://oncology.health.org/cdr/</a></code> in the example.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">data_context</span>
-    <span class="tok-nc">api_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;systolic_bp&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">call_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;vital_sign&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;$ehr_id&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;systolic_pressure&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">currency</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-err">P</span><span class="tok-mi">1</span><span class="tok-nc">h</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph tbd">
-<p>TBD: need to codify REST URI flavour of doing this.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_query_binding"><a class="anchor" href="#_query_binding"></a>5.1.3. Query Binding</h4>
-<div class="paragraph">
-<p>A common special case of an API call is when the call is to executure a query, either stored or ad hoc. In this case, the API call name doesn&#8217;t change, and either an id (stored query case) or the text of a query is supplied. In this case, the <code>parameters</code> states the substitutable parameter values to be used in the query when executed, where each such value replaces a named parameter, assumed to be of the form <code>'$param'</code>, with a provided value.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">data_context</span>
-    <span class="tok-nc">query_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;systolic_bp&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">call_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;execute_stored_query&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">query_id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;vital_signs_basic&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                    <span class="tok-p">[</span><span class="tok-s">&quot;$type&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;&#39;systolic_pressure&#39;&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The following example shows how a Boolean variable <code>is_diabetic</code> is populated from a stored query <code>has_diagnosis</code> that takes a SNOMED CT constraint expression as an argument.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">data_context</span>
-    <span class="tok-nc">query_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;https://oncology.health.org/cdr/&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;is_diabetic&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">call_name</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;execute_stored_query&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">query_id</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;has_diagnosis&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">parameters</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                    <span class="tok-p">[</span><span class="tok-s">&quot;$dx_expr&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;&#39;&lt;&lt;[snomed_ct::1234567]&#39;&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">&gt;</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_interactive_binding"><a class="anchor" href="#_interactive_binding"></a>5.1.4. Interactive Binding</h4>
-<div class="paragraph">
-<p>Rather than obtaining a data value from and API or query, it may be obtained interactively. Various parameters may apply here, as shown in the following example. Here, the index context is an application name. The special name <code>"default"</code> means that the identity of the application or other interactive method is determined by the enclosing context, e.g. it may be the current application or a generic decision support UI.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">data_context</span>
-    <span class="tok-nc">interactive_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;default&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-p">[</span><span class="tok-s">&quot;is_diabetic&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">visual_control_type</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;boolean&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">prompt</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;is_diabetic_prompt&quot;</span><span class="tok-p">&gt;,</span>
-                <span class="tok-nc">direction</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;in&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_computing_context"><a class="anchor" href="#_computing_context"></a>6. Computing Context</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-This section is informative only, and intended as a guide to possible implementation.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Expressions may contain user-defined functions and procedures, whose signatures are declared in the <code>definition</code> part of an EL text. The implementations of such routines can be developed or provided in a library in any language, e.g. TypeScript, Java, C#, Python etc. Implementations of used routines are bound to their EL declarations in the <code>computing_context</code> section of a full EL text. The following provides an example in which two libraries, one in Java and one in Python are bound to functions declared in an EL text.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="odin"><span></span><span class="tok-nc">computing_context</span>
-    <span class="tok-nc">library_bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-        <span class="tok-p">[</span><span class="tok-s">&quot;onco_staging_lib&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-nc">connector</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;java8&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">library</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;onco_staging_lib.jar&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">xxx</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;xxx&quot;</span><span class="tok-p">&gt;</span>  <span class="tok-c">-- other connector details</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-nc">bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;tnm_major_number&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;TnmCalculator::tnmNumericVal&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;tnm_prefix&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;TnmCalculator::tnmPrefixVal&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-
-        <span class="tok-p">[</span><span class="tok-s">&quot;anti_coag_lib&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-            <span class="tok-nc">connector</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-nc">language</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;python&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">library</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;anti_coagulation_algorithms&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-nc">xxx</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;xxx&quot;</span><span class="tok-p">&gt;</span>  <span class="tok-c">-- other connector details</span>
-            <span class="tok-p">&gt;</span>
-            <span class="tok-nc">bindings</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;chadsvasc_score&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Anti_coag_lib_wrapper::CHA2DS2_VASc_score&quot;</span><span class="tok-p">&gt;</span>
-                <span class="tok-p">[</span><span class="tok-s">&quot;warfarin_dose&quot;</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">&lt;</span><span class="tok-s">&quot;Anti_coag_lib_wrapper::calc_warfarin_dose&quot;</span><span class="tok-p">&gt;</span>
-            <span class="tok-p">&gt;</span>
-        <span class="tok-p">&gt;</span>
-    <span class="tok-p">&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the above, the Java function <code><em>tnmNumericVal()</em></code> from the class <code>TnmCalculator</code> is bound to the EL-declared function <code><em>tnm_major_number()</em></code>. It is assumed that the two functions match in signatures, i.e. have the same number of arguments in the same order and of the same types. This is most likely to be achieved by writing a wrapper class around one or more classes that are found in existing libraries. Additionally, it must be possible for the implementation class to be instantiated with no arguments.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: or else they have to be supplied in the binding</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>7. The Expression Object Model</h2>
+<h2 id="_the_expression_object_model"><a class="anchor" href="#_the_expression_object_model"></a>4. The Expression Object Model</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>7.1. Overview</h3>
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>expression</code> package defines the Expression Object Model (EOM), a model of 'statements' and 'expressions' that can be used in various contexts in openEHR, including inside archetypes and in GDL guidelines. If the Expression Language or other syntax-based artefact is used, the model described here defines the parser output in the form of an expression tree. Other openEHR models designed for a particular purpose may reuse the <code>expression</code> package and further specialise some of its types specifically intended for extension.</p>
 </div>
@@ -1767,11 +1231,11 @@ This section is informative only, and intended as a guide to possible implementa
 <div class="content">
 <img src="UML/diagrams/BASE-expression_packages.svg" alt="BASE expression packages">
 </div>
-<div class="title">Figure 2. base.expression Package</div>
+<div class="title">Figure 1. base.expression Package</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>7.2. Core Package</h3>
+<h3 id="_core_package"><a class="anchor" href="#_core_package"></a>4.2. Core Package</h3>
 <div class="paragraph">
 <p>The main <code>expression</code> packages <code>core</code> and <code>extension</code> are illustrated below.</p>
 </div>
@@ -1779,7 +1243,7 @@ This section is informative only, and intended as a guide to possible implementa
 <div class="content">
 <img src="UML/diagrams/BASE-expression.svg" alt="BASE expression">
 </div>
-<div class="title">Figure 3. base.expression.core Package</div>
+<div class="title">Figure 2. base.expression.core Package</div>
 </div>
 <div class="paragraph">
 <p>A group of statements to be used together is formally defined as one or more <code>STATEMENTs</code> in a <code>STATEMENT_SET</code>. There are three types of statements corresponding to the classes <code>ASSERTION</code>, <code>VARIABLE_DECLARATION</code> and <code>ASSIGNMENT</code>. Assertions consist of an expression tree structure that evaluates to a <code>Boolean</code> value. The root of the tree is a descendant of the class <code>EXPR_ITEM</code> that represents a Boolean-returning operator or value. An Assertion has an optional tag, enabling it to be named.</p>
@@ -1791,7 +1255,7 @@ This section is informative only, and intended as a guide to possible implementa
 <p>The <code>ASSIGNMENT</code> class defines the usual operation of assigning a value (the <code><em>source</em></code> i.e. the notional right-hand side) to a variable, (the <code><em>target</em></code>, i.e. left-hand side). The source of an assignment can be any Expression or an <code>EXTERNAL_QUERY</code>, which are sub-types of <code>EXPR_VALUE</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>7.2.1. Expressions</h4>
+<h4 id="_expressions"><a class="anchor" href="#_expressions"></a>4.2.1. Expressions</h4>
 <div class="paragraph">
 <p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
 </div>
@@ -1809,18 +1273,18 @@ This section is informative only, and intended as a guide to possible implementa
 </div>
 </div>
 <div class="sect3">
-<h4 id="_other_statement_elements"><a class="anchor" href="#_other_statement_elements"></a>7.2.2. Other Statement Elements</h4>
+<h4 id="_other_statement_elements"><a class="anchor" href="#_other_statement_elements"></a>4.2.2. Other Statement Elements</h4>
 <div class="sect4">
-<h5 id="_external_query"><a class="anchor" href="#_external_query"></a>7.2.2.1. External Query</h5>
+<h5 id="_external_query"><a class="anchor" href="#_external_query"></a>4.2.2.1. External Query</h5>
 <div class="paragraph">
 <p>An <code>EXTERNAL_QUERY</code> is a type of expression representing a call to an external service which obtains a value for it. This enables information items from the exterior computational environment to be treated as abstract typed values within expressions.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>7.2.3. Class Descriptions</h4>
+<h4 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.2.3. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_statement_set_class"><a class="anchor" href="#_statement_set_class"></a>7.2.3.1. STATEMENT_SET Class</h5>
+<h5 id="_statement_set_class"><a class="anchor" href="#_statement_set_class"></a>4.2.3.1. STATEMENT_SET Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1873,7 +1337,7 @@ This section is informative only, and intended as a guide to possible implementa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_statement_class"><a class="anchor" href="#_statement_class"></a>7.2.3.2. STATEMENT Class</h5>
+<h5 id="_statement_class"><a class="anchor" href="#_statement_class"></a>4.2.3.2. STATEMENT Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1895,7 +1359,7 @@ This section is informative only, and intended as a guide to possible implementa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_assertion_class"><a class="anchor" href="#_assertion_class"></a>7.2.3.3. ASSERTION Class</h5>
+<h5 id="_assertion_class"><a class="anchor" href="#_assertion_class"></a>4.2.3.3. ASSERTION Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1947,7 +1411,7 @@ This section is informative only, and intended as a guide to possible implementa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_variable_declaration_class"><a class="anchor" href="#_variable_declaration_class"></a>7.2.3.4. VARIABLE_DECLARATION Class</h5>
+<h5 id="_variable_declaration_class"><a class="anchor" href="#_variable_declaration_class"></a>4.2.3.4. VARIABLE_DECLARATION Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1992,7 +1456,7 @@ This section is informative only, and intended as a guide to possible implementa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_assignment_class"><a class="anchor" href="#_assignment_class"></a>7.2.3.5. ASSIGNMENT Class</h5>
+<h5 id="_assignment_class"><a class="anchor" href="#_assignment_class"></a>4.2.3.5. ASSIGNMENT Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2037,7 +1501,7 @@ This section is informative only, and intended as a guide to possible implementa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_value_class"><a class="anchor" href="#_expr_value_class"></a>7.2.3.6. EXPR_VALUE Class</h5>
+<h5 id="_expr_value_class"><a class="anchor" href="#_expr_value_class"></a>4.2.3.6. EXPR_VALUE Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2071,7 +1535,7 @@ This section is informative only, and intended as a guide to possible implementa
 </table>
 </div>
 <div class="sect4">
-<h5 id="_external_query_class"><a class="anchor" href="#_external_query_class"></a>7.2.3.7. EXTERNAL_QUERY Class</h5>
+<h5 id="_external_query_class"><a class="anchor" href="#_external_query_class"></a>4.2.3.7. EXTERNAL_QUERY Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2126,7 +1590,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expression_class"><a class="anchor" href="#_expression_class"></a>7.2.3.8. EXPRESSION Class</h5>
+<h5 id="_expression_class"><a class="anchor" href="#_expression_class"></a>4.2.3.8. EXPRESSION Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2164,7 +1628,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_operator_class"><a class="anchor" href="#_expr_operator_class"></a>7.2.3.9. EXPR_OPERATOR Class</h5>
+<h5 id="_expr_operator_class"><a class="anchor" href="#_expr_operator_class"></a>4.2.3.9. EXPR_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2216,7 +1680,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_unary_operator_class"><a class="anchor" href="#_expr_unary_operator_class"></a>7.2.3.10. EXPR_UNARY_OPERATOR Class</h5>
+<h5 id="_expr_unary_operator_class"><a class="anchor" href="#_expr_unary_operator_class"></a>4.2.3.10. EXPR_UNARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2254,7 +1718,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_binary_operator_class"><a class="anchor" href="#_expr_binary_operator_class"></a>7.2.3.11. EXPR_BINARY_OPERATOR Class</h5>
+<h5 id="_expr_binary_operator_class"><a class="anchor" href="#_expr_binary_operator_class"></a>4.2.3.11. EXPR_BINARY_OPERATOR Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2299,7 +1763,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>7.2.3.12. OPERATOR_DEF Class</h5>
+<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>4.2.3.12. OPERATOR_DEF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2345,7 +1809,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_operator_def_builtin_class"><a class="anchor" href="#_operator_def_builtin_class"></a>7.2.3.13. OPERATOR_DEF_BUILTIN Class</h5>
+<h5 id="_operator_def_builtin_class"><a class="anchor" href="#_operator_def_builtin_class"></a>4.2.3.13. OPERATOR_DEF_BUILTIN Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2377,7 +1841,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_builtin_operators_class"><a class="anchor" href="#_builtin_operators_class"></a>7.2.3.14. BUILTIN_OPERATORS Class</h5>
+<h5 id="_builtin_operators_class"><a class="anchor" href="#_builtin_operators_class"></a>4.2.3.14. BUILTIN_OPERATORS Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2414,7 +1878,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_leaf_class"><a class="anchor" href="#_expr_leaf_class"></a>7.2.3.15. EXPR_LEAF Class</h5>
+<h5 id="_expr_leaf_class"><a class="anchor" href="#_expr_leaf_class"></a>4.2.3.15. EXPR_LEAF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2468,7 +1932,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_literal_class"><a class="anchor" href="#_expr_literal_class"></a>7.2.3.16. EXPR_LITERAL Class</h5>
+<h5 id="_expr_literal_class"><a class="anchor" href="#_expr_literal_class"></a>4.2.3.16. EXPR_LITERAL Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2507,7 +1971,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_variable_ref_class"><a class="anchor" href="#_expr_variable_ref_class"></a>7.2.3.17. EXPR_VARIABLE_REF Class</h5>
+<h5 id="_expr_variable_ref_class"><a class="anchor" href="#_expr_variable_ref_class"></a>4.2.3.17. EXPR_VARIABLE_REF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2546,7 +2010,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_value_ref_class"><a class="anchor" href="#_expr_value_ref_class"></a>7.2.3.18. EXPR_VALUE_REF Class</h5>
+<h5 id="_expr_value_ref_class"><a class="anchor" href="#_expr_value_ref_class"></a>4.2.3.18. EXPR_VALUE_REF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2572,7 +2036,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_function_class"><a class="anchor" href="#_expr_function_class"></a>7.2.3.19. EXPR_FUNCTION Class</h5>
+<h5 id="_expr_function_class"><a class="anchor" href="#_expr_function_class"></a>4.2.3.19. EXPR_FUNCTION Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2615,7 +2079,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_class"><a class="anchor" href="#_function_def_class"></a>7.2.3.20. FUNCTION_DEF Class</h5>
+<h5 id="_function_def_class"><a class="anchor" href="#_function_def_class"></a>4.2.3.20. FUNCTION_DEF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2649,7 +2113,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_builtin_class"><a class="anchor" href="#_function_def_builtin_class"></a>7.2.3.21. FUNCTION_DEF_BUILTIN Class</h5>
+<h5 id="_function_def_builtin_class"><a class="anchor" href="#_function_def_builtin_class"></a>4.2.3.21. FUNCTION_DEF_BUILTIN Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2681,7 +2145,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_builtin_functions_class"><a class="anchor" href="#_builtin_functions_class"></a>7.2.3.22. BUILTIN_FUNCTIONS Class</h5>
+<h5 id="_builtin_functions_class"><a class="anchor" href="#_builtin_functions_class"></a>4.2.3.22. BUILTIN_FUNCTIONS Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2720,7 +2184,7 @@ Not yet standardised.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_extension_package"><a class="anchor" href="#_extension_package"></a>7.3. Extension Package</h3>
+<h3 id="_extension_package"><a class="anchor" href="#_extension_package"></a>4.3. Extension Package</h3>
 <div class="paragraph">
 <p>The Extension package contains classes that provide extension points to the Expression formalism. These are of three kinds:</p>
 </div>
@@ -2738,13 +2202,13 @@ Not yet standardised.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_value_references"><a class="anchor" href="#_value_references"></a>7.3.1. Value References</h4>
+<h4 id="_value_references"><a class="anchor" href="#_value_references"></a>4.3.1. Value References</h4>
 <div class="paragraph">
 <p>Value references are defined by creating descandants of the <code>EXPR_VALUE_REF</code> class. These typically contain a reference to a data object, or an identifier that can be resolved to a value via a resolver.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_operators_and_functions"><a class="anchor" href="#_operators_and_functions"></a>7.3.2. Operators and Functions</h4>
+<h4 id="_operators_and_functions"><a class="anchor" href="#_operators_and_functions"></a>4.3.2. Operators and Functions</h4>
 <div class="paragraph">
 <p>Externally defined operators and functions are defined as the separate types <code>OPERATOR_DEF_EXTERNAL</code> and <code>FUNCTION_DEF_EXTERNAL</code> resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Expression language.</p>
 </div>
@@ -2762,9 +2226,9 @@ Not yet standardised.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>7.3.3. Class Descriptions</h4>
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>4.3.3. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_operator_def_external_class"><a class="anchor" href="#_operator_def_external_class"></a>7.3.3.1. OPERATOR_DEF_EXTERNAL Class</h5>
+<h5 id="_operator_def_external_class"><a class="anchor" href="#_operator_def_external_class"></a>4.3.3.1. OPERATOR_DEF_EXTERNAL Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2800,7 +2264,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_op_def_example_class"><a class="anchor" href="#_op_def_example_class"></a>7.3.3.2. OP_DEF_EXAMPLE Class</h5>
+<h5 id="_op_def_example_class"><a class="anchor" href="#_op_def_example_class"></a>4.3.3.2. OP_DEF_EXAMPLE Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2848,7 +2312,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_op_def_and_class"><a class="anchor" href="#_op_def_and_class"></a>7.3.3.3. OP_DEF_AND Class</h5>
+<h5 id="_op_def_and_class"><a class="anchor" href="#_op_def_and_class"></a>4.3.3.3. OP_DEF_AND Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2896,7 +2360,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_op_def_exists_class"><a class="anchor" href="#_op_def_exists_class"></a>7.3.3.4. OP_DEF_EXISTS Class</h5>
+<h5 id="_op_def_exists_class"><a class="anchor" href="#_op_def_exists_class"></a>4.3.3.4. OP_DEF_EXISTS Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2944,7 +2408,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_external_class"><a class="anchor" href="#_function_def_external_class"></a>7.3.3.5. FUNCTION_DEF_EXTERNAL Class</h5>
+<h5 id="_function_def_external_class"><a class="anchor" href="#_function_def_external_class"></a>4.3.3.5. FUNCTION_DEF_EXTERNAL Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2980,7 +2444,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_function_def_example_class"><a class="anchor" href="#_function_def_example_class"></a>7.3.3.6. FUNCTION_DEF_EXAMPLE Class</h5>
+<h5 id="_function_def_example_class"><a class="anchor" href="#_function_def_example_class"></a>4.3.3.6. FUNCTION_DEF_EXAMPLE Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3028,7 +2492,7 @@ Not yet standardised.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_typing"><a class="anchor" href="#_typing"></a>7.4. Typing</h3>
+<h3 id="_typing_2"><a class="anchor" href="#_typing_2"></a>4.4. Typing</h3>
 <div class="paragraph">
 <p>The <code>expressions.types</code> package is shown below.</p>
 </div>
@@ -3036,15 +2500,15 @@ Not yet standardised.</p>
 <div class="content">
 <img src="UML/diagrams/BASE-expression.types.svg" alt="BASE expression.types">
 </div>
-<div class="title">Figure 4. baes.expression.types Package</div>
+<div class="title">Figure 3. baes.expression.types Package</div>
 </div>
 <div class="paragraph">
 <p>The type system of the Expression formalism is defined via the type <code>EXPR_TYPE_DEF</code> and its descendants. All types have a <code><em>type_name</em></code> and a <code><em>type_anchor</em></code>, which is a variable of the coresponding primtive type from within the openEHR <code>base_types</code> package, i.e. <code>Integer</code>, <code>Real</code>, <code>String</code>, etc. The type anchor can be used for testing assignments within the implementation. A special type <code>TYPE_DEF_OBJECT</code> is included to enable a value reference (descendant of <code>EXPR_VALUE_REF</code>) to refer to a complex object, to which some expression operators can be applied, including equality and existence. The types system is extensible, as described below.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>7.4.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>4.4.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_expr_type_def_class"><a class="anchor" href="#_expr_type_def_class"></a>7.4.1.1. EXPR_TYPE_DEF Class</h5>
+<h5 id="_expr_type_def_class"><a class="anchor" href="#_expr_type_def_class"></a>4.4.1.1. EXPR_TYPE_DEF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3085,7 +2549,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>7.4.1.2. TYPE_DEF_BOOLEAN Class</h5>
+<h5 id="_type_def_boolean_class"><a class="anchor" href="#_type_def_boolean_class"></a>4.4.1.2. TYPE_DEF_BOOLEAN Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3128,7 +2592,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>7.4.1.3. TYPE_DEF_INTEGER Class</h5>
+<h5 id="_type_def_integer_class"><a class="anchor" href="#_type_def_integer_class"></a>4.4.1.3. TYPE_DEF_INTEGER Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3171,7 +2635,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>7.4.1.4. TYPE_DEF_REAL Class</h5>
+<h5 id="_type_def_real_class"><a class="anchor" href="#_type_def_real_class"></a>4.4.1.4. TYPE_DEF_REAL Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3214,7 +2678,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>7.4.1.5. TYPE_DEF_DATE Class</h5>
+<h5 id="_type_def_date_class"><a class="anchor" href="#_type_def_date_class"></a>4.4.1.5. TYPE_DEF_DATE Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3257,7 +2721,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>7.4.1.6. TYPE_DEF_DATE_TIME Class</h5>
+<h5 id="_type_def_date_time_class"><a class="anchor" href="#_type_def_date_time_class"></a>4.4.1.6. TYPE_DEF_DATE_TIME Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3300,7 +2764,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>7.4.1.7. TYPE_DEF_TIME Class</h5>
+<h5 id="_type_def_time_class"><a class="anchor" href="#_type_def_time_class"></a>4.4.1.7. TYPE_DEF_TIME Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3343,7 +2807,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>7.4.1.8. TYPE_DEF_DURATION Class</h5>
+<h5 id="_type_def_duration_class"><a class="anchor" href="#_type_def_duration_class"></a>4.4.1.8. TYPE_DEF_DURATION Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3386,7 +2850,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>7.4.1.9. TYPE_DEF_STRING Class</h5>
+<h5 id="_type_def_string_class"><a class="anchor" href="#_type_def_string_class"></a>4.4.1.9. TYPE_DEF_STRING Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3429,7 +2893,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>7.4.1.10. TYPE_DEF_URI Class</h5>
+<h5 id="_type_def_uri_class"><a class="anchor" href="#_type_def_uri_class"></a>4.4.1.10. TYPE_DEF_URI Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3472,7 +2936,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>7.4.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
+<h5 id="_type_def_terminology_code_class"><a class="anchor" href="#_type_def_terminology_code_class"></a>4.4.1.11. TYPE_DEF_TERMINOLOGY_CODE Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3515,7 +2979,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>7.4.1.12. TYPE_DEF_OBJECT_REF Class</h5>
+<h5 id="_type_def_object_ref_class"><a class="anchor" href="#_type_def_object_ref_class"></a>4.4.1.12. TYPE_DEF_OBJECT_REF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3737,7 +3201,7 @@ Not yet standardised.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-24 15:49:06 UTC
+Last updated 2021-08-11 16:44:15 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">

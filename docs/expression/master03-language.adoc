@@ -8,9 +8,9 @@ This section describes the openEHR Expression Language. In the various contexts 
 
 The syntax style used here is generally so-called 'snake_case' rather than so-called 'CamelCase', in common with other openEHR specifications, but either may be used in real applications.
 
-== Typing and Literals
+== Typing
 
-The Expression language is fully typed. The type system is the same as that used in other openEHR components, and supports the same set of basic types, namely:
+The Expression language is fully typed. The type system is the same as that used in other openEHR components, and supports the same set of basic types as described in the {openehr_foundation_types}[openEHR Foundation Types Specification^], namely:
 
 * primitive types;
 * container types:
@@ -20,11 +20,11 @@ The Expression language is fully typed. The type system is the same as that used
 * an interval type:
 ** `Interval<T: Ordered>` where T is any ordered primitive type.
 
-These types are described below.
+== Literals
 
 === Primitive Types
 
-The primitive types are shown below, along with typical literal values, which are expressed in the {openehr_odin}#_primitive_types[ODIN syntax].
+The primitive types are shown below, along with typical literal values, which are expressed in the {openehr_odin}#_primitive_types[ODIN syntax^].
 
 [cols="1,2, 3",options="header"]
 |=================================================================
@@ -50,7 +50,7 @@ TBD: do we need `Integer64` and `Real64`?
 
 === Container Types
 
-The same container types as defined in the {openehr_foundation_types}#_structure_types[BASE Foundation Types specification] are supported in EL, as follows.
+The same container types as defined in the {openehr_foundation_types}#_structure_types[Foundation Types specification^] are supported in EL, as follows.
 
 [cols="1,2, 3",options="header"]
 |=================================================================
@@ -68,51 +68,19 @@ The same container types as defined in the {openehr_foundation_types}#_structure
 |=================================================================
 
 
-The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following.
+The above types each have an assumed interface consisting of functions and procedures that apply to all members of the container, consistent with the semantics of the container. These include the following methods that may be accessed in EL via the syntactic operators `for_all` and `there_exists` described below.
 
 ----
-    has (v: T): Boolean
-            -- True container contains v
-
     for_all (test(v: T): Boolean): Boolean
             -- True if for every v in container, test (v) is True
 
     there_exists (test(v: T): Boolean): Boolean
-            -- True if there is any v in container for which test (v) is True
-            
-    do_all (proc(v: T))
-            -- execute proc(v) for every v in interval
-
-    do_if (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval for which test(v) is True
-
-    do_while (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns False
-
-    do_until (proc(v: T); test(v: T): Boolean)
-            -- execute proc(v) for every v in interval until test (v) returns True
-----
-
-Any such method may be accessed in the usual way, using dot notation, i.e. as shown below for the method `some()`.
-
-----
-    $heart_rate_samples: List<Real>
-    Atrial_fibrillation_threshold: Real = 100.0
-    
-    if $heart_rate_samples.some (
-        (v:Real): Boolean
-            do
-                Result := v > Atrial_fibrillation_threshold 
-            end
-        )
-    then
-        --
-    end
+            -- True if there is any v in container for which test (v) is True            
 ----
 
 === Interval Type
 
-The same `Interval` type as defined in the {openehr_foundation_types}#_interval[BASE Foundation Types specification] is supported in EL, as follows. Literal interval values take the same form as in {openehr_odin}#_intervals_of_ordered_primitive_types[ODIN].
+The same `Interval` type as defined in the {openehr_foundation_types}#_interval[Foundation Types specification] is supported in EL, as follows. Literal interval values take the same form as in {openehr_odin}#_intervals_of_ordered_primitive_types[ODIN].
 
 [cols="1,2, 3",options="header"]
 |=================================================================
@@ -132,80 +100,65 @@ The same `Interval` type as defined in the {openehr_foundation_types}#_interval[
 
 Automatic type promotion from `Interval<Integer>` to `Interval<Real>` applies to all integer and real values and expressions, in the same fashion as most programming languages.
 
-Various methods are assumed for `Interval<T>`, as follows.
+== Statements
 
-----
-    has (v: T): Boolean
-            -- True if for Interval contains v
-
-    overlaps (other: like Current): Boolean
-            -- True if this Interval overlaps other
-            
-    contains (other: like Current): Boolean
-            -- True if this Interval contains other
-----
-
-== Basic Structures
+An EL text consists of statements, each of which may be a declaration, an assignment or an assertion.
 
 === Declarations
 
-Variables may be declared within a statement set, consisting of a name of the form `var_name` for a local variable, and `$var_name` for a bound variable, and a type. Multiple variables may be declared on the same line. The following shows various declarations:
+Variables are declared with a formal type. Bound variables additionally include an assignment to a path within an assumed data context, which may be understood as performing the binding. Local variable declaratoins may include an assignment to an expression result, in the manner of common programming languages.
 
 --------
-    date_of_birth: Date                     -- local variable
-    age_in_years: Integer                   -- local variable
+    -- local variable, primitive type
+    $date_of_birth: Date                                            
     
-    $weight, $height, $bmi: Real            -- 3 bound variables
+    -- local variable, container type
+    $heart_rate_history: List<Real>            
     
-    $heart_rate_samples: List<Real>         -- container type
+    -- local variable with assignment
+    $age_in_years: Integer := current_date() - $date_of_birth
+    
+    -- a bound variable
+    $weight: Quantity := /data[id3]/events[id4]/data[id2]/items[id5]/value
 --------
 
 Variables are referenced within assignments and expressions using the same syntax, i.e. `var_name` and `$var_name`.
 
 === Constants
 
-Constants are defined via the use of the equality operator `=` in a declaration, as follows.
+Constants are defined via the use of the equality operator `=` in a declaration and a literal value, as follows.
 
 --------
     Mph_to_kmh_factor: Real = 1.6
     Pounds_to_kg: Real = 0.4536
+    Systolic_normal_range: Interval<Integer> = |105..135|
 --------
-
-The result of the declaration is to defined the symbols `Mph_to_kmh_factor` and `Pounds_to_kg` as immutable constants.
 
 === Assignment
 
 An assignment to a writable variable is expressed using the `:=` operator. An assignment may be made in a declaration in the same way as in many programming languages. The right hand side of an assignment is any value-returning expression. Typical assignments are illustrated below.
 
 --------
-    speed_kmh: Real                             -- declaration
-    speed_mph: Real := 35.0                     -- assignment in a declaration (not a constant)
+    $speed_kmh: Real                             -- declaration
+    $speed_mph: Real := 35.0                     -- assignment in a declaration (not a constant)
         
-    speed_kmh := speed_mph * Mph_to_kmh_factor  -- assignment
+    $speed_kmh := $speed_mph * Mph_to_kmh_factor  -- assignment
 --------
 
 == Bound Variables, Evaluation and Validity
 
 Variables that are bound to entities in the data context function differently from local variables, since their availability is predicated on the existence of the relevant entities. For example, the variable `$body_weight` may be bound to a call that retrieves a patient heart rate from the EHR, via an appropriate API call. There is no guarantee that the value is available, so `$body_weight` may therefore be undefined in a sense not applicable to local variables. In a programming language, if a variable is not explicitly set, it has either the default value of the type (e.g. `0` for `Integer`) or a random value of the correct type. This behaviour is appropriate for local variables, but for bound variables that cannot be evaluated because the external entity does not exist, we want something like an exception to occur.
 
-The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an `'undefined value'` exception should be generated, indicating which variable could not be evaluated. To impose more control, the predicate `defined ()` can be used within a `if()` or `check()` block to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:
+The approach used for EL is to allow bound variables to be used freely, as for local variables, but if a bound variable cannot be evaluated from the data context, an `'undefined value'` exception should be generated, indicating which variable could not be evaluated. To impose more control, the predicate `exists ()` can be used within an expression or assertion to ensure that one or more variables can be populated before proceeding with logic that depends on them, as follows:
 
 ----
-    if defined ($heart_rate) and defined ($blood_pressure) then
-        -- statements mentioning $heart_rate and $blood_pressure
-    end
-
-    check defined ($heart_rate) and defined ($blood_pressure) then  -- generates exception is False
-        -- statements mentioning $heart_rate and $blood_pressure
-    end
+    Check_vs_vars: exists $heart_rate and exists $blood_pressure
 ----
 
-Another difference between bound and local variables is when they are evaluated. In the execution of a larger EL text containing multiple mentions of a bound variable `v`, is `v` read from the data context only once, at the first mention, or is it evaluated new each time, or on some other basis? The approach used in EL is to allow the evaluation basis to be stated in the context binding section of an EL text using the `currency` attribute.
-
-To assert that a certain part of a larger data structure exists, the following construct can be used.
+To assert that a certain part of a larger data structure exists, the following assertion can be used.
 
 --------
-    check $is_smoker implies defined ($smoking_details) end
+    Smoker_details_recorded: $is_smoker implies exists $smoking_details
 --------
 
 [[language-expressions]]
@@ -221,55 +174,69 @@ Expressions constitute the main part of the Expressions language, and consist of
 ** _operators_: arithmetic operators, relational operators, boolean operators, quantification operators;
 ** _functions_: built-in functions and user-defined functions.
 
-The terminal entity types have already been described above. This section describes operators and functions.
+=== Terminal Entities
 
-=== Functions
+Terminal entities in EL are any of the following:
 
-All functions are considered to have a formal type signature of the form:
+* variable
+* variable with sub-path
+* constant
+* function call
+* raw path
+
+Use of variables, constants and function calls is the same as in common languages, using the following syntax.
 
 ----
-    <T_arg1, T_arg2, ....>: T_result
+    -- expression containing a variable and function call
+    current_date() - $date_of_birth
     
-e.g.
-
-    : Date                          -- signature of a 0-order function like current_date
-    <Real, Real>: Real              -- signature of a 2nd-order function like '*' for the domain R
-    <Integer, Integer>: Integer     -- signature of a 2nd-order function like 'add' for the domain I
+    -- expression containing a variable and a constant
+    $speed_mph * Mph_to_kmh_factor
 ----
 
-Note that 0-order functions do not require parentheses when called.
+Variables that are bound to paths may be used to generate a reference to a sub-element, using an Xpath-like approach, as follows:
 
-All functions that take `Real` argument will take `Integer` arguments and automatically promote them to `Real` in the usual fashion.
+----
+    $event: List<Event> := /data[id2]/events[id3]
 
-==== Built-in Functions
+    Check_field_vals: $event/data[id4]/items[id7]/value/magnitude =
+        $event/data[id4]/items[id5]/value/magnitude - $event/data[id4]/items[id6]/value/magnitude
+----
+
+In the above, the construction `$event/data[id4]/items[id7]/value/magnitude` references an element in the data context whose location is given by the path to which $event is bound, i.e. `/data[id2]/events[id3]`, concatenated with the subordinate path, giving a resulting path of `/data[id2]/events[id3]/data[id4]/items[id7]/value/magnitude`.
+
+Finally, in the current version of EL, raw paths may be used directly as variables. This is primarily to allow UI expression building tools that work based on the path map of a data context (e.g. an openEHR archetype) to generate expressions directly using paths rather than introducing variables.
+
+==== Functions
 
 Functions are considered leaf entities in the Expression language, and can be of a built-in type or external (user-defined) type. A simple example is:
 
 ----
-    $date_of_birth: Date                   -- bound to data context
-    age: Duration
+    $date_of_birth: Date
+    $age: Duration
     
-    age := current_date - $date_of_birth   
+    $age := current_date() - $date_of_birth   
 ----
 
-This uses the built-in 0-order function `current_date` to compute a person's age in the standard way. The typing is based on the operator `-` (subtract) being defined on the type `Date` as the following:
+This uses the built-in function `current_date()` to compute a person's age in the standard way. The typing is based on the operator `-` (subtract) in the type `Date` having the following signature, as defined in the {openehr_foundation_types}#_iso8601_date_class[openEHR Foundation Types Specification^]:
 
 ----
     class Date
         infix '-' alias subtract (Date): Duration
 ----
 
-The built-in functions are listed below.
+The built-in functions are formally defined in the {openehr_base_types}[openEHR Base Types Specification^]. Some common ones are listed below.
 
 [cols="1,1,1,2",options="header"]
 |=================================================================
-|Name               |Textual Rendering 	|Signature          |Meaning
+|Name               |Textual Rendering     |Signature          |Meaning
 
 4+^h|Degree 0 functions (no arguments)
 
-|current_date       |current_date       |:Date              |Current date
-|current_time       |current_time       |:Time              |Current time
-|current_date_time  |current_date_time  |:Date_time         |Curent date time
+|current_date       |`current_date()`       |:Date              |Current date
+|current_time       |`current_time()`       |:Time              |Current time
+|current_date_time  |`current_date_time()`  |:Date_time         |Curent date time
+|current_time_zone  |`current_time_zone()`  |:Time_zone         |Curent time zone
 
 4+^h|Degree N functions (N arguments)
 
@@ -280,6 +247,8 @@ The built-in functions are listed below.
 
 |=================================================================
 
+Any other functions that are used need to be mapped by the EL engine to implementations with matching signatures.
+
 [[language-operators]]
 === Operators
 
@@ -288,12 +257,12 @@ Expressions can include arithmetic, relational and boolean operators, plus the e
 [cols="1,1,1,3",options="header"]
 |=================================================================
 |Identifier   |Textual +
-               Rendering 	  |Symbolic +
+               Rendering       |Symbolic +
                                Rendering  |Meaning
                                
 4+^h|Arithmetic Operators - Numeric result; descending precendence order
 
-|exp          | ^             |≥          |Expontentiation
+|exp          | ^             |^          |Expontentiation
 |times        | *             |*          |Multiplication
 |divide       | /             |/          |Division
 |mod          | %             |%          |Modulo (whole number) division
@@ -311,11 +280,11 @@ Expressions can include arithmetic, relational and boolean operators, plus the e
 
 4+^h|Logical Operators - Boolean result; descending precendence order
 
-|not          |not, ~ 		|∼  		 |Negation, "not p"
-|and          |and 			|∧ 			|Logical conjunction, "p and q"
-|or           |or 			|∨ 			|Logical disjunction, "p or q"
-|xor          |xor 			|⊻ 			 |Exclusive or, "only one of p or q"
-|implies      |implies 		|⇒ 			 |Material implication, "p implies q", or "if p then q"
+|not          |not, ~         |∼           |Negation, "not p"
+|and          |and             |∧             |Logical conjunction, "p and q"
+|or           |or             |∨             |Logical disjunction, "p or q"
+|xor          |xor             |⊻              |Exclusive or, "only one of p or q"
+|implies      |implies         |⇒              |Material implication, "p implies q", or "if p then q"
 
 |=================================================================
 
@@ -327,10 +296,10 @@ All Boolean operators take Boolean operands and generate a Boolean result. The `
 
 ==== Precedence and Parentheses
 
-The precedence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.
+The precendence of operators follows the order shown in the operator tables above. To change precedence, parentheses can be used in the fashion typical of most programming languages, as shown below.
 
 --------
-    at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
+    $at_risk := $weight > 120 and ($is_smoker or $is_hypertensive)
 --------
 
 == Container Operators
@@ -340,7 +309,7 @@ The two standard quantification operators from predicate logic `there exists` (�
 The textual syntax of `there exists` is as follows:
 
 ----
-    there_exists v in container_var | <Boolean expression mentioning v> 
+    there_exists v : container_var | <Boolean expression mentioning v>
 ----
 
 Here, the `|` symbol is usually read in English as 'such that'. The symbolic equivalent may also be used:
@@ -349,27 +318,10 @@ Here, the `|` symbol is usually read in English as 'such that'. The symbolic equ
     ∃ v : container_var | <Boolean expression mentioning v>
 ----
 
-The above may also be expressed in EL as its functional equivalent:
-
-[source,kotlin]
-----
-    list_of_reals: List<Real>
-    
-    |
-    | an expression that will return true if list_of_reals
-    | contains a value greater than 140.0
-    |
-    list_of_reals.there_exists (
-        agent (v: Real): Boolean {
-            v > 140.0
-        }
-    )
-----
-
 The `for_all` operator has similar textual syntax:
 
 ----
-    for_all v in container_var | <Boolean expression mentioning v>
+    for_all v : container_var | <Boolean expression mentioning v>
 ----
 
 Here, the `|` symbol is normally read in English as as 'it holds that'. The symbolic equivalent may also be used:
@@ -378,20 +330,4 @@ Here, the `|` symbol is normally read in English as as 'it holds that'. The symb
     ∀ v : container_var | <Boolean expression mentioning v>
 ----
 
-The above may also be expressed in EL as its functional equivalent:
-
-[source,kotlin]
-----
-    list_of_reals: List<Real>
-    
-    |
-    | an expression that will return true if list_of_reals
-    | consists of values all greater than 140.0
-    |
-    list_of_reals.for_all (
-        agent (v: Real): Boolean {
-            v > 140.0
-        }
-    )
-----
-
+For both operators, the `:` symbol may be replaced by the keyword `in`.
