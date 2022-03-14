@@ -28,14 +28,9 @@ The `ASSIGNMENT` class defines the usual operation of assigning a value (the `_s
 
 Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the `EXPR_XXX` classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <<language-expressions, Expressions>> sub-section in the Language section.
 
-In this model, 'functions' are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats functions as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.
+In this model, function calls are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats function calls as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.
 
 Operator semantics are defined by the class `OPERATOR_DEF`, which includes the two attributes `_name_` and `_symbols_` which define the name of the operator and its allowable symbols respectively.
-
-[.tbd]
-TBD: could potentially separate 'text symbols' and 'math symbols' to enable rendering in different ways.
-
-The `OPERATOR_DEF_BUILTIN` class defines a hook for implementing built-in operators, i.e. those that will be executed by fixed code within the statement evaluator, e.g. a case statement or similar that uses the implementation language native operators. 
 
 === Other Statement Elements
 
@@ -60,54 +55,11 @@ include::{uml_export_dir}/classes/expr_unary_operator.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/expr_binary_operator.adoc[leveloffset=+1]
 
 include::{uml_export_dir}/classes/operator_def.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/operator_def_builtin.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/builtin_operators.adoc[leveloffset=+1]
 
 include::{uml_export_dir}/classes/expr_leaf.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/expr_literal.adoc[leveloffset=+1]
 include::{uml_export_dir}/classes/expr_variable_ref.adoc[leveloffset=+1]
-
-include::{uml_export_dir}/classes/expr_value_ref.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/expr_function.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/function_def.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/function_def_builtin.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/builtin_functions.adoc[leveloffset=+1]
-
-== Extension Package
-
-The Extension package contains classes that provide extension points to the Expression formalism. These are of three kinds:
-
-* value references;
-* externally defined operators;
-* externally defined functions.
-
-=== Value References
-
-Value references are defined by creating descandants of the `EXPR_VALUE_REF` class. These typically contain a reference to a data object, or an identifier that can be resolved to a value via a resolver.
-
-=== Operators and Functions
-
-Externally defined operators and functions are defined as the separate types `OPERATOR_DEF_EXTERNAL` and `FUNCTION_DEF_EXTERNAL` resepectively. They could in theory be defined with a single class, however the use of two classes express the distinction between operators and functions used in the openEHR Expression language.
-
-[.tbd]
-TBD: this model in its current form treats functions and operators as separate, to allow some convenience in simple implementation of standard operators. But   Theoretically, operators are just 1-arg or 2-arg functions, and the extensions could be defined by treating them as functions. However operators also usually have a symbol form, whereas we are assuming a function's symbol is just its identifier. Also, functions can in general have variable numbers of arguments, and complex implementations. Do we want to implement operators that way?
-
-The `OPERATOR_DEF_EXTERNAL` class inherits the `_identifier_` and `_symbols_` features from `OPERATOR_DEF`, and adds an `_execution_agent_`, which is a function object that can compute the operator, given appropriate arguments. The extention part of the UML model above shows how tihs facility can be used to define two operators that would normally be implemented as built-ins, `and` and `exists`.
-
-[.tbd]
-TBD: this is shown as being done with a class per operator, but in fact it only requires instances of `OPERATOR_DEF_EXTERNAL` which have the appropriate identifiers, symbols and avaluation agent. Should we just define it this way?
-
-The approach to adding custom functions is the same as with operators.
-
-=== Class Descriptions
-
-include::{uml_export_dir}/classes/operator_def_external.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/op_def_example.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/op_def_and.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/op_def_exists.adoc[leveloffset=+1]
-
-include::{uml_export_dir}/classes/function_def_external.adoc[leveloffset=+1]
-include::{uml_export_dir}/classes/function_def_example.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/expr_function_call.adoc[leveloffset=+1]
 
 == Typing
 
