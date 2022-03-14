@@ -9,34 +9,34 @@ h|*Description*
 2+a|A BMM model component that contains packages and classes.
 
 h|*Inherit*
-2+|`BMM_MODEL_ELEMENT`
+2+|`<<_bmm_model_element_class,BMM_MODEL_ELEMENT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*packages*: `Hash<String,BMM_PACKAGE>`
+|*packages*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^],<<_bmm_package_class,BMM_PACKAGE>>>`
 a|Child packages; keys all in upper case for guaranteed matching.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*0..1*
 |*package_at_path* ( +
-a_path: `String[1]` +
-): `BMM_PACKAGE`
+a_path: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^][1]` +
+): `<<_bmm_package_class,BMM_PACKAGE>>`
 a|Package at the path `_a_path_`.
 
-h|
+h|*0..1*
 |*do_recursive_packages* ( +
-action: `PROCEDURE[1]` +
+action: `link:/releases/BASE/{base_release}/foundation_types.html#_procedure_class[PROCEDURE^][1]` +
 )
 a|Recursively execute `_action_`, which is a procedure taking a `BMM_PACKAGE` argument, on all members of packages.
 
-h|
+h|*1..1*
 |*has_package_path* ( +
-a_path: `String[1]` +
-): `Boolean`
+a_path: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^][1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if there is a package at the path `_a_path_`; paths are delimited with delimiter `_Package_name_delimiter_`.
 |===

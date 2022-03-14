@@ -9,21 +9,21 @@ h|*Description*
 2+a|Structural model of a typed first order predicate logic assertion, in the form of an expression tree, including optional variable definitions.
 
 h|*Inherit*
-2+|`STATEMENT`
+2+|`<<_statement_class,STATEMENT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*tag*: `String`
+|*tag*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Expression tag, used for differentiating multiple assertions.
 
 h|*0..1*
-|*string_expression*: `String`
+|*string_expression*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|String form of expression, in case an expression evaluator taking String expressions is used for evaluation.
 
 h|*1..1*
-|*expression*: `EXPRESSION`
+|*expression*: `<<_expression_class,EXPRESSION>>`
 a|Root of expression tree.
 |===

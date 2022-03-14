@@ -13,110 +13,117 @@ h|*Constants*
 ^h|*Meaning*
 
 h|*1..1*
-|*Seconds_in_minute*: `Integer`
+|*Seconds_in_minute*: `<<_integer_class,Integer>>{nbsp}={nbsp}60`
 a|
 
 h|*1..1*
-|*Minutes_in_hour*: `Integer`
+|*Minutes_in_hour*: `<<_integer_class,Integer>>{nbsp}={nbsp}60`
 a|
 
 h|*1..1*
-|*Hours_in_day*: `Integer`
+|*Hours_in_day*: `<<_integer_class,Integer>>{nbsp}={nbsp}24`
 a|
 
 h|*1..1*
-|*Nominal_days_in_month*: `Real`
+|*Nominal_days_in_month*: `<<_real_class,Real>>{nbsp}={nbsp}30.42`
 a|Used for conversions of durations containing months to days and / or seconds.
 
 h|*1..1*
-|*Max_days_in_month*: `Integer`
+|*Max_days_in_month*: `<<_integer_class,Integer>>{nbsp}={nbsp}31`
 a|
 
 h|*1..1*
-|*Days_in_year*: `Integer`
+|*Days_in_year*: `<<_integer_class,Integer>>{nbsp}={nbsp}365`
 a|
 
 h|*1..1*
-|*Days_in_leap_year*: `Integer`
+|*Days_in_leap_year*: `<<_integer_class,Integer>>{nbsp}={nbsp}366`
 a|
 
 h|*1..1*
-|*Max_days_in_year*: `Integer`
+|*Max_days_in_year*: `<<_integer_class,Integer>>`
 a|
 
 h|*1..1*
-|*Nominal_days_in_year*: `Real`
+|*Nominal_days_in_year*: `<<_real_class,Real>>{nbsp}={nbsp}365.24`
 a|Used for conversions of durations containing years to days and / or seconds.
 
 h|*1..1*
-|*Days_in_week*: `Integer`
+|*Days_in_week*: `<<_integer_class,Integer>>{nbsp}={nbsp}7`
 a|
 
 h|*1..1*
-|*Months_in_year*: `Integer`
+|*Months_in_year*: `<<_integer_class,Integer>>{nbsp}={nbsp}12`
 a|
 
 h|*1..1*
-|*Min_timezone_hour*: `Integer`
+|*Min_timezone_hour*: `<<_integer_class,Integer>>{nbsp}={nbsp}12`
 a|Minimum hour value of a timezone (note that the -ve sign is supplied in the ISO8601_TIMEZONE class).
 
 h|*1..1*
-|*Max_timezone_hour*: `Integer`
+|*Max_timezone_hour*: `<<_integer_class,Integer>>{nbsp}={nbsp}13`
 a|
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*valid_year* ( +
-y: `Integer[1]` +
-): `Boolean` +
-*_Post_*: `Result = y >= 0`
+y: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = y >= 0`
 a|
 
-h|
+h|*1..1*
 |*valid_month* ( +
-m: `Integer[1]` +
-): `Boolean` +
-*_Post_*: `Result = m >= 1 and m \<= Months_in_year`
+m: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = m >= 1 and m \<= Months_in_year`
 a|
 
-h|
+h|*1..1*
 |*valid_day* ( +
-y: `Integer[1]`, +
-m: `Integer[1]`, +
-d: `Integer[1]` +
-): `Boolean` +
-*_Post_*: `Result = d >= 1 and d \<= days_in_month (m, y)`
+y: `<<_integer_class,Integer>>[1]`, +
+m: `<<_integer_class,Integer>>[1]`, +
+d: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = d >= 1 and d \<= days_in_month (m, y)`
 a|True if d >= 1 and d \<= days_in_month (m, y)
 
-h|
+h|*1..1*
 |*valid_hour* ( +
-h: `Integer[1]`, +
-m: `Integer[1]`, +
-s: `Integer[1]` +
-): `Boolean` +
-*_Post_*: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)`
+h: `<<_integer_class,Integer>>[1]`, +
+m: `<<_integer_class,Integer>>[1]`, +
+s: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)`
 a|True if (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)
 
-h|
+h|*1..1*
 |*valid_minute* ( +
-m: `Integer[1]` +
-): `Boolean` +
-*_Post_*: `Result = m >= 0 and m < Minutes_in_hour`
+m: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = m >= 0 and m < Minutes_in_hour`
 a|True if m >= 0 and m < Minutes_in_hour.
 
-h|
+h|*1..1*
 |*valid_second* ( +
-s: `Integer[1]` +
-): `Boolean` +
-*_Post_*: `Result = s >= 0 and s < Seconds_in_minute`
+s: `<<_integer_class,Integer>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = s >= 0 and s < Seconds_in_minute`
 a|True if s >= 0 and s < Seconds_in_minute .
 
-h|
+h|*1..1*
 |*valid_fractional_second* ( +
-fs: `Double[1]` +
-): `Boolean` +
-*_Post_*: `Result = fs >= 0.0 and fs < 1.0 .`
+fs: `<<_double_class,Double>>[1]` +
+): `<<_boolean_class,Boolean>>` +
+ +
+__Post__: `Result = fs >= 0.0 and fs < 1.0 .`
 a|True if fs >= 0.0 and fs < 1.0 .
 |===

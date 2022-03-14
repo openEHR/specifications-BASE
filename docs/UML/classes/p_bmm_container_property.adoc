@@ -9,33 +9,34 @@ h|*Description*
 2+a|Persistent form of `BMM_CONTAINER_PROPERTY`.
 
 h|*Inherit*
-2+|`P_BMM_PROPERTY`
+2+|`<<_p_bmm_property_class,P_BMM_PROPERTY>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*cardinality*: `Interval<Integer>`
+|*cardinality*: `link:/releases/BASE/{base_release}/foundation_types.html#_interval_class[Interval^]<link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]>`
 a|Cardinality of this property in its class. Persistent attribute.
 
 h|*0..1 +
 (redefined)*
-|*type_def*: `P_BMM_CONTAINER_TYPE`
+|*type_def*: `<<_p_bmm_container_type_class,P_BMM_CONTAINER_TYPE>>`
 a|Type definition of this property, if not a simple String type reference. Persistent attribute.
 
 h|*0..1 +
 (redefined)*
-|*bmm_property*: `BMM_CONTAINER_PROPERTY`
+|*bmm_property*: `link:/releases/BASE/{base_release}/bmm.html#_bmm_container_property_class[BMM_CONTAINER_PROPERTY^]`
 a|`BMM_PROPERTY` created by `_create_bmm_property_`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(redefined)
+h|*0..1 +
+(redefined)*
 |*create_bmm_property* ( +
-a_bmm_schema: `BMM_MODEL[1]`, +
-a_class_def: `BMM_CLASS[1]` +
+a_bmm_schema: `link:/releases/BASE/{base_release}/bmm.html#_bmm_model_class[BMM_MODEL^][1]`, +
+a_class_def: `link:/releases/BASE/{base_release}/bmm.html#_bmm_class_class[BMM_CLASS^][1]` +
 )
 a|Create `_bmm_property_definition_`.
 |===

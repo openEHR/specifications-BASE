@@ -14,36 +14,36 @@ Note that this class includes 2 deviations from ISO 8601:2004:
 * the time 24:00:00 is not allowed, since it would mean the date was really on the next day.
 
 h|*Inherit*
-2+|`Iso8601_type`, `IDate_time`
+2+|`<<_iso8601_type_class,Iso8601_type>>`, `<<_idate_time_class,IDate_time>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*month_unknown* (): `Boolean`
+h|*1..1*
+|*month_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether month in year is unknown.
 
-h|
-|*day_unknown* (): `Boolean`
+h|*1..1*
+|*day_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether day in month is unknown.
 
-h|
-|*minute_unknown* (): `Boolean`
+h|*1..1*
+|*minute_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether minute in hour is known.
 
-h|
-|*second_unknown* (): `Boolean`
+h|*1..1*
+|*second_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether minute in hour is known.
 
-h|
-|*is_decimal_sign_comma* (): `Boolean`
+h|*1..1*
+|*is_decimal_sign_comma* (): `<<_boolean_class,Boolean>>`
 a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
 
-h|
+h|*1..1*
 |*valid_iso8601_date_time* ( +
-s: `String[1]` +
-): `Boolean`
+s: `<<_string_class,String>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|String is a valid ISO 8601 date-time, i.e. takes the form:
 
 * YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]
@@ -64,16 +64,18 @@ or the equivalent extended forms:
 
 (meanings as in DV_DATE, DV_TIME) and the values in each field are valid.
 
-h|(effected)
-|*is_partial* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_partial* (): `<<_boolean_class,Boolean>>`
 a|True if this date time is partial, i.e. if seconds or more is missing.
 
-h|(effected)
-|*is_extended* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_extended* (): `<<_boolean_class,Boolean>>`
 a|True if this date/time uses ‘-’, ‘:’ separators.
 
-h|
-|*as_string* (): `String`
+h|*1..1*
+|*as_string* (): `<<_string_class,String>>`
 a|ISO8601 string for date/time, in format:
 
 * `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]`
@@ -84,47 +86,47 @@ or in extended format:
 
 or a partial variant; see `_valid_iso8601_date_time()_` for validity.
 
-h|
-|*has_fractional_second* (): `Boolean`
+h|*1..1*
+|*has_fractional_second* (): `<<_boolean_class,Boolean>>`
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
-h|
-|*as_date_time* (): `Date_time`
+h|*1..1*
+|*as_date_time* (): `<<_date_time_class,Date_time>>`
 a|Convert to a native `Date_time`.
 
 h|*Invariants*
-2+a|*_Year_valid_*: `valid_year (year)`
+2+a|__Year_valid__: `valid_year (year)`
 
 h|
-2+a|*_Month_valid_*: `valid_month (month)`
+2+a|__Month_valid__: `valid_month (month)`
 
 h|
-2+a|*_Day_valid_*: `valid_day(year, month, day)`
+2+a|__Day_valid__: `valid_day(year, month, day)`
 
 h|
-2+a|*_Hour_valid_*: `valid_hour (hour, minute, second)`
+2+a|__Hour_valid__: `valid_hour (hour, minute, second)`
 
 h|
-2+a|*_Minute_valid_*: `not minute_unknown implies valid_minute(minute)`
+2+a|__Minute_valid__: `not minute_unknown implies valid_minute(minute)`
 
 h|
-2+a|*_Second_valid_*: `not second_unknown implies valid_second (second)`
+2+a|__Second_valid__: `not second_unknown implies valid_second (second)`
 
 h|
-2+a|*_Fractional_second_valid_*: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
+2+a|__Fractional_second_valid__: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
 
 h|
-2+a|*_Partial_validity_year_*: `not month_unknown`
+2+a|__Partial_validity_year__: `not month_unknown`
 
 h|
-2+a|*_Partial_validity_month_*: `not month_unknown`
+2+a|__Partial_validity_month__: `not month_unknown`
 
 h|
-2+a|*_Partial_validity_day_*: `not day_unknown`
+2+a|__Partial_validity_day__: `not day_unknown`
 
 h|
-2+a|*_Partial_validity_hour_*: `not hour_unknown`
+2+a|__Partial_validity_hour__: `not hour_unknown`
 
 h|
-2+a|*_Partial_validity_minute_*: `minute_unknown implies second_unknown`
+2+a|__Partial_validity_minute__: `minute_unknown implies second_unknown`
 |===

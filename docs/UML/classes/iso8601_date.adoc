@@ -9,22 +9,22 @@ h|*Description*
 2+a|Represents an ISO 8601 date, including partial and extended forms.
 
 h|*Inherit*
-2+|`Iso8601_type`, `IDate`
+2+|`<<_iso8601_type_class,Iso8601_type>>`, `<<_idate_class,IDate>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*month_unknown* (): `Boolean`
+h|*1..1*
+|*month_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.
 
-h|
-|*day_unknown* (): `Boolean`
+h|*1..1*
+|*day_unknown* (): `<<_boolean_class,Boolean>>`
 a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.
 
-h|
-|*valid_iso8601_date* (): `Boolean`
+h|*1..1*
+|*valid_iso8601_date* (): `<<_boolean_class,Boolean>>`
 a|String is a valid ISO 8601 date, i.e. takes the complete form:
 
 * YYYYMMDD or the extended form:
@@ -44,31 +44,34 @@ Where:
 
 The combinations of YYYY, MM, DD numbers must be correct with respect to the Gregorian calendar.
 
-h|(effected)
-|*is_partial* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_partial* (): `<<_boolean_class,Boolean>>`
 a|True if this date is partial, i.e. if days or more is missing.
 
-h|(effected)
-|*is_extended* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_extended* (): `<<_boolean_class,Boolean>>`
 a|True if this date uses `'-'` separators.
 
-h|(redefined)
-|*as_string* (): `String`
+h|*1..1 +
+(redefined)*
+|*as_string* (): `<<_string_class,String>>`
 a|ISO8601 string for date, in format `YYYYMMDD` or `YYYY-MM-DD`, or a partial invariant. See `_valid_iso8601_date()_` for validity.
 
-h|
-|*as_date* (): `Date`
+h|*1..1*
+|*as_date* (): `<<_date_class,Date>>`
 a|Convert to a native `Date`.
 
 h|*Invariants*
-2+a|*_Year_valid_*: `valid_year (year)`
+2+a|__Year_valid__: `valid_year (year)`
 
 h|
-2+a|*_Month_valid_*: `not month_unknown implies valid_month (month)`
+2+a|__Month_valid__: `not month_unknown implies valid_month (month)`
 
 h|
-2+a|*_Day_valid_*: `not day_unknown implies valid_day (year, month, day)`
+2+a|__Day_valid__: `not day_unknown implies valid_day (year, month, day)`
 
 h|
-2+a|*_Partial_validity_*: `month_unknown implies day_unknown`
+2+a|__Partial_validity__: `month_unknown implies day_unknown`
 |===

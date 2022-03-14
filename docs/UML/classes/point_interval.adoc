@@ -3,13 +3,13 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*Point_interval*
+2+^h|*Point_interval<T>*
 
 h|*Description*
 2+a|Type representing an Interval that happens to be a point value. Provides an efficient representation that is substitutable for Interval<T> where needed.
 
 h|*Inherit*
-2+|`Interval`
+2+|`<<_interval_class,Interval>>`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,28 +17,33 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*lower_unbounded*: `boolean`
+|*lower_unbounded*: `<<_boolean_class,boolean>> +
+{default{nbsp}={nbsp}false}`
 a|lower boundary open (i.e. = -infinity)
 
 h|*1..1 +
 (redefined)*
-|*upper_unbounded*: `boolean`
+|*upper_unbounded*: `<<_boolean_class,boolean>> +
+{default{nbsp}={nbsp}false}`
 a|upper boundary open (i.e. = +infinity)
 
 h|*1..1 +
 (redefined)*
-|*lower_included*: `boolean`
+|*lower_included*: `<<_boolean_class,boolean>> +
+{default{nbsp}={nbsp}true}`
 a|lower boundary value included in range if not lower_unbounded.
 
 h|*1..1 +
 (redefined)*
-|*upper_included*: `boolean`
+|*upper_included*: `<<_boolean_class,boolean>> +
+{default{nbsp}={nbsp}true}`
 a|upper boundary value included in range if not upper_unbounded.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
+h|*0..1 +
+(effected)*
 |*upper* (): `T`
 a|
 |===

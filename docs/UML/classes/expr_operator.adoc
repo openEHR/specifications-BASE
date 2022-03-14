@@ -3,27 +3,27 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_EXPR_OPERATOR (abstract)_*
+2+^h|*__EXPR_OPERATOR (abstract)__*
 
 h|*Description*
 2+a|Abstract parent of operator types.
 
 h|*Inherit*
-2+|`EXPRESSION`
+2+|`<<_expression_class,EXPRESSION>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*precedence_overridden*: `Boolean`
+|*precedence_overridden*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
 
 h|*1..1*
-|*operator_def*: `OPERATOR_DEF`
+|*operator_def*: `<<_operator_def_class,OPERATOR_DEF>>`
 a|Operator definition.
 
 h|*0..1*
-|*symbol*: `String`
+|*symbol*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of operator_def.symbols.
 |===

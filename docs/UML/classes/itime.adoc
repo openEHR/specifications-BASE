@@ -3,39 +3,40 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_ITime (abstract)_*
+2+^h|*__ITime (abstract)__*
 
 h|*Description*
 2+a|Defines the interface of an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to fractional seconds.
 
 h|*Inherit*
-2+|`Temporal`
+2+|`<<_temporal_class,Temporal>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*hour* (): `Integer`
+h|*1..1*
+|*hour* (): `<<_integer_class,Integer>>`
 a|Hour in day, in 24-hour time.
 
-h|
-|*minute* (): `Integer`
+h|*1..1*
+|*minute* (): `<<_integer_class,Integer>>`
 a|Minute in hour.
 
-h|
-|*second* (): `Integer`
+h|*1..1*
+|*second* (): `<<_integer_class,Integer>>`
 a|Second in minute.
 
-h|
-|*fractional_second* (): `Real` +
-*_Pre_*: `not second_unknown`
+h|*1..1*
+|*fractional_second* (): `<<_real_class,Real>>` +
+ +
+__Pre__: `not second_unknown`
 a|Fractional seconds.
 
-h|
-|*timezone* (): `ITimezone`
+h|*0..1*
+|*timezone* (): `<<_itimezone_class,ITimezone>>`
 a|Timezone; may be Void.
 
 h|*Invariants*
-2+a|*_Hour_valid_*: `valid_hour(hour, minute, second)`
+2+a|__Hour_valid__: `valid_hour(hour, minute, second)`
 |===

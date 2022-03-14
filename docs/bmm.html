@@ -197,7 +197,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2021 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2016 - 2022 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -666,7 +666,7 @@ This package is considered informative within this specification, not normative.
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_definitions_class">BMM_DEFINITIONS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -675,28 +675,28 @@ This package is considered informative within this specification, not normative.
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_directories</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_directories</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of directories where all the schemas loaded here are found.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_schemas</strong>: <code>Hash&lt;String,BMM_SCHEMA_DESCRIPTOR&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_schemas</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_schema_descriptor_class">BMM_SCHEMA_DESCRIPTOR</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>All schemas found and loaded from <code><em>schema_directory</em></code>. Keyed by <code><em>schema_id</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_models</strong>: <code>Hash&lt;String,BMM_MODEL&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_models</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_model_class">BMM_MODEL</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Top-level (root) schemas in use. Table is keyed by <code><em>model_id</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>matching_bmm_models</strong>: <code>Hash&lt;String,BMM_MODEL&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>matching_bmm_models</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_model_class">BMM_MODEL</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>BMM_MODELs</code> keyed by <code><em>model_id()</em></code> and any shorter form used in calls to</p>
 </div></div></td>
@@ -707,45 +707,45 @@ This package is considered informative within this specification, not normative.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>initialise_with_load_list</strong> (<br>
-a_schema_dirs: <code>List&lt;String&gt;[1]</code>,<br>
-a_schema_load_list: <code>List&lt;String&gt;[0..1]</code><br>
+a_schema_dirs: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;[1]</code>,<br>
+a_schema_load_list: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;[0..1]</code><br>
 )</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Initialise with a specific schema load list, usually a sub-set of schemas that will be found in a specified directories <code><em>a_schema_dirs</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>initialise_all</strong> (<br>
-a_schema_dirs: <code>List&lt;String&gt;[1]</code><br>
+a_schema_dirs: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;[1]</code><br>
 )</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Load all schemas found in a specified directories <code><em>a_schema_dirs</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reload_schemas</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reload BMM schemas.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_model</strong> (<br>
-a_model_key: <code>String[1]</code><br>
-): <code>BMM_MODEL</code></p></td>
+a_model_key: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_bmm_model_class">BMM_MODEL</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return ref model containing the model key which is a <code><em>model_id</em></code> or any shorter form e.g. model id minus the version. If a shorter key is used, the <code>BMM_MODEL</code> with the highest version will be selected.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_bmm_model</strong> (<br>
-a_model_key: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_model_key: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a model for a <code><em>model_key</em></code> is available. A model key is a <code><em>model_id</em></code> or any shorter form e.g. model id minus the version. If a shorter key is used, the Result s True if a <code>BMM_MODEL</code> with any version exists.</p>
 </div></div></td>
@@ -774,7 +774,7 @@ a_model_key: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_definitions_class">BMM_DEFINITIONS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -783,21 +783,21 @@ a_model_key: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code>BMM_SCHEMA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code><a href="#_bmm_schema_class">BMM_SCHEMA</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Persistent form of model.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_model</strong>: <code>BMM_MODEL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_model</strong>: <code><a href="#_bmm_model_class">BMM_MODEL</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computable form of model.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Schema id, formed from:</p>
 </div>
@@ -814,14 +814,14 @@ a_model_key: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>meta_data</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>meta_data</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>, <a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Table of <code>{key, value}</code> pairs of schema meta-data, keys are string values corresponding to values in <code>P_BMM_SCHEMA_METADATA_KEY</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifiers of schemas included by this schema.</p>
 </div></div></td>
@@ -832,44 +832,44 @@ a_model_key: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_top_level</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_top_level</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this is a top-level schema, i.e. not included by some other schema.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bmm_compatible</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>load</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Load schema into in-memory form, i.e. a <code>P_BMM_SCHEMA</code> instance, if structurally valid. If successful, <code><em>p_schema</em></code> will be set.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_merged</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Validate loaded schema and report errors.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_includes</strong> (<br>
-all_schemas_list: <code>List&lt;String&gt;[0..1]</code><br>
+all_schemas_list: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;[0..1]</code><br>
 )</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Validate includes list for this schema, to see if each mentioned schema exists in <code><em>all_schemas</em></code> list.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_model</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create <code>schema</code>, i.e. the <code>BMM_MODEL</code> from one <code>P_BMM_SCHEMA</code> schema.</p>
@@ -904,14 +904,14 @@ all_schemas_list: <code>List&lt;String&gt;[0..1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_publisher</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_publisher</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Publisher of model expressed in the schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_release</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_release</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" .</p>
 </div></div></td>
@@ -940,7 +940,7 @@ all_schemas_list: <code>List&lt;String&gt;[0..1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PACKAGE_CONTAINER</code>, <code>BMM_MODEL_METADATA</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/BASE/Release-1.0.4/bmm_persistence.html#_p_bmm_package_container_class" target="_blank" rel="noopener">P_BMM_PACKAGE_CONTAINER</a></code>, <code><a href="#_bmm_model_metadata_class">BMM_MODEL_METADATA</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -949,28 +949,28 @@ all_schemas_list: <code>List&lt;String&gt;[0..1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_version</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of BMM model, enabling schema evolution reasoning. Persisted attribute.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code>List&lt;P_BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/bmm_persistence.html#_p_bmm_class_class">P_BMM_CLASS</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Primitive type definitions. Persisted attribute.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code>List&lt;P_BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/bmm_persistence.html#_p_bmm_class_class">P_BMM_CLASS</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Class definitions. Persisted attribute.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code>Hash&lt;String,BMM_INCLUDE_SPEC&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="/releases/BASE/Release-1.0.4/bmm_persistence.html#_bmm_include_spec_class" target="_blank" rel="noopener">BMM_INCLUDE_SPEC</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Inclusion list, in the form of a hash of individual include specifications, each of which at least specifies the id of another schema, and may specify a namespace via which types from the included schemas are known in this schema.
 Persisted attribute.</p>
@@ -978,63 +978,63 @@ Persisted attribute.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code>BMM_MODEL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code><a href="#_bmm_model_class">BMM_MODEL</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generated by create_bmm_schema from persisted elements.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>state</strong>: <code>BMM_SCHEMA_STATE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>state</strong>: <code><a href="/releases/BASE/Release-1.0.4/bmm_persistence.html#_bmm_schema_state_enumeration" target="_blank" rel="noopener">BMM_SCHEMA_STATE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Current processing state.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this model, if this schema is a model root point. Not set for sub-schemas that are not considered models on their own.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of model expressed in schema; a 'schema' usually contains all of the packages of one 'model' of a publisher. A publisher with more than one model can have multiple schemas.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_revision</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_revision</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Revision of schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_lifecycle_state</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_lifecycle_state</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Schema development lifecycle state.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_author</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_author</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Primary author of schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_description</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_description</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Description of schema.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_contributors</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Contributing authors of schema.</p>
 </div></div></td>
@@ -1045,10 +1045,12 @@ Persisted attribute.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_created</strong><br>
-<strong><em>Pre_state</em></strong>: <code>state = State_created</code><br>
-<strong><em>Post_state</em></strong>: <code>passed implies state = State_validated_created</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = State_created</code><br>
+<em>Post_state</em>: <code>passed implies state = State_validated_created</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Do some basic validation post initial creation</p>
 </div>
@@ -1077,10 +1079,12 @@ Persisted attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>load_finalise</strong><br>
-<strong><em>Pre_state</em></strong>: <code>state = State_validated_created</code><br>
-<strong><em>Post_state</em></strong>: <code>state = State_includes_processed or state = State_includes_pending</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = State_validated_created</code><br>
+<em>Post_state</em>: <code>state = State_includes_processed or state = State_includes_pending</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Finalisation work:</p>
 </div>
@@ -1096,40 +1100,46 @@ Persisted attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (<br>
-other: <code>BMM_SCHEMA[1]</code><br>
+other: <code><a href="#_bmm_schema_class">BMM_SCHEMA</a>[1]</code><br>
 )<br>
-<strong><em>Pre_state</em></strong>: <code>state = State_includes_pending</code><br>
-<strong><em>Pre_other_valid</em></strong>: <code>includes_to_process.has (included_schema.schema_id)</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = State_includes_pending</code><br>
+<em>Pre_other_valid</em>: <code>includes_to_process.has (included_schema.schema_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Merge in class and package definitions from <code><em>other</em></code>, except where the current schema already has a definition for the given type or package.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Main validation prior to generation of <code><em>bmm_model</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_model</strong><br>
-<strong><em>Pre_state</em></strong>: <code>state = P_BMM_PACKAGE_STATE.State_includes_processed</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = P_BMM_PACKAGE_STATE.State_includes_processed</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Populate <code><em>bmm_model</em></code> from schema.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>read_to_validate</strong> (): <code>Boolean</code><br>
-<strong><em>Post_state</em></strong>: <code>state = State_includes_processed</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>read_to_validate</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code><br>
+<br>
+<em>Post_state</em>: <code>state = State_includes_processed</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>schema_id</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of this schema, used for stating inclusions and identifying files. Formed as:</p>
 </div>
@@ -1224,7 +1234,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Full identifier of the included schema, e.g. "openehr_primitive_types_1.0.2".</p>
 </div></div></td>
@@ -1253,7 +1263,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_SCHEMA_DESCRIPTOR</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_schema_descriptor_class">BMM_SCHEMA_DESCRIPTOR</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1263,7 +1273,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code>P_BMM_SCHEMA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>bmm_schema</strong>: <code><a href="/releases/BASE/Release-1.0.4/bmm_persistence.html#_p_bmm_schema_class" target="_blank" rel="noopener">P_BMM_SCHEMA</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Persistent form of model.</p>
 </div></div></td>
@@ -1292,7 +1302,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>P_BMM_PACKAGE_CONTAINER</code>, <code>BMM_SCHEMA</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_p_bmm_package_container_class">P_BMM_PACKAGE_CONTAINER</a></code>, <code><a href="/releases/BASE/Release-1.0.4/bmm.html#_bmm_schema_class" target="_blank" rel="noopener">BMM_SCHEMA</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1302,7 +1312,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code>List&lt;P_BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_p_bmm_class_class">P_BMM_CLASS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Primitive type definitions. Persisted attribute.</p>
 </div></div></td>
@@ -1310,7 +1320,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code>List&lt;P_BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_p_bmm_class_class">P_BMM_CLASS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Class definitions. Persisted attribute.</p>
 </div></div></td>
@@ -1318,7 +1328,7 @@ other: <code>BMM_SCHEMA[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code>Hash&lt;String,BMM_INCLUDE_SPEC&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_include_spec_class">BMM_INCLUDE_SPEC</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Inclusion list, in the form of a hash of individual include specifications, each of which at least specifies the id of another schema, and may specify a namespace via which types from the included schemas are known in this schema.
 Persisted attribute.</p>
@@ -1330,52 +1340,61 @@ Persisted attribute.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate_created</strong><br>
-<strong><em>Pre_state</em></strong>: <code>state = State_created</code><br>
-<strong><em>Post_state</em></strong>: <code>passed implies state = State_validated_created</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = State_created</code><br>
+<em>Post_state</em>: <code>passed implies state = State_validated_created</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Implementation of <code><em>validate_created()</em></code></p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>load_finalise</strong><br>
-<strong><em>Pre_state</em></strong>: <code>state = State_validated_created</code><br>
-<strong><em>Post_state</em></strong>: <code>state = State_includes_processed or state = State_includes_pending</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = State_validated_created</code><br>
+<em>Post_state</em>: <code>state = State_includes_processed or state = State_includes_pending</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Implementation of <code><em>load_finalise()</em></code></p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>merge</strong> (<br>
-other: <code>P_BMM_SCHEMA[1]</code><br>
+other: <code><a href="#_p_bmm_schema_class">P_BMM_SCHEMA</a>[1]</code><br>
 )<br>
-<strong><em>Pre_state</em></strong>: <code>state = State_includes_pending</code><br>
-<strong><em>Pre_other_valid</em></strong>: <code>includes_to_process.has (included_schema.schema_id)</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = State_includes_pending</code><br>
+<em>Pre_other_valid</em>: <code>includes_to_process.has (included_schema.schema_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Implementation of <code><em>merge()</em></code></p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>validate</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Implementation of <code><em>validate()</em></code></p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_bmm_model</strong><br>
-<strong><em>Pre_state</em></strong>: <code>state = P_BMM_PACKAGE_STATE.State_includes_processed</code></p></td>
+<br>
+<em>Pre_state</em>: <code>state = P_BMM_PACKAGE_STATE.State_includes_processed</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Implementation of <code><em>create_bmm_model()</em></code></p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_packages</strong> (): <code>P_BMM_PACKAGE</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_packages</strong> (): <code><a href="#_p_bmm_package_class">P_BMM_PACKAGE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Package structure in which all top-level qualified package names like <code>xx.yy.zz</code> have been expanded out to a hierarchy of <code>BMM_PACKAGE</code> objects.</p>
 </div></div></td>
@@ -1480,28 +1499,28 @@ a future version of BMM may provide an option to import schemas using differing 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bmm_internal_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bmm_internal_version</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Schema_name_delimiter</strong>: <code>String&#160;=&#160;"::"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Schema_name_delimiter</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"::"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Delimiter used to separate schema id from package path in a fully qualified path.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Package_name_delimiter</strong>: <code>String&#160;=&#160;"."</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Package_name_delimiter</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"."</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Delimiter used to separate package names in a package path.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bmm_schema_file_extension</strong>: <code>String&#160;=&#160;".bmm"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bmm_schema_file_extension</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;".bmm"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extension used for BMM files.</p>
 </div></div></td>
@@ -1530,7 +1549,7 @@ a future version of BMM may provide an option to import schemas using differing 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_definitions_class">BMM_DEFINITIONS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1539,7 +1558,7 @@ a future version of BMM may provide an option to import schemas using differing 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional documentation of this element.</p>
 </div></div></td>
@@ -1568,7 +1587,7 @@ a future version of BMM may provide an option to import schemas using differing 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_model_element_class">BMM_MODEL_ELEMENT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1577,7 +1596,7 @@ a future version of BMM may provide an option to import schemas using differing 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code>Hash&lt;String,BMM_PACKAGE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_package_class">BMM_PACKAGE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Child packages; keys all in upper case for guaranteed matching.</p>
 </div></div></td>
@@ -1588,28 +1607,28 @@ a future version of BMM may provide an option to import schemas using differing 
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (<br>
-a_path: <code>String[1]</code><br>
-): <code>BMM_PACKAGE</code></p></td>
+a_path: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_bmm_package_class">BMM_PACKAGE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Package at the path <code><em>a_path</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
-action: <code>PROCEDURE[1]</code><br>
+action: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_procedure_class" target="_blank" rel="noopener">PROCEDURE</a>[1]</code><br>
 )</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Recursively execute <code><em>action</em></code>, which is a procedure taking a <code>BMM_PACKAGE</code> argument, on all members of packages.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (<br>
-a_path: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_path: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if there is a package at the path <code><em>a_path</em></code>; paths are delimited with delimiter <code><em>Package_name_delimiter</em></code>.</p>
 </div></div></td>
@@ -1638,7 +1657,7 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_PACKAGE_CONTAINER</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_package_container_class">BMM_PACKAGE_CONTAINER</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1647,14 +1666,14 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this package. This name may be qualified if it is a top-level package.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>classes</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>classes</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_bmm_class_class">BMM_CLASS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Classes listed as being in this package.</p>
 </div></div></td>
@@ -1665,15 +1684,15 @@ a_path: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong> (): <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_bmm_class_class">BMM_CLASS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages. Recurse into each child only far enough to find the first level of classes.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Full path of this package back to root package.</p>
 </div></div></td>
@@ -1702,7 +1721,7 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_PACKAGE_CONTAINER</code>, <code>BMM_MODEL_METADATA</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_package_container_class">BMM_PACKAGE_CONTAINER</a></code>, <code><a href="#_bmm_model_metadata_class">BMM_MODEL_METADATA</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1711,14 +1730,14 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code>Hash&lt;String,BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_class_class">BMM_CLASS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>All classes in this schema, keyed by type name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this model.</p>
 </div></div></td>
@@ -1729,8 +1748,8 @@ a_path: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_id</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_id</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of this model, lower-case, formed from:</p>
 </div>
@@ -1742,122 +1761,122 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition</strong> (<br>
-a_name: <code>String[1]</code><br>
-): <code>BMM_CLASS</code></p></td>
+a_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the class definition corresponding to <code><em>a_type_name</em></code> (which may contain a generic part).</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_definition</strong> (): <code>BMM_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_definition</strong> (): <code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the class definition corresponding to <code><em>a_type_name</em></code>. If it contains a generic part, this will be removed if it is a fully open generic name, otherwise it will remain intact, i.e. if it is an effective generic name that identifies a <code>BMM_GENERIC_CLASS_EFFECTIVE</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_class_definition</strong> (<br>
-a_class_name: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_class_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>a_class_name</em></code> has a class definition in the model.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_definition</strong> (<br>
-a_type_name: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_type_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>a_type_name</em></code> is already concretely known in the system, including if it is generic, which may be open, partially open or closed.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_definition</strong> (<br>
-a_name: <code>String[1]</code><br>
-): <code>BMM_ENUMERATION</code></p></td>
+a_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_bmm_enumeration_class">BMM_ENUMERATION</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the enumeration definition corresponding to <code><em>a_type_name</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of keys in <code><em>class_definitions</em></code> of items marked as primitive types.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of keys in <code><em>class_definitions</em></code> of items that are enumeration types.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong> (): <code>BMM_PROPERTY</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong> (): <code><a href="#_bmm_property_class">BMM_PROPERTY</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the property definition for <code><em>a_prop_name</em></code> in flattened class corresponding to <code><em>a_type_name</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ms_conformant_property_type</strong> (<br>
-a_bmm_type_name: <code>String[1]</code>,<br>
-a_bmm_property_name: <code>String[1]</code>,<br>
-a_ms_property_name: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_bmm_type_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+a_bmm_property_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+a_ms_property_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>a_ms_property_type</em></code> is a valid 'MS' dynamic type for <code><em>a_property</em></code> in BMM type <code><em>a_bmm_type_name</em></code>. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like <code>List&lt;&gt;</code>, <code>Set&lt;&gt;</code> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong> (): <code>BMM_PROPERTY</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong> (): <code><a href="#_bmm_property_class">BMM_PROPERTY</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the property definition for <code><em>a_property_path</em></code> in flattened class corresponding to <code><em>a_type_name</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition_at_path</strong> (<br>
-a_type_name: <code>String[1]</code>,<br>
-a_prop_path: <code>String[1]</code><br>
-): <code>BMM_CLASS</code></p></td>
+a_type_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+a_prop_path: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the class definition for the class that owns the terminal attribute in <code>a_prop_path</code> in flattened class corresponding to <code>a_type_name</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestor_classes</strong> (<br>
-a_class: <code>String[1]</code><br>
-): <code>List&lt;String&gt;</code></p></td>
+a_class: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all ancestor types of <code><em>a_class_name</em></code> up to root class (usually <code>Any</code>, <code>Object</code> or something similar). Does  not include current class. Returns empty list if none.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_descendant_of</strong> (<br>
-a_class_name: <code>String[1]</code>,<br>
-a_parent_class_name: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_class_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+a_parent_class_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>a_class_name</em></code> is a descendant in the model of <code><em>a_parent_class_name</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (<br>
-a_desc_type: <code>String[1]</code>,<br>
-an_anc_type: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_desc_type: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+an_anc_type: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Check conformance of <code><em>a_desc_type</em></code> to <code><em>an_anc_type</em></code>; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their appropriate constrainer types, or Any during the conformance testing process.</p>
 </div>
@@ -1879,15 +1898,15 @@ an_anc_type: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_class_definition</strong> (): <code>BMM_SIMPLE_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_class_definition</strong> (): <code><a href="#_bmm_simple_class_class">BMM_SIMPLE_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>BMM_CLASS</code> instance for the <code>Any</code> class. This may be defined in the BMM schema, but if not, a default <code>Any</code> class will be generated.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_type_definition</strong> (): <code>BMM_SIMPLE_TYPE</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_type_definition</strong> (): <code><a href="#_bmm_simple_type_class">BMM_SIMPLE_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1977,7 +1996,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINITIONS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_definitions_class">BMM_DEFINITIONS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1986,49 +2005,49 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_simple</strong>: <code>String&#160;=&#160;"simple_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_simple</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"simple_entity"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category of a simple entity, other than enumerated types.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_enumeration</strong>: <code>String&#160;=&#160;"enumeration_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_enumeration</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"enumeration_entity"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category of any enumeration entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_generic</strong>: <code>String&#160;=&#160;"generic_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_generic</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"generic_entity"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category of any generic entity that is not a container entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_parameter</strong>: <code>String&#160;=&#160;"generic_parameter_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_parameter</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"generic_parameter_entity"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category of a formal generic parameter entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_container</strong>: <code>String&#160;=&#160;"container_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_metatype_container</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"container_entity"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category of any container entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_category_modifier_abstract</strong>: <code>String&#160;=&#160;"abstract"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_category_modifier_abstract</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"abstract"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category modifier indicating an entity is formally defined as abstract, i.e. not-directly instantiable within a BMM model.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_category_modifier_primitive</strong>: <code>String&#160;=&#160;"primitive"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity_category_modifier_primitive</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"primitive"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Category modifier indicating that an entity is considered to be primitive within the type system of a given BMM model. Has no semantic consequences within the BMM.</p>
 </div></div></td>
@@ -2039,8 +2058,9 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_category</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_category</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a category code-string to use in visualisation, that indicates:</p>
 </div>
@@ -2067,8 +2087,9 @@ an_anc_type: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of entity, which classifies it according to the kind of formal entity it represents from the following:</p>
 </div>
@@ -2096,15 +2117,17 @@ an_anc_type: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>If true, indicates an abstract class in a BMM model, or a type based on an abstract class, i.e. a type that cannot be directly instantiated.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>If True, indicates that the entity in a BMM model is considered to relate to a primitive type set, i.e. be a primitive type, or be a definer of one.</p>
 </div></div></td>
@@ -2358,7 +2381,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ENTITY</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_entity_class">BMM_ENTITY</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2366,43 +2389,48 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Effective underlying class for this type, abstracting away any container type.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Formal string form of the type as per UML.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Determine if there are any type substitutions.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of type substitutions if any available for this type within the current BMM model.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Completely flattened list of type names, flattening out all generic parameters.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Signature form of the type, which for generics includes generic parameter constrainer types E.g. <code>Interval&lt;T:Ordered&gt;</code>.</p>
 </div>
@@ -2411,15 +2439,17 @@ an_anc_type: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>base_class.is_primitive</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of type is by default assumed to be the meta-type of its <code><em>base_class</em></code>.</p>
 </div></div></td>
@@ -2448,7 +2478,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_type_class">BMM_TYPE</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2474,7 +2504,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINED_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_defined_type_class">BMM_DEFINED_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2482,43 +2512,49 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>base_class.name</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>base_class.is_abstract</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>base_class.name</em></code> .</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>base_class.all_descendants</em></code> .</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>base_class.has_descendants</em></code> .</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_SIMPLE_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code><a href="#_bmm_simple_class_class">BMM_SIMPLE_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Main design class for this type, from which properties etc can be extracted.</p>
 </div></div></td>
@@ -2547,7 +2583,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_type_class">BMM_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2556,14 +2592,14 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>container_class</strong>: <code>BMM_GENERIC_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>container_class</strong>: <code><a href="#_bmm_generic_class_class">BMM_GENERIC_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The type of the container. This converts to the <code><em>root_type</em></code> in <code>BMM_GENERIC_TYPE</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_type</strong>: <code>BMM_UNITARY_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_type</strong>: <code><a href="#_bmm_unitary_type_class">BMM_UNITARY_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The target type; this converts to the first parameter in <code><em>generic_parameters</em></code> in <code>BMM_GENERIC_TYPE</code>.</p>
 </div></div></td>
@@ -2574,51 +2610,59 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return full type name, e.g. <code>List&lt;ELEMENT&gt;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_CLASS</code><br>
-<strong><em>Post_validity</em></strong>: <code>Result = base_type.base_class</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code><a href="#_bmm_class_class">BMM_CLASS</a></code><br>
+<br>
+<em>Post_validity</em>: <code>Result = base_type.base_class</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>base_class</em></code> of <code><em>base_type</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>base_type.is_abstract</em></code> or <code><em>container_type.is_abstract</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of container type is <code>Classifier_metatype_container</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Completely flattened list of type names, flattening out all generic parameters.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is all permutations of current container type and its descendants with the current <code><em>base_type</em></code> and its descendants.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Determine if there are any type substitutions.</p>
 </div></div></td>
@@ -2647,7 +2691,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CONTAINER_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_container_type_class">BMM_CONTAINER_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2656,7 +2700,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>index_type</strong>: <code>BMM_SIMPLE_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>index_type</strong>: <code><a href="#_bmm_simple_type_class">BMM_SIMPLE_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type of the element index, typically <code>String</code> or <code>Integer</code>, but may be a numeric type or indeed any type from which a hash value can be derived.</p>
 </div></div></td>
@@ -2685,7 +2729,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_DEFINED_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_defined_type_class">BMM_DEFINED_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2694,7 +2738,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>List&lt;BMM_UNITARY_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_bmm_unitary_type_class">BMM_UNITARY_TYPE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generic parameters of the <code><em>root_type</em></code> in this type specifier. The order must match the order of the owning class&#8217;s formal generic parameter declarations.</p>
 </div></div></td>
@@ -2702,7 +2746,7 @@ an_anc_type: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code>BMM_GENERIC_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>base_class</strong>: <code><a href="#_bmm_generic_class_class">BMM_GENERIC_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The target type; this converts to the first parameter in <code><em>generic_parameters</em></code> in <code>BMM_GENERIC_TYPE</code>.</p>
 </div></div></td>
@@ -2713,57 +2757,64 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the full name of the type including generic parameters, e.g. <code>DV_INTERVAL&lt;T&gt;</code>, <code>TABLE&lt;List&lt;THING&gt;,String&gt;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Signature form of the type, which for generics includes generic parameter constrainer types E.g. <code>Interval&lt;T:Ordered&gt;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>base_class.is_abstract</em></code> or if any (non-open) parameter type is abstract.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>base_class.name</em></code> followed by names of all generic parameter type names, which may be open or closed.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is the permutation of the base class type and type substitutions of all generic parameters.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>base_class.has_descendants</em></code> or any generic parameter type <code><em>type_substitutions</em></code> is True.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partially_closed</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partially_closed</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Returns True if there is any substituted generic parameter.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_GENERIC_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code><a href="#_bmm_generic_class_class">BMM_GENERIC_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Effective underlying class for this type, abstracting away any container type.</p>
 </div></div></td>
@@ -2792,7 +2843,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_UNITARY_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_unitary_type_class">BMM_UNITARY_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2801,21 +2852,21 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_constraint</strong>: <code>BMM_DEFINED_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_constraint</strong>: <code><a href="#_bmm_defined_type_class">BMM_DEFINED_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional conformance constraint that must be another valid class name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>inheritance_precursor</strong>: <code>BMM_PARAMETER_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>inheritance_precursor</strong>: <code><a href="#_bmm_parameter_type_class">BMM_PARAMETER_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>If set, is the corresponding generic parameter definition in an ancestor class.</p>
 </div></div></td>
@@ -2826,78 +2877,87 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_conforms_to_type</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_conforms_to_type</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is either <code><em>conforms_to_type</em></code> or <code><em>inheritance_precursor.flattened_conforms_to_type</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_conforms_to_type</strong> (): <code>BMM_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_conforms_to_type</strong> (): <code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate ultimate conformance type, which is either <code><em>flattened_conforms_to_type</em></code> or if not set, <code>Any</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_signature</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Signature form of the open type, including constrainer type if there is one, e.g. <code>T:Ordered</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result = <code>False</code> - generic parameters are understood by definition to be non-primitive.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result = <code>False</code> - generic parameters are understood by definition to be non-abstract.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of a container type is <code>Entity_metatype_generic_parameter</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code>BMM_CLASS</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>effective_base_class</strong> (): <code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The effective conformance type of this parameter, or the 'Any' class if none.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>effective_conforms_to_type.base_class.has_descendants</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>effective_conforms_to_type.base_class.all_descendants</em></code> .</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is <code><em>name</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flattened_type_list</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Result is either <code><em>flattened_conforms_to_type.flattened_type_list</em></code> or the <code>Any</code> type.</p>
 </div></div></td>
@@ -2905,7 +2965,7 @@ an_anc_type: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_generic_name</em></strong>: <code>name.count = 1 and name.is_upper</code></p>
+<p><em>Inv_generic_name</em>: <code>name.count = 1 and name.is_upper</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3044,7 +3104,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ENTITY</code>, <code>BMM_MODEL_ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_entity_class">BMM_ENTITY</a></code>, <code><a href="#_bmm_model_element_class">BMM_MODEL_ELEMENT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3053,49 +3113,49 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic. Use <code><em>type_name()</em></code> to obtain the full type name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ancestors</strong>: <code>Hash&lt;String,BMM_DEFINED_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ancestors</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_defined_type_class">BMM_DEFINED_TYPE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of immediate inheritance parents.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package</strong>: <code>BMM_PACKAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package</strong>: <code><a href="#_bmm_package_class">BMM_PACKAGE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Package this class belongs to.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>properties</strong>: <code>Hash&lt;String,BMM_PROPERTY&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>properties</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_property_class">BMM_PROPERTY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of attributes defined in this class.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source_schema_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source_schema_id</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>immediate_descendants</strong>: <code>List&lt;BMM_CLASS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>immediate_descendants</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_bmm_class_class">BMM_CLASS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of references to base classes of immediate inheritance descendants.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_override</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_override</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this definition overrides a class of the same name in an included schema.</p>
 </div></div></td>
@@ -3106,78 +3166,81 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestors</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestors</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of all inheritance parent class names, recursively.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_descendants</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_descendants</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute all descendants by following <code><em>immediate_descendants</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be <code>Any</code> and this can always be assumed anyway). This list includes primitive types.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers_non_primitive</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers_non_primitive</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Same as <code>suppliers</code> minus primitive types, as defined in input schema.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>supplier_closure</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>supplier_closure</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be <code>Any</code> and this can always be assumed anyway).  This list includes primitive types.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_path</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_path</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Fully qualified package name, of form: <code>package.package</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_path</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_path</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Fully qualified class name, of form: <code>package.package.CLASS</code> with package path in lower-case and class in original case.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_properties</strong> (): <code>List&lt;Hash&lt;String, BMM_PROPERTY&lt;BMM_TYPE&gt;&gt;&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>flat_properties</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash</sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>, <a href="#_bmm_property_class">BMM_PROPERTY</a>&lt;<a href="#_bmm_type_class">BMM_TYPE</a>&gt;&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of all properties due to current and ancestor classes, keyed by property name.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primitive</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this class is designated a primitive type within the overall type system of the schema. Set from schema.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code>Boolean</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_abstract</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this class is abstract in its model. Value provided from an underlying data property set at creation or construction time.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>BMM_DEFINED_TYPE</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code><a href="#_bmm_defined_type_class">BMM_DEFINED_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a type object that represents the type of this class.</p>
 </div></div></td>
@@ -3206,7 +3269,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3214,15 +3277,17 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>BMM_SIMPLE_TYPE</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code><a href="#_bmm_simple_type_class">BMM_SIMPLE_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a type object that represents the type of this class. Can only be an instance of <code>BMM_SIMPLE_TYPE</code> or a descendant.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of <code>BMM_SIMPLE_CLASS</code>, which is <code>Entity_metatype_simple</code>.</p>
 </div></div></td>
@@ -3241,7 +3306,7 @@ an_anc_type: <code>String[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_ENUMERATION</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_ENUMERATION&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3251,7 +3316,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_SIMPLE_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_simple_class_class">BMM_SIMPLE_CLASS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3260,21 +3325,21 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_names</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_names</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, &#8230;&#8203; are assumed.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_values</strong>: <code>List&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_values</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;T&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional list of specific values. Must be 1:1 with <code><em>item_names</em></code> list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of type any concrete <code>BMM_ENUMERATION_*</code> sub-type is based on, i.e. the name of type bound to 'T' in a declared use of this type.</p>
 </div></div></td>
@@ -3285,15 +3350,16 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of <code>BMM_ENUMERATION</code>, which is <code>Entity_metatype_enumeration</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name_map</strong> (): <code>Hash&lt;String,String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name_map</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Map of <code><em>item_values</em></code> (stringified) to <code><em>item_names</em></code>.</p>
 </div></div></td>
@@ -3322,7 +3388,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ENUMERATION</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_enumeration_class">BMM_ENUMERATION</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3332,7 +3398,8 @@ an_anc_type: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code>String&#160;=&#160;"STRING"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a><br>
+{default&#160;=&#160;"STRING"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of type any concrete <code>BMM_ENUMERATION_*</code> sub-type is based on.</p>
 </div></div></td>
@@ -3361,7 +3428,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_ENUMERATION</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_enumeration_class">BMM_ENUMERATION</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3371,7 +3438,8 @@ an_anc_type: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code>String&#160;=&#160;"INTEGER"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>underlying_type_name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a><br>
+{default&#160;=&#160;"INTEGER"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of type any concrete <code>BMM_ENUMERATION_*</code> sub-type is based on.</p>
 </div></div></td>
@@ -3400,7 +3468,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_CLASS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_class_class">BMM_CLASS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3409,7 +3477,7 @@ an_anc_type: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code>Hash&lt;String,BMM_PARAMETER_TYPE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameters</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>,<a href="#_bmm_parameter_type_class">BMM_PARAMETER_TYPE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.</p>
 </div></div></td>
@@ -3420,31 +3488,34 @@ an_anc_type: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong> (): <code>List&lt;String&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>suppliers</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Add suppliers from generic parameters.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entity_metatype</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Meta-type of <code>BMM_GENERIC_CLASS</code>, which is <code>Entity_metatype_generic</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>BMM_GENERIC_TYPE</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code><a href="#_bmm_generic_type_class">BMM_GENERIC_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a fully open <code>BMM_GENERIC_TYPE</code> instance that corresponds to this class definition</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>generic_parameter_conformance_type</strong> (<br>
-a_name: <code>String[1]</code><br>
-): <code>String</code></p></td>
+a_name: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>For a generic class, type to which generic parameter <code>a_name</code> conforms e.g. if this class is <code>Interval &lt;T:Comparable&gt;</code> then the Result will be the single type <code>Comparable</code>. For an unconstrained type <code>T</code>, the Result will be <code>Any</code>.</p>
 </div></div></td>
@@ -3463,7 +3534,7 @@ a_name: <code>String[1]</code><br>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PROPERTY</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PROPERTY&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -3473,7 +3544,7 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_MODEL_ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_model_element_class">BMM_MODEL_ELEMENT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3482,21 +3553,21 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this property in the model.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this property is mandatory in its class.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_computed</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this property is computed rather than stored in objects of this class.</p>
 </div></div></td>
@@ -3510,21 +3581,24 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_im_runtime</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_im_runtime</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a><br>
+{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this property is marked with info model <code><em>im_runtime</em></code> property.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_im_infrastructure</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_im_infrastructure</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a><br>
+{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this property was marked with info model <code><em>im_infrastructure</em></code> flag.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_synthesised_generic</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_synthesised_generic</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a><br>
+{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this property was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.</p>
 </div></div></td>
@@ -3535,15 +3609,15 @@ a_name: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>existence</strong> (): <code>Multiplicity_interval</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>existence</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_multiplicity_interval_class" target="_blank" rel="noopener">Multiplicity_interval</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Interval form of <code>0..1</code>, <code>1..1</code> etc, derived from <code><em>is_mandatory</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this property to display in UI.</p>
 </div></div></td>
@@ -3572,7 +3646,7 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>BMM_PROPERTY</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_bmm_property_class">BMM_PROPERTY</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3581,7 +3655,7 @@ a_name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cardinality</strong>: <code>Multiplicity_interval</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cardinality</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_multiplicity_interval_class" target="_blank" rel="noopener">Multiplicity_interval</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Cardinality of this container.</p>
 </div></div></td>
@@ -3589,7 +3663,7 @@ a_name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>BMM_CONTAINER_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="#_bmm_container_type_class">BMM_CONTAINER_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
@@ -3598,8 +3672,9 @@ a_name: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong> (): <code>String</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>display_name</strong> (): <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of this property in form <code>name: ContainerTypeName&lt;&gt;</code>.</p>
 </div></div></td>
@@ -3719,7 +3794,7 @@ a_name: <code>String[1]</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-18 15:00:00 UTC
+Last updated 2021-07-22 14:07:24 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">

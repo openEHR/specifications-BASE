@@ -9,49 +9,57 @@ h|*Description*
 2+a|Type that specifies linear containers with a generic parameter corresponding to the type of contained item, and whose container type is a generic type such as `List<T>`, `Set<T>` etc.
 
 h|*Inherit*
-2+|`BMM_TYPE`
+2+|`<<_bmm_type_class,BMM_TYPE>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*container_class*: `BMM_GENERIC_CLASS`
+|*container_class*: `<<_bmm_generic_class_class,BMM_GENERIC_CLASS>>`
 a|The type of the container. This converts to the `_root_type_` in `BMM_GENERIC_TYPE`.
 
 h|*1..1*
-|*base_type*: `BMM_UNITARY_TYPE`
+|*base_type*: `<<_bmm_unitary_type_class,BMM_UNITARY_TYPE>>`
 a|The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
-|*type_name* (): `String`
+h|*1..1 +
+(effected)*
+|*type_name* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Return full type name, e.g. `List<ELEMENT>`.
 
-h|(effected)
-|*effective_base_class* (): `BMM_CLASS` +
-*_Post_validity_*: `Result = base_type.base_class`
+h|*1..1 +
+(effected)*
+|*effective_base_class* (): `<<_bmm_class_class,BMM_CLASS>>` +
+ +
+__Post_validity__: `Result = base_type.base_class`
 a|Result is `_base_class_` of `_base_type_`.
 
-h|(effected)
-|*is_abstract* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_abstract* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if `_base_type.is_abstract_` or `_container_type.is_abstract_`.
 
-h|(effected)
-|*entity_metatype* (): `String`
+h|*1..1 +
+(effected)*
+|*entity_metatype* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Meta-type of container type is `Classifier_metatype_container`.
 
-h|(effected)
-|*flattened_type_list* (): `List<String>`
+h|*1..1 +
+(effected)*
+|*flattened_type_list* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Completely flattened list of type names, flattening out all generic parameters.
 
-h|(effected)
-|*subtypes* (): `List<String>`
+h|*1..1 +
+(effected)*
+|*subtypes* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Result is all permutations of current container type and its descendants with the current `_base_type_` and its descendants.
 
-h|(effected)
-|*has_subtypes* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*has_subtypes* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Determine if there are any type substitutions.
 |===

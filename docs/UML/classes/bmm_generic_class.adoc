@@ -9,34 +9,37 @@ h|*Description*
 2+a|Definition of a generic class in an object model.
 
 h|*Inherit*
-2+|`BMM_CLASS`
+2+|`<<_bmm_class_class,BMM_CLASS>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_parameters*: `Hash<String,BMM_PARAMETER_TYPE>`
+|*generic_parameters*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^],<<_bmm_parameter_type_class,BMM_PARAMETER_TYPE>>>`
 a|List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(redefined)
-|*suppliers* (): `List<String>`
+h|*0..1 +
+(redefined)*
+|*suppliers* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Add suppliers from generic parameters.
 
-h|(effected)
-|*entity_metatype* (): `String`
+h|*1..1 +
+(effected)*
+|*entity_metatype* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Meta-type of `BMM_GENERIC_CLASS`, which is `Entity_metatype_generic`.
 
-h|(effected)
-|*type* (): `BMM_GENERIC_TYPE`
+h|*1..1 +
+(effected)*
+|*type* (): `<<_bmm_generic_type_class,BMM_GENERIC_TYPE>>`
 a|Generate a fully open `BMM_GENERIC_TYPE` instance that corresponds to this class definition
 
-h|
+h|*1..1*
 |*generic_parameter_conformance_type* ( +
-a_name: `String[1]` +
-): `String`
+a_name: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^][1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|For a generic class, type to which generic parameter `a_name` conforms e.g. if this class is `Interval <T:Comparable>` then the Result will be the single type `Comparable`. For an unconstrained type `T`, the Result will be `Any`.
 |===

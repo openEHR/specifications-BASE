@@ -3,7 +3,7 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_Any (abstract)_*
+2+^h|*__Any (abstract)__*
 
 h|*Description*
 2+a|Abstract supertype. Usually maps to a type like Any or Object in an object-oriented technology. Defined here to provide value and reference equality semantics.
@@ -12,31 +12,32 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*is_equal* ( +
-other: `Any[1]` +
-): `Boolean`
+other: `<<_any_class,Any>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|Value equality.
 
-h|
+h|*1..1*
 |*infix =* ( +
-other: `Any[1]` +
-): `Boolean`
+other: `<<_any_class,Any>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|Reference equality.
 
 .Parameters +
 [horizontal]
 `_other_`:: Reference equality.
 
-h|
+h|*1..1*
 |*instance_of* ( +
-a_type: `String[1]` +
-): `Any`
+a_type: `<<_string_class,String>>[1]` +
+): `<<_any_class,Any>>`
 a|Create new instance of a type.
 
-h|
+h|*1..1*
 |*type_of* ( +
-an_object: `Any[1]` +
-): `String`
+an_object: `<<_any_class,Any>>[1]` +
+): `<<_string_class,String>>`
 a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>".
 |===

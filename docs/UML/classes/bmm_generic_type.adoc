@@ -9,53 +9,60 @@ h|*Description*
 2+a|Type reference based on a generic class, e.g. `HashTable <List <Packet>, String>`.
 
 h|*Inherit*
-2+|`BMM_DEFINED_TYPE`
+2+|`<<_bmm_defined_type_class,BMM_DEFINED_TYPE>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_parameters*: `List<BMM_UNITARY_TYPE>`
+|*generic_parameters*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_bmm_unitary_type_class,BMM_UNITARY_TYPE>>>`
 a|Generic parameters of the `_root_type_` in this type specifier. The order must match the order of the owning class's formal generic parameter declarations.
 
 h|*1..1 +
 (redefined)*
-|*base_class*: `BMM_GENERIC_CLASS`
+|*base_class*: `<<_bmm_generic_class_class,BMM_GENERIC_CLASS>>`
 a|The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
-|*type_name* (): `String`
+h|*1..1 +
+(effected)*
+|*type_name* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Return the full name of the type including generic parameters, e.g. `DV_INTERVAL<T>`, `TABLE<List<THING>,String>`.
 
-h|(redefined)
-|*type_signature* (): `String`
+h|*1..1 +
+(redefined)*
+|*type_signature* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Signature form of the type, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
 
-h|(effected)
-|*is_abstract* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_abstract* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if `_base_class.is_abstract_` or if any (non-open) parameter type is abstract.
 
-h|(effected)
-|*flattened_type_list* (): `List<String>`
+h|*1..1 +
+(effected)*
+|*flattened_type_list* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Result is `_base_class.name_` followed by names of all generic parameter type names, which may be open or closed.
 
-h|(effected)
-|*subtypes* (): `List<String>`
+h|*1..1 +
+(effected)*
+|*subtypes* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Result is the permutation of the base class type and type substitutions of all generic parameters.
 
-h|(effected)
-|*has_subtypes* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*has_subtypes* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if `_base_class.has_descendants_` or any generic parameter type `_type_substitutions_` is True.
 
-h|
-|*is_partially_closed* (): `Boolean`
+h|*1..1*
+|*is_partially_closed* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Returns True if there is any substituted generic parameter.
 
-h|(effected)
-|*effective_base_class* (): `BMM_GENERIC_CLASS`
+h|*1..1 +
+(effected)*
+|*effective_base_class* (): `<<_bmm_generic_class_class,BMM_GENERIC_CLASS>>`
 a|Effective underlying class for this type, abstracting away any container type.
 |===

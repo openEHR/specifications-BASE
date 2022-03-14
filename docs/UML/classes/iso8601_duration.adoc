@@ -9,20 +9,20 @@ h|*Description*
 2+a|Represents an ISO 8601 duration, which may have multiple parts from years down to seconds.
 
 h|*Inherit*
-2+|`Iso8601_type`, `IDuration`
+2+|`<<_iso8601_type_class,Iso8601_type>>`, `<<_iduration_class,IDuration>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*is_decimal_sign_comma* (): `Boolean`
+h|*1..1*
+|*is_decimal_sign_comma* (): `<<_boolean_class,Boolean>>`
 a|True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
 
-h|
+h|*1..1*
 |*valid_iso8601_duration* ( +
-s: `String[1]` +
-): `Boolean`
+s: `<<_string_class,String>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|String is a valid ISO 8601 duration, i.e. takes the form:
 
 * P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]
@@ -41,73 +41,75 @@ Where each nn represents a number of years, months, etc. nnW represents a number
 
 NOTE: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).
 
-h|(effected)
-|*is_partial* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_partial* (): `<<_boolean_class,Boolean>>`
 a|Returns False.
 
-h|(effected)
-|*is_extended* (): `Boolean`
+h|*1..1 +
+(effected)*
+|*is_extended* (): `<<_boolean_class,Boolean>>`
 a|Returns True.
 
-h|
-|*as_string* (): `String`
+h|*1..1*
+|*as_string* (): `<<_string_class,String>>`
 a|ISO8601 string for duration, in format
 
 * `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`
 
-h|
-|*months* (): `Integer`
+h|*1..1*
+|*months* (): `<<_integer_class,Integer>>`
 a|Number of months.
 
-h|
-|*years* (): `Integer`
+h|*1..1*
+|*years* (): `<<_integer_class,Integer>>`
 a|Number of years of nominal 365-day length.
 
-h|
-|*weeks* (): `Integer`
+h|*1..1*
+|*weeks* (): `<<_integer_class,Integer>>`
 a|Number of 7 day weeks.
 
-h|
-|*to_seconds* (): `Integer`
+h|*1..1*
+|*to_seconds* (): `<<_integer_class,Integer>>`
 a|Total number of seconds equivalent (including fractional) of entire duration.
 
-h|
-|*minutes* (): `Integer`
+h|*1..1*
+|*minutes* (): `<<_integer_class,Integer>>`
 a|Number of 60 second minutes.
 
-h|
-|*hours* (): `Integer`
+h|*1..1*
+|*hours* (): `<<_integer_class,Integer>>`
 a|Number of 60 minute hours.
 
-h|
-|*days* (): `Integer`
+h|*1..1*
+|*days* (): `<<_integer_class,Integer>>`
 a|Number of 24 hour days.
 
-h|
-|*as_duration* (): `Duration`
+h|*1..1*
+|*as_duration* (): `<<_duration_class,Duration>>`
 a|Convert to a native `Duration`.
 
 h|*Invariants*
-2+a|*_Years_valid_*: `years >= 0`
+2+a|__Years_valid__: `years >= 0`
 
 h|
-2+a|*_Months_valid_*: `months >= 0`
+2+a|__Months_valid__: `months >= 0`
 
 h|
-2+a|*_Weeks_valid_*: `weeks >= 0`
+2+a|__Weeks_valid__: `weeks >= 0`
 
 h|
-2+a|*_Days_valid_*: `days >= 0`
+2+a|__Days_valid__: `days >= 0`
 
 h|
-2+a|*_Hours_valid_*: `hours >= 0`
+2+a|__Hours_valid__: `hours >= 0`
 
 h|
-2+a|*_Minutes_valid_*: `minutes >= 0`
+2+a|__Minutes_valid__: `minutes >= 0`
 
 h|
-2+a|*_Seconds_valid_*: `seconds >= 0`
+2+a|__Seconds_valid__: `seconds >= 0`
 
 h|
-2+a|*_Fractional_second_valid_*: `fractional_second >= 0.0 and fractional_second < 1.0`
+2+a|__Fractional_second_valid__: `fractional_second >= 0.0 and fractional_second < 1.0`
 |===

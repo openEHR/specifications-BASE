@@ -3,14 +3,14 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_Interval (abstract)_*
+2+^h|*__Interval<T> (abstract)__*
 
 h|*Description*
 2+a|Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
 Interval of ordered items.
 
 h|*Inherit*
-2+|`Any`
+2+|`<<_any_class,Any>>`
 
 h|*Attributes*
 ^h|*Signature*
@@ -21,28 +21,28 @@ h|*0..1*
 a|lower bound.
 
 h|*1..1*
-|*lower_unbounded*: `boolean`
+|*lower_unbounded*: `<<_boolean_class,boolean>>`
 a|lower boundary open (i.e. = -infinity)
 
 h|*1..1*
-|*upper_unbounded*: `boolean`
+|*upper_unbounded*: `<<_boolean_class,boolean>>`
 a|upper boundary open (i.e. = +infinity)
 
 h|*1..1*
-|*lower_included*: `boolean`
+|*lower_included*: `<<_boolean_class,boolean>>`
 a|lower boundary value included in range if not lower_unbounded.
 
 h|*1..1*
-|*upper_included*: `boolean`
+|*upper_included*: `<<_boolean_class,boolean>>`
 a|upper boundary value included in range if not upper_unbounded.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*has* ( +
 e: `T[1]` +
-): `boolean`
+): `<<_boolean_class,boolean>>`
 a|True if (lower_unbounded or
 ((lower_included and v >= lower) or
 v > lower)) and
@@ -50,37 +50,39 @@ v > lower)) and
 ((upper_included and v \<= upper or v
 < upper)))
 
-h|
+h|*1..1*
 |*intersects* ( +
-other: `Interval[1]` +
-): `Boolean`
+other: `<<_interval_class,Interval>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval.
 
-h|
+h|*1..1*
 |*contains* ( +
-other: `Interval[1]` +
-): `Boolean`
+other: `<<_interval_class,Interval>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|True if current interval properly contains `other'? True if all points of `other' are inside the current interval.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_equal* ( +
-other: `Any[1]` +
-): `Boolean`
+other: `<<_any_class,Any>>[1]` +
+): `<<_boolean_class,Boolean>>`
 a|True if current object's interval is semantically same as `other'.
 
-h|(abstract)
+h|*0..1 +
+(abstract)*
 |*upper* (): `T`
 a|
 
 h|*Invariants*
-2+a|*_Lower_included_valid_*: `lower_unbounded implies not lower_included`
+2+a|__Lower_included_valid__: `lower_unbounded implies not lower_included`
 
 h|
-2+a|*_Upper_included_valid_*: `upper_unbounded implies not upper_included`
+2+a|__Upper_included_valid__: `upper_unbounded implies not upper_included`
 
 h|
-2+a|*_Limits_consistent_*: `(not upper_unbounded and not lower_unbounded) implies lower \<= upper`
+2+a|__Limits_consistent__: `(not upper_unbounded and not lower_unbounded) implies lower \<= upper`
 
 h|
-2+a|*_Limits_comparable_*: `(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)`
+2+a|__Limits_comparable__: `(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)`
 |===
