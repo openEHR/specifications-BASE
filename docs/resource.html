@@ -49,6 +49,7 @@
 <li><a href="#_translation_details_class">2.2.2. TRANSLATION_DETAILS Class</a></li>
 <li><a href="#_resource_description_class">2.2.3. RESOURCE_DESCRIPTION Class</a></li>
 <li><a href="#_resource_description_item_class">2.2.4. RESOURCE_DESCRIPTION_ITEM Class</a></li>
+<li><a href="#_resource_annotations_class">2.2.5. RESOURCE_ANNOTATIONS Class</a></li>
 </ul>
 </li>
 </ul>
@@ -107,7 +108,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2021 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2022 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -865,6 +866,59 @@ translations.has_key (d.language.code_string)))</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>, <a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Additional language-senstive resource metadata, as a list of name/value pairs.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_resource_annotations_class"><a class="anchor" href="#_resource_annotations_class"></a>2.2.5. RESOURCE_ANNOTATIONS Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE_ANNOTATIONS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Object representing annotations on an archetype. These can be of various forms, with a documentation form defined so far, which has a multi-level tabular structure [ [ [String value, String key], path key], language key]. Example instance, showing the documentation structure.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    documentation = &lt;
+        ["en"] = &lt;
+           ["/data[id2]"] = &lt;
+               ["ui"] = &lt;"passthrough"&gt;
+           &gt;
+           ["/data[id2]/items[id3]"] = &lt;
+               ["design note"] = &lt;"this is a design note on Statement"&gt;
+               ["requirements note"] = &lt;"this is a requirements note on Statement"&gt;
+               ["medline ref"] = &lt;"this is a medline ref on Statement"&gt;
+           &gt;
+        &gt;
+    &gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Other sub-structures might have different keys, e.g.  based on programming languages, UI toolkits etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>, <a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>, <a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>, <a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&gt;&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Documentary annotations in a multi-level keyed structure.</p>
 </div></div></td>
 </tr>
 </tbody>
