@@ -101,11 +101,12 @@
 <li><a href="#_expr_operator_class">4.2.3.9. EXPR_OPERATOR Class</a></li>
 <li><a href="#_expr_unary_operator_class">4.2.3.10. EXPR_UNARY_OPERATOR Class</a></li>
 <li><a href="#_expr_binary_operator_class">4.2.3.11. EXPR_BINARY_OPERATOR Class</a></li>
-<li><a href="#_operator_def_class">4.2.3.12. OPERATOR_DEF Class</a></li>
-<li><a href="#_expr_leaf_class">4.2.3.13. EXPR_LEAF Class</a></li>
-<li><a href="#_expr_literal_class">4.2.3.14. EXPR_LITERAL Class</a></li>
-<li><a href="#_expr_variable_ref_class">4.2.3.15. EXPR_VARIABLE_REF Class</a></li>
-<li><a href="#_expr_function_call_class">4.2.3.16. EXPR_FUNCTION_CALL Class</a></li>
+<li><a href="#_expr_for_all_class">4.2.3.12. EXPR_FOR_ALL Class</a></li>
+<li><a href="#_operator_def_class">4.2.3.13. OPERATOR_DEF Class</a></li>
+<li><a href="#_expr_leaf_class">4.2.3.14. EXPR_LEAF Class</a></li>
+<li><a href="#_expr_literal_class">4.2.3.15. EXPR_LITERAL Class</a></li>
+<li><a href="#_expr_variable_ref_class">4.2.3.16. EXPR_VARIABLE_REF Class</a></li>
+<li><a href="#_expr_function_call_class">4.2.3.17. EXPR_FUNCTION_CALL Class</a></li>
 </ul>
 </li>
 </ul>
@@ -238,7 +239,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  P Bos,<br>
  D Bosca</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>11 Aug 2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>05 Apr 2022</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1.0</p></td>
@@ -1314,7 +1315,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract concept of any statement in a block of rule statements.</p>
+<p>Meta-type for the notion of statement, which is a non-value-returning entity.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1336,7 +1337,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Structural model of a typed first order predicate logic assertion, in the form of an expression tree, including optional variable definitions.</p>
+<p>Meta-type for a first order predicate logic expression with a Boolean result.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1388,7 +1389,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Definition of a named variable that can be used in an expression.</p>
+<p>Meta-type for the declaration of a named variable that can be used in an expression.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1433,7 +1434,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract ancestor of types representing the assignment statement, which does not produce a value in the way that operators such as '=', 'and' etc do. An assignment associates a named variable with an expression.</p>
+<p>Meta-type representing the assignment statement, which associates a named variable with an expression, and produces no value.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1568,7 +1569,7 @@ Not yet standardised.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract parent of all typed expression tree items.</p>
+<p>Abstract parent of all expression meta-types.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1637,7 +1638,7 @@ Not yet standardised.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code><a href="/releases/BASE/Release-1.0.4/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of operator_def.symbols.</p>
+<p>The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of <code>operator_def.symbols</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1727,7 +1728,52 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>4.2.3.12. OPERATOR_DEF Class</h5>
+<h5 id="_expr_for_all_class"><a class="anchor" href="#_expr_for_all_class"></a>4.2.3.12. EXPR_FOR_ALL Class</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXPR_FOR_ALL</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Universal quantification operator, usually known as <code>for_all</code>, whose operand is a collection of items referenced by an <code>EXPR_VALUE_REF</code>. The <code><em>condition</em></code> attribute represents an assertion that is applied to every member of the collection at runtime to determine the result.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_expr_operator_class">EXPR_OPERATOR</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>condition</strong>: <code><a href="#_assertion_class">ASSERTION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Boolean condition that returns True or False when applied to a member of the operand of a <code>for_all</code> operator.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code><a href="#_expr_value_ref_class">EXPR_VALUE_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Reference to collection / container object to which the <code>for_all</code> operator is to be applied.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_operator_def_class"><a class="anchor" href="#_operator_def_class"></a>4.2.3.13. OPERATOR_DEF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1766,7 +1812,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_leaf_class"><a class="anchor" href="#_expr_leaf_class"></a>4.2.3.13. EXPR_LEAF Class</h5>
+<h5 id="_expr_leaf_class"><a class="anchor" href="#_expr_leaf_class"></a>4.2.3.14. EXPR_LEAF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1781,7 +1827,7 @@ Not yet standardised.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Expression tree leaf item representing one of:</p>
+<p>Meta-type representing one of:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1820,7 +1866,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_literal_class"><a class="anchor" href="#_expr_literal_class"></a>4.2.3.14. EXPR_LITERAL Class</h5>
+<h5 id="_expr_literal_class"><a class="anchor" href="#_expr_literal_class"></a>4.2.3.15. EXPR_LITERAL Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1835,7 +1881,7 @@ Not yet standardised.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Literal value expression tree leaf item. This can represent a literal value of any primitive type included in the PRIMITIVE_TYPE enumeration.</p>
+<p>Literal value expression tree leaf item. This can represent a literal value of any primitive type included in the <code>PRIMITIVE_TYPE</code> enumeration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1859,7 +1905,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_variable_ref_class"><a class="anchor" href="#_expr_variable_ref_class"></a>4.2.3.15. EXPR_VARIABLE_REF Class</h5>
+<h5 id="_expr_variable_ref_class"><a class="anchor" href="#_expr_variable_ref_class"></a>4.2.3.16. EXPR_VARIABLE_REF Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1898,7 +1944,7 @@ Not yet standardised.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_expr_function_call_class"><a class="anchor" href="#_expr_function_call_class"></a>4.2.3.16. EXPR_FUNCTION_CALL Class</h5>
+<h5 id="_expr_function_call_class"><a class="anchor" href="#_expr_function_call_class"></a>4.2.3.17. EXPR_FUNCTION_CALL Class</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
