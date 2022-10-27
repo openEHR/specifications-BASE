@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <meta name="description" content="openEHR Foundation Types specification">
 <meta name="keywords" content="openehr, identifiers, types">
 <title>Foundation Types</title>
@@ -201,7 +201,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2017 - 2021 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2017 - 2022 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -241,13 +241,19 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-37" target="_blank" rel="noopener">SPECBASE-37</a>: Add stereotypes to represent Enums from common programming languages.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>14 May 2022</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-34" target="_blank" rel="noopener">SPECBASE-34</a>: Allow +14:00 timezone.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 Mar 2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Mar 2021</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2164,7 +2170,7 @@ Upper bound.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="#_boolean_class">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>lower</code> boundary open (i.e. = -infinity).
+<p>True if <code><em>lower</em></code> boundary open (i.e. = <code>-infinity</code>).
 lower boundary open (i.e. = -infinity)</p>
 </div></div></td>
 </tr>
@@ -2172,7 +2178,7 @@ lower boundary open (i.e. = -infinity)</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="#_boolean_class">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>upper</code> boundary open (i.e. = +infinity).
+<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>+infinity</code>).
 upper boundary open (i.e. = +infinity)</p>
 </div></div></td>
 </tr>
@@ -2180,7 +2186,7 @@ upper boundary open (i.e. = +infinity)</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="#_boolean_class">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>lower</code> boundary value included in range if not <code>lower_unbounded</code>.
+<p>True if <code><em>lower</em></code> boundary value included in range, if <code>not <em>lower_unbounded</em></code>.
 lower boundary value included in range if not lower_unbounded.</p>
 </div></div></td>
 </tr>
@@ -2188,7 +2194,7 @@ lower boundary value included in range if not lower_unbounded.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="#_boolean_class">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>upper</code> boundary value included in range if not <code>upper_unbounded</code>.
+<p>True if <code><em>upper</em></code> boundary value included in range if <code>not <em>upper_unbounded</em></code>.
 upper boundary value included in range if not upper_unbounded.</p>
 </div></div></td>
 </tr>
@@ -2220,7 +2226,7 @@ upper_included and v &lt;= upper or v &lt; upper)</p>
 other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
 ): <code><a href="#_boolean_class">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of other is strictly inside the limits of this interval.</p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4778,7 +4784,7 @@ a_val: <code><a href="#_real_class">Real</a>[1]</code><br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-09 11:08:38 +0100
+Last updated 2021-04-09 11:31:28 +0100
 </div>
 </div>
 </body>
