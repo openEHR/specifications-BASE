@@ -32,7 +32,7 @@ expressions available at the {openehr_terminology_resources}[openEHR terminology
 == Archetype Internal Terminology
 
 Archetypes contain their own local terminology (found in the 'ontology' section of an archetype).
-The use of internal term sets is appropriate when there is no structure to the terms (ie no relationships)
+The use of internal term sets is appropriate when there is no structure to the terms (i.e. no relationships)
 and when synonyms are not important. Thus, the use is limited to small flat lists of terms. The advantages
 of the terms being internal to the archetype, apart from computational efficiency mentioned
 above, are:
@@ -220,7 +220,7 @@ openEHR data) in the form of two name/value pairs: `<"principal diagnosis", [sno
 as such, but the lesson is clear: coding of data and code use in queries must be governed by common
 models, otherwise there is no hope of reliably processing the data.
 
-Under the openEHR aproach, path-based querying can be used to specify (for example):
+Under the openEHR approach, path-based querying can be used to specify (for example):
 
 * find `EVALUATIONs` based on a `problem-diagnosis-histological_staging` archetype with a value at the path `/data/items[at0002.1.1]/value/code` (histological diagnosis) equal-to-or-subsumed-by "clinical finding" and equal-to or-subsumed-by "adenocarcinoma".
 
