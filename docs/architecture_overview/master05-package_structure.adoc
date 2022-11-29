@@ -91,11 +91,11 @@ image::{diagrams_uri}/spec_component-lang.svg[id=spec_component_lang, align="cen
 
 === Basic Meta-Model (BMM)
 
-The {openehr_bmm}[BMM specification^] defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML's XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the {openehr_odin}[ODIN syntax^] or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the {openehr_awb}[openEHR ADL Workbench^] and some of the openEHR tooling software.
+The {openehr_bmm}[BMM specification^] defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML's XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the {openehr_odin}[ODIN syntax^] or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the {openehr_awb}[openEHR ADL Workbench^] and some openEHR tooling software.
 
 The BMM is primarily intended to reduce complexity for tools that consume reference model definitions, but is not the only way to implement such tools. Similar tools can be based directly on the openEHR published UML models, as long as typing, template types and qualified attributes are properly handled. Another alternative means of working with models is via software library implementations of the relevant models (openEHR Reference Model etc).
 
-Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.
+Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However, BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.
 
 === Object Data Instance Notation (ODIN)
 
@@ -244,13 +244,13 @@ The Query Service defines the interface via which AQL queries which may be store
 
 === Terminology Interface
 
-The Terminology Service service provides the means for all other services to access any terminology available in the health information environment, including basic classification vocabularies such as {who_icd}[ICDx^] and {who_icpc}[ICPC^], as well as more advanced ontology-based terminologies. Following the concept of
+The Terminology Service provides the means for all other services to access any terminology available in the health information environment, including basic classification vocabularies such as {who_icd}[ICDx^] and {who_icpc}[ICPC^], as well as more advanced ontology-based terminologies. Following the concept of
 division of responsibilities in a system-of-systems context, the Terminology Service abstracts the different underlying architectures of each terminology, allowing other services in the environment to access terms in a standard way. The Terminology Service is thus the gateway to all ontology- and terminology-
 based knowledge services in the environment, which along with services for accessing guidelines, drug data and other "reference data" enables inferencing and decision support to be carried out in the environment.
 
 == Global View
 
-The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful _aide memoire_ picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CNF and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.
+The figure below shows the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful _aide memoire_ picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CNF and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.
 
 [.text-center]
 .openEHR Components and specifications - global view

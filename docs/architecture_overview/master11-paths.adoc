@@ -369,7 +369,7 @@ In general, uniqueness of property values of sibling nodes is not required, and 
 
 ==== Using Positional Parameters
 
-If it is known within a system that the order of items in container attributes in the data is always preserved across storage, transformation etc, guaranteed unique paths can be created using the Xpath positional parameter. Using the above example, unique to the systolic and diastolic pressures of each event (sitting and standing measurements) can be constructed using the following expressions (identical in openEHR and Xpath):
+If it is known within a system that the order of items in container attributes in the data is always preserved across storage, transformation etc., guaranteed unique paths can be created using the Xpath positional parameter. Using the above example, unique to the systolic and diastolic pressures of each event (sitting and standing measurements) can be constructed using the following expressions (identical in openEHR and Xpath):
 
 ----
 /data/events[1]/data/items[1]/value/magnitude
@@ -403,16 +403,17 @@ ehr://system_id/ehr_id/top_level_structure_locator/path_inside_top_level_structu
 
 // ----------- variations -----------
 ehr://system_id/ehr_id                // refer to an EHR within a specific EHR system/service
-ehr:/ehr_id	                      // refer to an EHR within the 'current' (i.e. local) EHR system
+ehr:/ehr_id	                          // refer to an EHR within the 'current' (i.e. local) EHR system
 ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
 ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure 
                                       // a sub-item of a specific COMPOSITION, FOLDER etc
 ----
-The possible values for `top_level_structure_locator` come from attribute names of the class `EHR`, visible in the {openehr_rm_ehr}#_ehr_package[ehr package^], namely `_compositions_`, `_directory_` etc.
 
-In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr` space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
+The possible values for `top_level_structure_locator` come from attribute names of the class `EHR`, visible in the link:{openehr_rm_ehr}#_ehr_package[ehr package^], namely `__compositions__`, `__directory__` etc.
 
-NOTE: So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc, are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
+In this way, any object in any openEHR EHR is addressable via a URI. Within `ehr` space, URL-style references to particular servers, hosts etc. are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type `DV_EHR_URI` is designed to carry URIs of this form, enabling URIs to be constructed for use within `LINKs` and elsewhere in the openEHR EHR.
+
+NOTE: So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc., are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
 
 See {rfc3986}[RFC-3986, Universal Resource Identifiers in WWW^] by Tim Berners-Lee. See W3C document {w3c_uri_addressing}[Naming and Addressing: URIs, URLs, ...^] for a starting point on URIs. 
 

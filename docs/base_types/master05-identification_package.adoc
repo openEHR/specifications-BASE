@@ -21,7 +21,7 @@ Identification of entities both in the real world and in information systems is 
 entity. E.g. there is no guarantee that two systems' "latest" version of the Person "Dr Jones" is the same.
 ** Medico-legal use of information relies on previous states of information being distinguishable from other previous states and the current state.
 * It should be possible for an entity in one system or service (such as the EHR) to refer to an entity in another system or service in such a way that:
-** the target of the reference is easily finable within the shared environment, and
+** the target of the reference is easily findable within the shared environment, and
 ** the reference does is valid regardless of the physical architecture of servers and applications.
 
 The following subsections describe some of the features and challenges of identification.
@@ -60,9 +60,9 @@ Within a distributed information environment, there is a need for entities not c
 
 == Design
 
-This package models only informational identifiers, i.e. transparent identifiers understood by openEHR or related computational systems. Real World Entity Identifiers such as driver's license numbers are modelled using the data type `DV_IDENTIFIER`. This is not to imply that such identifiers are any less systematic or well-managed than the system identifiers defined here, only that from the point of view of openEHR, they have the same status as other informational attributes such as name, address etc of a Person.
+This package models only informational identifiers, i.e. transparent identifiers understood by openEHR or related computational systems. Real World Entity Identifiers such as driver's license numbers are modelled using the data type `DV_IDENTIFIER`. This is not to imply that such identifiers are any less systematic or well-managed than the system identifiers defined here, only that from the point of view of openEHR, they have the same status as other informational attributes such as name, address etc. of a Person.
 
-A key design decision has been to choose a string representation for all identifiers, with subparts being made available by appropriate functions which perform simple parsing on the string. This ensures that the data representation of identifiers (e.g. in XML) is as small as possible, while not losing object-oriented typing.
+A key design decision has been to choose a string representation for all identifiers, with sub-parts being made available by appropriate functions which perform simple parsing on the string. This ensures that the data representation of identifiers (e.g. in XML) is as small as possible, while not losing object-oriented typing.
 
 === Primitive Identifiers
 
@@ -74,7 +74,7 @@ A consequence of the string representation approach used in these classes is tha
 
 === Composite Identifiers
 
-The `OBJECT_ID` type and its hierarchy of subtypes define all of the identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO Oids etc) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the `HIER_OBJECT_ID` type are used both by openEHR and many other organisations.
+The `OBJECT_ID` type and its hierarchy of subtypes define all identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human-readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO OIDs etc.) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the `HIER_OBJECT_ID` type are used both by openEHR and many other organisations.
 
 [cols="1,1", options="header"]
 |===
@@ -126,7 +126,7 @@ The scheme defined by the `TERMINOLOGY_ID` class provides for the situation wher
 * "ICD10AM(3rd_ed)"
 * "ICD10AM(4th_ed)"
 
-The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes its meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino's 'desiderata' cite:[Cimino1997] of which the principle of 'concept permanance' is applicable here - "A concept's meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assmued in the system
+The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes its meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino's 'desiderata' cite:[Cimino1997] of which the principle of 'concept permanence' is applicable here - "A concept's meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system
 was indeed the one assigned to it in the particular version or edition.
 
 ==== Equivalence
@@ -149,7 +149,7 @@ The following provides a typical example:
 
 Under this scheme, multiple versions in the same container all have the same value for `_object_id_`, whilst their location in the version tree is given by the combination of the version tree identifier and the identifier of the creating system.
 
-The requirements on the `_creating_system_id_` part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processible, however unconnected systems pose a problem). ISO Oids might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the {openehr_rm_common}#_change_control_package[Common IM, `change_control` package].
+The requirements on the `_creating_system_id_` part of the identifier are that it be unique per system, and that it be easy to obtain or generate. It is also helpful if it is a meaningful identifier. The two most practical candidates appear to be UUIDs (which are not meaningful, but are easy to generate) and reverse internet domain identifiers (these are easy to determine if the system has an internet address, and are meaningful and directly processable, however unconnected systems pose a problem). ISO OIDs might also be used. All of these identifier types are accommodated via the use of UID. A full explanation of the version identification scheme and its capabilities is given in the {openehr_rm_common}#_change_control_package[Common IM, `change_control` package].
 
 ==== Generic and External Identifiers
 
@@ -176,7 +176,7 @@ These rules do not apply to any identifier constructed in a language in which ca
 
 ==== Composite Identifiers and Language
 
-In all of the 'meaningful' identifier types above, with the posible exception of `GENERIC_ID`, the human-readable identifier sections are assumed to use only the basic latin character set, possibly with the addition of other special characters as allowed by the production rules defined below for each identifier. In most cases, the textual parts of these identifiers will be words from the English language, or else they will be recognisable words from other languages, where necessary alliterated into the latin alphabet. Accented and other diacritical letter variants are not allowed. This limitation is made in the interests of practical computability of identifiers, and is in common with class and attribute naming in shared UML models in the standards world, and also with internet domain names and internet URIs.
+In all of the 'meaningful' identifier types above, with the possible exception of `GENERIC_ID`, the human-readable identifier sections are assumed to use only the basic latin character set, possibly with the addition of other special characters as allowed by the production rules defined below for each identifier. In most cases, the textual parts of these identifiers will be words from the English language, or else they will be recognisable words from other languages, where necessary alliterated into the latin alphabet. Accented and other diacritical letter variants are not allowed. This limitation is made in the interests of practical computability of identifiers, and is in common with class and attribute naming in shared UML models in the standards world, and also with internet domain names and internet URIs.
 
 === References
 
@@ -184,37 +184,37 @@ All `OBJECT_IDs` are used as identifier attributes within the thing they identif
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/uid.adoc[]
+include::{uml_export_dir}/classes/{pkg}uid.adoc[]
 
-include::{uml_export_dir}/classes/iso_oid.adoc[]
+include::{uml_export_dir}/classes/{pkg}iso_oid.adoc[]
 
-include::{uml_export_dir}/classes/uuid.adoc[]
+include::{uml_export_dir}/classes/{pkg}uuid.adoc[]
 
-include::{uml_export_dir}/classes/internet_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}internet_id.adoc[]
 
-include::{uml_export_dir}/classes/object_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}object_id.adoc[]
 
-include::{uml_export_dir}/classes/uid_based_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}uid_based_id.adoc[]
 
-include::{uml_export_dir}/classes/hier_object_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}hier_object_id.adoc[]
 
-include::{uml_export_dir}/classes/object_version_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}object_version_id.adoc[]
 
-include::{uml_export_dir}/classes/version_tree_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}version_tree_id.adoc[]
 
-include::{uml_export_dir}/classes/archetype_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}archetype_id.adoc[]
 
-include::{uml_export_dir}/classes/template_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}template_id.adoc[]
 
-include::{uml_export_dir}/classes/terminology_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}terminology_id.adoc[]
 
-include::{uml_export_dir}/classes/generic_id.adoc[]
+include::{uml_export_dir}/classes/{pkg}generic_id.adoc[]
 
-include::{uml_export_dir}/classes/object_ref.adoc[]
+include::{uml_export_dir}/classes/{pkg}object_ref.adoc[]
 
-include::{uml_export_dir}/classes/party_ref.adoc[]
+include::{uml_export_dir}/classes/{pkg}party_ref.adoc[]
 
-include::{uml_export_dir}/classes/locatable_ref.adoc[]
+include::{uml_export_dir}/classes/{pkg}locatable_ref.adoc[]
 
 [[_syntaxes]]
 == Syntaxes

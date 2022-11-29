@@ -70,11 +70,11 @@ au.gov.health.rdh.ehr1                  -- id of creating system
 
 This 3-part tuple is known as a _version locator_ and is defined by the class `OBJECT_VERSION_ID` in the {openehr_base_types}#_identification_package[`identification` package section of the Base Types specification^]. The openEHR version identification scheme is described in detail in the {openehr_rm_common}#_change_control_package[`change_control` package section of the Common IM^].
 
-The contained top-level content item (i.e. a `COMPOSITION` etc) also has a `_uid_` attribute (inherited from `LOCATABLE`), and it is strongly recommended that this be populated with a copy of the `OBJECT_VERSION_ID` from the containing `VERSION<X>` object. This facilitates identifying versions from a naked content object e.g. returned in a query.
+The contained top-level content item (i.e. a `COMPOSITION` etc.) also has a `_uid_` attribute (inherited from `LOCATABLE`), and it is strongly recommended that this be populated with a copy of the `OBJECT_VERSION_ID` from the containing `VERSION<X>` object. This facilitates identifying versions from a naked content object e.g. returned in a query.
 
 A `VERSION` can be _referred to_ using a normal `OBJECT_REF` that contains a copy of the version's `OBJECT_VERSION_ID`.
 
-The last component of identification is the _path_, used to refer to an interior node of a top-level structure of some type `X` (e.g. `COMPOSITION`, `PARTY`, etc), the latter identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight abbreviations to shorten paths in the most common cases. Paths are described in detail below.
+The last component of identification is the _path_, used to refer to an interior node of a top-level structure of some type `X` (e.g. `COMPOSITION`, `PARTY`, etc.), the latter identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight abbreviations to shorten paths in the most common cases. Paths are described in detail below.
 
 To refer to an interior data node from outside a top-level structure, a combination of a  version locator
 and a path is required. This is formalised by the `LOCATABLE_REF` class, also in the {openehr_base_types}#_identification_package[`identification`

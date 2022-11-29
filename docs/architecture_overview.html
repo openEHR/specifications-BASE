@@ -702,7 +702,7 @@
 <p><strong>Formalisms (LANG, AM, QUERY)</strong>: various generic formalisms, including BMM (Basic Meta-Model), (ADL (Archetype Definition Language) and AQL (Archetype Query Language);</p>
 </li>
 <li>
-<p><strong>Content (TERM, RM)</strong>: the models of primary content of the openEHR platform, including demographics, EHR; supporting openEHR Terminology (along with expressions of various ISO, IETF and other vocabularies (language names, territory names, MIME types, etc) that are not typically published in a directly usable format);</p>
+<p><strong>Content (TERM, RM)</strong>: the models of primary content of the openEHR platform, including demographics, EHR; supporting openEHR Terminology (along with expressions of various ISO, IETF and other vocabularies (language names, territory names, MIME types, etc.) that are not typically published in a directly usable format);</p>
 </li>
 <li>
 <p><strong>Process &amp; CDS (PROC, CDS)</strong>: clinical process and clinical decision support components, containing the Task Planning and GDL (Guideline Definition Language) specifications;</p>
@@ -716,7 +716,7 @@
 <p>Some of these specifications (e.g. Antlr grammars) are directly usable in software development. Most of the abstract specifications have concrete expressions in formalisms such as JSON, XML schema, openEHR BMM and REST APIs enabling their direct use in development. These are known as Implementation Technology Specifications (ITSs; also known as 'Platform-Specific Models' or PSMs), and are collected in the <a href="https://specifications.openehr.org/releases/ITS/latest/index" target="_blank" rel="noopener">ITS component</a> shown on the right. They also constitute openEHR&#8217;s <em>interoperability specifications</em>.</p>
 </div>
 <div class="paragraph">
-<p>As implementation technologies change over time the ITS specifications will be replaced, while the main group of abstract specifications will generally only change in response to real-world requirements other than information technology.</p>
+<p>As implementation technologies change over time, the ITS specifications will be replaced, while the main group of abstract specifications will generally only change in response to real-world requirements other than information technology.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="https://specifications.openehr.org/releases/CNF/latest/index" target="_blank" rel="noopener">CNF component</a> at the top defines <em>conformance criteria</em>, and is primarily based on ITS artefacts such as REST APIs, XSDs, but also upon AQL queries, archetypes and some other abstract artefacts. It includes a formal definition of the notional openEHR Platform and how to test it in a standard way. This is used as the basis for openEHR product certification and also for procurement tender specification.</p>
@@ -765,7 +765,7 @@ to the two dimensions, scope, and kind of subject, as shown below.</p>
 bubbles contained within it. Requirements for a generic record of care for any kind of subject in a
 local deployment are represented by the top left bubble. The subsequent addition of requirements corresponding
 to living subjects and then human subjects is represented by the bubbles down the left side
-of the diagram. The requirements represented by the largest bubble on the left hand side correspond to
+of the diagram. The requirements represented by the largest bubble on the left-hand side correspond to
 'local health records for human care', such as radiology records, hospital EPRs and so on. Additional
 sets of requirements represented by wider bubbles going across the diagram correspond to extending
 the scope of the content of the care record first to a whole subject (resulting in a patient-centric, longitudinal
@@ -789,7 +789,7 @@ radiology record system.</p>
 </div>
 <div class="paragraph">
 <p>Some of the key requirements developed during the evolution of GEHR to openEHR are listed in the
-following sections, corresponding to some of the major requirements groups of <a href="#scope_of_openehr">Figure 2</a>.</p>
+following sections, corresponding to major requirements groups of <a href="#scope_of_openehr">Figure 2</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_generic_care_record_requirements"><a class="anchor" href="#_generic_care_record_requirements"></a>3.1.1. Generic Care Record Requirements</h4>
@@ -905,7 +905,7 @@ summarised as:</p>
 <p>Improved prevention and early detection, based on predictive risk factor analysis, which is possible with quality EHR data;</p>
 </li>
 <li>
-<p>Improved decision making through decision support tools with access to the patient’s whole EHR;</p>
+<p>Improved decision-making through decision support tools with access to the patient’s whole EHR;</p>
 </li>
 <li>
 <p>Improving access to and computation of evidence based guidelines;</p>
@@ -1382,13 +1382,13 @@ Until BASE Release 1.1.0, the contents of the LANG component resided in the BASE
 <div class="sect3">
 <h4 id="_basic_meta_model_bmm"><a class="anchor" href="#_basic_meta_model_bmm"></a>5.4.1. Basic Meta-Model (BMM)</h4>
 <div class="paragraph">
-<p>The <a href="https://specifications.openehr.org/releases/LANG/latest/bmm.html" target="_blank" rel="noopener">BMM specification</a> defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML&#8217;s XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">ODIN syntax</a> or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the <a href="https://www.openehr.org/downloads/ADLworkbench" target="_blank" rel="noopener">openEHR ADL Workbench</a> and some of the openEHR tooling software.</p>
+<p>The <a href="https://specifications.openehr.org/releases/LANG/latest/bmm.html" target="_blank" rel="noopener">BMM specification</a> defines a generic meta-model, suitable for formally expressing object-oriented models, including those of openEHR (RM etc). It is roughly an equivalent of UML&#8217;s XMI, but fixes various problems with the latter around generic (template) types, while being significantly less complex and fragile. BMM models can be expressed in the <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">ODIN syntax</a> or any other regular object syntax (JSON etc), and conveniently edited by hand. BMM files are used within tools such as the <a href="https://www.openehr.org/downloads/ADLworkbench" target="_blank" rel="noopener">openEHR ADL Workbench</a> and some openEHR tooling software.</p>
 </div>
 <div class="paragraph">
 <p>The BMM is primarily intended to reduce complexity for tools that consume reference model definitions, but is not the only way to implement such tools. Similar tools can be based directly on the openEHR published UML models, as long as typing, template types and qualified attributes are properly handled. Another alternative means of working with models is via software library implementations of the relevant models (openEHR Reference Model etc).</p>
 </div>
 <div class="paragraph">
-<p>Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.</p>
+<p>Consequently, understanding or use of BMM specification or models based on it is not necessary in order to implement openEHR systems. However, BMM provides a convenient format for model processing, e.g. to auto-generate code stubs in a new language.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1694,7 +1694,7 @@ a flexible way of including the arbitrary demographic attributes allowed in the 
 <div class="sect3">
 <h4 id="_terminology_interface"><a class="anchor" href="#_terminology_interface"></a>5.7.4. Terminology Interface</h4>
 <div class="paragraph">
-<p>The Terminology Service service provides the means for all other services to access any terminology available in the health information environment, including basic classification vocabularies such as <a href="http://www.who.int/classifications/icd/en/" target="_blank" rel="noopener">ICDx</a> and <a href="http://www.who.int/classifications/icd/adaptations/icpc2/en/" target="_blank" rel="noopener">ICPC</a>, as well as more advanced ontology-based terminologies. Following the concept of
+<p>The Terminology Service provides the means for all other services to access any terminology available in the health information environment, including basic classification vocabularies such as <a href="http://www.who.int/classifications/icd/en/" target="_blank" rel="noopener">ICDx</a> and <a href="http://www.who.int/classifications/icd/adaptations/icpc2/en/" target="_blank" rel="noopener">ICPC</a>, as well as more advanced ontology-based terminologies. Following the concept of
 division of responsibilities in a system-of-systems context, the Terminology Service abstracts the different underlying architectures of each terminology, allowing other services in the environment to access terms in a standard way. The Terminology Service is thus the gateway to all ontology- and terminology-
 based knowledge services in the environment, which along with services for accessing guidelines, drug data and other "reference data" enables inferencing and decision support to be carried out in the environment.</p>
 </div>
@@ -1703,7 +1703,7 @@ based knowledge services in the environment, which along with services for acces
 <div class="sect2">
 <h3 id="_global_view"><a class="anchor" href="#_global_view"></a>5.8. Global View</h3>
 <div class="paragraph">
-<p>The figure below shows all of the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CNF and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.</p>
+<p>The figure below shows the openEHR specifications, i.e. object models, languages and APIs, arranged by component. This view abstracts away the components and top-level UML packages, providing a useful <em>aide memoire</em> picture of the totality of openEHR specifications. Dependencies only exist from higher elements to lower elements. The CNF and ITS components are separated since they are semantically derivative from the primary specifications, but are primary artefacts for downstream software engineering use. The other usable software artefact comes in the form of class libraries directly implementing the formal specifications.</p>
 </div>
 <div class="imageblock text-center text-center">
 <div class="content">
@@ -1911,7 +1911,7 @@ Entries make up the vast majority of archetypes defined for the EHR.</p>
 <div class="title">Figure 23. Relationship of information types to the investigation process</div>
 </div>
 <div class="paragraph">
-<p>This figure shows the cycle of information creation due to an iterative, problem solving process typical
+<p>This figure shows the cycle of information creation due to an iterative, problem-solving process typical
 not just of clinical medicine but of science in general. The 'system' as a whole is considered to be made up of two
 parts: the 'patient system' and the 'clinical investigator system'. The latter consists of health carers,
 and may include the patient (at points in time when the patient performs observational or therapeutic
@@ -2074,7 +2074,7 @@ respect the privacy of disclosed data) are primary concerns of many consumers wi
 Health systems. A widely accepted principle is that information provided (either directly or due to
 observation or testing of specimens etc.) in confidence by a patient to health professionals during an
 episode of care should only be passed on or otherwise become available to other parties if the patient
-agrees; put more simply: <em>data sharing must be controlled by patient consent</em>. A more complex subrequirement
+agrees; put more simply: <em>data sharing must be controlled by patient consent</em>. A more complex sub-requirement
 for some patients is allowing differential access to parts of their health record, for example,
 relatively open access rights to most of the health record, but limited access to sexual or mental
 health items. The interrelatedness of health information can make this difficult. For example the medication
@@ -2463,7 +2463,7 @@ this external identifier is actually set in <code>PARTY_SELF</code> instances, a
 <div class="paragraph">
 <p>This simple mechanism provides a basic protection against certain kinds of information theft or hacking
 if used properly. In the most secure situation, a hacker has to steal not just EHR data but also separate
-demographic records and an identity cross reference database, both of which can be located on
+demographic records and an identity cross-reference database, both of which can be located on
 different machines (making burglary harder). The identity cross-reference database would be easy to
 encrypt or protect by other security mechanisms.</p>
 </div>
@@ -2660,7 +2660,7 @@ kinds of changes that can occur to items affected in a Contribution are:</p>
 <div class="title">Figure 31. Contributions to the Repository (delta form)</div>
 </div>
 <div class="paragraph">
-<p>This shows the effect of four Contributions (left hand side) to a repository containing a number of CIs. As each Contribution is made, the repository is changed in some way. The first brings into existing a new CI, and modifies two others (changes indicated by the 'update' triangles). The second Contribution causes the creation of a new CI due to importing from a lab data feeder system. The third causes a creation as well as three changes, while the fourth causes an amendment to an existing CI.</p>
+<p>This shows the effect of four Contributions (left-hand side) to a repository containing a number of CIs. As each Contribution is made, the repository is changed in some way. The first brings into existing a new CI, and modifies two others (changes indicated by the 'update' triangles). The second Contribution causes the creation of a new CI due to importing from a lab data feeder system. The third causes a creation as well as three changes, while the fourth causes an amendment to an existing CI.</p>
 </div>
 <div class="paragraph">
 <p>One nuance which should be pointed out is that in the figure above Contributions are shown as if they are
@@ -2845,13 +2845,13 @@ au.gov.health.rdh.ehr1                  -- id of creating system
 <p>This 3-part tuple is known as a <em>version locator</em> and is defined by the class <code>OBJECT_VERSION_ID</code> in the <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_identification_package" target="_blank" rel="noopener"><code>identification</code> package section of the Base Types specification</a>. The openEHR version identification scheme is described in detail in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package" target="_blank" rel="noopener"><code>change_control</code> package section of the Common IM</a>.</p>
 </div>
 <div class="paragraph">
-<p>The contained top-level content item (i.e. a <code>COMPOSITION</code> etc) also has a <code><em>uid</em></code> attribute (inherited from <code>LOCATABLE</code>), and it is strongly recommended that this be populated with a copy of the <code>OBJECT_VERSION_ID</code> from the containing <code>VERSION&lt;X&gt;</code> object. This facilitates identifying versions from a naked content object e.g. returned in a query.</p>
+<p>The contained top-level content item (i.e. a <code>COMPOSITION</code> etc.) also has a <code><em>uid</em></code> attribute (inherited from <code>LOCATABLE</code>), and it is strongly recommended that this be populated with a copy of the <code>OBJECT_VERSION_ID</code> from the containing <code>VERSION&lt;X&gt;</code> object. This facilitates identifying versions from a naked content object e.g. returned in a query.</p>
 </div>
 <div class="paragraph">
 <p>A <code>VERSION</code> can be <em>referred to</em> using a normal <code>OBJECT_REF</code> that contains a copy of the version&#8217;s <code>OBJECT_VERSION_ID</code>.</p>
 </div>
 <div class="paragraph">
-<p>The last component of identification is the <em>path</em>, used to refer to an interior node of a top-level structure of some type <code>X</code> (e.g. <code>COMPOSITION</code>, <code>PARTY</code>, etc), the latter identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight abbreviations to shorten paths in the most common cases. Paths are described in detail below.</p>
+<p>The last component of identification is the <em>path</em>, used to refer to an interior node of a top-level structure of some type <code>X</code> (e.g. <code>COMPOSITION</code>, <code>PARTY</code>, etc.), the latter identified by its Version locator. Paths in openEHR follow an Xpath style syntax, with slight abbreviations to shorten paths in the most common cases. Paths are described in detail below.</p>
 </div>
 <div class="paragraph">
 <p>To refer to an interior data node from outside a top-level structure, a combination of a  version locator
@@ -2928,7 +2928,7 @@ usually widely used.</p>
 all data in the EHR conform to the constraints defined in the archetypes referenced by the template. In
 particular, it conforms to the path structure of the archetypes, as well as their terminological constraints.
 Which archetypes were used at data creation time is written into the data, in the form of both
-archetype identifiers at the relevant root nodes, and archetype node identifiers (the [atnnnn] codes),
+archetype identifiers at the relevant root nodes, and archetype node identifiers (the <code>[atnnnn]</code> codes),
 which act as normative node names, and which are in turn the basis for paths. When it comes time to
 modify the same data, these archetype node identifiers enable applications to retrieve and use the
 original archetypes, ensuring modifications respect the original constraints.</p>
@@ -3727,7 +3727,7 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 <div class="sect4">
 <h5 id="_using_positional_parameters"><a class="anchor" href="#_using_positional_parameters"></a>11.2.4.3. Using Positional Parameters</h5>
 <div class="paragraph">
-<p>If it is known within a system that the order of items in container attributes in the data is always preserved across storage, transformation etc, guaranteed unique paths can be created using the Xpath positional parameter. Using the above example, unique to the systolic and diastolic pressures of each event (sitting and standing measurements) can be constructed using the following expressions (identical in openEHR and Xpath):</p>
+<p>If it is known within a system that the order of items in container attributes in the data is always preserved across storage, transformation etc., guaranteed unique paths can be created using the Xpath positional parameter. Using the above example, unique to the systolic and diastolic pressures of each event (sitting and standing measurements) can be constructed using the following expressions (identical in openEHR and Xpath):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3778,17 +3778,17 @@ in the above example, <code><em>name</em></code> values are shown as if they wer
 
 // ----------- variations -----------
 ehr://system_id/ehr_id                // refer to an EHR within a specific EHR system/service
-ehr:/ehr_id	                      // refer to an EHR within the &#39;current&#39; (i.e. local) EHR system
+ehr:/ehr_id	                          // refer to an EHR within the &#39;current&#39; (i.e. local) EHR system
 ehr:/ehr_id/top_level_structure_locator // a specific COMPOSITION, FOLDER etc
 ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
                                       // a sub-item of a specific COMPOSITION, FOLDER etc</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The possible values for <code>top_level_structure_locator</code> come from attribute names of the class <code>EHR</code>, visible in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#" class="bare">https://specifications.openehr.org/releases/RM/latest/ehr.html#</a><em>ehr_package[ehr package^], namely <code>_compositions</em></code>, <code><em>directory</em></code> etc.</p>
+<p>The possible values for <code>top_level_structure_locator</code> come from attribute names of the class <code>EHR</code>, visible in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_package" target="_blank" rel="noopener">ehr package</a>, namely <code><em>compositions</em></code>, <code><em>directory</em></code> etc.</p>
 </div>
 <div class="paragraph">
-<p>In this way, any object in any openEHR EHR is addressable via a URI. Within <code>ehr</code> space, URL-style references to particular servers, hosts etc are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type <code>DV_EHR_URI</code> is designed to carry URIs of this form, enabling URIs to be constructed for use within <code>LINKs</code> and elsewhere in the openEHR EHR.</p>
+<p>In this way, any object in any openEHR EHR is addressable via a URI. Within <code>ehr</code> space, URL-style references to particular servers, hosts etc. are not used, due to not being reliable in the long term. Instead, logical identifiers for EHRs and/or subjects are used, ensuring that URIs remain correct for the lifetime of the resources to which they refer. The openEHR data type <code>DV_EHR_URI</code> is designed to carry URIs of this form, enabling URIs to be constructed for use within <code>LINKs</code> and elsewhere in the openEHR EHR.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3797,7 +3797,7 @@ ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 <div class="title">Note</div>
 </td>
 <td class="content">
-So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc, are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
+So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc., are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
 </td>
 </tr>
 </table>
@@ -3969,8 +3969,8 @@ e.g. <code>[at0012]</code>. Each code defined locally in an archetype is used fo
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the local codes in an "Apgar result" archetype could contain terms for "1 minute
-event" and "2 minute event". These codes are associated with the reference model nodes within the
+<p>For example, the local codes in an "Apgar result" archetype could contain terms for "1-minute
+event" and "2-minute event". These codes are associated with the reference model nodes within the
 'definition' part of the archetype. In the Apgar example, the two codes (say <code>[at0003]</code> and <code>[at0026]</code>)
 will be mapped to nodes of reference model type <code>EVENT</code> (<code>rm.data_structures.history</code> package),
 as shown below. It is this mapping that is the basis for archetype paths: an archetype
