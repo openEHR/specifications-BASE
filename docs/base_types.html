@@ -1693,7 +1693,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this version identifier represents a branch, i.e. has branch_number and branch_version parts.</p>
+<p>True if this version identifier represents a branch, i.e. has <code><em>branch_number()</em></code> and <code><em>branch_version()</em></code> parts.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1790,42 +1790,42 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_entity</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Globally qualified reference model entity, e.g.  <code>openehr-EHR-OBSERVATION</code>.</p>
+<p>Globally qualified reference model entity, e.g.  <code>"openehr-EHR-OBSERVATION"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>domain_concept</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of the concept represented by this archetype, including specialisation, e.g. <code>Biochemistry_result-cholesterol</code>.</p>
+<p>Name of the concept represented by this archetype, including specialisation, e.g. <code>"Biochemistry_result-cholesterol"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_originator</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Organisation originating the reference model on which this archetype is based, e.g. openehr,  cen,  hl7 .</p>
+<p>Organisation originating the reference model on which this archetype is based, e.g. <code>"openEHR"</code>, <code>"CEN"</code>, <code>"HL7"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_name</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of the reference model, e.g. rim,  ehr_rm,  en13606 .</p>
+<p>Name of the reference model, e.g. <code>"RIM"</code>,  <code>"EHR"</code>,  <code>"EN13606"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_entity</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR,  folder ,  composition ,  section ,  entry .</p>
+<p>Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR:  <code>"FOLDER"</code>, <code>"COMPOSITION"</code>, <code>"SECTION"</code>, <code>"OBSERVATION"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specialisation</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.  cholesterol .</p>
+<p>Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g. <code>"cholesterol"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1883,9 +1883,6 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p>Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service, e.g.  SNOMED-CT . A terminology is assumed to be in a particular language, which must be explicitly specified.</p>
 </div>
 <div class="paragraph">
-<p>The value if the id attribute is the precise terminology id identifier, including actual release (i.e. actual  version), local modifications etc; e.g. ICPC2.</p>
-</div>
-<div class="paragraph">
 <p>Lexical form: <code>name [  '(' version  ')' ]</code>.</p>
 </div></div></td>
 </tr>
@@ -1902,7 +1899,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.</p>
+<p>Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  <code>"ICD10AM"</code> and <code>"ICD10"</code> refer to distinct terminologies.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2065,7 +2062,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Purpose Reference to a <code>LOCATABLE</code> instance inside the top-level content structure inside a <code>VERSION&lt;T&gt;</code>; the path attribute is applied to the object that <code>VERSION.<em>data</em></code> points to.</p>
+<p>Reference to a <code>LOCATABLE</code> instance inside the top-level content structure inside a <code>VERSION&lt;T&gt;</code> identified by the <code><em>id</em></code> attribute. The <code><em>path</em></code> attribute is applied to the object that <code>VERSION.<em>data</em></code> points to.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2081,7 +2078,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The path to an instance in question, as an absolute path with respect to the object found at <code>VERSION.<em>data</em></code>. An empty path means that the object referred to by id being specified.</p>
+<p>The path to an instance, as an absolute path with respect to the object found at <code>VERSION.<em>data</em></code>. An empty path means that the object referred to by <code><em>id</em></code> is being specified.</p>
 </div></div></td>
 </tr>
 <tr>

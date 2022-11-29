@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*LOCATABLE_REF*
 
 h|*Description*
-2+a|Purpose Reference to a `LOCATABLE` instance inside the top-level content structure inside a `VERSION<T>`; the path attribute is applied to the object that `VERSION._data_` points to.
+2+a|Reference to a `LOCATABLE` instance inside the top-level content structure inside a `VERSION<T>` identified by the `_id_` attribute. The `_path_` attribute is applied to the object that `VERSION._data_` points to.
 
 h|*Inherit*
 2+|`<<_object_ref_class,OBJECT_REF>>`
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1*
 |*path*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
-a|The path to an instance in question, as an absolute path with respect to the object found at `VERSION._data_`. An empty path means that the object referred to by id being specified.
+a|The path to an instance, as an absolute path with respect to the object found at `VERSION._data_`. An empty path means that the object referred to by `_id_` is being specified.
 
 h|*1..1 +
 (redefined)*
