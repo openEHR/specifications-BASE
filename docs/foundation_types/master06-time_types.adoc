@@ -57,7 +57,7 @@ An example of an operation having both forms is addition for the type `Iso8601_d
 
 The nominal form of the operation is `_add_nominal_()`, and is computed according to 'everyday' rules, i.e. in which the phrase 'a year from now' means the same date next year (with occasional slight adjustment), and 'in a month' means the same date next month (or possibly a day or more earlier due to next month being shorter). In a similar way, the addition of a period of one day (`'P1D'`), although itself a regular quantity is computed differently to the definite form: in the definite form, addition of `P1D` results in the addition of exactly 24h of time to the date, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition results in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.
 
-The definite functions have standard operators such as `'+'`, `'-'`, etc associated with them, while the nominal functions have the operators `'++'`, `'--'`, etc.
+The definite functions have standard operators such as `'\+'`, `'-'`, etc associated with them, while the nominal functions have the operators `'++'`, `'--'`, etc.
 
 == Class Definitions
 
