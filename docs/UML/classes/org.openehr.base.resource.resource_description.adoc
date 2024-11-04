@@ -29,7 +29,7 @@ h|*0..1*
 a|Other contributors to the resource, each listed in "name <email>"  form.
 
 h|*1..1*
-|*lifecycle_state*: `link:/releases/BASE/{base_release}/foundation_types.html#_terminology_code_class[Terminology_code^]`
+|*lifecycle_state*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.
 
 h|*1..1*
@@ -56,6 +56,10 @@ a|Licence of current artefact, in format "short licence name <URL of licence>", 
 h|*0..1*
 |*ip_acknowledgements*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^], link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:
+
+h|*0..1*
+|*title*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
+a|Long-form descriptive title of the resource, typically needed in templates and occasionally in specialised archetypes where the root archetype/template name is not descriptive enough to disambiguate from similar archetypes/templates.
 
 ----
 ip_acknowledgements = <
