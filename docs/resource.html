@@ -298,7 +298,7 @@
 <p>adding a new <code>TRANSLATION_DETAILS</code> instance to translations, containing details about the translator, organisation, quality assurance and so on.</p>
 </li>
 <li>
-<p>any further translations to language-specific elements in a instances of descendent type of <code>AUTHORED_RESOURCE</code>.</p>
+<p>any further translations to language-specific elements in instances of descendent type of <code>AUTHORED_RESOURCE</code>.</p>
 </li>
 </ul>
 </div>
@@ -318,10 +318,7 @@
 <div class="sect3">
 <h4 id="_revision_history"><a class="anchor" href="#_revision_history"></a>2.1.3. Revision History</h4>
 <div class="paragraph">
-<p>When the resource is considered to be in a state where changes to it should be controlled, the is_controlled attribute is set to True, and all subsequent changes should have an audit trail recorded. Usually controlled resources would be managed in a versioned repository (e.g. implemented by CVS, Subversion or similar systems), and audit information will be stored somewhere in the repository (e.g. in version control files). The revision_history attribute defined in the <code>AUTHORED_RESOURCE</code> class is intended to act as a documentary copy of the revision history as known inside the repository, for the benefit of users of the resource. Given that resources in different places may well be managed in different kinds of repositories, having a copy of the revision history in a standardised form within the resource enables it to be used interoperably by authoring and other tools.</p>
-</div>
-<div class="paragraph">
-<p>Every change to a resource committed to the relevant repository causes a new addition to the revision_history.</p>
+<p>When the resource is considered to be in a state where changes to it should be controlled, the <code><em>is_controlled</em></code> attribute is set to True, and all subsequent changes should have an audit trail recorded. Usually controlled resources would be managed in a versioned repository (e.g. implemented by a Git, Subversion or similar systems), and audit information will be stored somewhere in the repository (e.g. in version control files).</p>
 </div>
 </div>
 </div>
@@ -400,15 +397,6 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code><a href="/releases/BASE/development/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code><br>
-<br>
-<em>Post</em>: <code>Result = revision_history.most_recent_version</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong> (): <code><a href="/releases/BASE/development/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/development/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Total list of languages available in this resource, derived from original_language and translations.</p>
@@ -443,12 +431,6 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Languages_available_valid</em>: <code>languages_available.has (original_language)</code></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Revision_history_valid</em>: <code>is_controlled xor revision_history = Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -844,6 +826,13 @@ translations.has_key (d.language.code_string)))</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
 S Iancu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2025</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation fixes and typos (including <a href="https://specifications.openehr.org/tickets/SPECPR-451" target="_blank" rel="noopener">SPECPR-451</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M Zawahra,<br>
+S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Jan 2025</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
