@@ -14,7 +14,7 @@ The package structure is illustrated below.
 .`base.foundation_types` Package
 image::{uml_diagrams_uri}/BASE-foundation_types-packages.svg[id=foundation_types_packages, align="center"]
 
-The `primitive_types`, `structures` and `time` packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.
+The `primitive_types`, `structures` and `time` packages describe types assumed by the openEHR specifications to exist in any implementation technology, such as a programming language, schema language or database environment.
 
 The `functional` package includes types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.
 
@@ -26,12 +26,12 @@ The assumptions that openEHR makes about existing types are documented below in 
 
 Some operations have symbolic or textual operator equivalents defined, in order to support parsing of textual form of expressions. Two categories of operator are supported via two stereotypes that add a list of Strings to an operation, enabling standard operators, and optionally, symbolic operators to be associated with a function. These are as follows.
 
-* `«ops»`: default operator(s) for an operation, assumed to be expressible in normal text, for exmaple `'='` for `_equal_()`;
+* `«ops»`: default operator(s) for an operation, assumed to be expressible in normal text, for example `'='` for `_equal_()`;
 * `«sym_ops»`: additional symbolic operators typically defined for mathematical and logical operations, e.g. `'∀'` for `Container._for_all_()`.
 
 The main utility of such operators is to enable function signature-matching from parsed expressions. For example, the expression `a_date_time - P1Y` (subtract a time period of 1 year from a date/time) has the signature `<[Iso8601_duration], ?>`, equivalent to a function of the form `func (dur: Iso8601_duration): ?` defined on the type `Iso8601_date_time` (i.e. the return type is unknown until the function definition can be inferred). The correct function can be found on the latter type by searching for a function with the operator `'-'` and taking a single `Iso8601_duration` argument. In this specification, this turns out to be the `Iso8601_duration._subtract_()` operation.
 
-The operators provided by this means are not intended to prevent other kinds of operators being associated with functions defined on types in the openEHR specifications, rather they provide a minimal set for common operations.
+The operators provided by these means are not intended to prevent other kinds of operators being associated with functions defined on types in the openEHR specifications, rather they provide a minimal set for common operations.
 
 == The Any Class
 
