@@ -482,7 +482,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="/releases/BASE/development/foundation_types.html#_terminology_code_class" target="_blank" rel="noopener">Terminology_code</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Language of the translation, coded using ISO 639-1 (2 character) language codes.</p>
+<p>Language of the translation, encoded following the RFC 5646 standard, using ISO 639-1 (two-character) language codes, e.g. "en". It may include a region subtag conforming to ISO 3166-1 alpha-2 (two-character country codes), e.g. "pt-br" for Brazilian Portuguese.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -715,7 +715,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="/releases/BASE/development/foundation_types.html#_terminology_code_class" target="_blank" rel="noopener">Terminology_code</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The localised language in which the items in this description item are written. Coded using ISO 639-1 (2 character) language codes.</p>
+<p>The localised language in which the items in this description item are written. Encoded following the RFC 5646 standard, using ISO 639-1 (two-character) language codes, e.g. "en". It may include a region subtag conforming to ISO 3166-1 alpha-2 (two-character country codes), e.g. "pt-br" for Brazilian Portuguese.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -839,10 +839,17 @@ translations.has_key (d.language.code_string)))</code></p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-6" target="_blank" rel="noopener">SPECBASE-6</a>: Specify language attributes of <code>RESOURCE_DESCRIPTION_ITEM</code> and <code>TRANSLATION_DETAILS</code> as being coded by a subset of RFC 5646 language tag standard.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2025</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-39" target="_blank" rel="noopener">SPECBASE-39</a>: Change <code>RESOURCE_DESCRIPTION.<em>lifecycle_state</em></code> type to <code>String</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>05 Nov 2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05 Nov 2024</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
