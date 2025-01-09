@@ -127,6 +127,7 @@
 <ul class="sectlevel3">
 <li><a href="#_terminology_term_class">7.2.1. Terminology_term Class</a></li>
 <li><a href="#_terminology_code_class">7.2.2. Terminology_code Class</a></li>
+<li><a href="#_code_phrase_class">7.2.3. CODE_PHRASE Class</a></li>
 </ul>
 </li>
 </ul>
@@ -311,7 +312,7 @@
 <div class="sect2">
 <h3 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a>1.5. Previous Versions</h3>
 <div class="paragraph">
-<p>This specification is based on the types orginally defined in the <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html" target="_blank" rel="noopener">openEHR Support Information Model from Release 1.0.3 of the Reference Model</a>. Some changes have been made as follows.</p>
+<p>This specification is based on the types originally defined in the <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html" target="_blank" rel="noopener">openEHR Support Information Model from Release 1.0.3 of the Reference Model</a>. Some changes have been made as follows.</p>
 </div>
 <div class="sect3">
 <h4 id="_interval_types"><a class="anchor" href="#_interval_types"></a>1.5.1. Interval types</h4>
@@ -360,7 +361,7 @@
 <div class="title">Figure 1. <code>base.foundation_types</code> Package</div>
 </div>
 <div class="paragraph">
-<p>The <code>primitive_types</code>, <code>structures</code> and <code>time</code> packages describe types assumed by the openEHR specifcations to exist in any implementation technology, such as a programming language, schema language or database environment.</p>
+<p>The <code>primitive_types</code>, <code>structures</code> and <code>time</code> packages describe types assumed by the openEHR specifications to exist in any implementation technology, such as a programming language, schema language or database environment.</p>
 </div>
 <div class="paragraph">
 <p>The <code>functional</code> package includes types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.</p>
@@ -379,7 +380,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code>«ops»</code>: default operator(s) for an operation, assumed to be expressible in normal text, for exmaple <code>'='</code> for <code><em>equal</em>()</code>;</p>
+<p><code>«ops»</code>: default operator(s) for an operation, assumed to be expressible in normal text, for example <code>'='</code> for <code><em>equal</em>()</code>;</p>
 </li>
 <li>
 <p><code>«sym_ops»</code>: additional symbolic operators typically defined for mathematical and logical operations, e.g. <code>'∀'</code> for <code>Container.<em>for_all</em>()</code>.</p>
@@ -390,7 +391,7 @@
 <p>The main utility of such operators is to enable function signature-matching from parsed expressions. For example, the expression <code>a_date_time - P1Y</code> (subtract a time period of 1 year from a date/time) has the signature <code>&lt;[Iso8601_duration], ?&gt;</code>, equivalent to a function of the form <code>func (dur: Iso8601_duration): ?</code> defined on the type <code>Iso8601_date_time</code> (i.e. the return type is unknown until the function definition can be inferred). The correct function can be found on the latter type by searching for a function with the operator <code>'-'</code> and taking a single <code>Iso8601_duration</code> argument. In this specification, this turns out to be the <code>Iso8601_duration.<em>subtract</em>()</code> operation.</p>
 </div>
 <div class="paragraph">
-<p>The operators provided by this means are not intended to prevent other kinds of operators being associated with functions defined on types in the openEHR specifications, rather they provide a minimal set for common operations.</p>
+<p>The operators provided by these means are not intended to prevent other kinds of operators being associated with functions defined on types in the openEHR specifications, rather they provide a minimal set for common operations.</p>
 </div>
 </div>
 <div class="sect2">
@@ -591,7 +592,7 @@ other: <code><a href="#_ordered_class">Ordered</a>[1]</code><br>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The figure below illustrates these types. Simple inheritance relationships are shown which facilitate the type descriptions below. Actual inheritance from or subsitutability for an <code>Any</code> class is not assumed, and is shown only for convenience (e.g. to indicate that the '=' operator is available on any type). The type <code>Ordered_numeric</code> is on the other hand is used to indicate assumed substitutability of numeric types, and is intended to be mapped to an equivalent type in a real type system (e.g. in Java, <code>java.lang.Number</code>). Data-oriented implementation type systems such as XML-schema do not have such operations.</p>
+<p>The figure below illustrates these types. Simple inheritance relationships are shown which facilitate the type descriptions below. Actual inheritance from or substitutability for an <code>Any</code> class is not assumed, and is shown only for convenience (e.g. to indicate that the '=' operator is available on any type). The type <code>Ordered_numeric</code> is on the other hand is used to indicate assumed substitutability of numeric types, and is intended to be mapped to an equivalent type in a real type system (e.g. in Java, <code>java.lang.Number</code>). Data-oriented implementation type systems such as XML-schema do not have such operations.</p>
 </div>
 <div id="foundation_types_primitive_types" class="imageblock text-center text-center">
 <div class="content">
@@ -1704,7 +1705,7 @@ other: <code><a href="#_double_class">Double</a>[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
 <div class="paragraph">
-<p>The types described in this section are basic data structures assumed to be standardly available in implementation technologies. The following types consititute the minimum set of structure types assumed by openEHR of an implementation environment.</p>
+<p>The types described in this section are basic data structures assumed to be standard available in implementation technologies. The following types constitute the minimum set of structure types assumed by openEHR of an implementation environment.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -2023,7 +2024,7 @@ a_key: <code>K[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>Another kind of structure commonly needed in rich data is the interval. The definition of the <code>Interval&lt;T&gt;</code> class here is an intensional one, i.e. it states its members by implication from its limits, rather than enumerating them. To support the common need for defining times in models that could be either a fixed point in time or a time interval, the classes <code>Point_interval&lt;T&gt;</code> and <code>Proper_interval&lt;T&gt;</code> are provided. If <code>Interval&lt;X&gt;</code> is defined as the type of a feature in a class in an openEHR model, where <code>X</code> is some descendant of <code>Ordered</code>, then at runtime, either a <code>Point_interval</code> or <code>Proper_interval</code> may be attached.</p>
+<p>Another kind of structure commonly needed in rich data is the interval. The definition of the <code>Interval&lt;T&gt;</code> class here is an intensional one, i.e. it states its members by implication from its limits, rather than enumerating them. To support the common need for defining times in models that could be either a fixed point in time or a time interval, the classes <code>Point_interval&lt;T&gt;</code> and <code>Proper_interval&lt;T&gt;</code> are provided. If <code>Interval&lt;X&gt;</code> is defined as the type of feature in a class in an openEHR model, where <code>X</code> is some descendant of <code>Ordered</code>, then at runtime, either a <code>Point_interval</code> or <code>Proper_interval</code> may be attached.</p>
 </div>
 <div class="paragraph">
 <p>In addition to the generic interval types, the derived types <code>Multiplicity_interval</code> and <code>Cardinality</code> are provided, for use in models to represent multiplicity, optionality, and cardinality.</p>
@@ -2540,7 +2541,7 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 <p>the same deviation is used in HL7v2 and HL7v3 TS (timestamp) type, i.e. there are data in existing clinical systems matching this specification;</p>
 </li>
 <li>
-<p>in a typed object model, this deviation is more sensible anyway; the ISO 8601 rule is most likely a limitation of the purely syntactic means of expression. In real systems where a timestamp/date-time is specified in a screen form, it makes sense to allow it to be as partial as possible, rather than artifically restricted to only missing seconds and minutes.</p>
+<p>in a typed object model, this deviation is more sensible anyway; the ISO 8601 rule is most likely a limitation of the purely syntactic means of expression. In real systems where a timestamp/date-time is specified in a screen form, it makes sense to allow it to be as partial as possible, rather than artificially restricted to only missing seconds and minutes.</p>
 </li>
 </ul>
 </div>
@@ -2588,10 +2589,10 @@ For reasons of readability in data, it is strongly recommended that the 'extende
 <p>An example of an operation having both forms is addition for the type <code>Iso8601_date</code>. The definite operation is called <code><em>add</em>()</code> and treats the <code>Iso8601_duration</code> argument as an exact amount, based on constant values for length of year and month, defined by <code>Time_definitions.<em>Average_days_in_month</em></code> and <code>Time_definitions.<em>Average_days_in_year</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>The nominal form of the operation is <code><em>add_nominal</em>()</code>, and is computed according to 'everyday' rules, i.e. in which the phrase 'a year from now' means the same date next year (with occasional slight adjustment), and 'in a month' means the same date next month (or possibly a day or more earlier due to next month being shorter). In a similar way, the addition of a period of one day (<code>'P1D'</code>), although itself a regular quantity is computed differently to the definite form: in the definite form, addition of <code>P1D</code> results in the addition of exactly 24h of time to the date, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition results in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.</p>
+<p>The nominal form of the operation is <code><em>add_nominal</em>()</code>, and is computed according to 'everyday' rules, i.e. in which the phrase 'a year from now' means the same date next year (with occasional slight adjustment), and 'in a month' means the same date next month (or possibly a day or earlier due to next month being shorter). In a similar way, the addition of a period of one day (<code>'P1D'</code>), although itself a regular quantity is computed differently to the definite form: in the definite form, addition of <code>P1D</code> results in the addition of exactly 24h of time to the date, which may result in a time that is different by one hour due to a change of summer time during the interval, while the nominal addition results in the same time on the next of previous day, even though occasionally this will represent 23 or 25 hours' difference.</p>
 </div>
 <div class="paragraph">
-<p>The definite functions have standard operators such as <code>'+'</code>, <code>'-'</code>, etc associated with them, while the nominal functions have the operators <code>'++'</code>, <code>'--'</code>, etc.</p>
+<p>The definite functions have standard operators such as <code>'+'</code>, <code>'-'</code>, etc. associated with them, while the nominal functions have the operators <code>'++'</code>, <code>'--'</code>, etc.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4313,6 +4314,63 @@ a_val: <code><a href="#_real_class">Real</a>[1]</code><br>
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_code_phrase_class"><a class="anchor" href="#_code_phrase_class"></a>7.2.3. CODE_PHRASE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>CODE_PHRASE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A fully coordinated (i.e. all coordination has been performed) term from a terminology service (as distinct from a particular terminology).</p>
+</div>
+<div class="paragraph">
+<p>Retain for LEGACY only, while ADL1.4 requires CODE_PHRASE.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_id</strong>: <code><a href="/releases/BASE/development/base_types.html#_terminology_id_class" target="_blank" rel="noopener">TERMINOLOGY_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifier of the distinct terminology from which the code_string (or its elements) was extracted.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_string</strong>: <code><a href="#_string_class">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The key used by the terminology service to identify a concept or coordination of concepts. This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preferred_term</strong>: <code><a href="#_string_class">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional attribute to carry preferred term corresponding to the code or expression in <code><em>code_string</em></code>. Typical use in integration situations which create mappings, and representing data for which both a (non-preferred) actual term and a preferred term are both required.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Code_string_valid</em>: <code>not code_string.is_empty</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -4498,202 +4556,223 @@ a_val: <code><a href="#_real_class">Real</a>[1]</code><br>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 22.2222%;">
-<col style="width: 33.3333%;">
-<col style="width: 11.1111%;">
-<col style="width: 22.2222%;">
-<col style="width: 11.1112%;">
+<col style="width: 7.6923%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3847%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Type name<br>
- in openEHR</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">XML</th>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">C#</th>
+<th class="tableblock halign-left valign-top"><strong>openEHR Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Java</strong></th>
+<th class="tableblock halign-left valign-top"><strong>.NET</strong></th>
+<th class="tableblock halign-left valign-top"><strong>TypeScript</strong></th>
+<th class="tableblock halign-left valign-top"><strong>XML Schema</strong></th>
+<th class="tableblock halign-left valign-top"><strong>JSON Schema</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Octet</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8-bit value.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Byte</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Byte</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8-bit binary data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>byte</code> or <code>java.lang.Byte</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Byte</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code> (0–255)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:byte</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "integer", minimum: 0, maximum: 255}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Character</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">a member of an 8-bit character-set.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Character</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Char</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single Unicode character</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Character</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Char</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> (length=1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:string</code> (length=1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", minLength: 1, maxLength: 1}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">logical True/False values.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">logical True/False values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "boolean"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit integers.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Int32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer number (32-bit)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Int32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "integer"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer64</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit integers.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Long</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Int64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer number (64-bit)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Long</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Int64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:long</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "integer"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit real numbers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code>,<br>
-                                                                 <code>decimal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Float</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Single</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Floating-point number (32-bit)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Single</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:float</code> or <code>xs:decimal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "number"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Double</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit real numbers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Double</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Floating-point number (64-bit)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "number"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unicode-enabled strings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unicode-enabled strings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contiguous Array.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sequence</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered List.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sequence</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;T&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unordered, unique membership container.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>all</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HashSet&lt;T&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;K:Ordered, V&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unique-keyed map.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(various)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Map&lt;T&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HashTable&lt;T&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;T:Ordered&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interval of ordered types.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Native date type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>date</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.Date</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601 Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.time.LocalDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.DateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "date"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Native time type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.Date</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601 Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.time.LocalTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.DateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "time"}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date_time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Native date/time type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dateTime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.Date</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601 Date-Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.time.LocalDateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.DateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:dateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "date-time"}</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Duration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Native duration type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601 Duration</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.time.Duration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TimeSpan</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.TimeSpan</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> (ISO 8601 format)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "duration"}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_Date</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded date type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>date</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use <code>java.text.SimpleDateFormat</code><br>
-                                                                                 or <code>org.joda.time.format.ISODateTimeFormat</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(use formatted string)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Universal Resource Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.net.URI</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:anyURI</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "uri"}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_Time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded time type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use j`ava.text.SimpleDateFormat`<br>
-                                                                                 or <code>org.joda.time.format.ISODateTimeFormat</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(use formatted string)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contiguous Array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:sequence</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "array", items: {}}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_Date_time</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded date/time type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dateTime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use <code>java.text.SimpleDateFormat</code><br>
-                                                                                 or <code>org.joda.time.format.ISODateTimeFormat</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(use formatted string)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered List</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.List&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Collections.Generic.List&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:sequence</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "array", items: {}}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_Duration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded duration type.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>duration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use <code>java.text.SimpleDateFormat</code><br>
-                                                                                 or <code>org.joda.time.format.ISODateTimeFormat</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(use formatted string)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unordered, unique membership container</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.Set&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Collections.Generic.HashSet&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:all</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "array", uniqueItems: true}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;Integer&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interval of Integer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;K:Ordered, V&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique-keyed map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.Map&lt;K, V&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System.Collections.Generic.Dictionary&lt;K, V&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Record&lt;K, V&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(various)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "object", additionalProperties: {}}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;Date&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interval of Date.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(various)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interval of ordered types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom class needed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom class needed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{start: T; end: T}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom type needed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "object", properties: {"start": {}, "end": {}}}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;Time&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interval of Time.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(various)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded date type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.text.SimpleDateFormat</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "date"}</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;DateTime&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interval of DateTime.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(various)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded time type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.text.SimpleDateFormat</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "time"}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded date/time type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.text.SimpleDateFormat</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:dateTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "date-time"}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iso8601_duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 8601-encoded duration type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.text.SimpleDateFormat</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use formatted string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xs:duration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{type: "string", format: "duration"}</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -4719,10 +4798,17 @@ a_val: <code><a href="#_real_class">Real</a>[1]</code><br>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation fixes and typos. Improve Types cross-reference table in Foundation types (<a href="https://specifications.openehr.org/tickets/SPECBASE-32" target="_blank" rel="noopener">SPECBASE-32</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2025</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-37" target="_blank" rel="noopener">SPECBASE-37</a>: Add stereotypes to represent Enums from common programming languages.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>14 May 2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 May 2022</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0</strong></p></th>
