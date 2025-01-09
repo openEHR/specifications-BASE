@@ -40,12 +40,6 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*current_revision* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]` +
- +
-__Post__: `Result = revision_history.most_recent_version`
-a|Most recent revision in revision_history if is_controlled else  (uncontrolled) .
-
-h|*1..1*
 |*languages_available* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Total list of languages available in this resource, derived from original_language and translations.
 
@@ -64,7 +58,4 @@ translations.has_key (d.language.code_string)))`
 
 h|
 2+a|__Languages_available_valid__: `languages_available.has (original_language)`
-
-h|
-2+a|__Revision_history_valid__: `is_controlled xor revision_history = Void`
 |===

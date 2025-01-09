@@ -26,9 +26,7 @@ The `AUTHORED_RESOURCE`.`_description_` attribute is optional, allowing for reso
 
 === Revision History
 
-When the resource is considered to be in a state where changes to it should be controlled, the is_controlled attribute is set to True, and all subsequent changes should have an audit trail recorded. Usually controlled resources would be managed in a versioned repository (e.g. implemented by CVS, Subversion or similar systems), and audit information will be stored somewhere in the repository (e.g. in version control files). The revision_history attribute defined in the `AUTHORED_RESOURCE` class is intended to act as a documentary copy of the revision history as known inside the repository, for the benefit of users of the resource. Given that resources in different places may well be managed in different kinds of repositories, having a copy of the revision history in a standardised form within the resource enables it to be used interoperably by authoring and other tools.
-
-Every change to a resource committed to the relevant repository causes a new addition to the revision_history.
+When the resource is considered to be in a state where changes to it should be controlled, the `_is_controlled_` attribute is set to True, and all subsequent changes should have an audit trail recorded. Usually controlled resources would be managed in a versioned repository (e.g. implemented by a Git, Subversion or similar systems), and audit information will be stored somewhere in the repository (e.g. in version control files).
 
 == Class Descriptions
 
