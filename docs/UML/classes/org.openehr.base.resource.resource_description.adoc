@@ -12,6 +12,10 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|*0..1*
+|*title*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
+a|Long-form descriptive title of the resource, typically needed in templates and occasionally in specialised archetypes where the root archetype/template name is not descriptive enough to disambiguate from similar archetypes/templates.
+
 h|*1..1*
 |*original_author*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^], link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
 a|Original author of this resource, with all relevant details, including organisation.
@@ -29,13 +33,13 @@ h|*0..1*
 a|Other contributors to the resource, each listed in "name <email>"  form.
 
 h|*1..1*
-|*lifecycle_state*: `link:/releases/BASE/{base_release}/foundation_types.html#_terminology_code_class[Terminology_code^]`
-a|Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.
-
-h|*1..1*
 |*parent_resource*: `<<_authored_resource_class,AUTHORED_RESOURCE>> +
 {default{nbsp}={nbsp}}`
 a|Reference to owning resource.
+
+h|*1..1*
+|*lifecycle_state*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
+a|Lifecycle state of the resource, typically using macro-states such as: unmanaged, in_development, release_candidate, published, rejected, deprecated.
 
 h|*0..1*
 |*custodian_namespace*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
@@ -85,10 +89,10 @@ conversion_details = <
 ----
 
 h|*0..1*
-|*other_details*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^], link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
-a|Additional non-language-sensitive resource meta-data, as a list of name/value pairs.
-
-h|*0..1*
 |*details*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^],<<_resource_description_item_class,RESOURCE_DESCRIPTION_ITEM>>>`
 a|Details of all parts of resource description that are natural language-dependent, keyed by language code.
+
+h|*0..1*
+|*other_details*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^], link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]>`
+a|Additional non-language-sensitive resource meta-data, as a list of name/value pairs.
 |===
