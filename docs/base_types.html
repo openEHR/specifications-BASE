@@ -286,7 +286,7 @@
 <div class="sect2">
 <h3 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a>1.5. Previous Versions</h3>
 <div class="paragraph">
-<p>This specification is based on the types orginally defined in the <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html" target="_blank" rel="noopener">openEHR Support Information Model from Release 1.0.3 of the Reference Model</a>.</p>
+<p>This specification is based on the types originally defined in the <a href="https://specifications.openehr.org/releases/RM/Release-1.0.3/support.html" target="_blank" rel="noopener">openEHR Support Information Model from Release 1.0.3 of the Reference Model</a>.</p>
 </div>
 </div>
 </div>
@@ -875,7 +875,7 @@ property: <code><a href="/releases/BASE/development/foundation_types.html#_termi
 <div class="ulist">
 <ul>
 <li>
-<p>real world identifiers such as social security numbers, veterans affairs ids etc can be recorded as required by health care facilities, enterprise policies, or legislation;</p>
+<p>real world identifiers such as social security numbers, veterans affairs ids etc. can be recorded as required by health care facilities, enterprise policies, or legislation;</p>
 </li>
 <li>
 <p>identifiers for informational entities which represent real world entities or processes should be unique;</p>
@@ -940,7 +940,7 @@ entity. E.g. there is no guarantee that two systems' "latest" version of the Per
 </ul>
 </div>
 <div class="paragraph">
-<p>At first sight, it appears that there can also be <em>purely</em> informational entities, i.e. IEs which do not refer to any RWE, such as books, online-only documents and software. However, as soon as one considers an example it becomes clear that there is always a notional 'definitive' or 'authoritative' (i.e. trusted) version of every such entity. These entities can better be understood as 'virtual RWEs'. Thus it can still be said that multiple IEs may refer to any given RWE.</p>
+<p>At first sight, it appears that there can also be <em>purely</em> informational entities, i.e. IEs which do not refer to any RWE, such as books, online-only documents and software. However, as soon as one considers an example it becomes clear that there is always a notional 'definitive' or 'authoritative' (i.e. trusted) version of every such entity. These entities can better be understood as 'virtual RWEs'. Thus, it can still be said that multiple IEs may refer to any given RWE.</p>
 </div>
 <div class="paragraph">
 <p>The underlying reason for the multiplicity of IEs is that 'reality' - time and space - in computer systems is not continuous but discrete, and each 'entity' is in fact just a snapshot of certain attribute values of a RWE, at a point in time, in a particular system. If identifiers are assigned to IEs without regard to versions or duplicates, then no assertion can be made about the identified RWE when two IE ids are compared.</p>
@@ -1017,7 +1017,7 @@ UUIDs are also commonly known as GUIDs, which may be used as a synonym within im
 <div class="sect3">
 <h4 id="_composite_identifiers"><a class="anchor" href="#_composite_identifiers"></a>5.3.2. Composite Identifiers</h4>
 <div class="paragraph">
-<p>The <code>OBJECT_ID</code> type and its hierarchy of subtypes define all identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human-readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO OIDs etc.) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the <code>HIER_OBJECT_ID</code> type are used both by openEHR and many other organisations.</p>
+<p>The <code>OBJECT_ID</code> type and its hierarchy of subtypes defines all identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human-readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO OIDs etc.) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the <code>HIER_OBJECT_ID</code> type are used both by openEHR and many other organisations.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1136,7 +1136,7 @@ some archetype authoring tools have historically allowed a nonconforming version
 </ul>
 </div>
 <div class="paragraph">
-<p>Currently the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the <a href="https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html">US National Library of Medicine UMLS identifiers for included terminologies</a>.</p>
+<p>Currently, the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the <a href="https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html">US National Library of Medicine UMLS identifiers for included terminologies</a>.</p>
 </div>
 <div class="paragraph">
 <p>The scheme defined by the <code>TERMINOLOGY_ID</code> class provides for the situation where major 'versions' of a terminology such as the World Health Organisation&#8217;s 'ICD10' and 'ICD10AM' (AM = 'Australian modifications') can accommodate a finer grain of versioning or revisioning, e.g.:</p>
@@ -1152,7 +1152,7 @@ some archetype authoring tools have historically allowed a nonconforming version
 </ul>
 </div>
 <div class="paragraph">
-<p>The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes its meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino&#8217;s 'desiderata' <span class="citation">(<a href="#Cimino1997">Cimino&#44; 1997</a>)</span> of which the principle of 'concept permanence' is applicable here - "A concept&#8217;s meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system
+<p>The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes it&#8217;s meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino&#8217;s 'desiderata' <span class="citation">(<a href="#Cimino1997">Cimino&#44; 1997</a>)</span> of which the principle of 'concept permanence' is applicable here - "A concept&#8217;s meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system
 was indeed the one assigned to it in the particular version or edition.</p>
 </div>
 </div>
@@ -1245,7 +1245,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="sect4">
 <h5 id="_composite_identifiers_and_language"><a class="anchor" href="#_composite_identifiers_and_language"></a>5.3.2.9. Composite Identifiers and Language</h5>
 <div class="paragraph">
-<p>In all of the 'meaningful' identifier types above, with the possible exception of <code>GENERIC_ID</code>, the human-readable identifier sections are assumed to use only the basic latin character set, possibly with the addition of other special characters as allowed by the production rules defined below for each identifier. In most cases, the textual parts of these identifiers will be words from the English language, or else they will be recognisable words from other languages, where necessary alliterated into the latin alphabet. Accented and other diacritical letter variants are not allowed. This limitation is made in the interests of practical computability of identifiers, and is in common with class and attribute naming in shared UML models in the standards world, and also with internet domain names and internet URIs.</p>
+<p>In all the 'meaningful' identifier types above, with the possible exception of <code>GENERIC_ID</code>, the human-readable identifier sections are assumed to use only the basic latin character set, possibly with the addition of other special characters as allowed by the production rules defined below for each identifier. In most cases, the textual parts of these identifiers will be words from the English language, or else they will be recognisable words from other languages, where necessary alliterated into the latin alphabet. Accented and other diacritical letter variants are not allowed. This limitation is made in the interests of practical computability of identifiers, and is in common with class and attribute naming in shared UML models in the standards world, and also with internet domain names and internet URIs.</p>
 </div>
 </div>
 </div>
@@ -1607,6 +1607,13 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="/releases/BASE/development/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch, i.e. has <code><em>branch_number()</em></code> and <code><em>branch_version()</em></code> parts.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_first</strong> (): <code><a href="/releases/BASE/development/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this version identifier corresponds to the first version, i.e. <code><em>trunk_version</em></code> is 1.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2044,9 +2051,9 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <span class="tok-k">uuid    </span><span class="tok-o">=</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number </span><span class="tok-p">;</span>
 
 <span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
-<span class="tok-cm">(* According to IETF http://tools.ietf.org/html/rfc1034[RFC 1034] and  *)</span>
-<span class="tok-cm">(* http://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by       *)</span>
-<span class="tok-cm">(* http://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),          *)</span>
+<span class="tok-cm">(* According to IETF https://tools.ietf.org/html/rfc1034[RFC 1034] and *)</span>
+<span class="tok-cm">(* https://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by      *)</span>
+<span class="tok-cm">(* https://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),         *)</span>
 <span class="tok-cm">(* and relaxation of https://tools.ietf.org/html/rfc1123[RFC 1123]     *)</span>
 <span class="tok-cm">(* The syntax of a domain name follows the grammar below. Slightly     *)</span>
 <span class="tok-cm">(* reduced for the purpose here, plus allows underscores.              *)</span>
@@ -2129,13 +2136,20 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation fixes and typos (including <a href="https://specifications.openehr.org/tickets/SPECPR-365" target="_blank" rel="noopener">SPECPR-365</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+P Bos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2025</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-26" target="_blank" rel="noopener">SPECBASE-26</a>. Add Built-in classes and functions for use in AQL, EL; added <code>builtins</code> package.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Nov 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 Nov 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
