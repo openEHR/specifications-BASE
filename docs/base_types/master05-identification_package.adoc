@@ -12,7 +12,7 @@ image::{uml_diagrams_uri}/BASE-base_types.identification.svg[id=base_identificat
 
 Identification of entities both in the real world and in information systems is a non-trivial problem. The needs for identification across systems in a health information environment include the following:
 
-* real world identifiers such as social security numbers, veterans affairs ids etc can be recorded as required by health care facilities, enterprise policies, or legislation;
+* real world identifiers such as social security numbers, veterans affairs ids etc. can be recorded as required by health care facilities, enterprise policies, or legislation;
 * identifiers for informational entities which represent real world entities or processes should be unique;
 * it should be possible to determine if two identifiers refer to information entities that represent the same real world entity, even if instances of the information entities are maintained in different systems;
 * versions or changes to real-world entity-linked informational entities (which may create new information instances) should be accounted for in two ways:
@@ -37,7 +37,7 @@ As soon as information systems are used to record facts about RWEs, the situatio
 * the same RWE can be represented simultaneously on more than one system ('spatial multiplicity');
 * the same RWE may be represented by more than one "version" of the same IE in a system ('temporal multiplicity').
 
-At first sight, it appears that there can also be _purely_ informational entities, i.e. IEs which do not refer to any RWE, such as books, online-only documents and software. However, as soon as one considers an example it becomes clear that there is always a notional 'definitive' or 'authoritative' (i.e. trusted) version of every such entity. These entities can better be understood as 'virtual RWEs'. Thus it can still be said that multiple IEs may refer to any given RWE.
+At first sight, it appears that there can also be _purely_ informational entities, i.e. IEs which do not refer to any RWE, such as books, online-only documents and software. However, as soon as one considers an example it becomes clear that there is always a notional 'definitive' or 'authoritative' (i.e. trusted) version of every such entity. These entities can better be understood as 'virtual RWEs'. Thus, it can still be said that multiple IEs may refer to any given RWE.
 
 The underlying reason for the multiplicity of IEs is that 'reality' - time and space - in computer systems is not continuous but discrete, and each 'entity' is in fact just a snapshot of certain attribute values of a RWE, at a point in time, in a particular system. If identifiers are assigned to IEs without regard to versions or duplicates, then no assertion can be made about the identified RWE when two IE ids are compared.
 
@@ -74,7 +74,7 @@ A consequence of the string representation approach used in these classes is tha
 
 === Composite Identifiers
 
-The `OBJECT_ID` type and its hierarchy of subtypes define all identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human-readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO OIDs etc.) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the `HIER_OBJECT_ID` type are used both by openEHR and many other organisations.
+The `OBJECT_ID` type and its hierarchy of subtypes defines all identifier types used within openEHR systems. Most of these have a multi-part structure, and some are 'meaningful' i.e. human-readable. The identifier types can be used to represent identifier values that fall into two groups semantically: those defined by openEHR (which may incorporate generic standard identifiers, such as ISO OIDs etc.) and those defined by external organisations. The groups are as shown in the following table. Identifiers whose form is defined by the `HIER_OBJECT_ID` type are used both by openEHR and many other organisations.
 
 [cols="1,1", options="header"]
 |===
@@ -119,14 +119,14 @@ The `TERMINOLOGY_ID` subtype defines a globally unique single string identifier 
 * "SNOMED-CT"
 * "ICD9(1999)"
 
-Currently the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the {nlm_umls_list}[US National Library of Medicine UMLS identifiers for included terminologies].
+Currently, the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the {nlm_umls_list}[US National Library of Medicine UMLS identifiers for included terminologies].
 
 The scheme defined by the `TERMINOLOGY_ID` class provides for the situation where major 'versions' of a terminology such as the World Health Organisation's 'ICD10' and 'ICD10AM' (AM = 'Australian modifications') can accommodate a finer grain of versioning or revisioning, e.g.:
 
 * "ICD10AM(3rd_ed)"
 * "ICD10AM(4th_ed)"
 
-The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes its meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino's 'desiderata' cite:[Cimino1997] of which the principle of 'concept permanence' is applicable here - "A concept's meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system
+The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes it's meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino's 'desiderata' cite:[Cimino1997] of which the principle of 'concept permanence' is applicable here - "A concept's meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system
 was indeed the one assigned to it in the particular version or edition.
 
 ==== Equivalence
@@ -176,7 +176,7 @@ These rules do not apply to any identifier constructed in a language in which ca
 
 ==== Composite Identifiers and Language
 
-In all of the 'meaningful' identifier types above, with the possible exception of `GENERIC_ID`, the human-readable identifier sections are assumed to use only the basic latin character set, possibly with the addition of other special characters as allowed by the production rules defined below for each identifier. In most cases, the textual parts of these identifiers will be words from the English language, or else they will be recognisable words from other languages, where necessary alliterated into the latin alphabet. Accented and other diacritical letter variants are not allowed. This limitation is made in the interests of practical computability of identifiers, and is in common with class and attribute naming in shared UML models in the standards world, and also with internet domain names and internet URIs.
+In all the 'meaningful' identifier types above, with the possible exception of `GENERIC_ID`, the human-readable identifier sections are assumed to use only the basic latin character set, possibly with the addition of other special characters as allowed by the production rules defined below for each identifier. In most cases, the textual parts of these identifiers will be words from the English language, or else they will be recognisable words from other languages, where necessary alliterated into the latin alphabet. Accented and other diacritical letter variants are not allowed. This limitation is made in the interests of practical computability of identifiers, and is in common with class and attribute naming in shared UML models in the standards world, and also with internet domain names and internet URIs.
 
 === References
 
@@ -229,9 +229,9 @@ iso_oid = number, { '.', number } ;
 uuid    = hex-number, '-', hex-number, '-', hex-number, '-', hex-number, '-', hex-number ;
 
 (* --------------------------- INTERNET_ID --------------------------- *)
-(* According to IETF http://tools.ietf.org/html/rfc1034[RFC 1034] and  *)
-(* http://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by       *)
-(* http://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),          *)
+(* According to IETF https://tools.ietf.org/html/rfc1034[RFC 1034] and *)
+(* https://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by      *)
+(* https://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),         *)
 (* and relaxation of https://tools.ietf.org/html/rfc1123[RFC 1123]     *)
 (* The syntax of a domain name follows the grammar below. Slightly     *)
 (* reduced for the purpose here, plus allows underscores.              *)
