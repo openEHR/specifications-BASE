@@ -1523,7 +1523,7 @@ based knowledge services in the environment, which along with services for acces
 <div class="sect3">
 <h4 id="_system_identity"><a class="anchor" href="#_system_identity"></a>6.1.1. System Identity</h4>
 <div class="paragraph">
-<p>Within the openEHR architecture, a <code><em>system_id</em></code> attribute is recorded both within each patient EHR (<a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_class" target="_blank" rel="noopener"><code>EHR</code> class</a>), and also within the audit created with each commit of data to an EHR (<a href="https://specifications.openehr.org/releases/RM/latest/common.html#_audit_details_class" target="_blank" rel="noopener"><code>AUDIT_DETAILS</code> class</a>). It is also used in feeder system audits that record the origin of imported data (<a href="https://specifications.openehr.org/releases/RM/latest/common.html#_feeder_audit_details_class" target="_blank" rel="noopener"><code>FEEDER_AUDIT_DETAILS</code> class</a>). This identifier identifies the logical EHR system as described above, and may be of any form. Common forms include the reverse domain name and plain and structured string identifiers.</p>
+<p>Within the openEHR architecture, a <code><em>system_id</em></code> attribute is recorded both within each patient EHR (<a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_class" target="_blank" rel="noopener"><code>EHR</code> class</a>), and also within the audit created with each commit of data to an EHR (<a href="https://specifications.openehr.org/releases/RM/latest/common.html#_audit_details_class" target="_blank" rel="noopener"><code>AUDIT_DETAILS</code> class</a>). It is also used in feeder system audits that record the origin of imported data (<a href="https://specifications.openehr.org/releases/RM/latest/common.html#_feeder_audit_details_class" target="_blank" rel="noopener"><code>FEEDER_AUDIT_DETAILS</code> class</a>). This identifier identifies the logical EHR system as described above, and may be of any form. Common forms include the reverse domain name, GUID and OID string identifiers.</p>
 </div>
 <div class="paragraph">
 <p>The system identifier is <em>not assumed to be directly processable</em>, but may instead be used as a key, for example in a service maintaining location information.</p>
@@ -2627,7 +2627,7 @@ openEHR, as follows:</p>
 </div>
 <div class="paragraph">
 <p>Versions of top-level structures (i.e. objects of type  <code>VERSION&lt;X&gt;</code>, such as <code>VERSION&lt;COMPOSITION&gt;</code>) are identified in a way that is guaranteed to work even in distributed environments where copying, merging and subsequent modification occur. The full identification of a Version is the globally unique tuple consisting of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code>, and the two <code>VERSION</code> attributes <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code>. The
-<code><em>creating_system_id</em></code> attribute carries a unique identifier for the system where the content was first created; this may be a GUID, OID or reverse internet identifier. The <code><em>version_tree_id</em></code> is a 1 or 3-part number string, such as <code>"1"</code> or for a branch, <code>"1.2.1"</code>. A typical version identification tuple is as follows:</p>
+<code><em>creating_system_id</em></code> attribute carries a unique identifier for the system where the content was first created; this may be a reverse domain name, GUID or OID string identifiers. The <code><em>version_tree_id</em></code> is a 1 or 3-part number string, such as <code>"1"</code> or for a branch, <code>"1.2.1"</code>. A typical version identification tuple is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3618,7 +3618,7 @@ So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="uri"><span></span>ehr://rmh.nhs.net/347a5490-55ee-4da9-b91a-9bba710f730e/</code></pre>
+<pre class="pygments highlight"><code data-lang="uri"><span></span>ehr://uk.nhs.ehr1/347a5490-55ee-4da9-b91a-9bba710f730e/</code></pre>
 </div>
 </div>
 </div>
@@ -3638,11 +3638,11 @@ ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/directory</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="uri"><span></span>ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B::rmh.nhs.net::2</code></pre>
+<pre class="pygments highlight"><code data-lang="uri"><span></span>ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/compositions/87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This URI identifies a top-level item whose version identifier is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::rmh.nhs.net::2</code>, i.e. the second trunk version of the Versioned Object identified by the GUID, created at an EHR system identified by <code>net.nhs.rmh</code>. Note that the mention of a system in the version identifier does not imply that the requested EHR is at that system, only that the top-level object being sought was created at that system.</p>
+<p>This URI identifies a top-level item whose version identifier is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, i.e. the second trunk version of the Versioned Object identified by the GUID, created at an EHR system identified by <code>net.nhs.rmh</code>. Note that the mention of a system in the version identifier does not imply that the requested EHR is at that system, only that the top-level object being sought was created at that system.</p>
 </div>
 </div>
 <div class="sect4">
@@ -4381,14 +4381,21 @@ and also provides an expression of each of the abstract models in the ITS formal
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation fixes and typos (including <a href="https://specifications.openehr.org/tickets/SPECPR-392" target="_blank" rel="noopener">SPECPR-392</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+J Zeilstra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Jan 2025</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.2.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form;<br>
  <a href="https://specifications.openehr.org/tickets/SPECBASE-24" target="_blank" rel="noopener">SPECBASE-24</a>: Improve specifications block diagram and related explanations in sections 2 and 5.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>18 Jan 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Jan 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
