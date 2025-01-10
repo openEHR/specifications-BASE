@@ -60,7 +60,7 @@ openEHR, as follows:
 Three kinds of identification are used respectively. For version containers, meaningless unique identifiers (UIDs) are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an instance of a subtype of the `UID` class, i.e. either an ISO OID or a UUID ({rfc4122}[IETF RFC4122^]; also known as a GUID). UUIDs are strongly preferred in openEHR since they require no central assignment and can be generated on the spot. A versioned container can be then referenced with an `OBJECT_REF` containing its identifier.
 
 Versions of top-level structures (i.e. objects of type  `VERSION<X>`, such as `VERSION<COMPOSITION>`) are identified in a way that is guaranteed to work even in distributed environments where copying, merging and subsequent modification occur. The full identification of a Version is the globally unique tuple consisting of the `_uid_` of the owning `VERSIONED_OBJECT`, and the two `VERSION` attributes `_creating_system_id_` and `_version_tree_id_`. The
-`_creating_system_id_` attribute carries a unique identifier for the system where the content was first created; this may be a GUID, OID or reverse internet identifier. The `_version_tree_id_` is a 1 or 3-part number string, such as `"1"` or for a branch, `"1.2.1"`. A typical version identification tuple is as follows:
+`_creating_system_id_` attribute carries a unique identifier for the system where the content was first created; this may be a reverse domain name, GUID or OID string identifiers. The `_version_tree_id_` is a 1 or 3-part number string, such as `"1"` or for a branch, `"1.2.1"`. A typical version identification tuple is as follows:
 
 ```
 F7C5C7B7-75DB-4b39-9A1E-C0BA9BFDBDEC    -- id of VERSIONED_COMPOSITION
