@@ -21,7 +21,7 @@ NOTE: For reasons of readability in data, it is strongly recommended that the 'e
 ISO 8601 semantics not included in these types include:
 
 * 'expanded' dates, which have year numbers of greater than 4 digits, and may be negative; in openEHR, only 4-digit year numbers are assumed;
-* the `YYYY-WW-DD` method of expressing dates (since this is imprecise and difficult to compute with due to variable week starting dates, and not required in health);
+* the `YYYY-"W"WW-D` method of expressing dates (since this is imprecise and difficult to compute with due to variable week starting dates, and not required in health);
 * partial date/times with fractional minutes or hours, e.g. `hh,hhh` or `mm,mm`; in openEHR, only fractional seconds are supported;
 * the interval syntax. Intervals of date/times are supported in openEHR, but their syntax form is defined by ADL, and is standardised across all comparable types, not just dates and times.
 
