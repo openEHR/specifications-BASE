@@ -101,6 +101,8 @@ The `ARCHETYPE_ID` subtype defines a multi-axial identifier for archetypes, mean
 
 The three outer sections are delimited by '.' characters, while the parts of the first section are delimited by `-` characters. As with any multi-axial identifier, the underlying principle of an archetype identifier is that all parts of the identifier must be able to be considered immutable. This means that no variable characteristic of an archetype (e.g. accrediting authority, which might change due to later accreditation by another authority, or may be multiple) can be included in its identifier. The explicit inclusion of version as part of the identifier means that two 'versions' of an archetype are actually two distinct archetypes. (The rules for archetype versions, revisions and other variants are given in the {openehr_am_id}[openEHR Archetype Identification specification].)
 
+Besides used as full physical artefact identifier, an ARCHETYPE_ID can also act as a reference used to match artefacts carrying full identification, {openehr_am_id}#_referencing[as defined] by the interface HRID reference (`ihrid_ref`) concept. In this context, it provides a shortened form of the full identifier, typically omitting namespace, with partial version information, including only the major version.
+
 Examples of archetype identifiers include:
 
 * `openEHR-EHR-SECTION.physical_examination.v2`
@@ -257,15 +259,15 @@ branch_number   = number ;
 branch_version  = number ;
 
 (* -------------------------- ARCHETYPE_ID --------------------------- *)
-archetype_id        = qualified_rm_entity, '.', domain_concept, '.', version_id ;
-qualified-rm-entity = rm_originator, '-', rm_name, '-', rm_entity ;
-rm-originator       = alphanum-str ;     (* id of org originating the RM on which this archetype is based *)
-rm-name             = alphanum-str ;                      (* id of the RM on which the archetype is based *)
-rm-entity           = alphanum-str ;                                       (* ontological level in the RM *)
-domain-concept      = concept-name, { '-', specialisation } ; 
-concept-name        = alphanum-str ;
+archetype_id        = qualified_rm_entity, '.', domain_concept, '.v', version_id ;
+qualified_rm_entity = rm_originator, '-', rm_name, '-', rm_entity ;
+rm_originator       = alphanum-str ;     (* id of org originating the RM on which this archetype is based *)
+rm_name             = alphanum-str ;                      (* id of the RM on which the archetype is based *)
+rm_entity           = alphanum-str ;                                       (* ontological level in the RM *)
+domain_concept      = concept_name, { '-', specialisation } ;
+concept_name        = alphanum-str ;
 specialisation      = alphanum-str ;
-version-id          = 'v', ( '0' | non-zero-digit, [ number ] ) ;            (* numeric version identifier *)
+version_id          = '0' | non-zero-digit, [ number ] ;            (* numeric version identifier *)
 
 (* ------------------------- TERMINOLOGY_ID -------------------------- *)
 terminology_id = name-str, [ '(', name-str, ')' ] ;
