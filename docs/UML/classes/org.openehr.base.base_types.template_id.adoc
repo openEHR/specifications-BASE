@@ -12,7 +12,7 @@ The template ID must follow the link:https://specifications.openehr.org/releases
 h|*Inherit*
 2+|`<<_object_id_class,OBJECT_ID>>`
 h|*Invariants*
-2+a|__Template_ID_validity__: `not matches("^(?:(?<namespace>[a-zA-Z][a-zA-Z0-9_.:/&?=+-]*\.)::)
+2+a|__Template_ID_validity__: `matches("^(?<namespace>(?:(?:[a-zA-Z_][a-zA-Z0-9_-])(?:.[a-zA-Z_][a-zA-Z0-9_-])+]*)+)::)
 (?<rm_publisher>[a-zA-Z][a-zA-Z0-9_]+)-
 (?<rm_package>[a-zA-Z][a-zA-Z0-9_]+)-
 (?<rm_class>[a-zA-Z][a-zA-Z0-9_]+)\.
