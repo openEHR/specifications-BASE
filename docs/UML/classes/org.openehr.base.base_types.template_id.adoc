@@ -8,7 +8,17 @@ h|*Class*
 h|*Description*
 2+a|Identifier for templates. Lexical form to be determined.
 
+The template ID must follow the link:https://specifications.openehr.org/releases/AM/development/AOM2.html#_archetype_hrid_class[HRID format]. The legacy string-based `template_id` is deprecated.
 h|*Inherit*
 2+|`<<_object_id_class,OBJECT_ID>>`
-
+h|*Invariants*
+2+a|__Template_ID_validity__: `not matches("^(?:(?<namespace>[a-zA-Z][a-zA-Z0-9_.:/&?=+-]*\.)::)
+(?<rm_publisher>[a-zA-Z][a-zA-Z0-9_]+)-
+(?<rm_package>[a-zA-Z][a-zA-Z0-9_]+)-
+(?<rm_class>[a-zA-Z][a-zA-Z0-9_]+)\.
+(?<concept_name>[a-zA-Z][a-zA-Z0-9_-]+)\.
+(?<release_version>v\d+(?:\.\d+){0,2})
+(?:-(?<version_status>[a-zA-Z0-9]+))?
+(?:\.(?<build_count>\d+))?$
+")`
 |===
