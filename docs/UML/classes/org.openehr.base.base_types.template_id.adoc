@@ -10,14 +10,18 @@ h|*Description*
 For backwards compatibility reasons a free text string is still allowed. If the TEMPLATE_ID string matches the requirements for ARCHETYPE_HRID (function is_archetype_HRID is TRUE), it is assumed to be an ARCHETYPE_HRID. Thus it can safely be parsed into the individual attributes of that class, notably including the specifications for semantic versioning. 
 h|*Inherit*
 2+|`<<_object_id_class,OBJECT_ID>>`
-h|*Invariants*
-2+a|__Template_ID_validity__: `matches("^(?<namespace>(?:(?:[a-zA-Z_][a-zA-Z0-9_-])(?:.[a-zA-Z_][a-zA-Z0-9_-])+]*)+)::)
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*is_archetype_hrid* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
+a|True if `_value_` matches the regular expression `^(?<namespace>(?:(?:[a-zA-Z_][a-zA-Z0-9_-])(?:.[a-zA-Z_][a-zA-Z0-9_-])+]*)+)::)
 (?<rm_publisher>[a-zA-Z][a-zA-Z0-9_]+)-
 (?<rm_package>[a-zA-Z][a-zA-Z0-9_]+)-
 (?<rm_class>[a-zA-Z][a-zA-Z0-9_]+)\.
 (?<concept_name>[a-zA-Z][a-zA-Z0-9_-]+)\.
 (?<release_version>v\d+(?:\.\d+){0,2})
 (?:-(?<version_status>[a-zA-Z0-9]+))?
-(?:\.(?<build_count>\d+))?$
-")`
+(?:\.(?<build_count>\d+))?$`
 |===
