@@ -35,6 +35,7 @@ a|Annotations on individual items within the resource, keyed by path. The inner 
 h|*0..1*
 |*translations*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^],<<_translation_details_class,TRANSLATION_DETAILS>>>`
 a|List of details for each natural translation made of this resource, keyed by language code. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The `_original_language_` does not appear in this list.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -45,9 +46,6 @@ a|Total list of languages available in this resource, derived from original_lang
 
 h|*Invariants*
 2+a|__Original_language_valid__: `code_set (Code_set_id_languages).has_code (original_language.as_string)`
-
-h|
-2+a|__Current_revision_valid__: `(current_revision /= Void and not is_controlled) implies current_revision.is_equal ("(uncontrolled)")`
 
 h|
 2+a|__Translations_valid__: `translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))`

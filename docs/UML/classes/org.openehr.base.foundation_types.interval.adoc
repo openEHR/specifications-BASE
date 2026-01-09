@@ -7,7 +7,6 @@ h|*Class*
 
 h|*Description*
 2+a|Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
-Interval of ordered items.
 
 h|*Inherit*
 2+|`<<_any_class,Any>>`
@@ -19,32 +18,27 @@ h|*Attributes*
 h|*0..1*
 |*lower*: `T`
 a|Lower bound.
-lower bound.
 
 h|*0..1*
 |*upper*: `T`
 a|Upper bound.
-Upper bound.
 
 h|*1..1*
 |*lower_unbounded*: `<<_boolean_class,Boolean>>`
 a|True if `_lower_` boundary open (i.e. = `-infinity`).
-lower boundary open (i.e. = -infinity)
 
 h|*1..1*
 |*upper_unbounded*: `<<_boolean_class,Boolean>>`
 a|True if `_upper_` boundary open (i.e. = `+infinity`).
-upper boundary open (i.e. = +infinity)
 
 h|*1..1*
 |*lower_included*: `<<_boolean_class,Boolean>>`
 a|True if `_lower_` boundary value included in range, if `not _lower_unbounded_`.
-lower boundary value included in range if not lower_unbounded.
 
 h|*1..1*
 |*upper_included*: `<<_boolean_class,Boolean>>`
 a|True if `_upper_` boundary value included in range if `not _upper_unbounded_`.
-upper boundary value included in range if not upper_unbounded.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -57,12 +51,6 @@ e: `T[1]` +
  +
 __Post_result__: `Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v \<= upper or v < upper)`
 a|True if the value `e` is properly contained in this Interval.
-True if (lower_unbounded or
-((lower_included and v >= lower) or
-v > lower)) and
-(upper_unbounded or
-((upper_included and v \<= upper or v
-< upper)))
 
 h|*1..1 +
 (abstract)*
@@ -79,7 +67,7 @@ other: `<<_interval_class,Interval>>[1]` +
 a|True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval.
 
 h|*1..1 +
-(effected)*
+(abstract)*
 |*is_equal* ( +
 other: `<<_any_class,Any>>[1]` +
 ): `<<_boolean_class,Boolean>>`
