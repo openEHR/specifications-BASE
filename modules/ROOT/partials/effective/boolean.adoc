@@ -1,0 +1,92 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Boolean*
+
+2+a|Class representing minimal interface of standard Boolean type.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any]
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix and* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_de_Morgan__: `Result = not (not self or not other)` +
+__Post_commutative__: `Result = (other and self)` [1..1]
+a|Logical conjunction
+
+|*infix and_then* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_de_Morgan__: `Result = not (not self or else not other)` [1..1]
+a|Boolean semi-strict conjunction with other
+
+|*infix or* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_de_Morgan__: `Result = not (not self and not other)` +
+__Post_commutative__: `Result = (other or Current)` +
+__Post_consistent_with_semi_strict__: `Result implies (self or else other)` [1..1]
+a|Boolean disjunction with other.
+
+|*infix or_else* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_de_Morgan__: `Result = not (not self and then not other)` [1..1]
+a|Boolean semi-strict disjunction with `other'.
+
+|*infix xor* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_definition__: `Result = ((self or other) and not (self and other))` [1..1]
+a|Boolean exclusive or with `other'.
+
+|*infix implies* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_definition__: `Result = (not self or else other)` [1..1]
+a|Boolean implication of `other' (semi-strict)
+
+2+h|*Invariants*
+
+2+a|__Involutive_negation__: `is_equal (not (not self))`
+
+2+a|__Non_contradiction__: `not (self and (not self))`
+
+2+a|__Completeness__: `self or else (not self)`
+
+|===

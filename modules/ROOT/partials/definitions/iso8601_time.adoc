@@ -1,0 +1,90 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*Iso8601_time*
+
+h|*Description*
+2+a|Represents an ISO 8601 time, including partial and extended forms. Value may be:
+
+* `hh:mm:ss[,sss][Z&#124;±hh[mm]]` (extended, preferred) or
+* `hhmmss[,sss][Z&#124;±hh[mm]]` (compact)
+* or a partial invariant.
+
+See `_valid_iso8601_time()_` for validity.
+
+NOTE: A small deviation to the ISO 8601:2004 standard in this class is that the time `24:00:00` is not allowed, for consistency with `Iso8601_date_time`.
+
+h|*Inherit*
+2+|`xref:BASE:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type]`
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*hour* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Hour in day, in 24-hour time.
+
+h|*1..1*
+|*minute* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Minute in hour.
+
+h|*1..1*
+|*second* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Second in minute.
+
+h|*1..1*
+|*fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]` +
+ +
+__Pre__: `not second_unknown`
+a|Fractional seconds.
+
+h|*1..1*
+|*timezone* (): `xref:BASE:foundation_types:time_types.adoc#_iso8601_timezone_class[Iso8601_timezone]`
+a|Timezone; may be Void.
+
+h|*1..1*
+|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Indicates whether minute is unknown. If so, the time is of the form “hh”.
+
+h|*1..1*
+|*second_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Indicates whether second is unknown. If so and month is known, the time is of the form `"hh:mm"` or `"hhmm"`.
+
+h|*1..1*
+|*is_decimal_sign_comma* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
+
+h|*1..1 +
+(effected)*
+|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this time is partial, i.e. if seconds or more is missing.
+
+h|*1..1 +
+(effected)*
+|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this time uses ‘-’, ‘:’ separators.
+
+h|*1..1*
+|*has_fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if the fractional_second part is signficant (i.e. even if = 0.0).
+
+h|*1..1*
+|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Return string value in extended format.
+
+h|*Invariants*
+2+a|__Hour_valid__: `valid_hour(hour, minute, second)`
+
+h|
+2+a|__Minute_valid__: `not minute_unknown implies valid_minute (minute)`
+
+h|
+2+a|__Second_valid__: `not second_unknown implies valid_second (second)`
+
+h|
+2+a|__Fractional_second_valid__: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
+
+h|
+2+a|__Partial_validity__: `minute_unknown implies second_unknown`
+|===

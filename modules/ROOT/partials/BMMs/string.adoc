@@ -1,0 +1,51 @@
+[source,json]
+--------
+{
+    "name": "String",
+    "documentation": "Strings of characters, as used to represent textual data in any natural or formal language.",
+    "ancestors": [
+        "Ordered"
+    ],
+    "functions": {
+        "infix +": {
+            "name": "infix +",
+            "documentation": "Concatenation operator - causes ‘other’ to be appended to this string.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "is_empty": {
+            "name": "is_empty",
+            "documentation": "True if string is empty, i.e. equal to \"\".",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_integer": {
+            "name": "is_integer",
+            "documentation": "True if string can be parsed as an integer.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "as_integer": {
+            "name": "as_integer",
+            "documentation": "Return the integer corresponding to the integer value represented in this string.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        }
+    }
+}
+--------

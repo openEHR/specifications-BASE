@@ -1,0 +1,142 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*Iso8601_date_time*
+
+h|*Description*
+2+a|Represents an ISO 8601 date/time, including partial and extended forms. Value may be:
+
+* `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` (extended, preferred) or
+* `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` (compact)
+* or a partial variant.
+
+See `_valid_iso8601_date_time()_` for validity.
+
+Note that this class includes 2 deviations from ISO 8601:2004:
+
+* for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard;
+* the time `24:00:00` is not allowed, since it would mean the date was really on the next day.
+
+h|*Inherit*
+2+|`xref:BASE:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type]`
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*year* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Year.
+
+h|*1..1*
+|*month* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not month_unknown`
+a|Month in year.
+
+h|*1..1*
+|*day* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not day_unknown`
+a|Day in month.
+
+h|*1..1*
+|*hour* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not hour_unknown`
+a|Hour in day.
+
+h|*1..1*
+|*minute* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not minute_unknown`
+a|Minute in hour.
+
+h|*1..1*
+|*second* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not second_unknown`
+a|Second in minute.
+
+h|*1..1*
+|*fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+a|Fractional seconds.
+
+h|*1..1*
+|*timezone* (): `xref:BASE:foundation_types:time_types.adoc#_iso8601_timezone_class[Iso8601_timezone]`
+a|Timezone; may be Void.
+
+h|*1..1*
+|*month_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Indicates whether month in year is unknown.
+
+h|*1..1*
+|*day_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Indicates whether day in month is unknown.
+
+h|*1..1*
+|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Indicates whether minute in hour is known.
+
+h|*1..1*
+|*second_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Indicates whether minute in hour is known.
+
+h|*1..1*
+|*is_decimal_sign_comma* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
+
+h|*1..1 +
+(effected)*
+|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this date time is partial, i.e. if seconds or more is missing.
+
+h|*1..1 +
+(effected)*
+|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this date/time uses ‘-’, ‘:’ separators.
+
+h|*1..1*
+|*has_fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if the fractional_second part is signficant (i.e. even if = 0.0).
+
+h|*1..1*
+|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Return the string value in extended format.
+
+h|*Invariants*
+2+a|__Year_valid__: `valid_year (year)`
+
+h|
+2+a|__Month_valid__: `valid_month (month)`
+
+h|
+2+a|__Day_valid__: `valid_day(year, month, day)`
+
+h|
+2+a|__Hour_valid__: `valid_hour (hour, minute, second)`
+
+h|
+2+a|__Minute_valid__: `not minute_unknown implies valid_minute(minute)`
+
+h|
+2+a|__Second_valid__: `not second_unknown implies valid_second (second)`
+
+h|
+2+a|__Fractional_second_valid__: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
+
+h|
+2+a|__Partial_validity_year__: `not month_unknown`
+
+h|
+2+a|__Partial_validity_month__: `not month_unknown`
+
+h|
+2+a|__Partial_validity_day__: `not day_unknown`
+
+h|
+2+a|__Partial_validity_hour__: `not hour_unknown`
+
+h|
+2+a|__Partial_validity_minute__: `minute_unknown implies second_unknown`
+|===

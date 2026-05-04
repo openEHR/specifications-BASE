@@ -1,0 +1,126 @@
+[source,json]
+--------
+{
+    "name": "Iso8601_duration",
+    "documentation": "Represents an ISO 8601 duration, which may have multiple parts from years down to seconds. Value is in format:\n\n* `P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]`",
+    "ancestors": [
+        "Iso8601_type"
+    ],
+    "functions": {
+        "seconds": {
+            "name": "seconds",
+            "documentation": "Number of seconds.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "fractional_seconds": {
+            "name": "fractional_seconds",
+            "documentation": "Fractional seconds.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        },
+        "is_decimal_sign_comma": {
+            "name": "is_decimal_sign_comma",
+            "documentation": "True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_partial": {
+            "name": "is_partial",
+            "documentation": "Returns False.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_extended": {
+            "name": "is_extended",
+            "documentation": "Returns True.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "months": {
+            "name": "months",
+            "documentation": "Number of months.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "years": {
+            "name": "years",
+            "documentation": "Number of years of nominal 365-day length.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "weeks": {
+            "name": "weeks",
+            "documentation": "Number of 7 day weeks.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "to_seconds": {
+            "name": "to_seconds",
+            "documentation": "Total number of seconds equivalent (including fractional) of entire duration.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        },
+        "minutes": {
+            "name": "minutes",
+            "documentation": "Number of 60 second minutes.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "hours": {
+            "name": "hours",
+            "documentation": "Number of 60 minute hours.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "days": {
+            "name": "days",
+            "documentation": "Number of 24 hour days.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "documentation": "Return the duration string value.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    },
+    "invariants": {
+        "Years_valid": "years >= 0",
+        "Months_valid": "months >= 0",
+        "Weeks_valid": "weeks >= 0",
+        "Days_valid": "days >= 0",
+        "Hours_valid": "hours >= 0",
+        "Minutes_valid": "minutes >= 0",
+        "Seconds_valid": "seconds >= 0",
+        "Fractional_second_valid": "fractional_second >= 0.0 and fractional_second < 1.0"
+    }
+}
+--------

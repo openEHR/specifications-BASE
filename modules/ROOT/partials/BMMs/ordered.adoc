@@ -1,0 +1,29 @@
+[source,json]
+--------
+{
+    "name": "Ordered",
+    "documentation": "Abstract notional parent class of ordered, types i.e. types on which the ‘<‘ operator is defined.",
+    "is_abstract": true,
+    "ancestors": [
+        "Any"
+    ],
+    "functions": {
+        "infix <": {
+            "name": "infix <",
+            "documentation": "Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘>’, ‘>=’, ‘<=’, ‘<>’. In real type systems, this operator might be defined on another class for comparability.",
+            "is_abstract": true,
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Ordered"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

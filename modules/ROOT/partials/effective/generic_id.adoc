@@ -1,0 +1,17 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*GENERIC_ID*
+
+2+a|Generic identifier type for identifiers whose format is otherwise unknown to openEHR. Includes an attribute for naming the identification scheme (which may well be local).
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id in the form defined below. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]_
+
+|*scheme*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the scheme to which this identifier conforms. Ideally this name will be recognisable globally but realistically it may be a local ad hoc scheme whose name is not controlled or standardised in any way.
+|===
