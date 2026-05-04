@@ -1,0 +1,40 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*RESOURCE_DESCRIPTION_ITEM*
+
+h|*Description*
+2+a|Language-specific detail of resource description. When a resource is translated for use in another language environment, each `RESOURCE_DESCRIPTION_ITEM` needs to be copied and translated into the new language.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*language*: `xref:BASE:foundation_types:terminology.adoc#_terminology_code_class[Terminology_code]`
+a|The localised language in which the items in this description item are written. Coded using ISO 639-1 (2 character) language codes.
+
+h|*1..1*
+|*purpose*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Purpose of the resource.
+
+h|*0..1*
+|*keywords*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+a|Keywords which characterise this resource, used e.g. for indexing and searching.
+
+h|*0..1*
+|*use*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Description of the uses of the resource, i.e. contexts in which it could be used.
+
+h|*0..1*
+|*misuse*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Description of any misuses of the resource, i.e. contexts in which it should not be used.
+
+h|*0..1*
+|*original_resource_uri*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+a|URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.
+
+h|*0..1*
+|*other_details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+a|Additional language-sensitive resource metadata, as a list of name/value pairs.
+|===

@@ -1,0 +1,106 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Double*
+
+2+a|Type used to represent double-precision decimal numbers. Corresponds to a double-precision floating point value in most languages.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]
+
+2+h|*Functions*
+
+|*is_equal* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+|*equal* __alias__ "=", "==" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality for reference types, value equality for value types.
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*not_equal* __alias__ "!=", "≠" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*less_than* __alias__ "<" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Returns True if current Double is less than `_other_`.
+
+|*less_than_or_equal* __alias__ "<=", "≤" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `not (other < self)` [1..1]
+a|True if current object less than or equal to `_other_`. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*greater_than* __alias__ ">" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `Result = (other < self)` [1..1]
+a|True if current object greater than `_other_`. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*greater_than_or_equal* __alias__ ">=", "≥" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `Result = (other \<= self)` [1..1]
+a|True if current object greater than or equal to `_other_`. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*add* __alias__ "+" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+a|Double-precision real number addition.
+
+|*subtract* __alias__ "-" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+a|Double-precision real number subtraction.
+
+|*multiply* __alias__ "&#42;" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+a|Double-precision real number multiplication.
+
+|*divide* __alias__ "/" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+a|Double-precision real number division.
+
+|*exponent* __alias__ "^" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+a|Double-precision real number exponentiation.
+
+|*negative* __alias__ "-" (): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+a|Generate negative of current Double value.
+
+|*floor* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Return the greatest integer no greater than the value of this object.
+|===
