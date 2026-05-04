@@ -1,0 +1,34 @@
+[source,json]
+--------
+{
+    "name": "BMM_CONTAINER_PROPERTY",
+    "documentation": "Subtype of `BMM_PROPERTY` that represents a container type based on one of the inbuilt types `List<T>`, `Set<T>`, `Array<T>`.",
+    "ancestors": [
+        "BMM_PROPERTY"
+    ],
+    "properties": {
+        "type": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "type",
+            "is_mandatory": true,
+            "type": "BMM_CONTAINER_TYPE"
+        },
+        "cardinality": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "cardinality",
+            "documentation": "Cardinality of this container.",
+            "type": "Multiplicity_interval"
+        }
+    },
+    "functions": {
+        "display_name": {
+            "name": "display_name",
+            "documentation": "Name of this property in form `name: ContainerTypeName<>`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
+}
+--------

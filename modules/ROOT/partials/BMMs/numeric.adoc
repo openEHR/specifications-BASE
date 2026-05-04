@@ -1,0 +1,61 @@
+[source,json]
+--------
+{
+    "name": "Numeric",
+    "documentation": "Abstract notional parent class of numeric types, which are types which have various arithmetic and comparison operators defined.",
+    "is_abstract": true,
+    "ancestors": [
+        "Any"
+    ],
+    "functions": {
+        "infix *": {
+            "name": "infix *",
+            "documentation": "Product by `other'. Actual type of result depends on arithmetic balancing rules.",
+            "is_abstract": true,
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Numeric"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Numeric"
+            }
+        },
+        "infix +": {
+            "name": "infix +",
+            "documentation": "Sum with `other' (commutative). Actual type of result depends on arithmetic balancing rules.",
+            "is_abstract": true,
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Numeric"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Numeric"
+            }
+        },
+        "infix -": {
+            "name": "infix -",
+            "documentation": "Result of subtracting `other'. Actual type of result depends on arithmetic balancing rules.",
+            "is_abstract": true,
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Numeric"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Numeric"
+            }
+        }
+    }
+}
+--------

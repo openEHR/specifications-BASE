@@ -1,0 +1,63 @@
+[source,json]
+--------
+{
+    "name": "IDate",
+    "documentation": "Interface of an absolute point in time, as measured on the Gregorian calendar, and specified only to the day.",
+    "is_abstract": true,
+    "ancestors": [
+        "Temporal"
+    ],
+    "functions": {
+        "year": {
+            "name": "year",
+            "documentation": "Year.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "month": {
+            "name": "month",
+            "documentation": "Month in year.",
+            "pre_conditions": {
+                "Pre": "not month_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "day": {
+            "name": "day",
+            "documentation": "Day in month.",
+            "pre_conditions": {
+                "Pre": "not day_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "timezone": {
+            "name": "timezone",
+            "documentation": "Timezone; may be Void.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "ITimezone"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "documentation": "ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z | ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z | ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    },
+    "invariants": {
+        "Day_valid": "valid_day(year, month, day)",
+        "Month_valid": "valid_month (month)"
+    }
+}
+--------

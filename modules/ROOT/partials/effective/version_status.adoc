@@ -1,0 +1,75 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*VERSION_STATUS*
+
+2+a|Status of a versioned artefact, as one of a number of possible values: uncontrolled, prerelease, release, build.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]
+
+2+h|*Constants*
+
+|alpha
+a|Value representing a version which is 'unstable', i.e. contains an unknown size of change with respect to its base version. Rendered with the build number as a string in the form `N.M.P-alpha.B` e.g. `2.0.1-alpha.154`.
+
+|beta
+a|Value representing a version which is 'beta', i.e. contains an unknown but reducing size of change with respect to its base version. Rendered with the build number as a string in the form `N.M.P-beta.B` e.g. `2.0.1-beta.154`.
+
+|release_candidate
+a|Value representing a version which is 'release candidate', i.e. contains only patch-level changes on the base version. Rendered as a string as `N.M.P-rc.B` e.g. `2.0.1-rc.27`.
+
+|released
+a|Value representing a version which is 'released', i.e. is the definitive base version. Rendered with the build number as a string in the form `N.M.P` e.g. `2.0.1`.
+
+|build
+a|Value representing a version which is a build of the current base release. Rendered with the build number as a string in the form `N.M.P+B` e.g. `2.0.1+33`.
+
+2+h|*Functions*
+
+|*is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix <* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘>’, ‘>=’, ‘\<=’, ‘<>’. In real type systems, this operator might be defined on another class for comparability. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*infix +* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Concatenation operator - causes ‘other’ to be appended to this string. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]_
+
+|*is_empty* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if string is empty, i.e. equal to "". +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]_
+
+|*is_integer* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if string can be parsed as an integer. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]_
+
+|*as_integer* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Return the integer corresponding to the integer value represented in this string. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]_
+|===

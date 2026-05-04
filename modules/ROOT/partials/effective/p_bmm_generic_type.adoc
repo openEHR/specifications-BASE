@@ -1,0 +1,38 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*P_BMM_GENERIC_TYPE*
+
+2+a|Persistent form of `BMM_GENERIC_TYPE`.
+
+2+|Inherits: xref:BASE:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE], xref:BASE:bmm_persistence_package.adoc#_p_bmm_base_type_class[P_BMM_BASE_TYPE]
+
+2+h|*Attributes*
+
+|*bmm_type*: `xref:BASE:bmm:core_package.adoc#_bmm_generic_type_class[BMM_GENERIC_TYPE]` [0..1]
+a|Result of `_create_bmm_type()_` call.
+
+|*root_type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Root type of this generic type, e.g. `Interval` in `Interval<Integer>`.
+
+|*generic_parameter_defs*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]>` [1..1]
+a|Generic parameters of the root_type in this type specifier if non-simple types. The order must match the order of the owning class's formal generic parameter declarations. Persistent attribute.
+
+|*generic_parameters*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Generic parameters of the `_root_type_` in this type specifier, if simple types. The order must match the order of the owning class's formal generic parameter declarations. Persistent attribute.
+
+2+h|*Functions*
+
+|_(abstract)_ *create_bmm_type* ( +
+a_schema: `xref:BASE:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
+a_class_def: `xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
+): `void` [1..1]
+a|Create appropriate `BMM_XXX` object; effected in descendants. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_
+
+|_(abstract)_ *as_type_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Formal name of the type for display. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]_
+
+|*generic_parameter_refs* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]>` [0..1]
+a|Generic parameters of the root_type in this type specifier. The order must match the order of the owning class's formal generic parameter declarations
+|===

@@ -1,0 +1,56 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*P_BMM_CLASS*
+
+2+a|Definition of persistent form of `BMM_CLASS` for serialisation to ODIN, JSON, XML etc.
+
+2+|Inherits: xref:BASE:bmm_persistence_package.adoc#_p_bmm_model_element_class[P_BMM_MODEL_ELEMENT]
+
+2+h|*Attributes*
+
+|*documentation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional documentation of this element. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_model_element_class[P_BMM_MODEL_ELEMENT]_
+
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the class. Persisted attribute.
+
+|*ancestors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of immediate inheritance parents. Persisted attribute.
+
+|*properties*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]>` [0..1]
+a|List of attributes defined in this class. Persistent attribute.
+
+|*is_abstract*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this is an abstract type. Persisted attribute.
+
+|*is_override*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this class definition overrides one found in an included schema.
+
+|*generic_parameter_defs*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:bmm_persistence_package.adoc#_p_bmm_generic_parameter_class[P_BMM_GENERIC_PARAMETER]>` [0..1]
+a|List of generic parameter definitions. Persisted attribute.
+
+|*source_schema_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Reference to original source schema defining this class. Set during `BMM_SCHEMA` materialise. Useful for GUI tools to enable user to edit the schema file containing a given class (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
+
+|*bmm_class*: `xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]` [0..1]
+a|`BMM_CLASS` object built by `_create_bmm_class_definition_` and `_populate_bmm_class_definition_`.
+
+|*uid*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Unique id generated for later comparison during merging, in order to detect if two classes are the same. Assigned in post-load processing.
+
+2+h|*Functions*
+
+|*is_generic* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result := generic_parameter_defs /= Void` [1..1]
+a|True if this class is a generic class.
+
+|*create_bmm_class* (): `void` [1..1]
+a|Create `_bmm_class_definition_`.
+
+|*populate_bmm_class* ( +
+a_bmm_schema: `xref:BASE:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]` +
+): `void` [1..1]
+a|Add remaining model elements from Current to `_bmm_class_definition_`.
+|===

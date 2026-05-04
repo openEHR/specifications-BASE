@@ -1,0 +1,19 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*STATEMENT_SET*
+
+2+a|A container for a specific set of statements intended to be used together.
+
+2+h|*Attributes*
+
+|*statement*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:expression:core_package.adoc#_statement_class[STATEMENT]>` [0..1]
+a|The member statements of this statement set.
+
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional name of this rule set.
+
+2+h|*Functions*
+
+|*execution_result* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Execution result of the whole rule set. Determined by the and-ing of result values of Assertions in the rule set.
+|===

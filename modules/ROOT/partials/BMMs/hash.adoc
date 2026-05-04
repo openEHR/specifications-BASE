@@ -1,0 +1,51 @@
+[source,json]
+--------
+{
+    "name": "Hash",
+    "documentation": "Type representing a keyed table of values. T is the value type, and U the type of the keys. ",
+    "ancestors": [
+        "Aggregate"
+    ],
+    "generic_parameter_defs": {
+        "K": {
+            "name": "K",
+            "conforms_to_type": "Ordered"
+        },
+        "V": {
+            "name": "V"
+        }
+    },
+    "functions": {
+        "has_key": {
+            "name": "has_key",
+            "documentation": "Test for membership of a key.",
+            "parameters": {
+                "a_key": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER_OPEN",
+                    "name": "a_key",
+                    "type": "K"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "item": {
+            "name": "item",
+            "documentation": "Return item for key  a_key'.",
+            "parameters": {
+                "a_key": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER_OPEN",
+                    "name": "a_key",
+                    "type": "K"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "V"
+            }
+        }
+    }
+}
+--------

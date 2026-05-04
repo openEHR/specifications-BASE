@@ -1,0 +1,79 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__BMM_ENTITY (abstract)__*
+
+2+a|Abstract parent of type and class meta-types.
+
+2+|Inherits: xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]
+
+2+h|*Constants*
+
+|*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+a|Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Schema_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"::"` [1..1]
+a|Delimiter used to separate schema id from package path in a fully qualified path. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Package_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"."` [1..1]
+a|Delimiter used to separate package names in a package path. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Bmm_schema_file_extension*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".bmm"` [1..1]
+a|Extension used for BMM files. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Entity_metatype_simple*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"simple_entity"` [1..1]
+a|Category of a simple entity, other than enumerated types.
+
+|*Entity_metatype_enumeration*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"enumeration_entity"` [1..1]
+a|Category of any enumeration entity.
+
+|*Entity_metatype_generic*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"generic_entity"` [1..1]
+a|Category of any generic entity that is not a container entity.
+
+|*Entity_metatype_parameter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"generic_parameter_entity"` [1..1]
+a|Category of a formal generic parameter entity.
+
+|*Entity_metatype_container*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"container_entity"` [1..1]
+a|Category of any container entity.
+
+|*Entity_category_modifier_abstract*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"abstract"` [1..1]
+a|Category modifier indicating an entity is formally defined as abstract, i.e. not-directly instantiable within a BMM model.
+
+|*Entity_category_modifier_primitive*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"primitive"` [1..1]
+a|Category modifier indicating that an entity is considered to be primitive within the type system of a given BMM model. Has no semantic consequences within the BMM.
+
+2+h|*Functions*
+
+|_(abstract)_ *entity_category* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Generate a category code-string to use in visualisation, that indicates:
+
+* _entity meta-type_: simple &#124; enumerated &#124; generic &#124; generic_effective &#124; parameter
+* _abstract modifier_ - abstract status
+* _primitive modifier_ primitive status
+
+The code is structured as:
+
+----
+entity_metatype [ '-' abstract_modifier ] [ '-' primitive_modifier ]
+----
+
+|_(abstract)_ *entity_metatype* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Meta-type of entity, which classifies it according to the kind of formal entity it represents from the following:
+
+* simple (non-generic)
+* generic
+* enumeration
+* type parameter
+* container type
+
+These meta-types don't exactly match the `BMM_*` types defined in the model, but are useful for displaying models visually.
+
+|_(abstract)_ *is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|If true, indicates an abstract class in a BMM model, or a type based on an abstract class, i.e. a type that cannot be directly instantiated.
+
+|_(abstract)_ *is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|If True, indicates that the entity in a BMM model is considered to relate to a primitive type set, i.e. be a primitive type, or be a definer of one.
+|===

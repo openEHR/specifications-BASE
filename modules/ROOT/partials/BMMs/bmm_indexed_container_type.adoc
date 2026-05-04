@@ -1,0 +1,19 @@
+[source,json]
+--------
+{
+    "name": "BMM_INDEXED_CONTAINER_TYPE",
+    "documentation": "Type of linear container that indexes the contained items in the manner of a standard Hash table, map or dictionary.",
+    "ancestors": [
+        "BMM_CONTAINER_TYPE"
+    ],
+    "properties": {
+        "index_type": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "index_type",
+            "documentation": "Type of the element index, typically `String` or `Integer`, but may be a numeric type or indeed any type from which a hash value can be derived.",
+            "is_mandatory": true,
+            "type": "BMM_SIMPLE_TYPE"
+        }
+    }
+}
+--------

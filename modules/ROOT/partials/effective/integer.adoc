@@ -1,0 +1,62 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Integer*
+
+2+a|Class representing minimal interface of standard Integer type.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|_(abstract)_ *infix <* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘>’, ‘>=’, ‘\<=’, ‘<>’. In real type systems, this operator might be defined on another class for comparability. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|_(abstract)_ *infix ** ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+a|Product by `other'. Actual type of result depends on arithmetic balancing rules. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+
+|_(abstract)_ *infix +* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+a|Sum with `other' (commutative). Actual type of result depends on arithmetic balancing rules. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+
+|_(abstract)_ *infix -* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+a|Result of subtracting `other'. Actual type of result depends on arithmetic balancing rules. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+|===

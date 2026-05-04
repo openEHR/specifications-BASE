@@ -1,0 +1,43 @@
+[source,json]
+--------
+{
+    "name": "ITimezone",
+    "documentation": "Interface definition of a timezone.",
+    "is_abstract": true,
+    "ancestors": [
+        "Temporal"
+    ],
+    "functions": {
+        "hour": {
+            "name": "hour",
+            "documentation": "Hour part of timezone - in the range 00 - 13.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "minute": {
+            "name": "minute",
+            "documentation": "Minute part of timezone. Generally 00 or 30.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "sign": {
+            "name": "sign",
+            "documentation": "Direction of timezone expresssed as +1 or -1.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        }
+    },
+    "invariants": {
+        "Min_hour_valid": "sign = -1 implies hour > 0 and hour <= Min_timezone_hour",
+        "Max_hour_valid": "sign = 1 implies hour > 0 and hour <= Max_timezone_hour",
+        "Minute_valid": "not minute_unknown implies valid_minute (minute)",
+        "Sign_valid": "sign = 1 or sign = -1"
+    }
+}
+--------

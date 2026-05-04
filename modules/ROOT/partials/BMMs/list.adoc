@@ -1,0 +1,38 @@
+[source,json]
+--------
+{
+    "name": "List",
+    "documentation": "Ordered container that may contain duplicates.",
+    "ancestors": [
+        "Aggregate"
+    ],
+    "generic_parameter_defs": {
+        "T": {
+            "name": "T",
+            "conforms_to_type": "Any"
+        }
+    },
+    "functions": {
+        "first": {
+            "name": "first",
+            "documentation": "Return first element.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "T"
+            }
+        },
+        "last": {
+            "name": "last",
+            "documentation": "Return last element.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "T"
+            }
+        }
+    },
+    "invariants": {
+        "First_validity": "not is_empty implies first /= Void",
+        "Last_validity": "not is_empty implies last /= Void"
+    }
+}
+--------

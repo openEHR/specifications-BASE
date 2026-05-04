@@ -1,0 +1,89 @@
+[source,json]
+--------
+{
+    "name": "BMM_CONTAINER_TYPE",
+    "documentation": "Type that specifies linear containers with a generic parameter corresponding to the type of contained item, and whose container type is a generic type such as `List<T>`, `Set<T>` etc.",
+    "ancestors": [
+        "BMM_TYPE"
+    ],
+    "properties": {
+        "container_class": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "container_class",
+            "documentation": "The type of the container. This converts to the `_root_type_` in `BMM_GENERIC_TYPE`.",
+            "is_mandatory": true,
+            "type": "BMM_GENERIC_CLASS"
+        },
+        "base_type": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "base_type",
+            "documentation": "The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.",
+            "is_mandatory": true,
+            "type": "BMM_UNITARY_TYPE"
+        }
+    },
+    "functions": {
+        "type_name": {
+            "name": "type_name",
+            "documentation": "Return full type name, e.g. `List<ELEMENT>`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "effective_base_class": {
+            "name": "effective_base_class",
+            "documentation": "Result is `_base_class_` of `_base_type_`.",
+            "post_conditions": {
+                "Post_validity": "Result = base_type.base_class"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_CLASS"
+            }
+        },
+        "is_abstract": {
+            "name": "is_abstract",
+            "documentation": "True if `_base_type.is_abstract_` or `_container_type.is_abstract_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "entity_metatype": {
+            "name": "entity_metatype",
+            "documentation": "Meta-type of container type is `Classifier_metatype_container`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "flattened_type_list": {
+            "name": "flattened_type_list",
+            "documentation": "Completely flattened list of type names, flattening out all generic parameters.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "subtypes": {
+            "name": "subtypes",
+            "documentation": "Result is all permutations of current container type and its descendants with the current `_base_type_` and its descendants.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "has_subtypes": {
+            "name": "has_subtypes",
+            "documentation": "Determine if there are any type substitutions.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

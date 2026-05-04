@@ -1,0 +1,75 @@
+[source,json]
+--------
+{
+    "name": "Iso8601_date",
+    "documentation": "Represents an ISO 8601 date, including partial and extended forms.",
+    "ancestors": [
+        "Iso8601_type",
+        "IDate"
+    ],
+    "functions": {
+        "month_unknown": {
+            "name": "month_unknown",
+            "documentation": "Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "day_unknown": {
+            "name": "day_unknown",
+            "documentation": "Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_iso8601_date": {
+            "name": "valid_iso8601_date",
+            "documentation": "String is a valid ISO 8601 date, i.e. takes the complete form:\n\n* YYYYMMDD or the extended form:\n* YYYY-MM-DD or one of the partial forms:\n* YYYYMM\n* YYYY\n\nor the equivalent extended form:\n\n* YYYY-MM\n\nWhere:\n\n* YYYY is the string form of any positive number in the range “0000” - “9999” (zero-filled to four digits)\n* MM is “01” - “12” (zero-filled to two digits)\n* DD is “01” - “31” (zero-filled to two digits)\n\nThe combinations of YYYY, MM, DD numbers must be correct with respect to the Gregorian calendar.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_partial": {
+            "name": "is_partial",
+            "documentation": "True if this date is partial, i.e. if days or more is missing.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_extended": {
+            "name": "is_extended",
+            "documentation": "True if this date uses `'-'` separators.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "documentation": "ISO8601 string for date, in format `YYYYMMDD` or `YYYY-MM-DD`, or a partial invariant. See `_valid_iso8601_date()_` for validity.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "as_date": {
+            "name": "as_date",
+            "documentation": "Convert to a native `Date`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Date"
+            }
+        }
+    },
+    "invariants": {
+        "Year_valid": "valid_year (year)",
+        "Month_valid": "not month_unknown implies valid_month (month)",
+        "Day_valid": "not day_unknown implies valid_day (year, month, day)",
+        "Partial_validity": "month_unknown implies day_unknown"
+    }
+}
+--------

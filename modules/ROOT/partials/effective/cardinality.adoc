@@ -1,0 +1,28 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Cardinality*
+
+2+a|Express constraints on the cardinality of container objects which are the values of multiply-valued attributes, including uniqueness and ordering, providing the means to state that a container acts like a logical list, set or bag. The cardinality cannot contradict the cardinality of the corresponding attribute within the relevant reference model.
+
+2+h|*Attributes*
+
+|*interval*: `xref:BASE:foundation_types:interval.adoc#_multiplicity_interval_class[Multiplicity_interval]` [1..1]
+a|The interval of this cardinality.
+
+|*is_ordered*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the members of the container attribute to which this cardinality refers are ordered.
+
+|*is_unique*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the members of the container attribute to which this cardinality refers are unique.
+
+2+h|*Functions*
+
+|*is_bag* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the semantics of this cardinality represent a bag, i.e. unordered, non-unique membership.
+
+|*is_list* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the semantics of this cardinality represent a list, i.e. ordered, non-unique membership.
+
+|*is_set* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the semantics of this cardinality represent a set, i.e. unordered, unique membership.
+|===

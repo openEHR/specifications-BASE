@@ -1,0 +1,53 @@
+[source,json]
+--------
+{
+    "name": "Aggregate",
+    "documentation": "Abstract ancestor of container types whose items are addressable in some way.",
+    "is_abstract": true,
+    "ancestors": [
+        "Any"
+    ],
+    "generic_parameter_defs": {
+        "T": {
+            "name": "T",
+            "conforms_to_type": "Any"
+        }
+    },
+    "functions": {
+        "has": {
+            "name": "has",
+            "documentation": "Test for membership of a value.",
+            "is_abstract": true,
+            "parameters": {
+                "v": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER_OPEN",
+                    "name": "v",
+                    "type": "T"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "count": {
+            "name": "count",
+            "documentation": "Number of items in container.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "is_empty": {
+            "name": "is_empty",
+            "documentation": "True if container is empty.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

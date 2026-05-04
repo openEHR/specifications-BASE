@@ -1,0 +1,128 @@
+[source,json]
+--------
+{
+    "name": "Boolean",
+    "documentation": "Class representing minimal interface of standard Boolean type.",
+    "ancestors": [
+        "Any"
+    ],
+    "functions": {
+        "infix and": {
+            "name": "infix and",
+            "documentation": "Logical conjunction",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Boolean"
+                }
+            },
+            "post_conditions": {
+                "Post_de_Morgan": "Result = not (not self or not other)",
+                "Post_commutative": "Result = (other and self)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix and_then": {
+            "name": "infix and_then",
+            "documentation": "Boolean semi-strict conjunction with other",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Boolean"
+                }
+            },
+            "post_conditions": {
+                "Post_de_Morgan": "Result = not (not self or else not other)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix or": {
+            "name": "infix or",
+            "documentation": "Boolean disjunction with other.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Boolean"
+                }
+            },
+            "post_conditions": {
+                "Post_de_Morgan": "Result = not (not self and not other)",
+                "Post_commutative": "Result = (other or Current)",
+                "Post_consistent_with_semi_strict": "Result implies (self or else other)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix or_else": {
+            "name": "infix or_else",
+            "documentation": "Boolean semi-strict disjunction with `other'.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Boolean"
+                }
+            },
+            "post_conditions": {
+                "Post_de_Morgan": "Result = not (not self and then not other)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix xor": {
+            "name": "infix xor",
+            "documentation": "Boolean exclusive or with `other'.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Boolean"
+                }
+            },
+            "post_conditions": {
+                "Post_definition": "Result = ((self or other) and not (self and other))"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix implies": {
+            "name": "infix implies",
+            "documentation": "Boolean implication of `other' (semi-strict)",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "Boolean"
+                }
+            },
+            "post_conditions": {
+                "Post_definition": "Result = (not self or else other)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    },
+    "invariants": {
+        "Involutive_negation": "is_equal (not (not self))",
+        "Non_contradiction": "not (self and (not self))",
+        "Completeness": "self or else (not self)"
+    }
+}
+--------

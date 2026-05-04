@@ -1,0 +1,163 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*BMM_ENUMERATION<T>*
+
+2+a|Definition of an enumeration type. In the BMM system, an 'enumeration' type is understood as an underlying basic type and a set of named constants of that type. It is designed so that the default type is Integer, and the default constants are numbered 0, 1, ... Optional model elements can be specified to override the values and / or the type.
+
+2+|Inherits: xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS], xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS], xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY], xref:BASE:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT], xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS], xref:BASE:bmm:core_package.adoc#_bmm_simple_class_class[BMM_SIMPLE_CLASS]
+
+2+h|*Constants*
+
+|*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+a|Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Schema_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"::"` [1..1]
+a|Delimiter used to separate schema id from package path in a fully qualified path. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Package_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"."` [1..1]
+a|Delimiter used to separate package names in a package path. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Bmm_schema_file_extension*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".bmm"` [1..1]
+a|Extension used for BMM files. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Entity_metatype_simple*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"simple_entity"` [1..1]
+a|Category of a simple entity, other than enumerated types. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*Entity_metatype_enumeration*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"enumeration_entity"` [1..1]
+a|Category of any enumeration entity. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*Entity_metatype_generic*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"generic_entity"` [1..1]
+a|Category of any generic entity that is not a container entity. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*Entity_metatype_parameter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"generic_parameter_entity"` [1..1]
+a|Category of a formal generic parameter entity. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*Entity_metatype_container*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"container_entity"` [1..1]
+a|Category of any container entity. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*Entity_category_modifier_abstract*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"abstract"` [1..1]
+a|Category modifier indicating an entity is formally defined as abstract, i.e. not-directly instantiable within a BMM model. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*Entity_category_modifier_primitive*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"primitive"` [1..1]
+a|Category modifier indicating that an entity is considered to be primitive within the type system of a given BMM model. Has no semantic consequences within the BMM. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*underlying_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+a|Name of type any concrete `BMM_ENUMERATION_*` sub-type is based on, i.e. the name of type bound to 'T' in a declared use of this type.
+
+2+h|*Attributes*
+
+|*documentation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional documentation of this element. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]_
+
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic. Use `_type_name()_` to obtain the full type name. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*ancestors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of immediate inheritance parents. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*package*: `xref:BASE:bmm:core_package.adoc#_bmm_package_class[BMM_PACKAGE]` [1..1]
+a|Package this class belongs to. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*properties*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]>` [0..1]
+a|List of attributes defined in this class. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*source_schema_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*immediate_descendants*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]>` [0..1]
+a|List of references to base classes of immediate inheritance descendants. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*is_override*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this definition overrides a class of the same name in an included schema. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*item_names*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, ... are assumed.
+
+|*item_values*: `T` [0..1]
+a|Optional list of specific values. Must be 1:1 with `_item_names_` list.
+
+2+h|*Functions*
+
+|_(abstract)_ *entity_category* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Generate a category code-string to use in visualisation, that indicates:
+
+* _entity meta-type_: simple &#124; enumerated &#124; generic &#124; generic_effective &#124; parameter
+* _abstract modifier_ - abstract status
+* _primitive modifier_ primitive status
+
+The code is structured as:
+
+----
+entity_metatype [ '-' abstract_modifier ] [ '-' primitive_modifier ]
+---- +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]_
+
+|*entity_metatype* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Meta-type of `BMM_ENUMERATION`, which is `Entity_metatype_enumeration`.
+
+|*is_abstract* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this class is abstract in its model. Value provided from an underlying data property set at creation or construction time. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this class is designated a primitive type within the overall type system of the schema. Set from schema. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*all_ancestors* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of all inheritance parent class names, recursively. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*all_descendants* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Compute all descendants by following `_immediate_descendants_`. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*suppliers* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be `Any` and this can always be assumed anyway). This list includes primitive types. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*suppliers_non_primitive* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Same as `suppliers` minus primitive types, as defined in input schema. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*supplier_closure* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be `Any` and this can always be assumed anyway).  This list includes primitive types. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*package_path* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Fully qualified package name, of form: `package.package`. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*class_path* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Fully qualified class name, of form: `package.package.CLASS` with package path in lower-case and class in original case. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*flat_properties* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]<xref:BASE:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]>>>` [0..1]
+a|List of all properties due to current and ancestor classes, keyed by property name. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]_
+
+|*type* (): `xref:BASE:bmm:core_package.adoc#_bmm_simple_type_class[BMM_SIMPLE_TYPE]` [1..1]
+a|Generate a type object that represents the type of this class. Can only be an instance of `BMM_SIMPLE_TYPE` or a descendant. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_simple_class_class[BMM_SIMPLE_CLASS]_
+
+|*name_map* (): `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<link:/classes/String,String[String,String] >` [1..1]
+a|Map of `_item_values_` (stringified) to `_item_names_`.
+|===

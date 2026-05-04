@@ -1,0 +1,22 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__P_BMM_TYPE (abstract)__*
+
+2+a|Persistent form of `BMM_TYPE`.
+
+2+h|*Attributes*
+
+|*bmm_type*: `xref:BASE:bmm:core_package.adoc#_bmm_type_class[BMM_TYPE]` [0..1]
+a|Result of `_create_bmm_type()_` call.
+
+2+h|*Functions*
+
+|_(abstract)_ *create_bmm_type* ( +
+a_schema: `xref:BASE:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
+a_class_def: `xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
+): `void` [1..1]
+a|Create appropriate `BMM_XXX` object; effected in descendants.
+
+|_(abstract)_ *as_type_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Formal name of the type for display.
+|===

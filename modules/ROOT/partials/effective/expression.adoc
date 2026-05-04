@@ -1,0 +1,17 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__EXPRESSION (abstract)__*
+
+2+a|Abstract parent of all expression meta-types.
+
+2+|Inherits: xref:BASE:expression:core_package.adoc#_expr_value_class[EXPR_VALUE]
+
+2+h|*Functions*
+
+|_(abstract)_ *value* (): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_value_class[EXPR_VALUE]_
+
+|_(abstract)_ *type* (): `xref:BASE:expression:types_package.adoc#_expr_type_def_class[EXPR_TYPE_DEF]` [1..1]
+a|The primitive type of this node, which must be determined by redefinitions in concrete classes.
+|===

@@ -1,0 +1,46 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*OBJECT_VERSION_ID*
+
+2+a|Globally unique identifier for one version of a versioned object; lexical form: `object_id  '::' creating_system_id  '::' version_tree_id`.
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID], xref:BASE:base_types:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id in the form defined below. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]_
+
+2+h|*Functions*
+
+|*root* (): `xref:BASE:base_types:identification_package.adoc#_uid_class[UID]` [1..1]
+a|The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]_
+
+|*extension* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first  ::' separator if any, or else any empty String. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]_
+
+|*has_extension* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if extension /= Void. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]_
+
+|*object_id* (): `xref:BASE:base_types:identification_package.adoc#_uid_class[UID]` [1..1]
+a|Unique identifier for logical object of which this identifier identifies one version; normally the object_id will be the unique identifier of the version container containing the version referred to by this OBJECT_VERSION_ID instance.
+
+|*version_tree_id* (): `xref:BASE:base_types:identification_package.adoc#_version_tree_id_class[VERSION_TREE_ID]` [1..1]
+a|Tree identifier of this version with respect to other versions in the same version tree, as either 1 or 3 part dot-separated numbers, e.g.  1 ,  2.1.4 .
+
+|*creating_system_id* (): `xref:BASE:base_types:identification_package.adoc#_uid_class[UID]` [1..1]
+a|Identifier of the system that created the Version corresponding to this Object version id.
+
+|*is_branch* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this version identifier represents a branch.
+
+2+h|*Invariants*
+
+2+a|__Has_extension_valid__: `extension.is_empty xor has_extension` +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]_
+
+|===

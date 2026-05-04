@@ -1,0 +1,46 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Terminology_term*
+
+2+a|Leaf type representing a term from a terminology, which consists of the term text and the code, i.e. a concept reference.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any]
+
+2+h|*Attributes*
+
+|*concept*: `xref:BASE:base_types:terminology_package.adoc#_terminology_code_class[Terminology_code]` [1..1]
+a|Refrence to the terminology concept formally representing this term.
+
+|*text*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Text of term.
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+|===

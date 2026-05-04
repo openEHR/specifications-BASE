@@ -1,0 +1,79 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*P_BMM_SCHEMA*
+
+h|*Description*
+2+a|Persisted form of `BMM_SCHEMA`.
+
+h|*Inherit*
+2+|`xref:BASE:bmm_persistence_package.adoc#_p_bmm_package_container_class[P_BMM_PACKAGE_CONTAINER]`, `xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_class[BMM_SCHEMA]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1 +
+(redefined)*
+|*primitive_types*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>`
+a|Primitive type definitions. Persisted attribute.
+
+h|*0..1 +
+(redefined)*
+|*class_definitions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:bmm_persistence_package.adoc#_p_bmm_class_class[P_BMM_CLASS]>`
+a|Class definitions. Persisted attribute.
+
+h|*0..1 +
+(redefined)*
+|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:bmm_persistence_package.adoc#_bmm_include_spec_class[BMM_INCLUDE_SPEC]>`
+a|Inclusion list, in the form of a hash of individual include specifications, each of which at least specifies the id of another schema, and may specify a namespace via which types from the included schemas are known in this schema.
+Persisted attribute.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(effected)*
+|*validate_created* (): `void` +
+ +
+__Pre_state__: `state = State_created` +
+ +
+__Post_state__: `passed implies state = State_validated_created`
+a|Implementation of `_validate_created()_`
+
+h|*1..1 +
+(effected)*
+|*load_finalise* (): `void` +
+ +
+__Pre_state__: `state = State_validated_created` +
+ +
+__Post_state__: `state = State_includes_processed or state = State_includes_pending`
+a|Implementation of `_load_finalise()_`
+
+h|*1..1 +
+(effected)*
+|*merge* ( +
+other: `xref:BASE:bmm_persistence_package.adoc#_p_bmm_schema_class[P_BMM_SCHEMA][1]` +
+): `void` +
+ +
+__Pre_state__: `state = State_includes_pending` +
+__Pre_other_valid__: `includes_to_process.has (included_schema.schema_id)`
+a|Implementation of `_merge()_`
+
+h|*1..1 +
+(effected)*
+|*validate* (): `void`
+a|Implementation of `_validate()_`
+
+h|*1..1 +
+(effected)*
+|*create_bmm_model* (): `void` +
+ +
+__Pre_state__: `state = P_BMM_PACKAGE_STATE.State_includes_processed`
+a|Implementation of `_create_bmm_model()_`
+
+h|*1..1*
+|*canonical_packages* (): `xref:BASE:bmm_persistence_package.adoc#_p_bmm_package_class[P_BMM_PACKAGE]`
+a|Package structure in which all top-level qualified package names like `xx.yy.zz` have been expanded out to a hierarchy of `BMM_PACKAGE` objects.
+|===

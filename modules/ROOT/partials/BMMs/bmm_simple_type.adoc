@@ -1,0 +1,62 @@
+[source,json]
+--------
+{
+    "name": "BMM_SIMPLE_TYPE",
+    "documentation": "Type reference to a single type i.e. not generic or container type.",
+    "ancestors": [
+        "BMM_DEFINED_TYPE"
+    ],
+    "functions": {
+        "type_name": {
+            "name": "type_name",
+            "documentation": "Result is `_base_class.name_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "is_abstract": {
+            "name": "is_abstract",
+            "documentation": "Result is `_base_class.is_abstract_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "flattened_type_list": {
+            "name": "flattened_type_list",
+            "documentation": "Result is `_base_class.name_` .",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "subtypes": {
+            "name": "subtypes",
+            "documentation": "Result is `_base_class.all_descendants_` .",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "has_subtypes": {
+            "name": "has_subtypes",
+            "documentation": "True if `_base_class.has_descendants_` .",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "effective_base_class": {
+            "name": "effective_base_class",
+            "documentation": "Main design class for this type, from which properties etc can be extracted.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_SIMPLE_CLASS"
+            }
+        }
+    }
+}
+--------

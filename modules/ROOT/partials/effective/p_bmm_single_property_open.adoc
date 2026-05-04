@@ -1,0 +1,59 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*P_BMM_SINGLE_PROPERTY_OPEN*
+
+2+a|Persistent form of a `BMM_SINGLE_PROPERTY_OPEN`.
+
+2+|Inherits: xref:BASE:bmm_persistence_package.adoc#_p_bmm_model_element_class[P_BMM_MODEL_ELEMENT], xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]
+
+2+h|*Attributes*
+
+|*documentation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional documentation of this element. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_model_element_class[P_BMM_MODEL_ELEMENT]_
+
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of this property within its class. Persisted attribute. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*is_mandatory*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this property is mandatory in its class. Persisted attribute. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*is_computed*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this property is computed rather than stored in objects of this class. Persisted Attribute. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*is_im_infrastructure*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this property is info model 'infrastructure' rather than 'data'. Persisted attribute. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*is_im_runtime*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this property is info model 'runtime' settable property. Persisted attribute. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*type_def*: `xref:BASE:bmm_persistence_package.adoc#_p_bmm_type_class[P_BMM_TYPE]` [0..1]
+a|Type definition of this property, if not a simple String type reference. Persisted attribute. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*bmm_property*: `xref:BASE:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]<link:/classes/BMM_OPEN_TYPE[BMM_OPEN_TYPE] >` [0..1]
+a|`BMM_PROPERTY` created by `_create_bmm_property_definition_`.
+
+|*type_ref*: `xref:BASE:bmm_persistence_package.adoc#_p_bmm_open_type_class[P_BMM_OPEN_TYPE]` [0..1]
+a|Type definition of this property computed from `_type_` for later use in `_bmm_property_`.
+
+|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Type definition of this property, if a simple String type reference. Really we should use `_type_def_` to be regular in the schema, but that makes the schema more wordy and less clear. So we use this persisted String value, and compute the `_type_def_` on the fly. Persisted attribute.
+
+2+h|*Functions*
+
+|*create_bmm_property* ( +
+a_bmm_schema: `xref:BASE:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
+a_class_def: `xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
+): `void` [1..1]
+a|Create `_bmm_property_definition_` from `P_BMM_XX` parts. +
+_Inherited from xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]_
+
+|*type_def* (): `xref:BASE:bmm_persistence_package.adoc#_p_bmm_open_type_class[P_BMM_OPEN_TYPE]` [1..1]
+a|Generate `_type_ref_` from `_type_` and save.
+|===

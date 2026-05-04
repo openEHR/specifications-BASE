@@ -1,0 +1,26 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*TERMINOLOGY_ID*
+
+2+a|Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service, e.g.  SNOMED-CT . A terminology is assumed to be in a particular language, which must be explicitly specified.
+
+The value if the id attribute is the precise terminology id identifier, including actual release (i.e. actual  version), local modifications etc; e.g. ICPC2.
+
+Lexical form: `name [  (' version  )' ]`.
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id in the form defined below. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]_
+
+2+h|*Functions*
+
+|*name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.
+
+|*version_id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Version of this terminology, if versioning supported, else the empty string.
+|===

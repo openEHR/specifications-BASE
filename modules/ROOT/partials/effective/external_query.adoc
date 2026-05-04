@@ -1,0 +1,28 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*EXTERNAL_QUERY*
+
+2+a|Definition of a variable whose value is derived from a query run on a data context in the operational environment. Typical uses of this kind of variable are to obtain values like the patient date of birth, sex, weight, and so on. It could also be used to obtain items from a knowledge context, such as a drug database.
+
+2+|Inherits: xref:BASE:expression:core_package.adoc#_expr_value_class[EXPR_VALUE]
+
+2+h|*Attributes*
+
+|*context*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Optional name of context. This allows a basic separation of query types to be done in more sophisticated environments. Possible values might be “patient”, “medications” and so on.
+Not yet standardised.
+
+|*query_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Identifier of query in the external context, e.g. “date_of_birth”.
+Not yet standardised.
+
+|*query_args*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Optional arguments to query.
+Not yet standardised.
+
+2+h|*Functions*
+
+|_(abstract)_ *value* (): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_value_class[EXPR_VALUE]_
+|===

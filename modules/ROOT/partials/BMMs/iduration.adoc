@@ -1,0 +1,39 @@
+[source,json]
+--------
+{
+    "name": "IDuration",
+    "documentation": "Defines the interface of a period of time corresponding to a difference between two timepoints.",
+    "is_abstract": true,
+    "ancestors": [
+        "Temporal"
+    ],
+    "functions": {
+        "seconds": {
+            "name": "seconds",
+            "documentation": "Number of seconds.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "fractional_seconds": {
+            "name": "fractional_seconds",
+            "documentation": "Fractional seconds.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        }
+    },
+    "invariants": {
+        "Years_valid": "years >= 0",
+        "Months_valid": "months >= 0",
+        "Weeks_valid": "weeks >= 0",
+        "Days_valid": "days >= 0",
+        "Hours_valid": "hours >= 0",
+        "Minutes_valid": "minutes >= 0",
+        "Seconds_valid": "seconds >= 0",
+        "Fractional_second_valid": "fractional_second >= 0.0 and fractional_second < 1.0"
+    }
+}
+--------

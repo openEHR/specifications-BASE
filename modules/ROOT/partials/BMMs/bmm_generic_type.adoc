@@ -1,0 +1,101 @@
+[source,json]
+--------
+{
+    "name": "BMM_GENERIC_TYPE",
+    "documentation": "Type reference based on a generic class, e.g. `HashTable <List <Packet>, String>`.",
+    "ancestors": [
+        "BMM_DEFINED_TYPE"
+    ],
+    "properties": {
+        "generic_parameters": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "generic_parameters",
+            "documentation": "Generic parameters of the `_root_type_` in this type specifier. The order must match the order of the owning class's formal generic parameter declarations.",
+            "is_mandatory": true,
+            "type_def": {
+                "container_type": "List",
+                "type": "BMM_UNITARY_TYPE"
+            },
+            "cardinality": {
+                "lower": 1,
+                "upper_unbounded": true
+            }
+        },
+        "base_class": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "base_class",
+            "documentation": "The target type; this converts to the first parameter in `_generic_parameters_` in `BMM_GENERIC_TYPE`.",
+            "is_mandatory": true,
+            "type": "BMM_GENERIC_CLASS"
+        }
+    },
+    "functions": {
+        "type_name": {
+            "name": "type_name",
+            "documentation": "Return the full name of the type including generic parameters, e.g. `DV_INTERVAL<T>`, `TABLE<List<THING>,String>`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "type_signature": {
+            "name": "type_signature",
+            "documentation": "Signature form of the type, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.\n",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "is_abstract": {
+            "name": "is_abstract",
+            "documentation": "True if `_base_class.is_abstract_` or if any (non-open) parameter type is abstract.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "flattened_type_list": {
+            "name": "flattened_type_list",
+            "documentation": "Result is `_base_class.name_` followed by names of all generic parameter type names, which may be open or closed.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "subtypes": {
+            "name": "subtypes",
+            "documentation": "Result is the permutation of the base class type and type substitutions of all generic parameters.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "has_subtypes": {
+            "name": "has_subtypes",
+            "documentation": "True if `_base_class.has_descendants_` or any generic parameter type `_type_substitutions_` is True. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_partially_closed": {
+            "name": "is_partially_closed",
+            "documentation": "Returns True if there is any substituted generic parameter.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "effective_base_class": {
+            "name": "effective_base_class",
+            "documentation": "Effective underlying class for this type, abstracting away any container type.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_GENERIC_CLASS"
+            }
+        }
+    }
+}
+--------

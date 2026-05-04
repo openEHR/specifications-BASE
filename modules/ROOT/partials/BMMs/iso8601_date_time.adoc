@@ -1,0 +1,122 @@
+[source,json]
+--------
+{
+    "name": "Iso8601_date_time",
+    "documentation": "Represents an ISO 8601 date/time, including partial and extended forms.\n\nNote that this class includes 2 deviations from ISO 8601:2004:\n\n* for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard;\n* the time 24:00:00 is not allowed, since it would mean the date was really on the next day.",
+    "ancestors": [
+        "Iso8601_type",
+        "IDate_time"
+    ],
+    "functions": {
+        "month_unknown": {
+            "name": "month_unknown",
+            "documentation": "Indicates whether month in year is unknown.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "day_unknown": {
+            "name": "day_unknown",
+            "documentation": "Indicates whether day in month is unknown.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "minute_unknown": {
+            "name": "minute_unknown",
+            "documentation": "Indicates whether minute in hour is known.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "second_unknown": {
+            "name": "second_unknown",
+            "documentation": "Indicates whether minute in hour is known.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_decimal_sign_comma": {
+            "name": "is_decimal_sign_comma",
+            "documentation": "True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_iso8601_date_time": {
+            "name": "valid_iso8601_date_time",
+            "documentation": "String is a valid ISO 8601 date-time, i.e. takes the form:\n\n* YYYYMMDDThhmmss[(,|.)s+][Z|±hh[mm]]\n\nor the extended form:\n\n* YYYY-MM-DDThh:mm:ss[(,|.)s+][Z|±hh[:mm]]\n\nor one of the partial forms:\n\n* YYYYMMDDThhmm\n* YYYYMMDDThh\n\nor the equivalent extended forms:\n\n* YYYY-MM-DDThh:mm\n* YYYY-MM-DDThh\n\n(meanings as in DV_DATE, DV_TIME) and the values in each field are valid.",
+            "parameters": {
+                "s": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "s",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_partial": {
+            "name": "is_partial",
+            "documentation": "True if this date time is partial, i.e. if seconds or more is missing.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_extended": {
+            "name": "is_extended",
+            "documentation": "True if this date/time uses ‘-’, ‘:’ separators.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "documentation": "ISO8601 string for date/time, in format:\n\n* `YYYYMMDDThhmmss[,sss][Z | ±hh[mm]]` \n\nor in extended format:\n\n* `YYYY-MM-DDThh:mm:ss[,sss][Z | ±hh[mm]]`\n\nor a partial variant; see `_valid_iso8601_date_time()_` for validity.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "has_fractional_second": {
+            "name": "has_fractional_second",
+            "documentation": "True if the fractional_second part is signficant (i.e. even if = 0.0).",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "as_date_time": {
+            "name": "as_date_time",
+            "documentation": "Convert to a native `Date_time`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Date_time"
+            }
+        }
+    },
+    "invariants": {
+        "Year_valid": "valid_year (year)",
+        "Month_valid": "valid_month (month)",
+        "Day_valid": "valid_day(year, month, day)",
+        "Hour_valid": "valid_hour (hour, minute, second)",
+        "Minute_valid": "not minute_unknown implies valid_minute(minute)",
+        "Second_valid": "not second_unknown implies valid_second (second)",
+        "Fractional_second_valid": "has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))",
+        "Partial_validity_year": "not month_unknown",
+        "Partial_validity_month": "not month_unknown",
+        "Partial_validity_day": "not day_unknown",
+        "Partial_validity_hour": "not hour_unknown",
+        "Partial_validity_minute": "minute_unknown implies second_unknown"
+    }
+}
+--------

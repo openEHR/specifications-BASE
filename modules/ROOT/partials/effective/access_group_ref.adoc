@@ -1,0 +1,31 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ACCESS_GROUP_REF*
+
+2+a|Reference to access group in an access control service.
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]
+
+2+h|*Attributes*
+
+|*namespace*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for the namespace are:
+
+* local
+* unknown
+* [a-zA-Z][a-zA-Z0-9_-:/&+?]&#42; +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
+
+|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g.  PARTY ,  PERSON ,  GUIDELINE  etc. These class names are from the relevant reference model. The type name  ANY  can be used to indicate that any type is accepted (e.g. if the type is unknown). +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
+
+|*id*: `xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]` [1..1]
+a|Globally unique id of an object, regardless of where it is stored. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
+
+2+h|*Invariants*
+
+2+a|__Type_validity__: `type.is_equal (“ACCESS_GROUP”)`
+
+|===

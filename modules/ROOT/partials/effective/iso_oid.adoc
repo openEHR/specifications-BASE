@@ -1,0 +1,20 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ISO_OID*
+
+2+a|Model of ISO's Object Identifier (oid) as defined by the standard ISO/IEC 8824. Oids are formed from integers separated by dots. Each non-leaf node in an Oid starting from the left corresponds to an assigning authority, and identifies that authority's namespace, inside which the remaining part of the identifier is locally unique.
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_uid_class[UID]
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_uid_class[UID]_
+
+2+h|*Invariants*
+
+2+a|__Value_valid__: `not value.empty` +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_uid_class[UID]_
+
+|===

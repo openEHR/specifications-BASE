@@ -1,0 +1,65 @@
+[source,json]
+--------
+{
+    "name": "BMM_ENUMERATION",
+    "documentation": "Definition of an enumeration type. In the BMM system, an 'enumeration' type is understood as an underlying basic type and a set of named constants of that type. It is designed so that the default type is Integer, and the default constants are numbered 0, 1, ... Optional model elements can be specified to override the values and / or the type.",
+    "ancestors": [
+        "BMM_SIMPLE_CLASS"
+    ],
+    "generic_parameter_defs": {
+        "T": {
+            "name": "T",
+            "conforms_to_type": "Ordered"
+        }
+    },
+    "constants": {
+        "underlying_type_name": {
+            "name": "underlying_type_name",
+            "documentation": "Name of type any concrete `BMM_ENUMERATION_*` sub-type is based on, i.e. the name of type bound to 'T' in a declared use of this type.",
+            "type": "String"
+        }
+    },
+    "properties": {
+        "item_names": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "item_names",
+            "documentation": "The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, ... are assumed.",
+            "type_def": {
+                "container_type": "List",
+                "type": "String"
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        },
+        "item_values": {
+            "_type": "P_BMM_SINGLE_PROPERTY_OPEN",
+            "name": "item_values",
+            "documentation": "Optional list of specific values. Must be 1:1 with `_item_names_` list.",
+            "type": "T"
+        }
+    },
+    "functions": {
+        "entity_metatype": {
+            "name": "entity_metatype",
+            "documentation": "Meta-type of `BMM_ENUMERATION`, which is `Entity_metatype_enumeration`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "name_map": {
+            "name": "name_map",
+            "documentation": "Map of `_item_values_` (stringified) to `_item_names_`.",
+            "result": {
+                "_type": "P_BMM_GENERIC_TYPE",
+                "root_type": "Hash",
+                "generic_parameters": [
+                    "String,String"
+                ]
+            }
+        }
+    }
+}
+--------

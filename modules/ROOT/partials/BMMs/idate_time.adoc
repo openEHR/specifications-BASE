@@ -1,0 +1,98 @@
+[source,json]
+--------
+{
+    "name": "IDate_time",
+    "documentation": "Defines the interface of an absolute point in time, specified to fractional seconds.",
+    "is_abstract": true,
+    "ancestors": [
+        "Temporal"
+    ],
+    "functions": {
+        "year": {
+            "name": "year",
+            "documentation": "Year.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "month": {
+            "name": "month",
+            "documentation": "Month in year.",
+            "pre_conditions": {
+                "Pre": "not month_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "day": {
+            "name": "day",
+            "documentation": "Day in month.",
+            "pre_conditions": {
+                "Pre": "not day_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "hour": {
+            "name": "hour",
+            "documentation": "Hour in day.",
+            "pre_conditions": {
+                "Pre": "not hour_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "minute": {
+            "name": "minute",
+            "documentation": "Minute in hour.",
+            "pre_conditions": {
+                "Pre": "not minute_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "second": {
+            "name": "second",
+            "documentation": "Second in minute.",
+            "pre_conditions": {
+                "Pre": "not second_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "fractional_second": {
+            "name": "fractional_second",
+            "documentation": "Fractional seconds.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        },
+        "timezone": {
+            "name": "timezone",
+            "documentation": "Timezone; may be Void.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "ITimezone"
+            }
+        }
+    },
+    "invariants": {
+        "Year_valid": "valid_year (year)",
+        "Month_valid": "valid_month (month)",
+        "Day_valid": "valid_day(year, month, day)",
+        "Hour_valid": "valid_hour (hour, minute, second)"
+    }
+}
+--------

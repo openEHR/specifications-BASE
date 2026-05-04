@@ -1,0 +1,223 @@
+[source,json]
+--------
+{
+    "name": "Time_Definitions",
+    "documentation": "Definitions for date/time classes. Note that the timezone limits are set by where the international dateline is. Thus, time in New Zealand is quoted using +12:00, not -12:00.",
+    "constants": {
+        "Seconds_in_minute": {
+            "name": "Seconds_in_minute",
+            "type": "Integer",
+            "value": 60
+        },
+        "Minutes_in_hour": {
+            "name": "Minutes_in_hour",
+            "type": "Integer",
+            "value": 60
+        },
+        "Hours_in_day": {
+            "name": "Hours_in_day",
+            "type": "Integer",
+            "value": 24
+        },
+        "Nominal_days_in_month": {
+            "name": "Nominal_days_in_month",
+            "documentation": "Used for conversions of durations containing months to days and / or seconds.",
+            "type": "Real",
+            "value": 30.42
+        },
+        "Max_days_in_month": {
+            "name": "Max_days_in_month",
+            "type": "Integer",
+            "value": 31
+        },
+        "Days_in_year": {
+            "name": "Days_in_year",
+            "type": "Integer",
+            "value": 365
+        },
+        "Days_in_leap_year": {
+            "name": "Days_in_leap_year",
+            "type": "Integer",
+            "value": 366
+        },
+        "Max_days_in_year": {
+            "name": "Max_days_in_year",
+            "type": "Integer",
+            "value": "Days_in_leap_year"
+        },
+        "Nominal_days_in_year": {
+            "name": "Nominal_days_in_year",
+            "documentation": "Used for conversions of durations containing years to days and / or seconds.",
+            "type": "Real",
+            "value": 365.24
+        },
+        "Days_in_week": {
+            "name": "Days_in_week",
+            "type": "Integer",
+            "value": 7
+        },
+        "Months_in_year": {
+            "name": "Months_in_year",
+            "type": "Integer",
+            "value": 12
+        },
+        "Min_timezone_hour": {
+            "name": "Min_timezone_hour",
+            "documentation": "Minimum hour value of a timezone (note that the -ve sign is supplied in the ISO8601_TIMEZONE class).",
+            "type": "Integer",
+            "value": 12
+        },
+        "Max_timezone_hour": {
+            "name": "Max_timezone_hour",
+            "type": "Integer",
+            "value": 13
+        }
+    },
+    "functions": {
+        "valid_year": {
+            "name": "valid_year",
+            "parameters": {
+                "y": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "y",
+                    "type": "Integer"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = y >= 0"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_month": {
+            "name": "valid_month",
+            "parameters": {
+                "m": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "m",
+                    "type": "Integer"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = m >= 1 and m <= Months_in_year"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_day": {
+            "name": "valid_day",
+            "documentation": "True if d >= 1 and d <= days_in_month (m, y)",
+            "parameters": {
+                "y": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "y",
+                    "type": "Integer"
+                },
+                "m": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "m",
+                    "type": "Integer"
+                },
+                "d": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "d",
+                    "type": "Integer"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = d >= 1 and d <= days_in_month (m, y)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_hour": {
+            "name": "valid_hour",
+            "documentation": "True if (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)",
+            "parameters": {
+                "h": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "h",
+                    "type": "Integer"
+                },
+                "m": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "m",
+                    "type": "Integer"
+                },
+                "s": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "s",
+                    "type": "Integer"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_minute": {
+            "name": "valid_minute",
+            "documentation": "True if m >= 0 and m < Minutes_in_hour.",
+            "parameters": {
+                "m": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "m",
+                    "type": "Integer"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = m >= 0 and m < Minutes_in_hour"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_second": {
+            "name": "valid_second",
+            "documentation": "True if s >= 0 and s < Seconds_in_minute .",
+            "parameters": {
+                "s": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "s",
+                    "type": "Integer"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = s >= 0 and s < Seconds_in_minute"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_fractional_second": {
+            "name": "valid_fractional_second",
+            "documentation": "True if fs >= 0.0 and fs < 1.0 .",
+            "parameters": {
+                "fs": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "fs",
+                    "type": "Double"
+                }
+            },
+            "post_conditions": {
+                "Post": "Result = fs >= 0.0 and fs < 1.0 ."
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

@@ -1,0 +1,79 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*P_BMM_SCHEMA_DESCRIPTOR*
+
+2+a|Concrete descendant of `BMM_SCHEMA_DESCRIPTOR` that provides a way to read an ODIN or other similarly encoded P_BMM schema file.
+
+2+|Inherits: xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS], xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]
+
+2+h|*Constants*
+
+|*Bmm_internal_version*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}` [1..1]
+a|Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Schema_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"::"` [1..1]
+a|Delimiter used to separate schema id from package path in a fully qualified path. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Package_name_delimiter*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"."` [1..1]
+a|Delimiter used to separate package names in a package path. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+|*Bmm_schema_file_extension*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".bmm"` [1..1]
+a|Extension used for BMM files. +
+_Inherited from xref:BASE:bmm:core_package.adoc#_bmm_definitions_class[BMM_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*bmm_schema*: `xref:BASE:bmm_persistence_package.adoc#_p_bmm_schema_class[P_BMM_SCHEMA]` [0..1]
+a|Persistent form of model.
+
+|*bmm_model*: `xref:BASE:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL]` [0..1]
+a|Computable form of model. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*schema_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Schema id, formed from:
+
+* `meta_data.item(Metadata_model_publisher)` '-' `meta_data.item(metadata_schema_name)` '-' `meta_data.item(Metadata_model_release)`
+
+e.g. `openehr_rm_1.0.3`, `openehr_test_1.0.1`, `iso_13606_1_2008_2.1.2`. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*meta_data*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Table of `{key, value}` pairs of schema meta-data, keys are string values corresponding to values in `P_BMM_SCHEMA_METADATA_KEY`. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*includes*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Identifiers of schemas included by this schema. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+2+h|*Functions*
+
+|*is_top_level* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this is a top-level schema, i.e. not included by some other schema. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*is_bmm_compatible* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*load* (): `void` [1..1]
+a|Load schema into in-memory form, i.e. a `P_BMM_SCHEMA` instance, if structurally valid. If successful, `_p_schema_` will be set. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*validate_merged* (): `void` [1..1]
+a|Validate loaded schema and report errors. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*validate_includes* ( +
+all_schemas_list: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` +
+): `void` [1..1]
+a|Validate includes list for this schema, to see if each mentioned schema exists in `_all_schemas_` list. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+
+|*create_model* (): `void` [1..1]
+a|Create `schema`, i.e. the `BMM_MODEL` from one `P_BMM_SCHEMA` schema. +
+_Inherited from xref:BASE:bmm:rm_access_package.adoc#_bmm_schema_descriptor_class[BMM_SCHEMA_DESCRIPTOR]_
+|===

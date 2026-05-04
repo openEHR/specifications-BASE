@@ -1,0 +1,19 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ASSERTION*
+
+2+a|Meta-type for a first order predicate logic expression with a Boolean result.
+
+2+|Inherits: xref:BASE:expression:core_package.adoc#_statement_class[STATEMENT]
+
+2+h|*Attributes*
+
+|*tag*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Expression tag, used for differentiating multiple assertions.
+
+|*string_expression*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|String form of expression, in case an expression evaluator taking String expressions is used for evaluation.
+
+|*expression*: `xref:BASE:expression:core_package.adoc#_expression_class[EXPRESSION]` [1..1]
+a|Root of expression tree.
+|===

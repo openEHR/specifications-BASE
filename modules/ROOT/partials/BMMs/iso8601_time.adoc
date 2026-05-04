@@ -1,0 +1,92 @@
+[source,json]
+--------
+{
+    "name": "Iso8601_time",
+    "documentation": "Represents an ISO 8601 time, including partial and extended forms.\n\nNOTE: A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with ISO8601_DATE_TIME.",
+    "ancestors": [
+        "Iso8601_type",
+        "ITime"
+    ],
+    "functions": {
+        "minute_unknown": {
+            "name": "minute_unknown",
+            "documentation": "Indicates whether minute is unknown. If so, the time is of the form “hh”.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "second_unknown": {
+            "name": "second_unknown",
+            "documentation": "Indicates whether second is unknown. If so and month is known, the time is of the form “hh:mm” or “hhmm”.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_decimal_sign_comma": {
+            "name": "is_decimal_sign_comma",
+            "documentation": "True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "valid_iso8601_time": {
+            "name": "valid_iso8601_time",
+            "documentation": "String is a valid ISO 8601 date, i.e. takes the form:\n\n* hhmmss[(,|.)s+][Z|±hh[mm]]\n\nor the extended form:\n\n* hh:mm:ss[(,|.)s+][Z|±hh[:mm]]\n\nor one of the partial forms:\n\n* hhmm or hh \n\nor the extended form:\n\n* hh:mm\n\nwith an additional optional timezone indicator of:\n\n* Z or ±hh[mm] or ±hh[:mm] (extended form)\n\nWhere:\n\n* hh is “00” - “23” (0-filled to two digits)\n* mm is “00” - “59” (0-filled to two digits)\n* ss is “00” - “60” (0-filled to two digits)\n* [(,|.)s+] is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second\n* Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_partial": {
+            "name": "is_partial",
+            "documentation": "True if this time is partial, i.e. if seconds or more is missing.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_extended": {
+            "name": "is_extended",
+            "documentation": "True if this time uses ‘-’, ‘:’ separators.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "documentation": "ISO8601 string for time, i.e. in the form:\n\n* `hhmmss[,sss][Z|±hh[mm]]`\n\nor the extended form: \n\n* `hh:mm:ss[,sss][Z|±hh[mm]]`\n\nor a partial invariant. See `_valid_iso8601_time()_` for validity.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "has_fractional_second": {
+            "name": "has_fractional_second",
+            "documentation": "True if the fractional_second part is signficant (i.e. even if = 0.0).",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "as_time": {
+            "name": "as_time",
+            "documentation": "Convert to a native `Time`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Time"
+            }
+        }
+    },
+    "invariants": {
+        "Hour_valid": "valid_hour(hour, minute, second)",
+        "Minute_valid": "not minute_unknown implies valid_minute (minute)",
+        "Second_valid": "not second_unknown implies valid_second (second)",
+        "Fractional_second_valid": "has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))",
+        "Partial_validity": "minute_unknown implies second_unknown"
+    }
+}
+--------

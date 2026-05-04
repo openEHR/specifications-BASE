@@ -1,0 +1,105 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Proper_interval<T>*
+
+2+a|Type representing a 'proper' Interval, i.e. any two-sided or one-sided interval.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]
+
+2+h|*Attributes*
+
+|*lower*: `T` [0..1]
+a|lower bound. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*lower_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|lower boundary open (i.e. = -infinity) +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*upper_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|upper boundary open (i.e. = +infinity) +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*lower_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|lower boundary value included in range if not lower_unbounded. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*upper_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|upper boundary value included in range if not upper_unbounded. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*upper*: `T` [0..1]
+a|Upper bound.
+
+2+h|*Functions*
+
+|*is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current object's interval is semantically same as `other'. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*has* ( +
+e: `T[1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if (lower_unbounded or 
+((lower_included and v >= lower) or 
+v > lower)) and 
+(upper_unbounded or 
+((upper_included and v \<= upper or v 
+< upper))) +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*intersects* ( +
+other: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*contains* ( +
+other: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current interval properly contains `other'? True if all points of `other' are inside the current interval. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|_(abstract)_ *upper* (): `T` [0..1]
+a| +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+h|*Invariants*
+
+2+a|__Lower_included_valid__: `lower_unbounded implies not lower_included` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+a|__Upper_included_valid__: `upper_unbounded implies not upper_included` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+a|__Limits_consistent__: `(not upper_unbounded and not lower_unbounded) implies lower \<= upper` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+a|__Limits_comparable__: `(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|===

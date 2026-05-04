@@ -1,0 +1,199 @@
+[source,json]
+--------
+{
+    "name": "BMM_CLASS",
+    "documentation": "Meta-type defining a class definition in an object model.",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_ENTITY",
+        "BMM_MODEL_ELEMENT"
+    ],
+    "properties": {
+        "name": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "name",
+            "documentation": "Name of this class. Note that unlike UML, names of classes are just the root name, even if the class is generic. Use `_type_name()_` to obtain the full type name.",
+            "is_mandatory": true,
+            "type": "String"
+        },
+        "ancestors": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "ancestors",
+            "documentation": "List of immediate inheritance parents.",
+            "type_def": {
+                "container_type": "List",
+                "type": "String"
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        },
+        "package": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "package",
+            "documentation": "Package this class belongs to.",
+            "is_mandatory": true,
+            "type": "BMM_PACKAGE"
+        },
+        "properties": {
+            "_type": "P_BMM_GENERIC_PROPERTY",
+            "name": "properties",
+            "documentation": "List of attributes defined in this class.",
+            "type_def": {
+                "root_type": "Hash",
+                "generic_parameters": [
+                    "String",
+                    "BMM_PROPERTY"
+                ]
+            }
+        },
+        "source_schema_id": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "source_schema_id",
+            "documentation": "Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.",
+            "is_mandatory": true,
+            "type": "String"
+        },
+        "immediate_descendants": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "immediate_descendants",
+            "documentation": "List of references to base classes of immediate inheritance descendants.",
+            "type_def": {
+                "container_type": "List",
+                "type": "BMM_CLASS"
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        },
+        "is_override": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "is_override",
+            "documentation": "True if this definition overrides a class of the same name in an included schema.",
+            "is_mandatory": true,
+            "type": "Boolean"
+        }
+    },
+    "functions": {
+        "all_ancestors": {
+            "name": "all_ancestors",
+            "documentation": "List of all inheritance parent class names, recursively.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "all_descendants": {
+            "name": "all_descendants",
+            "documentation": "Compute all descendants by following `_immediate_descendants_`.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "suppliers": {
+            "name": "suppliers",
+            "documentation": "List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be `Any` and this can always be assumed anyway). This list includes primitive types.\n",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "suppliers_non_primitive": {
+            "name": "suppliers_non_primitive",
+            "documentation": "Same as `suppliers` minus primitive types, as defined in input schema.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "supplier_closure": {
+            "name": "supplier_closure",
+            "documentation": "List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be `Any` and this can always be assumed anyway).  This list includes primitive types.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "package_path": {
+            "name": "package_path",
+            "documentation": "Fully qualified package name, of form: `package.package`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "class_path": {
+            "name": "class_path",
+            "documentation": "Fully qualified class name, of form: `package.package.CLASS` with package path in lower-case and class in original case.\n",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "flat_properties": {
+            "name": "flat_properties",
+            "documentation": "List of all properties due to current and ancestor classes, keyed by property name.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type_def": {
+                    "_type": "P_BMM_GENERIC_TYPE",
+                    "root_type": "Hash",
+                    "generic_parameter_defs": {
+                        "K": {
+                            "_type": "P_BMM_SIMPLE_TYPE",
+                            "type": "String"
+                        },
+                        "V": {
+                            "_type": "P_BMM_GENERIC_TYPE",
+                            "root_type": "BMM_PROPERTY",
+                            "generic_parameters": [
+                                "BMM_TYPE"
+                            ]
+                        }
+                    }
+                }
+            },
+            "is_nullable": true
+        },
+        "is_primitive": {
+            "name": "is_primitive",
+            "documentation": "True if this class is designated a primitive type within the overall type system of the schema. Set from schema.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_abstract": {
+            "name": "is_abstract",
+            "documentation": "True if this class is abstract in its model. Value provided from an underlying data property set at creation or construction time.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "type": {
+            "name": "type",
+            "documentation": "Generate a type object that represents the type of this class.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_DEFINED_TYPE"
+            }
+        }
+    }
+}
+--------

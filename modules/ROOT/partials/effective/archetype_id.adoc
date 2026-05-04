@@ -1,0 +1,40 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ARCHETYPE_ID*
+
+2+a|Identifier for archetypes. Ideally these would identify globally unique archetypes.
+Lexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name \{  '-' specialisation }*  '.v' number`.
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id in the form defined below. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]_
+
+2+h|*Functions*
+
+|*qualified_rm_entity* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Globally qualified reference model entity, e.g.  openehr-composition-OBSERVATION.
+
+|*domain_concept* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the concept represented by this archetype, including specialisation, e.g. 
+ Biochemistry_result-cholesterol .
+
+|*rm_originator* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Organisation originating the reference model on which this archetype is based, e.g. 
+ openehr ,  cen ,  hl7 .
+
+|*rm_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the reference model, e.g. rim,  ehr_rm,  en13606 .
+
+|*rm_entity* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR,  folder ,  composition ,  section ,  entry .
+
+|*specialisation* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.  cholesterol .
+
+|*version_id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Version of this archetype.
+|===

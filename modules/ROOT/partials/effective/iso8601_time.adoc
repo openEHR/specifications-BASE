@@ -1,0 +1,262 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*Iso8601_time*
+
+2+a|Represents an ISO 8601 time, including partial and extended forms.
+
+NOTE: A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with ISO8601_DATE_TIME.
+
+2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions], xref:BASE:foundation_types:time_types.adoc#_temporal_class[Temporal], xref:BASE:foundation_types:iso8601_time_package.adoc#_iso8601_type_class[Iso8601_type], xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]
+
+2+h|*Constants*
+
+|*Seconds_in_minute*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}60` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Minutes_in_hour*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}60` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Hours_in_day*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}24` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Nominal_days_in_month*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]{nbsp}={nbsp}30.42` [1..1]
+a|Used for conversions of durations containing months to days and / or seconds. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Max_days_in_month*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}31` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Days_in_year*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}365` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Days_in_leap_year*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}366` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Max_days_in_year*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}Days_in_leap_year` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Nominal_days_in_year*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]{nbsp}={nbsp}365.24` [1..1]
+a|Used for conversions of durations containing years to days and / or seconds. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Days_in_week*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}7` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Months_in_year*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}12` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Min_timezone_hour*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}12` [1..1]
+a|Minimum hour value of a timezone (note that the -ve sign is supplied in the ISO8601_TIMEZONE class). +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*Max_timezone_hour*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}13` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:iso8601_time_package.adoc#_iso8601_type_class[Iso8601_type]_
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|_(abstract)_ *infix <* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘>’, ‘>=’, ‘\<=’, ‘<>’. In real type systems, this operator might be defined on another class for comparability. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this time is partial, i.e. if seconds or more is missing.
+
+|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this time uses ‘-’, ‘:’ separators.
+
+|*valid_year* ( +
+y: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = y >= 0` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*valid_month* ( +
+m: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = m >= 1 and m \<= Months_in_year` [1..1]
+a| +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*valid_day* ( +
+y: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]`, +
+m: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]`, +
+d: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = d >= 1 and d \<= days_in_month (m, y)` [1..1]
+a|True if d >= 1 and d \<= days_in_month (m, y) +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*valid_hour* ( +
+h: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]`, +
+m: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]`, +
+s: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0)` [1..1]
+a|True if (h >= 0 and h < Hours_in_day) or (h = Hours_in_day and m = 0 and s = 0) +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*valid_minute* ( +
+m: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = m >= 0 and m < Minutes_in_hour` [1..1]
+a|True if m >= 0 and m < Minutes_in_hour. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*valid_second* ( +
+s: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = s >= 0 and s < Seconds_in_minute` [1..1]
+a|True if s >= 0 and s < Seconds_in_minute . +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*valid_fractional_second* ( +
+fs: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result = fs >= 0.0 and fs < 1.0 .` [1..1]
+a|True if fs >= 0.0 and fs < 1.0 . +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]_
+
+|*hour* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Hour in day, in 24-hour time. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]_
+
+|*minute* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Minute in hour. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]_
+
+|*second* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Second in minute. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]_
+
+|*fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]` +
+ +
+__Pre__: `not second_unknown` [1..1]
+a|Fractional seconds. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]_
+
+|*timezone* (): `xref:BASE:foundation_types:time_types.adoc#_itimezone_class[ITimezone]` [0..1]
+a|Timezone; may be Void. +
+_Inherited from xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]_
+
+|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Indicates whether minute is unknown. If so, the time is of the form “hh”.
+
+|*second_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Indicates whether second is unknown. If so and month is known, the time is of the form “hh:mm” or “hhmm”.
+
+|*is_decimal_sign_comma* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
+
+|*valid_iso8601_time* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|String is a valid ISO 8601 date, i.e. takes the form:
+
+* hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]
+
+or the extended form:
+
+* hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]
+
+or one of the partial forms:
+
+* hhmm or hh 
+
+or the extended form:
+
+* hh:mm
+
+with an additional optional timezone indicator of:
+
+* Z or ±hh[mm] or ±hh[:mm] (extended form)
+
+Where:
+
+* hh is “00” - “23” (0-filled to two digits)
+* mm is “00” - “59” (0-filled to two digits)
+* ss is “00” - “60” (0-filled to two digits)
+* [(,&#124;.)s+] is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
+* Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
+
+|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|ISO8601 string for time, i.e. in the form:
+
+* `hhmmss[,sss][Z&#124;±hh[mm]]`
+
+or the extended form: 
+
+* `hh:mm:ss[,sss][Z&#124;±hh[mm]]`
+
+or a partial invariant. See `_valid_iso8601_time()_` for validity.
+
+|*has_fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the fractional_second part is signficant (i.e. even if = 0.0).
+
+|*as_time* (): `xref:BASE:foundation_types:time_types.adoc#_time_class[Time]` [1..1]
+a|Convert to a native `Time`.
+
+2+h|*Invariants*
+
+2+a|__Hour_valid__: `valid_hour(hour, minute, second)`
+
+2+a|__Minute_valid__: `not minute_unknown implies valid_minute (minute)`
+
+2+a|__Second_valid__: `not second_unknown implies valid_second (second)`
+
+2+a|__Fractional_second_valid__: `has_fractional_second implies (not second_unknown and valid_fractional_second (fractional_second))`
+
+2+a|__Partial_validity__: `minute_unknown implies second_unknown`
+
+|===

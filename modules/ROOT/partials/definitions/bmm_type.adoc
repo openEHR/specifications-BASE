@@ -1,0 +1,58 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*__BMM_TYPE (abstract)__*
+
+h|*Description*
+2+a|Abstract idea of specifying a type in some context. This is not the same as 'defining' a class. A type specification is essentially a reference of some kind, that defines the type of an attribute, or function result or argument. It may include generic parameters that might or might not be bound. See subtypes.
+
+h|*Inherit*
+2+|`xref:BASE:bmm:core_package.adoc#_bmm_entity_class[BMM_ENTITY]`
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(abstract)*
+|*effective_base_class* (): `xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+a|Effective underlying class for this type, abstracting away any container type.
+
+h|*1..1 +
+(abstract)*
+|*type_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Formal string form of the type as per UML.
+
+h|*1..1 +
+(abstract)*
+|*has_subtypes* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Determine if there are any type substitutions.
+
+h|*1..1 +
+(abstract)*
+|*subtypes* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+a|List of type substitutions if any available for this type within the current BMM model.
+
+h|*1..1 +
+(abstract)*
+|*flattened_type_list* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+a|Completely flattened list of type names, flattening out all generic parameters.
+
+h|*1..1*
+|*type_signature* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Signature form of the type, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.
+
+Generally useful for display purposes.
+
+h|*1..1 +
+(effected)*
+|*is_primitive* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_validity__: `Result = base_class.is_primitive`
+a|True if `_base_class.is_primitive_`.
+
+h|*1..1 +
+(effected)*
+|*entity_metatype* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Meta-type of type is by default assumed to be the meta-type of its `_base_class_`.
+|===

@@ -1,0 +1,93 @@
+[source,json]
+--------
+{
+    "name": "BMM_ENTITY",
+    "documentation": "Abstract parent of type and class meta-types.",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_DEFINITIONS"
+    ],
+    "constants": {
+        "Entity_metatype_simple": {
+            "name": "Entity_metatype_simple",
+            "documentation": "Category of a simple entity, other than enumerated types.",
+            "type": "String",
+            "value": "\"simple_entity\""
+        },
+        "Entity_metatype_enumeration": {
+            "name": "Entity_metatype_enumeration",
+            "documentation": "Category of any enumeration entity.",
+            "type": "String",
+            "value": "\"enumeration_entity\""
+        },
+        "Entity_metatype_generic": {
+            "name": "Entity_metatype_generic",
+            "documentation": "Category of any generic entity that is not a container entity.",
+            "type": "String",
+            "value": "\"generic_entity\""
+        },
+        "Entity_metatype_parameter": {
+            "name": "Entity_metatype_parameter",
+            "documentation": "Category of a formal generic parameter entity.",
+            "type": "String",
+            "value": "\"generic_parameter_entity\""
+        },
+        "Entity_metatype_container": {
+            "name": "Entity_metatype_container",
+            "documentation": "Category of any container entity.",
+            "type": "String",
+            "value": "\"container_entity\""
+        },
+        "Entity_category_modifier_abstract": {
+            "name": "Entity_category_modifier_abstract",
+            "documentation": "Category modifier indicating an entity is formally defined as abstract, i.e. not-directly instantiable within a BMM model.",
+            "type": "String",
+            "value": "\"abstract\""
+        },
+        "Entity_category_modifier_primitive": {
+            "name": "Entity_category_modifier_primitive",
+            "documentation": "Category modifier indicating that an entity is considered to be primitive within the type system of a given BMM model. Has no semantic consequences within the BMM.",
+            "type": "String",
+            "value": "\"primitive\""
+        }
+    },
+    "functions": {
+        "entity_category": {
+            "name": "entity_category",
+            "documentation": "Generate a category code-string to use in visualisation, that indicates:\n\n* _entity meta-type_: simple | enumerated | generic | generic_effective | parameter\n* _abstract modifier_ - abstract status\n* _primitive modifier_ primitive status\n\nThe code is structured as:\n\n----\nentity_metatype [ '-' abstract_modifier ] [ '-' primitive_modifier ]\n----\n\n",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "entity_metatype": {
+            "name": "entity_metatype",
+            "documentation": "Meta-type of entity, which classifies it according to the kind of formal entity it represents from the following:\n\n* simple (non-generic)\n* generic\n* enumeration\n* type parameter\n* container type\n\nThese meta-types don't exactly match the `BMM_*` types defined in the model, but are useful for displaying models visually.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "is_abstract": {
+            "name": "is_abstract",
+            "documentation": "If true, indicates an abstract class in a BMM model, or a type based on an abstract class, i.e. a type that cannot be directly instantiated.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "is_primitive": {
+            "name": "is_primitive",
+            "documentation": "If True, indicates that the entity in a BMM model is considered to relate to a primitive type set, i.e. be a primitive type, or be a definer of one.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

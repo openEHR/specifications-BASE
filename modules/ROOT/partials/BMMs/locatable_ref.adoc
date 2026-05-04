@@ -1,0 +1,35 @@
+[source,json]
+--------
+{
+    "name": "LOCATABLE_REF",
+    "documentation": "Purpose Reference to a LOCATABLE instance inside the top-level content structure inside a VERSION<T>; the path attribute is applied to the object that VERSION.data points to. ",
+    "ancestors": [
+        "OBJECT_REF"
+    ],
+    "properties": {
+        "path": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "path",
+            "documentation": "The path to an instance in question, as an absolute path with respect to the object found at VERSION.data. An empty path means that the object referred to by id being specified. ",
+            "type": "String"
+        },
+        "id": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "id",
+            "documentation": "The identifier of the Version. ",
+            "is_mandatory": true,
+            "type": "UID_BASED_ID"
+        }
+    },
+    "functions": {
+        "as_uri": {
+            "name": "as_uri",
+            "documentation": "A URI form of the reference, created by concatenating the following: `ehr://  + id.value +  /  + path`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
+}
+--------

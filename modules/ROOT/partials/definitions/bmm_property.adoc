@@ -1,0 +1,58 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*BMM_PROPERTY<T>*
+
+h|*Description*
+2+a|Model of a property definition within a class definition of an object model. The generic parameter accommodates the possible meta-type variant descendants of `BMM_TYPE`.
+
+h|*Inherit*
+2+|`xref:BASE:bmm:core_package.adoc#_bmm_model_element_class[BMM_MODEL_ELEMENT]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Name of this property in the model.
+
+h|*0..1*
+|*is_mandatory*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this property is mandatory in its class.
+
+h|*0..1*
+|*is_computed*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if this property is computed rather than stored in objects of this class.
+
+h|*1..1*
+|*type*: `T`
+a|Formal type of this property.
+
+h|*0..1*
+|*is_im_runtime*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+`{default{nbsp}={nbsp}false}`
+a|True if this property is marked with info model `_im_runtime_` property.
+
+h|*0..1*
+|*is_im_infrastructure*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+`{default{nbsp}={nbsp}false}`
+a|True if this property was marked with info model `_im_infrastructure_` flag.
+
+h|*0..1*
+|*is_synthesised_generic*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+`{default{nbsp}={nbsp}false}`
+a|True if this property was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*existence* (): `xref:BASE:foundation_types:interval.adoc#_multiplicity_interval_class[Multiplicity_interval]`
+a|Interval form of `0..1`, `1..1` etc, derived from `_is_mandatory_`.
+
+h|*1..1*
+|*display_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Name of this property to display in UI.
+|===

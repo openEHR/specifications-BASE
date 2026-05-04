@@ -1,0 +1,32 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__UID_BASED_ID (abstract)__*
+
+2+a|Abstract model of UID-based identifiers consisting of a root part and an optional extension;
+
+lexical form: `root '::' extension`.
+
+2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id in the form defined below. +
+_Inherited from xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]_
+
+2+h|*Functions*
+
+|*root* (): `xref:BASE:base_types:identification_package.adoc#_uid_class[UID]` [1..1]
+a|The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.
+
+|*extension* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first  ::' separator if any, or else any empty String.
+
+|*has_extension* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if extension /= Void.
+
+2+h|*Invariants*
+
+2+a|__Has_extension_valid__: `extension.is_empty xor has_extension`
+
+|===

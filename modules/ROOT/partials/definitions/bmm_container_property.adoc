@@ -1,0 +1,33 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*BMM_CONTAINER_PROPERTY*
+
+h|*Description*
+2+a|Subtype of `BMM_PROPERTY` that represents a container type based on one of the inbuilt types `List<T>`, `Set<T>`, `Array<T>`.
+
+h|*Inherit*
+2+|`xref:BASE:bmm:core_package.adoc#_bmm_property_class[BMM_PROPERTY]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(effected)*
+|*type*: `xref:BASE:bmm:core_package.adoc#_bmm_container_type_class[BMM_CONTAINER_TYPE]`
+a|
+
+h|*0..1*
+|*cardinality*: `xref:BASE:foundation_types:interval.adoc#_multiplicity_interval_class[Multiplicity_interval]`
+a|Cardinality of this container.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*display_name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Name of this property in form `name: ContainerTypeName<>`.
+|===

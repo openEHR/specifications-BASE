@@ -1,0 +1,28 @@
+[source,json]
+--------
+{
+    "name": "BMM_SIMPLE_CLASS",
+    "documentation": "Definition of a simple class, i.e. a class that has no generic parameters and is 1:1 with the type it generates.",
+    "ancestors": [
+        "BMM_CLASS"
+    ],
+    "functions": {
+        "type": {
+            "name": "type",
+            "documentation": "Generate a type object that represents the type of this class. Can only be an instance of `BMM_SIMPLE_TYPE` or a descendant.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_SIMPLE_TYPE"
+            }
+        },
+        "entity_metatype": {
+            "name": "entity_metatype",
+            "documentation": "Meta-type of `BMM_SIMPLE_CLASS`, which is `Entity_metatype_simple`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
+}
+--------

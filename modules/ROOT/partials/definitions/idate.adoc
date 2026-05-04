@@ -1,0 +1,45 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*__IDate (abstract)__*
+
+h|*Description*
+2+a|Interface of an absolute point in time, as measured on the Gregorian calendar, and specified only to the day.
+
+h|*Inherit*
+2+|`xref:BASE:foundation_types:time_types.adoc#_temporal_class[Temporal]`
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*year* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Year.
+
+h|*1..1*
+|*month* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not month_unknown`
+a|Month in year.
+
+h|*1..1*
+|*day* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+ +
+__Pre__: `not day_unknown`
+a|Day in month.
+
+h|*1..1*
+|*timezone* (): `xref:BASE:foundation_types:time_types.adoc#_itimezone_class[ITimezone]`
+a|Timezone; may be Void.
+
+h|*1..1*
+|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|ISO8601 string for date/time, in format `YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]` or in extended format `YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]` or a partial variant; see valid_iso8601_date_time() below.
+
+h|*Invariants*
+2+a|__Day_valid__: `valid_day(year, month, day)`
+
+h|
+2+a|__Month_valid__: `valid_month (month)`
+|===

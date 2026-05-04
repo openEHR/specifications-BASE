@@ -1,0 +1,72 @@
+[source,json]
+--------
+{
+    "name": "BMM_PACKAGE_CONTAINER",
+    "documentation": "A BMM model component that contains packages and classes.",
+    "ancestors": [
+        "BMM_MODEL_ELEMENT"
+    ],
+    "properties": {
+        "packages": {
+            "_type": "P_BMM_GENERIC_PROPERTY",
+            "name": "packages",
+            "documentation": "Child packages; keys all in upper case for guaranteed matching.",
+            "type_def": {
+                "root_type": "Hash",
+                "generic_parameters": [
+                    "String",
+                    "BMM_PACKAGE"
+                ]
+            }
+        }
+    },
+    "functions": {
+        "package_at_path": {
+            "name": "package_at_path",
+            "documentation": "Package at the path `_a_path_`.",
+            "parameters": {
+                "a_path": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_path",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_PACKAGE"
+            },
+            "is_nullable": true
+        },
+        "do_recursive_packages": {
+            "name": "do_recursive_packages",
+            "documentation": "Recursively execute `_action_`, which is a procedure taking a `BMM_PACKAGE` argument, on all members of packages.",
+            "parameters": {
+                "action": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "action",
+                    "type": "PROCEDURE"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "void"
+            }
+        },
+        "has_package_path": {
+            "name": "has_package_path",
+            "documentation": "True if there is a package at the path `_a_path_`; paths are delimited with delimiter `_Package_name_delimiter_`.",
+            "parameters": {
+                "a_path": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_path",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

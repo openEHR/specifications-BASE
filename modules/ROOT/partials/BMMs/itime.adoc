@@ -1,0 +1,60 @@
+[source,json]
+--------
+{
+    "name": "ITime",
+    "documentation": "Defines the interface of an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to fractional seconds.",
+    "is_abstract": true,
+    "ancestors": [
+        "Temporal"
+    ],
+    "functions": {
+        "hour": {
+            "name": "hour",
+            "documentation": "Hour in day, in 24-hour time.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "minute": {
+            "name": "minute",
+            "documentation": "Minute in hour.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "second": {
+            "name": "second",
+            "documentation": "Second in minute.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "fractional_second": {
+            "name": "fractional_second",
+            "documentation": "Fractional seconds.",
+            "pre_conditions": {
+                "Pre": "not second_unknown"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        },
+        "timezone": {
+            "name": "timezone",
+            "documentation": "Timezone; may be Void.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "ITimezone"
+            },
+            "is_nullable": true
+        }
+    },
+    "invariants": {
+        "Hour_valid": "valid_hour(hour, minute, second)"
+    }
+}
+--------

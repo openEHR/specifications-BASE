@@ -1,0 +1,44 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*EXPR_BINARY_OPERATOR*
+
+2+a|Binary operator expression node.
+
+2+|Inherits: xref:BASE:expression:core_package.adoc#_expr_value_class[EXPR_VALUE], xref:BASE:expression:core_package.adoc#_expression_class[EXPRESSION], xref:BASE:expression:core_package.adoc#_expr_operator_class[EXPR_OPERATOR]
+
+2+h|*Attributes*
+
+|*precedence_overridden*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_operator_class[EXPR_OPERATOR]_
+
+|*operator_def*: `xref:BASE:expression:core_package.adoc#_operator_def_class[OPERATOR_DEF]` [1..1]
+a|Operator definition. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_operator_class[EXPR_OPERATOR]_
+
+|*symbol*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of `operator_def.symbols`. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_operator_class[EXPR_OPERATOR]_
+
+|*left_operand*: `xref:BASE:expression:core_package.adoc#_expression_class[EXPRESSION]` [1..1]
+a|Left operand node.
+
+|*right_operand*: `xref:BASE:expression:core_package.adoc#_expression_class[EXPRESSION]` [1..1]
+a|Right operand node.
+
+2+h|*Functions*
+
+|_(abstract)_ *value* (): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|The computed value of this node as a result of the nodes below it, for operator nodes, or else statically set or otherwise derived values. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_value_class[EXPR_VALUE]_
+
+|_(abstract)_ *type* (): `xref:BASE:expression:types_package.adoc#_expr_type_def_class[EXPR_TYPE_DEF]` [1..1]
+a|The primitive type of this node, which must be determined by redefinitions in concrete classes. +
+_Inherited from xref:BASE:expression:core_package.adoc#_expression_class[EXPRESSION]_
+
+2+h|*Invariants*
+
+2+a|__Symbol_validity__: `symbol /= Void implies operator_def.symbols.has (symbol)` +
+_Inherited from xref:BASE:expression:core_package.adoc#_expr_operator_class[EXPR_OPERATOR]_
+
+|===

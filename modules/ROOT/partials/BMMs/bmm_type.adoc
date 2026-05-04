@@ -1,0 +1,87 @@
+[source,json]
+--------
+{
+    "name": "BMM_TYPE",
+    "documentation": "Abstract idea of specifying a type in some context. This is not the same as 'defining' a class. A type specification is essentially a reference of some kind, that defines the type of an attribute, or function result or argument. It may include generic parameters that might or might not be bound. See subtypes.",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_ENTITY"
+    ],
+    "functions": {
+        "effective_base_class": {
+            "name": "effective_base_class",
+            "documentation": "Effective underlying class for this type, abstracting away any container type.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_CLASS"
+            }
+        },
+        "type_name": {
+            "name": "type_name",
+            "documentation": "Formal string form of the type as per UML.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "has_subtypes": {
+            "name": "has_subtypes",
+            "documentation": "Determine if there are any type substitutions.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "subtypes": {
+            "name": "subtypes",
+            "documentation": "List of type substitutions if any available for this type within the current BMM model.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "flattened_type_list": {
+            "name": "flattened_type_list",
+            "documentation": "Completely flattened list of type names, flattening out all generic parameters.",
+            "is_abstract": true,
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "type_signature": {
+            "name": "type_signature",
+            "documentation": "Signature form of the type, which for generics includes generic parameter constrainer types E.g. `Interval<T:Ordered>`.\n\nGenerally useful for display purposes.\n",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "is_primitive": {
+            "name": "is_primitive",
+            "documentation": "True if `_base_class.is_primitive_`.",
+            "post_conditions": {
+                "Post_validity": "Result = base_class.is_primitive"
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "entity_metatype": {
+            "name": "entity_metatype",
+            "documentation": "Meta-type of type is by default assumed to be the meta-type of its `_base_class_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
+}
+--------

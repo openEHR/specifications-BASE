@@ -1,0 +1,28 @@
+[source,json]
+--------
+{
+    "name": "OPERATOR_DEF",
+    "documentation": "Abstract definition of an operator for use in the Rules evaluator.",
+    "properties": {
+        "identifier": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "identifier",
+            "documentation": "Unique identifier of this operator within the rules system.",
+            "is_mandatory": true,
+            "type": "String"
+        },
+        "symbols": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "symbols",
+            "type_def": {
+                "container_type": "List",
+                "type": "String"
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        }
+    }
+}
+--------
