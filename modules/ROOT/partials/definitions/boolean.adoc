@@ -7,7 +7,7 @@ h|*Description*
 2+a|Type representing minimal interface of built-in Boolean type.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
+2+|`xref:{class_any}[Any]`
 
 h|*Functions*
 ^h|*Signature*
@@ -15,8 +15,8 @@ h|*Functions*
 
 h|*1..1*
 |*conjunction* __alias__ "and", "∧", "&" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_boolean}[Boolean][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_de_Morgan__: `Result = not (not self or not other)` +
 __Post_commutative__: `Result = (other and self)`
@@ -24,16 +24,16 @@ a|Logical conjunction of this with `_other_`.
 
 h|*1..1*
 |*semistrict_conjunction* __alias__ "and then", "&&" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_boolean}[Boolean][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_de_Morgan__: `Result = not (not self or else not other)`
 a|Boolean semi-strict conjunction with `_other_`.
 
 h|*1..1*
 |*disjunction* __alias__ "or", "∨", "&#124;" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_boolean}[Boolean][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_de_Morgan__: `Result = not (not self and not other)` +
 __Post_commutative__: `Result = (other or Current)` +
@@ -42,30 +42,30 @@ a|Boolean disjunction with `_other_`.
 
 h|*1..1*
 |*semistrict_disjunction* __alias__ "or else", "&#124;&#124;" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_boolean}[Boolean][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_de_Morgan__: `Result = not (not self and then not other)`
 a|Boolean semi-strict disjunction with `_other_`.
 
 h|*1..1*
 |*exclusive_disjunction* __alias__ "xor", "⊻" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_boolean}[Boolean][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_definition__: `Result = ((self or other) and not (self and other))`
 a|Boolean exclusive or with `_other_`.
 
 h|*1..1*
 |*implication* __alias__ "implies", "⇒" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_boolean}[Boolean][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_definition__: `Result = (not self or else other)`
 a|Boolean implication of `_other_` (semi-strict)
 
 h|*1..1*
-|*negation* __alias__ "not", "¬", "!" (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*negation* __alias__ "not", "¬", "!" (): `xref:{class_boolean}[Boolean]`
 a|Boolean negation of the current value.
 
 h|*Invariants*

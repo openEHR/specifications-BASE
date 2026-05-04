@@ -6,7 +6,7 @@
 
 2+h|*Attributes*
 
-|*namespace*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*namespace*: `xref:{class_string}[String]` [1..1]
 a|Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for `_namespace_` are:
 
 * `"local"`
@@ -15,9 +15,9 @@ a|Namespace to which this identifier belongs in the local system context (and po
 
 Note that the first two are just special values of the regex, and will be matched by it.
 
-|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*type*: `xref:{class_string}[String]` [1..1]
 a|Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g. `PARTY`, `PERSON`,  `GUIDELINE`  etc. These class names are from the relevant reference model. The type name `ANY` can be used to indicate that any type is accepted (e.g. if the type is unknown).
 
-|*id*: `xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]` [1..1]
+|*id*: `xref:{class_object_id}[OBJECT_ID]` [1..1]
 a|Globally unique id of an object, regardless of where it is stored.
 |===

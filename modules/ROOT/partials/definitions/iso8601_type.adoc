@@ -7,14 +7,14 @@ h|*Description*
 2+a|Abstract ancestor type of ISO 8601 types, defining interface for 'extended' and 'partial' concepts from ISO 8601.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:time_types.adoc#_temporal_class[Temporal]`, `xref:BASE:foundation_types:time_types.adoc#_time_definitions_class[Time_Definitions]`
+2+|`xref:{class_temporal}[Temporal]`, `xref:{class_time_definitions}[Time_Definitions]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value*: `xref:{class_string}[String]`
 a|Representation of all descendants is a single String.
 
 h|*Functions*
@@ -23,11 +23,11 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_partial* (): `xref:{class_boolean}[Boolean]`
 a|True if this date time is partial, i.e. if trailing end (right hand) value(s) is/are missing.
 
 h|*1..1 +
 (abstract)*
-|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_extended* (): `xref:{class_boolean}[Boolean]`
 a|True if this ISO8601 string is in the 'extended' form, i.e. uses `'-'` and / or `':'` separators. This is the preferred format.
 |===

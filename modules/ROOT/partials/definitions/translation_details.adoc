@@ -11,26 +11,26 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*language*: `xref:BASE:foundation_types:terminology.adoc#_terminology_code_class[Terminology_code]`
+|*language*: `xref:{class_terminology_code}[Terminology_code]`
 a|Language of the translation, coded using ISO 639-1 (2 character) language codes.
 
 h|*1..1*
-|*author*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*author*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>`
 a|Primary translator name and other demographic details.
 
 h|*0..1*
-|*accreditation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*accreditation*: `xref:{class_string}[String]`
 a|Accreditation of primary translator or group, usually a national translator's registration or association membership id.
 
 h|*0..1*
-|*other_details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*other_details*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>`
 a|Any other meta-data.
 
 h|*0..1*
-|*version_last_translated*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*version_last_translated*: `xref:{class_string}[String]`
 a|Version of this resource last time it was translated into the language represented by this `TRANSLATION_DETAILS` object.
 
 h|*0..1*
-|*other_contributors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*other_contributors*: `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Additional contributors to this translation, each listed in the preferred format of the relevant organisation for the artefacts in question. A typical default is `"name <email>"` if nothing else is specified.
 |===

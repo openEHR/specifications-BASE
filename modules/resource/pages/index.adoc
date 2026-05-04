@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,29 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Model for authored, translatable, versioned documents. Provides the common structure for all openEHR artefacts requiring author metadata, language support, and annotation capability. It underpins all openEHR authored artefacts - archetypes, templates, guidelines, and information model documents - providing a uniform structure for governance and translation management. The model supports multiple natural language translations of descriptions, annotations, and terminology bindings within a single artefact.
+
+== Purpose
+
+This document describes the openEHR Resource Model, a model of any 'authored resource', including identification, meta-data, annotations and translations.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+
+
 
 
 
@@ -20,48 +44,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
-== Acknowledgements
+== Feedback
 
-=== Primary Author
+Feedback may be provided on the {openehr_technical_list}[technical mailing list^].
 
-* Thomas Beale, Ars Semantica; openEHR Foundation Management Board.
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-=== Contributors
-
-This specification has benefited from formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.
-
-* Silje Ljosland Bakke, RN, National ICT health trust, Norway
-* Diego Boscá, IBIME, Technical University Valencia, VeraTech for Health, Spain
-* Sebastian Garde PhD, Ocean Health Systems, Germany
-* Grahame Grieve, Health Intersections, Australia
-* Heather Leslie MD, FRACGP, FACHI, Ocean Health Systems, Australia
-* Ian McNicoll MD, FreshEHR UK
-* Andrew Patterson PhD, LLM, Federation Health Software, Australia
-
-=== Supporters
-
-The work reported in this paper has been funded in by the following organisations:
-
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics.
-
-Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-//:sectnums!:
-//== References
-//
-//bibliography::[]

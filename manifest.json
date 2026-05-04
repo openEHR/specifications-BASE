@@ -1,120 +1,120 @@
 {
-    "id": "BASE",
-    "title": "Base Model",
-    "description": "openEHR Base Model Component",
-    "keywords": "base models, base model, openehr",
-    "specifications": [
-        {
-            "id": "architecture_overview",
-            "title": "Architecture Overview",
-            "title_short": "Architecture Overview",
-            "description": "openEHR Architecture Overview",
-            "summary": "\"Read me first\" document for the overall architecture. Provides a summary of the reference, archetype and service models, and describes global semantics.",
-            "micro_summary": "Global description of openEHR design principles and architecture",
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, openehr, architecture"
-        },
-        {
-            "id": "foundation_types",
-            "title": "Foundation Types",
-            "title_short": "Foundation Types",
-            "description": "openEHR Foundation Types specification",
-            "summary": "Specification of assumed, primitive and other foundation types required by all other openEHR specifications.",
-            "micro_summary": "Values, Structures, Interval, Date/times",
-            "copyright_year": "2017",
-            "spec_status": "STABLE",
-            "keywords": "openehr, identifiers, types"
-        },
-        {
-            "id": "base_types",
-            "title": "Base Types",
-            "title_short": "Base Types",
-            "description": "openEHR Base Types specification",
-            "summary": "Specification of basic openEHR and health informatics types used in other openEHR specifications.",
-            "micro_summary": "Definitions, Identifiers",
-            "copyright_year": "2016",
-            "spec_status": "STABLE",
-            "keywords": "openehr, identifiers, types"
-        },
-        {
-            "id": "resource",
-            "title": "Resource Model",
-            "title_short": "Resource Model",
-            "description": "openEHR Resource Model specification",
-            "summary": "The Resource specification defines a formal model of authoring and IP meta-data, language translation and annotations that can be used by classes defining any concrete type of authored resource, such as a document, archetype or template.",
-            "micro_summary": "Authoring resources and translations",
-            "classes": [
-                "AUTHORED_RESOURCE"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "openehr, resources"
-        },
-        {
-            "id": "iso_18308_conformance_statement",
-            "title": "ISO 18308 Conformance Statement",
-            "title_short": "ISO 18308 Conformance",
-            "description": "ISO 18308 Conformance Statement",
-            "summary": "Document describing conformance of openEHR architecture to ISO TS 18308, \"Requirements for EHR Architectures\".",
-            "link": "/releases/1.0.2/requirements/iso18308_conformance.pdf",
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, conformance"
-        }
-    ],
-    "expressions": [
-        {
-            "id": "openEHR_UML-BASE.mdzip",
-            "type": "uml",
-            "title": "Base UML",
-            "description": "UML file for openEHR Base classes, as MagicDraw 19. Contains UML 2.5 standard XMI file."
-        }
-    ],
-    "jira": {
-        "open_issues": "11105",
-        "roadmap": "SPECBASE"
+  "id": "BASE",
+  "title": "Base Model",
+  "description": "openEHR Base Model Component",
+  "keywords": "base models, base model, openehr",
+  "specifications": [
+    {
+      "id": "architecture_overview",
+      "title": "Architecture Overview",
+      "title_short": "Architecture Overview",
+      "description": "openEHR Architecture Overview",
+      "summary": "Read-first introduction to the openEHR specification stack. Covers the multi-level modelling paradigm, principal components, relationships between specifications, and the global design philosophy of the platform. It provides the essential conceptual grounding for understanding how the Reference Model, Archetype Model, Service Model, and implementation technology specifications relate to each other. Readers approaching openEHR for the first time should start here before exploring the individual component specifications.",
+      "micro_summary": "Global description of openEHR design principles and architecture",
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, openehr, architecture"
     },
-    "releases": [
-        {
-            "id": "1.2.0",
-            "date": "2021-02-09",
-            "jira": {
-                "crs": "SPECBASE/versions/12554",
-                "prs": "SPECPR/versions/12555"
-            }
-        },
-        {
-            "id": "1.1.0",
-            "date": "2019-01-22",
-            "jira": {
-                "crs": "SPECBASE/versions/11760",
-                "prs": "SPECPR/versions/11861"
-            }
-        },
-        {
-            "id": "1.0.4",
-            "date": "2018-07-14",
-            "jira": {
-                "crs": "SPECBASE/versions/12551",
-                "prs": "SPECPR/versions/11960"
-            }
-        },
-        {
-            "id": "1.0.3",
-            "date": "2015-12-15",
-            "jira": {
-                "crs": "SPECBASE/versions/11360",
-                "prs": "SPECPR/versions/11860"
-            }
-        },
-        {
-            "id": "1.0.2",
-            "date": "2008-12-31",
-            "jira": {
-                "crs": "SPEC/versions/10030",
-                "prs": "SPECPR/versions/10040"
-            }
-        }
-    ]
+    {
+      "id": "foundation_types",
+      "title": "Foundation Types",
+      "title_short": "Foundation Types",
+      "description": "openEHR Foundation Types specification",
+      "summary": "Primitive and structured types assumed by all openEHR specifications: Boolean, Integer, Real, String, Date, Time, DateTime, Duration, and generic containers such as List, Set, and Interval. These types are not openEHR-specific inventions but rather a formal specification of the primitive types assumed to exist in any host programming environment. BMM schemas and all other openEHR models reference foundation types as their leaf-level value types.",
+      "micro_summary": "Values, Structures, Interval, Date/times",
+      "copyright_year": "2017",
+      "spec_status": "STABLE",
+      "keywords": "openehr, identifiers, types"
+    },
+    {
+      "id": "base_types",
+      "title": "Base Types",
+      "title_short": "Base Types",
+      "description": "openEHR Base Types specification",
+      "summary": "Core identifier and reference types shared across the openEHR specification stack: object identifiers, version identifiers, terminology codes, and typed object references. Object identifiers support both UUID-based and ISO OID-based schemes, while version identifiers encode three-way version logic for branch-aware versioning. Every versioned EHR object, archetype, and terminology reference in the platform is identified using types defined in this specification.",
+      "micro_summary": "Definitions, Identifiers",
+      "copyright_year": "2016",
+      "spec_status": "STABLE",
+      "keywords": "openehr, identifiers, types"
+    },
+    {
+      "id": "resource",
+      "title": "Resource Model",
+      "title_short": "Resource Model",
+      "description": "openEHR Resource Model specification",
+      "summary": "Model for authored, translatable, versioned documents. Provides the common structure for all openEHR artefacts requiring author metadata, language support, and annotation capability. It underpins all openEHR authored artefacts - archetypes, templates, guidelines, and information model documents - providing a uniform structure for governance and translation management. The model supports multiple natural language translations of descriptions, annotations, and terminology bindings within a single artefact.",
+      "micro_summary": "Authoring resources and translations",
+      "classes": [
+        "AUTHORED_RESOURCE"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "openehr, resources"
+    },
+    {
+      "id": "iso_18308_conformance_statement",
+      "title": "ISO 18308 Conformance Statement",
+      "title_short": "ISO 18308 Conformance",
+      "description": "ISO 18308 Conformance Statement",
+      "summary": "Document describing conformance of openEHR architecture to ISO TS 18308, \"Requirements for EHR Architectures\".",
+      "link": "/releases/1.0.2/requirements/iso18308_conformance.pdf",
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, conformance"
+    }
+  ],
+  "expressions": [
+    {
+      "id": "openEHR_UML-BASE.mdzip",
+      "type": "uml",
+      "title": "Base UML",
+      "description": "UML file for openEHR Base classes, as MagicDraw 19. Contains UML 2.5 standard XMI file."
+    }
+  ],
+  "jira": {
+    "open_issues": "11105",
+    "roadmap": "SPECBASE"
+  },
+  "releases": [
+    {
+      "id": "1.2.0",
+      "date": "2021-02-09",
+      "jira": {
+        "crs": "SPECBASE/versions/12554",
+        "prs": "SPECPR/versions/12555"
+      }
+    },
+    {
+      "id": "1.1.0",
+      "date": "2019-01-22",
+      "jira": {
+        "crs": "SPECBASE/versions/11760",
+        "prs": "SPECPR/versions/11861"
+      }
+    },
+    {
+      "id": "1.0.4",
+      "date": "2018-07-14",
+      "jira": {
+        "crs": "SPECBASE/versions/12551",
+        "prs": "SPECPR/versions/11960"
+      }
+    },
+    {
+      "id": "1.0.3",
+      "date": "2015-12-15",
+      "jira": {
+        "crs": "SPECBASE/versions/11360",
+        "prs": "SPECPR/versions/11860"
+      }
+    },
+    {
+      "id": "1.0.2",
+      "date": "2008-12-31",
+      "jira": {
+        "crs": "SPEC/versions/10030",
+        "prs": "SPECPR/versions/10040"
+      }
+    }
+  ]
 }
