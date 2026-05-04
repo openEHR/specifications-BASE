@@ -4,111 +4,111 @@
 
 2+a|Abstract notional parent class of ordered, numeric types, which are types with both the `_less_than_()` and arithmetic functions defined.
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]
+2+|Inherits: xref:{class_any}[Any], xref:{class_any}[Any], xref:{class_ordered}[Ordered], xref:{class_numeric}[Numeric]
 
 2+h|*Functions*
 
 |_(abstract)_ *is_equal* ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_any}[Any][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 .Parameters +
 [horizontal]
 `_other_`:: Other object for comparison.
 
 |*equal* __alias__ "=", "==" ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_any}[Any][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Reference equality for reference types, value equality for value types. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 .Parameters +
 [horizontal]
 `_other_`:: Other object for comparison.
 
 |*instance_of* ( +
-a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a_type: `xref:{class_string}[String][1]` +
+): `xref:{class_any}[Any]` [1..1]
 a|Create new instance of a type. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*type_of* ( +
-an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+an_object: `xref:{class_any}[Any][1]` +
+): `xref:{class_string}[String]` [1..1]
 a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*not_equal* __alias__ "!=", "≠" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |_(abstract)_ *less_than* __alias__ "<" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Arithmetic value comparison. Returns True if current object is less than `_other_`. This operator is effected and/or redefined in descendants to provide the appropriate ordering semantics for concrete types.
 
 In conjunction with `=`, enables the definition of the related functions `_greater_than_()` etc. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |*less_than_or_equal* __alias__ "<=", "≤" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `not (other < self)` [1..1]
 a|True if current object less than or equal to `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |*greater_than* __alias__ ">" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = (other < self)` [1..1]
 a|True if current object greater than `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |*greater_than_or_equal* __alias__ ">=", "≥" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = (other \<= self)` [1..1]
 a|True if current object greater than or equal to `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |_(abstract)_ *add* __alias__ "+" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+other: `xref:{class_numeric}[Numeric][1]` +
+): `xref:{class_numeric}[Numeric]` [1..1]
 a|Sum with `_other_` (commutative). Actual type of result depends on arithmetic balancing rules. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+_Inherited from xref:{class_numeric}[Numeric]_
 
 |_(abstract)_ *subtract* __alias__ "-" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+other: `xref:{class_numeric}[Numeric][1]` +
+): `xref:{class_numeric}[Numeric]` [1..1]
 a|Result of subtracting `_other_`. Actual type of result depends on arithmetic balancing rules. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+_Inherited from xref:{class_numeric}[Numeric]_
 
 |_(abstract)_ *multiply* __alias__ "&#42;" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+other: `xref:{class_numeric}[Numeric][1]` +
+): `xref:{class_numeric}[Numeric]` [1..1]
 a|Product by `_other_`. Actual type of result depends on arithmetic balancing rules. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+_Inherited from xref:{class_numeric}[Numeric]_
 
 |_(abstract)_ *divide* __alias__ "/" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+other: `xref:{class_numeric}[Numeric][1]` +
+): `xref:{class_numeric}[Numeric]` [1..1]
 a|Divide by`_other_`. Actual type of result depends on arithmetic balancing rules. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+_Inherited from xref:{class_numeric}[Numeric]_
 
 |_(abstract)_ *exponent* __alias__ "^" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+other: `xref:{class_numeric}[Numeric][1]` +
+): `xref:{class_numeric}[Numeric]` [1..1]
 a|Expontiation of this by `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+_Inherited from xref:{class_numeric}[Numeric]_
 
-|_(abstract)_ *negative* __alias__ "-" (): `xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]` [1..1]
+|_(abstract)_ *negative* __alias__ "-" (): `xref:{class_numeric}[Numeric]` [1..1]
 a|Generate negative of current value. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric]_
+_Inherited from xref:{class_numeric}[Numeric]_
 |===

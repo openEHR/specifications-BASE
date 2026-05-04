@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Overview
 
 The openEHR Foundation Types (`org.openehr.base.foundation_types` package) consists of generic low level types assumed by and used throughout the openEHR components and specifications. The types described here are specified in order to establish the names and minimal semantics of typical standard classes, as used by all other openEHR specifications, and to provide a mapping point into implementation technologies. 
@@ -12,7 +14,7 @@ The package structure is illustrated below.
 
 [.text-center]
 .`base.foundation_types` Package
-image::{uml_diagrams_uri}/BASE-foundation_types-packages.svg[id=foundation_types_packages, align="center"]
+image::ROOT:uml/BASE-foundation_types-packages.svg[id=foundation_types_packages, align="center"]
 
 The `primitive_types`, `structures` and `time` packages describe types assumed by the openEHR specifications to exist in any implementation technology, such as a programming language, schema language or database environment.
 
@@ -50,8 +52,8 @@ The sections below provide formal definitions of all the foundation types used i
 
 [.text-center]
 .Leaf Types
-image::{uml_diagrams_uri}/BASE-foundation_types-leaf_types.svg[id=foundation_types_leaf_types, align="center"]
+image::ROOT:uml/BASE-foundation_types-leaf_types.svg[id=foundation_types_leaf_types, align="center"]
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/{pkg}any.adoc[]
+include::ROOT:partial$classes/any.adoc[]

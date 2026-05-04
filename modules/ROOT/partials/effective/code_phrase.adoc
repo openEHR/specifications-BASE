@@ -8,13 +8,13 @@ Retain for LEGACY only, while ADL1.4 requires CODE_PHRASE.
 
 2+h|*Attributes*
 
-|*terminology_id*: `xref:BASE:base_types:identification_package.adoc#_terminology_id_class[TERMINOLOGY_ID]` [1..1]
+|*terminology_id*: `xref:{class_terminology_id}[TERMINOLOGY_ID]` [1..1]
 a|Identifier of the distinct terminology from which the code_string (or its elements) was extracted.
 
-|*code_string*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*code_string*: `xref:{class_string}[String]` [1..1]
 a|The key used by the terminology service to identify a concept or coordination of concepts. This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context.
 
-|*preferred_term*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+|*preferred_term*: `xref:{class_string}[String]` [0..1]
 a|Optional attribute to carry preferred term corresponding to the code or expression in `_code_string_`. Typical use in integration situations which create mappings, and representing data for which both a (non-preferred) actual term and a preferred term are both required.
 
 2+h|*Invariants*

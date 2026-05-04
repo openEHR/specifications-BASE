@@ -7,22 +7,22 @@ h|*Description*
 2+a|Abstract model of UID-based identifiers consisting of a root part and an optional extension; lexical form: `root '::' extension`.
 
 h|*Inherit*
-2+|`xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]`
+2+|`xref:{class_object_id}[OBJECT_ID]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*root* (): `xref:BASE:base_types:identification_package.adoc#_uid_class[UID]`
+|*root* (): `xref:{class_uid}[UID]`
 a|The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.
 
 h|*1..1*
-|*extension* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*extension* (): `xref:{class_string}[String]`
 a|Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first '::' separator if any, or else any empty String.
 
 h|*1..1*
-|*has_extension* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*has_extension* (): `xref:{class_boolean}[Boolean]`
 a|True if not `_extension_.is_empty()`.
 
 h|*Invariants*

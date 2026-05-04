@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Functional Meta-types
 
 == Overview
@@ -8,20 +10,20 @@ The following illustrates the `functional` package.
 
 [.text-center]
 .base.foundation_types.functional Package
-image::{uml_diagrams_uri}/BASE-foundation_types.functional.svg[id=foundation_types_functional, align="center"]
+image::ROOT:uml/BASE-foundation_types.functional.svg[id=foundation_types_functional, align="center"]
 
 Two key abstractions are required, namely 'function as a type', and 'tuple', which enables arguments to be formalised. To provide a 'function' type, a 'routine' type is also required. For completeness, a 'procedure' type is also defined. The 'tuple' type is defined as a generic meta-type whose descendants may additionally define any number of generic parameter types, corresponding to a type list.
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/{pkg}routine.adoc[]
+include::ROOT:partial$classes/routine.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}function.adoc[]
+include::ROOT:partial$classes/function.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}procedure.adoc[]
+include::ROOT:partial$classes/procedure.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}tuple.adoc[]
+include::ROOT:partial$classes/tuple.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}tuple1.adoc[]
+include::ROOT:partial$classes/tuple1.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}tuple2.adoc[]
+include::ROOT:partial$classes/tuple2.adoc[]

@@ -15,44 +15,44 @@ where:
 * `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type]`
+2+|`xref:{class_iso8601_type}[Iso8601_type]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*hour* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*hour* (): `xref:{class_integer}[Integer]`
 a|Extract the hour part of timezone, as an Integer in the range `00 - 14`.
 
 h|*1..1*
-|*minute* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*minute* (): `xref:{class_integer}[Integer]`
 a|Extract the hour part of timezone, as an Integer, usually either 0 or 30.
 
 h|*1..1*
-|*sign* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*sign* (): `xref:{class_integer}[Integer]`
 a|Direction of timezone expresssed as +1 or -1.
 
 h|*1..1*
-|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*minute_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether minute part known.
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_partial* (): `xref:{class_boolean}[Boolean]`
 a|True if this time zone is partial, i.e. if minutes is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_extended* (): `xref:{class_boolean}[Boolean]`
 a|True if this time-zone uses ‘:’ separators.
 
 h|*1..1*
-|*is_gmt* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_gmt* (): `xref:{class_boolean}[Boolean]`
 a|True if timezone is UTC, i.e. `+0000`.
 
 h|*1..1*
-|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*as_string* (): `xref:{class_string}[String]`
 a|Return timezone string in extended format.
 
 h|*Invariants*

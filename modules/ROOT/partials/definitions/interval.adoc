@@ -7,7 +7,7 @@ h|*Description*
 2+a|Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
+2+|`xref:{class_any}[Any]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -22,19 +22,19 @@ h|*0..1*
 a|Upper bound.
 
 h|*1..1*
-|*lower_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*lower_unbounded*: `xref:{class_boolean}[Boolean]`
 a|True if `_lower_` boundary open (i.e. = `-infinity`).
 
 h|*1..1*
-|*upper_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*upper_unbounded*: `xref:{class_boolean}[Boolean]`
 a|True if `_upper_` boundary open (i.e. = `+infinity`).
 
 h|*1..1*
-|*lower_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*lower_included*: `xref:{class_boolean}[Boolean]`
 a|True if `_lower_` boundary value included in range, if `not _lower_unbounded_`.
 
 h|*1..1*
-|*upper_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*upper_included*: `xref:{class_boolean}[Boolean]`
 a|True if `_upper_` boundary value included in range if `not _upper_unbounded_`.
 
 h|*Functions*
@@ -45,7 +45,7 @@ h|*1..1 +
 (abstract)*
 |*has* ( +
 e: `T[1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v \<= upper or v < upper)`
 a|True if the value `e` is properly contained in this Interval.
@@ -53,22 +53,22 @@ a|True if the value `e` is properly contained in this Interval.
 h|*1..1 +
 (abstract)*
 |*intersects* ( +
-other: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_interval}[Interval][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True if there is any overlap between intervals represented by Current and `_other_`. True if at least one limit of `_other_` is strictly inside the limits of this interval.
 
 h|*1..1 +
 (abstract)*
 |*contains* ( +
-other: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_interval}[Interval][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval.
 
 h|*1..1 +
 (abstract)*
 |*is_equal* ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_any}[Any][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True if current object's interval is semantically same as `_other_`.
 
 h|*Invariants*
