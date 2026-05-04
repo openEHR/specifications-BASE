@@ -4,25 +4,25 @@
 
 2+a|Identifier for parties in a demographic or identity service. There are typically a number of subtypes of the `PARTY` class, including `PERSON`, `ORGANISATION`, etc. Abstract supertypes are allowed if the referenced object is of a type not known by the current implementation of this class (in other words, if the demographic model is changed by the addition of a new `PARTY` or `ACTOR` subtypes, valid `PARTY_REFs` can still be constructed to them).
 
-2+|Inherits: xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]
+2+|Inherits: xref:{class_object_ref}[OBJECT_REF]
 
 2+h|*Attributes*
 
-|*namespace*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*namespace*: `xref:{class_string}[String]` [1..1]
 a|Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for `_namespace_` are:
 
 * `"local"`
 * `"unknown"`
 * a string matching the regex `[a-zA-Z][a-zA-Z0-9_-:/&+?]&#42;` +
-_Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
+_Inherited from xref:{class_object_ref}[OBJECT_REF]_
 
-|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*type*: `xref:{class_string}[String]` [1..1]
 a|Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g. `PARTY`, `PERSON`,  `GUIDELINE`  etc. These class names are from the relevant reference model. The type name `ANY` can be used to indicate that any type is accepted (e.g. if the type is unknown). +
-_Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
+_Inherited from xref:{class_object_ref}[OBJECT_REF]_
 
-|*id*: `xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]` [1..1]
+|*id*: `xref:{class_object_id}[OBJECT_ID]` [1..1]
 a|Globally unique id of an object, regardless of where it is stored. +
-_Inherited from xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]_
+_Inherited from xref:{class_object_ref}[OBJECT_REF]_
 
 2+h|*Invariants*
 

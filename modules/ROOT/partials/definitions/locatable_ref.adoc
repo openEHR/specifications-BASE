@@ -7,19 +7,19 @@ h|*Description*
 2+a|Purpose Reference to a `LOCATABLE` instance inside the top-level content structure inside a `VERSION<T>`; the path attribute is applied to the object that `VERSION._data_` points to.
 
 h|*Inherit*
-2+|`xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]`
+2+|`xref:{class_object_ref}[OBJECT_REF]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*path*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*path*: `xref:{class_string}[String]`
 a|The path to an instance in question, as an absolute path with respect to the object found at `VERSION._data_`. An empty path means that the object referred to by id being specified.
 
 h|*1..1 +
 (redefined)*
-|*id*: `xref:BASE:base_types:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]`
+|*id*: `xref:{class_uid_based_id}[UID_BASED_ID]`
 a|Globally unique id of an object, regardless of where it is stored.
 
 h|*Functions*
@@ -27,7 +27,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*as_uri* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*as_uri* (): `xref:{class_string}[String]`
 a|A URI form of the reference, created by concatenating the following: 
 
 * scheme, e.g. `ehr:`, derived from `_namespace_`

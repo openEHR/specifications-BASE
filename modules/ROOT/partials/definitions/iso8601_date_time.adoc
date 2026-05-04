@@ -18,90 +18,90 @@ Note that this class includes 2 deviations from ISO 8601:2004:
 * the time `24:00:00` is not allowed, since it would mean the date was really on the next day.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type]`
+2+|`xref:{class_iso8601_type}[Iso8601_type]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*year* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*year* (): `xref:{class_integer}[Integer]`
 a|Year.
 
 h|*1..1*
-|*month* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+|*month* (): `xref:{class_integer}[Integer]` +
  +
 __Pre__: `not month_unknown`
 a|Month in year.
 
 h|*1..1*
-|*day* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+|*day* (): `xref:{class_integer}[Integer]` +
  +
 __Pre__: `not day_unknown`
 a|Day in month.
 
 h|*1..1*
-|*hour* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+|*hour* (): `xref:{class_integer}[Integer]` +
  +
 __Pre__: `not hour_unknown`
 a|Hour in day.
 
 h|*1..1*
-|*minute* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+|*minute* (): `xref:{class_integer}[Integer]` +
  +
 __Pre__: `not minute_unknown`
 a|Minute in hour.
 
 h|*1..1*
-|*second* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` +
+|*second* (): `xref:{class_integer}[Integer]` +
  +
 __Pre__: `not second_unknown`
 a|Second in minute.
 
 h|*1..1*
-|*fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*fractional_second* (): `xref:{class_real}[Real]`
 a|Fractional seconds.
 
 h|*1..1*
-|*timezone* (): `xref:BASE:foundation_types:time_types.adoc#_iso8601_timezone_class[Iso8601_timezone]`
+|*timezone* (): `xref:{class_iso8601_timezone}[Iso8601_timezone]`
 a|Timezone; may be Void.
 
 h|*1..1*
-|*month_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*month_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether month in year is unknown.
 
 h|*1..1*
-|*day_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*day_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether day in month is unknown.
 
 h|*1..1*
-|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*minute_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether minute in hour is known.
 
 h|*1..1*
-|*second_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*second_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether minute in hour is known.
 
 h|*1..1*
-|*is_decimal_sign_comma* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_decimal_sign_comma* (): `xref:{class_boolean}[Boolean]`
 a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_partial* (): `xref:{class_boolean}[Boolean]`
 a|True if this date time is partial, i.e. if seconds or more is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_extended* (): `xref:{class_boolean}[Boolean]`
 a|True if this date/time uses ‘-’, ‘:’ separators.
 
 h|*1..1*
-|*has_fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*has_fractional_second* (): `xref:{class_boolean}[Boolean]`
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|*1..1*
-|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*as_string* (): `xref:{class_string}[String]`
 a|Return the string value in extended format.
 
 h|*Invariants*
