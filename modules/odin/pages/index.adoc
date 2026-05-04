@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,25 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+== Purpose
+
+This document describes the syntax of the Object Data Instance Notation (ODIN), previously known
+as the 'dADL' syntax from the openEHR ADL specifications. It is intended for software developers,
+technically-oriented domain specialists and subject matter experts (SMEs). ODIN is designed as a
+human-readable and computer-processible data representation syntax, and can be hand-edited using a
+normal text editor.
+
+== Nomenclature
+
+In this document, the term 'attribute' denotes any stored property of a type defined in an object
+model, including primitive attributes and any kind of relationship such as an association or aggregation.
+Where XML is mentioned, XML 'attributes' are always referred to explicitly as 'XML
+attributes'.
+
+
+
 
 
 
@@ -20,52 +40,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
-== Acknowledgements
+== Feedback
 
-=== Primary Author
+Feedback may be provided on the {openehr_lang_forum}[openEHR languages specifications forum^].
 
-* Thomas Beale, Ars Semantica; openEHR Foundation Management Board; (previously Ocean Informatics UK).
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-=== Contributors
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
-This specification has benefited from formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.
-
-* Kurt W. Allen, Applicadia Inc, Minnesota, USA
-* Rong Chen, MD, PhD, Cambio Healthcare Systems, Sweden
-* Sam Heard, MD, DRCOG, MRCGP, FRACGP, Director at Ocean Informatics, Australia
-* Claude Nanjo, MA African Studies., M Public Health, Cognitive Medical Systems Inc., California, USA
-
-=== Supporters
-
-The work reported in this paper has been funded in by the following organisations:
-
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics.
-
-Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL who provided a vision and collegial working environment ever since the days of GEHR (1992).
-
-=== Trademarks
-
-* 'openEHR' is a trademark of the openEHR Foundation
-* 'Java' is a registered trademark of Oracle Corporation
-* 'Microsoft' and '.Net' are trademarks of the Microsoft Corporation
-
-
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-
-:sectnums!:
-== References
-bibliography::[]
 

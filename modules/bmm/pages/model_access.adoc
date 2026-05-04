@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Model Access Package
 
 == Overview
@@ -8,7 +10,7 @@ The `model_access` package provides an interface for the application to load BMM
 
 [.text-center]
 .base.bmm.model_access Package
-image::{uml_diagrams_uri}/BASE-bmm.model_access.svg[id=model_access_package, align="center"]
+image::ROOT:uml/BASE-bmm.model_access.svg[id=model_access_package, align="center"]
 
 More than one format for representing serialised BMM models is possible, each having its load, validation and error-reporting logic. The common elements of the load, validate and convert logic are defined by the non format-specific classes in the package, with specific forms of the classes `BMM_SCHEMA_DESCRIPTOR` and `BMM_SCHEMA` required for each concrete format. The package above shows the relevant classes for the `P_BMM` version 2.x format, which is normally saved in `.bmm` files. Other formats may be saved in files with different extensions.
 
@@ -32,12 +34,12 @@ image::awb_loaded_bmm_schemas.png[id=awb_loaded_bmm_schemas, align="center", wid
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/bmm_model_access.adoc[]
-include::{uml_export_dir}/classes/bmm_schema_descriptor.adoc[]
-include::{uml_export_dir}/classes/bmm_model_metadata.adoc[]
-include::{uml_export_dir}/classes/bmm_schema.adoc[]
-include::{uml_export_dir}/classes/bmm_schema_state.adoc[]
-include::{uml_export_dir}/classes/bmm_include_spec.adoc[]
-include::{uml_export_dir}/classes/p_bmm_schema_descriptor.adoc[]
-include::{uml_export_dir}/classes/p_bmm_schema.adoc[]
+include::ROOT:partial$classes/bmm_model_access.adoc[]
+include::ROOT:partial$classes/bmm_schema_descriptor.adoc[]
+include::ROOT:partial$classes/bmm_model_metadata.adoc[]
+include::ROOT:partial$classes/bmm_schema.adoc[]
+include::ROOT:partial$classes/bmm_schema_state.adoc[]
+include::ROOT:partial$classes/bmm_include_spec.adoc[]
+include::ROOT:partial$classes/p_bmm_schema_descriptor.adoc[]
+include::ROOT:partial$classes/p_bmm_schema.adoc[]
 

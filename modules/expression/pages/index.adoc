@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,32 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-trial]#{spec_status}#
+
+== Purpose
+
+This document specifies the openEHR Expression Model (EOM) and an abstract syntax, denoted the openEHR Expression Language (oEL). The EOM defines the semantics of a first order predicate style logic that can be used to express assertions (for example in archetypes) and rulesfor example in decision support situations.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+Releated documents include:
+
+* The {openehr_am_aom2}[Archetype Object Model 2 (AOM2)^].
+* The {openehr_cds_gdl}[Guideline Definition Language (GDL)^].
+
+
+
 
 
 
@@ -20,26 +47,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
-== Acknowledgements
+== Feedback
 
-=== Primary Author
+Feedback may be provided on the {openehr_lang_forum}[openEHR languages specifications forum^].
 
-* Thomas Beale, Ars Semantica; openEHR Foundation Management Board.
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-bibliography::[]

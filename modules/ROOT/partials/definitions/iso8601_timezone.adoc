@@ -7,28 +7,28 @@ h|*Description*
 2+a|Represents a timezone as used in ISO 8601.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:iso8601_time_package.adoc#_iso8601_type_class[Iso8601_type]`, `xref:BASE:foundation_types:time_types.adoc#_itimezone_class[ITimezone]`
+2+|`xref:{class_iso8601_type}[Iso8601_type]`, `xref:{class_itimezone}[ITimezone]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*minute_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether minute part known.
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_partial* (): `xref:{class_boolean}[Boolean]`
 a|True if this time zone is partial, i.e. if minutes is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_extended* (): `xref:{class_boolean}[Boolean]`
 a|True if this time-zone uses ‘:’ separators.
 
 h|*1..1*
-|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*as_string* (): `xref:{class_string}[String]`
 a|ISO8601 timezone string, in format:
 
 * `Z &#124; ±hh[mm]`
@@ -40,11 +40,11 @@ where:
 * `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`
 
 h|*1..1*
-|*is_gmt* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_gmt* (): `xref:{class_boolean}[Boolean]`
 a|True if timezone is UTC, i.e. +0000.
 
 h|*1..1*
-|*as_timezone* (): `xref:BASE:foundation_types:time_types.adoc#_timezone_class[Timezone]`
+|*as_timezone* (): `xref:{class_timezone}[Timezone]`
 a|Convert to a native `Timezone`.
 
 h|*Invariants*

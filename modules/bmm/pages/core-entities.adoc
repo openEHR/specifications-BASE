@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = BMM Entities
 
 == Overview
@@ -6,7 +8,7 @@ The following UML diagram shows the semantically important part of the BMM, defi
 
 [.text-center]
 .base.bmm.core Package - Main
-image::{uml_diagrams_uri}/BASE-bmm.core-main.svg[id=core_package_main, align="center"]
+image::ROOT:uml/BASE-bmm.core-main.svg[id=core_package_main, align="center"]
 
 The general structure of a BMM consists of a set of classes, whose properties are each typed by an instance of `BMM_TYPE`, as shown below. Structures specific to generic and container types are shown in relevant sections below. 
 
@@ -35,4 +37,4 @@ image::diagrams/bmm_entity_taxonomy.svg[id=bmm_entity_taxonomy, align="center"]
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/bmm_entity.adoc[]
+include::ROOT:partial$classes/bmm_entity.adoc[]

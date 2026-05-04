@@ -9,26 +9,26 @@ h|*Description*
 NOTE: A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with ISO8601_DATE_TIME.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:iso8601_time_package.adoc#_iso8601_type_class[Iso8601_type]`, `xref:BASE:foundation_types:time_types.adoc#_itime_class[ITime]`
+2+|`xref:{class_iso8601_type}[Iso8601_type]`, `xref:{class_itime}[ITime]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*minute_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*minute_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether minute is unknown. If so, the time is of the form “hh”.
 
 h|*1..1*
-|*second_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*second_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether second is unknown. If so and month is known, the time is of the form “hh:mm” or “hhmm”.
 
 h|*1..1*
-|*is_decimal_sign_comma* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_decimal_sign_comma* (): `xref:{class_boolean}[Boolean]`
 a|True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).
 
 h|*1..1*
-|*valid_iso8601_time* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*valid_iso8601_time* (): `xref:{class_boolean}[Boolean]`
 a|String is a valid ISO 8601 date, i.e. takes the form:
 
 * hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]
@@ -59,16 +59,16 @@ Where:
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_partial* (): `xref:{class_boolean}[Boolean]`
 a|True if this time is partial, i.e. if seconds or more is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_extended* (): `xref:{class_boolean}[Boolean]`
 a|True if this time uses ‘-’, ‘:’ separators.
 
 h|*1..1*
-|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*as_string* (): `xref:{class_string}[String]`
 a|ISO8601 string for time, i.e. in the form:
 
 * `hhmmss[,sss][Z&#124;±hh[mm]]`
@@ -80,11 +80,11 @@ or the extended form:
 or a partial invariant. See `_valid_iso8601_time()_` for validity.
 
 h|*1..1*
-|*has_fractional_second* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*has_fractional_second* (): `xref:{class_boolean}[Boolean]`
 a|True if the fractional_second part is signficant (i.e. even if = 0.0).
 
 h|*1..1*
-|*as_time* (): `xref:BASE:foundation_types:time_types.adoc#_time_class[Time]`
+|*as_time* (): `xref:{class_time}[Time]`
 a|Convert to a native `Time`.
 
 h|*Invariants*

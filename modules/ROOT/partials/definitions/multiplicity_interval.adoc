@@ -7,18 +7,18 @@ h|*Description*
 2+a|An Interval of Integer, used to represent multiplicity, cardinality and optionality in models.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:interval.adoc#_proper_interval_class[Proper_interval]`
+2+|`xref:{class_proper_interval}[Proper_interval]`
 
 h|*Constants*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*Multiplicity_range_marker*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".."`
+|*Multiplicity_range_marker*: `xref:{class_string}[String]{nbsp}={nbsp}".."`
 a|Marker to use in string form of interval between limits.
 
 h|*1..1*
-|*Multiplicity_unbounded_marker*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'&#42;'`
+|*Multiplicity_unbounded_marker*: `xref:{class_character}[Character]{nbsp}={nbsp}'&#42;'`
 a|Symbol to use to indicate upper limit unbounded.
 
 h|*Functions*
@@ -26,18 +26,18 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_open* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_open* (): `xref:{class_boolean}[Boolean]`
 a|True if this interval imposes no constraints, i.e. is set to 0..&#42;
 
 h|*1..1*
-|*is_optional* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_optional* (): `xref:{class_boolean}[Boolean]`
 a|True if this interval expresses optionality, i.e. 0..1.
 
 h|*1..1*
-|*is_mandatory* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_mandatory* (): `xref:{class_boolean}[Boolean]`
 a|True if this interval expresses mandation, i.e. 1..1.
 
 h|*1..1*
-|*is_prohibited* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_prohibited* (): `xref:{class_boolean}[Boolean]`
 a|True if this interval is set to 0..0.
 |===

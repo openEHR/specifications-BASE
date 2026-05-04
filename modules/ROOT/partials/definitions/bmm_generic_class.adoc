@@ -7,14 +7,14 @@ h|*Description*
 2+a|Definition of a generic class in an object model.
 
 h|*Inherit*
-2+|`xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS]`
+2+|`xref:{class_bmm_class}[BMM_CLASS]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*generic_parameters*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:bmm:core_package.adoc#_bmm_parameter_type_class[BMM_PARAMETER_TYPE]>`
+|*generic_parameters*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_bmm_parameter_type}[BMM_PARAMETER_TYPE]>`
 a|List of generic parameter definitions, keyed by name of generic parameter; these are defined either directly on this class or by the addition of an ancestor class which is generic.
 
 h|*Functions*
@@ -23,22 +23,22 @@ h|*Functions*
 
 h|*0..1 +
 (redefined)*
-|*suppliers* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*suppliers* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Add suppliers from generic parameters.
 
 h|*1..1 +
 (effected)*
-|*entity_metatype* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*entity_metatype* (): `xref:{class_string}[String]`
 a|Meta-type of `BMM_GENERIC_CLASS`, which is `Entity_metatype_generic`.
 
 h|*1..1 +
 (effected)*
-|*type* (): `xref:BASE:bmm:core_package.adoc#_bmm_generic_type_class[BMM_GENERIC_TYPE]`
+|*type* (): `xref:{class_bmm_generic_type}[BMM_GENERIC_TYPE]`
 a|Generate a fully open `BMM_GENERIC_TYPE` instance that corresponds to this class definition
 
 h|*1..1*
 |*generic_parameter_conformance_type* ( +
-a_name: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a_name: `xref:{class_string}[String][1]` +
+): `xref:{class_string}[String]`
 a|For a generic class, type to which generic parameter `a_name` conforms e.g. if this class is `Interval <T:Comparable>` then the Result will be the single type `Comparable`. For an unconstrained type `T`, the Result will be `Any`.
 |===

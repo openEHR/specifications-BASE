@@ -11,17 +11,17 @@ The value if the id attribute is the precise terminology id identifier, includin
 Lexical form: `name [  (' version  )' ]`.
 
 h|*Inherit*
-2+|`xref:BASE:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]`
+2+|`xref:{class_object_id}[OBJECT_ID]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*name* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*name* (): `xref:{class_string}[String]`
 a|Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.
 
 h|*1..1*
-|*version_id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*version_id* (): `xref:{class_string}[String]`
 a|Version of this terminology, if versioning supported, else the empty string.
 |===

@@ -1,117 +1,117 @@
 {
-    "id": "BASE",
-    "title": "Base Model",
-    "description": "openEHR Base Model Component",
-    "keywords": "base models, base model, openehr",
-    "specifications": [
-        {
-            "id": "architecture_overview",
-            "title": "Architecture Overview",
-            "title_short": "Architecture Overview",
-            "description": "openEHR Architecture Overview",
-            "summary": "\"Read me first\" document for the overall architecture. Provides a summary of the reference, archetype and service models, and describes global semantics.",
-            "micro_summary": "Global description of openEHR design principles and architecture",
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, openehr, architecture"
-        },
-        {
-            "id": "odin",
-            "title": "Object Data Instance Notation (ODIN)",
-            "title_short": "ODIN",
-            "description": "Object Data Instance Notation (ODIN) specification",
-            "summary": "This is the JSON-like notation used to express various sections of ADL archetypes including description, terminology and annotations, and also BMM files.",
-            "micro_summary": "Object Data Instance Notation",
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "data, notation, JSON, syntax"
-        },
-        {
-            "id": "bmm",
-            "title": "Basic Meta-Model (BMM)",
-            "title_short": "BMM",
-            "description": "Basic Meta-Model (BMM) specification",
-            "summary": "BMM provides a human- and machine-readable / writable format for defining object models. It can be considered a much more compact and readable alternative to XMI.",
-            "micro_summary": "Basic Meta-Model of models & expressions",
-            "classes": [
-                "BMM_SCHEMA",
-                "BMM_MODEL",
-                "BMM_CLASS",
-                "BMM_TYPE",
-                "BMM_PROPERTY"
-            ],
-            "copyright_year": "2016",
-            "spec_status": "TRIAL",
-            "keywords": "reflection, meta-model, UML"
-        },
-        {
-            "id": "bmm_persistence",
-            "title": "BMM Persistence Model and Syntax",
-            "title_short": "P_BMM",
-            "description": "BMM Persistence Model and Syntax",
-            "summary": "A human-readable and machine-processable save format for BMM.",
-            "micro_summary": "BMM human-readable serial format",
-            "classes": [
-                "P_BMM_SCHEMA",
-                "P_BMM_CLASS",
-                "P_BMM_TYPE",
-                "P_BMM_PROPERTY"
-            ],
-            "copyright_year": "2016",
-            "spec_status": "STABLE",
-            "keywords": "reflection, meta-model, UML"
-        },
-        {
-            "id": "expression",
-            "title": "Expression Language (EL)",
-            "title_short": "Expression Language",
-            "description": "openEHR Expression Language specification",
-            "summary": "The openEHR Expression Language defines an extensible core model and syntax for specifying expressions for particular purposes elsewhere in openEHR.",
-            "micro_summary": "A syntax for formal expressions",
-            "copyright_year": "2016",
-            "spec_status": "TRIAL",
-            "keywords": "openehr, expressions, rules"
-        },
-        {
-            "id": "iso_18308_conformance_statement",
-            "title": "ISO 18308 Conformance Statement",
-            "title_short": "ISO 18308 Conformance",
-            "description": "ISO 18308 Conformance Statement",
-            "summary": "Document describing conformance of openEHR architecture to ISO TS 18308, \"Requirements for EHR Architectures\".",
-            "link": "https://specifications.openehr.org/releases/1.0.2/requirements/iso18308_conformance.pdf",
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, conformance"
-        }
-    ],
-    "expressions": [
-        {
-            "id": "openEHR_UML-BASE.mdzip",
-            "type": "uml",
-            "title": "Base UML",
-            "description": "UML file for openEHR Base classes, as MagicDraw 19. Contains UML 2.5 standard XMI file."
-        }
-    ],
-    "jira": {
-        "open_issues": "11105",
-        "roadmap": "SPECBASE"
+  "id": "BASE",
+  "title": "Base Model",
+  "description": "openEHR Base Model Component",
+  "keywords": "base models, base model, openehr",
+  "specifications": [
+    {
+      "id": "architecture_overview",
+      "title": "Architecture Overview",
+      "title_short": "Architecture Overview",
+      "description": "openEHR Architecture Overview",
+      "summary": "Read-first introduction to the openEHR specification stack. Covers the multi-level modelling paradigm, principal components, relationships between specifications, and the global design philosophy of the platform. It provides the essential conceptual grounding for understanding how the Reference Model, Archetype Model, Service Model, and implementation technology specifications relate to each other. Readers approaching openEHR for the first time should start here before exploring the individual component specifications.",
+      "micro_summary": "Global description of openEHR design principles and architecture",
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, openehr, architecture"
     },
-    "releases": [
-        {
-            "id": "1.0.4",
-            "date": "2018-07-14",
-            "jira": {
-                "crs": "SPECBASE/versions/12551",
-                "prs": "SPECPR/versions/11960"
-            }
-        },
-		{
-            "id": "1.0.3",
-            "date": "2015-12-15",
-            "jira": {
-                "crs": "SPECBASE/versions/11360",
-                "prs": "SPECPR/versions/11860"
-            }
-        }
-    ]
+    {
+      "id": "odin",
+      "title": "Object Data Instance Notation (ODIN)",
+      "title_short": "ODIN",
+      "description": "Object Data Instance Notation (ODIN) specification",
+      "summary": "This is the JSON-like notation used to express various sections of ADL archetypes including description, terminology and annotations, and also BMM files.",
+      "micro_summary": "Object Data Instance Notation",
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "data, notation, JSON, syntax"
+    },
+    {
+      "id": "bmm",
+      "title": "Basic Meta-Model (BMM)",
+      "title_short": "BMM",
+      "description": "Basic Meta-Model (BMM) specification",
+      "summary": "BMM provides a human- and machine-readable / writable format for defining object models. It can be considered a much more compact and readable alternative to XMI.",
+      "micro_summary": "Basic Meta-Model of models & expressions",
+      "classes": [
+        "BMM_SCHEMA",
+        "BMM_MODEL",
+        "BMM_CLASS",
+        "BMM_TYPE",
+        "BMM_PROPERTY"
+      ],
+      "copyright_year": "2016",
+      "spec_status": "TRIAL",
+      "keywords": "reflection, meta-model, UML"
+    },
+    {
+      "id": "bmm_persistence",
+      "title": "BMM Persistence Model and Syntax",
+      "title_short": "P_BMM",
+      "description": "BMM Persistence Model and Syntax",
+      "summary": "A human-readable and machine-processable save format for BMM.",
+      "micro_summary": "BMM human-readable serial format",
+      "classes": [
+        "P_BMM_SCHEMA",
+        "P_BMM_CLASS",
+        "P_BMM_TYPE",
+        "P_BMM_PROPERTY"
+      ],
+      "copyright_year": "2016",
+      "spec_status": "STABLE",
+      "keywords": "reflection, meta-model, UML"
+    },
+    {
+      "id": "expression",
+      "title": "Expression Language (EL)",
+      "title_short": "Expression Language",
+      "description": "openEHR Expression Language specification",
+      "summary": "The openEHR Expression Language defines an extensible core model and syntax for specifying expressions for particular purposes elsewhere in openEHR.",
+      "micro_summary": "A syntax for formal expressions",
+      "copyright_year": "2016",
+      "spec_status": "TRIAL",
+      "keywords": "openehr, expressions, rules"
+    },
+    {
+      "id": "iso_18308_conformance_statement",
+      "title": "ISO 18308 Conformance Statement",
+      "title_short": "ISO 18308 Conformance",
+      "description": "ISO 18308 Conformance Statement",
+      "summary": "Document describing conformance of openEHR architecture to ISO TS 18308, \"Requirements for EHR Architectures\".",
+      "link": "https://specifications.openehr.org/releases/1.0.2/requirements/iso18308_conformance.pdf",
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, conformance"
+    }
+  ],
+  "expressions": [
+    {
+      "id": "openEHR_UML-BASE.mdzip",
+      "type": "uml",
+      "title": "Base UML",
+      "description": "UML file for openEHR Base classes, as MagicDraw 19. Contains UML 2.5 standard XMI file."
+    }
+  ],
+  "jira": {
+    "open_issues": "11105",
+    "roadmap": "SPECBASE"
+  },
+  "releases": [
+    {
+      "id": "1.0.4",
+      "date": "2018-07-14",
+      "jira": {
+        "crs": "SPECBASE/versions/12551",
+        "prs": "SPECPR/versions/11960"
+      }
+    },
+    {
+      "id": "1.0.3",
+      "date": "2015-12-15",
+      "jira": {
+        "crs": "SPECBASE/versions/11360",
+        "prs": "SPECPR/versions/11860"
+      }
+    }
+  ]
 }

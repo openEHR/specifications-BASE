@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,29 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Core identifier and reference types shared across the openEHR specification stack: object identifiers, version identifiers, terminology codes, and typed object references. Object identifiers support both UUID-based and ISO OID-based schemes, while version identifiers encode three-way version logic for branch-aware versioning. Every versioned EHR object, archetype, and terminology reference in the platform is identified using types defined in this specification.
+
+== Purpose
+
+This document describes the openEHR Base Types, a collection of general types used by other openEHR specifications.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Research groups using openEHR, {iso_13606}[ISO 13606^], archetypes and related technologies;
+* The open source healthcare community;
+* Solution vendors.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+
+
 
 
 //
@@ -19,31 +43,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
-== Acknowledgements
+== Feedback
 
-=== Contributors
+Feedback may be provided on the {openehr_technical_list}[technical mailing list^].
 
-This specification has benefited from formal and informal input from the openEHR and wider health informatics community.
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-=== Trademarks
-
-* 'openEHR' is a registered trademark of the openEHR Foundation
-
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-//:sectnums!:
-//== References
-//
-//bibliography::[]

@@ -11,27 +11,27 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*original_language*: `xref:BASE:base_types:terminology_package.adoc#_terminology_code_class[Terminology_code]`
+|*original_language*: `xref:{class_terminology_code}[Terminology_code]`
 a|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.
 
 h|*0..1*
-|*is_controlled*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_controlled*: `xref:{class_boolean}[Boolean]`
 a|True if this resource is under any kind of change control (even file copying), in which case revision history is created.
 
 h|*0..1*
-|*description*: `xref:BASE:resource:resource_package.adoc#_resource_description_class[RESOURCE_DESCRIPTION]`
+|*description*: `xref:{class_resource_description}[RESOURCE_DESCRIPTION]`
 a|Description and lifecycle information of the resource.
 
 h|*0..1*
-|*uid*: `xref:BASE:base_types:identification_package.adoc#_uuid_class[UUID]`
+|*uid*: `xref:{class_uuid}[UUID]`
 a|Unique identifier of the family of archetypes having the same interface identifier (same major version).
 
 h|*0..1*
-|*annotations*: `xref:BASE:resource:resource_package.adoc#_resource_annotations_class[RESOURCE_ANNOTATIONS]`
+|*annotations*: `xref:{class_resource_annotations}[RESOURCE_ANNOTATIONS]`
 a|Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.
 
 h|*0..1*
-|*translations*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:resource:resource_package.adoc#_translation_details_class[TRANSLATION_DETAILS]>`
+|*translations*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_translation_details}[TRANSLATION_DETAILS]>`
 a|List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.
 
 h|*Functions*
@@ -39,13 +39,13 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*current_revision* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+|*current_revision* (): `xref:{class_string}[String]` +
  +
 __Post__: `Result = revision_history.most_recent_version`
 a|Most recent revision in revision_history if is_controlled else  (uncontrolled) .
 
 h|*1..1*
-|*languages_available* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*languages_available* (): `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Total list of languages available in this resource, derived from original_language and translations.
 
 h|*Invariants*

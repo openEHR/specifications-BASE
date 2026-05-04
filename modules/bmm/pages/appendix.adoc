@@ -1,0 +1,52 @@
+include::partial$module_vars.adoc[]
+
+= Appendix
+
+
+== Acknowledgements
+
+=== Primary Author
+
+* Thomas Beale, Ars Semantica; openEHR Foundation Management Board.
+
+=== Contributors
+
+This specification has benefited from formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.
+
+* Patrick Langford, NeuronSong LLC, Utah, USA
+* Claude Nanjo MA African Studies., M Public Health, Cognitive Medical Systems Inc., California, USA
+* Harold Solbrig, Mayo Clinic, Rochester, USA
+* Erik Sundvall PhD, Linkoping University, Sweden
+
+=== Trademarks
+
+* 'openEHR' is a registered trademark of the openEHR Foundation;
+* 'Java' is a registered trademark of Oracle Corporation;
+* 'C#' is a registered trademark of Microsoft;
+* 'OMG' and 'UML' are registered trademarks of the Object Management Group;
+* 'MagicDraw' is a registered trademark of NoMagic Inc;
+* 'Rational Software Architect' is a registered trademark of IBM Corporation.
+== Conformance
+
+Conformance of a data or software artifact to an openEHR specification is determined by a formal test of that artifact against the relevant {openehr_its_component}[openEHR Implementation Technology Specification(s) (ITSs)^], such as an IDL interface or an XML-schema. Since ITSs are formal derivations from underlying models, ITS conformance indicates model conformance.
+
+== A Note on Language
+
+The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we have used the following terms:
+
+feature (of a class):: any stored or computed element of a class, including constants, attributes (properties) and routines (methods);
+property:: a stored class feature; also known as 'attribute';
+routine:: a computed class feature that may be either value-returning (a function) or work-performing (a procedure);
+function:: a routine that computes and returns a value; typically causes no side-effects in the object;
+procedure:: a routine that performs a computation; typically has side-effects;
+generic (class or type):: a kind of class or type that has parameters of other types; known as 'template' type in some programming languages.
+
+== Tooling
+
+The {openehr_archie_github}[openEHR Archie Library^] fully implements this specification in Java and may be used to build UI tools for compiling, viewing and editing BMM models.
+
+The {openehr_awb}[openEHR ADL Workbench (AWB)] fully implements this specification, and provides a convenient way of illustrating BMM semantics. The screenshots used in this specification are all from the ADL Workbench. The tool is written in the Eiffel language, and is available as {openehr_awb_github}[open source on Github^]. The BMM libraries can be found in the {eomf_bmm}[EOMF Github repository^].
+
+:sectnums!:
+
+include::partial$amendment_record.adoc[]

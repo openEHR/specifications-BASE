@@ -7,22 +7,22 @@ h|*Description*
 2+a|Represents an ISO 8601 date, including partial and extended forms.
 
 h|*Inherit*
-2+|`xref:BASE:foundation_types:iso8601_time_package.adoc#_iso8601_type_class[Iso8601_type]`, `xref:BASE:foundation_types:time_types.adoc#_idate_class[IDate]`
+2+|`xref:{class_iso8601_type}[Iso8601_type]`, `xref:{class_idate}[IDate]`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*month_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*month_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether month in year is unknown. If so, the date is of the form “YYYY”.
 
 h|*1..1*
-|*day_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*day_unknown* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.
 
 h|*1..1*
-|*valid_iso8601_date* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*valid_iso8601_date* (): `xref:{class_boolean}[Boolean]`
 a|String is a valid ISO 8601 date, i.e. takes the complete form:
 
 * YYYYMMDD or the extended form:
@@ -44,21 +44,21 @@ The combinations of YYYY, MM, DD numbers must be correct with respect to the Gre
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_partial* (): `xref:{class_boolean}[Boolean]`
 a|True if this date is partial, i.e. if days or more is missing.
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_extended* (): `xref:{class_boolean}[Boolean]`
 a|True if this date uses `'-'` separators.
 
 h|*1..1 +
 (redefined)*
-|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*as_string* (): `xref:{class_string}[String]`
 a|ISO8601 string for date, in format `YYYYMMDD` or `YYYY-MM-DD`, or a partial invariant. See `_valid_iso8601_date()_` for validity.
 
 h|*1..1*
-|*as_date* (): `xref:BASE:foundation_types:time_types.adoc#_date_class[Date]`
+|*as_date* (): `xref:{class_date}[Date]`
 a|Convert to a native `Date`.
 
 h|*Invariants*

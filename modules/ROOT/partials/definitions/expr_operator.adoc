@@ -7,22 +7,22 @@ h|*Description*
 2+a|Abstract parent of operator types.
 
 h|*Inherit*
-2+|`xref:BASE:expression:core_package.adoc#_expression_class[EXPRESSION]`
+2+|`xref:{class_expression}[EXPRESSION]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*precedence_overridden*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*precedence_overridden*: `xref:{class_boolean}[Boolean]`
 a|True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
 
 h|*1..1*
-|*operator_def*: `xref:BASE:expression:core_package.adoc#_operator_def_class[OPERATOR_DEF]`
+|*operator_def*: `xref:{class_operator_def}[OPERATOR_DEF]`
 a|Operator definition.
 
 h|*0..1*
-|*symbol*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*symbol*: `xref:{class_string}[String]`
 a|The symbol actually used in the rule, or intended to be used for serialisation. Must be a member of `operator_def.symbols`.
 
 h|*Invariants*

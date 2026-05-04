@@ -7,24 +7,24 @@ h|*Description*
 2+a|Persistent form of `BMM_CONTAINER_PROPERTY`.
 
 h|*Inherit*
-2+|`xref:BASE:bmm_persistence_package.adoc#_p_bmm_property_class[P_BMM_PROPERTY]`
+2+|`xref:{class_p_bmm_property}[P_BMM_PROPERTY]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*cardinality*: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]<xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]>`
+|*cardinality*: `xref:{class_interval}[Interval]<xref:{class_integer}[Integer]>`
 a|Cardinality of this property in its class. Persistent attribute.
 
 h|*0..1 +
 (redefined)*
-|*type_def*: `xref:BASE:bmm_persistence_package.adoc#_p_bmm_container_type_class[P_BMM_CONTAINER_TYPE]`
+|*type_def*: `xref:{class_p_bmm_container_type}[P_BMM_CONTAINER_TYPE]`
 a|Type definition of this property, if not a simple String type reference. Persistent attribute.
 
 h|*0..1 +
 (redefined)*
-|*bmm_property*: `xref:BASE:bmm:core_package.adoc#_bmm_container_property_class[BMM_CONTAINER_PROPERTY]`
+|*bmm_property*: `xref:{class_bmm_container_property}[BMM_CONTAINER_PROPERTY]`
 a|`BMM_PROPERTY` created by `_create_bmm_property_`.
 
 h|*Functions*
@@ -34,8 +34,8 @@ h|*Functions*
 h|*1..1 +
 (redefined)*
 |*create_bmm_property* ( +
-a_bmm_schema: `xref:BASE:bmm:core_package.adoc#_bmm_model_class[BMM_MODEL][1]`, +
-a_class_def: `xref:BASE:bmm:core_package.adoc#_bmm_class_class[BMM_CLASS][1]` +
+a_bmm_schema: `xref:{class_bmm_model}[BMM_MODEL][1]`, +
+a_class_def: `xref:{class_bmm_class}[BMM_CLASS][1]` +
 ): `void`
 a|Create `_bmm_property_definition_`.
 |===
