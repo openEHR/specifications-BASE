@@ -1,0 +1,29 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*RESOURCE_DESCRIPTION_ITEM*
+
+2+a|Language-specific detail of resource description. When a resource is translated for use in another language environment, each `RESOURCE_DESCRIPTION_ITEM` needs to be copied and translated into the new language.
+
+2+h|*Attributes*
+
+|*language*: `xref:BASE:foundation_types:terminology.adoc#_terminology_code_class[Terminology_code]` [1..1]
+a|The localised language in which the items in this description item are written. Encoded following the RFC 5646 standard, using ISO 639-1 (two-character) language codes, e.g. "en". It may include a region subtag conforming to ISO 3166-1 alpha-2 (two-character country codes), e.g. "pt-br" for Brazilian Portuguese.
+
+|*purpose*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Purpose of the resource.
+
+|*keywords*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Keywords which characterise this resource, used e.g. for indexing and searching.
+
+|*use*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Description of the uses of the resource, i.e. contexts in which it could be used.
+
+|*misuse*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Description of any misuses of the resource, i.e. contexts in which it should not be used.
+
+|*original_resource_uri*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.
+
+|*other_details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Additional language-sensitive resource metadata, as a list of name/value pairs.
+|===

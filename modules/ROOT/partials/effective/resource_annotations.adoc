@@ -1,0 +1,28 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*RESOURCE_ANNOTATIONS*
+
+2+a|Object representing annotations on an archetype. These can be of various forms, with a documentation form defined so far, which has a multi-level tabular structure [ [ [String value, String key], path key], language key]. Example instance, showing the documentation structure.
+
+--------
+    documentation = <
+        ["en"] = <
+           ["/data[id2]"] = <
+               ["ui"] = <"passthrough">
+           >
+           ["/data[id2]/items[id3]"] = <
+               ["design note"] = <"this is a design note on Statement">
+               ["requirements note"] = <"this is a requirements note on Statement">
+               ["medline ref"] = <"this is a medline ref on Statement">
+           >
+        >
+    >
+--------
+
+Other sub-structures might have different keys, e.g.  based on programming languages, UI toolkits etc.
+
+2+h|*Attributes*
+
+|*documentation*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>>>` [1..1]
+a|Documentary annotations in a multi-level keyed structure.
+|===

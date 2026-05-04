@@ -1,0 +1,68 @@
+[source,json]
+--------
+{
+    "name": "ARCHETYPE_ID",
+    "documentation": "Identifier or reference for archetypes. Ideally, these identify globally unique archetypes. When used as a reference, only partial version information is included (major version only), and the namespace is omitted.\n\nLexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' version_id`.",
+    "ancestors": [
+        "OBJECT_ID"
+    ],
+    "functions": {
+        "qualified_rm_entity": {
+            "name": "qualified_rm_entity",
+            "documentation": "Globally qualified reference model entity, e.g.  `\"openehr-EHR-OBSERVATION\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "domain_concept": {
+            "name": "domain_concept",
+            "documentation": "Name of the concept represented by this archetype, including specialisation, e.g. `\"Biochemistry_result-cholesterol\"`. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "rm_originator": {
+            "name": "rm_originator",
+            "documentation": "Organisation originating the reference model on which this archetype is based, e.g. `\"openEHR\"`, `\"CEN\"`, `\"HL7\"`. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "rm_name": {
+            "name": "rm_name",
+            "documentation": "Name of the reference model, e.g. `\"RIM\"`,  `\"EHR\"`,  `\"EN13606\"`. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "rm_entity": {
+            "name": "rm_entity",
+            "documentation": "Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR:  `\"FOLDER\"`, `\"COMPOSITION\"`, `\"SECTION\"`, `\"OBSERVATION\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "specialisation": {
+            "name": "specialisation",
+            "documentation": "Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g. `\"cholesterol\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "version_id": {
+            "name": "version_id",
+            "documentation": "Version identification of this archetype, representing the major version, e.g. `\"1\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
+}
+--------

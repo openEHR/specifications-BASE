@@ -1,0 +1,75 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*RESOURCE_DESCRIPTION*
+
+2+a|Defines the descriptive meta-data of a resource.
+
+2+h|*Attributes*
+
+|*title*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Long-form descriptive title of the resource, typically needed in templates and occasionally in specialised archetypes where the root archetype/template name is not descriptive enough to disambiguate from similar archetypes/templates.
+
+|*original_author*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Original author of this resource, with all relevant details, including organisation.
+
+|*original_namespace*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Namespace of original author's organisation, in reverse internet form, if applicable.
+
+|*original_publisher*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Plain text name of organisation that originally published this artefact, if any.
+
+|*other_contributors*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Other contributors to the resource, each listed in "name <email>"  form.
+
+|*parent_resource*: `xref:BASE:resource:resource_package.adoc#_authored_resource_class[AUTHORED_RESOURCE]` [1..1] +
+`{default{nbsp}={nbsp}}`
+a|Reference to owning resource.
+
+|*lifecycle_state*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.
+
+|*custodian_namespace*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Namespace in reverse internet id form, of current custodian organisation.
+
+|*custodian_organisation*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Plain text name of current custodian organisation.
+
+|*copyright*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional copyright statement for the resource as a knowledge resource.
+
+|*licence*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Licence of current artefact, in format "short licence name <URL of licence>", e.g. "Apache 2.0 License <http://www.apache.org/licenses/LICENSE-2.0.html>"
+
+|*ip_acknowledgements*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:
+
+----
+ip_acknowledgements = <
+    ["loinc"] = <"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use">
+    ["snomedct"] = <"Content from SNOMED CT® is copyright © 2007 IHTSDO <ihtsdo.org>">
+>
+----
+
+|*references*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|List of references of material on which this artefact is based, as a keyed list of strings. The keys should be in a standard citation format.
+
+|*resource_package_uri*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|URI of package to which this resource belongs.
+
+|*conversion_details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:
+
+----
+conversion_details = <
+    ["source_model"] = <"CEM model xyz <http://location.in.clinicalelementmodels.com>">
+    ["tool"] = <"cem2adl v6.3.0">
+    ["time"] = <"2014-11-03T09:05:00">
+>
+----
+
+|*details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:resource:resource_package.adoc#_resource_description_item_class[RESOURCE_DESCRIPTION_ITEM]>` [0..1]
+a|Details of all parts of resource description that are natural language-dependent, keyed by language code.
+
+|*other_details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Additional non-language-sensitive resource meta-data, as a list of name/value pairs.
+|===

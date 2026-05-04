@@ -1,0 +1,16 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__UID (abstract)__*
+
+2+a|Abstract parent of classes representing unique identifiers which identify information entities in a durable way. UIDs only ever identify one IE in time or space and are never re-used.
+
+2+h|*Attributes*
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|The value of the id.
+
+2+h|*Invariants*
+
+2+a|__Value_valid__: `not value.empty`
+
+|===

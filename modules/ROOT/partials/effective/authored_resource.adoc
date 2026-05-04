@@ -1,0 +1,43 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__AUTHORED_RESOURCE (abstract)__*
+
+2+a|Abstract idea of an online resource created by a human author.
+
+2+h|*Attributes*
+
+|*uid*: `xref:BASE:base_types:identification_package.adoc#_uuid_class[UUID]` [0..1]
+a|Unique identifier of the family of archetypes having the same interface identifier (same major version).
+
+|*original_language*: `xref:BASE:foundation_types:terminology.adoc#_terminology_code_class[Terminology_code]` [1..1]
+a|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.
+
+|*description*: `xref:BASE:resource:resource_package.adoc#_resource_description_class[RESOURCE_DESCRIPTION]` [0..1]
+a|Description and lifecycle information of the resource.
+
+|*is_controlled*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if this resource is under any kind of change control (even file copying), in which case revision history is created.
+
+|*annotations*: `xref:BASE:resource:resource_package.adoc#_resource_annotations_class[RESOURCE_ANNOTATIONS]` [0..1]
+a|Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.
+
+|*translations*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:resource:resource_package.adoc#_translation_details_class[TRANSLATION_DETAILS]>` [0..1]
+a|List of details for each natural translation made of this resource, keyed by language code. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The `_original_language_` does not appear in this list.
+
+2+h|*Functions*
+
+|*languages_available* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Total list of languages available in this resource, derived from original_language and translations.
+
+2+h|*Invariants*
+
+2+a|__Original_language_valid__: `code_set (Code_set_id_languages).has_code (original_language.as_string)`
+
+2+a|__Translations_valid__: `translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))`
+
+2+a|__Description_valid__: `translations /= Void implies (description.details.for_all (d &#124;
+translations.has_key (d.language.code_string)))`
+
+2+a|__Languages_available_valid__: `languages_available.has (original_language)`
+
+|===
