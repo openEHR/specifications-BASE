@@ -2211,7 +2211,7 @@
                 },
                 "minute_unknown": {
                     "name": "minute_unknown",
-                    "documentation": "Indicates whether minute is unknown. If so, the time is of the form \u201chh\u201d.",
+                    "documentation": "Indicates whether minute is unknown. If so, the time is of the form \"hh\".",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Boolean"
@@ -3065,7 +3065,7 @@
                 "OBJECT_REF"
             ],
             "invariants": {
-                "Type_validity": "type.is_equal(\u201cPERSON\u201d) or type.is_equal(\u201cORGANISATION\u201d) or type.is_equal(\u201cGROUP\u201d) or type.is_equal(\u201cAGENT\u201d)or type.is_equal(\u201cROLE\u201d) or type.is_equal(\u201cPARTY\u201d) or type.is_equal(\u201cACTOR\u201d)"
+                "Type_validity": "type.is_equal(\"PERSON\") or type.is_equal(\"ORGANISATION\") or type.is_equal(\"GROUP\") or type.is_equal(\"AGENT\")or type.is_equal(\"ROLE\") or type.is_equal(\"PARTY\") or type.is_equal(\"ACTOR\")"
             }
         },
         "TERMINOLOGY_ID": {
@@ -3154,7 +3154,7 @@
                 "Branch_version_valid": "branch_version \/= Void implies branch_version.is_integer and then branch_version.as_integer >= 1",
                 "Branch_validity": "(branch_number = Void and branch_version = Void ) xor (branch_number \/= Void and branch_version \/= Void )",
                 "Is_branch_validity": "is_branch xor branch_number = Void",
-                "Is_first_validity": "not is_first xor trunk_version.is_equal(\u201c1\u201d)"
+                "Is_first_validity": "not is_first xor trunk_version.is_equal(\"1\")"
             }
         },
         "UID_BASED_ID": {
@@ -3246,7 +3246,7 @@
                 "OBJECT_REF"
             ],
             "invariants": {
-                "Type_validity": "type.is_equal (\u201cACCESS_GROUP\u201d)"
+                "Type_validity": "type.is_equal (\"ACCESS_GROUP\")"
             }
         },
         "OPENEHR_DEFINITIONS": {
@@ -3801,7 +3801,7 @@
                 },
                 "is_extended": {
                     "name": "is_extended",
-                    "documentation": "True if this time-zone uses \u2018:\u2019 separators.",
+                    "documentation": "True if this time-zone uses ':' separators.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Boolean"
