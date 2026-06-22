@@ -4451,6 +4451,11 @@
                         ]
                     }
                 }
+            },
+            "invariants": {
+                "Original_author_valid": "not original_author.is_empty",
+                "Lifecycle_state_valid": "not lifecycle_state.is_empty",
+                "Parent_resource_valid": "parent_resource \/= Void implies parent_resource.description = self"
             }
         },
         "TRANSLATION_DETAILS": {
