@@ -77,6 +77,7 @@
                     "name": "primitive_types",
                     "classes": [
                         "Uri",
+                        "Hrid",
                         "Comparable",
                         "Ordered_Numeric",
                         "Integer",
@@ -553,6 +554,127 @@
             "ancestors": [
                 "String"
             ]
+        },
+        "Hrid": {
+            "name": "Hrid",
+            "documentation": "A kind of String constrained to obey the syntax of an openEHR human-readable identifier (HRID), used to identify managed knowledge artefacts such as archetypes and templates.\n\nAn HRID has the form `[ namespace '::' ] rm_publisher '-' rm_closure '-' rm_class '.' concept_id '.v' version_id`.\n\nSee the _Human-readable Identifiers_ section of the openEHR Foundation Types specification for the full grammar, version numbering and concept identifier semantics.",
+            "ancestors": [
+                "String"
+            ],
+            "functions": {
+                "is_valid": {
+                    "name": "is_valid",
+                    "documentation": "True if this identifier conforms to the HRID grammar defined in the openEHR Foundation Types specification.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "Boolean"
+                    }
+                },
+                "is_namespaced": {
+                    "name": "is_namespaced",
+                    "documentation": "True if a `_namespace_` is present in this identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "Boolean"
+                    }
+                },
+                "namespace": {
+                    "name": "namespace",
+                    "documentation": "The optional namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.openehr\"`; empty if this identifier is unnamespaced.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "rm_publisher": {
+                    "name": "rm_publisher",
+                    "documentation": "Identifier of the organisation originating the reference model on which the identified artefact is based, e.g. `\"openEHR\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "rm_closure": {
+                    "name": "rm_closure",
+                    "documentation": "Identifier of the reference model top-level package closure on which the identified artefact is based, e.g. `\"EHR\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "rm_class": {
+                    "name": "rm_class",
+                    "documentation": "Name of the reference model class on which the identified artefact is based, e.g. `\"OBSERVATION\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "qualified_rm_class_name": {
+                    "name": "qualified_rm_class_name",
+                    "documentation": "The qualified reference model class name, i.e. `rm_publisher '-' rm_closure '-' rm_class`, e.g. `\"openEHR-EHR-OBSERVATION\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "concept_id": {
+                    "name": "concept_id",
+                    "documentation": "The ontological (domain) concept identifier of the artefact, e.g. `\"blood_pressure\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "version_id": {
+                    "name": "version_id",
+                    "documentation": "The version part of the identifier as it appears after `'.v'`, e.g. `\"1\"`, `\"1.8.2\"` or `\"1.8.2-rc.4\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "major_version": {
+                    "name": "major_version",
+                    "documentation": "The major version, i.e. the first numeric segment of `_version_id_`, e.g. `\"1\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "minor_version": {
+                    "name": "minor_version",
+                    "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty if not present.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "patch_version": {
+                    "name": "patch_version",
+                    "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty if not present.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "version_status": {
+                    "name": "version_status",
+                    "documentation": "The lifecycle status implied by the version modifier: `\"alpha\"`, `\"beta\"` or `\"release_candidate\"` for a pre-release version (`'-alpha'`, `'-beta'`, `'-rc'` respectively), or `\"released\"` when no modifier is present. These correspond to the `VERSION_STATUS` values defined in the openEHR Base Types specification.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "build_count": {
+                    "name": "build_count",
+                    "documentation": "The build count following a pre-release modifier, i.e. the number in `'-rc.'`, `'-alpha.'` or `'-beta.'`, e.g. `\"4\"` for `...v1.8.2-rc.4`; empty if no build count is present.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                }
+            }
         },
         "Ordered_Numeric": {
             "name": "Ordered_Numeric",

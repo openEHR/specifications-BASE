@@ -33,6 +33,135 @@ image::{uml_diagrams_uri}/BASE-foundation_types.primitive_types.svg[id=foundatio
 
 It is assumed in the openEHR specifications that Unicode is supported by the type `String`. Unicode is needed for all Asian, Arabic and other script languages, for both data values (particularly plain text and coded text) and for many predefined string attributes of the classes in the openEHR Reference Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is assumed.
 
+[[human_readable_identifiers]]
+== Human-Readable Identifiers
+
+=== Overview
+
+Many openEHR knowledge artefacts - including archetypes, templates and terminology subsets - are identified by a _human-readable identifier_ (HRID): a structured, lexically meaningful string that encodes the reference model basis and domain concept of the artefact, together with its version. The primitive type `<<_hrid_class,Hrid>>` represents such an identifier as a `String` constrained to the grammar defined here, and offers accessor functions for its sub-parts. For example:
+
+* `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2` - a namespaced (managed) archetype HRID;
+* `openEHR-EHR-COMPOSITION.report.v1` - an unnamespaced (unmanaged) HRID.
+
+This section defines the HRID grammar, version numbering and concept-identifier semantics independently of any particular artefact type. Concrete identifier types are specific applications of this scheme: for example `ARCHETYPE_ID` (defined in the openEHR {openehr_base_latest_base_types}[Base Types^] model) and `ARCHETYPE_HRID` (defined in the openEHR {openehr_am_latest_aom2}[Archetype Object Model^]) both denote artefacts whose string form conforms to the grammar below.
+
+The highest-level distinction is between _managed_ and _unmanaged_ artefacts. A managed artefact carries a `namespace` - the publisher organisation's reverse domain name - prepended to a 'local' HRID; an identifier without a namespace is assumed to denote an unmanaged artefact, i.e. one with no recognised owner organisation. The `namespace` is optional for legacy reasons, since many existing artefacts predate its introduction.
+
+=== Grammar
+
+An HRID consists of two logical parts: an identifier of the reference model class on which the artefact is based (the `hrid_root`), and a version identifier. The grammar is as follows.
+
+[source, ebnf]
+--------
+    hrid                    =   namespaced_hrid | local_hrid ;
+    namespaced_hrid         =   namespace '::' local_hrid ;
+    local_hrid              =   hrid_root '.v' version_id ;
+    hrid_root               =   qualified_rm_class_name '.' concept_id ;
+    qualified_rm_class_name =   rm_publisher '-' rm_closure '-' rm_class ;
+
+    namespace               =   V_REVERSE_DOMAIN_NAME ;   (* IETF RFCs 1035, 1123, 2181 *)
+    rm_publisher            =   V_ALPHANUMERIC_NAME ;
+    rm_closure              =   V_ALPHANUMERIC_NAME ;
+    rm_class                =   V_ALPHANUMERIC_NAME ;
+    concept_id              =   V_SEGMENTED_ALPHANUMERIC_NAME ;
+
+    V_ALPHANUMERIC_NAME           =   ? [a-zA-Z][a-zA-Z0-9_]+ ? ;   (* regex *)
+    V_SEGMENTED_ALPHANUMERIC_NAME =   ? [a-zA-Z][a-zA-Z0-9_-]+ ? ;  (* allows hyphens *)
+--------
+
+The field meanings are as follows:
+
+* `namespace`: reverse domain name of the publishing organisation, e.g. `org.openehr`, `uk.nhs`, `edu.nci`; used to aid lexical sorting of identifiers and directory construction by tools;
+* `rm_publisher`: identifier of the organisation originating the reference model on which the artefact is based, e.g. `openEHR`, `ISO`;
+* `rm_closure`: identifier of the reference model top-level package closure from which the focal class is reachable, e.g. `EHR`, `ISO13606`; a class may be reachable from more than one closure, but a given artefact is designed for exactly one;
+* `rm_class`: name of the reference model class on which the artefact is based, e.g. `OBSERVATION`, `ENTRY`;
+* `concept_id`: an ontological identifier for the concept represented by the artefact (see below).
+
+The `hrid_root` thus takes forms such as `openEHR-EHR-OBSERVATION.bp_measurement` or `ISO-ISO13606-ENTRY.bp_measurement`.
+
+=== Concept Identifier
+
+The `concept_id` is a 'short' ontological identifier (known in ADL 1.4 as the 'concept' or 'domain concept'), historically a natural-language mnemonic such as `bp_measurement`. Its authoritative form should come from an ontology corresponding to the `namespace` of the identifier, maintained by the custodian organisation. This specification does not define such an ontology, only the requirement that concept identifiers be unique within a namespace.
+
+NOTE: In legacy (ADL 1.4) identifiers, the concept part could encode a specialisation hierarchy as hyphen-separated segments, e.g. `problem-diagnosis`. The `'-'` character remains permitted within `concept_id`, but carries no structural significance in this specification; the level of specialisation of an artefact can no longer be inferred from its identifier.
+
+=== Version Numbering
+
+The numbering of artefact versions follows the rules for identifying software releases defined by {semver}[semver.org^]. A fully-released artefact has a three-part numeric `release_version`; the version as written in an HRID (`version_id`) may however be given at reduced precision - major only, or major and minor - and may carry a pre-release modifier. This grammar is aligned with the ADL 2 base lexer tokens `ARCHETYPE_HRID`, `ARCHETYPE_REF` and `VERSION_ID` (see {openehr_am_latest_adl2}#_base_lexer[Archetype Definition Language 2^]).
+
+[source, ebnf]
+--------
+    (* version as written in an HRID - minor and patch optional (cf. ADL 2 ARCHETYPE_VERSION_ID) *)
+    version_id        =   major_version [ '.' minor_version [ '.' patch_version [ version_modifier ] ] ] ;
+
+    (* full version of a released artefact (cf. ADL 2 VERSION_ID) *)
+    release_version   =   major_version '.' minor_version '.' patch_version [ version_modifier ] ;
+
+    version_modifier  =   ( '-rc' | '-alpha' | '-beta' ) [ '.' issue_number ] ;
+    major_version     =   V_NUMBER ;
+    minor_version     =   V_NUMBER ;
+    patch_version     =   V_NUMBER ;
+    issue_number      =   V_NUMBER ;
+    V_NUMBER          =   V_DIGIT+ ;
+    V_DIGIT           =   '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
+--------
+
+The numeric parts have the following semantics:
+
+* *major version* - incremented for a breaking change to the artefact's formal definition;
+* *minor version* - incremented for a non-breaking change to the formal definition;
+* *patch version* - incremented for a change to the informal parts of the artefact;
+* *build number* - a separate count, incremented on every commit and reset to 1 whenever the version identifier changes; it is recorded as artefact meta-data rather than within the identifier proper.
+
+What constitutes the 'formal definition', and therefore which kind of change is breaking, is defined by the model governing each artefact type (for archetypes and templates, see the openEHR {openehr_am_latest_id}[Archetype Identification^] specification).
+
+This yields identifiers such as:
+
+--------
+    1              # major version only (reduced form, in an HRID or reference)
+    1.3            # major and minor (reduced form)
+    1.3.5-alpha    # alpha development version based on version 1.3.4
+    1.3.5-beta     # beta development version
+    1.3.5-rc.3     # release candidate 3 for version 1.3.5
+    1.3.5          # release 1.3.5
+--------
+
+Two general rules apply:
+
+* *first-version rule*: the first version of an artefact is a `v0` version, i.e. `0.N.P` (usually `0.0.1`), signifying that it has not yet been released;
+* *incrementing rule*: on a release version, incrementing the major version resets the minor and patch numbers to 0; incrementing the minor version resets the patch number to 0.
+
+The `-rc` (release candidate), `-alpha` and `-beta` (development) modifiers denote versions _prior to_ the release identified by the preceding numeric version, and may be followed by an optional dot-separated issue/build number (e.g. `1.3.5-rc.3`). A `-rc` version is guaranteed to be semantically compatible with its target release.
+
+Only the major version forms part of the artefact's _interface_, in the sense described under <<references_and_precision_tiers,References and Precision Tiers>>: a breaking change (new major version) is treated as a distinct artefact for deployment purposes.
+
+[[references_and_precision_tiers]]
+=== References and Precision Tiers
+
+A _reference_ to an artefact differs from an _identifier_: a reference is either a full physical identifier or an identifier carrying only partial version information, and in both cases is used to _match_ artefacts that carry full identification. Because more than one artefact may match a partial reference, a matching algorithm is associated with each reference form. Three precision tiers are defined:
+
+* the *interface reference* (`ihrid_ref`) - major version only; matches the latest available release of that major version;
+* the *specific interface reference* (`sihrid_ref`) - major and minor version; matches a specific released interface;
+* the *physical reference* (`phrid_ref`) - the full three-part numeric version; identifies physically identical artefact instances.
+
+A reference carries only numeric version segments (no pre-release modifier), matching the ADL 2 `ARCHETYPE_REF` token:
+
+[source, ebnf]
+--------
+    hrid_ref                =   [ namespace '::' ] hrid_root '.v' version_ref ;
+    version_ref             =   major_version { '.' V_NUMBER } ;   (* numeric only; cf. ADL 2 ARCHETYPE_REF *)
+
+    ihrid_ref               =   hrid_root '.v' major_version ;                                        (* interface *)
+    sihrid_ref              =   hrid_root '.v' major_version '.' minor_version ;                       (* specific interface *)
+    phrid_ref               =   hrid_root '.v' major_version '.' minor_version '.' patch_version ;     (* physical *)
+--------
+
+For example, `org.openehr::openEHR-EHR-EVALUATION.diagnosis.v1` and `org.openehr::openEHR-EHR-EVALUATION.diagnosis.v2` are interface references to logically distinct artefacts (their major versions differ, indicating a breaking change), whereas `openEHR-EHR-EVALUATION.diagnosis.v1.1.5` and `openEHR-EHR-EVALUATION.diagnosis.v1.1.7` are physical references to distinct but logically substitutable artefacts.
+
+As with identifiers, the `namespace` segment may be omitted from a reference (e.g. `openEHR-EHR-EVALUATION.diagnosis.v1`). An unnamespaced reference is resolved within the same namespace as the referring artefact - which may itself be unnamespaced; a `namespace` is included only to refer to an artefact in a different namespace.
+
+Because minor versions may add structure, a major-version-only reference does not necessarily designate all of the interface available in the latest minor version; where precise designation is required, at least a minor version should be included.
+
 == Class Definitions
 
 include::{uml_export_dir}/classes/{pkg}boolean.adoc[]
@@ -46,6 +175,8 @@ include::{uml_export_dir}/classes/{pkg}octet.adoc[]
 include::{uml_export_dir}/classes/{pkg}string.adoc[]
 
 include::{uml_export_dir}/classes/{pkg}uri.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}hrid.adoc[]
 
 include::{uml_export_dir}/classes/{pkg}numeric.adoc[]
 
