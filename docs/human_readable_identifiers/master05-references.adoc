@@ -1,0 +1,35 @@
+= References and Precision Tiers
+
+A _reference_ to an artefact differs from an _identifier_: a reference is either a full physical identifier or an identifier carrying only partial version information, and in both cases is used to _match_ artefacts that carry full identification. Because more than one artefact may match a partial reference, a matching algorithm is associated with each reference form. Three precision tiers are defined:
+
+* the *interface reference* (`ihrid_ref`) - major version only; matches the latest available release of that major version;
+* the *specific interface reference* (`sihrid_ref`) - major and minor version; matches a specific released interface;
+* the *physical reference* (`phrid_ref`) - the full three-part numeric version; identifies physically identical artefact instances.
+
+A reference carries only numeric version segments (no pre-release modifier), matching the ADL 2 `ARCHETYPE_REF` token:
+
+[source, ebnf]
+--------
+    hrid_ref                =   [ namespace '::' ] hrid_root '.v' version_ref ;
+    version_ref             =   major_version { '.' V_NUMBER } ;   (* numeric only; cf. ADL 2 ARCHETYPE_REF *)
+
+    ihrid_ref               =   hrid_root '.v' major_version ;                                        (* interface *)
+    sihrid_ref              =   hrid_root '.v' major_version '.' minor_version ;                       (* specific interface *)
+    phrid_ref               =   hrid_root '.v' major_version '.' minor_version '.' patch_version ;     (* physical *)
+--------
+
+For example, `org.openehr::openEHR-EHR-EVALUATION.diagnosis.v1` and `org.openehr::openEHR-EHR-EVALUATION.diagnosis.v2` are interface references to logically distinct artefacts (their major versions differ, indicating a breaking change), whereas `openEHR-EHR-EVALUATION.diagnosis.v1.1.5` and `openEHR-EHR-EVALUATION.diagnosis.v1.1.7` are physical references to distinct but logically substitutable artefacts.
+
+As with identifiers, the `namespace` segment may be omitted from a reference (e.g. `openEHR-EHR-EVALUATION.diagnosis.v1`). An unnamespaced reference is resolved within the same namespace as the referring artefact - which may itself be unnamespaced; a `namespace` is included only to refer to an artefact in a different namespace.
+
+Because minor versions may add structure, a major-version-only reference does not necessarily designate all of the interface available in the latest minor version; where precise designation is required, at least a minor version should be included.
+
+== Uses of References
+
+References based on human-readable identifiers occur in several contexts. Their detailed semantics are defined by the artefact-type specifications; the following summarises the general cases:
+
+* *between source artefacts* - an artefact refers to another (for example a specialised artefact to its parent, or an artefact that includes another) using an HRID reference, most commonly an interface reference;
+* *from operational artefacts and data* - an information item records the identifier of the artefact it conforms to, so that the originating artefact can be determined later;
+* *in queries* - a query may reference artefacts at any precision tier, a partial reference matching a family of releases.
+
+For archetypes and templates, these cases - including external references, archetype slots, specialisation parents, operational templates and AQL - are specified in the openEHR {openehr_am_latest_id}[Archetype Identification^] specification.

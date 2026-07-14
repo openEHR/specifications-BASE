@@ -1,0 +1,50 @@
+= Overview
+
+Many openEHR knowledge artefacts - including archetypes, templates and terminology subsets - are identified by a _human-readable identifier_ (HRID): a structured, lexically meaningful string that encodes the reference model basis and domain concept of the artefact, together with its version. For example:
+
+* `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2` - a namespaced (managed) archetype HRID;
+* `openEHR-EHR-COMPOSITION.report.v1` - an unnamespaced (unmanaged) HRID.
+
+An HRID is designed to be both human-readable and computable: sub-parts such as the reference-model class or the version can be extracted and reasoned about directly.
+
+The computable type representing an HRID is the `Hrid` primitive, defined in the openEHR {openehr_base_latest_foundation_types}[Foundation Types^] specification as a `String` constrained to the grammar defined here; this document is the normative source for that grammar and its semantics. Concrete identifier types are specific applications of the scheme - for example `ARCHETYPE_ID` (openEHR {openehr_base_latest_base_types}[Base Types^]) and `ARCHETYPE_HRID` (openEHR {openehr_am_latest_aom2}[Archetype Object Model^]) both denote artefacts whose string form conforms to this grammar.
+
+== Requirements
+
+Knowledge artefacts such as archetypes, templates and terminology subsets are 'outside the software' and independent of specific implementation technologies: they are created, developed, disseminated and used independently of software release cycles. Reliable identification and referencing of such artefacts, within and across distributed authoring and consumption environments, is therefore a distinct problem from software identification, even though the two share many characteristics.
+
+The key requirements addressed by the HRID scheme are to:
+
+* identify and distinguish versions, variants and releases of 'source' artefacts within and across authoring environments;
+* define rules for expressing and resolving _references_ between source artefacts, including version variants;
+* define rules for identification of compiled / operational artefacts derived from source artefacts;
+* define rules for evolving identifiers (including version) of artefacts over time, based on a standard artefact lifecycle;
+* define rules for identification when artefacts are retired, moved or 'forked'.
+
+The domain of experience assumed here is health, but the scheme applies to any domain that manages knowledge artefacts independently of software.
+
+== Human-readable and Machine Identifiers
+
+Two general approaches to identification exist. The first, used in software and ontology development, is the _human-readable identifier_ (HRID): an identifier that names an artefact and can also be used as a reference to connect related artefacts, for example along a specialisation / subsumption hierarchy. A typical software HRID is a class name such as `FastSortedList`. The second is the _machine identifier_ (more properly a 'machine-readable' or 'machine-resolvable' identifier) such as a GUID or ISO OID, with an accompanying de-referencing mechanism. The two approaches are complementary rather than equivalent.
+
+A human-readable scheme supports specialisation hierarchies, multi-dimensional concept spaces and flexible versioning, and reflects the authors' and users' understanding of the concept space being modelled; it therefore supports many kinds of computational processing directly. One consequence is that a human-readable identifier _may change after initial assignment_ - typically only during early development, before the first release - for reasons such as a change of purpose or improved understanding of need.
+
+A machine identifier, by contrast, is opaque, does not directly support versioning, and requires mapping to obtain a human-readable form; but, unlike a human-readable identifier, it does not normally change once assigned. This makes it suitable for tracking an artefact stably across every revision of its definition.
+
+The openEHR scheme uses both:
+
+* a machine identifier (assumed to be a GUID) is assigned when an artefact is created and does not change, whatever subsequent changes are made to the artefact definition; it enables authoring and repository tools to track an artefact over time;
+* one or more namespaced HRIDs are _computed_ from identifying properties of the artefact (which properties depends on the artefact type);
+* the most recent committed build of an artefact can be identified either by a build number that is part of its version identification, or by a hash over a canonical serialisation.
+
+This specification defines the human-readable identifier. The machine identifier is held as a separate property of the artefact (for archetypes, the `uid` property of `ARCHETYPE_HRID`) and is otherwise outside the scope of this document.
+
+== Managed and Unmanaged Artefacts
+
+The highest-level distinction is between _managed_ and _unmanaged_ artefacts. A managed artefact carries a `namespace` - the publisher organisation's reverse domain name - prepended to a 'local' HRID. Reverse domain names are used to aid lexical sorting of identifiers and directory construction by tools. Examples:
+
+* `org.openehr` - EHR archetype library at openEHR.org;
+* `uk.nhs` - UK National Health Service;
+* `edu.nci` - US National Cancer Institute.
+
+An identifier without a namespace is assumed to denote an _unmanaged_ artefact, i.e. one with no recognised owner organisation. The `namespace` is optional for legacy reasons, since many existing artefacts predate its introduction; during a period of migration, managed artefacts progressively acquire a namespace (and a machine identifier). All managed artefacts should carry a namespace.
