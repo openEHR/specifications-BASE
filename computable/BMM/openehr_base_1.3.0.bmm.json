@@ -4350,7 +4350,7 @@
             },
             "invariants": {
                 "Original_language_valid": "code_set (Code_set_id_languages).has_code (original_language.as_string)",
-                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))",
+                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (original_language.code_string))",
                 "Description_valid": "translations \/= Void implies (description.details.for_all (d &#124;\ntranslations.has_key (d.language.code_string)))",
                 "Languages_available_valid": "languages_available.has (original_language)"
             }
