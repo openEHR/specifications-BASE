@@ -1,12 +1,11 @@
 = Identifier Syntax
 
-An HRID consists of two logical parts: an identifier of the reference model class on which the artefact is based (the `hrid_root`), and a version identifier. The grammar is as follows.
+An HRID consists of a `hrid_root` (an identifier of the reference model class and domain concept on which the artefact is based) and a version identifier, in the modern form preceded by a `namespace`. Two identifier forms are defined: a _modern_ (ADL 2) identifier, in which the `namespace` is mandatory; and a _legacy_ (ADL 1.4) identifier, which has no namespace and a major-only version. The grammar is as follows.
 
 [source, ebnf]
 --------
-    hrid                    =   namespaced_hrid | local_hrid ;
-    namespaced_hrid         =   namespace '::' local_hrid ;
-    local_hrid              =   hrid_root '.v' version_id ;
+    hrid                    =   ( namespace '::' hrid_root '.v' version_id )   (* namespaced (ADL 2) form *)
+                            |   ( hrid_root '.v' major_version ) ;            (* legacy (ADL 1.4) form: no namespace, major version only *)
     hrid_root               =   qualified_rm_class_name '.' concept_id ;
     qualified_rm_class_name =   rm_publisher '-' rm_closure '-' rm_class ;
 
@@ -24,7 +23,7 @@ The version identifier (`version_id`) is defined in <<Version Numbering>>.
 
 The field meanings are as follows:
 
-* `namespace`: reverse domain name of the publishing organisation, e.g. `org.openehr`, `uk.nhs`, `edu.nci`;
+* `namespace`: reverse domain name of the publishing organisation, e.g. `org.openehr`, `uk.nhs`, `edu.nci`; mandatory in a modern (ADL 2) identifier and absent from a legacy (ADL 1.4) one;
 * `rm_publisher`: identifier of the organisation originating the reference model on which the artefact is based, e.g. `openEHR`, `ISO`;
 * `rm_closure`: identifier of the reference model top-level package closure from which the focal class is reachable, e.g. `EHR`, `ISO13606`; a class may be reachable from more than one closure, but a given artefact is designed for exactly one;
 * `rm_class`: name of the reference model class on which the artefact is based, e.g. `OBSERVATION`, `ENTRY`;
@@ -50,7 +49,7 @@ NOTE: In legacy (ADL 1.4) identifiers, the concept part could encode a specialis
 
 The regular expression below is an _informative_ convenience for implementers - for example to parse or validate an HRID string, or as an OpenAPI / XML-Schema `pattern`. The normative grammar remains the EBNF above together with the `version_id` grammar in <<Version Numbering>>; where the two disagree, the EBNF prevails.
 
-It parses an identifier into its segments (the named capture groups). The core `rm_publisher-rm_closure-rm_class.concept_id` and at least the major `version_id` (`.v` plus the major number) are required; the `namespace` and the minor and patch version parts are optional and are captured when present. It therefore accepts both a complete identifier and a reduced-precision _reference_ - namespace omitted, or the version reduced to major (`.v1`) or major-and-minor (`.v1.2`) precision. To _validate_ a complete, managed identifier rather than merely parse one, additionally require the `namespace` and a full three-part `version_id`. Forms that carry no version at all, an empty `namespace` ("any namespace") or an empty version ("any version") are query _wildcards_ defined by the openEHR {openehr_query_latest_aql}[Archetype Query Language^], not identifiers or references matched here.
+It parses an HRID into its segments (the named capture groups). The core `rm_publisher-rm_closure-rm_class.concept_id` and at least the major `version_id` (`.v` plus the major number) are required; the `namespace` and the minor and patch version parts are optional and are captured when present. The expression is deliberately lenient, so it accepts a modern (ADL 2) identifier, a legacy (ADL 1.4) identifier and a reduced-precision _reference_ alike. To _validate_ a complete ADL 2 identifier - rather than merely parse one - additionally require the `namespace` together with a full three-part `version_id`; the legacy ADL 1.4 identifier is the remaining well-formed case, namespaceless with a major-only version. A namespaceless string that carries a minor or patch version matches the lenient expression but is well-formed as neither an identifier nor a reference - both an ADL 2 identifier and an ADL 2 reference carry the namespace, so the only namespaceless form is the legacy ADL 1.4 identifier (major version only). Forms that carry no version at all, an empty `namespace` ("any namespace") or an empty version ("any version") are query _wildcards_ defined by the openEHR {openehr_query_latest_aql}[Archetype Query Language^], not identifiers or references matched here.
 
 PCRE flavour, with named capture groups corresponding to the grammar productions:
 

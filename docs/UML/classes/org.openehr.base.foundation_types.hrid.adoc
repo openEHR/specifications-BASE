@@ -8,7 +8,7 @@ h|*Class*
 h|*Description*
 2+a|A kind of String constrained to obey the syntax of an openEHR human-readable identifier (HRID), used to identify managed knowledge artefacts such as archetypes and templates.
 
-An HRID has the high-level form `[namespace '::'] rm_publisher-rm_closure-rm_class '.' concept_id '.v' version_id`, for example `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.0`.
+Two identifier forms are recognised: a modern (ADL 2) identifier, which is namespaced and carries a full `major.minor.patch` version, e.g. `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.0`; and a legacy (ADL 1.4) identifier, which has no namespace and a major-only version, e.g. `openEHR-EHR-OBSERVATION.blood_pressure.v2`. The namespace is mandatory in the modern form and absent in the legacy form; `_is_namespaced_` discriminates the two. A namespaceless full-version string is therefore not a valid identifier.
 
 See the openEHR Human-Readable Identifiers specification for the grammar, version numbering, concept-identifier semantics and referencing model.
 
@@ -21,15 +21,15 @@ h|*Functions*
 
 h|*1..1*
 |*is_valid* (): `<<_boolean_class,Boolean>>`
-a|True if this identifier conforms to the HRID grammar defined in the openEHR Foundation Types specification.
+a|True if this identifier conforms to the HRID grammar defined in the openEHR Human-Readable Identifiers specification, i.e. it is either a namespaced modern (ADL 2) identifier or an unnamespaced legacy (ADL 1.4) identifier.
 
 h|*1..1*
 |*is_namespaced* (): `<<_boolean_class,Boolean>>`
-a|True if a `_namespace_` is present in this identifier.
+a|True if this identifier carries a `_namespace_`, i.e. is a modern (ADL 2) identifier; False for a legacy (ADL 1.4) identifier, which has no namespace.
 
 h|*1..1*
 |*namespace* (): `<<_string_class,String>>`
-a|The optional namespace of the identifier, in the form of a reverse domain name, e.g. `"org.openehr"`; empty if this identifier is unnamespaced.
+a|The namespace of the identifier, in the form of a reverse domain name, e.g. `"org.openehr"`; mandatory in a modern (ADL 2) identifier and empty for a legacy (ADL 1.4) identifier.
 
 h|*1..1*
 |*rm_publisher* (): `<<_string_class,String>>`

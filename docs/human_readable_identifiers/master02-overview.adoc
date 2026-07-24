@@ -2,8 +2,8 @@
 
 Many openEHR knowledge artefacts - including archetypes, templates and terminology subsets - are identified by a _human-readable identifier_ (HRID): a structured, lexically meaningful string that encodes the reference model basis and domain concept of the artefact, together with its version. For example:
 
-* `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.0` - a namespaced (managed) archetype HRID;
-* `openEHR-EHR-COMPOSITION.report.v1` - an unnamespaced (unmanaged) HRID.
+* `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.0` - a modern (ADL 2) archetype HRID, namespaced and carrying a full three-part version;
+* `openEHR-EHR-COMPOSITION.report.v1` - a legacy (ADL 1.4) HRID, with no namespace and a major-only version.
 
 An HRID is designed to be both human-readable and computable: sub-parts such as the reference-model class or the version can be extracted and reasoned about directly.
 
@@ -47,4 +47,4 @@ The highest-level distinction is between _managed_ and _unmanaged_ artefacts. A 
 * `uk.nhs` - UK National Health Service;
 * `edu.nci` - US National Cancer Institute.
 
-An identifier without a namespace is assumed to denote an _unmanaged_ artefact, i.e. one with no recognised owner organisation. The `namespace` is optional for legacy reasons, since many existing artefacts predate its introduction; during a period of migration, managed artefacts progressively acquire a namespace (and a machine identifier). All managed artefacts should carry a namespace.
+The namespace is *mandatory* in a modern (ADL 2) identifier: every managed artefact is identified by a namespaced HRID. An identifier *without* a namespace is a legacy (ADL 1.4) identifier - it predates the introduction of namespacing and carries a major-only version - and denotes an _unmanaged_ artefact, i.e. one with no recognised owner organisation. New artefacts are always managed and therefore namespaced; the unnamespaced form is retained only for backward compatibility with legacy artefacts, which acquire a namespace (and a machine identifier) when migrated to ADL 2. A namespaceless identifier carrying a minor or patch version is consequently not well-formed.
