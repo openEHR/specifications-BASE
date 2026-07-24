@@ -2107,7 +2107,7 @@
                 },
                 "to_seconds": {
                     "name": "to_seconds",
-                    "documentation": "Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `Time_definitions` are used to compute the result.",
+                    "documentation": "Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `<<_time_definitions_class,Time_definitions>>` are used to compute the result. Using the constants defined there, the computation is `to_seconds = years × Average_days_in_year × spd + months × Average_days_in_month × spd + weeks × Days_in_week × spd + days × spd + hours × Minutes_in_hour × Seconds_in_minute + minutes × Seconds_in_minute + seconds + fractional_seconds`, where `spd = Hours_in_day × Minutes_in_hour × Seconds_in_minute` is the number of seconds in a day (86400).",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Real"
