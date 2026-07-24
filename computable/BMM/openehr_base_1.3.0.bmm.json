@@ -51,6 +51,12 @@
                         "Math",
                         "Quantity_converter"
                     ]
+                },
+                "terminology": {
+                    "name": "terminology",
+                    "classes": [
+                        "CODE_PHRASE"
+                    ]
                 }
             }
         },
@@ -123,8 +129,7 @@
                     "name": "terminology",
                     "classes": [
                         "Terminology_code",
-                        "Terminology_term",
-                        "CODE_PHRASE"
+                        "Terminology_term"
                     ]
                 }
             },
@@ -345,9 +350,22 @@
                     "documentation": "Existential quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -364,9 +382,22 @@
                     "documentation": "Universal quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -379,9 +410,22 @@
                     "documentation": "Return a List all items matching the predicate function `_test_` which has signature `(v:T): Boolean`. If no matches, an empty List is returned.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -396,9 +440,22 @@
                     "documentation": "Return first item matching the predicate function `_test_` which has signature `(v:T): Boolean`, or Void if no match.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -2219,7 +2276,7 @@
                 },
                 "second_unknown": {
                     "name": "second_unknown",
-                    "documentation": "Indicates whether second is unknown. If so and month is known, the time is of the form `\"hh:mm\"` or `\"hhmm\"`.",
+                    "documentation": "Indicates whether second is unknown. If so and minute is known, the time is of the form `\"hh:mm\"` or `\"hhmm\"`.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Boolean"
@@ -2689,7 +2746,7 @@
                 },
                 "intersects": {
                     "name": "intersects",
-                    "documentation": "True if there is any overlap between intervals represented by Current and `_other_`. True if at least one limit of `_other_` is strictly inside the limits of this interval.",
+                    "documentation": "True if there is any overlap between intervals represented by Current and `_other_`, i.e. at least one limit of `_other_` is strictly inside the limits of this interval.",
                     "is_abstract": true,
                     "parameters": {
                         "other": {
@@ -2705,7 +2762,7 @@
                 },
                 "contains": {
                     "name": "contains",
-                    "documentation": "True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval.",
+                    "documentation": "True if current interval properly contains `_other_`, i.e. all points of `_other_` are inside the current interval.",
                     "is_abstract": true,
                     "parameters": {
                         "other": {
@@ -4293,7 +4350,7 @@
             },
             "invariants": {
                 "Original_language_valid": "code_set (Code_set_id_languages).has_code (original_language.as_string)",
-                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))",
+                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (original_language.code_string))",
                 "Description_valid": "translations \/= Void implies (description.details.for_all (d &#124;\ntranslations.has_key (d.language.code_string)))",
                 "Languages_available_valid": "languages_available.has (original_language)"
             }
