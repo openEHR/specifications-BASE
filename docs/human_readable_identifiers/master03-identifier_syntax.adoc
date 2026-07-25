@@ -1,0 +1,68 @@
+= Identifier Syntax
+
+An HRID consists of a `hrid_root` (an identifier of the reference model class and domain concept on which the artefact is based) and a version identifier, in the modern form preceded by a `namespace`. Two identifier forms are defined: a _modern_ (ADL 2) identifier, in which the `namespace` is mandatory; and a _legacy_ (ADL 1.4) identifier, which has no namespace and a major-only version. The grammar is as follows.
+
+[source, ebnf]
+--------
+    hrid                    =   ( namespace '::' hrid_root '.v' version_id )   (* namespaced (ADL 2) form *)
+                            |   ( hrid_root '.v' major_version ) ;            (* legacy (ADL 1.4) form: no namespace, major version only *)
+    hrid_root               =   qualified_rm_class_name '.' concept_id ;
+    qualified_rm_class_name =   rm_publisher '-' rm_package '-' rm_class ;
+
+    namespace               =   V_REVERSE_DOMAIN_NAME ;   (* IETF RFCs 1035, 1123, 2181 *)
+    rm_publisher            =   V_ALPHANUMERIC_NAME ;
+    rm_package              =   V_ALPHANUMERIC_NAME ;
+    rm_class                =   V_ALPHANUMERIC_NAME ;
+    concept_id              =   V_SEGMENTED_ALPHANUMERIC_NAME ;
+
+    V_ALPHANUMERIC_NAME           =   ? [a-zA-Z][a-zA-Z0-9_]+ ? ;   (* regex *)
+    V_SEGMENTED_ALPHANUMERIC_NAME =   ? [a-zA-Z][a-zA-Z0-9_-]+ ? ;  (* allows hyphens *)
+--------
+
+The version identifier (`version_id`) is defined in <<Version Numbering>>.
+
+The field meanings are as follows:
+
+* `namespace`: reverse domain name of the publishing organisation, e.g. `org.openehr`, `uk.nhs`, `edu.nci`; mandatory in a modern (ADL 2) identifier and absent from a legacy (ADL 1.4) one;
+* `rm_publisher`: identifier of the organisation originating the reference model on which the artefact is based, e.g. `openEHR`, `ISO`;
+* `rm_package`: identifier of the reference model top-level package closure from which the focal class is reachable, e.g. `EHR`, `ISO13606`; a class may be reachable from more than one closure, but a given artefact is designed for exactly one;
+* `rm_class`: name of the reference model class on which the artefact is based, e.g. `OBSERVATION`, `ENTRY`;
+* `concept_id`: an ontological identifier for the concept represented by the artefact (see below).
+
+The `hrid_root` thus takes forms such as `openEHR-EHR-OBSERVATION.bp_measurement` or `ISO-ISO13606-ENTRY.bp_measurement`.
+
+The notion of _closure_ is that of a top-level package from which the focal class can be reached. A given class may be reachable from more than one closure, but an artefact of that class is designed for only one of them. For example, the openEHR `CLUSTER` class is reachable from both the `EHR` and `demographic` closures, yet a `CLUSTER` archetype such as `openEHR-EHR-CLUSTER.physical_examination` is meaningful only within `EHR` data; a tool can use the closure to ensure that such an artefact is never attached to a demographic information item.
+
+== Need for the Reference Model Class Name
+
+In principle the qualified reference model class name (`qualified_rm_class_name`) would not be needed if concept identifiers never clashed. In practice, an appropriate name for a data-level concept can also be a reasonable name for a higher-level container of the same data - for example `lab_result` is a plausible `concept_id` for an `OBSERVATION` (or ISO 13606 `ENTRY`) capturing a laboratory result, yet `lab_result` might equally be chosen for a `COMPOSITION` designed to contain such results. In the absence of a global concept-identifier authority, including the qualified reference model class name guards against such clashes and lets tools ensure that an artefact is only applied to a suitable information structure.
+
+== Concept Identifier
+
+The `concept_id` is a 'short' ontological identifier (known in ADL 1.4 as the 'concept' or 'domain concept'), historically a natural-language mnemonic such as `bp_measurement`.
+
+The concept identifier is part of the human-readable identifier because it is human-readable and facilitates debugging of systems whose data carry these identifiers. Purely ad hoc assignment does not scale, so the authoritative form of a concept identifier should be a 'short identifier' - a synonym for a full node identifier - drawn from an ontology corresponding to the `namespace` of the identifier and maintained by the custodian organisation or a higher authority. This specification does not define such an ontology; it requires only that concept identifiers be unique within a namespace.
+
+NOTE: In legacy (ADL 1.4) identifiers, the concept part could encode a specialisation hierarchy as hyphen-separated segments, e.g. `problem-diagnosis`. The `'-'` character remains permitted within `concept_id`, but carries no structural significance in this specification; the level of specialisation of an artefact can no longer be inferred from its identifier.
+
+== Regular Expression
+
+The regular expression below is an _informative_ convenience for implementers - for example to parse or validate an HRID string, or as an OpenAPI / XML-Schema `pattern`. The normative grammar remains the EBNF above together with the `version_id` grammar in <<Version Numbering>>; where the two disagree, the EBNF prevails.
+
+It parses an HRID into its segments (the named capture groups). The core `rm_publisher-rm_package-rm_class.concept_id` and at least the major `version_id` (`.v` plus the major number) are required; the `namespace` and the minor and patch version parts are optional and are captured when present. The expression is deliberately lenient, so it accepts a modern (ADL 2) identifier, a legacy (ADL 1.4) identifier and a reduced-precision _reference_ alike. To _validate_ a complete ADL 2 identifier - rather than merely parse one - additionally require the `namespace` together with a full three-part `version_id`; the legacy ADL 1.4 identifier is the remaining well-formed case, namespaceless with a major-only version. A namespaceless string that carries a minor or patch version matches the lenient expression but is well-formed as neither an identifier nor a reference - both an ADL 2 identifier and an ADL 2 reference carry the namespace, so the only namespaceless form is the legacy ADL 1.4 identifier (major version only). Forms that carry no version at all, an empty `namespace` ("any namespace") or an empty version ("any version") are query _wildcards_ defined by the openEHR {openehr_query_latest_aql}[Archetype Query Language^], not identifiers or references matched here.
+
+PCRE flavour, with named capture groups corresponding to the grammar productions:
+
+[source]
+--------
+^(?:(?<namespace>[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+)::)?(?<rm_publisher>[a-zA-Z][a-zA-Z0-9_]+)-(?<rm_package>[a-zA-Z][a-zA-Z0-9_]+)-(?<rm_class>[a-zA-Z][a-zA-Z0-9_]+)\.(?<concept_id>[a-zA-Z][a-zA-Z0-9_-]+)\.v(?<version_id>(?<major_version>[0-9]+)(?:\.(?<minor_version>[0-9]+)(?:\.(?<patch_version>[0-9]+)(?<version_modifier>-(?:rc|alpha|beta)(?:\.(?<build_count>[0-9]+))?)?)?)?)$
+--------
+
+Equivalent form for engines without named or non-capturing groups (e.g. a W3C XML Schema `pattern`, which anchors the whole value implicitly):
+
+[source]
+--------
+([a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+::)?[a-zA-Z][a-zA-Z0-9_]+-[a-zA-Z][a-zA-Z0-9_]+-[a-zA-Z][a-zA-Z0-9_]+\.[a-zA-Z][a-zA-Z0-9_\-]+\.v[0-9]+(\.[0-9]+(\.[0-9]+(-(rc|alpha|beta)(\.[0-9]+)?)?)?)?
+--------
+
+The `namespace` sub-expression approximates `V_REVERSE_DOMAIN_NAME` (IETF RFCs 1035, 1123, 2181); a stricter DNS-label form may be substituted where required. The numeric parts follow `V_NUMBER` (one or more digits).

@@ -6,11 +6,21 @@
 
 4+^h|*BASE Release 1.3.0 (unreleased)*
 
-|[[latest_issue]]1.3.5
+|[[latest_issue]]1.3.7
+| Relocate the human-readable identifier (HRID) scheme to the new BASE _Human-Readable Identifiers_ specification; the `Hrid` primitive's documentation now refers to it and the in-chapter HRID section is removed ({spec_tickets}/SPECBASE-50[SPECBASE-50^]).
+|S Iancu
+|[[latest_issue_date]]14 Jul 2026
+
+|1.3.6
+| Introduce the `Hrid` primitive type and the _Human-Readable Identifiers_ section (HRID grammar, version numbering, concept-identifier semantics and reference precision tiers), relocated from the AM Identification specification and aligned with the ADL 2 base lexer - resolving the ADL 2 / Base Types HRID syntax conflict ({spec_tickets}/SPECBASE-49[SPECBASE-49^], {spec_tickets}/SPECPR-363[SPECPR-363^]).
+|S Iancu
+|14 Jul 2026
+
+|1.3.5
 | Clarify how `Iso8601_duration._to_seconds()_` converts durations containing years and months to seconds -- add the explicit conversion formula and a cross-reference to the `Time_Definitions` 'average' day-count constants ({spec_tickets}/SPECPR-386[SPECPR-386^]).
 |P Pazos, +
 S Iancu
-|[[latest_issue_date]]24 Jul 2026
+|24 Jul 2026
 
 |1.3.4
 | Remove the `_timezone_` function from `Iso8601_date`: an ISO 8601 date does not carry a timezone (the time shift applies only to the time part), so the accessor -- carried over from `Iso8601_date_time` / `Iso8601_time` -- is removed ({spec_tickets}/SPECPR-426[SPECPR-426^]).

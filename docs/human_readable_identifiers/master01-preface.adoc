@@ -1,0 +1,38 @@
+= Preface
+
+== Purpose
+
+This document defines the openEHR *human-readable identifier* (HRID) scheme: a structured, lexically meaningful identifier used to identify managed knowledge artefacts - such as archetypes, templates and terminology subsets - across openEHR systems. It specifies the HRID syntax, version numbering and referencing model in an artefact-agnostic way, so that all openEHR components may share a single identification scheme.
+
+The computable type representing an HRID, `Hrid`, is defined as a primitive type in the openEHR {openehr_base_latest_foundation_types}[Foundation Types^] specification; the present document is the normative source for its grammar and semantics.
+
+The intended audience is implementers and specification authors requiring a precise definition of the openEHR HRID scheme.
+
+== Related Documents
+
+Prerequisite documents for reading this specification include:
+
+* the openEHR {openehr_base_latest_foundation_types}[Foundation Types^] specification (the `Hrid` type);
+* the openEHR {openehr_base_latest_base_types}[Base Types^] specification (the `ARCHETYPE_ID` type).
+
+Related documents that apply this scheme to specific artefact types include the openEHR {openehr_am_latest_id}[Archetype Identification^], {openehr_am_latest_aom2}[Archetype Object Model (AOM2)^] and {openehr_am_latest_adl2}[Archetype Definition Language 2 (ADL2)^] specifications.
+
+== Status
+
+This specification is in the {spec_status} state. The development version of this document can be found at {openehr_base_development_hrid}[{openehr_base_development_hrid}^].
+
+Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:
+[.tbd]
+*TBD*: (example To Be Determined paragraph)
+
+== Feedback
+
+Feedback may be provided on the {openehr_technical_list}[technical mailing list^].
+
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
+
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
+
+== Conventions
+
+Key concepts and identifier segment names are introduced in bold face where they are defined. Grammar is expressed in the same EBNF notation used by the openEHR {openehr_am_latest_id}[Archetype Identification^] specification. Class, type and attribute names use the openEHR conventions, i.e. `Type_name` and `attribute_name`.
