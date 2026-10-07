@@ -37,8 +37,7 @@ No build tooling lives in this repo; all `specifications-XX` repos are cloned as
 ```bash
 # render HTML — run from the parent dir (/src/openehr). The image is published from specifications-AA_GLOBAL;
 # its entrypoint carries -q, which BASE needs (package-qualified class files). Use `Release-X.Y.Z` instead of
-# `development` for a release build. To use a local build instead:
-# `docker build -t openehr/asciidoctor specifications-AA_GLOBAL`, then swap in `openehr/asciidoctor` below.
+# `development` for a release build.
 docker run --rm -u $(id -u):$(id -g) -v "$PWD:/documents/" ghcr.io/openehr/asciidoctor development BASE
 
 # regenerate class tables (NEVER hand-edit docs/UML/classes/*.adoc) — run from this repo's root.
