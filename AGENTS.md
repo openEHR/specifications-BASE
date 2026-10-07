@@ -8,6 +8,12 @@ Guidance for AI coding agents working in **specifications-BASE**.
 
 `manifest.json` is the source of truth for which documents exist, their `spec_status`, releases, and the `SPECBASE` Jira roadmap. Published documents: `architecture_overview`, `foundation_types`, `base_types`, `resource` (plus `iso_18308_conformance_statement`, an external-PDF link, not an `.adoc`).
 
+## Layout
+
+- `docs/<document>/master.adoc` plus `masterNN-*.adoc` chapters (`master00` = amendment record); `manifest_vars.adoc` is generated from `manifest.json` on publish.
+- `computable/BMM/openehr_base_1.3.0.bmm.json` — the BMM; source of truth for all classes.
+- `docs/UML/classes/` — **generated** class tables, named `org.openehr.base.<package>.<class>.adoc` (hence `{pkg}` in chapter includes, and `-q` when publishing).
+
 ## Use the `openehr-specs@openehr` plugin
 
 The plugin carries the spec-authoring know-how — **prefer its skills/agents over ad-hoc edits.** Don't re-derive their workflows here.
@@ -29,11 +35,29 @@ The plugin carries the spec-authoring know-how — **prefer its skills/agents ov
 No build tooling lives in this repo; all `specifications-XX` repos are cloned as siblings under one parent (`/src/openehr`).
 
 ```bash
-# render HTML — run from the parent dir (/src/openehr); flags: -r remote CSS · -p PDF · -f force · -l Release-1.3.0
-specifications-AA_GLOBAL/bin/spec_publish.sh BASE
+# render HTML — run from the parent dir (/src/openehr). The image is published from specifications-AA_GLOBAL;
+# its entrypoint carries -q, which BASE needs (package-qualified class files). Use `Release-X.Y.Z` instead of
+# `development` for a release build. To use a local build instead:
+# `docker build -t openehr/asciidoctor specifications-AA_GLOBAL`, then swap in `openehr/asciidoctor` below.
+docker run --rm -u $(id -u):$(id -g) -v "$PWD:/documents/" ghcr.io/openehr/asciidoctor development BASE
 
-# regenerate class tables (NEVER hand-edit docs/UML/classes/*.adoc) — run in ../bmm-publisher
-./bin/bmm-publisher legacy-adoc openehr_base_1.3.0 -o /src/openehr/specifications-BASE/docs/UML/classes
+# regenerate class tables (NEVER hand-edit docs/UML/classes/*.adoc) — run from this repo's root.
+# Pass the repo BMM by PATH: a bare schema id (openehr_base_1.3.0) uses the image's bundled copy, which lags this repo.
+OUT=$(mktemp -d)
+docker run --rm --user $(id -u):$(id -g) \
+  -v "$PWD/computable/BMM/openehr_base_1.3.0.bmm.json":/in/openehr_base_1.3.0.bmm.json:ro \
+  -v "$OUT":/out \
+  ghcr.io/openehr/bmm-publisher legacy-adoc /in/openehr_base_1.3.0.bmm.json -o /out
+# then diff "$OUT" against docs/UML/classes and copy over the tables you changed
 ```
 
 To change a class/attribute/function/invariant, edit the BMM schema and regenerate — never touch the generated tables (see skill `openehr-specs:class-generation`).
+
+## Gotchas
+
+- BMM `documentation` strings pass through bmm-publisher's `formatText()`: `{attr}` is escaped, so write literal values (e.g. `latest`, not `{base_release}`); same-document `<<_x_class,X>>` xrefs work; use `×`, not `*`.
+
+## Conventions
+
+- Commits: `Changes for SPECBASE-NN - <what changed>` (`SPECPR-NNN` for problem reports, or the owning project key, e.g. `SPECAM-NN`).
+- Branches: `feat/<KEY>-<slug>` or `fix/<KEY>-<slug>`, merged to `master` by PR.
