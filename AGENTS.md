@@ -37,7 +37,7 @@ The plugin carries the spec-authoring know-how — **prefer its skills/agents ov
 <!-- openehr-scaffold:begin build -->
 ## Build tool invocation
 
-No build tooling lives in this repo. All `specifications-XX` repos, including `specifications-AA_GLOBAL` (boilerplate, references), are cloned as siblings under one parent directory; Docker is the only prerequisite. Run from that parent directory:
+Docker is all you need to render the documents and regenerate the class tables. All `specifications-XX` repos, including `specifications-AA_GLOBAL` (boilerplate, references), are cloned as siblings under one parent directory. Render from that parent directory:
 
 ```bash
 # render HTML. The image is published from specifications-AA_GLOBAL; its entrypoint passes -q
@@ -54,7 +54,8 @@ OUT=$(mktemp -d)
 docker run --rm --user $(id -u):$(id -g) \
   -v "$PWD/computable/BMM/openehr_base_1.3.0.bmm.json":/in/openehr_base_1.3.0.bmm.json:ro \
   -v "$OUT":/out \
-  ghcr.io/openehr/bmm-publisher legacy-adoc /in/openehr_base_1.3.0.bmm.json -o /out
+  ghcr.io/openehr/bmm-publisher legacy-adoc \
+  /in/openehr_base_1.3.0.bmm.json -o /out
 # then diff "$OUT" against docs/UML/classes and copy over the tables you changed
 ```
 
