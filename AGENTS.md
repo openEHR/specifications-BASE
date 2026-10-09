@@ -23,6 +23,7 @@ The plugin carries the spec-authoring know-how — **prefer its skills/agents ov
 |------|-----|
 | Create/edit a spec, chapter, `master.adoc`, or `manifest.json` | skill `openehr-specs:authoring` |
 | Spec prose style — overviews, semantics, design rationale | skill `openehr-specs:content-patterns` |
+| Add or change classes, attributes, functions or invariants in the BMM | skill `openehr-specs:bmm-authoring` |
 | Regenerate class tables/diagrams from BMM (`bmm-publisher`) | skill `openehr-specs:class-generation` |
 | Amendment record (`master00-amendment_record.adoc`) | skill `openehr-specs:amendment-record` |
 | Releases, CR/PR, lifecycle status, Jira workflow | skill `openehr-specs:governance` |
@@ -59,7 +60,7 @@ docker run --rm --user $(id -u):$(id -g) \
 # then diff "$OUT" against docs/UML/classes and copy over the tables you changed
 ```
 
-To change a class/attribute/function/invariant, edit the BMM schema and regenerate — never touch the generated tables (see skill `openehr-specs:class-generation`).
+To change a class/attribute/function/invariant, edit the BMM schema (skill `openehr-specs:bmm-authoring`, which also checks it) and regenerate (skill `openehr-specs:class-generation`) — never touch the generated tables.
 <!-- openehr-scaffold:end build -->
 
 ## Gotchas
