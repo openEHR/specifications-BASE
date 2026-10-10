@@ -6,6 +6,8 @@ This specification is designed to address the need for reliable identification a
 
 Related artefacts that need an identification and lifecycle management scheme include terminology subsets/ref-sets, 'query sets', and potentially things such as computable guidelines. This specification mentions these latter kinds of artefacts where relevant but does not propose anything formal for them.
 
+The identification system is defined in the BASE component because the identifiers of knowledge artefacts are used across components: in archetypes and templates, in data (for example the archetype identifier recorded in `LOCATABLE._archetype_details_`, see the openEHR {openehr_rm_common}[Common IM^]), in queries and in service interfaces. Its computable types are the `Hrid` primitive ({openehr_foundation_types}[Foundation Types^]) and the `ARCHETYPE_ID` identifier type ({openehr_base_types}[Base Types^]), whose `_value_` is an `Hrid`. The archetype model represents the same identification in structured form, as the `ARCHETYPE_HRID` class of the openEHR {openehr_am_aom2}[Archetype Object Model (AOM2)^].
+
 Out of scope are the atomic 'concepts' and 'categories' commonly found in terminologies (e.g.: {who_icd}[ICD10], {snomed_ct}[SNOMED CT], {loinc}[LOINC]) and ontologies (e.g. {ogms}[OGMS], {fma}[FMA], {iao}[IAO]).
 
 NOTE: the word 'archetype' as used in this specification means: any formal artefact written in the {openehr_am_adl2}[Archetype Definition Language (ADL)], or any other serialised form of the {openehr_am_aom2}[Archetype Object Model (AOM)]. This includes 'template' archetypes (but not other kinds of 'templates').
@@ -26,7 +28,7 @@ Artefacts are ultimately consumed by User Enterprises, normally in a validated a
 
 == The Problem
 
-The problem specifically addressed by this specification is that of identification and referencing of archetypes. The key characteristics of archetypes, in common with other kinds of knowledge artefacts like terminology subsets is that they are 'outside the software', and that they are independent of specific implementation technologies. The consequence is that they can be created, developed, disseminated and used independently from software artefact development.
+The problem specifically addressed by this specification is that of identification and referencing of knowledge artefacts, principally archetypes and templates. The key characteristics of archetypes, in common with other kinds of knowledge artefacts like terminology subsets is that they are 'outside the software', and that they are independent of specific implementation technologies. The consequence is that they can be created, developed, disseminated and used independently from software artefact development.
 
 Examples of archetypes include:
 
@@ -37,7 +39,7 @@ Extensive experience with such artefacts in the health domain has shown that whi
 
 The key requirements addressed here are as follows:
 
-* identify and distinguish versions, variants and releases of 'source' archetypes within and from _authoring_ environments;
+* identify and distinguish versions, variants and releases of 'source' artefacts within and from _authoring_ environments;
 * define rules for expressing and resolving _references_ between source artefacts, including version variants;
 * define rules for identification of compiled / operational artefacts derived from source artefacts;
 * define rules for evolving identifiers (including version) of artefacts over time, based on a 'standard' lifecycle for artefacts;
@@ -67,6 +69,8 @@ The approach assumed here is to use both types of identifier in the following wa
 * via a hash on a canonical serialisation of the artefact.
 
 This is a departure from the common situation where no machine identifier is assigned, and the artefact HRID is a static string, rather like a source file filename.
+
+This specification defines the human-readable identifier. The machine identifier of an authored artefact is the `_uid_` property of `AUTHORED_RESOURCE`, defined in the openEHR {openehr_resource}[Resource Model^] specification.
 
 == Meta-data
 
