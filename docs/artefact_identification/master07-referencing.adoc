@@ -1,6 +1,6 @@
 = Referencing
 
-This section describes how artefacts are referenced, by other artefacts and software. The general principal for referencing is that references based on human-readable identifiers are used between source artefacts, in the same way as for software, while references in operational forms of the artefacts or from data may be in the form of either HRIDs or machine identifiers.
+This section describes how artefacts are referenced, by other artefacts and software. The general principle for referencing is that references based on human-readable identifiers are used between source artefacts, in the same way as for software, while references in operational forms of the artefacts or from data may be in the form of either HRIDs or machine identifiers.
 
 A key semantic difference exists with references as opposed to identifiers. A reference is either a full physical artefact identifier, or else an identifier with partial version information. In both cases, a reference is used to match artefacts carrying full identification. In general, there can be several candidate matches, and therefore a matching algorithm has to be specified in each case, in order to ensure constant meaning for a given reference in all modelling and computing environments.
 
@@ -191,7 +191,7 @@ The above kind of referencing relies on an ontological underpinning for the `con
 
 == AQL Query Sets
 
-AQL queries are in general authored in a 'set' in order to achieve a design objective, e.g. populate a report, screen, or for some analytical objective. Many are purely local in nature and may be considered 'throwaway'. Others are carefully designed for needs like populating a clinical guideline or performing a standard computation. Within an archetyped framework, such query sets need to be indentified and managed in a similar way to other artefacts.
+AQL queries are in general authored in a 'set' in order to achieve a design objective, e.g. populate a report, screen, or for some analytical objective. Many are purely local in nature and may be considered 'throwaway'. Others are carefully designed for needs like populating a clinical guideline or performing a standard computation. Within an archetyped framework, such query sets need to be identified and managed in a similar way to other artefacts.
 
 == AQL Queries
 
@@ -208,7 +208,7 @@ at-coded ADL2::
      CONTAINS COMPOSITION c
      CONTAINS OBSERVATION pulse[openEHR-EHR-OBSERVATION.pulse.v1]
 
-    WHERE c/name/value='Encounter` AND
+    WHERE c/name/value='Encounter' AND
         c/context/start_time/value <= $endperiod AND
         c/context/start_time/value >= $startPeriod AND
         pulse/data/events[at0005]/data/items[at0003]/value/value < 60
@@ -224,7 +224,7 @@ id-coded ADL2::
      CONTAINS COMPOSITION c
      CONTAINS OBSERVATION pulse[openEHR-EHR-OBSERVATION.pulse.v1]
 
-    WHERE c/name/value='Encounter` AND
+    WHERE c/name/value='Encounter' AND
         c/context/start_time/value <= $endperiod AND
         c/context/start_time/value >= $startPeriod AND
         pulse/data/events[id6]/data/items[id4]/value/value < 60
@@ -407,7 +407,7 @@ whose lineage is:
     org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.0
 --------
 
-In this example, the archetype reference lengths are 66, 57 and 54 characters respectively, i.e. a total of 177 characters. Repeated say 5 times would give 885 characters of identifier meta-data for the `COMPOSITION` , whose main clinical data could easily be similar. Even in an XML-based storage system, various kinds of compression are used, the identifier reference overhead might be considered as an unacceptable fraction of the overall data storage requirement.
+In this example, the archetype reference lengths are 67, 53 and 50 characters respectively, i.e. a total of 170 characters. Repeated say 5 times would give 850 characters of identifier meta-data for the `COMPOSITION` , whose main clinical data could easily be similar. Even in an XML-based storage system, various kinds of compression are used, the identifier reference overhead might be considered as an unacceptable fraction of the overall data storage requirement.
 
 It is therefore worth considering various simple optimisations, while retaining clarity and comprehensibility in the data. The following ideas are currently intended to be limited to serialised forms of data. They would therefore only require changes to openEHR XML-schemas rather than the abstract reference model.
 

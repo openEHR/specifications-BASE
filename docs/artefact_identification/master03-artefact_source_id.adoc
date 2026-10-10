@@ -10,7 +10,7 @@ image::{openehr_am_uml_diagrams}/AM-aom2.archetype.svg[id=archetype_package, ali
 
 For other types of artefacts the detailed model will differ, but the principles are the same.
 
-Three distinct groups of properties shown in the `ARCHETYPE_HRID` class that underpin the identification scheme described here, as follows:
+Three distinct groups of properties are shown in the `ARCHETYPE_HRID` class that underpin the identification scheme described here, as follows:
 
 * `namespace` provides a way of distinguishing logical identifiers created by different organisations that would otherwise compete in a single semantic identifier space;
 * `rm_publisher`, `rm_package`, `rm_class`, `concept_id` form the basis of the main part of a human-readable identifier, e.g. `openEHR-EHR-OBSERVATION.bp_measurement`;
@@ -101,7 +101,7 @@ The second part of the human-readable identifier is a 'short' ontological identi
 
 Historically in ADL 1.4 (ISO 13606-2:2008), the 'concept' part of the identifier encoded the specialisation hierarchy of concepts as a series of hyphenated segments, e.g. 'problem' and 'problem-diagnosis', with the latter identifying a specialised form of the former.The requirement for the concept name to include specialisations is removed in this specification, as well as the ADL / AOM 1.5 specifications. This enables the domain concept of any artefact to be freely assigned according to the purpose of the artefact.
 
-To allow for the fact that legacy specialised archetypes do in fact include the '-' style of separated domain concept identifier, the '-' character is still be allowed, but no longer has any semantic significance.
+To allow for the fact that legacy specialised archetypes do in fact include the '-' style of separated domain concept identifier, the '-' character is still allowed, but no longer has any semantic significance.
 
 One consequence is that for archetypes with identifiers conforming to this specification, the level of specialisation can no longer be determined from the identifier. This new approach is in line with how source artefacts are named in object-oriented languages.
 
