@@ -6,7 +6,7 @@ This section deals with how knowledge artefact identifiers are managed in the di
 
 == Management
 
-Many knowledge artefacts start life in an ad hoc way, created by a research project or expert individual. From the point of view of this specification, they are initially 'umanaged', meaning they have no custodial organisation.
+Many knowledge artefacts start life in an ad hoc way, created by a research project or expert individual. From the point of view of this specification, they are initially 'unmanaged', meaning they have no custodial organisation. Such artefacts nevertheless carry a namespace, assigned at creation, identifying their creator (e.g. a research project or vendor domain).
 
 The first step to making an artefact widely visible, and usable to the outside world is to bring it under management of an organisation that follows rules of governance and quality assurance on which the outside world can rely. This specification does not describe all these rules, just the rules for identification and meta-data of artefacts coming under management.
 
@@ -15,7 +15,7 @@ When an artefact is first created, its lifecycle state is 'unmanaged' and its ve
 When an artefact is accepted by a Custodian Organisation, the following things happen:
 
 * its lifecycle state progresses to `initial`;
-* its human-readable identifier is changed to the namespaced form;
+* the namespace of its human-readable identifier is changed to that of the Custodian Organisation;
 * it is assigned a newly generated Guid as its uid;
 * if its major version number is higher than 0 it is reset to `0.0.1`, otherwise it is left unchanged;
 * various meta-data items are set, including copyright, license.

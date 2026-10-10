@@ -44,7 +44,7 @@ image::{diagrams_uri}/development_lifecycle_with_versioning.png[id=development_l
 The version identifier evolves according to the general rules described above, and specific rules related to the lifecycle states, as follows.
 
 * An artefact normally starts life at `0.0.1`, although it is acceptable practice to start at some other v0 version e.g. `0.5.0` to indicate approximately how mature the artefact is. It remains as a `v0.x` version for a period of unstable early development leading to an initial releasable `1.x` version.
-* At some point, the artefact will be uploaded to a managed repository, at which point its identifier will be prepended with the management organisation namespace (and may change in other ways) and will have `-alpha` appended.
+* At some point, the artefact will be uploaded to a managed repository, at which point its namespace will be changed to that of the management organisation (and its identifier may change in other ways, see <<Distributed Governance>>) and will have `-alpha` appended.
 * During initial 'v0' development, an artefact is considered to be unstable, i.e. any kind of changes may be made, reversed, redone and so on; due to this, the minor and patch version numbers are updated freely, and typically less often than the rules dictate for post-v0 development.
 is formed from the next version number that corresponds to the magnitude of the changes currently in the artefact, and appended with `-alpha`.
 * An artefact may be rejected, in which case the artefact lifecycle state is set to `rejected` (the version identifier is not changed).

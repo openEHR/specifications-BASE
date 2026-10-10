@@ -23,7 +23,7 @@ The functions `semantic_id`, `physical_id` and `version_id` return respectively 
 
 The `uid` property (from `AUTHORED_RESOURCE`) provides the machine identifier, and is assumed to be a GUID; the `build_uid` property of `AUTHORED_ARCHETYPE` is a further GUID identifying each build of the artefact.
 
-Both the `uid` and `namespace` properties are optional for legacy reasons, since most existing archetypes have neither. The interpretation of an artefact without these identifiers in this specification is that it is _unmanaged_ , i.e. it has no recognised owner organisation. During a period of changeover to the identifiers specified here, there will clearly be artefacts that are in fact managed, and which need to have the `uid` and `namespace` properties assigned. This will obviously take some time, as it requires support from the tooling ecosystem.
+Every artefact is assigned a `namespace` and a `uid` when it is created. The namespace is that of the creating organisation - a Custodian Organisation, but equally a vendor or a project (e.g. `com.ehrvendor`) - and is not used to distinguish 'managed' from 'unmanaged' artefacts: an artefact without a namespace is too easily taken for a managed one once it circulates. The `uid` and `namespace` properties are optional in the model only for legacy (ADL 1.4) artefacts, most of which have neither; such artefacts acquire both when they are migrated to ADL 2.
 
 Different types of human-readable identifiers are used for archetypes, templates and terminology subsets. The following sections describe the formal details of this identification scheme, and how it supports referencing between artefacts.
 
@@ -31,7 +31,7 @@ Different types of human-readable identifiers are used for archetypes, templates
 
 This section defines the formal grammar for human-readable identifiers (HRIDs) of knowledge artefacts. As described above, more than one human-readable identifier can be constructed from the identifying properties of an artefact (for archetypes, those of the `ARCHETYPE_HRID` class). The grammar is aligned with the ADL 2 base lexer (see {openehr_am_adl2}#_base_lexer[Archetype Definition Language 2^]).
 
-The highest level distinction is between managed and unmanaged artefacts, with managed status being indicated by the prepending of a namespace to what can be termed a 'local' HRID (i.e. local to a given namespace context).
+A modern (ADL 2) identifier is always namespaced, the namespace being prepended to what can be termed a 'local' HRID (i.e. local to a given namespace context). Only a legacy (ADL 1.4) identifier has no namespace.
 
 An HRID consists of a `hrid_root` (an identifier of the reference model class and domain concept on which the artefact is based) and a version identifier, in the modern form preceded by a `namespace`. Two identifier forms are defined: a _modern_ (ADL 2) identifier, in which the `namespace` is mandatory; and a _legacy_ (ADL 1.4) identifier, which has no namespace and a major-only version.
 
@@ -44,13 +44,14 @@ An HRID consists of a `hrid_root` (an identifier of the reference model class an
 
 The version identifier (`version_id`) is defined in <<Version Numbering>>.
 
-The `namespace` above is the publisher organisation reverse domain name. Reverse domain names are used in order to aid lexical sorting of identifiers and also tools that build directory structures based on reverse domain name segments. All managed artefacts, including archetypes and templates should include a namespace. Any archetype or template carrying an identifier without a namespace is assumed to be an unmanaged artefact.
+The `namespace` above is the publisher organisation reverse domain name. Reverse domain names are used in order to aid lexical sorting of identifiers and also tools that build directory structures based on reverse domain name segments. All artefacts, including archetypes and templates, are assigned a namespace when created, and the namespace of an identifier is never omitted, wildcarded or inferred. An identifier without a namespace is a legacy (ADL 1.4) identifier.
 
 Examples:
 
 * `org.openehr` : EHR archetypes library at openEHR.org
 * `uk.nhs`      : UK National Health Service
 * `edu.nci`     : US National Cancer Institute
+* `com.ehrvendor` : archetype or template created by a vendor
 
 === Human-readable Identifier (HRID)
 
@@ -134,7 +135,7 @@ Unfortunately, for some informational concepts, the appropriate name for the act
 
 The regular expression below is an _informative_ convenience for implementers - for example to parse or validate an HRID string, or as an OpenAPI / XML-Schema `pattern`. The normative grammar remains the EBNF above together with the `version_id` grammar in <<Version Numbering>>; where the two disagree, the EBNF prevails.
 
-It parses an HRID into its segments (the named capture groups). The core `rm_publisher-rm_package-rm_class.concept_id` and at least the major `version_id` (`.v` plus the major number) are required; the `namespace` and the minor and patch version parts are optional and are captured when present. The expression is deliberately lenient, so it accepts a modern (ADL 2) identifier, a legacy (ADL 1.4) identifier and a reduced-precision _reference_ alike. To _validate_ a complete ADL 2 identifier - rather than merely parse one - additionally require the `namespace` together with a full three-part `version_id`; the legacy ADL 1.4 identifier is the remaining well-formed case, namespaceless with a major-only version. A namespaceless string that carries a minor or patch version matches the lenient expression but is well-formed as neither an identifier nor a reference - both an ADL 2 identifier and an ADL 2 reference carry the namespace, so the only namespaceless form is the legacy ADL 1.4 identifier (major version only). Forms that carry no version at all, an empty `namespace` ("any namespace") or an empty version ("any version") are query _wildcards_ defined by the openEHR {openehr_query_aql}[Archetype Query Language^], not identifiers or references matched here.
+It parses an HRID into its segments (the named capture groups). The core `rm_publisher-rm_package-rm_class.concept_id` and at least the major `version_id` (`.v` plus the major number) are required; the `namespace` and the minor and patch version parts are optional and are captured when present. The expression is deliberately lenient, so it accepts a modern (ADL 2) identifier, a legacy (ADL 1.4) identifier and a reduced-precision _reference_ alike. To _validate_ a complete ADL 2 identifier - rather than merely parse one - additionally require the `namespace` together with a full three-part `version_id`; the legacy ADL 1.4 identifier is the remaining well-formed case, namespaceless with a major-only version. A namespaceless string that carries a minor or patch version matches the lenient expression but is well-formed as neither an identifier nor a reference - both an ADL 2 identifier and an ADL 2 reference carry the namespace, so the only namespaceless form is the legacy ADL 1.4 identifier (major version only). Forms that carry no version at all, or an empty version ("any version"), are query _wildcards_ defined by the openEHR {openehr_query_aql}[Archetype Query Language^], not identifiers or references matched here. A namespace is never a wildcard: an empty or omitted namespace does not mean 'any namespace', since such a match cannot be used safely (see <<Referencing>>).
 
 PCRE flavour, with named capture groups corresponding to the grammar productions:
 
