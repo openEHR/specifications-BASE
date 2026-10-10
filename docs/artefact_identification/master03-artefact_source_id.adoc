@@ -2,7 +2,7 @@
 
 == Overview
 
-The basis for identifying source (i.e. authored) artefacts is to define a number of separate logically identifying properties, as well as a machine identifier. One or more human-readable identifier(s) can be generated from the non-uid identifying properties. For archetypes and templates, the relevant properties are described in the {openehr_am_latest_aom2}#_the_archetype_package[AOM Archetype package^], including the `ARCHETYPE_HRID` class. Related properties are inherited from the `AUTHORED_RESOURCE` class into `ARCHETYPE` are shown, including the `lifecycle_state` property, as well as all other descriptive meta-data.
+The basis for identifying source (i.e. authored) artefacts is to define a number of separate logically identifying properties, as well as a machine identifier. One or more human-readable identifier(s) can be generated from the non-uid identifying properties. For archetypes and templates, the relevant properties are described in the {openehr_am_latest_aom2}#_the_archetype_package[AOM Archetype package^], including the `ARCHETYPE_HRID` class. Related properties are inherited into `AUTHORED_ARCHETYPE` from the `AUTHORED_RESOURCE` class of the openEHR {openehr_resource}[Resource Model^], including the machine identifier `uid` and the `description`, whose `lifecycle_state` records the development state of the artefact, as well as all other descriptive meta-data.
 
 [.text-center]
 .am.aom2.archetype Package
@@ -13,15 +13,15 @@ For other types of artefacts the detailed model will differ, but the principles 
 Three distinct groups of properties shown in the `ARCHETYPE_HRID` class that underpin the identification scheme described here, as follows:
 
 * `namespace` provides a way of distinguishing logical identifiers created by different organisations that would otherwise compete in a single semantic identifier space;
-* `rm_publisher`, `rm_closure`, `rm_class`, `concept_id` form the basis of the main part of a human-readable identifier, e.g. `openEHR-EHR-OBSERVATION.bp_measurement`;
+* `rm_publisher`, `rm_package`, `rm_class`, `concept_id` form the basis of the main part of a human-readable identifier, e.g. `openEHR-EHR-OBSERVATION.bp_measurement`;
 * properties supporting versioning:
 ** `release_version`, expressing a 3-part version identifier, e.g. '1.3.0';
-** `build_uid` , incremented at every commit, supporting non-release version ids, such as '1.3.0-rc.28' and '1.3.0-alpha', where the build count is 28;
-** `description`.`lifecycle_state`, expressing the development state of the artefact, and used to derive the 'rc' (release candidate) and 'alpha' (development) parts of non-release version ids.
+** `version_status`, of the BASE type `VERSION_STATUS` (`alpha`, `beta`, `release_candidate`, `released`, `build`), expressing the development state of the version - corresponding to the `description.lifecycle_state` of the artefact - from which the `-alpha`, `-beta` and `-rc` modifiers of non-release version ids are derived;
+** `build_count`, incremented at every commit, supporting non-release version ids such as '1.3.0-rc.28', where the build count is 28.
 
-Functions such as `interface_id`, `physical_id` and `version_id` are defined to return respectively the 'interface' and 'physical' archetype HRIDs (described below) as strings, and the full version string (computed from `release_version` , `build_uid` and `description.lifecycle_state` ). The functions `major_version` , `minor_version` and `patch_version` extract the various parts of the 3-part `release_version` property.
+The functions `semantic_id`, `physical_id` and `version_id` return respectively the 'interface' and 'physical' archetype HRIDs (described below) as strings, and the full version string (computed from `release_version`, `version_status` and `build_count`). The functions `major_version` , `minor_version` and `patch_version` extract the various parts of the 3-part `release_version` property.
 
-The `uid` property provides the machine identifier, and is assumed to be a GUID.
+The `uid` property (from `AUTHORED_RESOURCE`) provides the machine identifier, and is assumed to be a GUID; the `build_uid` property of `AUTHORED_ARCHETYPE` is a further GUID identifying each build of the artefact.
 
 Both the `uid` and `namespace` properties are optional for legacy reasons, since most existing archetypes have neither. The interpretation of an artefact without these identifiers in this specification is that it is _unmanaged_ , i.e. it has no recognised owner organisation. During a period of changeover to the identifiers specified here, there will clearly be artefacts that are in fact managed, and which need to have the `uid` and `namespace` properties assigned. This will obviously take some time, as it requires support from the tooling ecosystem.
 
