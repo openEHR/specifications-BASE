@@ -77,7 +77,7 @@ Note that only the major version forms part of the artefact's _interface_, in th
 
 == Change Semantics
 
-As a consequence of the 3-part {semver}[semver.org] version identification scheme, three levels of change to an artefact can be distinguished. The main question for archetype authors and tool developers is: what level of version change is _required_ for a given kind of concrete change to the artefact? Is this change a patch, a minor version or a breaking change (i.e. major version)?
+As a consequence of the 3-part {semver}[semver.org^] version identification scheme, three levels of change to an artefact can be distinguished. The main question for archetype authors and tool developers is: what level of version change is _required_ for a given kind of concrete change to the artefact? Is this change a patch, a minor version or a breaking change (i.e. major version)?
 
 NOTE: There is no assumption that a change of a given technical level (i.e. as evaluated by a diff tool) will be seen equivalently by domain experts. For example a minor change that only requires the patch version to be incremented might have major implications for clinical semantics. For this reason, the version identifier may be incremented beyond the minimum level required by a mechanical comparison.
 
