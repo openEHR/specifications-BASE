@@ -351,11 +351,11 @@ The reconstitutability requirement means recording archetype and template identi
 
 `openEHR-EHR-EVALUATION.diagnosis.v1`
 
-With the more sophisticated identification system described here, these archetype references need to include namespace, and full version identifier, i.e.:
+With the identification system described here, the identifier recorded in data is the _complete_ identifier of the artefact - an `ARCHETYPE_ID` (see the openEHR {openehr_base_types}#_archetype_identifiers[Base Types^] specification) carrying the namespace and the full version identifier, i.e.:
 
 `org.openehr::openEHR-EHR-EVALUATION.diagnosis.*v1.29.0*`
 
-References with no namespace will remain legal, since there should be no computational impediment to using uncontrolled archetypes and templates, e.g. in an experimental situation. The lack of minor and patch level version numbers should also be legal for non-namespaced identifiers, and be interpreted as meaning `0` in both cases, i.e. `.v1` means `.v1.0.0`.
+so that the exact artefact used to create the data can always be determined. Identifiers recorded from legacy (ADL 1.4) artefacts, which have no namespace and a major-only version (as in the first example above), remain valid, so no migration of existing data is required; such an identifier denotes the legacy artefact, and is not an abbreviation of a three-part version.
 
 === Supporting Archetype-based Querying
 
