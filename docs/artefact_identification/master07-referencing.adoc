@@ -10,17 +10,21 @@ Various forms of the references based on the HRID are used, depending on the nee
 * the specific interface HRID reference (`sihrid_ref`), which is the form of the identifier including the major and minor versions, which will match a specific release of the interface;
 * the physical HRID reference (`phrid_ref`), which identifies artefact instances which are identical; this is the form of identifier with the full version identifier included.
 
-The grammar for this is as follows.
+A reference carries only numeric version segments (no pre-release modifier), matching the ADL 2 `ARCHETYPE_REF` token; a pre-release version is referenced by its full identifier (an `hrid`). The grammar for this is as follows.
 
 [source, ebnf]
 --------
-    hrid_ref                =   namespaced_hrid_ref | local_hrid_ref ;
-    namespaced_hrid_ref     =   namespace '::' local_hrid_ref ;
-    local_hrid_ref          =   ihrid_ref | sihrid_ref | phrid_ref ;
-    ihrid_ref               =   hrid_root '.v' major_version ;
-    sihrid_ref              =   hrid_root '.v' major_version '.' minor_version ;
-    phrid_ref               =   local_hrid ;
+    hrid_ref                =   [ namespace '::' ] hrid_root '.v' version_ref ;   (* cf. ADL 2 ARCHETYPE_REF *)
+    version_ref             =   major_version { '.' V_NUMBER } ;                  (* numeric only *)
+
+    ihrid_ref               =   [ namespace '::' ] hrid_root '.v' major_version ;                                      (* interface *)
+    sihrid_ref              =   [ namespace '::' ] hrid_root '.v' major_version '.' minor_version ;                    (* specific interface *)
+    phrid_ref               =   [ namespace '::' ] hrid_root '.v' major_version '.' minor_version '.' patch_version ;  (* physical *)
 --------
+
+A reference identifies the `namespace` of the referenced artefact: the reduced precision of a reference concerns the version only, not the namespace. A namespace is never a wildcard - an omitted namespace does not mean 'any namespace', which would make the reference ambiguous and unsafe, notably in an {openehr_query_aql}[AQL^] query. Within a source artefact, a reference without a namespace denotes an artefact in the same namespace as the referencing artefact (see <<Source Artefact References>>); elsewhere - in operational artefacts, in data and in queries - a reference to an ADL 2 artefact carries its namespace explicitly. Only a legacy (ADL 1.4) artefact, which has no namespace at all, is referenced without one.
+
+Because minor versions may add structure, a major-version-only reference does not necessarily designate all of the interface available in the latest minor version; where precise designation is required, at least a minor version should be included.
 
 By way of example, the following two archetype iHRID references denote different logical archetypes, from a data processing point of view, since their major versions are different, indicating a breaking change between the two:
 
@@ -71,9 +75,9 @@ If such a reference does not include a namespace, the meaning is that the same n
 A reference such as the above will resolve to an actual archetype at runtime according to the following algorithm:
 
 * the most recent released version variant of `openEHR-EHR-ITEM_TREE.medication.v1`, i.e. the latest minor or patch version such as `v1.0.4`, `v1.2.49` etc OR
-* the latest release candidate version of `openEHR-EHR-ITEM_TREE.medication.v1`, e.g. `v1.2.3-rc44`, because 'rc' versions are guaranteed to be semantically compatible with their target version
+* the latest release candidate version of `openEHR-EHR-ITEM_TREE.medication.v1`, e.g. `v1.2.3-rc.44`, because 'rc' versions are guaranteed to be semantically compatible with their target version
 
-Because minor versions can include structural additions, it may be that in some cases, archetype external references need to be include a minor version as well - allowing an exact structural form of the archetype (interface) to be identified. Similarly For testing or other research purposes, it should probably be assumed that patch and `-rc` and `-alpha` versions of an archetype need to be referenced.
+Because minor versions can include structural additions, it may be that in some cases, archetype external references need to be include a minor version as well - allowing an exact structural form of the archetype (interface) to be identified. Similarly, for testing or other research purposes, it should probably be assumed that patch versions, and `-rc`, `-alpha` and `-beta` versions of an archetype, need to be referenced; a pre-release version is referenced by its full identifier.
 
 The general case is therefore assumed to be that an artefact reference is a `hrid_ref` , but most commonly an `ihrid_ref`.
 
@@ -89,7 +93,7 @@ To accommodate these scenarios, template references to archetypes and other temp
 * `org.openehr::openEHR-EHR-EVALUATION.problem.v2.4`
 * `org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.17`
 
-In development and research environments, it is reasonable to allow `-rc` and `-alpha` variants as well.
+In development and research environments, it is reasonable to allow references to `-rc`, `-alpha` and `-beta` variants as well, using their full identifiers.
 
 The general case is therefore as for archetype external references: a template reference is a `hrid_ref` .
 
