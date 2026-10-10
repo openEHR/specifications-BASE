@@ -52,7 +52,7 @@ is formed from the next version number that corresponds to the magnitude of the 
 * It is then either:
 ** published into a pre-release cycle, at which point the numerical part of the version is computed according to the difference between the current form of the artefact and the release version on which it is based. The form of the identifier becomes `M.N.P-rc.B`, which indicates a community testing phase. From the `release_candidate` state, three paths are possible:
 *** publish definitively with a stable version id of the form `M.N.P`;
-*** release a newer release candidate, containing only changes that do not break the interface, i.e. patch-level changes or less; update the instance UID in any case;
+*** release a newer release candidate, containing only changes that do not break the interface, i.e. patch-level changes or less; update the `build_uid` in any case;
 *** if larger changes are needed, go back into the `development` state and perform larger changes as needed;
 ** released directly to a stable version of the form `M.N.P`.
 * An artefact may eventually be deprecated, in which case the artefact lifecycle state is set to 'deprecated' (the version identifier is unchanged). It may be classified inside the repository registry as `obsolete`, `suspended` or in some other way.

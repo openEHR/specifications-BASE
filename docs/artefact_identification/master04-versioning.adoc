@@ -14,7 +14,7 @@ This has a very visible effect: it means that every 'committed' change to an art
 
 Despite the above differences, the numbering of versions of knowledge artefacts follows the rules for identifying software releases described by {semver}[semver.org^]. A fully-released artefact has a three-part numeric `release_version`; the version as written in an HRID (`version_id`) may however be given at reduced precision - major only, or major and minor - and may carry a pre-release modifier. This grammar is aligned with the ADL 2 base lexer tokens `ARCHETYPE_HRID`, `ARCHETYPE_REF` and `VERSION_ID` (see {openehr_am_adl2}#_base_lexer[Archetype Definition Language 2^]).
 
-Accordingly, version identifiers are based on three levels of 'versioning', identified by dot-separated numeric parts, with an optional extension related to the artefact lifecycle, described below. The numeric parts are:
+Accordingly, version identifiers are based on three levels of 'versioning', identified by dot-separated numeric parts, with an optional version modifier related to the artefact lifecycle, described below. The numeric parts are:
 
 * *major version* - must be incremented with a breaking change to the artefact formal definition; may be incremented with a lesser change;
 * *minor version* - must be incremented with a non-breaking change to the artefact formal definition; may be incremented with a lesser change;
@@ -38,8 +38,9 @@ Lexically, the version identifier is defined as follows:
     (* version as written in an HRID - minor and patch optional (cf. ADL 2 ARCHETYPE_VERSION_ID) *)
     version_id        =   major_version [ '.' minor_version [ '.' patch_version [ version_modifier ] ] ] ;
 
-    (* full version of a released artefact (cf. ADL 2 VERSION_ID) *)
-    release_version   =   major_version '.' minor_version '.' patch_version [ version_modifier ] ;
+    (* three-part numeric version of a release (cf. ARCHETYPE_HRID.release_version); followed by a
+       version_modifier it forms the full version of a pre-release (cf. ADL 2 VERSION_ID) *)
+    release_version   =   major_version '.' minor_version '.' patch_version ;
 
     version_modifier  =   ( '-rc' | '-alpha' | '-beta' ) [ '.' build_count ] ;
     major_version     =   V_NUMBER ;
@@ -53,8 +54,8 @@ Lexically, the version identifier is defined as follows:
 This leads to identifiers such as:
 
 --------
-    1                   # major version only (reduced form, in an HRID or reference)
-    1.3                 # major and minor (reduced form)
+    1                   # major version only (reduced form, as used in a reference)
+    1.3                 # major and minor (reduced form, as used in a reference)
     1.3.5-alpha         # alpha development version based on version 1.3.4
     1.3.5-beta          # beta development version
     1.3.5-rc.3          # release candidate for version 1.3.5, build 3
@@ -68,9 +69,9 @@ The following general rules are required for using version identifiers.
 
 More specific rules relating to specific lifecycle states are described below.
 
-Three 'variant' versions are defined in the above syntax: 'release candidate', 'alpha' and 'beta'. The first is a standard software classification, syntactically indicated with the tag `rc`. Version numbers including `rc` are always of the form `M.N.P-rc.B`, e.g. `1.3.5-rc.1`, where the minus sign (`-`) is understood as indicating a version that is 'prior to' the target version `1.3.5`, i.e. `1.3.5-rc.1` is an interim version leading to the stable version `1.3.5`.
+Three 'variant' versions are defined in the above syntax: 'release candidate', 'alpha' and 'beta'. The first is a standard software classification, syntactically indicated with the tag `rc`. Version numbers including `rc` are of the form `M.N.P-rc.B` (the build count `B` being optional), e.g. `1.3.5-rc.1`, where the minus sign (`-`) is understood as indicating a version that is 'prior to' the target version `1.3.5`, i.e. `1.3.5-rc.1` is an interim version leading to the stable version `1.3.5`.
 
-The other variant is indicated with the modifier `-alpha`, where `-` has the same meaning as above (i.e. indicates a version prior to the version identified by the preceding numeric identifier), and `alpha` indicates an 'alpha' development version. The magnitude of the differences in a `-alpha` version are indicated by the difference between the 3-part version identifiers of the current artefact and the previously published one on which it is based. The modifier `-beta` likewise indicates a development version prior to the version identified by the preceding numeric identifier, at a later stage of development than `-alpha`. Each modifier may be followed by an optional dot-separated build count (e.g. `1.3.5-rc.3`).
+Another variant is indicated with the modifier `-alpha`, where `-` has the same meaning as above (i.e. indicates a version prior to the version identified by the preceding numeric identifier), and `alpha` indicates an 'alpha' development version. The magnitude of the differences in a `-alpha` version are indicated by the difference between the 3-part version identifiers of the current artefact and the previously published one on which it is based. The modifier `-beta` likewise indicates a development version prior to the version identified by the preceding numeric identifier, at a later stage of development than `-alpha`. Each modifier may be followed by an optional dot-separated build count (e.g. `1.3.5-rc.3`).
 
 Note that only the major version forms part of the artefact's _interface_, in the sense described in <<Referencing>>. The intention of that is that a breaking change causes a new artefact from the point of view of deployment. This is analogous to breaking changes in software interfaces, web service definitions etc, being seen as a distinct entity, typically deployed alongside the previous version(s).
 

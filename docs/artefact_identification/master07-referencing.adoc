@@ -42,7 +42,7 @@ This section describes the scenarios and representation required for identifier-
 
 === Archetype External References (ADL/AOM 2)
 
-In ADL 2, a direct archetype-archetype reference, known as an 'external reference' can be defined, which uses the archetype miniHRID, as shown in the following example.
+In ADL 2, a direct archetype-archetype reference, known as an 'external reference' can be defined, which uses an interface reference (`ihrid_ref`), as shown in the following example.
 
 [tabs,sync-group-id=adl-example]
 ====
@@ -70,7 +70,7 @@ id-coded ADL2::
 --------
 ====
 
-If such a reference does not include a namespace, the meaning is that the same namespace as the current archetype is assumed (which may be no namespace). A namespace would be included to express a reference to an archetype outside the current namespace.
+If such a reference does not include a namespace, the meaning is that the same namespace as the current archetype is assumed. A namespace would be included to express a reference to an archetype outside the current namespace.
 
 A reference such as the above will resolve to an actual archetype at runtime according to the following algorithm:
 
@@ -144,10 +144,7 @@ A typical slot definition using REs based on such identifiers is as follows:
 
 This slot allows any archetype named `openEHR-EHR-CLUSTER.device.v1` or `openEHR-EHR-CLUSTER.device-xxx.v1`, which used the ADL 1.4 method of signifying specialised archetypes.
 
-The rule for namespace inclusion is as for external references:
-
-* no namespace means the same namespace as the current archetype;
-* an explicit namespace means archetypes from that namespace.
+Since legacy (ADL 1.4) identifiers carry no namespace, ADL 1.4 slot REs match identifiers without a namespace.
 
 As for external references, there is technically nothing to stop a slot RE being defined to refer to specific minor versions or builds of an archetype. The same rule applies: released archetypes should only include major versions.
 
@@ -335,7 +332,7 @@ In knowledge-enabled information environments such as those built on the archety
 
 Three requirements can be identified with respect to data within systems.
 
-* _Reconstitutability_: firstly, it must be possible to re-connect data with the archetypes, templates and subsets, used to create them. This implies that the major and minor versions at least are recorded in data, since a minor version may have an effect on structure.
+* _Reconstitutability_: firstly, it must be possible to re-connect data with the archetypes, templates and subsets, used to create them. This implies that the complete identifier - namespace and full version - is recorded in data, since even a minor version may have an effect on structure.
 * _Querying_: secondly, it must be possible to know what archetypes (including major version), and therefore what path-sets can be used for querying data - given that this may well include parents of specialised archetypes, not just the archetypes used to directly create the data.
 * _Optimisation_: we can also assume that in a typical production system handling millions of health records, that the size of artefact identifiers embedded in data (especially if repeated) may be an issue, and that some kind of space optimisation may be required.
 
@@ -392,8 +389,7 @@ A formal definition of reference catering to the above requirements is as follow
 [source, ebnf]
 --------
     archetype_data_ref  =   archetype_ver_ref { ',' archetype_ver_ref } ;
-    archetype_ver_ref   =   hrid_root '.' version_id_ref ;
-    version_id_ref      =   'v' version_id ;
+    archetype_ver_ref   =   hrid ;   (* the complete identifier of each artefact in the lineage *)
 --------
 
 === Optimisations
@@ -420,11 +416,11 @@ It is therefore worth considering various simple optimisations, while retaining 
 The most obvious optimisation is to use a set of variable references local to the data context, in this case an openEHR or ISO 13606 Extract. For example, at the top of the Extract, the following definitions could be made:
 
 --------
-    id01=uk.nhs.royalfree::openEHR-EHR-EVALUATION.diagnosis.v2.15.0,
+    id01=uk.nhs.royalfree.clinical::openEHR-EHR-EVALUATION.diagnosis.v2.15.0,
         org.openehr::openEHR-EHR-EVALUATION.diagnosis.v1.29.0,
         org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.0
-    id02=au.gov.nehta::openEHR-EHR-OBSERVATION.hba1c_result.v1.4,
-        org.openehr::openEHR-EHR-OBSERVATION.lab_result.v1.18
+    id02=au.gov.nehta::openEHR-EHR-OBSERVATION.hba1c_result.v1.4.0,
+        org.openehr::openEHR-EHR-OBSERVATION.lab_result.v1.18.0
     etc
 --------
 
@@ -446,11 +442,11 @@ We therefore assume that although some of the above assumptions might be availab
 Nevertheless, it would be possible to go further in terms of removing repetition in the once-only declarations. For instance, a compressed form of the archetype lineage information could be constructed, whereby repeated sections in each subsequent identifier are replaced by a special character. The example above would become:
 
 --------
-    id01=uk.nhs.royalfree::openEHR-EHR-EVALUATION.diagnosis.v2.15.0,
+    id01=uk.nhs.royalfree.clinical::openEHR-EHR-EVALUATION.diagnosis.v2.15.0,
         org.openehr::~.diagnosis.v1.29.0,
         ~::~.problem.v2.4.0
     id02=au.gov.nehta::openEHR-EHR-OBSERVATION.hba1c_result.v1.4.0,
-        org.openehr.ehr::~.lab_result.v1.18.0
+        org.openehr::~.lab_result.v1.18.0
 --------
 
 The above syntax uses the `~` character in each identifier in the list to mean 'the missing parts are taken from the corresponding element(s) of the previous identifier in the list' (the inspiration is the use of the `~` in dictionaries to stand for the keyword). In this syntax, the concrete archetype used to create the data is guaranteed to appear first and in its entirety in the list.
