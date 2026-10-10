@@ -29,18 +29,20 @@ Different types of human-readable identifiers are used for archetypes, templates
 
 == Formal Model
 
-This section defines a formal grammar for human-readable identifiers of knowledge artefacts. As described above, more than one human-readable identifier can be constructed from the identifying properties of the `ARCHETYPE_HRID` class. The grammar is shown in green below.
+This section defines the formal grammar for human-readable identifiers (HRIDs) of knowledge artefacts. As described above, more than one human-readable identifier can be constructed from the identifying properties of an artefact (for archetypes, those of the `ARCHETYPE_HRID` class). The grammar is aligned with the ADL 2 base lexer (see {openehr_am_adl2}#_base_lexer[Archetype Definition Language 2^]).
 
 The highest level distinction is between managed and unmanaged artefacts, with managed status being indicated by the prepending of a namespace to what can be termed a 'local' HRID (i.e. local to a given namespace context).
 
+An HRID consists of a `hrid_root` (an identifier of the reference model class and domain concept on which the artefact is based) and a version identifier, in the modern form preceded by a `namespace`. Two identifier forms are defined: a _modern_ (ADL 2) identifier, in which the `namespace` is mandatory; and a _legacy_ (ADL 1.4) identifier, which has no namespace and a major-only version.
+
 [source, ebnf]
 --------
-    artefact_hrid           =   namespaced_hrid | local_hrid ;
-    namespaced_hrid         =   namespace '::' local_hrid ;
-    local_hrid              =   hrid_root '.v' version_id ;
-    namespace               =   V_REVERSE_DOMAIN_NAME ;
-    V_REVERSE_DOMAIN_NAME   =   ; (* See IETF RFCs 1035, 123, and 2181. *)
+    hrid                    =   ( namespace '::' hrid_root '.v' version_id )   (* namespaced (ADL 2) form *)
+                            |   ( hrid_root '.v' major_version ) ;            (* legacy (ADL 1.4) form: no namespace, major version only *)
+    namespace               =   V_REVERSE_DOMAIN_NAME ;   (* See IETF RFCs 1035, 1123 and 2181. *)
 --------
+
+The version identifier (`version_id`) is defined in <<Version Numbering>>.
 
 The `namespace` above is the publisher organisation reverse domain name. Reverse domain names are used in order to aid lexical sorting of identifiers and also tools that build directory structures based on reverse domain name segments. All managed artefacts, including archetypes and templates should include a namespace. Any archetype or template carrying an identifier without a namespace is assumed to be an unmanaged artefact.
 
@@ -54,14 +56,14 @@ Examples:
 
 The archetype human-readable identifier consists of two logical parts: an identifier of the reference model (i.e. logical information model) class on which it is based, and an ontological identifier.
 
-The identifier is defined by the following grammar rules, which are a slightly simplified version of the grammar for the {openehr_base_types}#_identification_package[openEHR `ARCHETYPE_ID` type^]:
+The `hrid_root` is defined by the following grammar rules. The `archetype_id` production of the openEHR {openehr_base_types}#_syntaxes[Base Types^] specification is an application of this grammar.
 
 [source, ebnf]
 --------
     hrid_root                       =   qualified_rm_class_name '.' concept_id ;
-    qualified_rm_class_name         =   rm_publisher '-' rm_closure '-' rm_class ;
+    qualified_rm_class_name         =   rm_publisher '-' rm_package '-' rm_class ;
     rm_publisher                    =   V_ALPHANUMERIC_NAME ;
-    rm_closure                      =   V_ALPHANUMERIC_NAME ;
+    rm_package                      =   V_ALPHANUMERIC_NAME ;
     rm_class                        =   V_ALPHANUMERIC_NAME ;
     concept_id                      =   V_SEGMENTED_ALPHANUMERIC_NAME ;
 
@@ -71,8 +73,9 @@ The identifier is defined by the following grammar rules, which are a slightly s
 
 The field meanings are as follows:
 
+* `namespace`: reverse domain name of the publishing organisation, e.g. `org.openehr`, `uk.nhs`, `edu.nci`; mandatory in a modern (ADL 2) identifier and absent from a legacy (ADL 1.4) one;
 * `rm_publisher`: id of organisation originating the reference model on which this archetype is based;
-* `rm_closure`: identifier of the reference model top-level package closure on which the archetype is based;
+* `rm_package`: identifier of the reference model top-level package closure on which the archetype is based;
 * `rm_class`: name of class or equivalent entity in the reference model on which the artefact is based;
 * `concept_id`: an identifier from an ontology of information artefacts (see below);
 
@@ -126,3 +129,25 @@ Existing archetypes can be accommodated within such ontologies in two possible w
 Theoretically, the Reference Model class identifier part (qualified_rm_class_name above) should not be needed in a well constructed identifier, on the basis that there should never be a clash of concept identifiers, regardless of the RM class, even though they can easily be similar. For example, a reasonable `concept_id` for an `ENTRY` (ISO 13606) or `OBSERVATION` (openEHR) structure archetyped to represent a generic lab result might be 'lab_result'. For the COMPOSITION-level archetype designed to contain any 'lab result' `ENTRY` or `OBSERVATION`, a reasonable name would typically be 'lab_report' (or the equivalent in another language).
 
 Unfortunately, for some informational concepts, the appropriate name for the actual core data level can appear to be perfectly reasonable also as a name for a higher level container of the same data. Without an efficient and essentially global ontology construction service or authority available, the inclusion of the qualified RM class name acts as a reasonable guard against such clashes.
+
+=== Regular Expression
+
+The regular expression below is an _informative_ convenience for implementers - for example to parse or validate an HRID string, or as an OpenAPI / XML-Schema `pattern`. The normative grammar remains the EBNF above together with the `version_id` grammar in <<Version Numbering>>; where the two disagree, the EBNF prevails.
+
+It parses an HRID into its segments (the named capture groups). The core `rm_publisher-rm_package-rm_class.concept_id` and at least the major `version_id` (`.v` plus the major number) are required; the `namespace` and the minor and patch version parts are optional and are captured when present. The expression is deliberately lenient, so it accepts a modern (ADL 2) identifier, a legacy (ADL 1.4) identifier and a reduced-precision _reference_ alike. To _validate_ a complete ADL 2 identifier - rather than merely parse one - additionally require the `namespace` together with a full three-part `version_id`; the legacy ADL 1.4 identifier is the remaining well-formed case, namespaceless with a major-only version. A namespaceless string that carries a minor or patch version matches the lenient expression but is well-formed as neither an identifier nor a reference - both an ADL 2 identifier and an ADL 2 reference carry the namespace, so the only namespaceless form is the legacy ADL 1.4 identifier (major version only). Forms that carry no version at all, an empty `namespace` ("any namespace") or an empty version ("any version") are query _wildcards_ defined by the openEHR {openehr_query_aql}[Archetype Query Language^], not identifiers or references matched here.
+
+PCRE flavour, with named capture groups corresponding to the grammar productions:
+
+[source]
+--------
+^(?:(?<namespace>[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+)::)?(?<rm_publisher>[a-zA-Z][a-zA-Z0-9_]+)-(?<rm_package>[a-zA-Z][a-zA-Z0-9_]+)-(?<rm_class>[a-zA-Z][a-zA-Z0-9_]+)\.(?<concept_id>[a-zA-Z][a-zA-Z0-9_-]+)\.v(?<version_id>(?<major_version>[0-9]+)(?:\.(?<minor_version>[0-9]+)(?:\.(?<patch_version>[0-9]+)(?<version_modifier>-(?:rc|alpha|beta)(?:\.(?<build_count>[0-9]+))?)?)?)?)$
+--------
+
+Equivalent form for engines without named or non-capturing groups (e.g. a W3C XML Schema `pattern`, which anchors the whole value implicitly):
+
+[source]
+--------
+([a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+::)?[a-zA-Z][a-zA-Z0-9_]+-[a-zA-Z][a-zA-Z0-9_]+-[a-zA-Z][a-zA-Z0-9_]+\.[a-zA-Z][a-zA-Z0-9_\-]+\.v[0-9]+(\.[0-9]+(\.[0-9]+(-(rc|alpha|beta)(\.[0-9]+)?)?)?)?
+--------
+
+The `namespace` sub-expression approximates `V_REVERSE_DOMAIN_NAME` (IETF RFCs 1035, 1123, 2181); a stricter DNS-label form may be substituted where required. The numeric parts follow `V_NUMBER` (one or more digits).
