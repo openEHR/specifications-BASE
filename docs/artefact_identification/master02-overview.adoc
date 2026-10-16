@@ -64,9 +64,7 @@ The approach assumed here is to use both types of identifier in the following wa
 * a GUID is assigned to an artefact when it is created. It does not change, no matter what changes are made to the definition of the artefact. This enables authoring and model repository tools to track artefacts as they are modified over time.
 * other GUIDs can be used to identify finer level snapshots of changed artefacts;
 * one or more namespaced HRIDs for an artefact can be computed from various properties of the artefact. Which properties will depend on the type of artefact.
-* the last committed 'build' of an artefact (i.e. most recent version containing a change, no matter how small) can be identified in two ways:
-* using a 'build' number that is part of the version identification of the artefact;
-* via a hash on a canonical serialisation of the artefact.
+* the last committed 'build' of an artefact (i.e. most recent version containing a change, no matter how small) can be identified using a 'build' number that is part of the version identification of the artefact.
 
 This is a departure from the common situation where no machine identifier is assigned, and the artefact HRID is a static string, rather like a source file filename.
 
