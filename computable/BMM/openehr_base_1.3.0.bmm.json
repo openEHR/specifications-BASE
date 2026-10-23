@@ -2855,7 +2855,7 @@
                         }
                     },
                     "post_conditions": {
-                        "Post_result": "Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v <= upper or v < upper)"
+                        "Post_result": "Result = (lower_unbounded or (lower_included and e >= lower) or e > lower) and (upper_unbounded or (upper_included and e <= upper) or e < upper)"
                     },
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
