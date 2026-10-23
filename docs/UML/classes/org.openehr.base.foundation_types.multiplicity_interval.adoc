@@ -6,10 +6,10 @@ h|*Class*
 2+^h|*Multiplicity_interval*
 
 h|*Description*
-2+a|An Interval of Integer, used to represent multiplicity, cardinality and optionality in models.
+2+a|An Interval of Integer, used to represent multiplicity, cardinality and optionality in models. The lower bound is a count: it is always set and never negative. Only the upper bound may be unbounded, written `*`. A single value such as `1..1` is a valid multiplicity.
 
 h|*Inherit*
-2+|`<<_proper_interval_class,Proper_interval>>`
+2+|`<<_interval_class,Interval>>`
 
 h|*Constants*
 ^h|*Signature*
@@ -42,4 +42,10 @@ a|True if this interval expresses mandation, i.e. `1..1`.
 h|*1..1*
 |*is_prohibited* (): `<<_boolean_class,Boolean>>`
 a|True if this interval is set to `0..0`.
+
+h|*Invariants*
+2+a|__Lower_bounded__: `not lower_unbounded`
+
+h|
+2+a|__Lower_valid__: `lower >= 0`
 |===
