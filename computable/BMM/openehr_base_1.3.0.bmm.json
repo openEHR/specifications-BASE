@@ -3,7 +3,7 @@
     "rm_publisher": "openehr",
     "schema_name": "base",
     "rm_release": "1.3.0",
-    "schema_revision": "1.3.0.3",
+    "schema_revision": "1.3.0.4",
     "schema_lifecycle_state": "stable",
     "schema_description": "openEHR base types.",
     "schema_author": "Thomas Beale <thomas.beale@openehr.org>, code-generator",
@@ -2730,9 +2730,9 @@
         },
         "Multiplicity_interval": {
             "name": "Multiplicity_interval",
-            "documentation": "An Interval of Integer, used to represent multiplicity, cardinality and optionality in models. ",
+            "documentation": "An Interval of Integer, used to represent multiplicity, cardinality and optionality in models. The lower bound is a count: it is always set and never negative. Only the upper bound may be unbounded, written `*`. A single value such as `1..1` is a valid multiplicity.",
             "ancestors": [
-                "Proper_interval"
+                "Interval"
             ],
             "constants": {
                 "Multiplicity_range_marker": {
@@ -2781,6 +2781,10 @@
                         "type": "Boolean"
                     }
                 }
+            },
+            "invariants": {
+                "Lower_bounded": "not lower_unbounded",
+                "Lower_valid": "lower >= 0"
             }
         },
         "Interval": {
