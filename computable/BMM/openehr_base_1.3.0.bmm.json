@@ -3,7 +3,7 @@
     "rm_publisher": "openehr",
     "schema_name": "base",
     "rm_release": "1.3.0",
-    "schema_revision": "1.3.0.2",
+    "schema_revision": "1.3.0.3",
     "schema_lifecycle_state": "stable",
     "schema_description": "openEHR base types.",
     "schema_author": "Thomas Beale <thomas.beale@openehr.org>, code-generator",
@@ -2851,7 +2851,7 @@
                         }
                     },
                     "post_conditions": {
-                        "Post_result": "Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v <= upper or v < upper)"
+                        "Post_result": "Result = (lower_unbounded or (lower_included and e >= lower) or e > lower) and (upper_unbounded or (upper_included and e <= upper) or e < upper)"
                     },
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
