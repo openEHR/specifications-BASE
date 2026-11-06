@@ -6,37 +6,37 @@
 
 For backward compatibility a legacy free-text template name is still permitted, but is deprecated. The HRID grammar is defined by the openEHR Artefact Identification specification and realised by the `Hrid` primitive type; `_is_hrid_` reports whether a given value conforms to it, and the segment and version accessors return their parts when it does (and are empty for a legacy identifier).
 
-2+|Inherits: xref:{class_object_id}[OBJECT_ID]
+2+|Inherits: xref:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]
 
 2+h|*Attributes*
 
-|*value*: `xref:{class_string}[String]` [1..1]
+|*value*: `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The value of the id in the form defined below. +
-_Inherited from xref:{class_object_id}[OBJECT_ID]_
+_Inherited from xref:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]_
 
 2+h|*Functions*
 
-|*is_hrid* (): `xref:{class_boolean}[Boolean]` [1..1]
+|*is_hrid* (): `xref:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
 a|True if `_value_` conforms to the openEHR human-readable identifier (HRID) grammar, i.e. is a valid `Hrid`; False for a legacy free-text template identifier.
 
-|*namespace* (): `xref:{class_string}[String]` [1..1]
+|*namespace* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The namespace of the identifier, in the form of a reverse domain name, e.g. `"org.example"`; mandatory when `_value_` is in HRID (ADL 2) form and empty for a legacy free-text template identifier.
 
-|*qualified_rm_class_name* (): `xref:{class_string}[String]` [1..1]
+|*qualified_rm_class_name* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The qualified reference model class name, i.e. `rm_publisher '-' rm_package '-' rm_class`, e.g. `"openEHR-EHR-COMPOSITION"`; empty if `_value_` is not an HRID.
 
-|*concept_id* (): `xref:{class_string}[String]` [1..1]
+|*concept_id* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The template concept identifier, e.g. `"discharge_summary"`; empty if `_value_` is not an HRID.
 
-|*version_id* (): `xref:{class_string}[String]` [1..1]
+|*version_id* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The version part of the identifier as it appears after `'.v'`, e.g. `"1.0.0"`; empty if `_value_` is not an HRID.
 
-|*major_version* (): `xref:{class_string}[String]` [1..1]
+|*major_version* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The major version, i.e. the first numeric segment of `_version_id_`; empty if `_value_` is not an HRID.
 
-|*minor_version* (): `xref:{class_string}[String]` [1..1]
+|*minor_version* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The minor version, i.e. the second numeric segment of `_version_id_`; empty if not present or `_value_` is not an HRID.
 
-|*patch_version* (): `xref:{class_string}[String]` [1..1]
+|*patch_version* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
 a|The patch version, i.e. the third numeric segment of `_version_id_`; empty if not present or `_value_` is not an HRID.
 |===

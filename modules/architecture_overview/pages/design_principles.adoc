@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Design Principles
 
 The openEHR approach to modelling information, services and domain knowledge is based on a
@@ -61,7 +63,7 @@ image::diagrams/archetype_meta_architecture.svg[id=archetype_meta_architecture, 
 
 In this figure, 'data' as we know it in normal information systems (shown on the bottom left) conforms in the usual way to an object model (top left). Systems engineered in the 'classic' way (i.e. all domain semantics are encoded somewhere in the software or database) are limited to this kind of architecture. With the use of multi-level modelling, runtime data now conform semantically to archetypes as well as concretely to the reference model. All archetypes are expressed in a generic {openehr_am_adl2}[Archetype Definition Language (ADL)], which is the basis of {iso_13606-2}[ISO standard 13606-2].
 
-The details of how archetypes and templates work in openEHR are described in the <<_archetypes_and_templates>>.
+The details of how archetypes and templates work in openEHR are described in the xref:archetypes.adoc[Archetypes and Templates].
 
 === Consequences for Software Engineering
 

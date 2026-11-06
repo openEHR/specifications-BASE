@@ -13,7 +13,7 @@ Lexical forms: `rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' s
 The `_value_` obeys the openEHR human-readable identifier (HRID) grammar, realised by the `Hrid` primitive type; see the openEHR Artefact Identification specification for the grammar, version numbering and referencing model.
 
 h|*Inherit*
-2+|`xref:{class_object_id}[OBJECT_ID]`
+2+|`xref:base_types:identification_package.adoc#_object_id_class[OBJECT_ID]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -21,7 +21,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `xref:{class_hrid}[Hrid]`
+|*value*: `xref:foundation_types:primitive_types.adoc#_hrid_class[Hrid]`
 a|The identifier string. Covariantly redefines `OBJECT_ID._value_` (`String`) as the `Hrid` primitive, so that an archetype identifier is a validated human-readable identifier by construction.
 
 h|*Functions*
@@ -29,47 +29,47 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*namespace* (): `xref:{class_string}[String]`
+|*namespace* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|The namespace of the identifier, in the form of a reverse domain name, e.g. `"org.openehr"`; mandatory in the ADL 2 form and empty for a legacy ADL 1.4 identifier.
 
 h|*1..1*
-|*qualified_rm_entity* (): `xref:{class_string}[String]`
+|*qualified_rm_entity* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Globally qualified reference model entity, e.g.  `"openehr-EHR-OBSERVATION"`.
 
 h|*1..1*
-|*domain_concept* (): `xref:{class_string}[String]`
+|*domain_concept* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of the concept represented by this archetype, including specialisation, e.g. `"Biochemistry_result-cholesterol"`.
 
 h|*1..1*
-|*rm_originator* (): `xref:{class_string}[String]`
+|*rm_originator* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Organisation originating the reference model on which this archetype is based, e.g. `"openEHR"`, `"CEN"`, `"HL7"`.
 
 h|*1..1*
-|*rm_name* (): `xref:{class_string}[String]`
+|*rm_name* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of the reference model, e.g. `"RIM"`,  `"EHR"`,  `"EN13606"`.
 
 h|*1..1*
-|*rm_entity* (): `xref:{class_string}[String]`
+|*rm_entity* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR:  `"FOLDER"`, `"COMPOSITION"`, `"SECTION"`, `"OBSERVATION"`.
 
 h|*1..1*
-|*specialisation* (): `xref:{class_string}[String]`
+|*specialisation* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g. `"cholesterol"`.
 
 h|*1..1*
-|*version_id* (): `xref:{class_string}[String]`
+|*version_id* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Version identification of this archetype. For an ADL 2 identifier this is the three-part `major.minor.patch` version, optionally with a pre-release modifier, e.g. `"1.8.2"` or `"2.0.0-rc.4"`; for a legacy ADL 1.4 identifier it is the major version only, e.g. `"1"`.
 
 h|*1..1*
-|*major_version* (): `xref:{class_string}[String]`
+|*major_version* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|The major version, i.e. the first numeric segment of `_version_id_`, e.g. `"1"`.
 
 h|*1..1*
-|*minor_version* (): `xref:{class_string}[String]`
+|*minor_version* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|The minor version, i.e. the second numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.
 
 h|*1..1*
-|*patch_version* (): `xref:{class_string}[String]`
+|*patch_version* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|The patch version, i.e. the third numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.
 
 h|*Invariants*

@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Identification Package
 
 == Overview
@@ -6,7 +8,7 @@ The `BASE.base_types.identification` package describes a model of references and
 
 [.text-center]
 .base.base_types.identification Package
-image::{uml_diagrams_uri}/BASE-base_types.identification.svg[id=base_identification_types, align="center"]
+image::ROOT:uml/BASE-base_types.identification.svg[id=base_identification_types, align="center"]
 
 == Requirements
 
@@ -110,7 +112,7 @@ Examples of archetype identifiers include:
 * `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4` (ADL 2 form: mandatory namespace, three-part version)
 * `com.nedap::openEHR-EHR-OBSERVATION.pulse.v1.1.3` (ADL 2 form: namespace disambiguates the custodian)
 
-The grammar of archetype identifiers is given below in <<Syntaxes>>.
+The grammar of archetype identifiers is given below in <<_syntaxes,Syntaxes>>.
 
 WARNING: some archetype authoring tools have historically allowed a nonconforming version part within archetype identifiers which included the lifecycle status. This has led to some archetypes having an incorrect identifier whose version part is of the form `.v1draft` or similar.
 
@@ -192,37 +194,37 @@ All `OBJECT_IDs` are used as identifier attributes within the thing they identif
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/{pkg}uid.adoc[]
+include::ROOT:partial$classes/uid.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}iso_oid.adoc[]
+include::ROOT:partial$classes/iso_oid.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}uuid.adoc[]
+include::ROOT:partial$classes/uuid.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}internet_id.adoc[]
+include::ROOT:partial$classes/internet_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}object_id.adoc[]
+include::ROOT:partial$classes/object_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}uid_based_id.adoc[]
+include::ROOT:partial$classes/uid_based_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}hier_object_id.adoc[]
+include::ROOT:partial$classes/hier_object_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}object_version_id.adoc[]
+include::ROOT:partial$classes/object_version_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}version_tree_id.adoc[]
+include::ROOT:partial$classes/version_tree_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}archetype_id.adoc[]
+include::ROOT:partial$classes/archetype_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}template_id.adoc[]
+include::ROOT:partial$classes/template_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}terminology_id.adoc[]
+include::ROOT:partial$classes/terminology_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}generic_id.adoc[]
+include::ROOT:partial$classes/generic_id.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}object_ref.adoc[]
+include::ROOT:partial$classes/object_ref.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}party_ref.adoc[]
+include::ROOT:partial$classes/party_ref.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}locatable_ref.adoc[]
+include::ROOT:partial$classes/locatable_ref.adoc[]
 
 [[_syntaxes]]
 == Syntaxes

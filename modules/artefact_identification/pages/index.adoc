@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,43 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+== Purpose
+
+The purpose of this document is to describe the identification system for openEHR knowledge artefacts, principally archetypes and templates (including operational templates). This includes artefacts created by any organisation, including the openEHR Foundation, standards bodies, clinical modelling initiatives and government programmes.
+
+The semantics covered include:
+
+* formal human-readable and machine identifiers;
+* versioning;
+* lifecycle management and states;
+* referencing artefacts from elsewhere;
+* deal with transfer and forking;
+* supporting integrity and non-repudiation.
+
+Unless otherwise stated, in this document, the term 'artefact' refers specifically to these artefact types.
+
+The computable type representing a human-readable identifier, `Hrid`, is defined as a primitive type in the openEHR {openehr_foundation_types}[Foundation Types^] specification, and the `ARCHETYPE_ID` and `TEMPLATE_ID` types in the openEHR {openehr_base_types}[Base Types^] specification. The present document is the normative source for the grammar and semantics of these identifiers.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+* The {openehr_foundation_types}[openEHR Foundation Types Specification^] (the `Hrid` type).
+* The {openehr_base_types}[openEHR Base Types Specification^] (the `ARCHETYPE_ID` and `TEMPLATE_ID` types).
+* The {openehr_resource}[openEHR Resource Model Specification^] (descriptive and lifecycle meta-data of authored artefacts).
+* The {openehr_am_overview}[openEHR Archetype Technology Overview^].
+
+Related documents include:
+
+* The {openehr_am_aom2}[openEHR Archetype Object Model 2 (AOM2) Specification^].
+* The {openehr_am_adl2}[openEHR Archetype Definition Language 2 (ADL2) Specification^].
+* The {openehr_query_aql}[openEHR Archetype Query Language (AQL) Specification^].
+
+
+
 
 
 //
@@ -17,56 +55,13 @@
 //
 // --------------------------------------------- Preface -----------------------------------------------
 //
-== Acknowledgements
 
-=== Primary Author
+== Feedback
 
-* Thomas Beale, Ars Semantica, UK; openEHR International Board.
+Feedback may be provided on the {openehr_technical_list}[technical mailing list^].
 
-=== Contributors
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-This specification has benefited from input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people and institutions.
-
-* Sebastian Garde PhD, Ocean Informatics
-* Heather Leslie MD, Ocean Informatics
-* Ian McNicoll MD, MSc, Ocean Informatics UK
-* Martin van der Meer, Code24, Netherlands
-* David Moner PhD, Universitat Politècnica de València, Spain
-* Erik Sundvall PhD, Linkoping University, Sweden
-* Sebastian Iancu, Code24, Netherlands
-
-=== Trademarks
-
-* 'openEHR' is a registered trademark of The openEHR Foundation
-* 'SNOMED CT' is a registered trademark of IHTSDO
-
-=== Supporters
-
-The work reported in this paper has been funded by the following organisations:
-
-* the {openehr_industry_partners}[openEHR Industry Partners^];
-* Better d.o.o, Slovenia
-* Ocean Informatics, UK
-
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- Amendment Record -----------------------------------------------
-//
-:sectnums!:
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-
-bibliography::[]
