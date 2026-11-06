@@ -1,0 +1,112 @@
+[source,json]
+--------
+{
+    "name": "ARCHETYPE_ID",
+    "documentation": "Globally unique identifier for an archetype, carrying the exact identification of the artefact - its complete version and, in the ADL 2 form, its namespace. An `ARCHETYPE_ID` is intended to carry the complete identification rather than a reduced-precision reference; a reference (which carries only a partial version, e.g. the major version only, while retaining the namespace of an ADL 2 artefact) shares the same lexical form and differs by precision and use rather than by type, with matching semantics defined by the Artefact Identification specification.\n\nSupports both legacy ADL 1.4 identifiers (no namespace, single major version) and ADL 2 identifiers (mandatory namespace and a three-part `major.minor.patch` version, optionally with a pre-release modifier).\n\nLexical forms: `rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' major_version` (legacy ADL 1.4, e.g. `openEHR-EHR-SECTION.physical_examination.v2`), or `namespace '::' rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' version_id` (ADL 2, e.g. `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4`).\n\nThe `_value_` obeys the openEHR human-readable identifier (HRID) grammar, realised by the `Hrid` primitive type; see the openEHR Artefact Identification specification for the grammar, version numbering and referencing model.",
+    "ancestors": [
+        "OBJECT_ID"
+    ],
+    "properties": {
+        "value": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "value",
+            "documentation": "The identifier string. Covariantly redefines `OBJECT_ID._value_` (`String`) as the `Hrid` primitive, so that an archetype identifier is a validated human-readable identifier by construction.",
+            "is_mandatory": true,
+            "type": "Hrid"
+        }
+    },
+    "functions": {
+        "namespace": {
+            "name": "namespace",
+            "documentation": "The namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.openehr\"`; mandatory in the ADL 2 form and empty for a legacy ADL 1.4 identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "qualified_rm_entity": {
+            "name": "qualified_rm_entity",
+            "documentation": "Globally qualified reference model entity, e.g.  `\"openehr-EHR-OBSERVATION\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "domain_concept": {
+            "name": "domain_concept",
+            "documentation": "Name of the concept represented by this archetype, including specialisation, e.g. `\"Biochemistry_result-cholesterol\"`. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "rm_originator": {
+            "name": "rm_originator",
+            "documentation": "Organisation originating the reference model on which this archetype is based, e.g. `\"openEHR\"`, `\"CEN\"`, `\"HL7\"`. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "rm_name": {
+            "name": "rm_name",
+            "documentation": "Name of the reference model, e.g. `\"RIM\"`,  `\"EHR\"`,  `\"EN13606\"`. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "rm_entity": {
+            "name": "rm_entity",
+            "documentation": "Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR:  `\"FOLDER\"`, `\"COMPOSITION\"`, `\"SECTION\"`, `\"OBSERVATION\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "specialisation": {
+            "name": "specialisation",
+            "documentation": "Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g. `\"cholesterol\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "version_id": {
+            "name": "version_id",
+            "documentation": "Version identification of this archetype. For an ADL 2 identifier this is the three-part `major.minor.patch` version, optionally with a pre-release modifier, e.g. `\"1.8.2\"` or `\"2.0.0-rc.4\"`; for a legacy ADL 1.4 identifier it is the major version only, e.g. `\"1\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "major_version": {
+            "name": "major_version",
+            "documentation": "The major version, i.e. the first numeric segment of `_version_id_`, e.g. `\"1\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "minor_version": {
+            "name": "minor_version",
+            "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "patch_version": {
+            "name": "patch_version",
+            "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    },
+    "invariants": {
+        "Value_valid": "value.is_valid"
+    }
+}
+--------
