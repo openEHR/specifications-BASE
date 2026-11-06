@@ -3,7 +3,7 @@
     "rm_publisher": "openehr",
     "schema_name": "base",
     "rm_release": "1.3.0",
-    "schema_revision": "1.3.0.2",
+    "schema_revision": "1.3.0.3",
     "schema_lifecycle_state": "stable",
     "schema_description": "openEHR base types.",
     "schema_author": "Thomas Beale <thomas.beale@openehr.org>, code-generator",
@@ -51,6 +51,12 @@
                         "Math",
                         "Quantity_converter"
                     ]
+                },
+                "terminology": {
+                    "name": "terminology",
+                    "classes": [
+                        "CODE_PHRASE"
+                    ]
                 }
             }
         },
@@ -71,6 +77,7 @@
                     "name": "primitive_types",
                     "classes": [
                         "Uri",
+                        "Hrid",
                         "Comparable",
                         "Ordered_Numeric",
                         "Integer",
@@ -123,8 +130,7 @@
                     "name": "terminology",
                     "classes": [
                         "Terminology_code",
-                        "Terminology_term",
-                        "CODE_PHRASE"
+                        "Terminology_term"
                     ]
                 }
             },
@@ -345,9 +351,22 @@
                     "documentation": "Existential quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -364,9 +383,22 @@
                     "documentation": "Universal quantifier applied to container, taking one agent argument `_test_` whose signature is `(v:T): Boolean`.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -379,9 +411,22 @@
                     "documentation": "Return a List all items matching the predicate function `_test_` which has signature `(v:T): Boolean`. If no matches, an empty List is returned.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -396,9 +441,22 @@
                     "documentation": "Return first item matching the predicate function `_test_` which has signature `(v:T): Boolean`, or Void if no match.",
                     "parameters": {
                         "test": {
-                            "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                            "_type": "P_BMM_GENERIC_FUNCTION_PARAMETER",
                             "name": "test",
-                            "type": "Operation"
+                            "type_def": {
+                                "_type": "P_BMM_GENERIC_TYPE",
+                                "root_type": "FUNCTION",
+                                "generic_parameters": [
+                                    {
+                                        "_type": "P_BMM_GENERIC_TYPE",
+                                        "root_type": "TUPLE1",
+                                        "generic_parameters": [
+                                            "T"
+                                        ]
+                                    },
+                                    "Boolean"
+                                ]
+                            }
                         }
                     },
                     "result": {
@@ -497,6 +555,127 @@
                 "String"
             ]
         },
+        "Hrid": {
+            "name": "Hrid",
+            "documentation": "A kind of String constrained to obey the syntax of an openEHR human-readable identifier (HRID), used to identify managed knowledge artefacts such as archetypes and templates.\n\nTwo identifier forms are recognised: a modern (ADL 2) identifier, which is namespaced and carries a full `major.minor.patch` version, e.g. `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.0`; and a legacy (ADL 1.4) identifier, which has no namespace and a major-only version, e.g. `openEHR-EHR-OBSERVATION.blood_pressure.v2`. The namespace is mandatory in the modern form and absent in the legacy form; `_is_namespaced_` discriminates the two. A namespaceless full-version string is therefore not a valid identifier.\n\nSee the openEHR Artefact Identification specification for the grammar, version numbering, concept-identifier semantics and referencing model.",
+            "ancestors": [
+                "String"
+            ],
+            "functions": {
+                "is_valid": {
+                    "name": "is_valid",
+                    "documentation": "True if this identifier conforms to the HRID grammar defined in the openEHR Artefact Identification specification, i.e. it is either a namespaced modern (ADL 2) identifier or an unnamespaced legacy (ADL 1.4) identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "Boolean"
+                    }
+                },
+                "is_namespaced": {
+                    "name": "is_namespaced",
+                    "documentation": "True if this identifier carries a `_namespace_`, i.e. is a modern (ADL 2) identifier; False for a legacy (ADL 1.4) identifier, which has no namespace.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "Boolean"
+                    }
+                },
+                "namespace": {
+                    "name": "namespace",
+                    "documentation": "The namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.openehr\"`; mandatory in a modern (ADL 2) identifier and empty for a legacy (ADL 1.4) identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "rm_publisher": {
+                    "name": "rm_publisher",
+                    "documentation": "Identifier of the organisation originating the reference model on which the identified artefact is based, e.g. `\"openEHR\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "rm_package": {
+                    "name": "rm_package",
+                    "documentation": "Identifier of the reference model top-level package closure on which the identified artefact is based, e.g. `\"EHR\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "rm_class": {
+                    "name": "rm_class",
+                    "documentation": "Name of the reference model class on which the identified artefact is based, e.g. `\"OBSERVATION\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "qualified_rm_class_name": {
+                    "name": "qualified_rm_class_name",
+                    "documentation": "The qualified reference model class name, i.e. `rm_publisher '-' rm_package '-' rm_class`, e.g. `\"openEHR-EHR-OBSERVATION\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "concept_id": {
+                    "name": "concept_id",
+                    "documentation": "The ontological (domain) concept identifier of the artefact, e.g. `\"blood_pressure\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "version_id": {
+                    "name": "version_id",
+                    "documentation": "The version part of the identifier as it appears after `'.v'`, e.g. `\"1\"`, `\"1.8.2\"` or `\"1.8.2-rc.4\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "major_version": {
+                    "name": "major_version",
+                    "documentation": "The major version, i.e. the first numeric segment of `_version_id_`, e.g. `\"1\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "minor_version": {
+                    "name": "minor_version",
+                    "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty if not present.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "patch_version": {
+                    "name": "patch_version",
+                    "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty if not present.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "version_status": {
+                    "name": "version_status",
+                    "documentation": "The lifecycle status implied by the version modifier: `\"alpha\"`, `\"beta\"` or `\"release_candidate\"` for a pre-release version (`'-alpha'`, `'-beta'`, `'-rc'` respectively), or `\"released\"` when no modifier is present. These correspond to the `VERSION_STATUS` values defined in the openEHR Base Types specification.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "build_count": {
+                    "name": "build_count",
+                    "documentation": "The build count following a pre-release modifier, i.e. the number in `'-rc.'`, `'-alpha.'` or `'-beta.'`, e.g. `\"4\"` for `...v1.8.2-rc.4`; empty if no build count is present.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                }
+            }
+        },
         "Ordered_Numeric": {
             "name": "Ordered_Numeric",
             "documentation": "Abstract notional parent class of ordered, numeric types, which are types with both the `_less_than_()` and arithmetic functions defined.",
@@ -552,7 +731,7 @@
                 "multiply": {
                     "name": "multiply",
                     "aliases": [
-                        "&#42;"
+                        "*"
                     ],
                     "documentation": "Integer multiplication.",
                     "parameters": {
@@ -743,7 +922,7 @@
                 "multiply": {
                     "name": "multiply",
                     "aliases": [
-                        "&#42;"
+                        "*"
                     ],
                     "documentation": "Double-precision real number multiplication.",
                     "parameters": {
@@ -910,7 +1089,7 @@
                 "multiply": {
                     "name": "multiply",
                     "aliases": [
-                        "&#42;"
+                        "*"
                     ],
                     "documentation": "Product by `_other_`. Actual type of result depends on arithmetic balancing rules.",
                     "is_abstract": true,
@@ -1294,7 +1473,7 @@
                 "multiply": {
                     "name": "multiply",
                     "aliases": [
-                        "&#42;"
+                        "*"
                     ],
                     "documentation": "Real number multiplication.",
                     "parameters": {
@@ -1458,7 +1637,7 @@
                 "multiply": {
                     "name": "multiply",
                     "aliases": [
-                        "&#42;"
+                        "*"
                     ],
                     "documentation": "Large integer multiplication.",
                     "parameters": {
@@ -2050,7 +2229,7 @@
                 },
                 "to_seconds": {
                     "name": "to_seconds",
-                    "documentation": "Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `Time_definitions` are used to compute the result.",
+                    "documentation": "Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `<<_time_definitions_class,Time_definitions>>` are used to compute the result. Using the constants defined there, the computation is `to_seconds = years × Average_days_in_year × spd + months × Average_days_in_month × spd + weeks × Days_in_week × spd + days × spd + hours × Minutes_in_hour × Seconds_in_minute + minutes × Seconds_in_minute + seconds + fractional_seconds`, where `spd = Hours_in_day × Minutes_in_hour × Seconds_in_minute` is the number of seconds in a day (86400).",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Real"
@@ -2103,7 +2282,7 @@
                 "multiply": {
                     "name": "multiply",
                     "aliases": [
-                        "&#42;"
+                        "*"
                     ],
                     "documentation": "Arithmetic multiplication a duration by a number.",
                     "parameters": {
@@ -2211,7 +2390,7 @@
                 },
                 "minute_unknown": {
                     "name": "minute_unknown",
-                    "documentation": "Indicates whether minute is unknown. If so, the time is of the form \u201chh\u201d.",
+                    "documentation": "Indicates whether minute is unknown. If so, the time is of the form \"hh\".",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Boolean"
@@ -2219,7 +2398,7 @@
                 },
                 "second_unknown": {
                     "name": "second_unknown",
-                    "documentation": "Indicates whether second is unknown. If so and month is known, the time is of the form `\"hh:mm\"` or `\"hhmm\"`.",
+                    "documentation": "Indicates whether second is unknown. If so and minute is known, the time is of the form `\"hh:mm\"` or `\"hhmm\"`.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Boolean"
@@ -2403,14 +2582,6 @@
                         "type": "Integer"
                     }
                 },
-                "timezone": {
-                    "name": "timezone",
-                    "documentation": "Timezone; may be Void.",
-                    "result": {
-                        "_type": "P_BMM_SIMPLE_TYPE",
-                        "type": "Iso8601_timezone"
-                    }
-                },
                 "month_unknown": {
                     "name": "month_unknown",
                     "documentation": "Indicates whether month in year is unknown. If so, the date is of the form `\"YYYY\"`.",
@@ -2574,7 +2745,7 @@
                     "name": "Multiplicity_unbounded_marker",
                     "documentation": "Symbol to use to indicate upper limit unbounded.",
                     "type": "Character",
-                    "value": "'&#42;'"
+                    "value": "'*'"
                 }
             },
             "functions": {
@@ -2680,7 +2851,7 @@
                         }
                     },
                     "post_conditions": {
-                        "Post_result": "Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v <= upper or v < upper)"
+                        "Post_result": "Result = (lower_unbounded or (lower_included and e >= lower) or e > lower) and (upper_unbounded or (upper_included and e <= upper) or e < upper)"
                     },
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
@@ -2689,7 +2860,7 @@
                 },
                 "intersects": {
                     "name": "intersects",
-                    "documentation": "True if there is any overlap between intervals represented by Current and `_other_`. True if at least one limit of `_other_` is strictly inside the limits of this interval.",
+                    "documentation": "True if there is any overlap between intervals represented by Current and `_other_`, i.e. at least one limit of `_other_` is strictly inside the limits of this interval.",
                     "is_abstract": true,
                     "parameters": {
                         "other": {
@@ -2705,7 +2876,7 @@
                 },
                 "contains": {
                     "name": "contains",
-                    "documentation": "True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval.",
+                    "documentation": "True if current interval properly contains `_other_`, i.e. all points of `_other_` are inside the current interval.",
                     "is_abstract": true,
                     "parameters": {
                         "other": {
@@ -2858,11 +3029,28 @@
     "class_definitions": {
         "ARCHETYPE_ID": {
             "name": "ARCHETYPE_ID",
-            "documentation": "Identifier or reference for archetypes. Ideally, these identify globally unique archetypes. When used as a reference, only partial version information is included (major version only), and the namespace is omitted.\n\nLexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' version_id`.",
+            "documentation": "Globally unique identifier for an archetype, carrying the exact identification of the artefact - its complete version and, in the ADL 2 form, its namespace. An `ARCHETYPE_ID` is intended to carry the complete identification rather than a reduced-precision reference; a reference (which carries only a partial version, e.g. the major version only, while retaining the namespace of an ADL 2 artefact) shares the same lexical form and differs by precision and use rather than by type, with matching semantics defined by the Artefact Identification specification.\n\nSupports both legacy ADL 1.4 identifiers (no namespace, single major version) and ADL 2 identifiers (mandatory namespace and a three-part `major.minor.patch` version, optionally with a pre-release modifier).\n\nLexical forms: `rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' major_version` (legacy ADL 1.4, e.g. `openEHR-EHR-SECTION.physical_examination.v2`), or `namespace '::' rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' version_id` (ADL 2, e.g. `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4`).\n\nThe `_value_` obeys the openEHR human-readable identifier (HRID) grammar, realised by the `Hrid` primitive type; see the openEHR Artefact Identification specification for the grammar, version numbering and referencing model.",
             "ancestors": [
                 "OBJECT_ID"
             ],
+            "properties": {
+                "value": {
+                    "_type": "P_BMM_SINGLE_PROPERTY",
+                    "name": "value",
+                    "documentation": "The identifier string. Covariantly redefines `OBJECT_ID._value_` (`String`) as the `Hrid` primitive, so that an archetype identifier is a validated human-readable identifier by construction.",
+                    "is_mandatory": true,
+                    "type": "Hrid"
+                }
+            },
             "functions": {
+                "namespace": {
+                    "name": "namespace",
+                    "documentation": "The namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.openehr\"`; mandatory in the ADL 2 form and empty for a legacy ADL 1.4 identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
                 "qualified_rm_entity": {
                     "name": "qualified_rm_entity",
                     "documentation": "Globally qualified reference model entity, e.g.  `\"openehr-EHR-OBSERVATION\"`.",
@@ -2913,12 +3101,39 @@
                 },
                 "version_id": {
                     "name": "version_id",
-                    "documentation": "Version identification of this archetype, representing the major version, e.g. `\"1\"`.",
+                    "documentation": "Version identification of this archetype. For an ADL 2 identifier this is the three-part `major.minor.patch` version, optionally with a pre-release modifier, e.g. `\"1.8.2\"` or `\"2.0.0-rc.4\"`; for a legacy ADL 1.4 identifier it is the major version only, e.g. `\"1\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "major_version": {
+                    "name": "major_version",
+                    "documentation": "The major version, i.e. the first numeric segment of `_version_id_`, e.g. `\"1\"`.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "minor_version": {
+                    "name": "minor_version",
+                    "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "patch_version": {
+                    "name": "patch_version",
+                    "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "String"
                     }
                 }
+            },
+            "invariants": {
+                "Value_valid": "value.is_valid"
             }
         },
         "GENERIC_ID": {
@@ -3065,7 +3280,7 @@
                 "OBJECT_REF"
             ],
             "invariants": {
-                "Type_validity": "type.is_equal(\u201cPERSON\u201d) or type.is_equal(\u201cORGANISATION\u201d) or type.is_equal(\u201cGROUP\u201d) or type.is_equal(\u201cAGENT\u201d)or type.is_equal(\u201cROLE\u201d) or type.is_equal(\u201cPARTY\u201d) or type.is_equal(\u201cACTOR\u201d)"
+                "Type_validity": "type.is_equal(\"PERSON\") or type.is_equal(\"ORGANISATION\") or type.is_equal(\"GROUP\") or type.is_equal(\"AGENT\") or type.is_equal(\"ROLE\") or type.is_equal(\"PARTY\") or type.is_equal(\"ACTOR\")"
             }
         },
         "TERMINOLOGY_ID": {
@@ -3154,7 +3369,7 @@
                 "Branch_version_valid": "branch_version \/= Void implies branch_version.is_integer and then branch_version.as_integer >= 1",
                 "Branch_validity": "(branch_number = Void and branch_version = Void ) xor (branch_number \/= Void and branch_version \/= Void )",
                 "Is_branch_validity": "is_branch xor branch_number = Void",
-                "Is_first_validity": "not is_first xor trunk_version.is_equal(\u201c1\u201d)"
+                "Is_first_validity": "not is_first xor trunk_version.is_equal(\"1\")"
             }
         },
         "UID_BASED_ID": {
@@ -3234,10 +3449,76 @@
         },
         "TEMPLATE_ID": {
             "name": "TEMPLATE_ID",
-            "documentation": "Identifier for templates. Lexical form to be determined.",
+            "documentation": "Identifier for a template. The human-readable identifier (HRID) form is strongly recommended and is the modern (ADL 2) form: `namespace '::' rm_publisher '-' rm_package '-' rm_class '.' concept_id '.v' version_id`, e.g. `org.example::openEHR-EHR-COMPOSITION.discharge_summary.v1.0.0`.\n\nFor backward compatibility a legacy free-text template name is still permitted, but is deprecated. The HRID grammar is defined by the openEHR Artefact Identification specification and realised by the `Hrid` primitive type; `_is_hrid_` reports whether a given value conforms to it, and the segment and version accessors return their parts when it does (and are empty for a legacy identifier).",
             "ancestors": [
                 "OBJECT_ID"
-            ]
+            ],
+            "functions": {
+                "is_hrid": {
+                    "name": "is_hrid",
+                    "documentation": "True if `_value_` conforms to the openEHR human-readable identifier (HRID) grammar, i.e. is a valid `Hrid`; False for a legacy free-text template identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "Boolean"
+                    }
+                },
+                "namespace": {
+                    "name": "namespace",
+                    "documentation": "The namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.example\"`; mandatory when `_value_` is in HRID (ADL 2) form and empty for a legacy free-text template identifier.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "qualified_rm_class_name": {
+                    "name": "qualified_rm_class_name",
+                    "documentation": "The qualified reference model class name, i.e. `rm_publisher '-' rm_package '-' rm_class`, e.g. `\"openEHR-EHR-COMPOSITION\"`; empty if `_value_` is not an HRID.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "concept_id": {
+                    "name": "concept_id",
+                    "documentation": "The template concept identifier, e.g. `\"discharge_summary\"`; empty if `_value_` is not an HRID.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "version_id": {
+                    "name": "version_id",
+                    "documentation": "The version part of the identifier as it appears after `'.v'`, e.g. `\"1.0.0\"`; empty if `_value_` is not an HRID.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "major_version": {
+                    "name": "major_version",
+                    "documentation": "The major version, i.e. the first numeric segment of `_version_id_`; empty if `_value_` is not an HRID.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "minor_version": {
+                    "name": "minor_version",
+                    "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty if not present or `_value_` is not an HRID.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                },
+                "patch_version": {
+                    "name": "patch_version",
+                    "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty if not present or `_value_` is not an HRID.",
+                    "result": {
+                        "_type": "P_BMM_SIMPLE_TYPE",
+                        "type": "String"
+                    }
+                }
+            }
         },
         "ACCESS_GROUP_REF": {
             "name": "ACCESS_GROUP_REF",
@@ -3246,7 +3527,7 @@
                 "OBJECT_REF"
             ],
             "invariants": {
-                "Type_validity": "type.is_equal (\u201cACCESS_GROUP\u201d)"
+                "Type_validity": "type.is_equal (\"ACCESS_GROUP\")"
             }
         },
         "OPENEHR_DEFINITIONS": {
@@ -3288,7 +3569,7 @@
                 "Regex_any_pattern": {
                     "name": "Regex_any_pattern",
                     "type": "String",
-                    "value": "\".&#42;\""
+                    "value": "\".*\""
                 },
                 "Default_encoding": {
                     "name": "Default_encoding",
@@ -3305,7 +3586,7 @@
         "VALIDITY_KIND": {
             "_type": "P_BMM_ENUMERATION_STRING",
             "name": "VALIDITY_KIND",
-            "documentation": "An enumeration of three values that may commonly occur in constraint models.\n\nUse as the type of any attribute within this model, which expresses constraint on some attribute in a class in a reference model. For example to indicate validity\nof Date\/Time fields.",
+            "documentation": "An enumeration of three values (plus a deprecated synonym) that may commonly occur in constraint models.\n\nUse as the type of any attribute within this model, which expresses constraint on some attribute in a class in a reference model. For example to indicate validity\nof Date\/Time fields.",
             "ancestors": [
                 "String"
             ],
@@ -3801,7 +4082,7 @@
                 },
                 "is_extended": {
                     "name": "is_extended",
-                    "documentation": "True if this time-zone uses \u2018:\u2019 separators.",
+                    "documentation": "True if this time-zone uses ':' separators.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "Boolean"
@@ -4293,7 +4574,7 @@
             },
             "invariants": {
                 "Original_language_valid": "code_set (Code_set_id_languages).has_code (original_language.as_string)",
-                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))",
+                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (original_language.code_string))",
                 "Description_valid": "translations \/= Void implies (description.details.for_all (d &#124;\ntranslations.has_key (d.language.code_string)))",
                 "Languages_available_valid": "languages_available.has (original_language)"
             }
@@ -4357,7 +4638,7 @@
                 "lifecycle_state": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "lifecycle_state",
-                    "documentation": "Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete. ",
+                    "documentation": "Lifecycle state of the resource, typically using macro-states such as: unmanaged, in_development, release_candidate, published, rejected, deprecated.",
                     "is_mandatory": true,
                     "type": "String"
                 },
@@ -4451,6 +4732,11 @@
                         ]
                     }
                 }
+            },
+            "invariants": {
+                "Original_author_valid": "not original_author.is_empty",
+                "Lifecycle_state_valid": "not lifecycle_state.is_empty",
+                "Parent_resource_valid": "parent_resource \/= Void implies parent_resource.description = self"
             }
         },
         "TRANSLATION_DETAILS": {
@@ -4574,7 +4860,7 @@
                 "other_details": {
                     "_type": "P_BMM_GENERIC_PROPERTY",
                     "name": "other_details",
-                    "documentation": "Additional language-sensitive resource metadata, as a list of name\/value pairs. ",
+                    "documentation": "Additional language-senstive resource metadata, as a list of name\/value pairs. ",
                     "type_def": {
                         "root_type": "Hash",
                         "generic_parameters": [

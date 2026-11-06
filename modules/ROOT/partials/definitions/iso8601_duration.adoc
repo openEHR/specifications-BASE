@@ -11,7 +11,7 @@ h|*Description*
 NOTE: two deviations from ISO 8601 are supported, the first, to allow a negative sign, and the second allowing the 'W' designator to be mixed with other designators.
 
 h|*Inherit*
-2+|`xref:{class_iso8601_type}[Iso8601_type]`
+2+|`xref:foundation_types:time_types.adoc#_iso8601_type_class[Iso8601_type]`
 
 h|*Functions*
 ^h|*Signature*
@@ -19,84 +19,84 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*is_extended* (): `xref:{class_boolean}[Boolean]`
+|*is_extended* (): `xref:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|Returns True.
 
 h|*1..1 +
 (effected)*
-|*is_partial* (): `xref:{class_boolean}[Boolean]`
+|*is_partial* (): `xref:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|Returns False.
 
 h|*1..1*
-|*years* (): `xref:{class_integer}[Integer]`
+|*years* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of years in the `_value_`, i.e. the number preceding the `'Y'` in the `'YMD'` part, if one exists.
 
 h|*1..1*
-|*months* (): `xref:{class_integer}[Integer]`
+|*months* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of months in the `_value_`, i.e. the value preceding the `'M'` in the `'YMD'` part, if one exists.
 
 h|*1..1*
-|*days* (): `xref:{class_integer}[Integer]`
+|*days* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of days in the `_value_`, i.e. the number preceding the `'D'` in the `'YMD'` part, if one exists.
 
 h|*1..1*
-|*hours* (): `xref:{class_integer}[Integer]`
+|*hours* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of hours in the `_value_`, i.e. the number preceding the `'H'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*minutes* (): `xref:{class_integer}[Integer]`
+|*minutes* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of minutes in the `_value_`, i.e. the number preceding the `'M'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*seconds* (): `xref:{class_integer}[Integer]`
+|*seconds* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of seconds in the `_value_`, i.e. the integer number preceding the `'S'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*fractional_seconds* (): `xref:{class_real}[Real]`
+|*fractional_seconds* (): `xref:foundation_types:primitive_types.adoc#_real_class[Real]`
 a|Fractional seconds in the `_value_`, i.e. the decimal part of the number preceding the `'S'` in the `'HMS'` part, if one exists.
 
 h|*1..1*
-|*weeks* (): `xref:{class_integer}[Integer]`
+|*weeks* (): `xref:foundation_types:primitive_types.adoc#_integer_class[Integer]`
 a|Number of weeks in the `_value_`, i.e. the value preceding the `W`, if one exists.
 
 h|*1..1*
-|*is_decimal_sign_comma* (): `xref:{class_boolean}[Boolean]`
+|*is_decimal_sign_comma* (): `xref:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
 a|True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
 
 h|*1..1*
-|*to_seconds* (): `xref:{class_real}[Real]`
-a|Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `Time_definitions` are used to compute the result.
+|*to_seconds* (): `xref:foundation_types:primitive_types.adoc#_real_class[Real]`
+a|Total number of seconds equivalent (including fractional) of entire duration. Where non-definite elements such as year and month (i.e. 'Y' and 'M') are included, the corresponding 'average' durations from `xref:foundation_types:time_types.adoc#_time_definitions_class[Time_definitions]` are used to compute the result. Using the constants defined there, the computation is `to_seconds = years × Average_days_in_year × spd {plus} months × Average_days_in_month × spd {plus} weeks × Days_in_week × spd {plus} days × spd {plus} hours × Minutes_in_hour × Seconds_in_minute {plus} minutes × Seconds_in_minute {plus} seconds {plus} fractional_seconds`, where `spd = Hours_in_day × Minutes_in_hour × Seconds_in_minute` is the number of seconds in a day (86400).
 
 h|*1..1*
-|*as_string* (): `xref:{class_string}[String]`
+|*as_string* (): `xref:foundation_types:primitive_types.adoc#_string_class[String]`
 a|Return the duration string value.
 
 h|*1..1*
 |*add* __alias__ "+" ( +
-a_val: `xref:{class_iso8601_duration}[Iso8601_duration][1]` +
-): `xref:{class_iso8601_duration}[Iso8601_duration]`
+a_val: `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration][1]` +
+): `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]`
 a|Arithmetic addition of a duration to a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
 h|*1..1*
 |*subtract* __alias__ "-" ( +
-a_val: `xref:{class_iso8601_duration}[Iso8601_duration][1]` +
-): `xref:{class_iso8601_duration}[Iso8601_duration]`
+a_val: `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration][1]` +
+): `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]`
 a|Arithmetic subtraction of a duration from a duration, via conversion to seconds, using `Time_definitions._Average_days_in_year_` and `Time_definitions._Average_days_in_month_`
 
 h|*1..1*
-|*multiply* __alias__ "&#42;" ( +
-a_val: `xref:{class_real}[Real][1]` +
-): `xref:{class_iso8601_duration}[Iso8601_duration]`
+|*multiply* __alias__ "*" ( +
+a_val: `xref:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
+): `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]`
 a|Arithmetic multiplication a duration by a number.
 
 h|*1..1*
 |*divide* __alias__ "/" ( +
-a_val: `xref:{class_real}[Real][1]` +
-): `xref:{class_iso8601_duration}[Iso8601_duration]`
+a_val: `xref:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
+): `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]`
 a|Arithmetic division of a duration by a number.
 
 h|*1..1*
-|*negative* __alias__ "-" (): `xref:{class_iso8601_duration}[Iso8601_duration]`
+|*negative* __alias__ "-" (): `xref:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]`
 a|Generate negative of current duration value.
 
 h|*Invariants*
