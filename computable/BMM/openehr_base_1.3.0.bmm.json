@@ -4035,7 +4035,7 @@
         },
         "Iso8601_timezone": {
             "name": "Iso8601_timezone",
-            "documentation": "ISO8601 timezone string, in format:\n\n* `Z | \u00b1hh[mm]`\n\nwhere:\n\n* `hh` is \"00\" - \"23\" (0-filled to two digits)\n* `mm` is \"00\" - \"59\" (0-filled to two digits)\n* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`\n",
+            "documentation": "ISO8601 timezone string, in format:\n\n* `Z | \u00b1hh[:mm]` (extended, preferred) or\n* `Z | \u00b1hh[mm]` (compact)\n\nwhere:\n\n* `hh` is \"00\" - \"23\" (0-filled to two digits)\n* `mm` is \"00\" - \"59\" (0-filled to two digits)\n* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000`\n",
             "ancestors": [
                 "Iso8601_type"
             ],
