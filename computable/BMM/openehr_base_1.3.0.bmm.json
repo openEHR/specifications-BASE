@@ -2732,7 +2732,7 @@
             "name": "Multiplicity_interval",
             "documentation": "An Interval of Integer, used to represent multiplicity, cardinality and optionality in models. The lower bound is a count: it is always set and never negative. Only the upper bound may be unbounded, written `*`. A single value such as `1..1` is a valid multiplicity.",
             "ancestors": [
-                "Interval"
+                "Proper_interval"
             ],
             "constants": {
                 "Multiplicity_range_marker": {
@@ -4423,7 +4423,7 @@
         },
         "Proper_interval": {
             "name": "Proper_interval",
-            "documentation": "Type representing a 'proper' Interval, i.e. any two-sided or one-sided interval.",
+            "documentation": "Type representing a 'proper' Interval, i.e. any two-sided or one-sided interval. Its limits may be equal, so a single value such as `1..1` is also a valid `Proper_interval`; `Point_interval` is the compact form of a single value.",
             "ancestors": [
                 "Interval"
             ],
@@ -4432,9 +4432,6 @@
                     "name": "T",
                     "conforms_to_type": "Ordered"
                 }
-            },
-            "invariants": {
-                "Inv_not_point": "lower \/= upper"
             }
         },
         "Point_interval": {
