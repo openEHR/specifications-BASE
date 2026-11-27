@@ -3285,14 +3285,22 @@
         },
         "TERMINOLOGY_ID": {
             "name": "TERMINOLOGY_ID",
-            "documentation": "Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service, e.g.  SNOMED-CT . A terminology is assumed to be in a particular language, which must be explicitly specified.\n\nLexical form: `name [  '(' version  ')' ]`.\n",
+            "documentation": "Identifier for terminologies such as accessed via a terminology query service. In this class, the `_value_` attribute identifies the terminology, preferably by its URI, e.g. `http:\/\/snomed.info\/sct`, `http:\/\/loinc.org`. The version of the terminology, if any, is carried in `_version_`. A terminology is assumed to be in a particular language, which must be explicitly specified.\n\nLexical form: a URI (recommended), or the legacy form `name [  '(' version  ')' ]` (deprecated).\n",
             "ancestors": [
                 "OBJECT_ID"
             ],
+            "properties": {
+                "version": {
+                    "_type": "P_BMM_SINGLE_PROPERTY",
+                    "name": "version",
+                    "documentation": "Version of the terminology, as defined by its publisher. For SNOMED CT this is the full version URI as defined by SNOMED, e.g. `http:\/\/snomed.info\/sct\/900000000000207008\/version\/20260101`.",
+                    "type": "String"
+                }
+            },
             "functions": {
                 "name": {
                     "name": "name",
-                    "documentation": "Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  `\"ICD10AM\"` and `\"ICD10\"` refer to distinct terminologies. ",
+                    "documentation": "Return the terminology identifier without any legacy bracketed version part, i.e. the URI, or for a legacy identifier the name part. Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  `\"ICD10AM\"` and `\"ICD10\"` refer to distinct terminologies. ",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "String"
@@ -3300,12 +3308,15 @@
                 },
                 "version_id": {
                     "name": "version_id",
-                    "documentation": "Version of this terminology, if versioning supported, else the empty string. ",
+                    "documentation": "Version of this terminology: `_version_` if set; otherwise, as a legacy fallback, the bracketed version part of `_value_`, if any; else the empty string. ",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "String"
                     }
                 }
+            },
+            "invariants": {
+                "Version_valid": "version \/= Void implies not value.contains (\"(\")"
             }
         },
         "VERSION_TREE_ID": {
