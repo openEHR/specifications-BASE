@@ -122,24 +122,44 @@ For backward compatibility a legacy free-text template name remains a valid `TEM
 
 ==== Terminology Identifiers
 
-The `TERMINOLOGY_ID` subtype defines a globally unique single string identifier for terminologies. Terminology identifier values may include a version, either as part of the name, and/or according to the syntax defined in section 4.3.12 below. Examples of terminology identifiers include:
+The `TERMINOLOGY_ID` subtype defines a globally unique single string identifier for terminologies (code systems). The identifier of the terminology is carried in `_value_`. Its version, if any, is carried separately in `_version_`.
 
-* "SNOMED-CT"
-* "ICD9(1999)"
+===== Terminology URIs
 
-Currently, the best authoritative source for the name part of the identifier (i.e. the part excluding the optional version part in parentheses) is the {nlm_umls_list}[US National Library of Medicine UMLS identifiers for included terminologies].
+The terminology identifier should be a URI. This aligns openEHR with HL7 FHIR, where the same URI is used in `Coding.system` (see https://hl7.org/fhir/R5/terminologies.html#system[FHIR R5 Choosing a system^]). The URI is chosen as follows:
 
-The scheme defined by the `TERMINOLOGY_ID` class provides for the situation where major 'versions' of a terminology such as the World Health Organisation's 'ICD10' and 'ICD10AM' (AM = 'Australian modifications') can accommodate a finer grain of versioning or revisioning, e.g.:
+* If the code system is listed in the HL7 https://terminology.hl7.org/en/external_code_systems.html[External Code Systems^], the URI given there must be used, e.g. `http://snomed.info/sct`, `http://loinc.org`.
+* If it is not listed, a URI can be requested from HL7 via the HL7 Terminology Authority (HTA) process.
+* Otherwise, e.g. for a local code system, a custom URI should be used, preferably one that resolves to a description of the code system, e.g. on a terminology server, and that does not change over time.
 
-* "ICD10AM(3rd_ed)"
-* "ICD10AM(4th_ed)"
+Examples of terminology identifiers include:
 
-The version part of a terminology identifier is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes it's meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino's 'desiderata' cite:[Cimino1997] of which the principle of 'concept permanence' is applicable here - "A concept's meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; version ids should always be used for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system
-was indeed the one assigned to it in the particular version or edition.
+* `"http://snomed.info/sct"`
+* `"http://loinc.org"`
+* `"http://hl7.org/fhir/sid/icd-10"`
+
+===== Terminology Versions
+
+The version of a terminology is given in `_version_`, in the form defined by the terminology publisher, for example:
+
+* LOINC: `_value_` is `"http://loinc.org"`, `_version_` is the LOINC release, e.g. `"2.77"` (see https://terminology.hl7.org/en/LOINC.html[Using LOINC with HL7 Standards^]).
+* SNOMED CT: `_value_` is `"http://snomed.info/sct"`, `_version_` is the full version URI `http://snomed.info/sct/<sctid>/version/<YYYYMMDD>`, where `<sctid>` identifies the edition and `<YYYYMMDD>` is the release date, e.g. `"http://snomed.info/sct/900000000000207008/version/20260101"` for the International Edition. This form is defined by the https://docs.snomed.org/snomed-ct-specifications/snomed-ct-uri-standard/3-snomed-ct-uris-in-use[SNOMED CT URI Standard^]. See also https://terminology.hl7.org/en/SNOMEDCT.html#versions[Using SNOMED CT with HL7 Standards^].
+
+The function `_version_id()_` returns `_version_`. In AQL, the version is queried with `terminology_id/version`.
+
+The version is in theory only absolutely necessary for those terminologies which break the rule that the concept being identified with a code loses or changes its meaning over versions of the terminology. This should not be the case for modern terminologies and ontologies, particularly those designed since the publication of Cimino's 'desiderata' cite:[Cimino1997] of which the principle of 'concept permanence' is applicable here - "A concept's meaning cannot change and it cannot be deleted from the vocabulary". However, there may be older terminologies, or specialised terminologies which may not have obeyed these rules, but which are still used; versions should always be recorded for these. At a practical level, versions may be included routinely in some systems to support the potential medico-legal need to prove that a) a given code was in fact defined in the terminology (it may not have existed in an earlier edition) and b) that the meaning assumed in the system was indeed the one assigned to it in the particular version or edition.
+
+===== Legacy Terminology Identifiers
+
+Earlier releases identified terminologies by a short name (namespace), optionally followed by a version in parentheses, e.g. `"SNOMED-CT"`, `"ICD9(1999)"`, `"ICD10AM(3rd_ed)"`, `"ICD10AM(4th_ed)"`, with the name part taken from the {nlm_umls_list}[US National Library of Medicine UMLS identifiers for included terminologies]. This form remains valid for existing data, but is _deprecated_: new systems should not use short names or the bracketed version form, and migrating existing data to URIs is recommended.
+
+In the legacy form, the part in brackets is the version. If `_version_` is not set, `_version_id()_` returns this bracketed part as a fallback. The bracketed version is only read, never copied into `_version_`, and a bracketed version and `_version_` must not both be set (invariant `Version_valid`). In AQL, `terminology_id/value` returns the stored identifier without the bracketed version, and `terminology_id/version` returns the bracketed version when `_version_` is not set. In a query criterion, a URI also matches data recorded with the corresponding legacy short name (see the {openehr_query_aql}[AQL^] specification).
+
+To relate legacy short names to terminology URIs, a legacy conversion table is published as part of the {openehr_term_terminology}[openEHR Terminology^] specification. A legacy identifier and its URI are both valid. Platforms can use the table to normalise identifiers, e.g. to treat a legacy short name such as `"SNOMED-CT"` and its URI `"http://snomed.info/sct"` as the same terminology. The table maps the name part only, so a bracketed version is not translated. Stored identifiers are not rewritten. Two legacy names from different sources may also indicate the same terminology, e.g. `"ICD10AM_2000"` (NLM identifier used in UMLS) and `"ICD10AM(2nd_ed)"`.
 
 ==== Equivalence
 
-Although there are anomalies in some published terminologies and between some versions or editions of the same terminology, two terminology identifiers that are the same, disregarding the version part, can usually be considered as semantic equivalents in the terminology world. However, depending on which source of strings have been chosen for the name part of the identifier, two different identifiers may also indicate the same terminology, e.g. "ICD10AM_2000" (NLM identifier used in UMLS) and "ICD10AM(2nd_ed)" refer to the same thing.
+Although there are anomalies in some published terminologies and between some versions or editions of the same terminology, two terminology identifiers that are the same, disregarding the version, can usually be considered as semantic equivalents in the terminology world. Different identifiers of the same terminology occur only in legacy data, see <<Legacy Terminology Identifiers>>.
 
 ==== Identifying Versions within openEHR Versioned Containers
 
@@ -284,7 +304,9 @@ patch_version       = '0' | non-zero-digit, [ number ] ;
 version_modifier    = ( '-rc' | '-alpha' | '-beta' ), [ '.', number ] ;  (* pre-release modifier + optional build count *)
 
 (* ------------------------- TERMINOLOGY_ID -------------------------- *)
-terminology_id = name-str, [ '(', name-str, ')' ] ;
+terminology_id        = uri | legacy_terminology_id ;   (* URI recommended *)
+uri                   = ? absolute URI according to IETF https://tools.ietf.org/html/rfc3986[RFC 3986] ? ;
+legacy_terminology_id = name-str, [ '(', name-str, ')' ] ;   (* deprecated *)
 
 (* -------------------------- generic rules -------------------------- *)
 alphanum     = letter | digit ;

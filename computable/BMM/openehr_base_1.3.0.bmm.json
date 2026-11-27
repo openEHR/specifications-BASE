@@ -3285,14 +3285,22 @@
         },
         "TERMINOLOGY_ID": {
             "name": "TERMINOLOGY_ID",
-            "documentation": "Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service, e.g.  SNOMED-CT . A terminology is assumed to be in a particular language, which must be explicitly specified.\n\nLexical form: `name [  '(' version  ')' ]`.\n",
+            "documentation": "Identifier for terminologies such as accessed via a terminology query service. In this class, the `_value_` attribute identifies the terminology, by its URI, e.g. `http:\/\/snomed.info\/sct`, `http:\/\/loinc.org`. Use the URI listed in the HL7 External Code Systems (https:\/\/terminology.hl7.org\/en\/external_code_systems.html). If the terminology is not listed, request a URI from HL7, otherwise use a custom URI, preferably one that resolves, e.g. on your terminology server. The version of the terminology, if any, is carried in `_version_`. A terminology is assumed to be in a particular language, which must be explicitly specified.\n\nLexical form: a URI, or the legacy form using Namespaces `name [  '(' version  ')' ]` (deprecated).\n",
             "ancestors": [
                 "OBJECT_ID"
             ],
+            "properties": {
+                "version": {
+                    "_type": "P_BMM_SINGLE_PROPERTY",
+                    "name": "version",
+                    "documentation": "Version of the terminology, in the form defined by its publisher, e.g. `2.77` for LOINC. For SNOMED CT this is the full version URI defined by the SNOMED CT URI Standard (https:\/\/docs.snomed.org\/snomed-ct-specifications\/snomed-ct-uri-standard\/3-snomed-ct-uris-in-use), e.g. `http:\/\/snomed.info\/sct\/900000000000207008\/version\/20260101`.",
+                    "type": "String"
+                }
+            },
             "functions": {
                 "name": {
                     "name": "name",
-                    "documentation": "Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  `\"ICD10AM\"` and `\"ICD10\"` refer to distinct terminologies. ",
+                    "documentation": "Return the terminology identifier. Distinct terminology identifiers identify distinct (i.e. non-compatible) terminologies. Thus http://hl7.org/fhir/sid/icd-10 and http://hl7.org/fhir/sid/icd-10-cm refer to distinct terminologies.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "String"
@@ -3300,12 +3308,15 @@
                 },
                 "version_id": {
                     "name": "version_id",
-                    "documentation": "Version of this terminology, if versioning supported, else the empty string. ",
+                    "documentation": "Returns _version_. If _version_ is not set and _value_ has the legacy form name(version), returns that version. Otherwise returns the empty string.",
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
                         "type": "String"
                     }
                 }
+            },
+            "invariants": {
+                "Version_valid": "version \/= Void implies not value.contains (\"(\")"
             }
         },
         "VERSION_TREE_ID": {
