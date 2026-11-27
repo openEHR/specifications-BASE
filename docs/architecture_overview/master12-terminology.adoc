@@ -210,13 +210,13 @@ on a patient record. SNOMED-CT includes 63 terms beginning with "adenocarcinoma"
 (and 171 terms which include the word as a secondary part of the phrase), some as children of a common
 parent. Nevertheless, the terms do not all have a single common parent; a choice has to be made
 of which terms correspond to the intent of the query. If it is to find any previous diagnosis of "adenocarcinoma",
-then at least the terms of the form `[snomed-ct::254626006|adenocarcinoma of lung|]`,
+then at least the terms of the form `[\http://snomed.info/sct::254626006|adenocarcinoma of lung|]`,
 "... of liver" have to be included. These are within the "clinical finding" hierarchy, so the use of these
 latter terms should ensure that matches are not made with other uses of the same terms in the record,
 e.g. "fear of adenocarcinoma" or "minimal risk of adenocarcinoma". Such correct matching is completely
 dependent upon the correct use of SNOMED-CT terms in the first place by the software application
 and/or user creating the data. It is easy to imagine an application that saves data (including
-openEHR data) in the form of two name/value pairs: `<"principal diagnosis", [snomed-ct::35917007|adenocarcinoma|])>` and `<"site", "lung">`. Querying using `[snomedct::254626006|adenocarcinoma of lung|]` will fail, even though this is exactly the meaning of the data. The data are not wrong
+openEHR data) in the form of two name/value pairs: `<"principal diagnosis", [\http://snomed.info/sct::35917007|adenocarcinoma|])>` and `<"site", "lung">`. Querying using `[\http://snomed.info/sct::254626006|adenocarcinoma of lung|]` will fail, even though this is exactly the meaning of the data. The data are not wrong
 as such, but the lesson is clear: coding of data and code use in queries must be governed by common
 models, otherwise there is no hope of reliably processing the data.
 
